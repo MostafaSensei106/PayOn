@@ -19,7 +19,7 @@ class WelcomePage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBarComponent(title: l10n.welcome_title, showBackButton: false),
+      appBar: AppBarComponent(title: l10n.welcome_title),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: AppConstants.horizontalPadding,

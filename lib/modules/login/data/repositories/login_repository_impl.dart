@@ -10,7 +10,10 @@ class LoginRepositoryImpl implements LoginRepository {
   LoginRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<Either<Failure, UserEntity>> login(String email, String password) async {
+  Future<Either<Failure, UserEntity>> login(
+    String email,
+    String password,
+  ) async {
     try {
       final userModel = await remoteDataSource.login(email, password);
       return Right(userModel);

@@ -4,11 +4,7 @@ class BadgeComponent extends StatelessWidget {
   final Widget child;
   final String label;
 
-  const BadgeComponent({
-    super.key,
-    required this.child,
-    required this.label,
-  });
+  const BadgeComponent({super.key, required this.child, required this.label});
 
   @override
   Widget build(BuildContext context) {

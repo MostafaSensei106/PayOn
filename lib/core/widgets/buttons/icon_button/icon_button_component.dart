@@ -7,44 +7,54 @@ class IconButtonComponent extends StatelessWidget {
   final IconData icon;
   final VoidCallback onPressed;
   final IconButtonVariant variant;
+  final String? toolTip;
   final Color? backgroundColor;
   final Color? foregroundColor;
   final double? iconSize;
+  final double? padding;
 
   const IconButtonComponent({
     super.key,
     required this.icon,
     required this.onPressed,
+    this.toolTip,
     this.backgroundColor,
     this.foregroundColor,
     this.iconSize,
+    this.padding,
   }) : variant = IconButtonVariant.standard;
 
   const IconButtonComponent.filled({
     super.key,
     required this.icon,
     required this.onPressed,
+    this.toolTip,
     this.backgroundColor,
     this.foregroundColor,
     this.iconSize,
+    this.padding,
   }) : variant = IconButtonVariant.filled;
 
   const IconButtonComponent.tonal({
     super.key,
     required this.icon,
     required this.onPressed,
+    this.toolTip,
     this.backgroundColor,
     this.foregroundColor,
     this.iconSize,
+    this.padding,
   }) : variant = IconButtonVariant.tonal;
 
   const IconButtonComponent.outlined({
     super.key,
     required this.icon,
     required this.onPressed,
+    this.toolTip,
     this.backgroundColor,
     this.foregroundColor,
     this.iconSize,
+    this.padding,
   }) : variant = IconButtonVariant.outlined;
 
   @override
@@ -69,6 +79,7 @@ class IconButtonComponent extends StatelessWidget {
             foregroundColor:
                 foregroundColor ?? Theme.of(context).colorScheme.onPrimary,
           ),
+          padding: EdgeInsets.all(padding ?? 8),
         );
       case IconButtonVariant.tonal:
         return IconButton.filledTonal(

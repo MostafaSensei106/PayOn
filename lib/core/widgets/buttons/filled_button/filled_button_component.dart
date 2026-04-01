@@ -55,7 +55,8 @@ class FilledButtonComponent extends StatelessWidget {
   ButtonStyle _getButtonStyle(BuildContext context) {
     return FilledButton.styleFrom(
       backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.primary,
-      foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.onPrimary,
+      foregroundColor:
+          foregroundColor ?? Theme.of(context).colorScheme.onPrimary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppConstants.buttonBorderRadius),
       ),

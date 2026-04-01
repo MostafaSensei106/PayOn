@@ -27,7 +27,10 @@ class TextFieldComponent extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         labelText: label,
-        prefixIcon: Icon(prefixIcon, color: Theme.of(context).colorScheme.primary),
+        prefixIcon: Icon(
+          prefixIcon,
+          color: Theme.of(context).colorScheme.primary,
+        ),
         suffixIcon: suffixIcon,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppConstants.borderRadius),
@@ -35,7 +38,9 @@ class TextFieldComponent extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppConstants.borderRadius),
-          borderSide: BorderSide(color: Theme.of(context).colorScheme.outlineVariant),
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.outlineVariant,
+          ),
         ),
       ),
     );

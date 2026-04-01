@@ -6,7 +6,7 @@ import 'package:payon/core/widgets/buttons/text_button/text_button_component.dar
 import 'package:payon/core/widgets/inputs/password_field/password_field_component.dart';
 import 'package:payon/core/widgets/inputs/text_field/text_field_component.dart';
 import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
-import 'package:payon/core/widgets/navigation/app_bar/app_bar_component.dart';
+import 'package:payon/core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 import 'package:payon/l10n/app_localizations.dart';
 
 class LoginPage extends StatelessWidget {
@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBarComponent(title: l10n.login, showBackButton: true),
+      appBar: SidePageAppBarComponent(title: l10n.login, useBackButton: true),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(
           horizontal: AppConstants.screenPadding,

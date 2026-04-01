@@ -5,11 +5,7 @@ class BottomSheetComponent extends StatelessWidget {
   final Widget child;
   final String? title;
 
-  const BottomSheetComponent({
-    super.key,
-    required this.child,
-    this.title,
-  });
+  const BottomSheetComponent({super.key, required this.child, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +13,9 @@ class BottomSheetComponent extends StatelessWidget {
       padding: const EdgeInsets.all(AppConstants.screenPadding),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(AppConstants.bottomSheetBorderRadius)),
+        borderRadius: const BorderRadius.vertical(
+          top: Radius.circular(AppConstants.bottomSheetBorderRadius),
+        ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -25,7 +23,9 @@ class BottomSheetComponent extends StatelessWidget {
           if (title != null) ...[
             Text(
               title!,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
             const Divider(),
           ],

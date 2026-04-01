@@ -37,11 +37,7 @@ class TextButtonComponent extends StatelessWidget {
     );
 
     return icon == null
-        ? TextButton(
-            onPressed: onPressed,
-            style: style,
-            child: Text(label),
-          )
+        ? TextButton(onPressed: onPressed, style: style, child: Text(label))
         : TextButton.icon(
             onPressed: onPressed,
             style: style,

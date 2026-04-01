@@ -54,7 +54,9 @@ class OutlinedButtonComponent extends StatelessWidget {
 
   ButtonStyle _getButtonStyle(BuildContext context) {
     return OutlinedButton.styleFrom(
-      side: BorderSide(color: backgroundColor ?? Theme.of(context).colorScheme.outline),
+      side: BorderSide(
+        color: backgroundColor ?? Theme.of(context).colorScheme.outline,
+      ),
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppConstants.buttonBorderRadius),

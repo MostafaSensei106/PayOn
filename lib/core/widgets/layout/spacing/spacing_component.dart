@@ -6,18 +6,15 @@ class SpacingComponent extends StatelessWidget {
   final double? height;
 
   const SpacingComponent.horizontal(double size, {super.key})
-      : width = size,
-        height = 0;
+    : width = size,
+      height = 0;
 
   const SpacingComponent.vertical(double size, {super.key})
-      : width = 0,
-        height = size;
+    : width = 0,
+      height = size;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width?.w,
-      height: height?.h,
-    );
+    return SizedBox(width: width?.w, height: height?.h);
   }
 }

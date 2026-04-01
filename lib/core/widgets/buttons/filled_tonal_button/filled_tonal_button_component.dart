@@ -54,8 +54,10 @@ class FilledTonalButtonComponent extends StatelessWidget {
 
   ButtonStyle _getButtonStyle(BuildContext context) {
     return FilledButton.styleFrom(
-      backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.secondaryContainer,
-      foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.onSecondaryContainer,
+      backgroundColor:
+          backgroundColor ?? Theme.of(context).colorScheme.secondaryContainer,
+      foregroundColor:
+          foregroundColor ?? Theme.of(context).colorScheme.onSecondaryContainer,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppConstants.buttonBorderRadius),
       ),

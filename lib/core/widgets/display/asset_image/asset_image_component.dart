@@ -16,11 +16,6 @@ class AssetImageComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      assetName,
-      width: width,
-      height: height,
-      fit: fit,
-    );
+    return Image.asset(assetName, width: width, height: height, fit: fit);
   }
 }

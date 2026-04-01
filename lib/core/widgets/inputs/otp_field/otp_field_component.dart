@@ -27,7 +27,9 @@ class OtpFieldComponent extends StatelessWidget {
             maxLength: 1,
             decoration: InputDecoration(
               counterText: '',
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+              ),
             ),
             onChanged: (value) {
               if (value.length == 1 && index < length - 1) {

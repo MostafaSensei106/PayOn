@@ -4,11 +4,7 @@ class TabBarComponent extends StatelessWidget {
   final List<Tab> tabs;
   final TabController? controller;
 
-  const TabBarComponent({
-    super.key,
-    required this.tabs,
-    this.controller,
-  });
+  const TabBarComponent({super.key, required this.tabs, this.controller});
 
   @override
   Widget build(BuildContext context) {

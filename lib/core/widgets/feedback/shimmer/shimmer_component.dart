@@ -5,17 +5,10 @@ class ShimmerComponent extends StatelessWidget {
   final Widget child;
   final bool enabled;
 
-  const ShimmerComponent({
-    super.key,
-    required this.child,
-    this.enabled = true,
-  });
+  const ShimmerComponent({super.key, required this.child, this.enabled = true});
 
   @override
   Widget build(BuildContext context) {
-    return Skeletonizer(
-      enabled: enabled,
-      child: child,
-    );
+    return Skeletonizer(enabled: enabled, child: child);
   }
 }

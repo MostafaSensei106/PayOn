@@ -5,6 +5,7 @@ import 'package:payon/core/constants/app_constants.dart';
 import 'package:payon/core/widgets/buttons/filled_button/filled_button_component.dart';
 import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
 import 'package:payon/core/widgets/navigation/app_bar/app_bar_component.dart';
+import 'package:payon/core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 import 'package:payon/l10n/app_localizations.dart';
 
 class GetStartedPage extends StatelessWidget {
@@ -15,7 +16,10 @@ class GetStartedPage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBarComponent(title: l10n.get_started, showBackButton: true),
+      appBar: SidePageAppBarComponent(
+        title: l10n.get_started,
+        useBackButton: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(AppConstants.screenPadding),
         child: Column(
