@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payon/l10n/app_localizations.dart';
-import 'package:payon/modules/welcome/ui/page/welcome_page.dart';
+import 'package:payon/modules/welcome/presentation/pages/welcome_page.dart';
 
 class PayOnApp extends StatelessWidget {
   const PayOnApp({super.key});
