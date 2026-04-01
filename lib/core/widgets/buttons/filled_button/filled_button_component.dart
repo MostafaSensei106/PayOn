@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class FilledButtonComponent extends StatelessWidget {
   final String label;
@@ -43,7 +43,7 @@ class FilledButtonComponent extends StatelessWidget {
         : FilledButton.icon(
             onPressed: onPressed,
             style: _getButtonStyle(context),
-            icon: Icon(icon, size: AppConstants.iconSizeSmall.w),
+            icon: Icon(icon, size: AppConfig.iconSizeSmall.w),
             label: Text(label),
           );
   }
@@ -55,10 +55,10 @@ class FilledButtonComponent extends StatelessWidget {
           foregroundColor ?? Theme.of(context).colorScheme.onPrimary,
       minimumSize: Size(
         width ?? double.infinity,
-        height ?? AppConstants.buttonHeight.h,
+        height ?? AppConfig.buttonHeight.h,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
       ),
     );
   }

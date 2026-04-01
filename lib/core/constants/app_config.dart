@@ -2,44 +2,12 @@
 ///
 /// This includes app metadata, UI dimensions, and other fixed values
 /// used throughout the application to ensure consistency.
-class AppConstants {
+class AppConfig {
   /// The official name of the application.
-  static const String appName = 'TakyeebBak';
+  static const String appName = 'PayOn';
 
   /// The current version of the application.
   static const String appVersion = '1.0.0';
-
-  /// A set of common free email service providers.
-  static const freeEmailProviders = {
-    'gmail.com',
-    'googlemail.com',
-    'yahoo.com',
-    'ymail.com',
-    'hotmail.com',
-    'outlook.com',
-    'live.com',
-    'msn.com',
-    'aol.com',
-    'icloud.com',
-    'mac.com',
-    'me.com',
-    'protonmail.com',
-    'tutanota.com',
-    'gmx.com',
-    'zoho.com',
-    'mail.com',
-    'yandex.com',
-    'yandex.ru',
-    'inbox.ru',
-    'bk.ru',
-    'list.ru',
-    'mail.ru',
-    'rediffmail.com',
-    'fastmail.com',
-    'hushmail.com',
-    'startmail.com',
-    'pm.me',
-  };
 
   /// Standard padding value used across the UI.
   static const double padding = 16.0;

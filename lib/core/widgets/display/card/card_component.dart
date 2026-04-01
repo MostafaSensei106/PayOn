@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class CardComponent extends StatelessWidget {
   final Widget child;
@@ -16,10 +16,10 @@ class CardComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding ?? const EdgeInsets.all(AppConstants.padding),
+      padding: padding ?? const EdgeInsets.all(AppConfig.padding),
       decoration: BoxDecoration(
         color: color ?? Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(AppConstants.outBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
       ),
       child: child,
     );

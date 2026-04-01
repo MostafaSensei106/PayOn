@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class ElevatedButtonComponent extends StatelessWidget {
   final String label;
@@ -42,7 +42,7 @@ class ElevatedButtonComponent extends StatelessWidget {
         : ElevatedButton.icon(
             onPressed: onPressed,
             style: _getButtonStyle(context),
-            icon: Icon(icon, size: AppConstants.iconSize),
+            icon: Icon(icon, size: AppConfig.iconSize),
             label: Text(label),
           );
   }
@@ -51,10 +51,10 @@ class ElevatedButtonComponent extends StatelessWidget {
     return ElevatedButton.styleFrom(
       backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.surface,
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
-      elevation: AppConstants.buttonElevation,
+      elevation: AppConfig.buttonElevation,
       minimumSize: Size(width ?? double.infinity, height ?? 8),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
       ),
     );
   }

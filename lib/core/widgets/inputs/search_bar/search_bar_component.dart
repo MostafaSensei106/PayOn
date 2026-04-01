@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class SearchBarComponent extends StatelessWidget {
   final String hintText;
@@ -16,11 +16,10 @@ class SearchBarComponent extends StatelessWidget {
         hintText: hintText,
         prefixIcon: const Icon(Iconsax.search_normal_1),
         filled: true,
-        fillColor: Theme.of(
-          context,
-        ).colorScheme.surfaceContainerHighest.withValues(alpha: AppConstants.searchBarOpacity),
+        fillColor: Theme.of(context).colorScheme.surfaceContainerHighest
+            .withValues(alpha: AppConfig.searchBarOpacity),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppConstants.roundBorderRadius),
+          borderRadius: BorderRadius.circular(AppConfig.roundBorderRadius),
           borderSide: BorderSide.none,
         ),
       ),

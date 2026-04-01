@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class DialogComponent extends StatelessWidget {
   final String title;
@@ -20,7 +20,7 @@ class DialogComponent extends StatelessWidget {
       content: Text(content),
       actions: actions,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.outBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
   }

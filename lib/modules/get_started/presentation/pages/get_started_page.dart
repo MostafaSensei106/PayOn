@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 import 'package:payon/core/widgets/buttons/filled_button/filled_button_component.dart';
 import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
 import 'package:payon/core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
@@ -20,7 +20,7 @@ class GetStartedPage extends StatelessWidget {
         useBackButton: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(AppConstants.padding),
+        padding: const EdgeInsets.all(AppConfig.padding),
         child: Column(
           children: [
             const Spacer(),
@@ -29,7 +29,7 @@ class GetStartedPage extends StatelessWidget {
               size: 100.0,
               color: Theme.of(context).colorScheme.primary,
             ),
-            const SpacingComponent.vertical(AppConstants.padding * 2),
+            const SpacingComponent.vertical(AppConfig.padding * 2),
             Text(
               l10n.manage_finances_title,
               textAlign: TextAlign.center,
@@ -37,7 +37,7 @@ class GetStartedPage extends StatelessWidget {
                 context,
               ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
-            const SpacingComponent.vertical(AppConstants.padding),
+            const SpacingComponent.vertical(AppConfig.padding),
             Text(
               l10n.manage_finances_subtitle,
               textAlign: TextAlign.center,
@@ -50,7 +50,7 @@ class GetStartedPage extends StatelessWidget {
               label: l10n.lets_get_started,
               onPressed: () => context.pop(),
             ),
-            const SpacingComponent.vertical(AppConstants.padding * 2),
+            const SpacingComponent.vertical(AppConfig.padding * 2),
           ],
         ),
       ),

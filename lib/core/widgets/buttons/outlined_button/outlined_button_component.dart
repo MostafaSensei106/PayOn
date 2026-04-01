@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class OutlinedButtonComponent extends StatelessWidget {
   final String label;
@@ -43,7 +43,7 @@ class OutlinedButtonComponent extends StatelessWidget {
         : OutlinedButton.icon(
             onPressed: onPressed,
             style: _getButtonStyle(context),
-            icon: Icon(icon, size: AppConstants.iconSizeSmall.w),
+            icon: Icon(icon, size: AppConfig.iconSizeSmall.w),
             label: Text(label),
           );
   }
@@ -56,10 +56,10 @@ class OutlinedButtonComponent extends StatelessWidget {
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
       minimumSize: Size(
         width ?? double.infinity,
-        height ?? AppConstants.buttonHeight.h,
+        height ?? AppConfig.buttonHeight.h,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
       ),
     );
   }

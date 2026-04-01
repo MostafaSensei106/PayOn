@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 import 'package:payon/core/widgets/buttons/filled_button/filled_button_component.dart';
 import 'package:payon/core/widgets/buttons/text_button/text_button_component.dart';
 import 'package:payon/core/widgets/inputs/password_field/password_field_component.dart';
@@ -19,33 +19,31 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: SidePageAppBarComponent(title: l10n.login, useBackButton: true),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppConstants.padding,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SpacingComponent.vertical(AppConstants.padding * 3),
+            const SpacingComponent.vertical(AppConfig.padding * 3),
             Text(
               l10n.welcome_back,
               style: Theme.of(
                 context,
               ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
-            const SpacingComponent.vertical(AppConstants.paddingHalf),
+            const SpacingComponent.vertical(AppConfig.paddingHalf),
             Text(
               l10n.login_subtitle,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
             ),
-            const SpacingComponent.vertical(AppConstants.padding * 3),
+            const SpacingComponent.vertical(AppConfig.padding * 3),
             TextFieldComponent(
               label: l10n.email_address,
               prefixIcon: Iconsax.sms_copy,
               keyboardType: TextInputType.emailAddress,
             ),
-            const SpacingComponent.vertical(AppConstants.padding),
+            const SpacingComponent.vertical(AppConfig.padding),
             PasswordFieldComponent(label: l10n.password),
             Align(
               alignment: Alignment.centerLeft,
@@ -54,7 +52,7 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {},
               ),
             ),
-            const SpacingComponent.vertical(AppConstants.padding * 2),
+            const SpacingComponent.vertical(AppConfig.padding * 2),
             FilledButtonComponent(label: l10n.login, onPressed: () {}),
           ],
         ),

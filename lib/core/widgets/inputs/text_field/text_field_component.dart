@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class TextFieldComponent extends StatelessWidget {
   final String label;
@@ -33,11 +33,11 @@ class TextFieldComponent extends StatelessWidget {
         ),
         suffixIcon: suffixIcon,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
+          borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
           borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
+          borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
           borderSide: BorderSide(
             color: Theme.of(context).colorScheme.outlineVariant,
           ),

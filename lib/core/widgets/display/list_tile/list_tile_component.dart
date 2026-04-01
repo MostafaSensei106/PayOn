@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class ListTileComponent extends StatelessWidget {
   final Widget title;
@@ -26,7 +26,7 @@ class ListTileComponent extends StatelessWidget {
       trailing: trailing,
       onTap: onTap,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
       ),
     );
   }

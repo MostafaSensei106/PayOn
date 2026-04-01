@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class TextButtonComponent extends StatelessWidget {
   final String label;
@@ -32,7 +32,7 @@ class TextButtonComponent extends StatelessWidget {
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
       ),
     );
 
@@ -41,7 +41,7 @@ class TextButtonComponent extends StatelessWidget {
         : TextButton.icon(
             onPressed: onPressed,
             style: style,
-            icon: Icon(icon, size: AppConstants.iconSizeSmall.w),
+            icon: Icon(icon, size: AppConfig.iconSizeSmall.w),
             label: Text(label),
           );
   }

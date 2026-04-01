@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class DropdownComponent<T> extends StatelessWidget {
   final String label;
@@ -24,7 +24,7 @@ class DropdownComponent<T> extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
+          borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
         ),
       ),
     );

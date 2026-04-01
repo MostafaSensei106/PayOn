@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 enum IconButtonVariant { standard, filled, tonal, outlined }
 
@@ -73,14 +73,14 @@ class IconButtonComponent extends StatelessWidget {
           onPressed: onPressed,
           style: IconButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
+              borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
             ),
             backgroundColor:
                 backgroundColor ?? Theme.of(context).colorScheme.primary,
             foregroundColor:
                 foregroundColor ?? Theme.of(context).colorScheme.onPrimary,
           ),
-          padding: EdgeInsets.all(padding ?? AppConstants.paddingHalf.w),
+          padding: EdgeInsets.all(padding ?? AppConfig.paddingHalf.w),
         );
       case IconButtonVariant.tonal:
         return IconButton.filledTonal(

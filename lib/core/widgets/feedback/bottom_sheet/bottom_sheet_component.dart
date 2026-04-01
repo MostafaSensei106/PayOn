@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class BottomSheetComponent extends StatelessWidget {
   final Widget child;
@@ -10,11 +10,11 @@ class BottomSheetComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(AppConstants.padding),
+      padding: const EdgeInsets.all(AppConfig.padding),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(AppConstants.outBorderRadius),
+          top: Radius.circular(AppConfig.outBorderRadius),
         ),
       ),
       child: Column(

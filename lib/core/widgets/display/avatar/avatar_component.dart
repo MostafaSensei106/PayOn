@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 class AvatarComponent extends StatelessWidget {
   final String? imageUrl;
@@ -15,7 +15,7 @@ class AvatarComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final effectiveRadius = radius ?? AppConstants.avatarRadius;
+    final effectiveRadius = radius ?? AppConfig.avatarRadius;
     return CircleAvatar(
       radius: effectiveRadius,
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,

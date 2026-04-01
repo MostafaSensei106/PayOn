@@ -15,7 +15,7 @@ import 'package:flutter/widgets.dart'
         BorderRadius,
         RoundedRectangleBorder,
         Icon;
-import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/constants/app_config.dart';
 
 /// An app bar designed for side pages, with an optional back button and actions.
 class SidePageAppBarComponent extends StatelessWidget
@@ -82,12 +82,12 @@ class SidePageAppBarComponent extends StatelessWidget
     style: IconButton.styleFrom(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
       ),
-      padding: const EdgeInsets.all(AppConstants.paddingQuarter),
+      padding: const EdgeInsets.all(AppConfig.paddingQuarter),
     ),
     onPressed: () => leave(context),
-    icon: Icon(icon, size: AppConstants.iconSize),
+    icon: Icon(icon, size: AppConfig.iconSize),
     color: Theme.of(context).colorScheme.onPrimaryContainer,
   );
 }
