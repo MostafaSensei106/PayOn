@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:payon/core/constants/app_config.dart';
+import 'package:payon/core/router/app_router.dart';
 import 'package:payon/core/widgets/buttons/filled_button/filled_button_component.dart';
 import 'package:payon/core/widgets/buttons/text_button/text_button_component.dart';
 import 'package:payon/core/widgets/inputs/password_field/password_field_component.dart';
@@ -53,7 +55,10 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             const SpacingComponent.vertical(AppConfig.padding * 2),
-            FilledButtonComponent(label: l10n.login, onPressed: () {}),
+            FilledButtonComponent(
+              label: l10n.login,
+              onPressed: () => context.go(AppRouter.home),
+            ),
           ],
         ),
       ),

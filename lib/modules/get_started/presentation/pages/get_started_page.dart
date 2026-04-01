@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:payon/core/constants/app_config.dart';
+import 'package:payon/core/router/app_router.dart';
 import 'package:payon/core/widgets/buttons/filled_button/filled_button_component.dart';
 import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
 import 'package:payon/core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
@@ -48,7 +49,7 @@ class GetStartedPage extends StatelessWidget {
             const Spacer(),
             FilledButtonComponent(
               label: l10n.lets_get_started,
-              onPressed: () => context.pop(),
+              onPressed: () => context.go(AppRouter.home),
             ),
             const SpacingComponent.vertical(AppConfig.padding * 2),
           ],

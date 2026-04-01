@@ -17,5 +17,10 @@
   "forgot_password": "نسيت كلمة المرور؟",
   "manage_finances_title": "إدارة أموالك\nبسهولة وأمان",
   "manage_finances_subtitle": "الطريقة الأكثر أماناً وأسرع لإرسال واستلام الأموال عالمياً.",
-  "lets_get_started": "لنبدأ الآن"
+  "lets_get_started": "لنبدأ الآن",
+  "home": "الرئيسية",
+  "settings": "الإعدادات",
+  "profile": "الملف الشخصي",
+  "wallet": "المحفظة",
+  "history": "السجل"
 }

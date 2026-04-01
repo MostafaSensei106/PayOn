@@ -67,4 +67,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lets_get_started => 'Let\'s Get Started';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get wallet => 'Wallet';
+
+  @override
+  String get history => 'History';
 }

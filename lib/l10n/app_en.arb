@@ -17,5 +17,10 @@
   "forgot_password": "Forgot Password?",
   "manage_finances_title": "Manage Your Finances\nEasily & Securely",
   "manage_finances_subtitle": "The most secure and fastest way to send and receive money globally.",
-  "lets_get_started": "Let's Get Started"
+  "lets_get_started": "Let's Get Started",
+  "home": "Home",
+  "settings": "Settings",
+  "profile": "Profile",
+  "wallet": "Wallet",
+  "history": "History"
 }

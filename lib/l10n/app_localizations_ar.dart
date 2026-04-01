@@ -67,4 +67,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get lets_get_started => 'لنبدأ الآن';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get settings => 'الإعدادات';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get wallet => 'المحفظة';
+
+  @override
+  String get history => 'السجل';
 }

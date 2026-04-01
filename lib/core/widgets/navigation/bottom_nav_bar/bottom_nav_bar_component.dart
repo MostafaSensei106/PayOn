@@ -14,14 +14,20 @@ class BottomNavBarComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: currentIndex,
-      items: items,
-      onTap: onTap,
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: Theme.of(context).colorScheme.primary,
-      unselectedItemColor: Theme.of(context).colorScheme.onSurfaceVariant,
+    return NavigationBar(
+      selectedIndex: currentIndex,
+      onDestinationSelected: onTap,
+      labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
       backgroundColor: Theme.of(context).colorScheme.surface,
+      destinations: items
+          .map(
+            (item) => NavigationDestination(
+              icon: item.icon,
+              selectedIcon: item.activeIcon,
+              label: item.label ?? '',
+            ),
+          )
+          .toList(),
     );
   }
 }
