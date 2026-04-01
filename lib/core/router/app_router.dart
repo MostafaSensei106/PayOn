@@ -8,6 +8,16 @@ class AppRouter {
   static const String welcome = '/';
   static const String login = '/login';
   static const String getStarted = '/get-started';
+  static const String home = '/home';
+  static const String profile = '/profile';
+  static const String settings = '/settings';
+  static const String notifications = '/notifications';
+  static const String payments = '/payments';
+  static const String sendMoney = '/send-money';
+  static const String receiveMoney = '/receive-money';
+  static const String forgetPassword = '/forget-password';
+  static const String resetPassword = '/reset-password';
+  static const String changePassword = '/change-password';
 
   static final router = GoRouter(
     initialLocation: welcome,

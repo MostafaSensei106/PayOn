@@ -4,7 +4,6 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:payon/core/constants/app_constants.dart';
 import 'package:payon/core/widgets/buttons/filled_button/filled_button_component.dart';
 import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
-import 'package:payon/core/widgets/navigation/app_bar/app_bar_component.dart';
 import 'package:payon/core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 import 'package:payon/l10n/app_localizations.dart';
 
