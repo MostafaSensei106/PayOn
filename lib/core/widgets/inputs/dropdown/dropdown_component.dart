@@ -24,7 +24,7 @@ class DropdownComponent<T> extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+          borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
         ),
       ),
     );

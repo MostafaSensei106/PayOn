@@ -14,6 +14,10 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
-  Widget build(final BuildContext context) =>
-      AppBar(elevation: 0, title: Text(title), centerTitle: true);
+  Widget build(final BuildContext context) => AppBar(
+    elevation: 0,
+    title: Text(title),
+    centerTitle: true,
+    scrolledUnderElevation: 0,
+  );
 }

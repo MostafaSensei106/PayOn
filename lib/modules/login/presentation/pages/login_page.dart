@@ -20,32 +20,32 @@ class LoginPage extends StatelessWidget {
       appBar: SidePageAppBarComponent(title: l10n.login, useBackButton: true),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(
-          horizontal: AppConstants.screenPadding,
+          horizontal: AppConstants.padding,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SpacingComponent.vertical(AppConstants.extraLargeSpacing),
+            const SpacingComponent.vertical(AppConstants.padding * 3),
             Text(
               l10n.welcome_back,
               style: Theme.of(
                 context,
               ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
-            const SpacingComponent.vertical(AppConstants.smallSpacing),
+            const SpacingComponent.vertical(AppConstants.paddingHalf),
             Text(
               l10n.login_subtitle,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
             ),
-            const SpacingComponent.vertical(AppConstants.extraLargeSpacing),
+            const SpacingComponent.vertical(AppConstants.padding * 3),
             TextFieldComponent(
               label: l10n.email_address,
               prefixIcon: Iconsax.sms_copy,
               keyboardType: TextInputType.emailAddress,
             ),
-            const SpacingComponent.vertical(AppConstants.screenPadding),
+            const SpacingComponent.vertical(AppConstants.padding),
             PasswordFieldComponent(label: l10n.password),
             Align(
               alignment: Alignment.centerLeft,
@@ -54,7 +54,7 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {},
               ),
             ),
-            const SpacingComponent.vertical(AppConstants.largeSpacing),
+            const SpacingComponent.vertical(AppConstants.padding * 2),
             FilledButtonComponent(label: l10n.login, onPressed: () {}),
           ],
         ),

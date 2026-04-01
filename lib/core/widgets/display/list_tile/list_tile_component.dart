@@ -26,7 +26,7 @@ class ListTileComponent extends StatelessWidget {
       trailing: trailing,
       onTap: onTap,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
       ),
     );
   }

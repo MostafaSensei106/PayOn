@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+
+class SliverAppBarComponent extends StatelessWidget {
+  final Widget? title;
+  final Widget? leading;
+  final List<Widget>? actions;
+  final bool pinned;
+  final bool floating;
+  final bool snap;
+  final double? expandedHeight;
+  final Widget? flexibleSpace;
+  final PreferredSizeWidget? bottom;
+  final Color? backgroundColor;
+  final bool centerTitle;
+
+  const SliverAppBarComponent({
+    super.key,
+    this.title,
+    this.leading,
+    this.actions,
+    this.pinned = false,
+    this.floating = false,
+    this.snap = false,
+    this.expandedHeight,
+    this.flexibleSpace,
+    this.bottom,
+    this.backgroundColor,
+    this.centerTitle = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      title: title,
+      leading: leading,
+      actions: actions,
+      pinned: pinned,
+      floating: floating,
+      snap: snap,
+      expandedHeight: expandedHeight,
+      flexibleSpace: flexibleSpace,
+      bottom: bottom,
+      backgroundColor: backgroundColor,
+      centerTitle: centerTitle,
+    );
+  }
+}

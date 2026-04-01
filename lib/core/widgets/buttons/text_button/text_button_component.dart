@@ -32,7 +32,7 @@ class TextButtonComponent extends StatelessWidget {
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.buttonBorderRadius),
+        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
       ),
     );
 
@@ -41,7 +41,7 @@ class TextButtonComponent extends StatelessWidget {
         : TextButton.icon(
             onPressed: onPressed,
             style: style,
-            icon: Icon(icon, size: AppConstants.smallIconSize.w),
+            icon: Icon(icon, size: 20.0.w),
             label: Text(label),
           );
   }

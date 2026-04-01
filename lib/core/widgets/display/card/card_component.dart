@@ -16,10 +16,10 @@ class CardComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding ?? const EdgeInsets.all(AppConstants.horizontalPadding),
+      padding: padding ?? const EdgeInsets.all(AppConstants.padding),
       decoration: BoxDecoration(
         color: color ?? Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(AppConstants.cardBorderRadius),
+        borderRadius: BorderRadius.circular(AppConstants.outBorderRadius),
       ),
       child: child,
     );

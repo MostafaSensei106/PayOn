@@ -20,7 +20,7 @@ class DialogComponent extends StatelessWidget {
       content: Text(content),
       actions: actions,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.dialogBorderRadius),
+        borderRadius: BorderRadius.circular(AppConstants.outBorderRadius),
       ),
     );
   }

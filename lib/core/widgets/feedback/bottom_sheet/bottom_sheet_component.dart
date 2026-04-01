@@ -10,11 +10,11 @@ class BottomSheetComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(AppConstants.screenPadding),
+      padding: const EdgeInsets.all(AppConstants.padding),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(AppConstants.bottomSheetBorderRadius),
+          top: Radius.circular(AppConstants.outBorderRadius),
         ),
       ),
       child: Column(

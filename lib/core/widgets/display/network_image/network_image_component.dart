@@ -22,7 +22,7 @@ class NetworkImageComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(
-        borderRadius ?? AppConstants.borderRadius,
+        borderRadius ?? AppConstants.inBorderRadius,
       ),
       child: CachedNetworkImage(
         imageUrl: imageUrl,

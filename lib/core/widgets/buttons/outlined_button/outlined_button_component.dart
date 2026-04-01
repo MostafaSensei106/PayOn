@@ -34,22 +34,18 @@ class OutlinedButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width ?? double.infinity,
-      height: height ?? AppConstants.buttonHeight.h,
-      child: icon == null
-          ? OutlinedButton(
-              onPressed: onPressed,
-              style: _getButtonStyle(context),
-              child: Text(label),
-            )
-          : OutlinedButton.icon(
-              onPressed: onPressed,
-              style: _getButtonStyle(context),
-              icon: Icon(icon, size: AppConstants.smallIconSize.w),
-              label: Text(label),
-            ),
-    );
+    return icon == null
+        ? OutlinedButton(
+            onPressed: onPressed,
+            style: _getButtonStyle(context),
+            child: Text(label),
+          )
+        : OutlinedButton.icon(
+            onPressed: onPressed,
+            style: _getButtonStyle(context),
+            icon: Icon(icon, size: 20.0.w),
+            label: Text(label),
+          );
   }
 
   ButtonStyle _getButtonStyle(BuildContext context) {
@@ -58,8 +54,12 @@ class OutlinedButtonComponent extends StatelessWidget {
         color: backgroundColor ?? Theme.of(context).colorScheme.outline,
       ),
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
+      minimumSize: Size(
+        width ?? double.infinity,
+        height ?? 56.0.h,
+      ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.buttonBorderRadius),
+        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
       ),
     );
   }

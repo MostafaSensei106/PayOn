@@ -33,11 +33,11 @@ class TextFieldComponent extends StatelessWidget {
         ),
         suffixIcon: suffixIcon,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+          borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
           borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+          borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
           borderSide: BorderSide(
             color: Theme.of(context).colorScheme.outlineVariant,
           ),

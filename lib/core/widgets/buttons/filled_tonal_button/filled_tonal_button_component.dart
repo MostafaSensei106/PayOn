@@ -34,22 +34,18 @@ class FilledTonalButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width ?? double.infinity,
-      height: height ?? AppConstants.buttonHeight.h,
-      child: icon == null
-          ? FilledButton.tonal(
-              onPressed: onPressed,
-              style: _getButtonStyle(context),
-              child: Text(label),
-            )
-          : FilledButton.tonalIcon(
-              onPressed: onPressed,
-              style: _getButtonStyle(context),
-              icon: Icon(icon, size: AppConstants.smallIconSize.w),
-              label: Text(label),
-            ),
-    );
+    return icon == null
+        ? FilledButton.tonal(
+            onPressed: onPressed,
+            style: _getButtonStyle(context),
+            child: Text(label),
+          )
+        : FilledButton.tonalIcon(
+            onPressed: onPressed,
+            style: _getButtonStyle(context),
+            icon: Icon(icon, size: AppConstants.iconSizeSmall.w),
+            label: Text(label),
+          );
   }
 
   ButtonStyle _getButtonStyle(BuildContext context) {
@@ -58,8 +54,12 @@ class FilledTonalButtonComponent extends StatelessWidget {
           backgroundColor ?? Theme.of(context).colorScheme.secondaryContainer,
       foregroundColor:
           foregroundColor ?? Theme.of(context).colorScheme.onSecondaryContainer,
+      minimumSize: Size(
+        width ?? double.infinity,
+        height ?? AppConstants.buttonHeight.h,
+      ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.buttonBorderRadius),
+        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
       ),
     );
   }

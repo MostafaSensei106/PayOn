@@ -72,7 +72,7 @@ class IconButtonComponent extends StatelessWidget {
           onPressed: onPressed,
           style: IconButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+              borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
             ),
             backgroundColor:
                 backgroundColor ?? Theme.of(context).colorScheme.primary,

@@ -62,6 +62,7 @@ class SidePageAppBarComponent extends StatelessWidget
     title: Text(title),
     centerTitle: true,
     scrolledUnderElevation: 0,
+    elevation: 0,
     leading: useBackButton
         ? _buildSidePageAppBarIcon(
             context,
@@ -81,9 +82,9 @@ class SidePageAppBarComponent extends StatelessWidget
     style: IconButton.styleFrom(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
       ),
-      padding: const EdgeInsets.all(4),
+      padding: const EdgeInsets.all(AppConstants.paddingQuarter),
     ),
     onPressed: () => leave(context),
     icon: Icon(icon, size: AppConstants.iconSize),

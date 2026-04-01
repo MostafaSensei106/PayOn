@@ -18,11 +18,9 @@ class SearchBarComponent extends StatelessWidget {
         filled: true,
         fillColor: Theme.of(
           context,
-        ).colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+        ).colorScheme.surfaceContainerHighest.withValues(alpha: AppConstants.searchBarOpacity),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(
-            AppConstants.searchBarBorderRadius,
-          ),
+          borderRadius: BorderRadius.circular(AppConstants.roundBorderRadius),
           borderSide: BorderSide.none,
         ),
       ),

@@ -22,23 +22,23 @@ class WelcomePage extends StatelessWidget {
       appBar: AppBarComponent(title: l10n.welcome_title),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: AppConstants.horizontalPadding,
+          horizontal: AppConstants.padding,
         ),
         child: Column(
           children: [
-            const SpacingComponent.vertical(AppConstants.defaultSpacing),
+            const SpacingComponent.vertical(AppConstants.padding),
             _buildWelcomeCard(
               Iconsax.flash_1_copy,
               l10n.send_money_title,
               l10n.send_money_subtitle,
             ),
-            const SpacingComponent.vertical(AppConstants.defaultSpacing),
+            const SpacingComponent.vertical(AppConstants.padding),
             _buildWelcomeCard(
               Iconsax.shield_tick_copy,
               l10n.secure_payments_title,
               l10n.secure_payments_subtitle,
             ),
-            const SpacingComponent.vertical(AppConstants.defaultSpacing),
+            const SpacingComponent.vertical(AppConstants.padding),
             _buildWelcomeCard(
               Iconsax.status_up_copy,
               l10n.track_everything_title,
@@ -50,13 +50,13 @@ class WelcomePage extends StatelessWidget {
               icon: Iconsax.arrow_right_1,
               onPressed: () => context.push(AppRouter.getStarted),
             ),
-            const SpacingComponent.vertical(AppConstants.defaultSpacing),
+            const SpacingComponent.vertical(AppConstants.padding),
             OutlinedButtonComponent.icon(
               label: l10n.login,
               icon: Iconsax.arrow_right_1,
               onPressed: () => context.push(AppRouter.login),
             ),
-            const SpacingComponent.vertical(AppConstants.defaultSpacing),
+            const SpacingComponent.vertical(AppConstants.padding),
           ],
         ),
       ),

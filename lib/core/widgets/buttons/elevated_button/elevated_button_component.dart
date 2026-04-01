@@ -34,31 +34,28 @@ class ElevatedButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width ?? double.infinity,
-      height: height ?? AppConstants.buttonHeight.h,
-      child: icon == null
-          ? ElevatedButton(
-              onPressed: onPressed,
-              style: _getButtonStyle(context),
-              child: Text(label),
-            )
-          : ElevatedButton.icon(
-              onPressed: onPressed,
-              style: _getButtonStyle(context),
-              icon: Icon(icon, size: AppConstants.smallIconSize.w),
-              label: Text(label),
-            ),
-    );
+    return icon == null
+        ? ElevatedButton(
+            onPressed: onPressed,
+            style: _getButtonStyle(context),
+            child: Text(label),
+          )
+        : ElevatedButton.icon(
+            onPressed: onPressed,
+            style: _getButtonStyle(context),
+            icon: Icon(icon, size: AppConstants.iconSize),
+            label: Text(label),
+          );
   }
 
   ButtonStyle _getButtonStyle(BuildContext context) {
     return ElevatedButton.styleFrom(
       backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.surface,
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
-      elevation: 2,
+      elevation: AppConstants.buttonElevation,
+      minimumSize: Size(width ?? double.infinity, height ?? 8),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.buttonBorderRadius),
+        borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),
       ),
     );
   }

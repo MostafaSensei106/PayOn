@@ -20,16 +20,16 @@ class GetStartedPage extends StatelessWidget {
         useBackButton: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(AppConstants.screenPadding),
+        padding: const EdgeInsets.all(AppConstants.padding),
         child: Column(
           children: [
             const Spacer(),
             Icon(
               Iconsax.wallet_3,
-              size: AppConstants.largeIconSize,
+              size: 100.0,
               color: Theme.of(context).colorScheme.primary,
             ),
-            const SpacingComponent.vertical(AppConstants.largeSpacing),
+            const SpacingComponent.vertical(AppConstants.padding * 2),
             Text(
               l10n.manage_finances_title,
               textAlign: TextAlign.center,
@@ -37,7 +37,7 @@ class GetStartedPage extends StatelessWidget {
                 context,
               ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
-            const SpacingComponent.vertical(AppConstants.defaultSpacing),
+            const SpacingComponent.vertical(AppConstants.padding),
             Text(
               l10n.manage_finances_subtitle,
               textAlign: TextAlign.center,
@@ -50,7 +50,7 @@ class GetStartedPage extends StatelessWidget {
               label: l10n.lets_get_started,
               onPressed: () => context.pop(),
             ),
-            const SpacingComponent.vertical(AppConstants.largeSpacing),
+            const SpacingComponent.vertical(AppConstants.padding * 2),
           ],
         ),
       ),
