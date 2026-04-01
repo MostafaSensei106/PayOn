@@ -22,8 +22,10 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       backgroundColor: Theme.of(context).colorScheme.surface,
       elevation: 0,
+      scrolledUnderElevation: 0,
+      automaticallyImplyLeading: showBackButton,
       leading: showBackButton
-          ? IconButtonComponent.outlined(
+          ? IconButtonComponent.filled(
               icon: Iconsax.arrow_left,
               onPressed: () => context.pop(),
             )

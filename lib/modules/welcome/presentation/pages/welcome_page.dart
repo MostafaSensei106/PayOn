@@ -21,23 +21,37 @@ class WelcomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBarComponent(title: l10n.welcome_title, showBackButton: false),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppConstants.horizontalPadding),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppConstants.horizontalPadding,
+        ),
         child: Column(
           children: [
             const SpacingComponent.vertical(AppConstants.defaultSpacing),
-            _buildWelcomeCard(Iconsax.flash_1_copy, l10n.send_money_title, l10n.send_money_subtitle),
+            _buildWelcomeCard(
+              Iconsax.flash_1_copy,
+              l10n.send_money_title,
+              l10n.send_money_subtitle,
+            ),
             const SpacingComponent.vertical(AppConstants.defaultSpacing),
-            _buildWelcomeCard(Iconsax.shield_tick_copy, l10n.secure_payments_title, l10n.secure_payments_subtitle),
+            _buildWelcomeCard(
+              Iconsax.shield_tick_copy,
+              l10n.secure_payments_title,
+              l10n.secure_payments_subtitle,
+            ),
             const SpacingComponent.vertical(AppConstants.defaultSpacing),
-            _buildWelcomeCard(Iconsax.status_up_copy, l10n.track_everything_title, l10n.track_everything_subtitle),
+            _buildWelcomeCard(
+              Iconsax.status_up_copy,
+              l10n.track_everything_title,
+              l10n.track_everything_subtitle,
+            ),
             const Spacer(),
-            FilledButtonComponent(
+            FilledButtonComponent.icon(
               label: l10n.get_started,
               icon: Iconsax.arrow_right_1,
               onPressed: () => context.push(AppRouter.getStarted),
             ),
             const SpacingComponent.vertical(AppConstants.defaultSpacing),
-            OutlinedButtonComponent(
+            OutlinedButtonComponent.icon(
               label: l10n.login,
               icon: Iconsax.arrow_right_1,
               onPressed: () => context.push(AppRouter.login),

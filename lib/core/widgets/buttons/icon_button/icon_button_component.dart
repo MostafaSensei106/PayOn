@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payon/core/constants/app_constants.dart';
 
 enum IconButtonVariant { standard, filled, tonal, outlined }
 
@@ -51,15 +52,18 @@ class IconButtonComponent extends StatelessWidget {
     switch (variant) {
       case IconButtonVariant.standard:
         return IconButton(
-          icon: Icon(icon, size: iconSize),
+          icon: Icon(icon),
           onPressed: onPressed,
           color: foregroundColor ?? Theme.of(context).colorScheme.primary,
         );
       case IconButtonVariant.filled:
         return IconButton.filled(
-          icon: Icon(icon, size: iconSize),
+          icon: Icon(icon),
           onPressed: onPressed,
           style: IconButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+            ),
             backgroundColor:
                 backgroundColor ?? Theme.of(context).colorScheme.primary,
             foregroundColor:
@@ -68,7 +72,7 @@ class IconButtonComponent extends StatelessWidget {
         );
       case IconButtonVariant.tonal:
         return IconButton.filledTonal(
-          icon: Icon(icon, size: iconSize),
+          icon: Icon(icon),
           onPressed: onPressed,
           style: IconButton.styleFrom(
             backgroundColor:

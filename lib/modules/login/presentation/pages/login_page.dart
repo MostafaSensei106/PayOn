@@ -15,48 +15,47 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    
+
     return Scaffold(
-      appBar: AppBarComponent(title: l10n.login),
+      appBar: AppBarComponent(title: l10n.login, showBackButton: true),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: AppConstants.screenPadding),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppConstants.screenPadding,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SpacingComponent.vertical(AppConstants.extraLargeSpacing),
             Text(
               l10n.welcome_back,
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(
+                context,
+              ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SpacingComponent.vertical(AppConstants.smallSpacing),
             Text(
               l10n.login_subtitle,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                  ),
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
             ),
             const SpacingComponent.vertical(AppConstants.extraLargeSpacing),
             TextFieldComponent(
               label: l10n.email_address,
-              prefixIcon: Iconsax.sms,
+              prefixIcon: Iconsax.sms_copy,
               keyboardType: TextInputType.emailAddress,
             ),
             const SpacingComponent.vertical(AppConstants.screenPadding),
-            PasswordFieldComponent(
-              label: l10n.password,
-            ),
+            PasswordFieldComponent(label: l10n.password),
             Align(
-              alignment: Alignment.centerRight,
+              alignment: Alignment.centerLeft,
               child: TextButtonComponent(
                 label: l10n.forgot_password,
                 onPressed: () {},
               ),
             ),
             const SpacingComponent.vertical(AppConstants.largeSpacing),
-            FilledButtonComponent(
-              label: l10n.login,
-              onPressed: () {},
-            ),
+            FilledButtonComponent(label: l10n.login, onPressed: () {}),
           ],
         ),
       ),
