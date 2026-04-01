@@ -42,4 +42,29 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get login => 'Login';
+
+  @override
+  String get welcome_back => 'Welcome Back!';
+
+  @override
+  String get login_subtitle => 'Login to your account to continue';
+
+  @override
+  String get email_address => 'Email Address';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get forgot_password => 'Forgot Password?';
+
+  @override
+  String get manage_finances_title => 'Manage Your Finances\nEasily & Securely';
+
+  @override
+  String get manage_finances_subtitle =>
+      'The most secure and fastest way to send and receive money globally.';
+
+  @override
+  String get lets_get_started => 'Let\'s Get Started';
 }

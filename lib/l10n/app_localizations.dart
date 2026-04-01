@@ -163,6 +163,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Login'**
   String get login;
+
+  /// No description provided for @welcome_back.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome Back!'**
+  String get welcome_back;
+
+  /// No description provided for @login_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Login to your account to continue'**
+  String get login_subtitle;
+
+  /// No description provided for @email_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address'**
+  String get email_address;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @forgot_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password?'**
+  String get forgot_password;
+
+  /// No description provided for @manage_finances_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Your Finances\nEasily & Securely'**
+  String get manage_finances_title;
+
+  /// No description provided for @manage_finances_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The most secure and fastest way to send and receive money globally.'**
+  String get manage_finances_subtitle;
+
+  /// No description provided for @lets_get_started.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s Get Started'**
+  String get lets_get_started;
 }
 
 class _AppLocalizationsDelegate

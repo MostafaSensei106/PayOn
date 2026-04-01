@@ -42,4 +42,29 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get login => 'تسجيل الدخول';
+
+  @override
+  String get welcome_back => 'مرحباً بعودتك!';
+
+  @override
+  String get login_subtitle => 'سجل الدخول إلى حسابك للمتابعة';
+
+  @override
+  String get email_address => 'البريد الإلكتروني';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get forgot_password => 'نسيت كلمة المرور؟';
+
+  @override
+  String get manage_finances_title => 'إدارة أموالك\nبسهولة وأمان';
+
+  @override
+  String get manage_finances_subtitle =>
+      'الطريقة الأكثر أماناً وأسرع لإرسال واستلام الأموال عالمياً.';
+
+  @override
+  String get lets_get_started => 'لنبدأ الآن';
 }

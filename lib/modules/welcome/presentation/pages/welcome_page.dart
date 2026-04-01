@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:payon/core/constants/app_constants.dart';
+import 'package:payon/core/router/app_router.dart';
+import 'package:payon/core/widgets/navigation/app_bar_component.dart';
+import 'package:payon/core/widgets/buttons/filled_button_component.dart';
+import 'package:payon/core/widgets/buttons/outlined_button_component.dart';
+import 'package:payon/core/widgets/display/card_component.dart';
 import 'package:payon/l10n/app_localizations.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -11,93 +18,42 @@ class WelcomePage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.welcome_title), centerTitle: true),
+      appBar: AppBarComponent(title: l10n.welcome_title, showBackButton: false),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: AppConstants.horizontalPadding),
         child: Column(
-          spacing: 16,
           children: [
-            WelcomeCardWidget(
-              leading: Iconsax.flash_1_copy,
-              title: l10n.send_money_title,
-              subtitle: l10n.send_money_subtitle,
-            ),
-            WelcomeCardWidget(
-              leading: Iconsax.shield_tick_copy,
-              title: l10n.secure_payments_title,
-              subtitle: l10n.secure_payments_subtitle,
-            ),
-            WelcomeCardWidget(
-              leading: Iconsax.status_up_copy,
-              title: l10n.track_everything_title,
-              subtitle: l10n.track_everything_subtitle,
-            ),
-
-            SizedBox(
-              width: 0.30.sw,
-              child: DropdownButtonFormField<String>(
-                initialValue: 'en',
-                elevation: 0,
-                enableFeedback: true,
-                // decoration: const InputDecoration(border: OutlineInputBorder()),
-                icon: Icon(Iconsax.arrow_circle_down_copy),
-                dropdownColor: Theme.of(context).colorScheme.primaryContainer,
-                borderRadius: BorderRadius.circular(16),
-                items: [
-                  DropdownMenuItem(value: 'en', child: Text(l10n.english)),
-                  DropdownMenuItem(value: 'ar', child: Text(l10n.arabic)),
-                ],
-                onChanged: (value) {},
-              ),
-            ),
-
+            SizedBox(height: AppConstants.defaultSpacing.h),
+            _buildWelcomeCard(Iconsax.flash_1_copy, l10n.send_money_title, l10n.send_money_subtitle),
+            SizedBox(height: AppConstants.defaultSpacing.h),
+            _buildWelcomeCard(Iconsax.shield_tick_copy, l10n.secure_payments_title, l10n.secure_payments_subtitle),
+            SizedBox(height: AppConstants.defaultSpacing.h),
+            _buildWelcomeCard(Iconsax.status_up_copy, l10n.track_everything_title, l10n.track_everything_subtitle),
             const Spacer(),
-
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton.icon(
-                icon: const Icon(Iconsax.arrow_right_1),
-                label: Text(l10n.get_started),
-                onPressed: () {},
-              ),
+            FilledButtonComponent(
+              label: l10n.get_started,
+              icon: Iconsax.arrow_right_1,
+              onPressed: () => context.push(AppRouter.getStarted),
             ),
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton.icon(
-                icon: const Icon(Iconsax.arrow_right_1),
-                label: Text(l10n.login),
-                onPressed: () {},
-              ),
+            SizedBox(height: AppConstants.defaultSpacing.h),
+            OutlinedButtonComponent(
+              label: l10n.login,
+              icon: Iconsax.arrow_right_1,
+              onPressed: () => context.push(AppRouter.login),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: AppConstants.defaultSpacing.h),
           ],
         ),
       ),
     );
   }
-}
 
-class WelcomeCardWidget extends StatelessWidget {
-  const WelcomeCardWidget({
-    super.key,
-    required this.leading,
-    required this.title,
-    required this.subtitle,
-  });
-  final IconData leading;
-  final String title;
-  final String subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(16),
-      ),
+  Widget _buildWelcomeCard(IconData icon, String title, String subtitle) {
+    return CardComponent(
+      padding: EdgeInsets.zero,
       child: ListTile(
-        leading: Icon(leading, size: 27),
-        title: Text(title),
+        leading: Icon(icon, size: AppConstants.iconSize),
+        title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text(subtitle),
       ),
     );

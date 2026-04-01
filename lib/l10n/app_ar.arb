@@ -9,5 +9,13 @@
   "english": "الإنجليزية",
   "arabic": "العربية",
   "get_started": "ابدأ الآن",
-  "login": "تسجيل الدخول"
+  "login": "تسجيل الدخول",
+  "welcome_back": "مرحباً بعودتك!",
+  "login_subtitle": "سجل الدخول إلى حسابك للمتابعة",
+  "email_address": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "forgot_password": "نسيت كلمة المرور؟",
+  "manage_finances_title": "إدارة أموالك\nبسهولة وأمان",
+  "manage_finances_subtitle": "الطريقة الأكثر أماناً وأسرع لإرسال واستلام الأموال عالمياً.",
+  "lets_get_started": "لنبدأ الآن"
 }
