@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:payon/core/constants/app_constants.dart';
-import 'package:payon/core/widgets/navigation/app_bar_component.dart';
-import 'package:payon/core/widgets/buttons/filled_button_component.dart';
-import 'package:payon/core/widgets/buttons/text_button_component.dart';
-import 'package:payon/core/widgets/inputs/text_field_component.dart';
+import 'package:payon/core/widgets/buttons/filled_button/filled_button_component.dart';
+import 'package:payon/core/widgets/buttons/text_button/text_button_component.dart';
+import 'package:payon/core/widgets/inputs/password_field/password_field_component.dart';
+import 'package:payon/core/widgets/inputs/text_field/text_field_component.dart';
+import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
+import 'package:payon/core/widgets/navigation/app_bar/app_bar_component.dart';
 import 'package:payon/l10n/app_localizations.dart';
 
 class LoginPage extends StatelessWidget {
@@ -18,32 +19,31 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBarComponent(title: l10n.login),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: AppConstants.screenPadding.w),
+        padding: const EdgeInsets.symmetric(horizontal: AppConstants.screenPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: AppConstants.extraLargeSpacing.h),
+            const SpacingComponent.vertical(AppConstants.extraLargeSpacing),
             Text(
               l10n.welcome_back,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: AppConstants.smallSpacing.h),
+            const SpacingComponent.vertical(AppConstants.smallSpacing),
             Text(
               l10n.login_subtitle,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.grey),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
             ),
-            SizedBox(height: AppConstants.extraLargeSpacing.h),
-            TextFormFieldComponent(
+            const SpacingComponent.vertical(AppConstants.extraLargeSpacing),
+            TextFieldComponent(
               label: l10n.email_address,
               prefixIcon: Iconsax.sms,
               keyboardType: TextInputType.emailAddress,
             ),
-            SizedBox(height: AppConstants.screenPadding.h),
-            TextFormFieldComponent(
+            const SpacingComponent.vertical(AppConstants.screenPadding),
+            PasswordFieldComponent(
               label: l10n.password,
-              prefixIcon: Iconsax.lock,
-              obscureText: true,
-              suffixIcon: const Icon(Iconsax.eye),
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -52,7 +52,7 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {},
               ),
             ),
-            SizedBox(height: AppConstants.largeSpacing.h),
+            const SpacingComponent.vertical(AppConstants.largeSpacing),
             FilledButtonComponent(
               label: l10n.login,
               onPressed: () {},

@@ -16,10 +16,19 @@ class AppConstants {
   static const double borderRadius = 12.0;
   static const double cardBorderRadius = 16.0;
   static const double buttonBorderRadius = 12.0;
+  static const double dialogBorderRadius = 16.0;
+  static const double bottomSheetBorderRadius = 20.0;
+  static const double searchBarBorderRadius = 30.0;
+  
+  // Sizes
+  static const double buttonHeight = 56.0;
+  static const double otpFieldSize = 60.0;
   
   // Icons & Images
-  static const double iconSize = 27.0;
+  static const double smallIconSize = 20.0;
+  static const double iconSize = 24.0;
   static const double largeIconSize = 100.0;
+  static const double avatarRadius = 24.0;
 
   // API Endpoints (Placeholders)
   static const String baseUrl = 'https://api.payon.com/v1';
