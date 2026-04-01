@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payon/core/constants/app_constants.dart';
 
 enum IconButtonVariant { standard, filled, tonal, outlined }
@@ -104,11 +105,6 @@ class IconButtonComponent extends StatelessWidget {
             ),
             foregroundColor:
                 foregroundColor ?? Theme.of(context).colorScheme.primary,
-          ),
-        );
-    }
-  }
-}
           ),
         );
     }
