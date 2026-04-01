@@ -4,6 +4,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:payon/core/constants/app_constants.dart';
 import 'package:payon/core/widgets/buttons/filled_button/filled_button_component.dart';
 import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
+import 'package:payon/core/widgets/navigation/app_bar/app_bar_component.dart';
 import 'package:payon/l10n/app_localizations.dart';
 
 class GetStartedPage extends StatelessWidget {
@@ -14,46 +15,40 @@ class GetStartedPage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(AppConstants.screenPadding),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                  icon: const Icon(Iconsax.arrow_left),
-                  onPressed: () => context.pop(),
-                ),
+      appBar: AppBarComponent(title: l10n.get_started),
+      body: Padding(
+        padding: const EdgeInsets.all(AppConstants.screenPadding),
+        child: Column(
+          children: [
+            const Spacer(),
+            Icon(
+              Iconsax.wallet_3,
+              size: AppConstants.largeIconSize,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            const SpacingComponent.vertical(AppConstants.largeSpacing),
+            Text(
+              l10n.manage_finances_title,
+              textAlign: TextAlign.center,
+              style: Theme.of(
+                context,
+              ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SpacingComponent.vertical(AppConstants.defaultSpacing),
+            Text(
+              l10n.manage_finances_subtitle,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
-              const Spacer(),
-              Icon(
-                Iconsax.wallet_3, 
-                size: AppConstants.largeIconSize, 
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              const SpacingComponent.vertical(AppConstants.largeSpacing),
-              Text(
-                l10n.manage_finances_title,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
-              ),
-              const SpacingComponent.vertical(AppConstants.defaultSpacing),
-              Text(
-                l10n.manage_finances_subtitle,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                    ),
-              ),
-              const Spacer(),
-              FilledButtonComponent(
-                label: l10n.lets_get_started,
-                onPressed: () => context.pop(),
-              ),
-              const SpacingComponent.vertical(AppConstants.largeSpacing),
-            ],
-          ),
+            ),
+            const Spacer(),
+            FilledButtonComponent(
+              label: l10n.lets_get_started,
+              onPressed: () => context.pop(),
+            ),
+            const SpacingComponent.vertical(AppConstants.largeSpacing),
+          ],
         ),
       ),
     );

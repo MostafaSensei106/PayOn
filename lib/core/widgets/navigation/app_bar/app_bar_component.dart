@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:payon/core/widgets/buttons/icon_button/icon_button_component.dart';
 
 class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -10,7 +11,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   const AppBarComponent({
     super.key,
     required this.title,
-    this.showBackButton = true,
+    this.showBackButton = false,
     this.actions,
   });
 
@@ -22,8 +23,8 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Theme.of(context).colorScheme.surface,
       elevation: 0,
       leading: showBackButton
-          ? IconButton(
-              icon: const Icon(Iconsax.arrow_left),
+          ? IconButtonComponent.outlined(
+              icon: Iconsax.arrow_left,
               onPressed: () => context.pop(),
             )
           : null,
