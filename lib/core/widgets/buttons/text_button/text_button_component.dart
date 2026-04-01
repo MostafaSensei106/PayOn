@@ -41,7 +41,7 @@ class TextButtonComponent extends StatelessWidget {
         : TextButton.icon(
             onPressed: onPressed,
             style: style,
-            icon: Icon(icon, size: 20.0.w),
+            icon: Icon(icon, size: AppConstants.iconSizeSmall.w),
             label: Text(label),
           );
   }

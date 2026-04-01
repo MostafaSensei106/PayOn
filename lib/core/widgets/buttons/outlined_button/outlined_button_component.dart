@@ -43,7 +43,7 @@ class OutlinedButtonComponent extends StatelessWidget {
         : OutlinedButton.icon(
             onPressed: onPressed,
             style: _getButtonStyle(context),
-            icon: Icon(icon, size: 20.0.w),
+            icon: Icon(icon, size: AppConstants.iconSizeSmall.w),
             label: Text(label),
           );
   }
@@ -56,7 +56,7 @@ class OutlinedButtonComponent extends StatelessWidget {
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
       minimumSize: Size(
         width ?? double.infinity,
-        height ?? 56.0.h,
+        height ?? AppConstants.buttonHeight.h,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),

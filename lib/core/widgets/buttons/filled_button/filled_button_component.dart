@@ -43,7 +43,7 @@ class FilledButtonComponent extends StatelessWidget {
         : FilledButton.icon(
             onPressed: onPressed,
             style: _getButtonStyle(context),
-            icon: Icon(icon, size: 20.0.w),
+            icon: Icon(icon, size: AppConstants.iconSizeSmall.w),
             label: Text(label),
           );
   }
@@ -55,7 +55,7 @@ class FilledButtonComponent extends StatelessWidget {
           foregroundColor ?? Theme.of(context).colorScheme.onPrimary,
       minimumSize: Size(
         width ?? double.infinity,
-        height ?? 56.0.h,
+        height ?? AppConstants.buttonHeight.h,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppConstants.inBorderRadius),

@@ -79,7 +79,7 @@ class IconButtonComponent extends StatelessWidget {
             foregroundColor:
                 foregroundColor ?? Theme.of(context).colorScheme.onPrimary,
           ),
-          padding: EdgeInsets.all(padding ?? 8),
+          padding: EdgeInsets.all(padding ?? AppConstants.paddingHalf.w),
         );
       case IconButtonVariant.tonal:
         return IconButton.filledTonal(
@@ -104,6 +104,11 @@ class IconButtonComponent extends StatelessWidget {
             ),
             foregroundColor:
                 foregroundColor ?? Theme.of(context).colorScheme.primary,
+          ),
+        );
+    }
+  }
+}
           ),
         );
     }
