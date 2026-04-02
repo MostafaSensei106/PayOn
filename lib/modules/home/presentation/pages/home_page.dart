@@ -77,7 +77,6 @@ class HomePage extends StatelessWidget {
             expandedHeight: 350.h,
             pinned: true,
             floating: true,
-            snap: true,
             leading: Padding(
               padding: const EdgeInsets.all(AppConfig.paddingHalf),
               child: AvatarComponent(),

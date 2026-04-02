@@ -10,7 +10,6 @@ class SliverAppBarComponent extends StatelessWidget {
   final double? expandedHeight;
   final Widget? flexibleSpace;
   final PreferredSizeWidget? bottom;
-  final Color? backgroundColor;
   final bool centerTitle;
 
   const SliverAppBarComponent({
@@ -24,7 +23,6 @@ class SliverAppBarComponent extends StatelessWidget {
     this.expandedHeight,
     this.flexibleSpace,
     this.bottom,
-    this.backgroundColor,
     this.centerTitle = true,
   });
 
@@ -40,7 +38,7 @@ class SliverAppBarComponent extends StatelessWidget {
       expandedHeight: expandedHeight,
       flexibleSpace: flexibleSpace,
       bottom: bottom,
-      backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.surface,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       centerTitle: centerTitle,
       elevation: 0,
       scrolledUnderElevation: 0,
