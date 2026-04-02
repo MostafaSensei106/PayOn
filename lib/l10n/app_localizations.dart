@@ -241,6 +241,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'History'**
   String get history;
+
+  /// No description provided for @egyptian_pound.
+  ///
+  /// In en, this message translates to:
+  /// **'Egyptian Pound'**
+  String get egyptian_pound;
+
+  /// No description provided for @us_dollar.
+  ///
+  /// In en, this message translates to:
+  /// **'US Dollar'**
+  String get us_dollar;
+
+  /// No description provided for @euro.
+  ///
+  /// In en, this message translates to:
+  /// **'Euro'**
+  String get euro;
+
+  /// No description provided for @japanese_yen.
+  ///
+  /// In en, this message translates to:
+  /// **'Japanese Yen'**
+  String get japanese_yen;
+
+  /// No description provided for @send.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get send;
+
+  /// No description provided for @request.
+  ///
+  /// In en, this message translates to:
+  /// **'Request'**
+  String get request;
+
+  /// No description provided for @receive.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive'**
+  String get receive;
+
+  /// No description provided for @scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan'**
+  String get scan;
+
+  /// No description provided for @top_up.
+  ///
+  /// In en, this message translates to:
+  /// **'Top Up'**
+  String get top_up;
+
+  /// No description provided for @more.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get more;
+
+  /// No description provided for @total_balance.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Balance'**
+  String get total_balance;
+
+  /// No description provided for @active.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get active;
+
+  /// No description provided for @latest_transactions.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest Transactions'**
+  String get latest_transactions;
+
+  /// No description provided for @see_all.
+  ///
+  /// In en, this message translates to:
+  /// **'See All'**
+  String get see_all;
+
+  /// No description provided for @money_transfer.
+  ///
+  /// In en, this message translates to:
+  /// **'Money Transfer'**
+  String get money_transfer;
 }
 
 class _AppLocalizationsDelegate

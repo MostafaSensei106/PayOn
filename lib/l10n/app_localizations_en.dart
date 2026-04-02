@@ -82,4 +82,49 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get history => 'History';
+
+  @override
+  String get egyptian_pound => 'Egyptian Pound';
+
+  @override
+  String get us_dollar => 'US Dollar';
+
+  @override
+  String get euro => 'Euro';
+
+  @override
+  String get japanese_yen => 'Japanese Yen';
+
+  @override
+  String get send => 'Send';
+
+  @override
+  String get request => 'Request';
+
+  @override
+  String get receive => 'Receive';
+
+  @override
+  String get scan => 'Scan';
+
+  @override
+  String get top_up => 'Top Up';
+
+  @override
+  String get more => 'More';
+
+  @override
+  String get total_balance => 'Total Balance';
+
+  @override
+  String get active => 'Active';
+
+  @override
+  String get latest_transactions => 'Latest Transactions';
+
+  @override
+  String get see_all => 'See All';
+
+  @override
+  String get money_transfer => 'Money Transfer';
 }

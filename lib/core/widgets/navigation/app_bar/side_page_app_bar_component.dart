@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart'
-    show kToolbarHeight, AppBar, Theme, Icons, IconButton, Localizations;
+    show
+        kToolbarHeight,
+        AppBar,
+        Theme,
+        Icons,
+        IconButton,
+        Localizations,
+        FontWeight;
 import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter/widgets.dart'
     show
@@ -59,7 +66,13 @@ class SidePageAppBarComponent extends StatelessWidget
 
   @override
   Widget build(final BuildContext context) => AppBar(
-    title: Text(title),
+    title: Text(
+      title,
+      style: Theme.of(
+        context,
+      ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+    ),
+
     centerTitle: true,
     scrolledUnderElevation: 0,
     elevation: 0,

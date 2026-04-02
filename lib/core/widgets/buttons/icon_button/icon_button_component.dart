@@ -63,17 +63,17 @@ class IconButtonComponent extends StatelessWidget {
     switch (variant) {
       case IconButtonVariant.standard:
         return IconButton(
-          icon: Icon(icon),
+          icon: Icon(icon, size: iconSize ?? AppConfig.iconSize),
           onPressed: onPressed,
           color: foregroundColor ?? Theme.of(context).colorScheme.primary,
         );
       case IconButtonVariant.filled:
         return IconButton.filled(
-          icon: Icon(icon),
+          icon: Icon(icon, size: iconSize ?? AppConfig.iconSize),
           onPressed: onPressed,
           style: IconButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
+              borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
             ),
             backgroundColor:
                 backgroundColor ?? Theme.of(context).colorScheme.primary,
@@ -84,7 +84,7 @@ class IconButtonComponent extends StatelessWidget {
         );
       case IconButtonVariant.tonal:
         return IconButton.filledTonal(
-          icon: Icon(icon),
+          icon: Icon(icon, size: iconSize ?? AppConfig.iconSize),
           onPressed: onPressed,
           style: IconButton.styleFrom(
             backgroundColor:
@@ -97,7 +97,7 @@ class IconButtonComponent extends StatelessWidget {
         );
       case IconButtonVariant.outlined:
         return IconButton.outlined(
-          icon: Icon(icon, size: iconSize),
+          icon: Icon(icon, size: iconSize ?? AppConfig.iconSize),
           onPressed: onPressed,
           style: IconButton.styleFrom(
             side: BorderSide(

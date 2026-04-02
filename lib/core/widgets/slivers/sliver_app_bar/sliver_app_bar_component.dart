@@ -40,8 +40,10 @@ class SliverAppBarComponent extends StatelessWidget {
       expandedHeight: expandedHeight,
       flexibleSpace: flexibleSpace,
       bottom: bottom,
-      backgroundColor: backgroundColor,
+      backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.surface,
       centerTitle: centerTitle,
+      elevation: 0,
+      scrolledUnderElevation: 0,
     );
   }
 }

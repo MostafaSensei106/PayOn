@@ -22,5 +22,19 @@
   "settings": "الإعدادات",
   "profile": "الملف الشخصي",
   "wallet": "المحفظة",
-  "history": "السجل"
+  "history": "السجل",
+  "egyptian_pound": "جنيه مصري",
+  "us_dollar": "دولار أمريكي",
+  "euro": "يورو",
+  "japanese_yen": "ين ياباني",
+  "send": "إرسال",
+  "request": "طلب",
+  "scan": "مسح",
+  "top_up": "شحن",
+  "more": "المزيد",
+  "total_balance": "إجمالي الرصيد",
+  "active": "نشط",
+  "latest_transactions": "أحدث المعاملات",
+  "see_all": "عرض الكل",
+  "money_transfer": "تحويل أموال"
 }

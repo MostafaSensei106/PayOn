@@ -82,4 +82,49 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get history => 'السجل';
+
+  @override
+  String get egyptian_pound => 'جنيه مصري';
+
+  @override
+  String get us_dollar => 'دولار أمريكي';
+
+  @override
+  String get euro => 'يورو';
+
+  @override
+  String get japanese_yen => 'ين ياباني';
+
+  @override
+  String get send => 'إرسال';
+
+  @override
+  String get request => 'طلب';
+
+  @override
+  String get receive => 'Receive';
+
+  @override
+  String get scan => 'مسح';
+
+  @override
+  String get top_up => 'شحن';
+
+  @override
+  String get more => 'المزيد';
+
+  @override
+  String get total_balance => 'إجمالي الرصيد';
+
+  @override
+  String get active => 'نشط';
+
+  @override
+  String get latest_transactions => 'أحدث المعاملات';
+
+  @override
+  String get see_all => 'عرض الكل';
+
+  @override
+  String get money_transfer => 'تحويل أموال';
 }

@@ -22,5 +22,20 @@
   "settings": "Settings",
   "profile": "Profile",
   "wallet": "Wallet",
-  "history": "History"
+  "history": "History",
+  "egyptian_pound": "Egyptian Pound",
+  "us_dollar": "US Dollar",
+  "euro": "Euro",
+  "japanese_yen": "Japanese Yen",
+  "send": "Send",
+  "request": "Request",
+  "receive": "Receive",
+  "scan": "Scan",
+  "top_up": "Top Up",
+  "more": "More",
+  "total_balance": "Total Balance",
+  "active": "Active",
+  "latest_transactions": "Latest Transactions",
+  "see_all": "See All",
+  "money_transfer": "Money Transfer"
 }

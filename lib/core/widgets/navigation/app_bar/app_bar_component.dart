@@ -16,7 +16,13 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(final BuildContext context) => AppBar(
     elevation: 0,
-    title: Text(title),
+    title: Text(
+      title,
+      style: Theme.of(
+        context,
+      ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+    ),
+    backgroundColor: Colors.transparent,
     centerTitle: true,
     scrolledUnderElevation: 0,
   );
