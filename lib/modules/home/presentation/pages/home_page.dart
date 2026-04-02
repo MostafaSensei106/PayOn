@@ -84,7 +84,10 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(AppConfig.paddingHalf),
               child: InkWell(
                 borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
-                child: AvatarComponent(),
+                child: AvatarComponent(
+                  imageUrl:
+                      'https://media.licdn.com/dms/image/v2/D5603AQHpMGFlYFIAyw/profile-displayphoto-scale_400_400/B56ZnjHIJxHIAg-/0/1760451933899?e=1776902400&v=beta&t=ClsT0ppYA0_8z9ViCSbiS4FG81mCgMkabjoNBHSN1hc',
+                ),
                 onTap: () {
                   HapticFeedback.vibrate();
                   context.push(AppRouter.profile);

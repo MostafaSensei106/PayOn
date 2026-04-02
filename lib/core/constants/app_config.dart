@@ -46,7 +46,7 @@ class AppConfig {
   static const double otpFieldSize = 60.0;
 
   /// Standard radius for avatars.
-  static const double avatarRadius = 24.0;
+  static const double avatarRadius = 30.0;
 
   /// Default opacity for search bar background.
   static const double searchBarOpacity = 0.5;

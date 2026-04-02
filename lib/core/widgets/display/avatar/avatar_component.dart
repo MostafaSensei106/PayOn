@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:payon/core/constants/app_config.dart';
 
 class AvatarComponent extends StatelessWidget {
-  final String? imageUrl;
+  final String imageUrl;
   final double? radius;
   final IconData? fallbackIcon;
 
   const AvatarComponent({
     super.key,
-    this.imageUrl,
+    required this.imageUrl,
     this.radius,
     this.fallbackIcon,
   });
@@ -17,19 +17,26 @@ class AvatarComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final effectiveRadius = radius ?? AppConfig.avatarRadius;
-    return CircleAvatar(
-      radius: effectiveRadius,
-      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-      backgroundImage: imageUrl != null
-          ? CachedNetworkImageProvider(imageUrl!)
-          : null as ImageProvider?,
-      child: imageUrl == null
-          ? Icon(
-              fallbackIcon ?? Icons.person,
-              size: effectiveRadius,
-              color: Theme.of(context).colorScheme.onPrimaryContainer,
-            )
-          : null,
+    return Container(
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: Theme.of(context).colorScheme.outlineVariant,
+          width: 1.5,
+        ),
+      ),
+      child: CircleAvatar(
+        radius: effectiveRadius,
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        backgroundImage: CachedNetworkImageProvider(
+          imageUrl,
+          maxWidth: 150,
+          maxHeight: 150,
+        ),
+        onBackgroundImageError: (exception, stackTrace) =>
+            fallbackIcon != null ? Icon(fallbackIcon) : null,
+        child: null,
+      ),
     );
   }
 }
