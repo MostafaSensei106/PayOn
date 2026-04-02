@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
                 child: AvatarComponent(),
                 onTap: () {
                   HapticFeedback.vibrate();
-                  context.go(AppRouter.profile);
+                  context.push(AppRouter.profile);
                 },
               ),
             ),
