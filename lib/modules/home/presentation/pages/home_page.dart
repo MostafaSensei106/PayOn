@@ -52,7 +52,6 @@ class HomePage extends StatelessWidget {
         accountId: 'ID: 2024-AED-55',
         countryCode: 'AE',
       ),
-
       AccountModel(
         currencyName: l10n.british_pound,
         symbol: 'GBP',
@@ -82,19 +81,50 @@ class HomePage extends StatelessWidget {
             floating: true,
             leading: Padding(
               padding: const EdgeInsets.all(AppConfig.paddingHalf),
-              child: InkWell(
-                borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
-                child: Hero(
-                  tag: 'profile',
-                  child: AvatarComponent(
-                    imageUrl:
-                        'https://media.licdn.com/dms/image/v2/D5603AQHpMGFlYFIAyw/profile-displayphoto-scale_400_400/B56ZnjHIJxHIAg-/0/1760451933899?e=1776902400&v=beta&t=ClsT0ppYA0_8z9ViCSbiS4FG81mCgMkabjoNBHSN1hc',
+              child: Hero(
+                tag: 'profile',
+                flightShuttleBuilder:
+                    (
+                      flightContext,
+                      animation,
+                      flightDirection,
+                      fromHeroContext,
+                      toHeroContext,
+                    ) {
+                      return AnimatedBuilder(
+                        animation: animation,
+                        builder: (context, child) {
+                          return Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(
+                                Tween<double>(
+                                  begin: 100,
+                                  end: 0,
+                                ).evaluate(animation),
+                              ),
+                            ),
+                            child: toHeroContext.widget,
+                          );
+                        },
+                      );
+                    },
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(
+                      AppConfig.outBorderRadius,
+                    ),
+                    onTap: () {
+                      HapticFeedback.mediumImpact();
+                      context.push(AppRouter.profile);
+                    },
+                    child: const AvatarComponent(
+                      imageUrl:
+                          'https://media.licdn.com/dms/image/v2/D5603AQHpMGFlYFIAyw/profile-displayphoto-scale_400_400/B56ZnjHIJxHIAg-/0/1760451933899?e=1776902400&v=beta&t=ClsT0ppYA0_8z9ViCSbiS4FG81mCgMkabjoNBHSN1hc',
+                    ),
                   ),
                 ),
-                onTap: () {
-                  HapticFeedback.vibrate();
-                  context.push(AppRouter.profile);
-                },
               ),
             ),
             title: Text(l10n.home),
@@ -135,7 +165,6 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: AppConfig.paddingHalf),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -166,7 +195,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-
           const LatestTransactionsSection(),
         ],
       ),
