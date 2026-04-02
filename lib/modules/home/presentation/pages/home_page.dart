@@ -36,16 +36,31 @@ class HomePage extends StatelessWidget {
         countryCode: 'US',
       ),
       AccountModel(
-        currencyName: l10n.euro,
-        symbol: 'EUR',
-        balance: '940.00',
-        accountId: 'ID: 2024-EUR-44',
-        countryCode: 'FR',
+        currencyName: l10n.saudi_riyal,
+        symbol: 'SAR',
+        balance: '15,000.00',
+        accountId: 'ID: 2024-SAR-44',
+        countryCode: 'SA',
+      ),
+      AccountModel(
+        currencyName: l10n.uae_dirham,
+        symbol: 'AED',
+        balance: '8,400.00',
+        accountId: 'ID: 2024-AED-55',
+        countryCode: 'AE',
+      ),
+
+      AccountModel(
+        currencyName: l10n.british_pound,
+        symbol: 'GBP',
+        balance: '650.00',
+        accountId: 'ID: 2024-GBP-66',
+        countryCode: 'GB',
       ),
       AccountModel(
         currencyName: l10n.japanese_yen,
         symbol: 'JPY',
-        balance: '150,000',
+        balance: '150,000,000.00',
         accountId: 'ID: 2024-JPY-09',
         countryCode: 'JP',
       ),
@@ -53,13 +68,18 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       body: CustomScrollView(
+        controller: ScrollController(),
+        physics: const AlwaysScrollableScrollPhysics(
+          parent: BouncingScrollPhysics(),
+        ),
         slivers: [
           SliverAppBarComponent(
-            expandedHeight: 280.h,
-
+            expandedHeight: 350.h,
             pinned: true,
+            floating: true,
+            snap: true,
             leading: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(AppConfig.paddingHalf),
               child: AvatarComponent(),
             ),
             title: Text(
@@ -94,56 +114,45 @@ class HomePage extends StatelessWidget {
                     SmoothPageIndicator(
                       controller: cardController,
                       count: accounts.length,
-                      effect: ExpandingDotsEffect(
+                      effect: ScrollingDotsEffect(
                         dotHeight: 6.h,
                         dotWidth: 6.w,
                         activeDotColor: Theme.of(context).colorScheme.primary,
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
-            sliver: SliverToBoxAdapter(
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: AppConfig.paddingHalf),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surface,
-                  borderRadius: BorderRadius.circular(
-                    AppConfig.outBorderRadius,
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    QuickActionItem(
-                      icon: Iconsax.send_1_copy,
-                      label: l10n.send,
-                      onTap: () {},
-                    ),
-                    QuickActionItem(
-                      icon: Iconsax.receive_square_2_copy,
-                      label: l10n.request,
-                      onTap: () {},
-                    ),
-                    QuickActionItem(
-                      icon: Iconsax.scan_barcode_copy,
-                      label: l10n.scan,
-                      onTap: () {},
-                    ),
-                    QuickActionItem(
-                      icon: Iconsax.more_copy,
-                      label: l10n.more,
-                      onTap: () {},
+                    SizedBox(height: AppConfig.paddingHalf),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        QuickActionItem(
+                          icon: Iconsax.send_1_copy,
+                          label: l10n.send,
+                          onTap: () {},
+                        ),
+                        QuickActionItem(
+                          icon: Iconsax.receive_square_2_copy,
+                          label: l10n.request,
+                          onTap: () {},
+                        ),
+                        QuickActionItem(
+                          icon: Iconsax.scan_barcode_copy,
+                          label: l10n.scan,
+                          onTap: () {},
+                        ),
+                        QuickActionItem(
+                          icon: Iconsax.more_copy,
+                          label: l10n.more,
+                          onTap: () {},
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
             ),
           ),
+
           const LatestTransactionsSection(),
         ],
       ),

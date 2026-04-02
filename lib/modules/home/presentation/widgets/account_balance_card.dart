@@ -34,7 +34,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
             color: colorScheme.outlineVariant.withValues(alpha: 0.5),
           ),
         ),
-        padding: EdgeInsets.all(AppConfig.padding),
+        padding: EdgeInsets.all(AppConfig.paddingHalf),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

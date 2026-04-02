@@ -254,17 +254,35 @@ abstract class AppLocalizations {
   /// **'US Dollar'**
   String get us_dollar;
 
-  /// No description provided for @euro.
+  /// No description provided for @saudi_riyal.
   ///
   /// In en, this message translates to:
-  /// **'Euro'**
-  String get euro;
+  /// **'Saudi Riyal'**
+  String get saudi_riyal;
+
+  /// No description provided for @uae_dirham.
+  ///
+  /// In en, this message translates to:
+  /// **'UAE Dirham'**
+  String get uae_dirham;
 
   /// No description provided for @japanese_yen.
   ///
   /// In en, this message translates to:
   /// **'Japanese Yen'**
   String get japanese_yen;
+
+  /// No description provided for @british_pound.
+  ///
+  /// In en, this message translates to:
+  /// **'British Pound'**
+  String get british_pound;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
 
   /// No description provided for @send.
   ///

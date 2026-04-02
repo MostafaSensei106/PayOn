@@ -90,10 +90,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get us_dollar => 'دولار أمريكي';
 
   @override
-  String get euro => 'يورو';
+  String get saudi_riyal => 'ريال سعودي';
+
+  @override
+  String get uae_dirham => 'درهم إماراتي';
 
   @override
   String get japanese_yen => 'ين ياباني';
+
+  @override
+  String get british_pound => 'جنيه إسترليني';
+
+  @override
+  String get logout => 'تسجيل الخروج';
 
   @override
   String get send => 'إرسال';
