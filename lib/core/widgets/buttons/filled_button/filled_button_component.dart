@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/services.dart';
 import 'package:payon/core/constants/app_config.dart';
 
 class FilledButtonComponent extends StatelessWidget {
@@ -36,14 +36,20 @@ class FilledButtonComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return icon == null
         ? FilledButton(
-            onPressed: onPressed,
+            onPressed: () {
+              HapticFeedback.vibrate();
+              onPressed();
+            },
             style: _getButtonStyle(context),
             child: Text(label),
           )
         : FilledButton.icon(
-            onPressed: onPressed,
+            onPressed: () {
+              HapticFeedback.vibrate();
+              onPressed();
+            },
             style: _getButtonStyle(context),
-            icon: Icon(icon, size: AppConfig.iconSizeSmall.w),
+            icon: Icon(icon, size: AppConfig.iconSize),
             label: Text(label),
           );
   }
@@ -55,10 +61,10 @@ class FilledButtonComponent extends StatelessWidget {
           foregroundColor ?? Theme.of(context).colorScheme.onPrimary,
       minimumSize: Size(
         width ?? double.infinity,
-        height ?? AppConfig.buttonHeight.h,
+        height ?? AppConfig.buttonHeight,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
   }

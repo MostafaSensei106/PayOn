@@ -24,7 +24,6 @@ class WelcomePage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
         child: Column(
           children: [
-            const SpacingComponent.vertical(AppConfig.padding),
             _buildWelcomeCard(
               Iconsax.flash_1_copy,
               l10n.send_money_title,

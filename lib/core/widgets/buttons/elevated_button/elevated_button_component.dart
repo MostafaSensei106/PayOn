@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:payon/core/constants/app_config.dart';
 
 class ElevatedButtonComponent extends StatelessWidget {
@@ -35,12 +36,18 @@ class ElevatedButtonComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return icon == null
         ? ElevatedButton(
-            onPressed: onPressed,
+            onPressed: () {
+              HapticFeedback.vibrate();
+              onPressed();
+            },
             style: _getButtonStyle(context),
             child: Text(label),
           )
         : ElevatedButton.icon(
-            onPressed: onPressed,
+            onPressed: () {
+              HapticFeedback.vibrate();
+              onPressed();
+            },
             style: _getButtonStyle(context),
             icon: Icon(icon, size: AppConfig.iconSize),
             label: Text(label),
@@ -54,7 +61,7 @@ class ElevatedButtonComponent extends StatelessWidget {
       elevation: AppConfig.buttonElevation,
       minimumSize: Size(width ?? double.infinity, height ?? 8),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
   }

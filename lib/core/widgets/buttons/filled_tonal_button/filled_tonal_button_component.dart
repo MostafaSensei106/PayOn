@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/services.dart';
 import 'package:payon/core/constants/app_config.dart';
 
 class FilledTonalButtonComponent extends StatelessWidget {
@@ -36,30 +36,37 @@ class FilledTonalButtonComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return icon == null
         ? FilledButton.tonal(
-            onPressed: onPressed,
+            onPressed: () {
+              HapticFeedback.vibrate();
+              onPressed();
+            },
             style: _getButtonStyle(context),
             child: Text(label),
           )
         : FilledButton.tonalIcon(
-            onPressed: onPressed,
+            onPressed: () {
+              HapticFeedback.vibrate();
+              onPressed();
+            },
             style: _getButtonStyle(context),
-            icon: Icon(icon, size: AppConfig.iconSizeSmall.w),
+            icon: Icon(icon, size: AppConfig.iconSize),
             label: Text(label),
           );
   }
 
   ButtonStyle _getButtonStyle(BuildContext context) {
     return FilledButton.styleFrom(
+      enableFeedback: true,
       backgroundColor:
           backgroundColor ?? Theme.of(context).colorScheme.secondaryContainer,
       foregroundColor:
           foregroundColor ?? Theme.of(context).colorScheme.onSecondaryContainer,
       minimumSize: Size(
         width ?? double.infinity,
-        height ?? AppConfig.buttonHeight.h,
+        height ?? AppConfig.buttonHeight,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
   }

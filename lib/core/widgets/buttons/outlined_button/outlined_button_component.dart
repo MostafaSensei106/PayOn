@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/services.dart';
 import 'package:payon/core/constants/app_config.dart';
 
 class OutlinedButtonComponent extends StatelessWidget {
@@ -8,7 +8,7 @@ class OutlinedButtonComponent extends StatelessWidget {
   final IconData? icon;
   final double? width;
   final double? height;
-  final Color? backgroundColor; // Used for border color in OutlinedButton
+  final Color? backgroundColor;
   final Color? foregroundColor;
 
   const OutlinedButtonComponent({
@@ -36,14 +36,20 @@ class OutlinedButtonComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return icon == null
         ? OutlinedButton(
-            onPressed: onPressed,
+            onPressed: () {
+              HapticFeedback.vibrate();
+              onPressed();
+            },
             style: _getButtonStyle(context),
             child: Text(label),
           )
         : OutlinedButton.icon(
-            onPressed: onPressed,
+            onPressed: () {
+              HapticFeedback.vibrate();
+              onPressed();
+            },
             style: _getButtonStyle(context),
-            icon: Icon(icon, size: AppConfig.iconSizeSmall.w),
+            icon: Icon(icon, size: AppConfig.iconSize),
             label: Text(label),
           );
   }
@@ -56,10 +62,10 @@ class OutlinedButtonComponent extends StatelessWidget {
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
       minimumSize: Size(
         width ?? double.infinity,
-        height ?? AppConfig.buttonHeight.h,
+        height ?? AppConfig.buttonHeight,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
   }

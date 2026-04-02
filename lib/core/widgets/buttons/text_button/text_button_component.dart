@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/services.dart';
 import 'package:payon/core/constants/app_config.dart';
 
 class TextButtonComponent extends StatelessWidget {
@@ -32,16 +32,26 @@ class TextButtonComponent extends StatelessWidget {
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
 
     return icon == null
-        ? TextButton(onPressed: onPressed, style: style, child: Text(label))
-        : TextButton.icon(
-            onPressed: onPressed,
+        ? TextButton(
+            onPressed: () {
+              HapticFeedback.vibrate();
+              onPressed();
+            },
             style: style,
-            icon: Icon(icon, size: AppConfig.iconSizeSmall.w),
+            child: Text(label),
+          )
+        : TextButton.icon(
+            onPressed: () {
+              HapticFeedback.vibrate();
+              onPressed();
+            },
+            style: style,
+            icon: Icon(icon, size: AppConfig.iconSize),
             label: Text(label),
           );
   }
