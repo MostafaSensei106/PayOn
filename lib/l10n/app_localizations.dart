@@ -266,6 +266,12 @@ abstract class AppLocalizations {
   /// **'UAE Dirham'**
   String get uae_dirham;
 
+  /// No description provided for @phone_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phone_number;
+
   /// No description provided for @japanese_yen.
   ///
   /// In en, this message translates to:

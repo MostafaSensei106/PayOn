@@ -96,6 +96,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get uae_dirham => 'درهم إماراتي';
 
   @override
+  String get phone_number => 'رقم الهاتف';
+
+  @override
   String get japanese_yen => 'ين ياباني';
 
   @override
