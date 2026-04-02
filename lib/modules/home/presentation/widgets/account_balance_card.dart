@@ -52,15 +52,15 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
                         Text(
                           widget.account.currencyName,
                           style: TextStyle(
-                            fontSize: 12.sp,
+                            fontSize: 12,
                             color: colorScheme.onSurfaceVariant,
                           ),
                         ),
                         Text(
                           widget.account.symbol,
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
                             color: colorScheme.onSurface,
                           ),
                         ),
@@ -82,7 +82,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
                 Text(
                   l10n.total_balance,
                   style: TextStyle(
-                    fontSize: 11.sp,
+                    fontSize: 11,
                     color: colorScheme.onSurfaceVariant,
                   ),
                 ),
@@ -92,8 +92,8 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
                         ? '${widget.account.balance} ${widget.account.symbol}'
                         : '•••••• ${widget.account.symbol}',
                     style: TextStyle(
-                      fontSize: 26.sp,
-                      fontWeight: FontWeight.w900,
+                      fontSize: 26,
+                      fontWeight: FontWeight.w600,
                       color: colorScheme.onSurface,
                     ),
                   ),
@@ -106,7 +106,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
                 Text(
                   widget.account.accountId,
                   style: TextStyle(
-                    fontSize: 10.sp,
+                    fontSize: 10,
                     fontFamily: 'monospace',
                     color: colorScheme.onSurfaceVariant,
                   ),
@@ -123,7 +123,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
                   child: Text(
                     l10n.active,
                     style: TextStyle(
-                      fontSize: 10.sp,
+                      fontSize: 10,
                       fontWeight: FontWeight.bold,
                       color: colorScheme.onPrimaryContainer,
                     ),

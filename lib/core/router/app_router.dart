@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:payon/modules/profile/presentation/pages/profile_page.dart';
 import 'package:payon/modules/welcome/presentation/pages/welcome_page.dart';
 import 'package:payon/modules/login/presentation/pages/login_page.dart';
 import 'package:payon/modules/get_started/presentation/pages/get_started_page.dart';
@@ -40,8 +41,12 @@ class AppRouter {
       ),
       GoRoute(
         path: home,
+        pageBuilder: (context, state) => const CupertinoPage(child: MainPage()),
+      ),
+      GoRoute(
+        path: profile,
         pageBuilder: (context, state) =>
-            const CupertinoPage(child: MainPage()),
+            const CupertinoPage(child: ProfilePage()),
       ),
     ],
   );

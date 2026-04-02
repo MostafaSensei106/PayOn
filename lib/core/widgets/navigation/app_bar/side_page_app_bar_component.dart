@@ -1,27 +1,6 @@
-import 'package:flutter/material.dart'
-    show
-        kToolbarHeight,
-        AppBar,
-        Theme,
-        Icons,
-        IconButton,
-        Localizations,
-        FontWeight;
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show HapticFeedback;
-import 'package:flutter/widgets.dart'
-    show
-        StatelessWidget,
-        PreferredSizeWidget,
-        Size,
-        BuildContext,
-        Widget,
-        IconData,
-        EdgeInsets,
-        Navigator,
-        Text,
-        BorderRadius,
-        RoundedRectangleBorder,
-        Icon;
+import 'package:go_router/go_router.dart';
 import 'package:payon/core/constants/app_config.dart';
 
 /// An app bar designed for side pages, with an optional back button and actions.
@@ -33,7 +12,7 @@ class SidePageAppBarComponent extends StatelessWidget
   const SidePageAppBarComponent({
     required this.title,
     super.key,
-    this.useBackButton = false,
+    this.useBackButton = true,
     this.actions,
   });
 
@@ -52,7 +31,7 @@ class SidePageAppBarComponent extends StatelessWidget
   /// Navigates back to the previous screen with haptic feedback.
   void leave(final BuildContext context) {
     HapticFeedback.vibrate();
-    Navigator.pop(context);
+    context.pop();
   }
 
   /// Checks if the current locale is Arabic.
@@ -66,12 +45,7 @@ class SidePageAppBarComponent extends StatelessWidget
 
   @override
   Widget build(final BuildContext context) => AppBar(
-    title: Text(
-      title,
-      style: Theme.of(
-        context,
-      ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-    ),
+    title: Text(title),
 
     centerTitle: true,
     scrolledUnderElevation: 0,

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:payon/core/constants/app_config.dart';
+import 'package:payon/core/router/app_router.dart';
 import 'package:payon/core/widgets/buttons/icon_button/icon_button_component.dart';
 import 'package:payon/core/widgets/display/avatar/avatar_component.dart';
 import 'package:payon/core/widgets/slivers/sliver_app_bar/sliver_app_bar_component.dart';
@@ -79,14 +82,16 @@ class HomePage extends StatelessWidget {
             floating: true,
             leading: Padding(
               padding: const EdgeInsets.all(AppConfig.paddingHalf),
-              child: AvatarComponent(),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
+                child: AvatarComponent(),
+                onTap: () {
+                  HapticFeedback.vibrate();
+                  context.go(AppRouter.profile);
+                },
+              ),
             ),
-            title: Text(
-              l10n.home,
-              style: Theme.of(
-                context,
-              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-            ),
+            title: Text(l10n.home),
             actions: [
               IconButtonComponent.filled(
                 icon: Iconsax.notification_copy,
