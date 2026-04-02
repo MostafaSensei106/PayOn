@@ -16,10 +16,7 @@ class GetStartedPage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: SidePageAppBarComponent(
-        title: l10n.get_started,
-        useBackButton: true,
-      ),
+      appBar: SidePageAppBarComponent(title: l10n.get_started),
       body: Padding(
         padding: const EdgeInsets.all(AppConfig.padding),
         child: Column(

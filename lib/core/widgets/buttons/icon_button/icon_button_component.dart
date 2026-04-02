@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payon/core/constants/app_config.dart';
 
 enum IconButtonVariant { standard, filled, tonal, outlined }
@@ -75,7 +74,8 @@ class IconButtonComponent extends StatelessWidget {
             HapticFeedback.vibrate();
             onPressed();
           },
-          color: foregroundColor ?? Theme.of(context).colorScheme.primary,
+          color:
+              foregroundColor ?? Theme.of(context).colorScheme.primaryContainer,
         );
       case IconButtonVariant.filled:
         return IconButton.filled(
@@ -91,11 +91,13 @@ class IconButtonComponent extends StatelessWidget {
                   : BorderRadius.circular(AppConfig.outBorderRadius),
             ),
             backgroundColor:
-                backgroundColor ?? Theme.of(context).colorScheme.primary,
+                backgroundColor ??
+                Theme.of(context).colorScheme.primaryContainer,
             foregroundColor:
-                foregroundColor ?? Theme.of(context).colorScheme.onPrimary,
+                foregroundColor ??
+                Theme.of(context).colorScheme.onPrimaryContainer,
           ),
-          padding: EdgeInsets.all(padding ?? AppConfig.paddingHalf.w),
+          padding: EdgeInsets.all(padding ?? AppConfig.paddingHalf),
         );
       case IconButtonVariant.tonal:
         return IconButton.filledTonal(

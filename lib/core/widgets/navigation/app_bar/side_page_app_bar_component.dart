@@ -9,18 +9,10 @@ class SidePageAppBarComponent extends StatelessWidget
   /// Creates a [SidePageAppBarComponent].
   ///
   /// The [title] is required. The [useBackButton] defaults to `false`.
-  const SidePageAppBarComponent({
-    required this.title,
-    super.key,
-    this.useBackButton = true,
-    this.actions,
-  });
+  const SidePageAppBarComponent({required this.title, super.key, this.actions});
 
   /// The title to display in the app bar.
   final String title;
-
-  /// A flag to determine whether to show the back button.
-  final bool useBackButton;
 
   /// A list of widgets to display as actions in the app bar.
   final List<Widget>? actions;
@@ -50,14 +42,12 @@ class SidePageAppBarComponent extends StatelessWidget
     centerTitle: true,
     scrolledUnderElevation: 0,
     elevation: 0,
-    leading: useBackButton
-        ? _buildSidePageAppBarIcon(
-            context,
-            cheakLocation(context)
-                ? Icons.keyboard_double_arrow_right_rounded
-                : Icons.keyboard_double_arrow_left_rounded,
-          )
-        : null,
+    leading: _buildSidePageAppBarIcon(
+      context,
+      cheakLocation(context)
+          ? Icons.keyboard_double_arrow_right_rounded
+          : Icons.keyboard_double_arrow_left_rounded,
+    ),
     actions: actions,
   );
 

@@ -19,7 +19,7 @@ class LoginPage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: SidePageAppBarComponent(title: l10n.login, useBackButton: true),
+      appBar: SidePageAppBarComponent(title: l10n.login),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
         child: Column(
