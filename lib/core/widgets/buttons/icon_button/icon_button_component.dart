@@ -9,6 +9,8 @@ class IconButtonComponent extends StatelessWidget {
   final IconData icon;
   final VoidCallback onPressed;
   final IconButtonVariant variant;
+  final bool useInBorderRadius;
+
   final String? toolTip;
   final Color? backgroundColor;
   final Color? foregroundColor;
@@ -19,6 +21,7 @@ class IconButtonComponent extends StatelessWidget {
     super.key,
     required this.icon,
     required this.onPressed,
+    this.useInBorderRadius = false,
     this.toolTip,
     this.backgroundColor,
     this.foregroundColor,
@@ -30,6 +33,7 @@ class IconButtonComponent extends StatelessWidget {
     super.key,
     required this.icon,
     required this.onPressed,
+    this.useInBorderRadius = false,
     this.toolTip,
     this.backgroundColor,
     this.foregroundColor,
@@ -41,6 +45,7 @@ class IconButtonComponent extends StatelessWidget {
     super.key,
     required this.icon,
     required this.onPressed,
+    this.useInBorderRadius = false,
     this.toolTip,
     this.backgroundColor,
     this.foregroundColor,
@@ -52,6 +57,7 @@ class IconButtonComponent extends StatelessWidget {
     super.key,
     required this.icon,
     required this.onPressed,
+    this.useInBorderRadius = false,
     this.toolTip,
     this.backgroundColor,
     this.foregroundColor,
@@ -80,7 +86,9 @@ class IconButtonComponent extends StatelessWidget {
           },
           style: IconButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
+              borderRadius: useInBorderRadius
+                  ? BorderRadius.circular(AppConfig.inBorderRadius)
+                  : BorderRadius.circular(AppConfig.outBorderRadius),
             ),
             backgroundColor:
                 backgroundColor ?? Theme.of(context).colorScheme.primary,
@@ -97,6 +105,11 @@ class IconButtonComponent extends StatelessWidget {
             onPressed();
           },
           style: IconButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: useInBorderRadius
+                  ? BorderRadius.circular(AppConfig.inBorderRadius)
+                  : BorderRadius.circular(AppConfig.outBorderRadius),
+            ),
             backgroundColor:
                 backgroundColor ??
                 Theme.of(context).colorScheme.secondaryContainer,
@@ -113,6 +126,11 @@ class IconButtonComponent extends StatelessWidget {
             onPressed();
           },
           style: IconButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: useInBorderRadius
+                  ? BorderRadius.circular(AppConfig.inBorderRadius)
+                  : BorderRadius.circular(AppConfig.outBorderRadius),
+            ),
             side: BorderSide(
               color: backgroundColor ?? Theme.of(context).colorScheme.outline,
             ),

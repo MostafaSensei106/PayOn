@@ -88,8 +88,12 @@ class HomePage extends StatelessWidget {
               ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
             actions: [
-              IconButtonComponent(
+              IconButtonComponent.filled(
                 icon: Iconsax.notification_copy,
+                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                foregroundColor: Theme.of(
+                  context,
+                ).colorScheme.onPrimaryContainer,
                 onPressed: () {},
               ),
             ],

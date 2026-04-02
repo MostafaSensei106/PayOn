@@ -5,7 +5,6 @@ import 'package:payon/l10n/app_localizations.dart';
 import 'package:payon/modules/home/presentation/pages/home_page.dart';
 import 'package:payon/modules/wallet/presentation/pages/wallet_page.dart';
 import 'package:payon/modules/history/presentation/pages/history_page.dart';
-import 'package:payon/modules/profile/presentation/pages/profile_page.dart';
 import 'package:payon/modules/settings/presentation/pages/settings_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -22,7 +21,6 @@ class _MainPageState extends State<MainPage> {
     const HomePage(),
     const WalletPage(),
     const HistoryPage(),
-    const ProfilePage(),
     const SettingsPage(),
   ];
 
@@ -59,12 +57,7 @@ class _MainPageState extends State<MainPage> {
             label: l10n.history,
             tooltip: l10n.history,
           ),
-          BottomNavigationBarItem(
-            icon: const Icon(Iconsax.user_copy),
-            activeIcon: const Icon(Iconsax.user),
-            label: l10n.profile,
-            tooltip: l10n.profile,
-          ),
+
           BottomNavigationBarItem(
             icon: const Icon(Iconsax.setting_copy),
             activeIcon: const Icon(Iconsax.setting),

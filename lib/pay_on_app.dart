@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payon/core/constants/app_config.dart';
 import 'package:payon/core/router/app_router.dart';
+import 'package:payon/core/theme/app_theme.dart';
 import 'package:payon/l10n/app_localizations.dart';
 
 class PayOnApp extends StatelessWidget {
@@ -15,6 +16,9 @@ class PayOnApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) => MaterialApp.router(
         title: AppConfig.appName,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.light,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         routerConfig: AppRouter.router,

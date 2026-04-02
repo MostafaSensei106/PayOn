@@ -5,6 +5,7 @@ import 'package:payon/core/constants/app_config.dart';
 class TextButtonComponent extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
+  final bool useInBorderRadius;
   final IconData? icon;
   final Color? backgroundColor;
   final Color? foregroundColor;
@@ -13,15 +14,17 @@ class TextButtonComponent extends StatelessWidget {
     super.key,
     required this.label,
     required this.onPressed,
+    this.useInBorderRadius = false,
     this.backgroundColor,
     this.foregroundColor,
   }) : icon = null;
 
   const TextButtonComponent.icon({
     super.key,
+    required this.icon,
     required this.label,
     required this.onPressed,
-    required this.icon,
+    this.useInBorderRadius = false,
     this.backgroundColor,
     this.foregroundColor,
   });
@@ -32,7 +35,9 @@ class TextButtonComponent extends StatelessWidget {
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
+        borderRadius: useInBorderRadius
+            ? BorderRadius.circular(AppConfig.inBorderRadius)
+            : BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
 

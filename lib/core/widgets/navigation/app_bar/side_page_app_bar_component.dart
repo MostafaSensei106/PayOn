@@ -95,7 +95,7 @@ class SidePageAppBarComponent extends StatelessWidget
     style: IconButton.styleFrom(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
+        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
       ),
       padding: const EdgeInsets.all(AppConfig.paddingQuarter),
     ),

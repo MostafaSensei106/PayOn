@@ -5,6 +5,7 @@ import 'package:payon/core/constants/app_config.dart';
 class ElevatedButtonComponent extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
+  final bool useInBorderRadius;
   final IconData? icon;
   final double? width;
   final double? height;
@@ -15,6 +16,7 @@ class ElevatedButtonComponent extends StatelessWidget {
     super.key,
     required this.label,
     required this.onPressed,
+    this.useInBorderRadius = false,
     this.width,
     this.height,
     this.backgroundColor,
@@ -26,6 +28,7 @@ class ElevatedButtonComponent extends StatelessWidget {
     required this.label,
     required this.onPressed,
     required this.icon,
+    this.useInBorderRadius = false,
     this.width,
     this.height,
     this.backgroundColor,
@@ -61,7 +64,9 @@ class ElevatedButtonComponent extends StatelessWidget {
       elevation: AppConfig.buttonElevation,
       minimumSize: Size(width ?? double.infinity, height ?? 8),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
+        borderRadius: useInBorderRadius
+            ? BorderRadius.circular(AppConfig.inBorderRadius)
+            : BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
   }

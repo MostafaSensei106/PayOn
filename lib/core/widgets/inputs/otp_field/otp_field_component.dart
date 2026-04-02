@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payon/core/constants/app_config.dart';
 
 class OtpFieldComponent extends StatelessWidget {
@@ -19,8 +18,8 @@ class OtpFieldComponent extends StatelessWidget {
       children: List.generate(
         length,
         (index) => SizedBox(
-          width: AppConfig.otpFieldSize.w,
-          height: AppConfig.otpFieldSize.h,
+          width: AppConfig.otpFieldSize,
+          height: AppConfig.otpFieldSize,
           child: TextFormField(
             textAlign: TextAlign.center,
             keyboardType: TextInputType.number,
@@ -28,7 +27,7 @@ class OtpFieldComponent extends StatelessWidget {
             decoration: InputDecoration(
               counterText: '',
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
+                borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
               ),
             ),
             onChanged: (value) {

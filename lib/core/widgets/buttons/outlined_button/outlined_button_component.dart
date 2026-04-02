@@ -5,6 +5,7 @@ import 'package:payon/core/constants/app_config.dart';
 class OutlinedButtonComponent extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
+  final bool useInBorderRadius;
   final IconData? icon;
   final double? width;
   final double? height;
@@ -15,6 +16,7 @@ class OutlinedButtonComponent extends StatelessWidget {
     super.key,
     required this.label,
     required this.onPressed,
+    this.useInBorderRadius = false,
     this.width,
     this.height,
     this.backgroundColor,
@@ -23,9 +25,10 @@ class OutlinedButtonComponent extends StatelessWidget {
 
   const OutlinedButtonComponent.icon({
     super.key,
+    required this.icon,
     required this.label,
     required this.onPressed,
-    required this.icon,
+    this.useInBorderRadius = false,
     this.width,
     this.height,
     this.backgroundColor,
@@ -65,7 +68,9 @@ class OutlinedButtonComponent extends StatelessWidget {
         height ?? AppConfig.buttonHeight,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
+        borderRadius: useInBorderRadius
+            ? BorderRadius.circular(AppConfig.inBorderRadius)
+            : BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
   }

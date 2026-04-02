@@ -18,7 +18,6 @@ class CheckboxComponent extends StatelessWidget {
       title: Text(label),
       value: value,
       onChanged: onChanged,
-      activeColor: Theme.of(context).colorScheme.primary,
       controlAffinity: ListTileControlAffinity.leading,
     );
   }
