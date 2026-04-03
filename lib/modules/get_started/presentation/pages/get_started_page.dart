@@ -24,6 +24,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
   bool _allAccepted = false;
 
   void _previousPage() {
+    FocusScope.of(context).unfocus();
     _pageController.previousPage(
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
@@ -32,6 +33,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
   }
 
   void _nextPage() {
+    FocusScope.of(context).unfocus();
     if (_currentPage < 2) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
