@@ -15,7 +15,7 @@ class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -60,12 +60,16 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildWelcomeCard(IconData icon, String title, String subtitle) => CardComponent(
-      padding: EdgeInsets.zero,
-      child: ListTileComponent(
-        leading: Icon(icon, size: AppConfig.iconSize),
-        title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text(subtitle),
-      ),
-    );
+  Widget _buildWelcomeCard(
+    final IconData icon,
+    final String title,
+    final String subtitle,
+  ) => CardComponent(
+    padding: EdgeInsets.zero,
+    child: ListTileComponent(
+      leading: Icon(icon, size: AppConfig.iconSize),
+      title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+      subtitle: Text(subtitle),
+    ),
+  );
 }

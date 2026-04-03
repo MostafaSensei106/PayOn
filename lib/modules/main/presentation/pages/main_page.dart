@@ -26,7 +26,7 @@ class _MainPageState extends State<MainPage> {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -34,7 +34,7 @@ class _MainPageState extends State<MainPage> {
 
       bottomNavigationBar: BottomNavBarComponent(
         currentIndex: _currentIndex,
-        onTap: (index) {
+        onTap: (final index) {
           setState(() {
             _currentIndex = index;
           });

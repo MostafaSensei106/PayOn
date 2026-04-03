@@ -3,9 +3,10 @@ import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
 
 class ElevatedButtonComponent extends StatelessWidget {
-
   const ElevatedButtonComponent({
-    required this.label, required this.onPressed, super.key,
+    required this.label,
+    required this.onPressed,
+    super.key,
     this.useInBorderRadius = false,
     this.width,
     this.height,
@@ -14,7 +15,10 @@ class ElevatedButtonComponent extends StatelessWidget {
   }) : icon = null;
 
   const ElevatedButtonComponent.icon({
-    required this.label, required this.onPressed, required this.icon, super.key,
+    required this.label,
+    required this.onPressed,
+    required this.icon,
+    super.key,
     this.useInBorderRadius = false,
     this.width,
     this.height,
@@ -31,34 +35,36 @@ class ElevatedButtonComponent extends StatelessWidget {
   final Color? foregroundColor;
 
   @override
-  Widget build(BuildContext context) => icon == null
-        ? ElevatedButton(
-            onPressed: () {
-              HapticFeedback.vibrate();
-              onPressed();
-            },
-            style: _getButtonStyle(context),
-            child: Text(label),
-          )
-        : ElevatedButton.icon(
-            onPressed: () {
-              HapticFeedback.vibrate();
-              onPressed();
-            },
-            style: _getButtonStyle(context),
-            icon: Icon(icon, size: AppConfig.iconSize),
-            label: Text(label),
-          );
+  Widget build(final BuildContext context) => icon == null
+      ? ElevatedButton(
+          onPressed: () {
+            HapticFeedback.vibrate();
+            onPressed();
+          },
+          style: _getButtonStyle(context),
+          child: Text(label),
+        )
+      : ElevatedButton.icon(
+          onPressed: () {
+            HapticFeedback.vibrate();
+            onPressed();
+          },
+          style: _getButtonStyle(context),
+          icon: Icon(icon, size: AppConfig.iconSize),
+          label: Text(label),
+        );
 
-  ButtonStyle _getButtonStyle(BuildContext context) => ElevatedButton.styleFrom(
-      backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.surface,
-      foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
-      elevation: AppConfig.buttonElevation,
-      minimumSize: Size(width ?? double.infinity, height ?? 8),
-      shape: RoundedRectangleBorder(
-        borderRadius: useInBorderRadius
-            ? BorderRadius.circular(AppConfig.inBorderRadius)
-            : BorderRadius.circular(AppConfig.outBorderRadius),
-      ),
-    );
+  ButtonStyle _getButtonStyle(
+    final BuildContext context,
+  ) => ElevatedButton.styleFrom(
+    backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.surface,
+    foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
+    elevation: AppConfig.buttonElevation,
+    minimumSize: Size(width ?? double.infinity, height ?? 8),
+    shape: RoundedRectangleBorder(
+      borderRadius: useInBorderRadius
+          ? BorderRadius.circular(AppConfig.inBorderRadius)
+          : BorderRadius.circular(AppConfig.outBorderRadius),
+    ),
+  );
 }

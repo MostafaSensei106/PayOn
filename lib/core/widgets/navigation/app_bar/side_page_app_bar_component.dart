@@ -29,7 +29,7 @@ class SidePageAppBarComponent extends StatelessWidget
   /// Checks if the current locale is Arabic.
   ///
   /// Returns `true` if the language code is 'ar', otherwise `false`.
-  bool cheakLocation(BuildContext context) {
+  bool cheakLocation(final BuildContext context) {
     final locale = Localizations.localeOf(context);
     final isArabic = locale.languageCode == 'ar';
     return isArabic;

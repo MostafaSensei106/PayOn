@@ -11,7 +11,7 @@ class StepTwoKYC extends StatelessWidget {
   final TextEditingController dateController;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(
@@ -38,69 +38,69 @@ class StepTwoKYC extends StatelessWidget {
             onTap: () async {
               final date = await showDatePicker(
                 context: context,
-                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
                 initialDate: DateTime.now(),
                 firstDate: DateTime(1900),
                 lastDate: DateTime.now(),
-                builder: (context, child) => Theme(
-                    data: Theme.of(context).copyWith(
-                      datePickerTheme: DatePickerThemeData(
-                        backgroundColor: Theme.of(context).colorScheme.surface,
-                        shape: RoundedRectangleBorder(
+                builder: (final context, final child) => Theme(
+                  data: Theme.of(context).copyWith(
+                    datePickerTheme: DatePickerThemeData(
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          AppConfig.outBorderRadius,
+                        ),
+                      ),
+                      headerBackgroundColor: Theme.of(
+                        context,
+                      ).colorScheme.primaryContainer,
+                      headerForegroundColor: Theme.of(
+                        context,
+                      ).colorScheme.onPrimaryContainer,
+                      dayShape: WidgetStateProperty.all(
+                        RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
                             AppConfig.outBorderRadius,
                           ),
                         ),
-                        headerBackgroundColor: Theme.of(
-                          context,
-                        ).colorScheme.primaryContainer,
-                        headerForegroundColor: Theme.of(
-                          context,
-                        ).colorScheme.onPrimaryContainer,
-                        dayShape: WidgetStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.outBorderRadius,
-                            ),
+                      ),
+                      todayForegroundColor: WidgetStateProperty.all(
+                        Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                      todayBackgroundColor: WidgetStateProperty.all(
+                        Theme.of(context).colorScheme.primaryContainer,
+                      ),
+                      yearShape: WidgetStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            AppConfig.outBorderRadius,
                           ),
-                        ),
-                        todayForegroundColor: WidgetStateProperty.all(
-                          Theme.of(context).colorScheme.onPrimaryContainer,
-                        ),
-                        todayBackgroundColor: WidgetStateProperty.all(
-                          Theme.of(context).colorScheme.primaryContainer,
-                        ),
-                        yearShape: WidgetStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.outBorderRadius,
-                            ),
-                          ),
-                        ),
-                        cancelButtonStyle: TextButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.inBorderRadius,
-                            ),
-                          ),
-                        ),
-                        confirmButtonStyle: TextButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.inBorderRadius,
-                            ),
-                          ),
-                          backgroundColor: Theme.of(
-                            context,
-                          ).colorScheme.primary,
-                          foregroundColor: Theme.of(
-                            context,
-                          ).colorScheme.onPrimary,
                         ),
                       ),
+                      cancelButtonStyle: TextButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            AppConfig.inBorderRadius,
+                          ),
+                        ),
+                      ),
+                      confirmButtonStyle: TextButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            AppConfig.inBorderRadius,
+                          ),
+                        ),
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        foregroundColor: Theme.of(
+                          context,
+                        ).colorScheme.onPrimary,
+                      ),
                     ),
-                    child: child!,
                   ),
+                  child: child!,
+                ),
               );
               if (date != null) {
                 dateController.text = date.toString().split(' ')[0];

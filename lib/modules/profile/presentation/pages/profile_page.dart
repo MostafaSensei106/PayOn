@@ -11,7 +11,7 @@ class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       body: CustomScrollView(
@@ -33,14 +33,14 @@ class ProfilePage extends StatelessWidget {
                       child: CachedNetworkImage(
                         fit: BoxFit.cover,
                         memCacheHeight: 800,
-                        placeholder: (context, url) => Container(
+                        placeholder: (final context, final url) => Container(
                           color: Theme.of(context).colorScheme.primaryContainer,
                           child: const Icon(
                             Iconsax.profile_circle_copy,
                             size: AppConfig.avatarRadius,
                           ),
                         ),
-                        errorWidget: (context, url, error) =>
+                        errorWidget: (final context, final url, final error) =>
                             const Icon(Iconsax.cloud_cross_copy),
                         filterQuality: FilterQuality.high,
                         imageUrl:
@@ -162,36 +162,36 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget _buildInfoTile(
-    BuildContext context, {
-    required IconData icon,
-    required String label,
-    required String value,
+    final BuildContext context, {
+    required final IconData icon,
+    required final String label,
+    required final String value,
   }) => Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppConfig.paddingHalf),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(AppConfig.paddingHalf),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
-            ),
-            child: Icon(icon, size: AppConfig.iconSize),
+    padding: const EdgeInsets.symmetric(vertical: AppConfig.paddingHalf),
+    child: Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(AppConfig.paddingHalf),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
           ),
-          const SizedBox(width: AppConfig.paddingHalf),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                label,
-                style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.outline,
-                ),
+          child: Icon(icon, size: AppConfig.iconSize),
+        ),
+        const SizedBox(width: AppConfig.paddingHalf),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                color: Theme.of(context).colorScheme.outline,
               ),
-              Text(value, style: Theme.of(context).textTheme.bodyLarge),
-            ],
-          ),
-        ],
-      ),
-    );
+            ),
+            Text(value, style: Theme.of(context).textTheme.bodyLarge),
+          ],
+        ),
+      ],
+    ),
+  );
 }

@@ -8,7 +8,10 @@ import '../../../../l10n/app_localizations.dart';
 
 class GetStartedNavigation extends StatelessWidget {
   const GetStartedNavigation({
-    required this.currentPage, required this.onPrevious, required this.onNext, super.key,
+    required this.currentPage,
+    required this.onPrevious,
+    required this.onNext,
+    super.key,
     this.isEnabled = true,
   });
 
@@ -18,7 +21,7 @@ class GetStartedNavigation extends StatelessWidget {
   final bool isEnabled;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isRtl = Directionality.of(context) == TextDirection.rtl;
 

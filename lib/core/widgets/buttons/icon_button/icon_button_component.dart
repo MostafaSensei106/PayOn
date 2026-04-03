@@ -5,9 +5,10 @@ import '../../../constants/app_config.dart';
 enum IconButtonVariant { standard, filled, tonal, outlined }
 
 class IconButtonComponent extends StatelessWidget {
-
   const IconButtonComponent({
-    required this.icon, required this.onPressed, super.key,
+    required this.icon,
+    required this.onPressed,
+    super.key,
     this.useInBorderRadius = false,
     this.toolTip,
     this.backgroundColor,
@@ -17,7 +18,9 @@ class IconButtonComponent extends StatelessWidget {
   }) : variant = IconButtonVariant.standard;
 
   const IconButtonComponent.filled({
-    required this.icon, required this.onPressed, super.key,
+    required this.icon,
+    required this.onPressed,
+    super.key,
     this.useInBorderRadius = false,
     this.toolTip,
     this.backgroundColor,
@@ -27,7 +30,9 @@ class IconButtonComponent extends StatelessWidget {
   }) : variant = IconButtonVariant.filled;
 
   const IconButtonComponent.tonal({
-    required this.icon, required this.onPressed, super.key,
+    required this.icon,
+    required this.onPressed,
+    super.key,
     this.useInBorderRadius = false,
     this.toolTip,
     this.backgroundColor,
@@ -37,7 +42,9 @@ class IconButtonComponent extends StatelessWidget {
   }) : variant = IconButtonVariant.tonal;
 
   const IconButtonComponent.outlined({
-    required this.icon, required this.onPressed, super.key,
+    required this.icon,
+    required this.onPressed,
+    super.key,
     this.useInBorderRadius = false,
     this.toolTip,
     this.backgroundColor,
@@ -57,7 +64,7 @@ class IconButtonComponent extends StatelessWidget {
   final double? padding;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     switch (variant) {
       case IconButtonVariant.standard:
         return IconButton(

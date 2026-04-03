@@ -14,7 +14,7 @@ class SwitchComponent extends StatelessWidget {
   final void Function(bool) onChanged;
 
   @override
-  Widget build(BuildContext context) => SwitchListTile(
+  Widget build(final BuildContext context) => SwitchListTile(
     title: Text(label),
     value: value,
     onChanged: onChanged,

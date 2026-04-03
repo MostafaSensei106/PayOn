@@ -3,9 +3,10 @@ import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
 
 class TextFieldComponent extends StatelessWidget {
-
   const TextFieldComponent({
-    required this.label, required this.prefixIcon, super.key,
+    required this.label,
+    required this.prefixIcon,
+    super.key,
     this.suffixIcon,
     this.obscureText = false,
     this.useInBorderRadius = false,
@@ -25,36 +26,36 @@ class TextFieldComponent extends StatelessWidget {
   final void Function()? onTap;
 
   @override
-  Widget build(BuildContext context) => TextFormField(
-      controller: controller,
-      keyboardType: keyboardType,
-      obscureText: obscureText,
-      readOnly: readOnly,
-      onTap: () {
-        HapticFeedback.vibrate();
-        onTap?.call();
-      },
-      decoration: InputDecoration(
-        labelText: label,
-        prefixIcon: Icon(
-          prefixIcon,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-        suffixIcon: suffixIcon,
-        border: OutlineInputBorder(
-          borderRadius: useInBorderRadius
-              ? BorderRadius.circular(AppConfig.inBorderRadius)
-              : BorderRadius.circular(AppConfig.outBorderRadius),
-          borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: useInBorderRadius
-              ? BorderRadius.circular(AppConfig.inBorderRadius)
-              : BorderRadius.circular(AppConfig.outBorderRadius),
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.outlineVariant,
-          ),
+  Widget build(final BuildContext context) => TextFormField(
+    controller: controller,
+    keyboardType: keyboardType,
+    obscureText: obscureText,
+    readOnly: readOnly,
+    onTap: () {
+      HapticFeedback.vibrate();
+      onTap?.call();
+    },
+    decoration: InputDecoration(
+      labelText: label,
+      prefixIcon: Icon(
+        prefixIcon,
+        color: Theme.of(context).colorScheme.primary,
+      ),
+      suffixIcon: suffixIcon,
+      border: OutlineInputBorder(
+        borderRadius: useInBorderRadius
+            ? BorderRadius.circular(AppConfig.inBorderRadius)
+            : BorderRadius.circular(AppConfig.outBorderRadius),
+        borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: useInBorderRadius
+            ? BorderRadius.circular(AppConfig.inBorderRadius)
+            : BorderRadius.circular(AppConfig.outBorderRadius),
+        borderSide: BorderSide(
+          color: Theme.of(context).colorScheme.outlineVariant,
         ),
       ),
-    );
+    ),
+  );
 }

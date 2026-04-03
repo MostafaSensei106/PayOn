@@ -7,14 +7,16 @@ import '../../../../l10n/app_localizations.dart';
 
 class GetStartedHeader extends StatelessWidget {
   const GetStartedHeader({
-    required this.currentPage, required this.pageController, super.key,
+    required this.currentPage,
+    required this.pageController,
+    super.key,
   });
 
   final int currentPage;
   final PageController pageController;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
     return SidePageSliverAppBarComponent(
@@ -44,7 +46,9 @@ class GetStartedHeader extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: AppConfig.paddingQuarter),
+              padding: const EdgeInsets.symmetric(
+                vertical: AppConfig.paddingQuarter,
+              ),
               child: Text(
                 '${l10n.step} ${currentPage + 1} ${l10n.off} 3',
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(

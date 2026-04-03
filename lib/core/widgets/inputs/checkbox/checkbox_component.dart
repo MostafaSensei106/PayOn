@@ -18,12 +18,12 @@ class CheckboxComponent extends StatelessWidget {
   final void Function(bool?) onChanged;
 
   @override
-  Widget build(BuildContext context) => CheckboxListTile(
+  Widget build(final BuildContext context) => CheckboxListTile(
     contentPadding: EdgeInsets.zero,
     controlAffinity: ListTileControlAffinity.leading,
     title: Text(title),
     value: value,
-    onChanged: (value) {
+    onChanged: (final value) {
       HapticFeedback.vibrate();
       onChanged(value);
     },

@@ -8,7 +8,6 @@ import '../../../../l10n/app_localizations.dart';
 import '../../data/models/account_model.dart';
 
 class AccountBalanceCard extends StatefulWidget {
-
   const AccountBalanceCard({required this.account, super.key});
   final AccountModel account;
 
@@ -20,7 +19,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
   bool _showBalance = true;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
 

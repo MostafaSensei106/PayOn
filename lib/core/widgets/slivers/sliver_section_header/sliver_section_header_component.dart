@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../../display/section_header/section_header_component.dart';
 
 class SliverSectionHeaderComponent extends StatelessWidget {
-
   const SliverSectionHeaderComponent({
-    required this.title, super.key,
+    required this.title,
+    super.key,
     this.onActionPressed,
     this.actionLabel,
   });
@@ -13,11 +13,11 @@ class SliverSectionHeaderComponent extends StatelessWidget {
   final String? actionLabel;
 
   @override
-  Widget build(BuildContext context) => SliverToBoxAdapter(
-      child: SectionHeaderComponent(
-        title: title,
-        onActionPressed: onActionPressed,
-        actionLabel: actionLabel,
-      ),
-    );
+  Widget build(final BuildContext context) => SliverToBoxAdapter(
+    child: SectionHeaderComponent(
+      title: title,
+      onActionPressed: onActionPressed,
+      actionLabel: actionLabel,
+    ),
+  );
 }

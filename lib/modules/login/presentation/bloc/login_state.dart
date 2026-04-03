@@ -13,7 +13,6 @@ class LoginInitial extends LoginState {}
 class LoginLoading extends LoginState {}
 
 class LoginSuccess extends LoginState {
-
   const LoginSuccess(this.user);
   final UserEntity user;
 
@@ -22,7 +21,6 @@ class LoginSuccess extends LoginState {
 }
 
 class LoginFailure extends LoginState {
-
   const LoginFailure(this.error);
   final String error;
 

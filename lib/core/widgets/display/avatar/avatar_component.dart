@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../constants/app_config.dart';
 
 class AvatarComponent extends StatelessWidget {
-
   const AvatarComponent({
-    required this.imageUrl, super.key,
+    required this.imageUrl,
+    super.key,
     this.radius,
     this.fallbackIcon,
   });
@@ -14,7 +14,7 @@ class AvatarComponent extends StatelessWidget {
   final IconData? fallbackIcon;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final effectiveRadius = radius ?? AppConfig.avatarRadius;
     return Container(
       decoration: BoxDecoration(
@@ -32,7 +32,7 @@ class AvatarComponent extends StatelessWidget {
           maxWidth: 150,
           maxHeight: 150,
         ),
-        onBackgroundImageError: (exception, stackTrace) =>
+        onBackgroundImageError: (final exception, final stackTrace) =>
             fallbackIcon != null ? Icon(fallbackIcon) : null,
       ),
     );

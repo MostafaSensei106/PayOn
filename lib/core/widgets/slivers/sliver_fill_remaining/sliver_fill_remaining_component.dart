@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SliverFillRemainingComponent extends StatelessWidget {
-
   const SliverFillRemainingComponent({
-    required this.child, super.key,
+    required this.child,
+    super.key,
     this.hasScrollBody = true,
     this.fillOverscroll = false,
   });
@@ -12,9 +12,9 @@ class SliverFillRemainingComponent extends StatelessWidget {
   final bool fillOverscroll;
 
   @override
-  Widget build(BuildContext context) => SliverFillRemaining(
-      hasScrollBody: hasScrollBody,
-      fillOverscroll: fillOverscroll,
-      child: child,
-    );
+  Widget build(final BuildContext context) => SliverFillRemaining(
+    hasScrollBody: hasScrollBody,
+    fillOverscroll: fillOverscroll,
+    child: child,
+  );
 }

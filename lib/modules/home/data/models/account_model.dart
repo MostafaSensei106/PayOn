@@ -1,5 +1,4 @@
 class AccountModel {
-
   AccountModel({
     required this.currencyName,
     required this.symbol,

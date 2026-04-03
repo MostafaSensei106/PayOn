@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../constants/app_config.dart';
 
 class NetworkImageComponent extends StatelessWidget {
-
   const NetworkImageComponent({
-    required this.imageUrl, super.key,
+    required this.imageUrl,
+    super.key,
     this.width,
     this.height,
     this.fit = BoxFit.cover,
@@ -18,23 +18,23 @@ class NetworkImageComponent extends StatelessWidget {
   final double? borderRadius;
 
   @override
-  Widget build(BuildContext context) => ClipRRect(
-      borderRadius: BorderRadius.circular(
-        borderRadius ?? AppConfig.inBorderRadius,
+  Widget build(final BuildContext context) => ClipRRect(
+    borderRadius: BorderRadius.circular(
+      borderRadius ?? AppConfig.inBorderRadius,
+    ),
+    child: CachedNetworkImage(
+      imageUrl: imageUrl,
+      width: width,
+      height: height,
+      fit: fit,
+      placeholder: (final context, final url) => Container(
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        child: const Center(child: CircularProgressIndicator()),
       ),
-      child: CachedNetworkImage(
-        imageUrl: imageUrl,
-        width: width,
-        height: height,
-        fit: fit,
-        placeholder: (context, url) => Container(
-          color: Theme.of(context).colorScheme.surfaceContainerHighest,
-          child: const Center(child: CircularProgressIndicator()),
-        ),
-        errorWidget: (context, url, error) => Container(
-          color: Theme.of(context).colorScheme.errorContainer,
-          child: Icon(Icons.error, color: Theme.of(context).colorScheme.error),
-        ),
+      errorWidget: (final context, final url, final error) => Container(
+        color: Theme.of(context).colorScheme.errorContainer,
+        child: Icon(Icons.error, color: Theme.of(context).colorScheme.error),
       ),
-    );
+    ),
+  );
 }

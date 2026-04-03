@@ -7,7 +7,11 @@ class UserModel extends UserEntity {
     required super.name,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(id: json['id'], email: json['email'], name: json['name']);
+  factory UserModel.fromJson(final Map<String, dynamic> json) => UserModel(
+    id: json['id'] as String,
+    email: json['email'] as String,
+    name: json['name'] as String,
+  );
 
   Map<String, dynamic> toJson() => {'id': id, 'email': email, 'name': name};
 }

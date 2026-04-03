@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SliverAppBarComponent extends StatelessWidget {
-
   const SliverAppBarComponent({
     super.key,
     this.title,
@@ -27,19 +26,19 @@ class SliverAppBarComponent extends StatelessWidget {
   final bool centerTitle;
 
   @override
-  Widget build(BuildContext context) => SliverAppBar(
-      title: title,
-      leading: leading,
-      actions: actions,
-      pinned: pinned,
-      floating: floating,
-      snap: snap,
-      expandedHeight: expandedHeight,
-      flexibleSpace: flexibleSpace,
-      bottom: bottom,
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      centerTitle: centerTitle,
-      elevation: 0,
-      scrolledUnderElevation: 0,
-    );
+  Widget build(final BuildContext context) => SliverAppBar(
+    title: title,
+    leading: leading,
+    actions: actions,
+    pinned: pinned,
+    floating: floating,
+    snap: snap,
+    expandedHeight: expandedHeight,
+    flexibleSpace: flexibleSpace,
+    bottom: bottom,
+    backgroundColor: Theme.of(context).colorScheme.surface,
+    centerTitle: centerTitle,
+    elevation: 0,
+    scrolledUnderElevation: 0,
+  );
 }

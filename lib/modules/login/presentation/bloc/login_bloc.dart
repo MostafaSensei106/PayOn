@@ -4,16 +4,15 @@ import 'login_event.dart';
 import 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-
   LoginBloc({required this.loginUseCase}) : super(LoginInitial()) {
-    on<LoginSubmitted>((event, emit) async {
+    on<LoginSubmitted>((final event, final emit) async {
       emit(LoginLoading());
       final result = await loginUseCase(
         LoginParams(email: event.email, password: event.password),
       );
       result.fold(
-        (failure) => emit(LoginFailure(failure.message)),
-        (user) => emit(LoginSuccess(user)),
+        (final failure) => emit(LoginFailure(failure.message)),
+        (final user) => emit(LoginSuccess(user)),
       );
     });
   }

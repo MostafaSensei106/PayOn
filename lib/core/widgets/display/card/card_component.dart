@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../../../constants/app_config.dart';
 
 class CardComponent extends StatelessWidget {
-
   const CardComponent({
-    required this.child, super.key,
+    required this.child,
+    super.key,
     this.padding,
     this.color,
   });
@@ -13,12 +13,12 @@ class CardComponent extends StatelessWidget {
   final Color? color;
 
   @override
-  Widget build(BuildContext context) => Container(
-      padding: padding ?? const EdgeInsets.all(AppConfig.padding),
-      decoration: BoxDecoration(
-        color: color ?? Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
-      ),
-      child: child,
-    );
+  Widget build(final BuildContext context) => Container(
+    padding: padding ?? const EdgeInsets.all(AppConfig.padding),
+    decoration: BoxDecoration(
+      color: color ?? Theme.of(context).colorScheme.surfaceContainer,
+      borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
+    ),
+    child: child,
+  );
 }

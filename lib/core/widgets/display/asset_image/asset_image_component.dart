@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AssetImageComponent extends StatelessWidget {
-
   const AssetImageComponent({
-    required this.assetName, super.key,
+    required this.assetName,
+    super.key,
     this.width,
     this.height,
     this.fit,
@@ -14,5 +14,6 @@ class AssetImageComponent extends StatelessWidget {
   final BoxFit? fit;
 
   @override
-  Widget build(BuildContext context) => Image.asset(assetName, width: width, height: height, fit: fit);
+  Widget build(final BuildContext context) =>
+      Image.asset(assetName, width: width, height: height, fit: fit);
 }

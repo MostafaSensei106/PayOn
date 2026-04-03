@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final cardController = PageController();
 
@@ -86,25 +86,25 @@ class HomePage extends StatelessWidget {
                 tag: 'profile',
                 flightShuttleBuilder:
                     (
-                      flightContext,
-                      animation,
-                      flightDirection,
-                      fromHeroContext,
-                      toHeroContext,
+                      final flightContext,
+                      final animation,
+                      final flightDirection,
+                      final fromHeroContext,
+                      final toHeroContext,
                     ) => AnimatedBuilder(
-                        animation: animation,
-                        builder: (context, child) => Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                Tween<double>(
-                                  begin: 100,
-                                  end: 0,
-                                ).evaluate(animation),
-                              ),
-                            ),
-                            child: toHeroContext.widget,
+                      animation: animation,
+                      builder: (final context, final child) => Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            Tween<double>(
+                              begin: 100,
+                              end: 0,
+                            ).evaluate(animation),
                           ),
+                        ),
+                        child: toHeroContext.widget,
                       ),
+                    ),
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
@@ -112,7 +112,7 @@ class HomePage extends StatelessWidget {
                       AppConfig.outBorderRadius,
                     ),
                     onTap: () {
-                      HapticFeedback.mediumImpact();
+                      HapticFeedback.vibrate();
                       context.push(AppRouter.profile);
                     },
                     child: const AvatarComponent(
@@ -145,7 +145,8 @@ class HomePage extends StatelessWidget {
                       child: PageView.builder(
                         controller: cardController,
                         itemCount: accounts.length,
-                        itemBuilder: (context, index) => AccountBalanceCard(account: accounts[index]),
+                        itemBuilder: (final context, final index) =>
+                            AccountBalanceCard(account: accounts[index]),
                       ),
                     ),
                     const SizedBox(height: AppConfig.paddingHalf),

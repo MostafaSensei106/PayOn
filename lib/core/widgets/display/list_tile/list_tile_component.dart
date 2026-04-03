@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../../../constants/app_config.dart';
 
 class ListTileComponent extends StatelessWidget {
-
   const ListTileComponent({
-    required this.title, super.key,
+    required this.title,
+    super.key,
     this.subtitle,
     this.leading,
     this.trailing,
@@ -17,14 +17,14 @@ class ListTileComponent extends StatelessWidget {
   final VoidCallback? onTap;
 
   @override
-  Widget build(BuildContext context) => ListTile(
-      title: title,
-      subtitle: subtitle,
-      leading: leading,
-      trailing: trailing,
-      onTap: onTap,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
-      ),
-    );
+  Widget build(final BuildContext context) => ListTile(
+    title: title,
+    subtitle: subtitle,
+    leading: leading,
+    trailing: trailing,
+    onTap: onTap,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
+    ),
+  );
 }

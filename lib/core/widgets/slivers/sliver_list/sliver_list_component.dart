@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SliverListComponent extends StatelessWidget {
-
   const SliverListComponent({
     super.key,
     this.children,
@@ -13,7 +12,7 @@ class SliverListComponent extends StatelessWidget {
   final int? itemCount;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     if (children != null) {
       return SliverList(delegate: SliverChildListDelegate(children!));
     } else {

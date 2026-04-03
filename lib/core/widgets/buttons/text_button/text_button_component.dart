@@ -3,16 +3,20 @@ import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
 
 class TextButtonComponent extends StatelessWidget {
-
   const TextButtonComponent({
-    required this.label, required this.onPressed, super.key,
+    required this.label,
+    required this.onPressed,
+    super.key,
     this.useInBorderRadius = false,
     this.backgroundColor,
     this.foregroundColor,
   }) : icon = null;
 
   const TextButtonComponent.icon({
-    required this.icon, required this.label, required this.onPressed, super.key,
+    required this.icon,
+    required this.label,
+    required this.onPressed,
+    super.key,
     this.useInBorderRadius = false,
     this.backgroundColor,
     this.foregroundColor,
@@ -25,7 +29,7 @@ class TextButtonComponent extends StatelessWidget {
   final Color? foregroundColor;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final style = TextButton.styleFrom(
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,

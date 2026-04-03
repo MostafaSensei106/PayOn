@@ -10,7 +10,13 @@ import '../../../../l10n/app_localizations.dart';
 
 class StepOneAccountDetails extends StatelessWidget {
   const StepOneAccountDetails({
-    required this.termsAccepted, required this.onTermsChanged, required this.privacyAccepted, required this.onPrivacyChanged, required this.allAccepted, required this.onAllChanged, super.key,
+    required this.termsAccepted,
+    required this.onTermsChanged,
+    required this.privacyAccepted,
+    required this.onPrivacyChanged,
+    required this.allAccepted,
+    required this.onAllChanged,
+    super.key,
   });
 
   final bool termsAccepted;
@@ -21,7 +27,7 @@ class StepOneAccountDetails extends StatelessWidget {
   final ValueChanged<bool?> onAllChanged;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(

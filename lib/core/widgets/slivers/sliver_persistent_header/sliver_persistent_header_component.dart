@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SliverPersistentHeaderComponent extends StatelessWidget {
-
   const SliverPersistentHeaderComponent({
-    required this.child, required this.minExtent, required this.maxExtent, super.key,
+    required this.child,
+    required this.minExtent,
+    required this.maxExtent,
+    super.key,
     this.pinned = false,
     this.floating = false,
   });
@@ -14,19 +16,18 @@ class SliverPersistentHeaderComponent extends StatelessWidget {
   final bool floating;
 
   @override
-  Widget build(BuildContext context) => SliverPersistentHeader(
-      pinned: pinned,
-      floating: floating,
-      delegate: _SliverPersistentHeaderDelegate(
-        minExtent: minExtent,
-        maxExtent: maxExtent,
-        child: child,
-      ),
-    );
+  Widget build(final BuildContext context) => SliverPersistentHeader(
+    pinned: pinned,
+    floating: floating,
+    delegate: _SliverPersistentHeaderDelegate(
+      minExtent: minExtent,
+      maxExtent: maxExtent,
+      child: child,
+    ),
+  );
 }
 
 class _SliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
-
   _SliverPersistentHeaderDelegate({
     required this.child,
     required this.minExtent,
@@ -40,13 +41,14 @@ class _SliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(
-    BuildContext context,
-    double shrinkOffset,
-    bool overlapsContent,
+    final BuildContext context,
+    final double shrinkOffset,
+    final bool overlapsContent,
   ) => SizedBox.expand(child: child);
 
   @override
-  bool shouldRebuild(_SliverPersistentHeaderDelegate oldDelegate) => child != oldDelegate.child ||
-        minExtent != oldDelegate.minExtent ||
-        maxExtent != oldDelegate.maxExtent;
+  bool shouldRebuild(final _SliverPersistentHeaderDelegate oldDelegate) =>
+      child != oldDelegate.child ||
+      minExtent != oldDelegate.minExtent ||
+      maxExtent != oldDelegate.maxExtent;
 }

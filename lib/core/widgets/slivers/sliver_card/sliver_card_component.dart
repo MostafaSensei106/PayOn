@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../../display/card/card_component.dart';
 
 class SliverCardComponent extends StatelessWidget {
-
   const SliverCardComponent({
-    required this.child, super.key,
+    required this.child,
+    super.key,
     this.padding,
     this.color,
   });
@@ -13,7 +13,7 @@ class SliverCardComponent extends StatelessWidget {
   final Color? color;
 
   @override
-  Widget build(BuildContext context) => SliverToBoxAdapter(
-      child: CardComponent(padding: padding, color: color, child: child),
-    );
+  Widget build(final BuildContext context) => SliverToBoxAdapter(
+    child: CardComponent(padding: padding, color: color, child: child),
+  );
 }

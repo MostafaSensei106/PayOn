@@ -34,26 +34,27 @@ class AppRouter {
     routes: [
       GoRoute(
         path: welcome,
-        pageBuilder: (context, state) =>
+        pageBuilder: (final context, final state) =>
             const CupertinoPage(child: WelcomePage()),
       ),
       GoRoute(
         path: login,
-        pageBuilder: (context, state) =>
+        pageBuilder: (final context, final state) =>
             const CupertinoPage(child: LoginPage()),
       ),
       GoRoute(
         path: getStarted,
-        pageBuilder: (context, state) =>
+        pageBuilder: (final context, final state) =>
             const CupertinoPage(child: GetStartedPage()),
       ),
       GoRoute(
         path: home,
-        pageBuilder: (context, state) => const CupertinoPage(child: MainPage()),
+        pageBuilder: (final context, final state) =>
+            const CupertinoPage(child: MainPage()),
       ),
       GoRoute(
         path: profile,
-        pageBuilder: (context, state) =>
+        pageBuilder: (final context, final state) =>
             const CupertinoPage(child: ProfilePage()),
       ),
     ],

@@ -38,33 +38,33 @@ class SidePageSliverAppBarComponent extends StatelessWidget {
   /// Checks if the current locale is Arabic.
   ///
   /// Returns `true` if the language code is 'ar', otherwise `false`.
-  bool cheakLocation(BuildContext context) {
+  bool cheakLocation(final BuildContext context) {
     final locale = Localizations.localeOf(context);
     final isArabic = locale.languageCode == 'ar';
     return isArabic;
   }
 
   @override
-  Widget build(BuildContext context) => SliverAppBar(
-      title: title,
-      leading: _buildSidePageAppBarIcon(
-        context,
-        cheakLocation(context)
-            ? Icons.keyboard_double_arrow_right_rounded
-            : Icons.keyboard_double_arrow_left_rounded,
-      ),
-      actions: actions,
-      pinned: pinned,
-      floating: floating,
-      snap: snap,
-      expandedHeight: expandedHeight,
-      flexibleSpace: flexibleSpace,
-      bottom: bottom,
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      centerTitle: centerTitle,
-      elevation: 0,
-      scrolledUnderElevation: 0,
-    );
+  Widget build(final BuildContext context) => SliverAppBar(
+    title: title,
+    leading: _buildSidePageAppBarIcon(
+      context,
+      cheakLocation(context)
+          ? Icons.keyboard_double_arrow_right_rounded
+          : Icons.keyboard_double_arrow_left_rounded,
+    ),
+    actions: actions,
+    pinned: pinned,
+    floating: floating,
+    snap: snap,
+    expandedHeight: expandedHeight,
+    flexibleSpace: flexibleSpace,
+    bottom: bottom,
+    backgroundColor: Theme.of(context).colorScheme.surface,
+    centerTitle: centerTitle,
+    elevation: 0,
+    scrolledUnderElevation: 0,
+  );
 
   /// Builds the icon button for the app bar.
   Widget _buildSidePageAppBarIcon(

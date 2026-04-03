@@ -8,7 +8,7 @@ class StepThreeOTP extends StatelessWidget {
   const StepThreeOTP({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(
@@ -22,7 +22,7 @@ class StepThreeOTP extends StatelessWidget {
               context,
             ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
-          OtpFieldComponent(onCompleted: (otp) {}),
+          OtpFieldComponent(onCompleted: (final otp) {}),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
