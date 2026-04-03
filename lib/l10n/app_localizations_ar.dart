@@ -208,4 +208,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get otp_code => 'رمز التحقق (OTP)';
+
+  @override
+  String get code_expires_in => 'ينتهي الرمز خلال';
+
+  @override
+  String get resend_code => 'إعادة إرسال الرمز';
+
+  @override
+  String get i_accept_terms_and_conditions => 'أوافق على الشروط والأحكام';
+
+  @override
+  String get please_read_terms_and_conditions => 'يرجى قراءة الشروط والأحكام';
+
+  @override
+  String get i_accept_privacy_policy => 'أوافق على سياسة الخصوصية';
+
+  @override
+  String get accept_all => 'قبول الكل';
+
+  @override
+  String get please_read_privacy_policy => 'يرجى قراءة سياسة الخصوصية';
 }

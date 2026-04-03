@@ -18,7 +18,7 @@ class StepTwoKYC extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppConfig.padding),
       child: Column(
         spacing: AppConfig.paddingHalf,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             l10n.tier_1_title,

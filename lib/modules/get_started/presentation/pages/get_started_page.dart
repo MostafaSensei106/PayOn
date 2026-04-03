@@ -20,6 +20,8 @@ class _GetStartedPageState extends State<GetStartedPage> {
 
   int _currentPage = 0;
   bool _termsAccepted = false;
+  bool _privacyAccepted = false;
+  bool _allAccepted = false;
 
   void _previousPage() {
     _pageController.previousPage(
@@ -48,7 +50,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
           Expanded(
             child: CustomScrollView(
               controller: PageController(),
-              physics: const BouncingScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               slivers: [
                 GetStartedHeader(
                   currentPage: _currentPage,
@@ -62,16 +64,32 @@ class _GetStartedPageState extends State<GetStartedPage> {
                         setState(() => _currentPage = index),
 
                     children: [
-                      const StepOneAccountDetails(),
-                      StepTwoKYC(dateController: _dateController),
-                      StepThreeOTP(
+                      StepOneAccountDetails(
                         termsAccepted: _termsAccepted,
                         onTermsChanged: (val) {
                           setState(() {
                             _termsAccepted = val ?? false;
+                            _allAccepted = _termsAccepted && _privacyAccepted;
+                          });
+                        },
+                        privacyAccepted: _privacyAccepted,
+                        onPrivacyChanged: (val) {
+                          setState(() {
+                            _privacyAccepted = val ?? false;
+                            _allAccepted = _termsAccepted && _privacyAccepted;
+                          });
+                        },
+                        allAccepted: _allAccepted,
+                        onAllChanged: (val) {
+                          setState(() {
+                            _allAccepted = val ?? false;
+                            _termsAccepted = _allAccepted;
+                            _privacyAccepted = _allAccepted;
                           });
                         },
                       ),
+                      StepTwoKYC(dateController: _dateController),
+                      const StepThreeOTP(),
                     ],
                   ),
                 ),
@@ -82,6 +100,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
             currentPage: _currentPage,
             onPrevious: _previousPage,
             onNext: _nextPage,
+            isEnabled: _currentPage != 0 || (_termsAccepted && _privacyAccepted),
           ),
         ],
       ),

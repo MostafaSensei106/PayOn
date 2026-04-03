@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:payon/core/constants/app_config.dart';
 
 class CheckboxComponent extends StatelessWidget {
-  final String label;
+  final String title;
   final bool value;
   final bool useInBorderRadius;
   final void Function(bool?) onChanged;
 
   const CheckboxComponent({
     super.key,
-    required this.label,
+    required this.title,
     required this.value,
     required this.onChanged,
     this.useInBorderRadius = false,
@@ -21,7 +21,7 @@ class CheckboxComponent extends StatelessWidget {
     return CheckboxListTile(
       contentPadding: EdgeInsets.zero,
       controlAffinity: ListTileControlAffinity.leading,
-      title: Text(label),
+      title: Text(title),
       value: value,
       onChanged: (value) {
         HapticFeedback.vibrate();

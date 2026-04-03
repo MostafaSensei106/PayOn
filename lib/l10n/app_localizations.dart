@@ -493,6 +493,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'OTP Code'**
   String get otp_code;
+
+  /// No description provided for @code_expires_in.
+  ///
+  /// In en, this message translates to:
+  /// **'Code expires in'**
+  String get code_expires_in;
+
+  /// No description provided for @resend_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend Code'**
+  String get resend_code;
+
+  /// No description provided for @i_accept_terms_and_conditions.
+  ///
+  /// In en, this message translates to:
+  /// **'I accept the Terms and Conditions'**
+  String get i_accept_terms_and_conditions;
+
+  /// No description provided for @please_read_terms_and_conditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Please read the Terms and Conditions'**
+  String get please_read_terms_and_conditions;
+
+  /// No description provided for @i_accept_privacy_policy.
+  ///
+  /// In en, this message translates to:
+  /// **'I accept the Privacy Policy'**
+  String get i_accept_privacy_policy;
+
+  /// No description provided for @accept_all.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept All'**
+  String get accept_all;
+
+  /// No description provided for @please_read_privacy_policy.
+  ///
+  /// In en, this message translates to:
+  /// **'Please read the Privacy Policy'**
+  String get please_read_privacy_policy;
 }
 
 class _AppLocalizationsDelegate

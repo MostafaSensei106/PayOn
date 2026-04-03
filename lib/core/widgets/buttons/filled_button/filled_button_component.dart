@@ -5,6 +5,7 @@ import 'package:payon/core/constants/app_config.dart';
 class FilledButtonComponent extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
+  final bool isEnabled;
   final bool useInBorderRadius;
   final IconData? icon;
   final double? width;
@@ -16,6 +17,7 @@ class FilledButtonComponent extends StatelessWidget {
     super.key,
     required this.label,
     required this.onPressed,
+    this.isEnabled = true,
     this.useInBorderRadius = false,
     this.width,
     this.height,
@@ -28,6 +30,7 @@ class FilledButtonComponent extends StatelessWidget {
     required this.icon,
     required this.label,
     required this.onPressed,
+    this.isEnabled = true,
     this.useInBorderRadius = false,
     this.width,
     this.height,
@@ -39,18 +42,22 @@ class FilledButtonComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return icon == null
         ? FilledButton(
-            onPressed: () {
-              HapticFeedback.vibrate();
-              onPressed();
-            },
+            onPressed: isEnabled
+                ? () {
+                  HapticFeedback.vibrate();
+                  onPressed();
+                }
+                : null,
             style: _getButtonStyle(context),
             child: Text(label),
           )
         : FilledButton.icon(
-            onPressed: () {
-              HapticFeedback.vibrate();
-              onPressed();
-            },
+            onPressed: isEnabled
+                ? () {
+                  HapticFeedback.vibrate();
+                  onPressed();
+                }
+                : null,
             style: _getButtonStyle(context),
             icon: Icon(icon, size: AppConfig.iconSize),
             label: Text(label),

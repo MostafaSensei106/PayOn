@@ -63,5 +63,12 @@
   "residential_address": "عنوان السكن",
   "upload_address_proof": "تحميل إثبات العنوان",
   "otp_message": "أدخل الرمز المكون من 6 أرقام المرسل إلى هاتفك",
-  "otp_code": "رمز التحقق (OTP)"
+  "otp_code": "رمز التحقق (OTP)",
+  "code_expires_in": "ينتهي الرمز خلال",
+  "resend_code": "إعادة إرسال الرمز",
+  "i_accept_terms_and_conditions": "أوافق على الشروط والأحكام",
+  "please_read_terms_and_conditions": "يرجى قراءة الشروط والأحكام",
+  "i_accept_privacy_policy": "أوافق على سياسة الخصوصية",
+  "accept_all": "قبول الكل",
+  "please_read_privacy_policy": "يرجى قراءة سياسة الخصوصية"
 }

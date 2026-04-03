@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:payon/core/constants/app_config.dart';
 import 'package:payon/core/widgets/buttons/text_button/text_button_component.dart';
-import 'package:payon/core/widgets/inputs/checkbox/checkbox_component.dart';
 import 'package:payon/core/widgets/inputs/otp_field/otp_field_component.dart';
 import 'package:payon/l10n/app_localizations.dart';
 
 class StepThreeOTP extends StatelessWidget {
-  const StepThreeOTP({
-    super.key,
-    required this.termsAccepted,
-    required this.onTermsChanged,
-  });
-
-  final bool termsAccepted;
-  final ValueChanged<bool?> onTermsChanged;
+  const StepThreeOTP({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +15,7 @@ class StepThreeOTP extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppConfig.padding),
       child: Column(
         spacing: AppConfig.paddingHalf,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             l10n.otp_message,
@@ -36,7 +28,7 @@ class StepThreeOTP extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Code expires in ',
+                '${l10n.code_expires_in} ',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Text(
@@ -48,11 +40,11 @@ class StepThreeOTP extends StatelessWidget {
               ),
             ],
           ),
-          TextButtonComponent(onPressed: () {}, label: 'Resend Code'),
-          CheckboxComponent(
-            label: l10n.terms_and_conditions,
-            value: termsAccepted,
-            onChanged: onTermsChanged,
+          Center(
+            child: TextButtonComponent(
+              onPressed: () {},
+              label: l10n.resend_code,
+            ),
           ),
         ],
       ),

@@ -208,4 +208,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get otp_code => 'OTP Code';
+
+  @override
+  String get code_expires_in => 'Code expires in';
+
+  @override
+  String get resend_code => 'Resend Code';
+
+  @override
+  String get i_accept_terms_and_conditions =>
+      'I accept the Terms and Conditions';
+
+  @override
+  String get please_read_terms_and_conditions =>
+      'Please read the Terms and Conditions';
+
+  @override
+  String get i_accept_privacy_policy => 'I accept the Privacy Policy';
+
+  @override
+  String get accept_all => 'Accept All';
+
+  @override
+  String get please_read_privacy_policy => 'Please read the Privacy Policy';
 }

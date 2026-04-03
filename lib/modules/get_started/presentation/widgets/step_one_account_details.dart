@@ -6,8 +6,25 @@ import 'package:payon/core/widgets/inputs/text_field/text_field_component.dart';
 import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
 import 'package:payon/l10n/app_localizations.dart';
 
+import 'package:payon/core/widgets/inputs/checkbox/checkbox_component.dart';
+
 class StepOneAccountDetails extends StatelessWidget {
-  const StepOneAccountDetails({super.key});
+  const StepOneAccountDetails({
+    super.key,
+    required this.termsAccepted,
+    required this.onTermsChanged,
+    required this.privacyAccepted,
+    required this.onPrivacyChanged,
+    required this.allAccepted,
+    required this.onAllChanged,
+  });
+
+  final bool termsAccepted;
+  final bool privacyAccepted;
+  final bool allAccepted;
+  final ValueChanged<bool?> onTermsChanged;
+  final ValueChanged<bool?> onPrivacyChanged;
+  final ValueChanged<bool?> onAllChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +34,7 @@ class StepOneAccountDetails extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppConfig.padding),
       child: Column(
         spacing: AppConfig.paddingHalf,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             l10n.personal_details,
@@ -52,6 +69,27 @@ class StepOneAccountDetails extends StatelessWidget {
           ),
           PasswordFieldComponent(label: l10n.password),
           PasswordFieldComponent(label: l10n.confirm_password),
+          Column(
+            children: [
+              CheckboxComponent(
+                title: l10n.i_accept_terms_and_conditions,
+                value: termsAccepted,
+                onChanged: onTermsChanged,
+              ),
+              SpacingComponent.horizontal(4),
+              CheckboxComponent(
+                title: l10n.i_accept_privacy_policy,
+                value: privacyAccepted,
+                onChanged: onPrivacyChanged,
+              ),
+              const Divider(),
+              CheckboxComponent(
+                title: l10n.accept_all,
+                value: allAccepted,
+                onChanged: onAllChanged,
+              ),
+            ],
+          ),
         ],
       ),
     );

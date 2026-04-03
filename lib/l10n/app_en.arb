@@ -64,5 +64,12 @@
   "residential_address": "Residential Address",
   "upload_address_proof": "Upload Proof of Address",
   "otp_message": "Enter the 6-digit code sent to your phone",
-  "otp_code": "OTP Code"
+  "otp_code": "OTP Code",
+  "code_expires_in": "Code expires in",
+  "resend_code": "Resend Code",
+  "i_accept_terms_and_conditions": "I accept the Terms and Conditions",
+  "please_read_terms_and_conditions": "Please read the Terms and Conditions",
+  "i_accept_privacy_policy": "I accept the Privacy Policy",
+  "accept_all": "Accept All",
+  "please_read_privacy_policy": "Please read the Privacy Policy"
 }

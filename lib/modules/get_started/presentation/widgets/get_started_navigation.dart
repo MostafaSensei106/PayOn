@@ -12,11 +12,13 @@ class GetStartedNavigation extends StatelessWidget {
     required this.currentPage,
     required this.onPrevious,
     required this.onNext,
+    this.isEnabled = true,
   });
 
   final int currentPage;
   final VoidCallback onPrevious;
   final VoidCallback onNext;
+  final bool isEnabled;
 
   @override
   Widget build(BuildContext context) {
@@ -40,21 +42,16 @@ class GetStartedNavigation extends StatelessWidget {
             SpacingComponent.horizontal(AppConfig.paddingHalf),
           ],
           Expanded(
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 300),
-              transitionBuilder: (child, animation) {
-                return FadeTransition(opacity: animation, child: child);
-              },
-              child: FilledButtonComponent.icon(
-                key: ValueKey<int>(currentPage),
-                label: currentPage == 2 ? l10n.create_account : l10n.next,
-                icon: currentPage == 2
-                    ? Iconsax.user_add_copy
-                    : (isRtl
-                          ? Iconsax.arrow_left_2_copy
-                          : Iconsax.arrow_right_3_copy),
-                onPressed: onNext,
-              ),
+            child: FilledButtonComponent.icon(
+              key: ValueKey<int>(currentPage),
+              label: currentPage == 2 ? l10n.create_account : l10n.next,
+              icon: currentPage == 2
+                  ? Iconsax.user_add_copy
+                  : (isRtl
+                        ? Iconsax.arrow_left_2_copy
+                        : Iconsax.arrow_right_3_copy),
+              onPressed: onNext,
+              isEnabled: isEnabled,
             ),
           ),
         ],
