@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -111,9 +113,9 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(
                       AppConfig.outBorderRadius,
                     ),
-                    onTap: () {
-                      HapticFeedback.vibrate();
-                      context.push(AppRouter.profile);
+                    onTap: () async {
+                      unawaited(HapticFeedback.vibrate());
+                      await context.push(AppRouter.profile);
                     },
                     child: const AvatarComponent(
                       imageUrl:

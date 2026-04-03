@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
@@ -70,7 +72,7 @@ class IconButtonComponent extends StatelessWidget {
         return IconButton(
           icon: Icon(icon, size: iconSize ?? AppConfig.iconSize),
           onPressed: () {
-            HapticFeedback.vibrate();
+            unawaited(HapticFeedback.vibrate());
             onPressed();
           },
           color:
@@ -80,7 +82,7 @@ class IconButtonComponent extends StatelessWidget {
         return IconButton.filled(
           icon: Icon(icon, size: iconSize ?? AppConfig.iconSize),
           onPressed: () {
-            HapticFeedback.vibrate();
+            unawaited(HapticFeedback.vibrate());
             onPressed();
           },
           style: IconButton.styleFrom(
@@ -102,7 +104,7 @@ class IconButtonComponent extends StatelessWidget {
         return IconButton.filledTonal(
           icon: Icon(icon, size: iconSize ?? AppConfig.iconSize),
           onPressed: () {
-            HapticFeedback.vibrate();
+            unawaited(HapticFeedback.vibrate());
             onPressed();
           },
           style: IconButton.styleFrom(
@@ -123,7 +125,7 @@ class IconButtonComponent extends StatelessWidget {
         return IconButton.outlined(
           icon: Icon(icon, size: iconSize ?? AppConfig.iconSize),
           onPressed: () {
-            HapticFeedback.vibrate();
+            unawaited(HapticFeedback.vibrate());
             onPressed();
           },
           style: IconButton.styleFrom(

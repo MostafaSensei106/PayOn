@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_positional_boolean_parameters
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
@@ -24,7 +26,7 @@ class CheckboxComponent extends StatelessWidget {
     title: Text(title),
     value: value,
     onChanged: (final value) {
-      HapticFeedback.vibrate();
+      unawaited(HapticFeedback.vibrate());
       onChanged(value);
     },
     shape: RoundedRectangleBorder(

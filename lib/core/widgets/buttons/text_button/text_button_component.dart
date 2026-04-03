@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
@@ -43,7 +45,7 @@ class TextButtonComponent extends StatelessWidget {
     return icon == null
         ? TextButton(
             onPressed: () {
-              HapticFeedback.vibrate();
+              unawaited(HapticFeedback.vibrate());
               onPressed();
             },
             style: style,
@@ -51,7 +53,7 @@ class TextButtonComponent extends StatelessWidget {
           )
         : TextButton.icon(
             onPressed: () {
-              HapticFeedback.vibrate();
+              unawaited(HapticFeedback.vibrate());
               onPressed();
             },
             style: style,

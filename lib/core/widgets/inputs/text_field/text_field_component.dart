@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
@@ -32,7 +34,7 @@ class TextFieldComponent extends StatelessWidget {
     obscureText: obscureText,
     readOnly: readOnly,
     onTap: () {
-      HapticFeedback.vibrate();
+      unawaited(HapticFeedback.vibrate());
       onTap?.call();
     },
     decoration: InputDecoration(

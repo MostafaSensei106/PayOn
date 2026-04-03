@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:go_router/go_router.dart';
@@ -22,7 +24,7 @@ class SidePageAppBarComponent extends StatelessWidget
 
   /// Navigates back to the previous screen with haptic feedback.
   void leave(final BuildContext context) {
-    HapticFeedback.vibrate();
+    unawaited(HapticFeedback.vibrate());
     context.pop();
   }
 

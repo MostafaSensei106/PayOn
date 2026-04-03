@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
@@ -42,7 +44,7 @@ class OutlinedButtonComponent extends StatelessWidget {
       ? OutlinedButton(
           onPressed: isEnabled
               ? () {
-                  HapticFeedback.vibrate();
+                  unawaited(HapticFeedback.vibrate());
                   onPressed();
                 }
               : null,
@@ -52,7 +54,7 @@ class OutlinedButtonComponent extends StatelessWidget {
       : OutlinedButton.icon(
           onPressed: isEnabled
               ? () {
-                  HapticFeedback.vibrate();
+                  unawaited(HapticFeedback.vibrate());
                   onPressed();
                 }
               : null,

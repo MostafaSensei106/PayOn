@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -153,7 +155,7 @@ class ProfilePage extends StatelessWidget {
         icon: const Icon(Iconsax.edit_2_copy),
         label: const Text('Edit Profile'),
         onPressed: () {
-          HapticFeedback.mediumImpact();
+          unawaited(HapticFeedback.vibrate());
         },
         elevation: 0,
       ),
