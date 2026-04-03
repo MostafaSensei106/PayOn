@@ -24,10 +24,10 @@ class _PasswordFieldComponentState extends State<PasswordFieldComponent> {
     return TextFieldComponent(
       label: widget.label,
       controller: widget.controller,
-      prefixIcon: Iconsax.lock,
+      prefixIcon: Iconsax.lock_1_copy,
       obscureText: _obscureText,
       suffixIcon: IconButton(
-        icon: Icon(_obscureText ? Iconsax.eye : Iconsax.eye_slash),
+        icon: Icon(_obscureText ? Iconsax.eye_copy : Iconsax.eye_slash_copy),
         onPressed: () => setState(() => _obscureText = !_obscureText),
       ),
     );

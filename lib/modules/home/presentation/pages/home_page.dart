@@ -159,8 +159,8 @@ class HomePage extends StatelessWidget {
                       controller: cardController,
                       count: accounts.length,
                       effect: ScrollingDotsEffect(
-                        dotHeight: 6.h,
-                        dotWidth: 6.w,
+                        dotHeight: 6,
+                        dotWidth: 6,
                         activeDotColor: Theme.of(context).colorScheme.primary,
                       ),
                     ),

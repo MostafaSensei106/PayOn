@@ -355,6 +355,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Money Transfer'**
   String get money_transfer;
+
+  /// No description provided for @first_name.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name'**
+  String get first_name;
+
+  /// No description provided for @last_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get last_name;
+
+  /// No description provided for @confirm_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirm_password;
+
+  /// No description provided for @terms_and_conditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms and Conditions'**
+  String get terms_and_conditions;
+
+  /// No description provided for @create_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get create_account;
+
+  /// No description provided for @step.
+  ///
+  /// In en, this message translates to:
+  /// **'Step'**
+  String get step;
+
+  /// No description provided for @off.
+  ///
+  /// In en, this message translates to:
+  /// **'of'**
+  String get off;
+
+  /// No description provided for @account_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Details'**
+  String get account_details;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @tier_1_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Tier 1: Basic Verification'**
+  String get tier_1_title;
+
+  /// No description provided for @full_name_id.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Name (as in ID)'**
+  String get full_name_id;
+
+  /// No description provided for @dob.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of Birth'**
+  String get dob;
+
+  /// No description provided for @nationality.
+  ///
+  /// In en, this message translates to:
+  /// **'Nationality'**
+  String get nationality;
+
+  /// No description provided for @tier_2_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Tier 2: Identity Document'**
+  String get tier_2_title;
+
+  /// No description provided for @national_id_passport.
+  ///
+  /// In en, this message translates to:
+  /// **'National ID / Passport Number'**
+  String get national_id_passport;
+
+  /// No description provided for @personal_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Details'**
+  String get personal_details;
+
+  /// No description provided for @upload_id.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Government ID'**
+  String get upload_id;
+
+  /// No description provided for @tier_3_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Tier 3: Address Verification'**
+  String get tier_3_title;
+
+  /// No description provided for @residential_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Residential Address'**
+  String get residential_address;
+
+  /// No description provided for @upload_address_proof.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Proof of Address'**
+  String get upload_address_proof;
+
+  /// No description provided for @otp_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the 6-digit code sent to your phone'**
+  String get otp_message;
+
+  /// No description provided for @otp_code.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP Code'**
+  String get otp_code;
 }
 
 class _AppLocalizationsDelegate

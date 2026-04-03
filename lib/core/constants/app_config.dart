@@ -43,7 +43,7 @@ class AppConfig {
   static const double buttonElevation = 2.0;
 
   /// Standard size for OTP input fields.
-  static const double otpFieldSize = 60.0;
+  static const double otpFieldSize = 50.0;
 
   /// Standard radius for avatars.
   static const double avatarRadius = 30.0;

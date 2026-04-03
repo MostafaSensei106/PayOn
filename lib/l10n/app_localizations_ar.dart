@@ -139,4 +139,73 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get money_transfer => 'تحويل أموال';
+
+  @override
+  String get first_name => 'الاسم الأول';
+
+  @override
+  String get last_name => 'اسم العائلة';
+
+  @override
+  String get confirm_password => 'تأكيد كلمة المرور';
+
+  @override
+  String get terms_and_conditions => 'الشروط والأحكام';
+
+  @override
+  String get create_account => 'إنشاء حساب';
+
+  @override
+  String get step => 'الخطوة';
+
+  @override
+  String get off => 'من';
+
+  @override
+  String get account_details => 'تفاصيل الحساب';
+
+  @override
+  String get back => 'العودة';
+
+  @override
+  String get next => 'التالي';
+
+  @override
+  String get tier_1_title => 'المستوى 1: التحقق الأساسي';
+
+  @override
+  String get full_name_id => 'الاسم الكامل (كما في الهوية)';
+
+  @override
+  String get dob => 'تاريخ الميلاد';
+
+  @override
+  String get nationality => 'الجنسية';
+
+  @override
+  String get tier_2_title => 'المستوى 2: وثيقة الهوية';
+
+  @override
+  String get national_id_passport => 'رقم الهوية الوطنية / جواز السفر';
+
+  @override
+  String get personal_details => 'التفاصيل الشخصية';
+
+  @override
+  String get upload_id => 'تحميل الهوية الحكومية';
+
+  @override
+  String get tier_3_title => 'المستوى 3: التحقق من العنوان';
+
+  @override
+  String get residential_address => 'عنوان السكن';
+
+  @override
+  String get upload_address_proof => 'تحميل إثبات العنوان';
+
+  @override
+  String get otp_message => 'أدخل الرمز المكون من 6 أرقام المرسل إلى هاتفك';
+
+  @override
+  String get otp_code => 'رمز التحقق (OTP)';
 }

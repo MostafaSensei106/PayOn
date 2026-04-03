@@ -139,4 +139,73 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get money_transfer => 'Money Transfer';
+
+  @override
+  String get first_name => 'First Name';
+
+  @override
+  String get last_name => 'Last Name';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get terms_and_conditions => 'Terms and Conditions';
+
+  @override
+  String get create_account => 'Create Account';
+
+  @override
+  String get step => 'Step';
+
+  @override
+  String get off => 'of';
+
+  @override
+  String get account_details => 'Account Details';
+
+  @override
+  String get back => 'Back';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get tier_1_title => 'Tier 1: Basic Verification';
+
+  @override
+  String get full_name_id => 'Full Name (as in ID)';
+
+  @override
+  String get dob => 'Date of Birth';
+
+  @override
+  String get nationality => 'Nationality';
+
+  @override
+  String get tier_2_title => 'Tier 2: Identity Document';
+
+  @override
+  String get national_id_passport => 'National ID / Passport Number';
+
+  @override
+  String get personal_details => 'Personal Details';
+
+  @override
+  String get upload_id => 'Upload Government ID';
+
+  @override
+  String get tier_3_title => 'Tier 3: Address Verification';
+
+  @override
+  String get residential_address => 'Residential Address';
+
+  @override
+  String get upload_address_proof => 'Upload Proof of Address';
+
+  @override
+  String get otp_message => 'Enter the 6-digit code sent to your phone';
+
+  @override
+  String get otp_code => 'OTP Code';
 }
