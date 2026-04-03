@@ -16,26 +16,23 @@ class QuickActionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButtonComponent.filled(
-            onPressed: onTap,
-            icon: icon,
-            foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-          ),
-          SizedBox(height: 4.h),
-          Text(
-            label,
-            style: Theme.of(
-              context,
-            ).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        IconButtonComponent.filled(
+          onPressed: onTap,
+          icon: icon,
+          foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        ),
+        SizedBox(height: 4.h),
+        Text(
+          label,
+          style: Theme.of(
+            context,
+          ).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold),
+        ),
+      ],
     );
   }
 }
