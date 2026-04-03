@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class BottomSheetComponent extends StatelessWidget {
+
+  const BottomSheetComponent({required this.child, super.key, this.title});
   final Widget child;
   final String? title;
 
-  const BottomSheetComponent({super.key, required this.child, this.title});
-
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(BuildContext context) => Container(
       padding: const EdgeInsets.all(AppConfig.padding),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
@@ -33,5 +32,4 @@ class BottomSheetComponent extends StatelessWidget {
         ],
       ),
     );
-  }
 }

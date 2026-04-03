@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_config.dart';
-import 'package:payon/core/widgets/inputs/password_field/password_field_component.dart';
-import 'package:payon/core/widgets/inputs/text_field/text_field_component.dart';
-import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
 
-import 'package:payon/core/widgets/inputs/checkbox/checkbox_component.dart';
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/widgets/inputs/checkbox/checkbox_component.dart';
+import '../../../../core/widgets/inputs/password_field/password_field_component.dart';
+import '../../../../core/widgets/inputs/text_field/text_field_component.dart';
+import '../../../../core/widgets/layout/spacing/spacing_component.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class StepOneAccountDetails extends StatelessWidget {
   const StepOneAccountDetails({
-    super.key,
-    required this.termsAccepted,
-    required this.onTermsChanged,
-    required this.privacyAccepted,
-    required this.onPrivacyChanged,
-    required this.allAccepted,
-    required this.onAllChanged,
+    required this.termsAccepted, required this.onTermsChanged, required this.privacyAccepted, required this.onPrivacyChanged, required this.allAccepted, required this.onAllChanged, super.key,
   });
 
   final bool termsAccepted;
@@ -31,7 +25,7 @@ class StepOneAccountDetails extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: AppConfig.padding),
+      padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
       child: Column(
         spacing: AppConfig.paddingHalf,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +44,7 @@ class StepOneAccountDetails extends StatelessWidget {
                   prefixIcon: Iconsax.user_copy,
                 ),
               ),
-              SpacingComponent.horizontal(AppConfig.paddingHalf),
+              const SpacingComponent.horizontal(AppConfig.paddingHalf),
               Expanded(
                 child: TextFieldComponent(
                   label: l10n.last_name,
@@ -76,7 +70,7 @@ class StepOneAccountDetails extends StatelessWidget {
                 value: termsAccepted,
                 onChanged: onTermsChanged,
               ),
-              SpacingComponent.horizontal(4),
+              const SpacingComponent.horizontal(4),
               CheckboxComponent(
                 title: l10n.i_accept_privacy_policy,
                 value: privacyAccepted,

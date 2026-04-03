@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SliverAppBarComponent extends StatelessWidget {
-  final Widget? title;
-  final Widget? leading;
-  final List<Widget>? actions;
-  final bool pinned;
-  final bool floating;
-  final bool snap;
-  final double? expandedHeight;
-  final Widget? flexibleSpace;
-  final PreferredSizeWidget? bottom;
-  final bool centerTitle;
 
   const SliverAppBarComponent({
     super.key,
@@ -25,10 +15,19 @@ class SliverAppBarComponent extends StatelessWidget {
     this.bottom,
     this.centerTitle = true,
   });
+  final Widget? title;
+  final Widget? leading;
+  final List<Widget>? actions;
+  final bool pinned;
+  final bool floating;
+  final bool snap;
+  final double? expandedHeight;
+  final Widget? flexibleSpace;
+  final PreferredSizeWidget? bottom;
+  final bool centerTitle;
 
   @override
-  Widget build(BuildContext context) {
-    return SliverAppBar(
+  Widget build(BuildContext context) => SliverAppBar(
       title: title,
       leading: leading,
       actions: actions,
@@ -43,5 +42,4 @@ class SliverAppBarComponent extends StatelessWidget {
       elevation: 0,
       scrolledUnderElevation: 0,
     );
-  }
 }

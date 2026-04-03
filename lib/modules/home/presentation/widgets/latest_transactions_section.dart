@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_config.dart';
-import 'package:payon/core/widgets/buttons/text_button/text_button_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class LatestTransactionsSection extends StatelessWidget {
   const LatestTransactionsSection({super.key});
@@ -14,7 +14,7 @@ class LatestTransactionsSection extends StatelessWidget {
     return SliverMainAxisGroup(
       slivers: [
         SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: AppConfig.padding),
+          padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
           sliver: SliverToBoxAdapter(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,8 +32,7 @@ class LatestTransactionsSection extends StatelessWidget {
         ),
         SliverList.separated(
           itemCount: 10,
-          itemBuilder: (context, index) {
-            return ListTile(
+          itemBuilder: (context, index) => ListTile(
               leading: CircleAvatar(
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                 child: Icon(
@@ -54,8 +53,7 @@ class LatestTransactionsSection extends StatelessWidget {
                   color: Theme.of(context).colorScheme.error,
                 ),
               ),
-            );
-          },
+            ),
           separatorBuilder: (context, index) =>
               const Divider(height: 1, indent: 70),
         ),

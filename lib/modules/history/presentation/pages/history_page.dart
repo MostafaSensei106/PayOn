@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/widgets/navigation/app_bar/app_bar_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
+import '../../../../core/widgets/navigation/app_bar/app_bar_component.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});

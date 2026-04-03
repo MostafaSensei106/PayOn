@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_config.dart';
-import 'package:payon/core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_component.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class GetStartedHeader extends StatelessWidget {
   const GetStartedHeader({
-    super.key,
-    required this.currentPage,
-    required this.pageController,
+    required this.currentPage, required this.pageController, super.key,
   });
 
   final int currentPage;
@@ -45,7 +44,7 @@ class GetStartedHeader extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: AppConfig.paddingQuarter),
+              padding: const EdgeInsets.symmetric(vertical: AppConfig.paddingQuarter),
               child: Text(
                 '${l10n.step} ${currentPage + 1} ${l10n.off} 3',
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(

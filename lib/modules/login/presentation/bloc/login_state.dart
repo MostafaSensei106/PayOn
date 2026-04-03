@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:payon/modules/login/domain/entities/user_entity.dart';
+import '../../domain/entities/user_entity.dart';
 
 abstract class LoginState extends Equatable {
   const LoginState();
@@ -13,18 +13,18 @@ class LoginInitial extends LoginState {}
 class LoginLoading extends LoginState {}
 
 class LoginSuccess extends LoginState {
-  final UserEntity user;
 
   const LoginSuccess(this.user);
+  final UserEntity user;
 
   @override
   List<Object?> get props => [user];
 }
 
 class LoginFailure extends LoginState {
-  final String error;
 
   const LoginFailure(this.error);
+  final String error;
 
   @override
   List<Object?> get props => [error];

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:payon/core/router/app_router.dart';
-import 'package:payon/modules/get_started/presentation/widgets/get_started_header.dart';
-import 'package:payon/modules/get_started/presentation/widgets/get_started_navigation.dart';
-import 'package:payon/modules/get_started/presentation/widgets/step_one_account_details.dart';
-import 'package:payon/modules/get_started/presentation/widgets/step_three_otp.dart';
-import 'package:payon/modules/get_started/presentation/widgets/step_two_kyc.dart';
+import '../../../../core/router/app_router.dart';
+import '../widgets/get_started_header.dart';
+import '../widgets/get_started_navigation.dart';
+import '../widgets/step_one_account_details.dart';
+import '../widgets/step_three_otp.dart';
+import '../widgets/step_two_kyc.dart';
 
 class GetStartedPage extends StatefulWidget {
   const GetStartedPage({super.key});
@@ -45,8 +45,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       body: Column(
         children: [
           Expanded(
@@ -102,12 +101,12 @@ class _GetStartedPageState extends State<GetStartedPage> {
             currentPage: _currentPage,
             onPrevious: _previousPage,
             onNext: _nextPage,
-            isEnabled: _currentPage != 0 || (_termsAccepted && _privacyAccepted),
+            isEnabled:
+                _currentPage != 0 || (_termsAccepted && _privacyAccepted),
           ),
         ],
       ),
     );
-  }
 
   @override
   void dispose() {

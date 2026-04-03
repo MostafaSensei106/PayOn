@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_config.dart';
-import 'package:payon/core/widgets/buttons/filled_button/filled_button_component.dart';
-import 'package:payon/core/widgets/buttons/outlined_button/outlined_button_component.dart';
-import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
+import '../../../../core/widgets/buttons/outlined_button/outlined_button_component.dart';
+import '../../../../core/widgets/layout/spacing/spacing_component.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class GetStartedNavigation extends StatelessWidget {
   const GetStartedNavigation({
-    super.key,
-    required this.currentPage,
-    required this.onPrevious,
-    required this.onNext,
+    required this.currentPage, required this.onPrevious, required this.onNext, super.key,
     this.isEnabled = true,
   });
 
@@ -26,7 +23,7 @@ class GetStartedNavigation extends StatelessWidget {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
 
     return Padding(
-      padding: EdgeInsets.all(AppConfig.paddingHalf),
+      padding: const EdgeInsets.all(AppConfig.paddingHalf),
       child: Row(
         children: [
           if (currentPage > 0 && currentPage != 2) ...[
@@ -39,7 +36,7 @@ class GetStartedNavigation extends StatelessWidget {
                 onPressed: onPrevious,
               ),
             ),
-            SpacingComponent.horizontal(AppConfig.paddingHalf),
+            const SpacingComponent.horizontal(AppConfig.paddingHalf),
           ],
           Expanded(
             child: FilledButtonComponent.icon(

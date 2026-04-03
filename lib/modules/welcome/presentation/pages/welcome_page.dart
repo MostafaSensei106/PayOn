@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_config.dart';
-import 'package:payon/core/router/app_router.dart';
-import 'package:payon/core/widgets/buttons/filled_button/filled_button_component.dart';
-import 'package:payon/core/widgets/buttons/outlined_button/outlined_button_component.dart';
-import 'package:payon/core/widgets/display/card/card_component.dart';
-import 'package:payon/core/widgets/display/list_tile/list_tile_component.dart';
-import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
-import 'package:payon/core/widgets/navigation/app_bar/app_bar_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/router/app_router.dart';
+import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
+import '../../../../core/widgets/buttons/outlined_button/outlined_button_component.dart';
+import '../../../../core/widgets/display/card/card_component.dart';
+import '../../../../core/widgets/display/list_tile/list_tile_component.dart';
+import '../../../../core/widgets/layout/spacing/spacing_component.dart';
+import '../../../../core/widgets/navigation/app_bar/app_bar_component.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -60,8 +60,7 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildWelcomeCard(IconData icon, String title, String subtitle) {
-    return CardComponent(
+  Widget _buildWelcomeCard(IconData icon, String title, String subtitle) => CardComponent(
       padding: EdgeInsets.zero,
       child: ListTileComponent(
         leading: Icon(icon, size: AppConfig.iconSize),
@@ -69,5 +68,4 @@ class WelcomePage extends StatelessWidget {
         subtitle: Text(subtitle),
       ),
     );
-  }
 }

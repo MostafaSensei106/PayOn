@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/widgets/inputs/text_field/text_field_component.dart';
+import '../text_field/text_field_component.dart';
 
 class PasswordFieldComponent extends StatefulWidget {
-  final String label;
-  final TextEditingController? controller;
 
   const PasswordFieldComponent({
-    super.key,
-    required this.label,
+    required this.label, super.key,
     this.controller,
   });
+  final String label;
+  final TextEditingController? controller;
 
   @override
   State<PasswordFieldComponent> createState() => _PasswordFieldComponentState();
@@ -20,8 +19,7 @@ class _PasswordFieldComponentState extends State<PasswordFieldComponent> {
   bool _obscureText = true;
 
   @override
-  Widget build(BuildContext context) {
-    return TextFieldComponent(
+  Widget build(BuildContext context) => TextFieldComponent(
       label: widget.label,
       controller: widget.controller,
       prefixIcon: Iconsax.lock_1_copy,
@@ -31,5 +29,4 @@ class _PasswordFieldComponentState extends State<PasswordFieldComponent> {
         onPressed: () => setState(() => _obscureText = !_obscureText),
       ),
     );
-  }
 }

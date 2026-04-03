@@ -1,18 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class AvatarComponent extends StatelessWidget {
-  final String imageUrl;
-  final double? radius;
-  final IconData? fallbackIcon;
 
   const AvatarComponent({
-    super.key,
-    required this.imageUrl,
+    required this.imageUrl, super.key,
     this.radius,
     this.fallbackIcon,
   });
+  final String imageUrl;
+  final double? radius;
+  final IconData? fallbackIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,6 @@ class AvatarComponent extends StatelessWidget {
         ),
         onBackgroundImageError: (exception, stackTrace) =>
             fallbackIcon != null ? Icon(fallbackIcon) : null,
-        child: null,
       ),
     );
   }

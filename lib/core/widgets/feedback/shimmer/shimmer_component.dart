@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ShimmerComponent extends StatelessWidget {
+
+  const ShimmerComponent({required this.child, super.key, this.enabled = true});
   final Widget child;
   final bool enabled;
 
-  const ShimmerComponent({super.key, required this.child, this.enabled = true});
-
   @override
-  Widget build(BuildContext context) {
-    return Skeletonizer(enabled: enabled, child: child);
-  }
+  Widget build(BuildContext context) => Skeletonizer(enabled: enabled, child: child);
 }

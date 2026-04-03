@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class ElevatedButtonComponent extends StatelessWidget {
+
+  const ElevatedButtonComponent({
+    required this.label, required this.onPressed, super.key,
+    this.useInBorderRadius = false,
+    this.width,
+    this.height,
+    this.backgroundColor,
+    this.foregroundColor,
+  }) : icon = null;
+
+  const ElevatedButtonComponent.icon({
+    required this.label, required this.onPressed, required this.icon, super.key,
+    this.useInBorderRadius = false,
+    this.width,
+    this.height,
+    this.backgroundColor,
+    this.foregroundColor,
+  });
   final String label;
   final VoidCallback onPressed;
   final bool useInBorderRadius;
@@ -12,32 +30,8 @@ class ElevatedButtonComponent extends StatelessWidget {
   final Color? backgroundColor;
   final Color? foregroundColor;
 
-  const ElevatedButtonComponent({
-    super.key,
-    required this.label,
-    required this.onPressed,
-    this.useInBorderRadius = false,
-    this.width,
-    this.height,
-    this.backgroundColor,
-    this.foregroundColor,
-  }) : icon = null;
-
-  const ElevatedButtonComponent.icon({
-    super.key,
-    required this.label,
-    required this.onPressed,
-    required this.icon,
-    this.useInBorderRadius = false,
-    this.width,
-    this.height,
-    this.backgroundColor,
-    this.foregroundColor,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return icon == null
+  Widget build(BuildContext context) => icon == null
         ? ElevatedButton(
             onPressed: () {
               HapticFeedback.vibrate();
@@ -55,10 +49,8 @@ class ElevatedButtonComponent extends StatelessWidget {
             icon: Icon(icon, size: AppConfig.iconSize),
             label: Text(label),
           );
-  }
 
-  ButtonStyle _getButtonStyle(BuildContext context) {
-    return ElevatedButton.styleFrom(
+  ButtonStyle _getButtonStyle(BuildContext context) => ElevatedButton.styleFrom(
       backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.surface,
       foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
       elevation: AppConfig.buttonElevation,
@@ -69,5 +61,4 @@ class ElevatedButtonComponent extends StatelessWidget {
             : BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
-  }
 }

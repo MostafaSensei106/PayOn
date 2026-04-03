@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class FilledButtonComponent extends StatelessWidget {
+
+  const FilledButtonComponent({
+    required this.label, required this.onPressed, super.key,
+    this.isEnabled = true,
+    this.useInBorderRadius = false,
+    this.width,
+    this.height,
+    this.backgroundColor,
+    this.foregroundColor,
+  }) : icon = null;
+
+  const FilledButtonComponent.icon({
+    required this.icon, required this.label, required this.onPressed, super.key,
+    this.isEnabled = true,
+    this.useInBorderRadius = false,
+    this.width,
+    this.height,
+    this.backgroundColor,
+    this.foregroundColor,
+  });
   final String label;
   final VoidCallback onPressed;
   final bool isEnabled;
@@ -13,40 +33,14 @@ class FilledButtonComponent extends StatelessWidget {
   final Color? backgroundColor;
   final Color? foregroundColor;
 
-  const FilledButtonComponent({
-    super.key,
-    required this.label,
-    required this.onPressed,
-    this.isEnabled = true,
-    this.useInBorderRadius = false,
-    this.width,
-    this.height,
-    this.backgroundColor,
-    this.foregroundColor,
-  }) : icon = null;
-
-  const FilledButtonComponent.icon({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.onPressed,
-    this.isEnabled = true,
-    this.useInBorderRadius = false,
-    this.width,
-    this.height,
-    this.backgroundColor,
-    this.foregroundColor,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return icon == null
+  Widget build(BuildContext context) => icon == null
         ? FilledButton(
             onPressed: isEnabled
                 ? () {
-                  HapticFeedback.vibrate();
-                  onPressed();
-                }
+                    HapticFeedback.vibrate();
+                    onPressed();
+                  }
                 : null,
             style: _getButtonStyle(context),
             child: Text(label),
@@ -54,18 +48,16 @@ class FilledButtonComponent extends StatelessWidget {
         : FilledButton.icon(
             onPressed: isEnabled
                 ? () {
-                  HapticFeedback.vibrate();
-                  onPressed();
-                }
+                    HapticFeedback.vibrate();
+                    onPressed();
+                  }
                 : null,
             style: _getButtonStyle(context),
             icon: Icon(icon, size: AppConfig.iconSize),
             label: Text(label),
           );
-  }
 
-  ButtonStyle _getButtonStyle(BuildContext context) {
-    return FilledButton.styleFrom(
+  ButtonStyle _getButtonStyle(BuildContext context) => FilledButton.styleFrom(
       backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.primary,
       foregroundColor:
           foregroundColor ?? Theme.of(context).colorScheme.onPrimary,
@@ -79,5 +71,4 @@ class FilledButtonComponent extends StatelessWidget {
             : BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
-  }
 }

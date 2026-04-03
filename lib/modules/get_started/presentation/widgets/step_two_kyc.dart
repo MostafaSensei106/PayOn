@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_config.dart';
-import 'package:payon/core/widgets/buttons/outlined_button/outlined_button_component.dart';
-import 'package:payon/core/widgets/inputs/text_field/text_field_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/widgets/buttons/outlined_button/outlined_button_component.dart';
+import '../../../../core/widgets/inputs/text_field/text_field_component.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class StepTwoKYC extends StatelessWidget {
-  const StepTwoKYC({super.key, required this.dateController});
+  const StepTwoKYC({required this.dateController, super.key});
 
   final TextEditingController dateController;
 
@@ -15,7 +15,7 @@ class StepTwoKYC extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: AppConfig.padding),
+      padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
       child: Column(
         spacing: AppConfig.paddingHalf,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,12 +38,11 @@ class StepTwoKYC extends StatelessWidget {
             onTap: () async {
               final date = await showDatePicker(
                 context: context,
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 initialDate: DateTime.now(),
                 firstDate: DateTime(1900),
                 lastDate: DateTime.now(),
-                builder: (context, child) {
-                  return Theme(
+                builder: (context, child) => Theme(
                     data: Theme.of(context).copyWith(
                       datePickerTheme: DatePickerThemeData(
                         backgroundColor: Theme.of(context).colorScheme.surface,
@@ -101,8 +100,7 @@ class StepTwoKYC extends StatelessWidget {
                       ),
                     ),
                     child: child!,
-                  );
-                },
+                  ),
               );
               if (date != null) {
                 dateController.text = date.toString().split(' ')[0];

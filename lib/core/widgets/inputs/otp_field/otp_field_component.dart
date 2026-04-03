@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class OtpFieldComponent extends StatefulWidget {
-  final int length;
-  final void Function(String) onCompleted;
 
   const OtpFieldComponent({
-    super.key,
+    required this.onCompleted, super.key,
     this.length = 6,
-    required this.onCompleted,
   });
+  final int length;
+  final void Function(String) onCompleted;
 
   @override
   State<OtpFieldComponent> createState() => _OtpFieldComponentState();
@@ -53,8 +52,7 @@ class _OtpFieldComponentState extends State<OtpFieldComponent> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Row(
+  Widget build(BuildContext context) => Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       spacing: AppConfig.paddingHalf,
       children: List.generate(
@@ -92,5 +90,4 @@ class _OtpFieldComponentState extends State<OtpFieldComponent> {
         ),
       ),
     );
-  }
 }

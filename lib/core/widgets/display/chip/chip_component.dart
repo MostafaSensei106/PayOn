@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ChipComponent extends StatelessWidget {
+
+  const ChipComponent({required this.label, super.key, this.onDeleted});
   final String label;
   final VoidCallback? onDeleted;
 
-  const ChipComponent({super.key, required this.label, this.onDeleted});
-
   @override
-  Widget build(BuildContext context) {
-    return Chip(
+  Widget build(BuildContext context) => Chip(
       label: Text(label),
       onDeleted: onDeleted,
       backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
@@ -16,5 +15,4 @@ class ChipComponent extends StatelessWidget {
         color: Theme.of(context).colorScheme.onSecondaryContainer,
       ),
     );
-  }
 }

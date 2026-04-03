@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class SidePageSliverAppBarComponent extends StatelessWidget {
   const SidePageSliverAppBarComponent({
@@ -45,8 +45,7 @@ class SidePageSliverAppBarComponent extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return SliverAppBar(
+  Widget build(BuildContext context) => SliverAppBar(
       title: title,
       leading: _buildSidePageAppBarIcon(
         context,
@@ -66,7 +65,6 @@ class SidePageSliverAppBarComponent extends StatelessWidget {
       elevation: 0,
       scrolledUnderElevation: 0,
     );
-  }
 
   /// Builds the icon button for the app bar.
   Widget _buildSidePageAppBarIcon(

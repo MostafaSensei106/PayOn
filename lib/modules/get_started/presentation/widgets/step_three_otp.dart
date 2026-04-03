@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_config.dart';
-import 'package:payon/core/widgets/buttons/text_button/text_button_component.dart';
-import 'package:payon/core/widgets/inputs/otp_field/otp_field_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
+import '../../../../core/widgets/inputs/otp_field/otp_field_component.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class StepThreeOTP extends StatelessWidget {
   const StepThreeOTP({super.key});
@@ -12,10 +12,9 @@ class StepThreeOTP extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: AppConfig.padding),
+      padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
       child: Column(
         spacing: AppConfig.paddingHalf,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             l10n.otp_message,

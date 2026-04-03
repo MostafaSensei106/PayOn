@@ -3,17 +3,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_config.dart';
-import 'package:payon/core/router/app_router.dart';
-import 'package:payon/core/widgets/buttons/icon_button/icon_button_component.dart';
-import 'package:payon/core/widgets/display/avatar/avatar_component.dart';
-import 'package:payon/core/widgets/slivers/sliver_app_bar/sliver_app_bar_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
-import 'package:payon/modules/home/data/models/account_model.dart';
-import 'package:payon/modules/home/presentation/widgets/account_balance_card.dart';
-import 'package:payon/modules/home/presentation/widgets/latest_transactions_section.dart';
-import 'package:payon/modules/home/presentation/widgets/quick_action_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/router/app_router.dart';
+import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
+import '../../../../core/widgets/display/avatar/avatar_component.dart';
+import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_component.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../data/models/account_model.dart';
+import '../widgets/account_balance_card.dart';
+import '../widgets/latest_transactions_section.dart';
+import '../widgets/quick_action_item.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,9 +22,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final PageController cardController = PageController();
+    final cardController = PageController();
 
-    final List<AccountModel> accounts = [
+    final accounts = <AccountModel>[
       AccountModel(
         currencyName: l10n.egyptian_pound,
         symbol: 'EGP',
@@ -90,13 +91,10 @@ class HomePage extends StatelessWidget {
                       flightDirection,
                       fromHeroContext,
                       toHeroContext,
-                    ) {
-                      return AnimatedBuilder(
+                    ) => AnimatedBuilder(
                         animation: animation,
-                        builder: (context, child) {
-                          return Container(
+                        builder: (context, child) => Container(
                             decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
                               borderRadius: BorderRadius.circular(
                                 Tween<double>(
                                   begin: 100,
@@ -105,10 +103,8 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             child: toHeroContext.widget,
-                          );
-                        },
-                      );
-                    },
+                          ),
+                      ),
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
@@ -140,7 +136,7 @@ class HomePage extends StatelessWidget {
             ],
             flexibleSpace: FlexibleSpaceBar(
               background: Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: kToolbarHeight + AppConfig.padding * 2,
                 ),
                 child: Column(
@@ -149,12 +145,10 @@ class HomePage extends StatelessWidget {
                       child: PageView.builder(
                         controller: cardController,
                         itemCount: accounts.length,
-                        itemBuilder: (context, index) {
-                          return AccountBalanceCard(account: accounts[index]);
-                        },
+                        itemBuilder: (context, index) => AccountBalanceCard(account: accounts[index]),
                       ),
                     ),
-                    SizedBox(height: AppConfig.paddingHalf),
+                    const SizedBox(height: AppConfig.paddingHalf),
                     SmoothPageIndicator(
                       controller: cardController,
                       count: accounts.length,
@@ -164,7 +158,7 @@ class HomePage extends StatelessWidget {
                         activeDotColor: Theme.of(context).colorScheme.primary,
                       ),
                     ),
-                    SizedBox(height: AppConfig.paddingHalf),
+                    const SizedBox(height: AppConfig.paddingHalf),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [

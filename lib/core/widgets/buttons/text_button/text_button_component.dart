@@ -1,33 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class TextButtonComponent extends StatelessWidget {
-  final String label;
-  final VoidCallback onPressed;
-  final bool useInBorderRadius;
-  final IconData? icon;
-  final Color? backgroundColor;
-  final Color? foregroundColor;
 
   const TextButtonComponent({
-    super.key,
-    required this.label,
-    required this.onPressed,
+    required this.label, required this.onPressed, super.key,
     this.useInBorderRadius = false,
     this.backgroundColor,
     this.foregroundColor,
   }) : icon = null;
 
   const TextButtonComponent.icon({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.onPressed,
+    required this.icon, required this.label, required this.onPressed, super.key,
     this.useInBorderRadius = false,
     this.backgroundColor,
     this.foregroundColor,
   });
+  final String label;
+  final VoidCallback onPressed;
+  final bool useInBorderRadius;
+  final IconData? icon;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
 
   @override
   Widget build(BuildContext context) {

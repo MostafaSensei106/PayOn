@@ -1,4 +1,4 @@
-import 'package:payon/modules/login/domain/entities/user_entity.dart';
+import '../../domain/entities/user_entity.dart';
 
 class UserModel extends UserEntity {
   const UserModel({
@@ -7,11 +7,7 @@ class UserModel extends UserEntity {
     required super.name,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(id: json['id'], email: json['email'], name: json['name']);
-  }
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(id: json['id'], email: json['email'], name: json['name']);
 
-  Map<String, dynamic> toJson() {
-    return {'id': id, 'email': email, 'name': name};
-  }
+  Map<String, dynamic> toJson() => {'id': id, 'email': email, 'name': name};
 }

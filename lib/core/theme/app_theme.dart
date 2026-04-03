@@ -1,5 +1,7 @@
+// ignore_for_file: avoid_classes_with_only_static_members
+
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../constants/app_config.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(

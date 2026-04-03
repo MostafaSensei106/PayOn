@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:payon/core/widgets/buttons/icon_button/icon_button_component.dart';
+import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 
 class QuickActionItem extends StatelessWidget {
+
+  const QuickActionItem({
+    required this.icon, required this.label, required this.onTap, super.key,
+  });
   final IconData icon;
   final String label;
   final VoidCallback onTap;
 
-  const QuickActionItem({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(BuildContext context) => Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         IconButtonComponent.filled(
@@ -34,5 +30,4 @@ class QuickActionItem extends StatelessWidget {
         ),
       ],
     );
-  }
 }

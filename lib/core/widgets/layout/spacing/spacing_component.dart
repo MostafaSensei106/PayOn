@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpacingComponent extends StatelessWidget {
-  final double? width;
-  final double? height;
 
   const SpacingComponent.horizontal(double size, {super.key})
     : width = size,
@@ -12,9 +10,9 @@ class SpacingComponent extends StatelessWidget {
   const SpacingComponent.vertical(double size, {super.key})
     : width = 0,
       height = size;
+  final double? width;
+  final double? height;
 
   @override
-  Widget build(BuildContext context) {
-    return SizedBox(width: width?.w, height: height?.h);
-  }
+  Widget build(BuildContext context) => SizedBox(width: width?.w, height: height?.h);
 }

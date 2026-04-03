@@ -1,9 +1,4 @@
 class AccountModel {
-  final String currencyName;
-  final String symbol;
-  final String balance;
-  final String accountId;
-  final String countryCode;
 
   AccountModel({
     required this.currencyName,
@@ -12,4 +7,9 @@ class AccountModel {
     required this.accountId,
     required this.countryCode,
   });
+  final String currencyName;
+  final String symbol;
+  final String balance;
+  final String accountId;
+  final String countryCode;
 }

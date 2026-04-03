@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class ListTileComponent extends StatelessWidget {
+
+  const ListTileComponent({
+    required this.title, super.key,
+    this.subtitle,
+    this.leading,
+    this.trailing,
+    this.onTap,
+  });
   final Widget title;
   final Widget? subtitle;
   final Widget? leading;
   final Widget? trailing;
   final VoidCallback? onTap;
 
-  const ListTileComponent({
-    super.key,
-    required this.title,
-    this.subtitle,
-    this.leading,
-    this.trailing,
-    this.onTap,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return ListTile(
+  Widget build(BuildContext context) => ListTile(
       title: title,
       subtitle: subtitle,
       leading: leading,
@@ -29,5 +27,4 @@ class ListTileComponent extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
       ),
     );
-  }
 }

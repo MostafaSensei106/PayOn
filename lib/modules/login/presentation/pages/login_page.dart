@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_config.dart';
-import 'package:payon/core/router/app_router.dart';
-import 'package:payon/core/widgets/buttons/filled_button/filled_button_component.dart';
-import 'package:payon/core/widgets/buttons/text_button/text_button_component.dart';
-import 'package:payon/core/widgets/inputs/password_field/password_field_component.dart';
-import 'package:payon/core/widgets/inputs/text_field/text_field_component.dart';
-import 'package:payon/core/widgets/layout/spacing/spacing_component.dart';
-import 'package:payon/core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/router/app_router.dart';
+import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
+import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
+import '../../../../core/widgets/inputs/password_field/password_field_component.dart';
+import '../../../../core/widgets/inputs/text_field/text_field_component.dart';
+import '../../../../core/widgets/layout/spacing/spacing_component.dart';
+import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

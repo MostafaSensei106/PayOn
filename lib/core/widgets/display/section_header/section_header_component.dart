@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
 class SectionHeaderComponent extends StatelessWidget {
+
+  const SectionHeaderComponent({
+    required this.title, super.key,
+    this.onActionPressed,
+    this.actionLabel,
+  });
   final String title;
   final VoidCallback? onActionPressed;
   final String? actionLabel;
 
-  const SectionHeaderComponent({
-    super.key,
-    required this.title,
-    this.onActionPressed,
-    this.actionLabel,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return Row(
+  Widget build(BuildContext context) => Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
@@ -30,5 +28,4 @@ class SectionHeaderComponent extends StatelessWidget {
           ),
       ],
     );
-  }
 }

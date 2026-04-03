@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/widgets/display/section_header/section_header_component.dart';
+import '../../display/section_header/section_header_component.dart';
 
 class SliverSectionHeaderComponent extends StatelessWidget {
+
+  const SliverSectionHeaderComponent({
+    required this.title, super.key,
+    this.onActionPressed,
+    this.actionLabel,
+  });
   final String title;
   final VoidCallback? onActionPressed;
   final String? actionLabel;
 
-  const SliverSectionHeaderComponent({
-    super.key,
-    required this.title,
-    this.onActionPressed,
-    this.actionLabel,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
+  Widget build(BuildContext context) => SliverToBoxAdapter(
       child: SectionHeaderComponent(
         title: title,
         onActionPressed: onActionPressed,
         actionLabel: actionLabel,
       ),
     );
-  }
 }

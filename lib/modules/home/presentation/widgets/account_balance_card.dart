@@ -2,15 +2,15 @@ import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_config.dart';
-import 'package:payon/core/widgets/buttons/icon_button/icon_button_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
-import 'package:payon/modules/home/data/models/account_model.dart';
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../data/models/account_model.dart';
 
 class AccountBalanceCard extends StatefulWidget {
-  final AccountModel account;
 
-  const AccountBalanceCard({super.key, required this.account});
+  const AccountBalanceCard({required this.account, super.key});
+  final AccountModel account;
 
   @override
   State<AccountBalanceCard> createState() => _AccountBalanceCardState();
@@ -34,7 +34,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
             color: colorScheme.outlineVariant.withValues(alpha: 0.5),
           ),
         ),
-        padding: EdgeInsets.all(AppConfig.paddingHalf),
+        padding: const EdgeInsets.all(AppConfig.paddingHalf),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/widgets/navigation/bottom_nav_bar/bottom_nav_bar_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
-import 'package:payon/modules/home/presentation/pages/home_page.dart';
-import 'package:payon/modules/wallet/presentation/pages/wallet_page.dart';
-import 'package:payon/modules/history/presentation/pages/history_page.dart';
-import 'package:payon/modules/settings/presentation/pages/settings_page.dart';
+
+import '../../../../core/widgets/navigation/bottom_nav_bar/bottom_nav_bar_component.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../../history/presentation/pages/history_page.dart';
+import '../../../home/presentation/pages/home_page.dart';
+import '../../../settings/presentation/pages/settings_page.dart';
+import '../../../wallet/presentation/pages/wallet_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

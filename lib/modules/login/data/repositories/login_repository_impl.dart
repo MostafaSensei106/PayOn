@@ -1,13 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:payon/core/error/failures.dart';
-import 'package:payon/modules/login/data/datasources/login_remote_data_source.dart';
-import 'package:payon/modules/login/domain/entities/user_entity.dart';
-import 'package:payon/modules/login/domain/repositories/login_repository.dart';
+
+import '../../../../core/error/failures.dart';
+import '../../domain/entities/user_entity.dart';
+import '../../domain/repositories/login_repository.dart';
+import '../datasources/login_remote_data_source.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
-  final LoginRemoteDataSource remoteDataSource;
 
   LoginRepositoryImpl({required this.remoteDataSource});
+  final LoginRemoteDataSource remoteDataSource;
 
   @override
   Future<Either<Failure, UserEntity>> login(

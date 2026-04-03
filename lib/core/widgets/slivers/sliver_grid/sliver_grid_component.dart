@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
 
 class SliverGridComponent extends StatelessWidget {
+
+  const SliverGridComponent({
+    required this.gridDelegate, required this.itemBuilder, required this.itemCount, super.key,
+  });
   final SliverGridDelegate gridDelegate;
   final IndexedWidgetBuilder itemBuilder;
   final int itemCount;
 
-  const SliverGridComponent({
-    super.key,
-    required this.gridDelegate,
-    required this.itemBuilder,
-    required this.itemCount,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return SliverGrid(
+  Widget build(BuildContext context) => SliverGrid(
       gridDelegate: gridDelegate,
-      delegate: SliverChildBuilderDelegate(
-        itemBuilder,
-        childCount: itemCount,
-      ),
+      delegate: SliverChildBuilderDelegate(itemBuilder, childCount: itemCount),
     );
-  }
 }

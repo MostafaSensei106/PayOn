@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class FilledTonalButtonComponent extends StatelessWidget {
+
+  const FilledTonalButtonComponent({
+    required this.label, required this.onPressed, super.key,
+    this.useInBorderRadius = false,
+    this.width,
+    this.height,
+    this.backgroundColor,
+    this.foregroundColor,
+  }) : icon = null;
+
+  const FilledTonalButtonComponent.icon({
+    required this.icon, required this.label, required this.onPressed, super.key,
+    this.useInBorderRadius = false,
+    this.width,
+    this.height,
+    this.backgroundColor,
+    this.foregroundColor,
+  });
   final String label;
   final VoidCallback onPressed;
   final bool useInBorderRadius;
@@ -12,32 +30,8 @@ class FilledTonalButtonComponent extends StatelessWidget {
   final Color? backgroundColor;
   final Color? foregroundColor;
 
-  const FilledTonalButtonComponent({
-    super.key,
-    required this.label,
-    required this.onPressed,
-    this.useInBorderRadius = false,
-    this.width,
-    this.height,
-    this.backgroundColor,
-    this.foregroundColor,
-  }) : icon = null;
-
-  const FilledTonalButtonComponent.icon({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.onPressed,
-    this.useInBorderRadius = false,
-    this.width,
-    this.height,
-    this.backgroundColor,
-    this.foregroundColor,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return icon == null
+  Widget build(BuildContext context) => icon == null
         ? FilledButton.tonal(
             onPressed: () {
               HapticFeedback.vibrate();
@@ -55,10 +49,8 @@ class FilledTonalButtonComponent extends StatelessWidget {
             icon: Icon(icon, size: AppConfig.iconSize),
             label: Text(label),
           );
-  }
 
-  ButtonStyle _getButtonStyle(BuildContext context) {
-    return FilledButton.styleFrom(
+  ButtonStyle _getButtonStyle(BuildContext context) => FilledButton.styleFrom(
       enableFeedback: true,
       backgroundColor:
           backgroundColor ?? Theme.of(context).colorScheme.secondaryContainer,
@@ -74,5 +66,4 @@ class FilledTonalButtonComponent extends StatelessWidget {
             : BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     );
-  }
 }

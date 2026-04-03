@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class DropdownComponent<T> extends StatelessWidget {
+
+  const DropdownComponent({
+    required this.label, required this.items, required this.onChanged, super.key,
+    this.initialValue,
+  });
   final String label;
   final List<DropdownMenuItem<T>> items;
   final T? initialValue;
   final void Function(T?) onChanged;
 
-  const DropdownComponent({
-    super.key,
-    required this.label,
-    required this.items,
-    required this.onChanged,
-    this.initialValue,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return DropdownButtonFormField<T>(
+  Widget build(BuildContext context) => DropdownButtonFormField<T>(
       initialValue: initialValue,
       items: items,
       onChanged: onChanged,
@@ -28,5 +24,4 @@ class DropdownComponent<T> extends StatelessWidget {
         ),
       ),
     );
-  }
 }

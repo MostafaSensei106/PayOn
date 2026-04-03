@@ -1,10 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 enum IconButtonVariant { standard, filled, tonal, outlined }
 
 class IconButtonComponent extends StatelessWidget {
+
+  const IconButtonComponent({
+    required this.icon, required this.onPressed, super.key,
+    this.useInBorderRadius = false,
+    this.toolTip,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.iconSize,
+    this.padding,
+  }) : variant = IconButtonVariant.standard;
+
+  const IconButtonComponent.filled({
+    required this.icon, required this.onPressed, super.key,
+    this.useInBorderRadius = false,
+    this.toolTip,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.iconSize,
+    this.padding,
+  }) : variant = IconButtonVariant.filled;
+
+  const IconButtonComponent.tonal({
+    required this.icon, required this.onPressed, super.key,
+    this.useInBorderRadius = false,
+    this.toolTip,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.iconSize,
+    this.padding,
+  }) : variant = IconButtonVariant.tonal;
+
+  const IconButtonComponent.outlined({
+    required this.icon, required this.onPressed, super.key,
+    this.useInBorderRadius = false,
+    this.toolTip,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.iconSize,
+    this.padding,
+  }) : variant = IconButtonVariant.outlined;
   final IconData icon;
   final VoidCallback onPressed;
   final IconButtonVariant variant;
@@ -15,54 +55,6 @@ class IconButtonComponent extends StatelessWidget {
   final Color? foregroundColor;
   final double? iconSize;
   final double? padding;
-
-  const IconButtonComponent({
-    super.key,
-    required this.icon,
-    required this.onPressed,
-    this.useInBorderRadius = false,
-    this.toolTip,
-    this.backgroundColor,
-    this.foregroundColor,
-    this.iconSize,
-    this.padding,
-  }) : variant = IconButtonVariant.standard;
-
-  const IconButtonComponent.filled({
-    super.key,
-    required this.icon,
-    required this.onPressed,
-    this.useInBorderRadius = false,
-    this.toolTip,
-    this.backgroundColor,
-    this.foregroundColor,
-    this.iconSize,
-    this.padding,
-  }) : variant = IconButtonVariant.filled;
-
-  const IconButtonComponent.tonal({
-    super.key,
-    required this.icon,
-    required this.onPressed,
-    this.useInBorderRadius = false,
-    this.toolTip,
-    this.backgroundColor,
-    this.foregroundColor,
-    this.iconSize,
-    this.padding,
-  }) : variant = IconButtonVariant.tonal;
-
-  const IconButtonComponent.outlined({
-    super.key,
-    required this.icon,
-    required this.onPressed,
-    this.useInBorderRadius = false,
-    this.toolTip,
-    this.backgroundColor,
-    this.foregroundColor,
-    this.iconSize,
-    this.padding,
-  }) : variant = IconButtonVariant.outlined;
 
   @override
   Widget build(BuildContext context) {

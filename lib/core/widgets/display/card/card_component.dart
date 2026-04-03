@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class CardComponent extends StatelessWidget {
+
+  const CardComponent({
+    required this.child, super.key,
+    this.padding,
+    this.color,
+  });
   final Widget child;
   final EdgeInsetsGeometry? padding;
   final Color? color;
 
-  const CardComponent({
-    super.key,
-    required this.child,
-    this.padding,
-    this.color,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(BuildContext context) => Container(
       padding: padding ?? const EdgeInsets.all(AppConfig.padding),
       decoration: BoxDecoration(
         color: color ?? Theme.of(context).colorScheme.surfaceContainer,
@@ -23,5 +21,4 @@ class CardComponent extends StatelessWidget {
       ),
       child: child,
     );
-  }
 }

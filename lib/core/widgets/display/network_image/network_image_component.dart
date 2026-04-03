@@ -1,26 +1,24 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class NetworkImageComponent extends StatelessWidget {
+
+  const NetworkImageComponent({
+    required this.imageUrl, super.key,
+    this.width,
+    this.height,
+    this.fit = BoxFit.cover,
+    this.borderRadius,
+  });
   final String imageUrl;
   final double? width;
   final double? height;
   final BoxFit? fit;
   final double? borderRadius;
 
-  const NetworkImageComponent({
-    super.key,
-    required this.imageUrl,
-    this.width,
-    this.height,
-    this.fit = BoxFit.cover,
-    this.borderRadius,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
+  Widget build(BuildContext context) => ClipRRect(
       borderRadius: BorderRadius.circular(
         borderRadius ?? AppConfig.inBorderRadius,
       ),
@@ -39,5 +37,4 @@ class NetworkImageComponent extends StatelessWidget {
         ),
       ),
     );
-  }
 }

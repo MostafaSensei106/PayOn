@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_config.dart';
-import 'package:payon/core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_component.dart';
-import 'package:payon/l10n/app_localizations.dart';
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_component.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -35,7 +35,7 @@ class ProfilePage extends StatelessWidget {
                         memCacheHeight: 800,
                         placeholder: (context, url) => Container(
                           color: Theme.of(context).colorScheme.primaryContainer,
-                          child: Icon(
+                          child: const Icon(
                             Iconsax.profile_circle_copy,
                             size: AppConfig.avatarRadius,
                           ),
@@ -166,20 +166,19 @@ class ProfilePage extends StatelessWidget {
     required IconData icon,
     required String label,
     required String value,
-  }) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: AppConfig.paddingHalf),
+  }) => Padding(
+      padding: const EdgeInsets.symmetric(vertical: AppConfig.paddingHalf),
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.all(AppConfig.paddingHalf),
+            padding: const EdgeInsets.all(AppConfig.paddingHalf),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
             ),
             child: Icon(icon, size: AppConfig.iconSize),
           ),
-          SizedBox(width: AppConfig.paddingHalf),
+          const SizedBox(width: AppConfig.paddingHalf),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -195,5 +194,4 @@ class ProfilePage extends StatelessWidget {
         ],
       ),
     );
-  }
 }

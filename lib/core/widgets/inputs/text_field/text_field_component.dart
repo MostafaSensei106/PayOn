@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class TextFieldComponent extends StatelessWidget {
+
+  const TextFieldComponent({
+    required this.label, required this.prefixIcon, super.key,
+    this.suffixIcon,
+    this.obscureText = false,
+    this.useInBorderRadius = false,
+    this.readOnly = false,
+    this.onTap,
+    this.controller,
+    this.keyboardType,
+  });
   final String label;
   final IconData prefixIcon;
   final Widget? suffixIcon;
@@ -13,22 +24,8 @@ class TextFieldComponent extends StatelessWidget {
   final bool readOnly;
   final void Function()? onTap;
 
-  const TextFieldComponent({
-    super.key,
-    required this.label,
-    required this.prefixIcon,
-    this.suffixIcon,
-    this.obscureText = false,
-    this.useInBorderRadius = false,
-    this.readOnly = false,
-    this.onTap,
-    this.controller,
-    this.keyboardType,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return TextFormField(
+  Widget build(BuildContext context) => TextFormField(
       controller: controller,
       keyboardType: keyboardType,
       obscureText: obscureText,
@@ -60,5 +57,4 @@ class TextFieldComponent extends StatelessWidget {
         ),
       ),
     );
-  }
 }

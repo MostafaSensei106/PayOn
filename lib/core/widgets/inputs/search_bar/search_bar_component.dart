@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:payon/core/constants/app_config.dart';
+import '../../../constants/app_config.dart';
 
 class SearchBarComponent extends StatelessWidget {
+
+  const SearchBarComponent({required this.hintText, super.key, this.onChanged});
   final String hintText;
   final void Function(String)? onChanged;
 
-  const SearchBarComponent({super.key, required this.hintText, this.onChanged});
-
   @override
-  Widget build(BuildContext context) {
-    return TextField(
+  Widget build(BuildContext context) => TextField(
       onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
@@ -24,5 +23,4 @@ class SearchBarComponent extends StatelessWidget {
         ),
       ),
     );
-  }
 }

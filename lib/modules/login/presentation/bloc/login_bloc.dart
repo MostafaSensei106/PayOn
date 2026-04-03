@@ -1,10 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:payon/modules/login/domain/usecases/login_usecase.dart';
-import 'package:payon/modules/login/presentation/bloc/login_event.dart';
-import 'package:payon/modules/login/presentation/bloc/login_state.dart';
+import '../../domain/usecases/login_usecase.dart';
+import 'login_event.dart';
+import 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final LoginUseCase loginUseCase;
 
   LoginBloc({required this.loginUseCase}) : super(LoginInitial()) {
     on<LoginSubmitted>((event, emit) async {
@@ -18,4 +17,5 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       );
     });
   }
+  final LoginUseCase loginUseCase;
 }
