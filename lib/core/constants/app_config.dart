@@ -53,4 +53,6 @@ class AppConfig {
 
   /// Default duration for toast messages in seconds.
   static const int toastDurationInSeconds = 4;
+
+  static const Duration dioTimeout = Duration(seconds: 30);
 }

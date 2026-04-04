@@ -1,4 +1,5 @@
 class HTTPMessages {
+  /// General
   static const String ok = 'Ok';
   static const String created = 'Created';
   static const String badRequest = 'BadRequest';
@@ -10,13 +11,13 @@ class HTTPMessages {
   static const String internalServerError = 'InternalServerError';
   static const String unknownError = 'UnknownError';
 
-  // Informational
+  /// Informational
   static const String continue_ = 'Continue';
   static const String switchingProtocols = 'SwitchingProtocols';
   static const String processing = 'Processing';
   static const String earlyHints = 'EarlyHints';
 
-  // Success
+  /// Success
   static const String accepted = 'Accepted';
   static const String nonAuthoritativeInfo = 'NonAuthoritativeInfo';
   static const String resetContent = 'ResetContent';
@@ -25,7 +26,7 @@ class HTTPMessages {
   static const String alreadyReported = 'AlreadyReported';
   static const String imUsed = 'IMUsed';
 
-  // Redirection
+  /// Redirection
   static const String multipleChoices = 'MultipleChoices';
   static const String movedPermanently = 'MovedPermanently';
   static const String found = 'Found';
@@ -35,7 +36,7 @@ class HTTPMessages {
   static const String temporaryRedirect = 'TemporaryRedirect';
   static const String permanentRedirect = 'PermanentRedirect';
 
-  // Client Error
+  /// Client Error
   static const String paymentRequired = 'PaymentRequired';
   static const String methodNotAllowed = 'MethodNotAllowed';
   static const String notAcceptable = 'NotAcceptable';
@@ -63,7 +64,7 @@ class HTTPMessages {
       'RequestHeaderFieldsTooLarge';
   static const String unavailableForLegalReasons = 'UnavailableForLegalReasons';
 
-  // Server Error
+  /// Server Error
   static const String notImplemented = 'NotImplemented';
   static const String badGateway = 'BadGateway';
   static const String serviceUnavailable = 'ServiceUnavailable';
