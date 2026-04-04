@@ -12,7 +12,7 @@ class FullName extends FormzInput<String, FullNameError> {
       return FullNameError.empty;
     }
 
-    //one word
+    //TODO:
 
     return null;
   }

@@ -29,16 +29,19 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
-          border: Border.all(
-            width: 1.5,
-            color: colorScheme.outlineVariant.withValues(alpha: 0.5),
-          ),
-          gradient: const LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Colors.white, Colors.white],
+          border: Border.all(width: 2, color: colorScheme.primaryContainer),
+          gradient: RadialGradient(
+            center: AlignmentGeometry.topRight,
+            tileMode: TileMode.mirror,
+            radius: 1.7,
+            colors: [
+              Theme.of(context).colorScheme.inversePrimary,
+              Theme.of(context).colorScheme.onPrimaryFixed,
+            ],
+            stops: const [0.0, 1.0],
           ),
         ),
+
         padding: const EdgeInsets.all(AppConfig.paddingHalf),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +61,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
                           widget.account.currencyName,
                           style: TextStyle(
                             fontSize: 12,
-                            color: colorScheme.onSurfaceVariant,
+                            color: colorScheme.onPrimary,
                           ),
                         ),
                         Text(
@@ -66,7 +69,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
-                            color: colorScheme.onSurface,
+                            color: colorScheme.onPrimary,
                           ),
                         ),
                       ],
@@ -86,10 +89,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
               children: [
                 Text(
                   l10n.total_balance,
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: colorScheme.onSurfaceVariant,
-                  ),
+                  style: TextStyle(fontSize: 11, color: colorScheme.onPrimary),
                 ),
                 FittedBox(
                   child: Text(
@@ -99,7 +99,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
                     style: TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.w600,
-                      color: colorScheme.onSurface,
+                      color: colorScheme.onPrimary,
                     ),
                   ),
                 ),
@@ -113,7 +113,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
                   style: TextStyle(
                     fontSize: 10,
                     fontFamily: 'monospace',
-                    color: colorScheme.onSurfaceVariant,
+                    color: colorScheme.onPrimary,
                   ),
                 ),
                 Container(

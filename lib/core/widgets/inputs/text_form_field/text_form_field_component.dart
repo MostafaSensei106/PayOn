@@ -15,7 +15,7 @@ class TextFormFieldComponent extends StatelessWidget {
     this.useInBorderRadius = false,
     this.readOnly = false,
     this.isEnable = true,
-    this.errorText = '',
+    this.errorText,
     this.onTap,
     this.controller,
     this.keyboardType,
