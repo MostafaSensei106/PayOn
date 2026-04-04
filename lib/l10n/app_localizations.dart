@@ -224,6 +224,12 @@ abstract class AppLocalizations {
   /// **'Settings'**
   String get settings;
 
+  /// No description provided for @user_name.
+  ///
+  /// In en, this message translates to:
+  /// **'User Name'**
+  String get user_name;
+
   /// No description provided for @profile.
   ///
   /// In en, this message translates to:

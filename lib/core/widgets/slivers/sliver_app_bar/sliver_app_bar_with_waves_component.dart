@@ -1,11 +1,9 @@
-import 'dart:async';
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class SliverAppBarWithWavesComponent extends StatefulWidget {
+import '../../animation/wave_background.dart';
+
+class SliverAppBarWithWavesComponent extends HookWidget {
   const SliverAppBarWithWavesComponent({
     required this.scrollController,
     super.key,
@@ -36,122 +34,76 @@ class SliverAppBarWithWavesComponent extends StatefulWidget {
   final ScrollController scrollController;
 
   @override
-  State<SliverAppBarWithWavesComponent> createState() =>
-      _SliverAppBarWithWavesComponentState();
-}
-
-class _SliverAppBarWithWavesComponentState
-    extends State<SliverAppBarWithWavesComponent>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  bool _isExpanded = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(seconds: 4),
-      vsync: this,
-    )..repeat();
-
-    widget.scrollController.addListener(_scrollListener);
-  }
-
-  @override
-  void didUpdateWidget(covariant SliverAppBarWithWavesComponent oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.scrollController != oldWidget.scrollController) {
-      oldWidget.scrollController.removeListener(_scrollListener);
-      widget.scrollController.addListener(_scrollListener);
-    }
-  }
-
-  void _scrollListener() {
-    if (!mounted) return;
-    final expanded =
-        widget.scrollController.hasClients &&
-        widget.scrollController.offset < (widget.expandedHeight - 80);
-    if (_isExpanded != expanded) {
-      setState(() {
-        _isExpanded = expanded;
-      });
-    }
-  }
-
-  @override
-  void dispose() {
-    widget.scrollController.removeListener(_scrollListener);
-    _controller.dispose();
-    super.dispose();
-  }
-
-  void leave(final BuildContext context) {
-    unawaited(HapticFeedback.vibrate());
-    context.pop();
-  }
-
-  @override
   Widget build(final BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
+    // 1. Animation Controller for Waves
+    final controller = useAnimationController(
+      duration: const Duration(seconds: 4),
+    )..repeat();
+
+    // 2. Track expanded state
+    final isExpanded = useState(true);
+
+    useEffect(() {
+      void scrollListener() {
+        final expanded =
+            scrollController.hasClients &&
+            scrollController.offset < (expandedHeight - 80);
+        if (isExpanded.value != expanded) {
+          isExpanded.value = expanded;
+        }
+      }
+
+      scrollController.addListener(scrollListener);
+      return () => scrollController.removeListener(scrollListener);
+    }, [scrollController, expandedHeight]);
+
     return SliverAppBar(
-      pinned: widget.pinned,
-      floating: widget.floating,
-      expandedHeight: widget.expandedHeight,
-      title: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        child: Text(
-          widget.title ?? '',
-          key: ValueKey<String>('${widget.title}_$_isExpanded'),
-          style: TextStyle(
-            color: _isExpanded
-                ? colorScheme.onPrimary
-                : colorScheme.onSurfaceVariant,
-          ),
-        ),
+      pinned: pinned,
+      floating: floating,
+      expandedHeight: expandedHeight,
+      title: _AppBarTitle(
+        isExpanded: isExpanded.value,
+        title: title ?? '',
+        colorScheme: colorScheme,
       ),
-      actions: widget.actions,
-      centerTitle: widget.centerTitle,
+      actions: actions,
+      centerTitle: centerTitle,
       elevation: 0,
       scrolledUnderElevation: 0,
-      backgroundColor: _isExpanded ? colorScheme.primary : colorScheme.surface,
-      foregroundColor: _isExpanded
+      backgroundColor: isExpanded.value
+          ? colorScheme.primary
+          : colorScheme.surface,
+      foregroundColor: isExpanded.value
           ? colorScheme.onPrimary
           : colorScheme.surface,
-      leading: widget.leading,
+      leading: leading,
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: [
-            Container(color: widget.backgroundColor ?? colorScheme.primary),
+            Container(color: backgroundColor ?? colorScheme.primary),
             // Secondary Wave (Layer back)
             Positioned.fill(
-              child: RepaintBoundary(
-                child: CustomPaint(
-                  painter: _WavePainter(
-                    animation: _controller,
-                    color:
-                        widget.secondaryWaveColor ??
-                        colorScheme.surface.withValues(alpha: 0.5),
-                    reverse: true,
-                    amplitude: 20,
-                    waveHeight: 80,
-                  ),
-                ),
+              child: WaveBackground(
+                animation: controller,
+                color:
+                    secondaryWaveColor ??
+                    colorScheme.surface.withValues(alpha: 0.5),
+                reverse: true,
+                amplitude: 20,
+                waveHeight: 80,
               ),
             ),
             // Primary Wave (Layer front)
             Positioned.fill(
-              child: RepaintBoundary(
-                child: CustomPaint(
-                  painter: _WavePainter(
-                    animation: _controller,
-                    color: widget.waveColor ?? colorScheme.surface,
-                  ),
-                ),
+              child: WaveBackground(
+                animation: controller,
+                color: waveColor ?? colorScheme.surface,
               ),
             ),
-            if (widget.flexibleSpace != null) widget.flexibleSpace!,
+            ?flexibleSpace,
           ],
         ),
       ),
@@ -159,53 +111,28 @@ class _SliverAppBarWithWavesComponentState
   }
 }
 
-class _WavePainter extends CustomPainter {
-  _WavePainter({
-    required this.animation,
-    required this.color,
-    this.reverse = false,
-    this.amplitude = 15.0,
-    this.waveHeight = 100.0,
-  }) : super(repaint: animation);
+class _AppBarTitle extends StatelessWidget {
+  const _AppBarTitle({
+    required this.isExpanded,
+    required this.title,
+    required this.colorScheme,
+  });
 
-  final Animation<double> animation;
-  final Color color;
-  final bool reverse;
-  final double amplitude;
-  final double waveHeight;
+  final bool isExpanded;
+  final String title;
+  final ColorScheme colorScheme;
 
   @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill;
-
-    final path = Path();
-    final baseHeight = size.height - (waveHeight / 2);
-
-    path.moveTo(0, size.height);
-    path.lineTo(0, baseHeight);
-
-    final waveValue = animation.value;
-    final direction = reverse ? -1 : 1;
-    final phase = waveValue * 2 * math.pi * direction;
-
-    for (double i = 0; i <= size.width; i++) {
-      final y =
-          baseHeight +
-          amplitude * math.sin((i / size.width * 2 * math.pi) + phase);
-      path.lineTo(i, y);
-    }
-
-    path.lineTo(size.width, size.height);
-    path.close();
-    canvas.drawPath(path, paint);
+  Widget build(BuildContext context) {
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      child: Text(
+        title,
+        key: ValueKey<String>('$title-$isExpanded'),
+        style: TextStyle(
+          color: isExpanded ? colorScheme.onPrimary : colorScheme.onSurface,
+        ),
+      ),
+    );
   }
-
-  @override
-  bool shouldRepaint(covariant _WavePainter oldDelegate) =>
-      oldDelegate.color != color ||
-      oldDelegate.reverse != reverse ||
-      oldDelegate.amplitude != amplitude ||
-      oldDelegate.waveHeight != waveHeight;
 }

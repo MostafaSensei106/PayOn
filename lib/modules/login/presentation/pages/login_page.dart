@@ -1,6 +1,7 @@
 // Added for Sine Wave calculations
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -17,34 +18,21 @@ import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar
 import '../../../../l10n/app_localizations.dart';
 import '../../logic/cubit/login_cubit.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends HookWidget {
   const LoginPage({super.key});
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  final ScrollController _scrollController = ScrollController();
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(final BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
-
+    final scrollController = useScrollController();
     return Scaffold(
       body: BlocProvider(
         create: (_) => getIt<LoginCubit>(),
         child: CustomScrollView(
-          controller: _scrollController,
+          controller: scrollController,
           slivers: [
             SidePageSliverAppBarWithWavesComponent(
-              scrollController: _scrollController,
+              scrollController: scrollController,
               title: l10n.login,
             ),
             SliverPadding(

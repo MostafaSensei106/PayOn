@@ -82,7 +82,7 @@ class HomePage extends StatelessWidget {
         slivers: [
           SliverAppBarWithWavesComponent(
             scrollController: scrollController,
-            expandedHeight: 350.h,
+            expandedHeight: 300.h,
             leading: Padding(
               padding: const EdgeInsets.all(AppConfig.paddingHalf),
               child: Hero(

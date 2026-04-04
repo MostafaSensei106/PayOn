@@ -75,6 +75,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get settings => 'الإعدادات';
 
   @override
+  String get user_name => 'اسم المستخدم';
+
+  @override
   String get profile => 'الملف الشخصي';
 
   @override
