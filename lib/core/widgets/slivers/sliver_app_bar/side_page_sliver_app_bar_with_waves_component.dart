@@ -18,7 +18,7 @@ class SidePageSliverAppBarWithWavesComponent extends StatefulWidget {
     this.waveColor,
     this.secondaryWaveColor,
     this.backgroundColor,
-    this.flexibleSpaceChild,
+    this.flexibleSpace,
     this.centerTitle = true,
     this.showBackButton = true,
   });
@@ -31,7 +31,7 @@ class SidePageSliverAppBarWithWavesComponent extends StatefulWidget {
   final Color? waveColor;
   final Color? secondaryWaveColor;
   final Color? backgroundColor;
-  final Widget? flexibleSpaceChild;
+  final Widget? flexibleSpace;
   final bool centerTitle;
   final bool showBackButton;
   final ScrollController scrollController;
@@ -109,15 +109,18 @@ class _SidePageSliverAppBarWithWavesComponentState
           widget.title,
           key: ValueKey<String>('${widget.title}_$_isExpanded'),
           style: TextStyle(
-            color: _isExpanded ? Colors.white : colorScheme.onSurfaceVariant,
+            color: _isExpanded ? colorScheme.onPrimary : colorScheme.onSurface,
           ),
         ),
       ),
       actions: widget.actions,
       centerTitle: widget.centerTitle,
+      backgroundColor: _isExpanded ? colorScheme.primary : colorScheme.surface,
+      foregroundColor: _isExpanded
+          ? colorScheme.onPrimary
+          : colorScheme.surface,
       elevation: 0,
       scrolledUnderElevation: 0,
-      backgroundColor: colorScheme.surface,
       leading: widget.showBackButton
           ? Center(
               child: IconButton.filled(
@@ -171,7 +174,7 @@ class _SidePageSliverAppBarWithWavesComponentState
                 ),
               ),
             ),
-            if (widget.flexibleSpaceChild != null) widget.flexibleSpaceChild!,
+            if (widget.flexibleSpace != null) widget.flexibleSpace!,
           ],
         ),
       ),

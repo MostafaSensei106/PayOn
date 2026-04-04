@@ -13,7 +13,7 @@ import '../../../../core/widgets/buttons/text_button/text_button_component.dart'
 import '../../../../core/widgets/inputs/password_field/password_field_component.dart';
 import '../../../../core/widgets/inputs/text_field/text_field_component.dart';
 import '../../../../core/widgets/layout/spacing/spacing_component.dart';
-import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
+import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../logic/cubit/login_cubit.dart';
 
@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
         child: CustomScrollView(
           controller: _scrollController,
           slivers: [
-            SliverAppBarWithWavesComponent(
+            SidePageSliverAppBarWithWavesComponent(
               scrollController: _scrollController,
               title: l10n.login,
             ),

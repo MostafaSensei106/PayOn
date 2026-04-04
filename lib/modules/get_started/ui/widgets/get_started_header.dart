@@ -29,7 +29,7 @@ class GetStartedHeader extends StatelessWidget {
       title: currentPage == 0
           ? l10n.account_details
           : (currentPage == 1 ? 'KYC' : l10n.otp_code),
-      flexibleSpaceChild: Column(
+      flexibleSpace: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           SmoothPageIndicator(

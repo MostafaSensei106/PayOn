@@ -13,7 +13,7 @@ import '../../../../core/router/app_router.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/avatar/avatar_component.dart';
-import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_component.dart';
+import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
 import '../../data/models/account_model.dart';
 import '../widgets/account_balance_card.dart';
 import '../widgets/latest_transactions_section.dart';
@@ -26,6 +26,7 @@ class HomePage extends StatelessWidget {
   Widget build(final BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
     final cardController = PageController();
+    final scrollController = ScrollController();
 
     final accounts = <AccountModel>[
       AccountModel(
@@ -74,15 +75,14 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       body: CustomScrollView(
-        controller: ScrollController(),
+        controller: scrollController,
         physics: const AlwaysScrollableScrollPhysics(
           parent: BouncingScrollPhysics(),
         ),
         slivers: [
-          SliverAppBarComponent(
+          SliverAppBarWithWavesComponent(
+            scrollController: scrollController,
             expandedHeight: 350.h,
-            pinned: true,
-            floating: true,
             leading: Padding(
               padding: const EdgeInsets.all(AppConfig.paddingHalf),
               child: Hero(
@@ -126,7 +126,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            title: Text(l10n.home),
+            title: l10n.home,
             actions: [
               IconButtonComponent.filled(
                 icon: Iconsax.notification_copy,
@@ -137,59 +137,57 @@ class HomePage extends StatelessWidget {
                 onPressed: () {},
               ),
             ],
-            flexibleSpace: FlexibleSpaceBar(
-              background: Padding(
-                padding: const EdgeInsets.only(
-                  top: kToolbarHeight + AppConfig.padding * 2,
-                ),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: PageView.builder(
-                        controller: cardController,
-                        itemCount: accounts.length,
-                        itemBuilder: (final context, final index) =>
-                            AccountBalanceCard(account: accounts[index]),
-                      ),
-                    ),
-                    const SizedBox(height: AppConfig.paddingHalf),
-                    SmoothPageIndicator(
+            flexibleSpace: Padding(
+              padding: const EdgeInsets.only(
+                top: kToolbarHeight + AppConfig.padding * 2,
+              ),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: PageView.builder(
                       controller: cardController,
-                      count: accounts.length,
-                      effect: ScrollingDotsEffect(
-                        dotHeight: 6,
-                        dotWidth: 6,
-                        activeDotColor: Theme.of(context).colorScheme.primary,
+                      itemCount: accounts.length,
+                      itemBuilder: (final context, final index) =>
+                          AccountBalanceCard(account: accounts[index]),
+                    ),
+                  ),
+                  const SizedBox(height: AppConfig.paddingHalf),
+                  SmoothPageIndicator(
+                    controller: cardController,
+                    count: accounts.length,
+                    effect: ScrollingDotsEffect(
+                      dotHeight: 6,
+                      dotWidth: 6,
+                      activeDotColor: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                  ),
+                  const SizedBox(height: AppConfig.paddingHalf),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      QuickActionItem(
+                        icon: Iconsax.send_1_copy,
+                        label: l10n.send,
+                        onTap: () {},
                       ),
-                    ),
-                    const SizedBox(height: AppConfig.paddingHalf),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        QuickActionItem(
-                          icon: Iconsax.send_1_copy,
-                          label: l10n.send,
-                          onTap: () {},
-                        ),
-                        QuickActionItem(
-                          icon: Iconsax.receive_square_2_copy,
-                          label: l10n.request,
-                          onTap: () {},
-                        ),
-                        QuickActionItem(
-                          icon: Iconsax.scan_barcode_copy,
-                          label: l10n.scan,
-                          onTap: () {},
-                        ),
-                        QuickActionItem(
-                          icon: Iconsax.more_copy,
-                          label: l10n.more,
-                          onTap: () {},
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                      QuickActionItem(
+                        icon: Iconsax.receive_square_2_copy,
+                        label: l10n.request,
+                        onTap: () {},
+                      ),
+                      QuickActionItem(
+                        icon: Iconsax.scan_barcode_copy,
+                        label: l10n.scan,
+                        onTap: () {},
+                      ),
+                      QuickActionItem(
+                        icon: Iconsax.more_copy,
+                        label: l10n.more,
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

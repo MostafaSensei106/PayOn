@@ -9,6 +9,7 @@ class SliverAppBarWithWavesComponent extends StatefulWidget {
   const SliverAppBarWithWavesComponent({
     required this.scrollController,
     super.key,
+    this.leading,
     this.title,
     this.actions,
     this.pinned = true,
@@ -17,10 +18,11 @@ class SliverAppBarWithWavesComponent extends StatefulWidget {
     this.waveColor,
     this.secondaryWaveColor,
     this.backgroundColor,
-    this.flexibleSpaceChild,
+    this.flexibleSpace,
     this.centerTitle = true,
   });
 
+  final Widget? leading;
   final String? title;
   final List<Widget>? actions;
   final bool pinned;
@@ -29,7 +31,7 @@ class SliverAppBarWithWavesComponent extends StatefulWidget {
   final Color? waveColor;
   final Color? secondaryWaveColor;
   final Color? backgroundColor;
-  final Widget? flexibleSpaceChild;
+  final Widget? flexibleSpace;
   final bool centerTitle;
   final ScrollController scrollController;
 
@@ -103,7 +105,9 @@ class _SliverAppBarWithWavesComponentState
           widget.title ?? '',
           key: ValueKey<String>('${widget.title}_$_isExpanded'),
           style: TextStyle(
-            color: _isExpanded ? colorScheme.onPrimary : colorScheme.onSurface,
+            color: _isExpanded
+                ? colorScheme.onPrimary
+                : colorScheme.onSurfaceVariant,
           ),
         ),
       ),
@@ -111,7 +115,11 @@ class _SliverAppBarWithWavesComponentState
       centerTitle: widget.centerTitle,
       elevation: 0,
       scrolledUnderElevation: 0,
-      backgroundColor: colorScheme.surface,
+      backgroundColor: _isExpanded ? colorScheme.primary : colorScheme.surface,
+      foregroundColor: _isExpanded
+          ? colorScheme.onPrimary
+          : colorScheme.surface,
+      leading: widget.leading,
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: [
@@ -143,7 +151,7 @@ class _SliverAppBarWithWavesComponentState
                 ),
               ),
             ),
-            if (widget.flexibleSpaceChild != null) widget.flexibleSpaceChild!,
+            if (widget.flexibleSpace != null) widget.flexibleSpace!,
           ],
         ),
       ),

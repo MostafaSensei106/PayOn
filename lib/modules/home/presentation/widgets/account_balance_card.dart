@@ -28,10 +28,15 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
       padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
       child: Container(
         decoration: BoxDecoration(
-          color: colorScheme.surfaceContainerHigh,
           borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
           border: Border.all(
+            width: 1.5,
             color: colorScheme.outlineVariant.withValues(alpha: 0.5),
+          ),
+          gradient: const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Colors.white, Colors.white],
           ),
         ),
         padding: const EdgeInsets.all(AppConfig.paddingHalf),
@@ -68,7 +73,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
                     ),
                   ],
                 ),
-                IconButtonComponent(
+                IconButtonComponent.filled(
                   icon: _showBalance
                       ? Iconsax.eye_copy
                       : Iconsax.eye_slash_copy,
