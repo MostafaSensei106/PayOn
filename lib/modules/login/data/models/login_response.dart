@@ -2,13 +2,13 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'user_data_model.dart';
+import 'user_data.dart';
 
-part 'login_response_model.g.dart';
+part 'login_response.g.dart';
 
 @JsonSerializable()
-class LoginResponseModel {
-  LoginResponseModel({
+class LoginResponse {
+  LoginResponse({
     required this.code,
     required this.message,
     required this.userData,
@@ -21,8 +21,6 @@ class LoginResponseModel {
   final UserDataModel userData;
   final bool success;
 
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$LoginResponseModelToJson(this);
+  factory LoginResponse.fromJson(Map<String, dynamic> json) =>
+      _$LoginResponseFromJson(json);
 }
