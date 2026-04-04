@@ -15,7 +15,7 @@ enum UserNameError {
   hasImojes,
 }
 
-class UserName extends FormzInput<String, UserNameError> {
+final class UserName extends FormzInput<String, UserNameError> {
   const UserName.pure() : super.pure('');
   const UserName.dirty([super.value = '']) : super.dirty();
 

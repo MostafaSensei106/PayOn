@@ -6,7 +6,7 @@ import '../services/l10n/l10n_service.dart';
 
 enum PasswordError { empty, tooShort, hasEmojes, invalid, hasSpaces }
 
-class Password extends FormzInput<String, PasswordError> {
+final class Password extends FormzInput<String, PasswordError> {
   const Password.pure() : super.pure('');
   const Password.dirty([super.value = '']) : super.dirty();
 
