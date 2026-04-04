@@ -278,6 +278,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get user_name_not_valid => 'User name is not valid';
 
   @override
+  String get password_can_not_have_spaces => 'Password cannot contain spaces';
+
+  @override
+  String get user_name_arbic_not_allowed =>
+      'User name cannot contain Arabic characters';
+
+  @override
+  String get user_name_is_too_long_max_20_characters =>
+      'User name is too long (maximum 20 characters)';
+
+  @override
   String get user_name_is_too_short_min_3_characters =>
       'User name is too short (minimum 3 characters)';
 

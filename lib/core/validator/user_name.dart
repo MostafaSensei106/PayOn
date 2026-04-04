@@ -10,6 +10,8 @@ enum UserNameError {
   hasSpaces,
   tooShort,
   invalid,
+  arbicNotAllowed,
+  tooLongMax20Characters,
   hasImojes,
 }
 
@@ -33,8 +35,22 @@ class UserName extends FormzInput<String, UserNameError> {
       return UserNameError.hasSpecialCharacters;
     }
 
-    if (RegExp(r'[^\w\s]').hasMatch(value)) {
+    final emojiRegExp = RegExp(
+      r'[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]',
+      unicode: true,
+    );
+    if (emojiRegExp.hasMatch(value)) {
       return UserNameError.hasImojes;
+    }
+
+    if (RegExp(
+      r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]',
+    ).hasMatch(value)) {
+      return UserNameError.arbicNotAllowed;
+    }
+
+    if (value.trim().length > 20) {
+      return UserNameError.tooLongMax20Characters;
     }
 
     return null;
@@ -55,7 +71,13 @@ extension UserNameErrorExtension on UserNameError {
         return l10n.user_name_can_not_have_spaces;
       case UserNameError.hasImojes:
         return l10n.user_name_can_not_have_emojis;
-      default:
+
+      case UserNameError.arbicNotAllowed:
+        return l10n.user_name_arbic_not_allowed;
+
+      case UserNameError.tooLongMax20Characters:
+        return l10n.user_name_is_too_long_max_20_characters;
+      case UserNameError.invalid:
         return l10n.user_name_not_valid;
     }
   }

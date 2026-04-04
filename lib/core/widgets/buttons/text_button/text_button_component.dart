@@ -10,6 +10,7 @@ class TextButtonComponent extends StatelessWidget {
     required this.onPressed,
     super.key,
     this.useInBorderRadius = false,
+    this.isEnable = true,
     this.backgroundColor,
     this.foregroundColor,
   }) : icon = null;
@@ -20,6 +21,7 @@ class TextButtonComponent extends StatelessWidget {
     required this.onPressed,
     super.key,
     this.useInBorderRadius = false,
+    this.isEnable = true,
     this.backgroundColor,
     this.foregroundColor,
   });
@@ -29,6 +31,7 @@ class TextButtonComponent extends StatelessWidget {
   final IconData? icon;
   final Color? backgroundColor;
   final Color? foregroundColor;
+  final bool isEnable;
 
   @override
   Widget build(final BuildContext context) {
@@ -44,18 +47,23 @@ class TextButtonComponent extends StatelessWidget {
 
     return icon == null
         ? TextButton(
-            onPressed: () {
-              unawaited(HapticFeedback.vibrate());
-              onPressed();
-            },
+            onPressed: isEnable
+                ? () {
+                    unawaited(HapticFeedback.vibrate());
+                    onPressed();
+                  }
+                : null,
             style: style,
+
             child: Text(label),
           )
         : TextButton.icon(
-            onPressed: () {
-              unawaited(HapticFeedback.vibrate());
-              onPressed();
-            },
+            onPressed: isEnable
+                ? () {
+                    unawaited(HapticFeedback.vibrate());
+                    onPressed();
+                  }
+                : null,
             style: style,
             icon: Icon(icon, size: AppConfig.iconSize),
             label: Text(label),

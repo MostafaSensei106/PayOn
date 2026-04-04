@@ -278,6 +278,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get user_name_not_valid => 'اسم المستخدم غير صالح';
 
   @override
+  String get password_can_not_have_spaces =>
+      'كلمة المرور لا يمكن أن تحتوي على مسافات';
+
+  @override
+  String get user_name_arbic_not_allowed =>
+      'اسم المستخدم لا يمكن أن يحتوي على أحرف عربية';
+
+  @override
+  String get user_name_is_too_long_max_20_characters =>
+      'اسم المستخدم طويل جداً (20 حرفاً كحد أقصى)';
+
+  @override
   String get user_name_is_too_short_min_3_characters =>
       'اسم المستخدم قصير جداً (3 أحرف على الأقل)';
 

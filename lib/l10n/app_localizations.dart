@@ -626,6 +626,24 @@ abstract class AppLocalizations {
   /// **'User name is not valid'**
   String get user_name_not_valid;
 
+  /// No description provided for @password_can_not_have_spaces.
+  ///
+  /// In en, this message translates to:
+  /// **'Password cannot contain spaces'**
+  String get password_can_not_have_spaces;
+
+  /// No description provided for @user_name_arbic_not_allowed.
+  ///
+  /// In en, this message translates to:
+  /// **'User name cannot contain Arabic characters'**
+  String get user_name_arbic_not_allowed;
+
+  /// No description provided for @user_name_is_too_long_max_20_characters.
+  ///
+  /// In en, this message translates to:
+  /// **'User name is too long (maximum 20 characters)'**
+  String get user_name_is_too_long_max_20_characters;
+
   /// No description provided for @user_name_is_too_short_min_3_characters.
   ///
   /// In en, this message translates to:
