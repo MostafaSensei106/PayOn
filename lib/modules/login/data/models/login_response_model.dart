@@ -11,13 +11,14 @@ class LoginResponseModel {
   LoginResponseModel({
     required this.code,
     required this.message,
-    required this.data,
+    required this.userData,
     required this.success,
   });
 
   final int code;
   final String message;
-  final UserDataModel data;
+  @JsonKey(name: 'data')
+  final UserDataModel userData;
   final bool success;
 
   factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>

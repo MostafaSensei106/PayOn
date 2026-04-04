@@ -7,8 +7,8 @@ part 'api_service.g.dart';
 
 @RestApi(baseUrl: ApiRoutes.apiBaseURL)
 abstract class APIService {
-  factory APIService(Dio dio, {String baseUR}) = _APIService;
+  factory APIService(Dio dio, {String? baseUrl}) = _APIService;
 
-  // @POST( ApiRoutes.login)
-  // Future<> login
+  @POST(ApiRoutes.authLogin)
+  Future<String> login();
 }
