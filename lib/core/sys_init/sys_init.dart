@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payon/core/di/di.dart' as di;
+import '../di/di.dart' as di;
 
 class SysInit {
   static Future<void> startDeamon() async {
