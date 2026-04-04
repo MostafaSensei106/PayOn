@@ -18,6 +18,7 @@ class GetStartedPage extends StatefulWidget {
 
 class _GetStartedPageState extends State<GetStartedPage> {
   final PageController _pageController = PageController();
+  final ScrollController _scrollController = ScrollController();
   final TextEditingController _dateController = TextEditingController();
 
   int _currentPage = 0;
@@ -55,52 +56,51 @@ class _GetStartedPageState extends State<GetStartedPage> {
     body: Column(
       children: [
         Expanded(
-          child: CustomScrollView(
-            controller: PageController(),
-            physics: const NeverScrollableScrollPhysics(),
-            slivers: [
-              GetStartedHeader(
-                currentPage: _currentPage,
-                pageController: _pageController,
-              ),
-              SliverFillRemaining(
-                child: PageView(
-                  controller: _pageController,
-                  physics: const NeverScrollableScrollPhysics(),
-                  onPageChanged: (final index) =>
-                      setState(() => _currentPage = index),
-
-                  children: [
-                    StepOneAccountDetails(
-                      termsAccepted: _termsAccepted,
-                      onTermsChanged: (final val) {
-                        setState(() {
-                          _termsAccepted = val ?? false;
-                          _allAccepted = _termsAccepted && _privacyAccepted;
-                        });
-                      },
-                      privacyAccepted: _privacyAccepted,
-                      onPrivacyChanged: (final val) {
-                        setState(() {
-                          _privacyAccepted = val ?? false;
-                          _allAccepted = _termsAccepted && _privacyAccepted;
-                        });
-                      },
-                      allAccepted: _allAccepted,
-                      onAllChanged: (final val) {
-                        setState(() {
-                          _allAccepted = val ?? false;
-                          _termsAccepted = _allAccepted;
-                          _privacyAccepted = _allAccepted;
-                        });
-                      },
-                    ),
-                    StepTwoKYC(dateController: _dateController),
-                    const StepThreeOTP(),
-                  ],
+          child: NestedScrollView(
+            controller: _scrollController,
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
+                GetStartedHeader(
+                  scrollController: _scrollController,
+                  currentPage: _currentPage,
+                  pageController: _pageController,
                 ),
-              ),
-            ],
+              ];
+            },
+            body: PageView(
+              controller: _pageController,
+              physics: const NeverScrollableScrollPhysics(),
+              onPageChanged: (final index) =>
+                  setState(() => _currentPage = index),
+              children: [
+                StepOneAccountDetails(
+                  termsAccepted: _termsAccepted,
+                  onTermsChanged: (final val) {
+                    setState(() {
+                      _termsAccepted = val ?? false;
+                      _allAccepted = _termsAccepted && _privacyAccepted;
+                    });
+                  },
+                  privacyAccepted: _privacyAccepted,
+                  onPrivacyChanged: (final val) {
+                    setState(() {
+                      _privacyAccepted = val ?? false;
+                      _allAccepted = _termsAccepted && _privacyAccepted;
+                    });
+                  },
+                  allAccepted: _allAccepted,
+                  onAllChanged: (final val) {
+                    setState(() {
+                      _allAccepted = val ?? false;
+                      _termsAccepted = _allAccepted;
+                      _privacyAccepted = _allAccepted;
+                    });
+                  },
+                ),
+                StepTwoKYC(dateController: _dateController),
+                const StepThreeOTP(),
+              ],
+            ),
           ),
         ),
         GetStartedNavigation(
@@ -116,6 +116,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
   @override
   void dispose() {
     _pageController.dispose();
+    _scrollController.dispose();
     _dateController.dispose();
     super.dispose();
   }

@@ -1,7 +1,9 @@
+// Added for Sine Wave calculations
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/router/app_router.dart';
@@ -11,23 +13,47 @@ import '../../../../core/widgets/buttons/text_button/text_button_component.dart'
 import '../../../../core/widgets/inputs/password_field/password_field_component.dart';
 import '../../../../core/widgets/inputs/text_field/text_field_component.dart';
 import '../../../../core/widgets/layout/spacing/spacing_component.dart';
-import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
+import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../logic/cubit/login_cubit.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(final BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
+
     return Scaffold(
-      appBar: SidePageAppBarComponent(title: l10n.login),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
-        child: BlocProvider(
-          create: (_) => getIt<LoginCubit>(),
-          child: LoginPageView(l10n: l10n),
+      body: BlocProvider(
+        create: (_) => getIt<LoginCubit>(),
+        child: CustomScrollView(
+          controller: _scrollController,
+          slivers: [
+            SliverAppBarWithWavesComponent(
+              scrollController: _scrollController,
+              title: l10n.login,
+            ),
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppConfig.padding,
+              ),
+              sliver: SliverToBoxAdapter(child: LoginPageView(l10n: l10n)),
+            ),
+          ],
         ),
       ),
     );
@@ -45,12 +71,11 @@ class LoginPageView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SpacingComponent.vertical(AppConfig.padding * 3),
           Text(
             l10n.welcome_back,
             style: Theme.of(
               context,
-            ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
+            ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SpacingComponent.vertical(AppConfig.paddingHalf),
           Text(
@@ -71,7 +96,7 @@ class LoginPageView extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: TextButtonComponent(
               label: l10n.forgot_password,
-              onPressed: () {},
+              onPressed: () => context.push(AppRouter.forgetPassword),
             ),
           ),
           const SpacingComponent.vertical(AppConfig.padding * 2),

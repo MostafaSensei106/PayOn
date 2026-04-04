@@ -3,7 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../modules/get_started/presentation/pages/get_started_page.dart';
+import '../../modules/forget_password/ui/page/forget_password_page.dart';
+import '../../modules/get_started/ui/pages/get_started_page.dart';
 import '../../modules/login/presentation/pages/login_page.dart';
 import '../../modules/main/presentation/pages/main_page.dart';
 import '../../modules/profile/presentation/pages/profile_page.dart';
@@ -56,6 +57,11 @@ class AppRouter {
         path: profile,
         pageBuilder: (final context, final state) =>
             const CupertinoPage(child: ProfilePage()),
+      ),
+      GoRoute(
+        path: forgetPassword,
+        pageBuilder: (context, state) =>
+            const CupertinoPage(child: ForgetPasswordPage()),
       ),
     ],
   );
