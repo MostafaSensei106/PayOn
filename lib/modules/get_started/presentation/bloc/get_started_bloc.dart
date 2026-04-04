@@ -1,16 +1,11 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-abstract class GetStartedEvent extends Equatable {
+abstract class GetStartedEvent {
   const GetStartedEvent();
-  @override
-  List<Object?> get props => [];
 }
 
-abstract class GetStartedState extends Equatable {
+abstract class GetStartedState {
   const GetStartedState();
-  @override
-  List<Object?> get props => [];
 }
 
 class GetStartedInitial extends GetStartedState {}
