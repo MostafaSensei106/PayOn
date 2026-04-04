@@ -1,26 +1,23 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final GetIt sl = GetIt.instance;
+import '../../modules/login/data/repositories/login_repository.dart';
+import '../../modules/login/logic/cubit/login_cubit.dart';
+import '../networking/api_service/api_service.dart';
+import '../networking/dio_factory.dart';
+
+final GetIt getIt = GetIt.instance;
 
 Future<void> init() async {
   final sharedPreferences = await SharedPreferences.getInstance();
 
-  sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
+  getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 
-  /// Services
+  /// Dio and API Service
+  final dio = await DioFactory.getDio();
+  getIt.registerLazySingleton<APIService>(() => APIService(dio));
 
-  /// Core
-
-  /// Repositories
-
-  /// UseCases
-
-  /// Datasources
-
-  /// Mappers
-
-  /// Models
-
-  /// Cubits
+  /// Login
+  getIt.registerLazySingleton<LoginRepository>(() => LoginRepository(getIt()));
+  getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
 }

@@ -9,7 +9,7 @@ class DioFactory {
 
   static Dio? dio;
 
-  static Dio getDio() {
+  static Future<Dio> getDio() async {
     const timeOut = AppConfig.dioTimeout;
     if (dio == null) {
       dio = Dio();

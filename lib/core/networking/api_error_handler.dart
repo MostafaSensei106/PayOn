@@ -15,6 +15,8 @@ class APIErrorHandler implements Exception {
   }
   late APIErrorModel apiErrorModel;
 
+  APIErrorModel get failure => apiErrorModel;
+
   APIErrorModel _handleError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
