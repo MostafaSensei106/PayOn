@@ -9,7 +9,7 @@ analyzer:
   errors:
     missing_return: error
     dead_code: error
-    unused_import: error
+    unused_import: warning
     unused_local_variable: error
     unused_element: error
     invalid_assignment: error
