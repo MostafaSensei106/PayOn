@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../core/constants/app_config.dart';
+import '../../../../core/di/di.dart';
+import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
-import '../../../../l10n/app_localizations.dart';
 import '../../data/models/account_model.dart';
 
 class AccountBalanceCard extends StatefulWidget {
@@ -20,7 +21,7 @@ class _AccountBalanceCardState extends State<AccountBalanceCard> {
 
   @override
   Widget build(final BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = getIt<L10nService>().get(context);
     final colorScheme = Theme.of(context).colorScheme;
 
     return Padding(

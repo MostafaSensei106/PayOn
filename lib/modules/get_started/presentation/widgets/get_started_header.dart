@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/constants/app_config.dart';
+import '../../../../core/di/di.dart';
+import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_component.dart';
-import '../../../../l10n/app_localizations.dart';
 
 class GetStartedHeader extends StatelessWidget {
   const GetStartedHeader({
@@ -17,7 +18,7 @@ class GetStartedHeader extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = getIt<L10nService>().get(context);
 
     return SidePageSliverAppBarComponent(
       title: AnimatedSwitcher(

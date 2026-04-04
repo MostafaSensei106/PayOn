@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '../../../../core/di/di.dart';
+import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/navigation/bottom_nav_bar/bottom_nav_bar_component.dart';
-import '../../../../l10n/app_localizations.dart';
 import '../../../history/presentation/pages/history_page.dart';
 import '../../../home/presentation/pages/home_page.dart';
 import '../../../settings/presentation/pages/settings_page.dart';
@@ -27,7 +28,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(final BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = getIt<L10nService>().get(context);
 
     return Scaffold(
       body: IndexedStack(index: _currentIndex, children: _pages),

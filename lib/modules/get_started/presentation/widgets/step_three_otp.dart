@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_config.dart';
+import '../../../../core/di/di.dart';
+import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
 import '../../../../core/widgets/inputs/otp_field/otp_field_component.dart';
-import '../../../../l10n/app_localizations.dart';
 
 class StepThreeOTP extends StatelessWidget {
   const StepThreeOTP({super.key});
 
   @override
   Widget build(final BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = getIt<L10nService>().get(context);
 
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),

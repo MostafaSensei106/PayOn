@@ -8,11 +8,12 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/constants/app_config.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/router/app_router.dart';
+import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/avatar/avatar_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_component.dart';
-import '../../../../l10n/app_localizations.dart';
 import '../../data/models/account_model.dart';
 import '../widgets/account_balance_card.dart';
 import '../widgets/latest_transactions_section.dart';
@@ -23,7 +24,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = getIt<L10nService>().get(context);
     final cardController = PageController();
 
     final accounts = <AccountModel>[
