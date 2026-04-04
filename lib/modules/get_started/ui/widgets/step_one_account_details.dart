@@ -5,8 +5,8 @@ import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/inputs/checkbox/checkbox_component.dart';
-import '../../../../core/widgets/inputs/password_field/password_field_component.dart';
-import '../../../../core/widgets/inputs/text_field/text_field_component.dart';
+import '../../../../core/widgets/inputs/password_form_field/password_form_field_component.dart';
+import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../../../core/widgets/layout/spacing/spacing_component.dart';
 
 class StepOneAccountDetails extends StatelessWidget {
@@ -47,30 +47,40 @@ class StepOneAccountDetails extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: TextFieldComponent(
+                  child: TextFormFieldComponent(
                     label: l10n.first_name,
                     prefixIcon: Iconsax.user_copy,
+                    onChanged: (String? p1) {},
                   ),
                 ),
                 const SpacingComponent.horizontal(AppConfig.paddingHalf),
                 Expanded(
-                  child: TextFieldComponent(
+                  child: TextFormFieldComponent(
                     label: l10n.last_name,
                     prefixIcon: Iconsax.user_copy,
+                    onChanged: (String? p1) {},
                   ),
                 ),
               ],
             ),
-            TextFieldComponent(
+            TextFormFieldComponent(
               label: l10n.email_address,
               prefixIcon: Iconsax.message_2_copy,
+              onChanged: (String? p1) {},
             ),
-            TextFieldComponent(
+            TextFormFieldComponent(
               label: l10n.phone_number,
               prefixIcon: Iconsax.call_copy,
+              onChanged: (String? p1) {},
             ),
-            PasswordFieldComponent(label: l10n.password),
-            PasswordFieldComponent(label: l10n.confirm_password),
+            PasswordFieldComponent(
+              label: l10n.password,
+              onChanged: (String? p1) {},
+            ),
+            PasswordFieldComponent(
+              label: l10n.confirm_password,
+              onChanged: (String? p1) {},
+            ),
             Column(
               children: [
                 CheckboxComponent(

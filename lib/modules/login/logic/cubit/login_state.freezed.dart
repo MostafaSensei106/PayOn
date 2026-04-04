@@ -14,30 +14,70 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LoginState<T> {
 
-
+ LoginFormState get form;
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LoginStateCopyWith<T, LoginState<T>> get copyWith => _$LoginStateCopyWithImpl<T, LoginState<T>>(this as LoginState<T>, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState<T>);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState<T>&&(identical(other.form, form) || other.form == form));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,form);
 
 @override
 String toString() {
-  return 'LoginState<$T>()';
+  return 'LoginState<$T>(form: $form)';
 }
 
 
 }
 
 /// @nodoc
-class $LoginStateCopyWith<T,$Res>  {
-$LoginStateCopyWith(LoginState<T> _, $Res Function(LoginState<T>) __);
+abstract mixin class $LoginStateCopyWith<T,$Res>  {
+  factory $LoginStateCopyWith(LoginState<T> value, $Res Function(LoginState<T>) _then) = _$LoginStateCopyWithImpl;
+@useResult
+$Res call({
+ LoginFormState form
+});
+
+
+$LoginFormStateCopyWith<$Res> get form;
+
+}
+/// @nodoc
+class _$LoginStateCopyWithImpl<T,$Res>
+    implements $LoginStateCopyWith<T, $Res> {
+  _$LoginStateCopyWithImpl(this._self, this._then);
+
+  final LoginState<T> _self;
+  final $Res Function(LoginState<T>) _then;
+
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? form = null,}) {
+  return _then(_self.copyWith(
+form: null == form ? _self.form : form // ignore: cast_nullable_to_non_nullable
+as LoginFormState,
+  ));
+}
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LoginFormStateCopyWith<$Res> get form {
+  
+  return $LoginFormStateCopyWith<$Res>(_self.form, (value) {
+    return _then(_self.copyWith(form: value));
+  });
+}
 }
 
 
@@ -125,13 +165,13 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( T data)?  success,TResult Function( String error)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( LoginFormState form)?  initial,TResult Function( LoginFormState form)?  loading,TResult Function( LoginFormState form,  T data)?  success,TResult Function( LoginFormState form,  String error)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
-return initial();case Loading() when loading != null:
-return loading();case Success() when success != null:
-return success(_that.data);case Failure() when failure != null:
-return failure(_that.error);case _:
+return initial(_that.form);case Loading() when loading != null:
+return loading(_that.form);case Success() when success != null:
+return success(_that.form,_that.data);case Failure() when failure != null:
+return failure(_that.form,_that.error);case _:
   return orElse();
 
 }
@@ -149,13 +189,13 @@ return failure(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( T data)  success,required TResult Function( String error)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( LoginFormState form)  initial,required TResult Function( LoginFormState form)  loading,required TResult Function( LoginFormState form,  T data)  success,required TResult Function( LoginFormState form,  String error)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
-return initial();case Loading():
-return loading();case Success():
-return success(_that.data);case Failure():
-return failure(_that.error);}
+return initial(_that.form);case Loading():
+return loading(_that.form);case Success():
+return success(_that.form,_that.data);case Failure():
+return failure(_that.form,_that.error);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -169,13 +209,13 @@ return failure(_that.error);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( T data)?  success,TResult? Function( String error)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( LoginFormState form)?  initial,TResult? Function( LoginFormState form)?  loading,TResult? Function( LoginFormState form,  T data)?  success,TResult? Function( LoginFormState form,  String error)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
-return initial();case Loading() when loading != null:
-return loading();case Success() when success != null:
-return success(_that.data);case Failure() when failure != null:
-return failure(_that.error);case _:
+return initial(_that.form);case Loading() when loading != null:
+return loading(_that.form);case Success() when success != null:
+return success(_that.form,_that.data);case Failure() when failure != null:
+return failure(_that.form,_that.error);case _:
   return null;
 
 }
@@ -187,78 +227,165 @@ return failure(_that.error);case _:
 
 
 class _Initial<T> implements LoginState<T> {
-  const _Initial();
+  const _Initial(this.form);
   
 
+@override final  LoginFormState form;
 
-
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$InitialCopyWith<T, _Initial<T>> get copyWith => __$InitialCopyWithImpl<T, _Initial<T>>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial<T>);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial<T>&&(identical(other.form, form) || other.form == form));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,form);
 
 @override
 String toString() {
-  return 'LoginState<$T>.initial()';
+  return 'LoginState<$T>.initial(form: $form)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class _$InitialCopyWith<T,$Res> implements $LoginStateCopyWith<T, $Res> {
+  factory _$InitialCopyWith(_Initial<T> value, $Res Function(_Initial<T>) _then) = __$InitialCopyWithImpl;
+@override @useResult
+$Res call({
+ LoginFormState form
+});
 
 
+@override $LoginFormStateCopyWith<$Res> get form;
+
+}
+/// @nodoc
+class __$InitialCopyWithImpl<T,$Res>
+    implements _$InitialCopyWith<T, $Res> {
+  __$InitialCopyWithImpl(this._self, this._then);
+
+  final _Initial<T> _self;
+  final $Res Function(_Initial<T>) _then;
+
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? form = null,}) {
+  return _then(_Initial<T>(
+null == form ? _self.form : form // ignore: cast_nullable_to_non_nullable
+as LoginFormState,
+  ));
+}
+
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LoginFormStateCopyWith<$Res> get form {
+  
+  return $LoginFormStateCopyWith<$Res>(_self.form, (value) {
+    return _then(_self.copyWith(form: value));
+  });
+}
+}
 
 /// @nodoc
 
 
 class Loading<T> implements LoginState<T> {
-  const Loading();
+  const Loading(this.form);
   
 
+@override final  LoginFormState form;
 
-
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LoadingCopyWith<T, Loading<T>> get copyWith => _$LoadingCopyWithImpl<T, Loading<T>>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loading<T>);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loading<T>&&(identical(other.form, form) || other.form == form));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,form);
 
 @override
 String toString() {
-  return 'LoginState<$T>.loading()';
+  return 'LoginState<$T>.loading(form: $form)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class $LoadingCopyWith<T,$Res> implements $LoginStateCopyWith<T, $Res> {
+  factory $LoadingCopyWith(Loading<T> value, $Res Function(Loading<T>) _then) = _$LoadingCopyWithImpl;
+@override @useResult
+$Res call({
+ LoginFormState form
+});
 
 
+@override $LoginFormStateCopyWith<$Res> get form;
+
+}
+/// @nodoc
+class _$LoadingCopyWithImpl<T,$Res>
+    implements $LoadingCopyWith<T, $Res> {
+  _$LoadingCopyWithImpl(this._self, this._then);
+
+  final Loading<T> _self;
+  final $Res Function(Loading<T>) _then;
+
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? form = null,}) {
+  return _then(Loading<T>(
+null == form ? _self.form : form // ignore: cast_nullable_to_non_nullable
+as LoginFormState,
+  ));
+}
+
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LoginFormStateCopyWith<$Res> get form {
+  
+  return $LoginFormStateCopyWith<$Res>(_self.form, (value) {
+    return _then(_self.copyWith(form: value));
+  });
+}
+}
 
 /// @nodoc
 
 
 class Success<T> implements LoginState<T> {
-  const Success({required this.data});
+  const Success(this.form, {required this.data});
   
 
+@override final  LoginFormState form;
  final  T data;
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
+@override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $SuccessCopyWith<T, Success<T>> get copyWith => _$SuccessCopyWithImpl<T, Success<T>>(this, _$identity);
 
@@ -266,16 +393,16 @@ $SuccessCopyWith<T, Success<T>> get copyWith => _$SuccessCopyWithImpl<T, Success
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success<T>&&const DeepCollectionEquality().equals(other.data, data));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success<T>&&(identical(other.form, form) || other.form == form)&&const DeepCollectionEquality().equals(other.data, data));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data));
+int get hashCode => Object.hash(runtimeType,form,const DeepCollectionEquality().hash(data));
 
 @override
 String toString() {
-  return 'LoginState<$T>.success(data: $data)';
+  return 'LoginState<$T>.success(form: $form, data: $data)';
 }
 
 
@@ -284,13 +411,13 @@ String toString() {
 /// @nodoc
 abstract mixin class $SuccessCopyWith<T,$Res> implements $LoginStateCopyWith<T, $Res> {
   factory $SuccessCopyWith(Success<T> value, $Res Function(Success<T>) _then) = _$SuccessCopyWithImpl;
-@useResult
+@override @useResult
 $Res call({
- T data
+ LoginFormState form, T data
 });
 
 
-
+@override $LoginFormStateCopyWith<$Res> get form;
 
 }
 /// @nodoc
@@ -303,28 +430,39 @@ class _$SuccessCopyWithImpl<T,$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? data = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? form = null,Object? data = freezed,}) {
   return _then(Success<T>(
-data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+null == form ? _self.form : form // ignore: cast_nullable_to_non_nullable
+as LoginFormState,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as T,
   ));
 }
 
-
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LoginFormStateCopyWith<$Res> get form {
+  
+  return $LoginFormStateCopyWith<$Res>(_self.form, (value) {
+    return _then(_self.copyWith(form: value));
+  });
+}
 }
 
 /// @nodoc
 
 
 class Failure<T> implements LoginState<T> {
-  const Failure({required this.error});
+  const Failure(this.form, {required this.error});
   
 
+@override final  LoginFormState form;
  final  String error;
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
+@override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $FailureCopyWith<T, Failure<T>> get copyWith => _$FailureCopyWithImpl<T, Failure<T>>(this, _$identity);
 
@@ -332,16 +470,16 @@ $FailureCopyWith<T, Failure<T>> get copyWith => _$FailureCopyWithImpl<T, Failure
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Failure<T>&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Failure<T>&&(identical(other.form, form) || other.form == form)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,error);
+int get hashCode => Object.hash(runtimeType,form,error);
 
 @override
 String toString() {
-  return 'LoginState<$T>.failure(error: $error)';
+  return 'LoginState<$T>.failure(form: $form, error: $error)';
 }
 
 
@@ -350,13 +488,13 @@ String toString() {
 /// @nodoc
 abstract mixin class $FailureCopyWith<T,$Res> implements $LoginStateCopyWith<T, $Res> {
   factory $FailureCopyWith(Failure<T> value, $Res Function(Failure<T>) _then) = _$FailureCopyWithImpl;
-@useResult
+@override @useResult
 $Res call({
- String error
+ LoginFormState form, String error
 });
 
 
-
+@override $LoginFormStateCopyWith<$Res> get form;
 
 }
 /// @nodoc
@@ -369,14 +507,24 @@ class _$FailureCopyWithImpl<T,$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? form = null,Object? error = null,}) {
   return _then(Failure<T>(
-error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+null == form ? _self.form : form // ignore: cast_nullable_to_non_nullable
+as LoginFormState,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
 
-
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LoginFormStateCopyWith<$Res> get form {
+  
+  return $LoginFormStateCopyWith<$Res>(_self.form, (value) {
+    return _then(_self.copyWith(form: value));
+  });
+}
 }
 
 // dart format on

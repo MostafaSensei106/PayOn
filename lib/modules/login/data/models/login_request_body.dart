@@ -4,8 +4,8 @@ part 'login_request_body.g.dart';
 
 @JsonSerializable()
 class LoginRequestBody {
-  LoginRequestBody({required this.username, required this.password});
-  final String username;
+  LoginRequestBody({required this.userName, required this.password});
+  final String userName;
   final String password;
 
   Map<String, dynamic> toJson() => _$LoginRequestBodyToJson(this);

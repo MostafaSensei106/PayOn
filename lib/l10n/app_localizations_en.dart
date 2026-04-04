@@ -233,5 +233,77 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accept_all => 'Accept All';
 
   @override
+  String get email_empty => 'Email cannot be empty';
+
+  @override
+  String get email_missing_at_sign => 'Email is missing @ sign';
+
+  @override
+  String get email_invalid => 'Email is invalid';
+
+  @override
+  String get email_already_exists => 'Email already exists';
+
+  @override
+  String get email_not_found => 'Email not found';
+
+  @override
+  String get email_not_lower_case => 'Email must be in lower case';
+
+  @override
+  String get email_not_valid => 'Email is not valid';
+
+  @override
+  String get email_missing_domain => 'Email is missing domain';
+
+  @override
+  String get email_missing_dot => 'Email is missing .';
+
+  @override
+  String get email_missing_extension => 'Email is missing extension';
+
+  @override
+  String get password_empty => 'Password cannot be empty';
+
+  @override
+  String get user_name_can_not_be_empty => 'User name cannot be empty';
+
+  @override
+  String get user_name_already_exists => 'User name already exists';
+
+  @override
+  String get user_name_not_found => 'User name not found';
+
+  @override
+  String get user_name_not_valid => 'User name is not valid';
+
+  @override
+  String get user_name_is_too_short_min_3_characters =>
+      'User name is too short (minimum 3 characters)';
+
+  @override
+  String get user_name_can_not_have_spaces => 'User name cannot contain spaces';
+
+  @override
+  String get user_name_can_not_have_special_characters =>
+      'User name cannot contain special characters';
+
+  @override
+  String get user_name_can_not_have_emojis => 'User name cannot contain emojis';
+
+  @override
   String get please_read_privacy_policy => 'Please read the Privacy Policy';
+
+  @override
+  String get password_can_not_be_empty => 'Password cannot be empty';
+
+  @override
+  String get password_is_too_short_min_8_characters =>
+      'Password is too short (minimum 8 characters)';
+
+  @override
+  String get password_can_not_have_emojis => 'Password cannot contain emojis';
+
+  @override
+  String get password_not_valid => 'Password is not valid';
 }

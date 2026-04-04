@@ -117,7 +117,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get request => 'طلب';
 
   @override
-  String get receive => 'Receive';
+  String get receive => 'إستلام';
 
   @override
   String get scan => 'مسح';
@@ -231,5 +231,82 @@ class AppLocalizationsAr extends AppLocalizations {
   String get accept_all => 'قبول الكل';
 
   @override
+  String get email_empty => 'البريد الإلكتروني لا يمكن أن يكون فارغاً';
+
+  @override
+  String get email_missing_at_sign => 'البريد الإلكتروني يفتقد علامة @';
+
+  @override
+  String get email_invalid => 'البريد الإلكتروني غير صالح';
+
+  @override
+  String get email_already_exists => 'البريد الإلكتروني موجود بالفعل';
+
+  @override
+  String get email_not_found => 'البريد الإلكتروني غير موجود';
+
+  @override
+  String get email_not_lower_case =>
+      'يجب أن يكون البريد الإلكتروني بأحرف صغيرة';
+
+  @override
+  String get email_not_valid => 'البريد الإلكتروني غير صحيح';
+
+  @override
+  String get email_missing_domain => 'البريد الإلكتروني يفتقد النطاق (domain)';
+
+  @override
+  String get email_missing_dot => 'البريد الإلكتروني يفتقد النقطة (.)';
+
+  @override
+  String get email_missing_extension => 'البريد الإلكتروني يفتقد الامتداد';
+
+  @override
+  String get password_empty => 'كلمة المرور لا يمكن أن تكون فارغة';
+
+  @override
+  String get user_name_can_not_be_empty =>
+      'اسم المستخدم لا يمكن أن يكون فارغاً';
+
+  @override
+  String get user_name_already_exists => 'اسم المستخدم موجود بالفعل';
+
+  @override
+  String get user_name_not_found => 'اسم المستخدم غير موجود';
+
+  @override
+  String get user_name_not_valid => 'اسم المستخدم غير صالح';
+
+  @override
+  String get user_name_is_too_short_min_3_characters =>
+      'اسم المستخدم قصير جداً (3 أحرف على الأقل)';
+
+  @override
+  String get user_name_can_not_have_spaces =>
+      'اسم المستخدم لا يمكن أن يحتوي على مسافات';
+
+  @override
+  String get user_name_can_not_have_special_characters =>
+      'اسم المستخدم لا يمكن أن يحتوي على رموز خاصة';
+
+  @override
+  String get user_name_can_not_have_emojis =>
+      'اسم المستخدم لا يمكن أن يحتوي على رموز تعبيرية';
+
+  @override
   String get please_read_privacy_policy => 'يرجى قراءة سياسة الخصوصية';
+
+  @override
+  String get password_can_not_be_empty => 'كلمة المرور لا يمكن أن تكون فارغة';
+
+  @override
+  String get password_is_too_short_min_8_characters =>
+      'كلمة المرور قصيرة جداً (8 أحرف على الأقل)';
+
+  @override
+  String get password_can_not_have_emojis =>
+      'كلمة المرور لا يمكن أن تحتوي على رموز تعبيرية';
+
+  @override
+  String get password_not_valid => 'كلمة المرور غير صالحة';
 }

@@ -536,11 +536,149 @@ abstract class AppLocalizations {
   /// **'Accept All'**
   String get accept_all;
 
+  /// No description provided for @email_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Email cannot be empty'**
+  String get email_empty;
+
+  /// No description provided for @email_missing_at_sign.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is missing @ sign'**
+  String get email_missing_at_sign;
+
+  /// No description provided for @email_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is invalid'**
+  String get email_invalid;
+
+  /// No description provided for @email_already_exists.
+  ///
+  /// In en, this message translates to:
+  /// **'Email already exists'**
+  String get email_already_exists;
+
+  /// No description provided for @email_not_found.
+  ///
+  /// In en, this message translates to:
+  /// **'Email not found'**
+  String get email_not_found;
+
+  /// No description provided for @email_not_lower_case.
+  ///
+  /// In en, this message translates to:
+  /// **'Email must be in lower case'**
+  String get email_not_lower_case;
+
+  /// No description provided for @email_not_valid.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is not valid'**
+  String get email_not_valid;
+
+  /// No description provided for @email_missing_domain.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is missing domain'**
+  String get email_missing_domain;
+
+  /// No description provided for @email_missing_dot.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is missing .'**
+  String get email_missing_dot;
+
+  /// No description provided for @email_missing_extension.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is missing extension'**
+  String get email_missing_extension;
+
+  /// No description provided for @password_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password cannot be empty'**
+  String get password_empty;
+
+  /// No description provided for @user_name_can_not_be_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'User name cannot be empty'**
+  String get user_name_can_not_be_empty;
+
+  /// No description provided for @user_name_already_exists.
+  ///
+  /// In en, this message translates to:
+  /// **'User name already exists'**
+  String get user_name_already_exists;
+
+  /// No description provided for @user_name_not_found.
+  ///
+  /// In en, this message translates to:
+  /// **'User name not found'**
+  String get user_name_not_found;
+
+  /// No description provided for @user_name_not_valid.
+  ///
+  /// In en, this message translates to:
+  /// **'User name is not valid'**
+  String get user_name_not_valid;
+
+  /// No description provided for @user_name_is_too_short_min_3_characters.
+  ///
+  /// In en, this message translates to:
+  /// **'User name is too short (minimum 3 characters)'**
+  String get user_name_is_too_short_min_3_characters;
+
+  /// No description provided for @user_name_can_not_have_spaces.
+  ///
+  /// In en, this message translates to:
+  /// **'User name cannot contain spaces'**
+  String get user_name_can_not_have_spaces;
+
+  /// No description provided for @user_name_can_not_have_special_characters.
+  ///
+  /// In en, this message translates to:
+  /// **'User name cannot contain special characters'**
+  String get user_name_can_not_have_special_characters;
+
+  /// No description provided for @user_name_can_not_have_emojis.
+  ///
+  /// In en, this message translates to:
+  /// **'User name cannot contain emojis'**
+  String get user_name_can_not_have_emojis;
+
   /// No description provided for @please_read_privacy_policy.
   ///
   /// In en, this message translates to:
   /// **'Please read the Privacy Policy'**
   String get please_read_privacy_policy;
+
+  /// No description provided for @password_can_not_be_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password cannot be empty'**
+  String get password_can_not_be_empty;
+
+  /// No description provided for @password_is_too_short_min_8_characters.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is too short (minimum 8 characters)'**
+  String get password_is_too_short_min_8_characters;
+
+  /// No description provided for @password_can_not_have_emojis.
+  ///
+  /// In en, this message translates to:
+  /// **'Password cannot contain emojis'**
+  String get password_can_not_have_emojis;
+
+  /// No description provided for @password_not_valid.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is not valid'**
+  String get password_not_valid;
 }
 
 class _AppLocalizationsDelegate

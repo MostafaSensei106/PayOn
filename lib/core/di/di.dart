@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../modules/login/data/repositories/base_login_repository.dart';
 import '../../modules/login/data/repositories/login_repository.dart';
 import '../../modules/login/logic/cubit/login_cubit.dart';
 import '../networking/api_service/api_service.dart';
@@ -22,6 +23,8 @@ Future<void> init() async {
   getIt.registerLazySingleton<APIService>(() => APIService(dio));
 
   /// Login
-  getIt.registerLazySingleton<LoginRepository>(() => LoginRepository(getIt()));
+  getIt.registerLazySingleton<BaseLoginRepository>(
+    () => LoginRepository(getIt<APIService>()),
+  );
   getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
 }

@@ -4,7 +4,7 @@ import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/buttons/outlined_button/outlined_button_component.dart';
-import '../../../../core/widgets/inputs/text_field/text_field_component.dart';
+import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 
 class StepTwoKYC extends StatelessWidget {
   const StepTwoKYC({required this.dateController, super.key});
@@ -28,11 +28,12 @@ class StepTwoKYC extends StatelessWidget {
                 context,
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
-            TextFieldComponent(
+            TextFormFieldComponent(
               label: l10n.full_name_id,
               prefixIcon: Iconsax.user_copy,
+              onChanged: (String? p1) {},
             ),
-            TextFieldComponent(
+            TextFormFieldComponent(
               controller: dateController,
               label: l10n.dob,
               prefixIcon: Iconsax.calendar_1_copy,
@@ -110,10 +111,12 @@ class StepTwoKYC extends StatelessWidget {
                   dateController.text = date.toString().split(' ')[0];
                 }
               },
+              onChanged: (String? p1) {},
             ),
-            TextFieldComponent(
+            TextFormFieldComponent(
               label: l10n.nationality,
               prefixIcon: Iconsax.global_copy,
+              onChanged: (String? p1) {},
             ),
             Text(
               l10n.tier_2_title,
@@ -121,9 +124,10 @@ class StepTwoKYC extends StatelessWidget {
                 context,
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
-            TextFieldComponent(
+            TextFormFieldComponent(
               label: l10n.national_id_passport,
               prefixIcon: Iconsax.personalcard_copy,
+              onChanged: (String? p1) {},
             ),
             OutlinedButtonComponent(label: l10n.upload_id, onPressed: () {}),
             Text(
@@ -132,9 +136,10 @@ class StepTwoKYC extends StatelessWidget {
                 context,
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
-            TextFieldComponent(
+            TextFormFieldComponent(
               label: l10n.residential_address,
               prefixIcon: Iconsax.location_copy,
+              onChanged: (String? p1) {},
             ),
             OutlinedButtonComponent(
               label: l10n.upload_address_proof,
