@@ -404,6 +404,12 @@ abstract class AppLocalizations {
   /// **'of'**
   String get off;
 
+  /// No description provided for @please_wait.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Wait...'**
+  String get please_wait;
+
   /// No description provided for @account_details.
   ///
   /// In en, this message translates to:

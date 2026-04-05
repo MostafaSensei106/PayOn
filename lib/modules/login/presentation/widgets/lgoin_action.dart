@@ -9,7 +9,10 @@ import '../../logic/cubit/login_state.dart';
 
 class LoginAction extends StatelessWidget {
   const LoginAction({
-    required this.form, required this.isLoading, required this.l10n, super.key,
+    required this.form,
+    required this.isLoading,
+    required this.l10n,
+    super.key,
   });
 
   final AppLocalizations l10n;
@@ -25,11 +28,17 @@ class LoginAction extends StatelessWidget {
           current is Failure ||
           previous is Failure,
       builder: (context, state) {
-        return isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : FilledButtonComponent(
-                label: l10n.login,
+        return !isLoading && form.isValid
+            ? FilledButtonComponent(
+                label: isLoading ? l10n.please_wait : l10n.login,
                 isEnabled: form.isValid,
+                onPressed: () async {
+                  await context.read<LoginCubit>().login();
+                },
+              )
+            : FilledButtonComponent(
+                label: isLoading ? l10n.please_wait : l10n.login,
+                isEnabled: !isLoading,
                 onPressed: () async {
                   await context.read<LoginCubit>().login();
                 },

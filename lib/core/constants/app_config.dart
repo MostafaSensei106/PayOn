@@ -2,7 +2,7 @@
 ///
 /// This includes app metadata, UI dimensions, and other fixed values
 /// used throughout the application to ensure consistency.
-class AppConfig {
+final class AppConfig {
   /// The official name of the application.
   static const String appName = 'PayOn';
 

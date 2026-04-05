@@ -165,6 +165,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get off => 'من';
 
   @override
+  String get please_wait => 'من فضلك انتظر...';
+
+  @override
   String get account_details => 'تفاصيل الحساب';
 
   @override

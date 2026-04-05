@@ -1,1 +1,1 @@
-class SvgsImages {}
+final class SvgsImages {}

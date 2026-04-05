@@ -1,4 +1,4 @@
-class ApiRoutes {
+final class ApiRoutes {
   static const String apiBaseURL =
       'https://zeinahmed-001-site1.mtempurl.com/api/';
 

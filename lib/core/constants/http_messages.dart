@@ -1,4 +1,4 @@
-class HTTPMessages {
+final class HTTPMessages {
   /// General
   static const String ok = 'Ok';
   static const String created = 'Created';

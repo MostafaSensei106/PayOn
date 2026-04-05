@@ -1,4 +1,4 @@
-class Http {
+final class Http {
   static const int statusCodeOk = 200;
   static const int statusCodeCreated = 201;
   static const int statusCodeNoContent = 204;

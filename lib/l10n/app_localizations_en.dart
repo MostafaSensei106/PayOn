@@ -165,6 +165,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get off => 'of';
 
   @override
+  String get please_wait => 'Please Wait...';
+
+  @override
   String get account_details => 'Account Details';
 
   @override
