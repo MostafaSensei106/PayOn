@@ -632,6 +632,24 @@ abstract class AppLocalizations {
   /// **'User name is not valid'**
   String get user_name_not_valid;
 
+  /// No description provided for @payment_methods.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Methods'**
+  String get payment_methods;
+
+  /// No description provided for @saved_cards.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Cards'**
+  String get saved_cards;
+
+  /// No description provided for @add_card.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Card'**
+  String get add_card;
+
   /// No description provided for @password_can_not_have_spaces.
   ///
   /// In en, this message translates to:

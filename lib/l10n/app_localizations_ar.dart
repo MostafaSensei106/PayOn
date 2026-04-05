@@ -281,6 +281,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get user_name_not_valid => 'اسم المستخدم غير صالح';
 
   @override
+  String get payment_methods => 'طرق الدفع';
+
+  @override
+  String get saved_cards => 'البطاقات المحفوظة';
+
+  @override
+  String get add_card => 'إضافة بطاقة';
+
+  @override
   String get password_can_not_have_spaces =>
       'كلمة المرور لا يمكن أن تحتوي على مسافات';
 

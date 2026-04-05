@@ -281,6 +281,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get user_name_not_valid => 'User name is not valid';
 
   @override
+  String get payment_methods => 'Payment Methods';
+
+  @override
+  String get saved_cards => 'Saved Cards';
+
+  @override
+  String get add_card => 'Add Card';
+
+  @override
   String get password_can_not_have_spaces => 'Password cannot contain spaces';
 
   @override
