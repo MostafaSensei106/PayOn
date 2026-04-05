@@ -108,7 +108,7 @@ class ListTileComponent extends StatelessWidget {
         ),
         if (groupType == ListTileGroupType.top ||
             groupType == ListTileGroupType.middle)
-          const Divider(height: 1, indent: 16, endIndent: 16),
+          const Divider(height: 1),
       ],
     );
   }
