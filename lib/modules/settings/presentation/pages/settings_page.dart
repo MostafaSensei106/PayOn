@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
-import '../../../../core/widgets/navigation/app_bar/app_bar_component.dart';
+import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends HookWidget {
   const SettingsPage({super.key});
 
   @override
   Widget build(final BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
+    final scrollController = useScrollController();
     return Scaffold(
-      appBar: AppBarComponent(title: l10n.settings),
-      body: Center(
-        child: Text(
-          l10n.settings,
-          style: Theme.of(context).textTheme.headlineMedium,
+      body: CustomScrollView(
+        controller: scrollController,
+        physics: const AlwaysScrollableScrollPhysics(
+          parent: BouncingScrollPhysics(),
         ),
+        slivers: [
+          SliverAppBarWithWavesComponent(
+            scrollController: scrollController,
+            title: l10n.settings,
+          ),
+        ],
       ),
     );
   }
