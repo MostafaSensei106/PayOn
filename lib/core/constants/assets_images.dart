@@ -1,1 +1,1 @@
-class AssetsImages {}
+final class AssetsImages {}

@@ -6,15 +6,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../core/constants/app_config.dart';
+import '../../../../core/di/di.dart';
+import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_component.dart';
-import '../../../../l10n/app_localizations.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(final BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = getIt<L10nService>().get(context);
     return Scaffold(
       body: CustomScrollView(
         controller: ScrollController(),

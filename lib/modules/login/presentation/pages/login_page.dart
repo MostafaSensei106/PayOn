@@ -1,65 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
-import '../../../../core/constants/app_config.dart';
-import '../../../../core/router/app_router.dart';
-import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
-import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
-import '../../../../core/widgets/inputs/password_field/password_field_component.dart';
-import '../../../../core/widgets/inputs/text_field/text_field_component.dart';
-import '../../../../core/widgets/layout/spacing/spacing_component.dart';
-import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
-import '../../../../l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class LoginPage extends StatelessWidget {
+import '../../../../core/di/di.dart';
+import '../../../../core/services/l10n/l10n_service.dart';
+import '../../logic/cubit/login_cubit.dart';
+import '../../logic/cubit/login_state.dart';
+import '../widgets/login_page_view.dart';
+
+class LoginPage extends HookWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(final BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = getIt<L10nService>().get(context);
+    final scrollController = useScrollController();
 
     return Scaffold(
-      appBar: SidePageAppBarComponent(title: l10n.login),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SpacingComponent.vertical(AppConfig.padding * 3),
-            Text(
-              l10n.welcome_back,
-              style: Theme.of(
-                context,
-              ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
-            ),
-            const SpacingComponent.vertical(AppConfig.paddingHalf),
-            Text(
-              l10n.login_subtitle,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
-              ),
-            ),
-            const SpacingComponent.vertical(AppConfig.padding * 3),
-            TextFieldComponent(
-              label: l10n.email_address,
-              prefixIcon: Iconsax.sms_copy,
-              keyboardType: TextInputType.emailAddress,
-            ),
-            const SpacingComponent.vertical(AppConfig.padding),
-            PasswordFieldComponent(label: l10n.password),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: TextButtonComponent(
-                label: l10n.forgot_password,
-                onPressed: () {},
-              ),
-            ),
-            const SpacingComponent.vertical(AppConfig.padding * 2),
-            FilledButtonComponent(
-              label: l10n.login,
-              onPressed: () => context.go(AppRouter.home),
-            ),
-          ],
+      body: BlocProvider(
+        create: (_) => getIt<LoginCubit>(),
+        child: BlocConsumer<LoginCubit, LoginState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              success: (form, data) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('تم تسجيل الدخول بنجاح! 🚀')),
+                );
+              },
+
+              failure: (form, error) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(error), backgroundColor: Colors.red),
+                );
+              },
+            );
+          },
+
+          builder: (context, state) {
+            final form = state.form;
+            final isLoading = state is Loading;
+
+            return LoginPageView(
+              scrollController: scrollController,
+              form: form,
+              isLoading: isLoading,
+              l10n: l10n,
+            );
+          },
         ),
       ),
     );
