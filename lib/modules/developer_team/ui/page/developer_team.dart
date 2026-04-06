@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 
 class DeveloperTeam extends StatelessWidget {
-  const DeveloperTeam({Key? key}) : super(key: key);
+  const DeveloperTeam({super.key});
 
   @override
   Widget build(BuildContext context) {

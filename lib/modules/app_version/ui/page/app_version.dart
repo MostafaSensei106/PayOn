@@ -7,9 +7,9 @@ class AppVersion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: SidePageAppBarComponent(title: 'App Version'),
-      body: const Center(child: Text('App Version')),
+      body: Center(child: Text('App Version')),
     );
   }
 }
