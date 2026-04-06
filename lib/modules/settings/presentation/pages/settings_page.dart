@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/router/app_router.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/utils/s.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
@@ -28,9 +30,6 @@ class SettingsPage extends HookWidget {
             title: l10n.settings,
           ),
 
-          // ==========================================
-          // 1. سكشن الحساب والأمان (Account & Security)
-          // ==========================================
           _buildSectionHeader(context, 'الحساب والأمان'),
           _buildSectionItems([
             SettingsTileData(
@@ -43,25 +42,25 @@ class SettingsPage extends HookWidget {
               title: 'تغيير كلمة المرور',
               subtitle: 'تحديث الرمز السري الخاص بحسابك',
               leading: Icons.lock_outline,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.changePassword),
             ),
             SettingsTileData(
               title: 'المصادقة الثنائية (2FA)',
               subtitle: 'إضافة طبقة حماية إضافية لحسابك',
               leading: Icons.security,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.twoFactorAuth),
             ),
             SettingsTileData(
               title: 'تسجيل الدخول الحيوي',
               subtitle: 'تفعيل البصمة أو التعرف على الوجه',
               leading: Icons.fingerprint,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.fingerprintAuth),
             ),
             SettingsTileData(
               title: 'تنبيهات الأمان',
               subtitle: 'إشعارات محاولات الدخول غير المعتادة',
               leading: Icons.gpp_maybe_outlined,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.securityAlerts),
             ),
           ]),
 
@@ -74,68 +73,59 @@ class SettingsPage extends HookWidget {
               title: 'لغة التطبيق',
               subtitle: 'العربية', // ممكن تخليها متغيرة حسب لغة التطبيق الحالية
               leading: Icons.language,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.language),
             ),
             SettingsTileData(
               title: 'المظهر',
               subtitle: 'النظام الافتراضي (فاتح/داكن)',
               leading: Icons.dark_mode_outlined,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.theme),
             ),
             SettingsTileData(
               title: 'إعدادات الإشعارات',
               subtitle: 'التحكم في التنبيهات والأصوات',
               leading: Icons.notifications_none,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.notifications),
             ),
           ]),
 
-          // ==========================================
-          // 3. سكشن المساعدة والدعم (Help & Support)
-          // ==========================================
           _buildSectionHeader(context, 'المساعدة والدعم'),
           _buildSectionItems([
             SettingsTileData(
               title: 'الأسئلة الشائعة',
               subtitle: 'إجابات لأكثر الأسئلة طرحاً',
               leading: Icons.help_outline,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.commonQuestions),
             ),
             SettingsTileData(
               title: 'تواصل معنا',
               subtitle: 'فريق الدعم متاح لمساعدتك',
               leading: Icons.support_agent,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.contactUs),
             ),
           ]),
 
-          // ==========================================
-          // 4. سكشن حول (About)
-          // ==========================================
           _buildSectionHeader(context, 'حول'),
           _buildSectionItems([
             SettingsTileData(
               title: 'سياسة الخصوصية',
               subtitle: 'كيف نقوم بحماية بياناتك',
               leading: Icons.privacy_tip_outlined,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.privacyPolicy),
             ),
             SettingsTileData(
               title: 'عن التطبيق',
               subtitle: 'الإصدار 1.0.0',
               leading: Icons.info_outline,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.appVersion),
             ),
             SettingsTileData(
               title: 'عن المطورين',
               subtitle: 'تعرف على فريق المطورين',
               leading: Icons.developer_mode,
-              onTap: () {},
+              onTap: () => context.push(AppRouter.developerTeam),
             ),
           ]),
-
-          // مسافة سفلية
-          const SliverToBoxAdapter(child: SizedBox(height: 32)),
         ],
       ),
     );
