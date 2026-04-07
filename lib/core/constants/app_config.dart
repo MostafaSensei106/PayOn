@@ -37,7 +37,7 @@ final class AppConfig {
   static const double roundBorderRadius = 30.0;
 
   /// Standard height for buttons.
-  static const double buttonHeight = 56.0;
+  static const double buttonHeight = 50.0;
 
   /// Standard elevation for elevated buttons.
   static const double buttonElevation = 2.0;

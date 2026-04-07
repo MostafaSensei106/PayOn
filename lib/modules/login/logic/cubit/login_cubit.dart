@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 import '../../../../core/networking/api_result/api_result.dart';
+import '../../../../core/services/biometrics/base_biometrics_service.dart';
 import '../../../../core/validator/password.dart';
 import '../../../../core/validator/user_name.dart';
 import '../../data/models/login_request_body.dart';
@@ -11,10 +12,11 @@ import 'login_form_state.dart';
 import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState<LoginResponse>> {
-  LoginCubit(this._loginRepository)
+  LoginCubit(this._loginRepository, this._biometricsService)
     : super(const LoginState<LoginResponse>.initial(LoginFormState()));
 
   final BaseLoginRepository _loginRepository;
+  final BaseBiometricsService _biometricsService;
 
   LoginFormState get currentForm => state.form;
 
@@ -35,6 +37,13 @@ class LoginCubit extends Cubit<LoginState<LoginResponse>> {
         ),
       ),
     );
+  }
+
+  Future<bool> loginWithBiometrics() async {
+    final isAuthenticated = await _biometricsService.authenticate(
+      message: 'Scan your fingerprint to login',
+    );
+    return isAuthenticated;
   }
 
   void userNameOnChanged(String value) {

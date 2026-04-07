@@ -120,6 +120,27 @@ class AppLocalizationsAr extends AppLocalizations {
   String get receive => 'إستلام';
 
   @override
+  String get error => 'خطأ';
+
+  @override
+  String get info => 'معلومات';
+
+  @override
+  String get success => 'نجاح';
+
+  @override
+  String get warning => 'تحذير';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get login_with_fingerprint => 'تسجيل الدخول ببصمة الإصبع';
+
+  @override
   String get scan => 'مسح';
 
   @override

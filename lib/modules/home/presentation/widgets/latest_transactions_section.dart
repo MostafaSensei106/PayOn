@@ -3,7 +3,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
-import '../../../../core/utils/s.dart';
+import '../../../../core/utils/settings_tile_data.dart';
 import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 

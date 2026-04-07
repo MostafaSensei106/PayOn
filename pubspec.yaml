@@ -33,6 +33,7 @@ dependencies:
   retrofit: ^4.9.2
   flutter_hooks: ^0.21.3+1
   formz: ^0.8.0
+  local_auth: ^3.0.1
 
   pretty_dio_logger: any
 dev_dependencies:

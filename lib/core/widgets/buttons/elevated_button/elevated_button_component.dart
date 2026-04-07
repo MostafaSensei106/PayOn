@@ -56,17 +56,16 @@ class ElevatedButtonComponent extends StatelessWidget {
           label: Text(label),
         );
 
-  ButtonStyle _getButtonStyle(
-    final BuildContext context,
-  ) => ElevatedButton.styleFrom(
-    backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.surface,
-    foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
-    elevation: AppConfig.buttonElevation,
-    minimumSize: Size(width ?? double.infinity, height ?? 8),
-    shape: RoundedRectangleBorder(
-      borderRadius: useInBorderRadius
-          ? BorderRadius.circular(AppConfig.inBorderRadius)
-          : BorderRadius.circular(AppConfig.outBorderRadius),
-    ),
-  );
+  ButtonStyle _getButtonStyle(final BuildContext context) =>
+      ElevatedButton.styleFrom(
+        minimumSize: Size(
+          width ?? double.infinity,
+          height ?? AppConfig.buttonHeight,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: useInBorderRadius
+              ? BorderRadius.circular(AppConfig.inBorderRadius)
+              : BorderRadius.circular(AppConfig.outBorderRadius),
+        ),
+      );
 }

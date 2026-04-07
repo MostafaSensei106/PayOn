@@ -37,7 +37,7 @@ class TextButtonComponent extends StatelessWidget {
   Widget build(final BuildContext context) {
     final style = TextButton.styleFrom(
       backgroundColor: backgroundColor,
-      foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
+      foregroundColor: foregroundColor,
       shape: RoundedRectangleBorder(
         borderRadius: useInBorderRadius
             ? BorderRadius.circular(AppConfig.inBorderRadius)
