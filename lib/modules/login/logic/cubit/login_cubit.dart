@@ -16,7 +16,7 @@ import 'login_state.dart';
 class LoginCubit extends Cubit<LoginState<LoginResponse>> {
   LoginCubit(this._loginRepository, this._biometricsService)
     : super(const LoginState<LoginResponse>.initial(LoginFormState())) {
-    unawaited(checkBiometricsAvailability());
+    unawaited(_checkBiometricsAvailability());
   }
 
   final BaseLoginRepository _loginRepository;
@@ -24,7 +24,7 @@ class LoginCubit extends Cubit<LoginState<LoginResponse>> {
 
   LoginFormState get currentForm => state.form;
 
-  Future<void> checkBiometricsAvailability() async {
+  Future<void> _checkBiometricsAvailability() async {
     final isAvailable = await _biometricsService.isBiometricsAvailable();
     emit(
       LoginState.initial(

@@ -22,8 +22,11 @@ class FingerprintService implements BaseBiometricsService {
   @override
   Future<bool> isBiometricsAvailable() async {
     try {
-      return await _localAuth.canCheckBiometrics ||
-          await _localAuth.isDeviceSupported();
+      final canCheck = await _localAuth.canCheckBiometrics;
+      if (!canCheck) return false;
+      final availableBiometrics = await _localAuth.getAvailableBiometrics();
+
+      return availableBiometrics.isNotEmpty;
     } on PlatformException catch (_) {
       return false;
     }
