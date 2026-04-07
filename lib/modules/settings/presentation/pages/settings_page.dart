@@ -6,7 +6,7 @@ import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
-import '../../../../core/utils/s.dart';
+import '../../../../core/utils/settings_tile_data.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
 
