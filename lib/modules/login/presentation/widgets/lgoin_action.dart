@@ -46,19 +46,20 @@ class LoginAction extends StatelessWidget {
               },
             ),
 
-            OutlinedButtonComponent.icon(
-              icon: Iconsax.finger_scan_copy,
-              label: l10n.login_with_fingerprint,
-              isEnabled: isLoading ? false : true,
-              onPressed: () async {
-                final success = await context
-                    .read<LoginCubit>()
-                    .loginWithBiometrics();
-                if (success && context.mounted) {
-                  context.go(AppRouter.home);
-                }
-              },
-            ),
+            if (form.isBiometricsAvailable)
+              OutlinedButtonComponent.icon(
+                icon: Iconsax.finger_scan_copy,
+                label: l10n.login_with_fingerprint,
+                isEnabled: isLoading ? false : true,
+                onPressed: () async {
+                  final success = await context
+                      .read<LoginCubit>()
+                      .loginWithBiometrics();
+                  if (success && context.mounted) {
+                    context.go(AppRouter.home);
+                  }
+                },
+              ),
           ],
         );
       },

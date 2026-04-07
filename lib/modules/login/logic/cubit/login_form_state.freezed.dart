@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LoginFormState implements DiagnosticableTreeMixin {
 
- UserName get userName; Password get password; bool get isValid;
+ UserName get userName; Password get password; bool get isValid; bool get isBiometricsAvailable;
 /// Create a copy of LoginFormState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,21 +26,21 @@ $LoginFormStateCopyWith<LoginFormState> get copyWith => _$LoginFormStateCopyWith
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'LoginFormState'))
-    ..add(DiagnosticsProperty('userName', userName))..add(DiagnosticsProperty('password', password))..add(DiagnosticsProperty('isValid', isValid));
+    ..add(DiagnosticsProperty('userName', userName))..add(DiagnosticsProperty('password', password))..add(DiagnosticsProperty('isValid', isValid))..add(DiagnosticsProperty('isBiometricsAvailable', isBiometricsAvailable));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginFormState&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.password, password) || other.password == password)&&(identical(other.isValid, isValid) || other.isValid == isValid));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginFormState&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.password, password) || other.password == password)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.isBiometricsAvailable, isBiometricsAvailable) || other.isBiometricsAvailable == isBiometricsAvailable));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userName,password,isValid);
+int get hashCode => Object.hash(runtimeType,userName,password,isValid,isBiometricsAvailable);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'LoginFormState(userName: $userName, password: $password, isValid: $isValid)';
+  return 'LoginFormState(userName: $userName, password: $password, isValid: $isValid, isBiometricsAvailable: $isBiometricsAvailable)';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $LoginFormStateCopyWith<$Res>  {
   factory $LoginFormStateCopyWith(LoginFormState value, $Res Function(LoginFormState) _then) = _$LoginFormStateCopyWithImpl;
 @useResult
 $Res call({
- UserName userName, Password password, bool isValid
+ UserName userName, Password password, bool isValid, bool isBiometricsAvailable
 });
 
 
@@ -68,11 +68,12 @@ class _$LoginFormStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginFormState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? userName = null,Object? password = null,Object? isValid = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? userName = null,Object? password = null,Object? isValid = null,Object? isBiometricsAvailable = null,}) {
   return _then(_self.copyWith(
 userName: null == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
 as UserName,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as Password,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as bool,isBiometricsAvailable: null == isBiometricsAvailable ? _self.isBiometricsAvailable : isBiometricsAvailable // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -158,10 +159,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserName userName,  Password password,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserName userName,  Password password,  bool isValid,  bool isBiometricsAvailable)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LoginFormState() when $default != null:
-return $default(_that.userName,_that.password,_that.isValid);case _:
+return $default(_that.userName,_that.password,_that.isValid,_that.isBiometricsAvailable);case _:
   return orElse();
 
 }
@@ -179,10 +180,10 @@ return $default(_that.userName,_that.password,_that.isValid);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserName userName,  Password password,  bool isValid)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserName userName,  Password password,  bool isValid,  bool isBiometricsAvailable)  $default,) {final _that = this;
 switch (_that) {
 case _LoginFormState():
-return $default(_that.userName,_that.password,_that.isValid);case _:
+return $default(_that.userName,_that.password,_that.isValid,_that.isBiometricsAvailable);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -199,10 +200,10 @@ return $default(_that.userName,_that.password,_that.isValid);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserName userName,  Password password,  bool isValid)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserName userName,  Password password,  bool isValid,  bool isBiometricsAvailable)?  $default,) {final _that = this;
 switch (_that) {
 case _LoginFormState() when $default != null:
-return $default(_that.userName,_that.password,_that.isValid);case _:
+return $default(_that.userName,_that.password,_that.isValid,_that.isBiometricsAvailable);case _:
   return null;
 
 }
@@ -214,12 +215,13 @@ return $default(_that.userName,_that.password,_that.isValid);case _:
 
 
 class _LoginFormState with DiagnosticableTreeMixin implements LoginFormState {
-  const _LoginFormState({this.userName = const UserName.pure(), this.password = const Password.pure(), this.isValid = false});
+  const _LoginFormState({this.userName = const UserName.pure(), this.password = const Password.pure(), this.isValid = false, this.isBiometricsAvailable = false});
   
 
 @override@JsonKey() final  UserName userName;
 @override@JsonKey() final  Password password;
 @override@JsonKey() final  bool isValid;
+@override@JsonKey() final  bool isBiometricsAvailable;
 
 /// Create a copy of LoginFormState
 /// with the given fields replaced by the non-null parameter values.
@@ -232,21 +234,21 @@ _$LoginFormStateCopyWith<_LoginFormState> get copyWith => __$LoginFormStateCopyW
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'LoginFormState'))
-    ..add(DiagnosticsProperty('userName', userName))..add(DiagnosticsProperty('password', password))..add(DiagnosticsProperty('isValid', isValid));
+    ..add(DiagnosticsProperty('userName', userName))..add(DiagnosticsProperty('password', password))..add(DiagnosticsProperty('isValid', isValid))..add(DiagnosticsProperty('isBiometricsAvailable', isBiometricsAvailable));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginFormState&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.password, password) || other.password == password)&&(identical(other.isValid, isValid) || other.isValid == isValid));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginFormState&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.password, password) || other.password == password)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.isBiometricsAvailable, isBiometricsAvailable) || other.isBiometricsAvailable == isBiometricsAvailable));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userName,password,isValid);
+int get hashCode => Object.hash(runtimeType,userName,password,isValid,isBiometricsAvailable);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'LoginFormState(userName: $userName, password: $password, isValid: $isValid)';
+  return 'LoginFormState(userName: $userName, password: $password, isValid: $isValid, isBiometricsAvailable: $isBiometricsAvailable)';
 }
 
 
@@ -257,7 +259,7 @@ abstract mixin class _$LoginFormStateCopyWith<$Res> implements $LoginFormStateCo
   factory _$LoginFormStateCopyWith(_LoginFormState value, $Res Function(_LoginFormState) _then) = __$LoginFormStateCopyWithImpl;
 @override @useResult
 $Res call({
- UserName userName, Password password, bool isValid
+ UserName userName, Password password, bool isValid, bool isBiometricsAvailable
 });
 
 
@@ -274,11 +276,12 @@ class __$LoginFormStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginFormState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? userName = null,Object? password = null,Object? isValid = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? userName = null,Object? password = null,Object? isValid = null,Object? isBiometricsAvailable = null,}) {
   return _then(_LoginFormState(
 userName: null == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
 as UserName,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as Password,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as bool,isBiometricsAvailable: null == isBiometricsAvailable ? _self.isBiometricsAvailable : isBiometricsAvailable // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

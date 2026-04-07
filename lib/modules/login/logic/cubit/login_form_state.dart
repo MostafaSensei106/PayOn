@@ -11,5 +11,6 @@ abstract class LoginFormState with _$LoginFormState {
     @Default(UserName.pure()) UserName userName,
     @Default(Password.pure()) Password password,
     @Default(false) bool isValid,
+    @Default(false) bool isBiometricsAvailable,
   }) = _LoginFormState;
 }

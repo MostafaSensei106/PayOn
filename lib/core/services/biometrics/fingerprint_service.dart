@@ -9,9 +9,6 @@ class FingerprintService implements BaseBiometricsService {
   @override
   Future<bool> authenticate({required String message}) async {
     try {
-      final isSupported = await isBiometricsAvailable();
-      if (!isSupported) return false;
-
       return await _localAuth.authenticate(
         localizedReason: message,
         biometricOnly: true,
@@ -27,8 +24,8 @@ class FingerprintService implements BaseBiometricsService {
     try {
       return await _localAuth.canCheckBiometrics ||
           await _localAuth.isDeviceSupported();
-    } on PlatformException catch (e) {
-      throw Exception(e);
+    } on PlatformException catch (_) {
+      return false;
     }
   }
 }

@@ -1,32 +1,12 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:uuid/uuid.dart';
 
+import '../../constants/pref_keys.dart';
 import '../local_storage/base_secure_storage_service.dart';
 
 class FlutterSecureStorageService implements BaseSecureStorageService {
-  FlutterSecureStorageService(this._storage, this._uuid);
-  final Uuid _uuid;
+  FlutterSecureStorageService(this._storage);
 
   final FlutterSecureStorage _storage;
-
-  static const String _tokenKeyName = 'user_token_key';
-
-  @override
-  Future<String?> getUserToken() async {
-    final key = await _storage.read(key: _tokenKeyName);
-    if (key == null) return null;
-    return await _storage.read(key: key);
-  }
-
-  @override
-  Future<void> saveUserToken(String token) async {
-    var key = await _storage.read(key: _tokenKeyName);
-    if (key == null) {
-      key = _uuid.v4();
-      await _storage.write(key: _tokenKeyName, value: key);
-    }
-    await _storage.write(key: key, value: token);
-  }
 
   @override
   Future<void> clearAll() async {
@@ -34,10 +14,12 @@ class FlutterSecureStorageService implements BaseSecureStorageService {
   }
 
   @override
-  Future<void> makeTokenKeyIfNotExist() async {
-    final exists = await _storage.containsKey(key: _tokenKeyName);
-    if (!exists) {
-      await _storage.write(key: _tokenKeyName, value: _uuid.v4());
-    }
+  Future<String?> getUserToken() async {
+    return await _storage.read(key: PrefKeys.userToken);
+  }
+
+  @override
+  Future<void> saveUserToken(String token) async {
+    await _storage.write(key: PrefKeys.userToken, value: token);
   }
 }
