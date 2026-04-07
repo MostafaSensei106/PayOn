@@ -47,7 +47,7 @@ class LoginPageView extends StatelessWidget {
                   l10n: l10n,
                 ),
                 const SpacingComponent.vertical(AppConfig.padding * 2),
-                LoginAction(form: form, isLoading: isLoading, l10n: l10n),
+                LoginAction(l10n: l10n),
               ],
             ),
           ),

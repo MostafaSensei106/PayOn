@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
@@ -13,12 +15,23 @@ import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState<LoginResponse>> {
   LoginCubit(this._loginRepository, this._biometricsService)
-    : super(const LoginState<LoginResponse>.initial(LoginFormState()));
+    : super(const LoginState<LoginResponse>.initial(LoginFormState())) {
+    unawaited(_checkBiometricsAvailability());
+  }
 
   final BaseLoginRepository _loginRepository;
   final BaseBiometricsService _biometricsService;
 
   LoginFormState get currentForm => state.form;
+
+  Future<void> _checkBiometricsAvailability() async {
+    final isAvailable = await _biometricsService.isBiometricsAvailable();
+    emit(
+      LoginState.initial(
+        currentForm.copyWith(isBiometricsAvailable: isAvailable),
+      ),
+    );
+  }
 
   Future<void> login() async {
     if (!currentForm.isValid) return;
@@ -40,6 +53,7 @@ class LoginCubit extends Cubit<LoginState<LoginResponse>> {
   }
 
   Future<bool> loginWithBiometrics() async {
+    if (!await _biometricsService.isBiometricsAvailable()) return false;
     final isAuthenticated = await _biometricsService.authenticate(
       message: 'Scan your fingerprint to login',
     );

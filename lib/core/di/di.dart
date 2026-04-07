@@ -1,3 +1,4 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,8 +10,12 @@ import '../networking/dio_factory.dart';
 import '../services/biometrics/base_biometrics_service.dart';
 import '../services/biometrics/fingerprint_service.dart';
 import '../services/l10n/l10n_service.dart';
+import '../services/local_storage/base_secure_storage_service.dart';
 import '../services/share/base_share_service.dart';
 import '../services/share/share_plus_service.dart';
+import '../services/shared_prefs/base_prefs_storage_service.dart';
+import '../services/shared_prefs/flutter_secure_storage_service.dart';
+import '../services/shared_prefs/shared_prefs_service.dart';
 import '../services/theme/theme_service.dart';
 import '../services/toast/base_toast_service.dart';
 import '../services/toast/toastification_service.dart';
@@ -29,7 +34,16 @@ Future<void> init() async {
 
   /// Shared Preferences
   final sharedPreferences = await SharedPreferences.getInstance();
-  getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
+  getIt.registerLazySingleton<BasePrefsStorageService>(
+    () => SharedPrefsService(sharedPreferences),
+  );
+
+  /// Flutter Secure Storage
+  /// use with getIt<BaseSecureStorageService>().getUserToken();
+  const storage = FlutterSecureStorage();
+  getIt.registerLazySingleton<BaseSecureStorageService>(
+    () => FlutterSecureStorageService(storage),
+  );
 
   /// Dio and API Service
   final dio = await DioFactory.getDio();
