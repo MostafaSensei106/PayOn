@@ -138,6 +138,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cancel => 'إلغاء';
 
   @override
+  String get login_with_fingerprint => 'تسجيل الدخول ببصمة الإصبع';
+
+  @override
   String get scan => 'مسح';
 
   @override

@@ -41,6 +41,7 @@
   "warning": "Warning",
   "confirm": "Confirm",
   "cancel": "Cancel",
+  "login_with_fingerprint": "Login with Fingerprint",
   "scan": "Scan",
   "top_up": "Top Up",
   "more": "More",

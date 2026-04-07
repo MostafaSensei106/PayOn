@@ -6,6 +6,8 @@ import '../../modules/login/data/repositories/login_repository.dart';
 import '../../modules/login/logic/cubit/login_cubit.dart';
 import '../networking/api_service/api_service.dart';
 import '../networking/dio_factory.dart';
+import '../services/biometrics/base_biometrics_service.dart';
+import '../services/biometrics/fingerprint_service.dart';
 import '../services/l10n/l10n_service.dart';
 import '../services/share/base_share_service.dart';
 import '../services/share/share_plus_service.dart';
@@ -37,7 +39,7 @@ Future<void> init() async {
   getIt.registerLazySingleton<BaseLoginRepository>(
     () => LoginRepository(getIt<APIService>()),
   );
-  getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
+  getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt(), getIt()));
 
   /// Url Launcher
   /// use with getIt<BaseUrlLauncherServices>().launchWebsite('https://google.com');
@@ -52,4 +54,10 @@ Future<void> init() async {
   /// Toastification
   /// use with getIt<BaseToastService>().showSuccess(context, 'Success');
   getIt.registerLazySingleton<BaseToastService>(() => ToastificationService());
+
+  /// Fingerprint Biometrics
+  ///
+  getIt.registerLazySingleton<BaseBiometricsService>(
+    () => FingerprintService(),
+  );
 }

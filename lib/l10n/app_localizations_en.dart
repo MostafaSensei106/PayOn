@@ -138,6 +138,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancel => 'Cancel';
 
   @override
+  String get login_with_fingerprint => 'Login with Fingerprint';
+
+  @override
   String get scan => 'Scan';
 
   @override

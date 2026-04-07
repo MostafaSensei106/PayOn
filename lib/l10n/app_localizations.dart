@@ -350,6 +350,12 @@ abstract class AppLocalizations {
   /// **'Cancel'**
   String get cancel;
 
+  /// No description provided for @login_with_fingerprint.
+  ///
+  /// In en, this message translates to:
+  /// **'Login with Fingerprint'**
+  String get login_with_fingerprint;
+
   /// No description provided for @scan.
   ///
   /// In en, this message translates to:
