@@ -21,6 +21,9 @@ import '../services/toast/base_toast_service.dart';
 import '../services/toast/toastification_service.dart';
 import '../services/url_launcher/base_url_launcher_services.dart';
 import '../services/url_launcher/url_launcher_service.dart';
+import '../theme/data/base_theme_repository.dart';
+import '../theme/data/theme_repository.dart';
+import '../theme/logic/cubit/theme_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -75,5 +78,14 @@ Future<void> init() async {
   ///
   getIt.registerLazySingleton<BaseBiometricsService>(
     () => FingerprintService(),
+  );
+
+  // Theme
+  getIt.registerLazySingleton<BaseThemeRepository>(
+    () => ThemeRepository(getIt<BasePrefsStorageService>()),
+  );
+
+  getIt.registerLazySingleton<ThemeCubit>(
+    () => ThemeCubit(getIt<BaseThemeRepository>()),
   );
 }
