@@ -23,6 +23,7 @@
   "error": "خطأ",
   "info": "معلومات",
   "success": "نجاح",
+  "remember_me": "تذكرنى",
   "login_with_fingerprint": "تسجيل الدخول ببصمة الإصبع",
   "warning": "تحذير",
   "confirm": "تأكيد",

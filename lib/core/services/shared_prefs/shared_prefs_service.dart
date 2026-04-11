@@ -22,7 +22,7 @@ class SharedPrefsService implements BasePrefsStorageService {
   }
 
   @override
-  Future<void> saveData(String key, dynamic value) async {
+  Future<void> setData(String key, dynamic value) async {
     if (value is String) {
       await _prefs.setString(key, value);
     } else if (value is int) {

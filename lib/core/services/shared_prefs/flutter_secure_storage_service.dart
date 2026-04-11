@@ -22,4 +22,9 @@ class FlutterSecureStorageService implements BaseSecureStorageService {
   Future<void> saveUserToken(String token) async {
     await _storage.write(key: PrefKeys.userToken, value: token);
   }
+
+  @override
+  dynamic getData(String key) async {
+    return await _storage.read(key: key);
+  }
 }

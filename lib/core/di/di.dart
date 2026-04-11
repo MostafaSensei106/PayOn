@@ -53,7 +53,9 @@ Future<void> init() async {
   getIt.registerLazySingleton<BaseLoginRepository>(
     () => LoginRepository(getIt<APIService>()),
   );
-  getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt(), getIt()));
+  getIt.registerLazySingleton<LoginCubit>(
+    () => LoginCubit(getIt(), getIt(), getIt()),
+  );
 
   /// Url Launcher
   /// use with getIt<BaseUrlLauncherServices>().launchWebsite('https://google.com');

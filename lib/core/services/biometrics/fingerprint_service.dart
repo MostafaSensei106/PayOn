@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
 
@@ -22,7 +24,9 @@ class FingerprintService implements BaseBiometricsService {
   @override
   Future<bool> isBiometricsAvailable() async {
     try {
-      final canCheck = await _localAuth.canCheckBiometrics;
+      final canCheck = Platform.isAndroid || Platform.isIOS
+          ? await _localAuth.canCheckBiometrics
+          : false;
       if (!canCheck) return false;
       final availableBiometrics = await _localAuth.getAvailableBiometrics();
 
