@@ -5,6 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../modules/login/data/repositories/base_login_repository.dart';
 import '../../modules/login/data/repositories/login_repository.dart';
 import '../../modules/login/logic/cubit/login_cubit.dart';
+import '../localization/data/base_localization_repository.dart';
+import '../localization/data/localization_repository.dart';
+import '../localization/logic/cubit/localization_cubit.dart';
 import '../networking/api_service/api_service.dart';
 import '../networking/dio_factory.dart';
 import '../services/biometrics/base_biometrics_service.dart';
@@ -87,5 +90,17 @@ Future<void> init() async {
 
   getIt.registerLazySingleton<ThemeCubit>(
     () => ThemeCubit(getIt<BaseThemeRepository>()),
+  );
+
+  // Localization
+  getIt.registerLazySingleton<BaseLocalizationRepository>(
+    () => LocalizationRepository(
+      getIt<BasePrefsStorageService>(),
+      getIt<L10nService>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<LocalizationCubit>(
+    () => LocalizationCubit(getIt<BaseLocalizationRepository>()),
   );
 }

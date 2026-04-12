@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toastification/toastification.dart';
 import 'core/constants/app_config.dart';
 import 'core/di/di.dart';
+import 'core/localization/logic/cubit/localization_cubit.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/logic/cubit/theme_cubit.dart';
@@ -19,22 +20,36 @@ class PayOnApp extends StatelessWidget {
     splitScreenMode: true,
     builder: (final context, final child) => ToastificationWrapper(
       child: MultiBlocProvider(
-        providers: [BlocProvider(create: (_) => getIt<ThemeCubit>())],
-        child: BlocBuilder<ThemeCubit, ThemeState>(
-          buildWhen: (previous, current) =>
-              previous.themeMode != current.themeMode,
-          builder: (context, state) => MaterialApp.router(
-            title: AppConfig.appName,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: state.themeMode,
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            routerConfig: AppRouter.router,
-            builder: (final context, final child) =>
-                SafeArea(top: false, left: false, right: false, child: child!),
-            debugShowCheckedModeBanner: false,
-          ),
+        providers: [
+          BlocProvider(create: (_) => getIt<ThemeCubit>()),
+          BlocProvider(create: (_) => getIt<LocalizationCubit>()),
+        ],
+        child: Builder(
+          builder: (context) {
+            final themeMode = context.select(
+              (ThemeCubit cubit) => cubit.state.themeMode,
+            );
+            final locale = context.select(
+              (LocalizationCubit cubit) => cubit.state.locale,
+            );
+            return MaterialApp.router(
+              title: AppConfig.appName,
+              theme: AppTheme.lightTheme,
+              darkTheme: AppTheme.darkTheme,
+              themeMode: themeMode,
+              locale: locale,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              routerConfig: AppRouter.router,
+              builder: (final context, final child) => SafeArea(
+                top: false,
+                left: false,
+                right: false,
+                child: child!,
+              ),
+              debugShowCheckedModeBanner: false,
+            );
+          },
         ),
       ),
     ),

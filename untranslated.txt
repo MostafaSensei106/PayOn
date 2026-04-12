@@ -1,1 +1,17 @@
-{}
+{
+  "ar": [
+    "privacy_policy"
+  ],
+
+  "de": [
+    "privacy_policy"
+  ],
+
+  "fr": [
+    "privacy_policy"
+  ],
+
+  "ja": [
+    "privacy_policy"
+  ]
+}

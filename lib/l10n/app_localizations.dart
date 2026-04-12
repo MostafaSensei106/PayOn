@@ -6,7 +6,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_ar.dart';
+import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
+import 'app_localizations_fr.dart';
+import 'app_localizations_ja.dart';
 
 // ignore_for_file: type=lint
 
@@ -95,7 +98,10 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
+    Locale('de'),
     Locale('en'),
+    Locale('fr'),
+    Locale('ja'),
   ];
 
   /// No description provided for @welcome_title.
@@ -326,6 +332,30 @@ abstract class AppLocalizations {
   /// **'Info'**
   String get info;
 
+  /// No description provided for @app_language.
+  ///
+  /// In en, this message translates to:
+  /// **'App Language'**
+  String get app_language;
+
+  /// No description provided for @language_name.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get language_name;
+
+  /// No description provided for @language_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get language_subtitle;
+
+  /// No description provided for @country_code.
+  ///
+  /// In en, this message translates to:
+  /// **'GB'**
+  String get country_code;
+
   /// No description provided for @success.
   ///
   /// In en, this message translates to:
@@ -391,6 +421,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Active'**
   String get active;
+
+  /// No description provided for @privacy_policy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacy_policy;
 
   /// No description provided for @latest_transactions.
   ///
@@ -769,6 +805,204 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password is not valid'**
   String get password_not_valid;
+
+  /// No description provided for @account_and_security.
+  ///
+  /// In en, this message translates to:
+  /// **'Account & Security'**
+  String get account_and_security;
+
+  /// No description provided for @edit_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get edit_profile;
+
+  /// No description provided for @edit_profile_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update your personal information and photo'**
+  String get edit_profile_subtitle;
+
+  /// No description provided for @change_password_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update your account\'s secret code'**
+  String get change_password_subtitle;
+
+  /// No description provided for @two_factor_auth_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Two-Factor Authentication (2FA)'**
+  String get two_factor_auth_title;
+
+  /// No description provided for @two_factor_auth_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add an extra layer of protection to your account'**
+  String get two_factor_auth_subtitle;
+
+  /// No description provided for @biometric_login.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric Login'**
+  String get biometric_login;
+
+  /// No description provided for @biometric_login_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable fingerprint or face recognition'**
+  String get biometric_login_subtitle;
+
+  /// No description provided for @security_alerts.
+  ///
+  /// In en, this message translates to:
+  /// **'Security Alerts'**
+  String get security_alerts;
+
+  /// No description provided for @security_alerts_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications of unusual login attempts'**
+  String get security_alerts_subtitle;
+
+  /// No description provided for @preferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferences'**
+  String get preferences;
+
+  /// No description provided for @appearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get appearance;
+
+  /// No description provided for @appearance_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'System Default (Light/Dark)'**
+  String get appearance_subtitle;
+
+  /// No description provided for @notification_settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Settings'**
+  String get notification_settings;
+
+  /// No description provided for @notification_settings_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Control notifications and sounds'**
+  String get notification_settings_subtitle;
+
+  /// No description provided for @help_and_support.
+  ///
+  /// In en, this message translates to:
+  /// **'Help & Support'**
+  String get help_and_support;
+
+  /// No description provided for @faq.
+  ///
+  /// In en, this message translates to:
+  /// **'FAQ'**
+  String get faq;
+
+  /// No description provided for @faq_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Answers to the most frequently asked questions'**
+  String get faq_subtitle;
+
+  /// No description provided for @contact_us.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Us'**
+  String get contact_us;
+
+  /// No description provided for @contact_us_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Support team is available to help you'**
+  String get contact_us_subtitle;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// No description provided for @privacy_policy_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How we protect your data'**
+  String get privacy_policy_subtitle;
+
+  /// No description provided for @about_app.
+  ///
+  /// In en, this message translates to:
+  /// **'About App'**
+  String get about_app;
+
+  /// No description provided for @app_version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version 1.0.0'**
+  String get app_version;
+
+  /// No description provided for @about_developers.
+  ///
+  /// In en, this message translates to:
+  /// **'About Developers'**
+  String get about_developers;
+
+  /// No description provided for @about_developers_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Meet the development team'**
+  String get about_developers_subtitle;
+
+  /// No description provided for @app_appearance.
+  ///
+  /// In en, this message translates to:
+  /// **'App Appearance'**
+  String get app_appearance;
+
+  /// No description provided for @light_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get light_mode;
+
+  /// No description provided for @light_mode_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Always use light appearance'**
+  String get light_mode_subtitle;
+
+  /// No description provided for @dark_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get dark_mode;
+
+  /// No description provided for @dark_mode_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Always use dark appearance'**
+  String get dark_mode_subtitle;
+
+  /// No description provided for @system_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get system_mode;
+
+  /// No description provided for @system_mode_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatically change appearance based on device settings'**
+  String get system_mode_subtitle;
 }
 
 class _AppLocalizationsDelegate
@@ -782,7 +1016,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['ar', 'en'].contains(locale.languageCode);
+      <String>['ar', 'de', 'en', 'fr', 'ja'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -793,8 +1027,14 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'ar':
       return AppLocalizationsAr();
+    case 'de':
+      return AppLocalizationsDe();
     case 'en':
       return AppLocalizationsEn();
+    case 'fr':
+      return AppLocalizationsFr();
+    case 'ja':
+      return AppLocalizationsJa();
   }
 
   throw FlutterError(

@@ -126,6 +126,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get info => 'معلومات';
 
   @override
+  String get app_language => 'لغة التطبيق';
+
+  @override
+  String get language_name => 'العربية';
+
+  @override
+  String get language_subtitle => 'Arabic';
+
+  @override
+  String get country_code => 'EG';
+
+  @override
   String get success => 'نجاح';
 
   @override
@@ -157,6 +169,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get active => 'نشط';
+
+  @override
+  String get privacy_policy => 'Privacy Policy';
 
   @override
   String get latest_transactions => 'أحدث المعاملات';
@@ -357,4 +372,103 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get password_not_valid => 'كلمة المرور غير صالحة';
+
+  @override
+  String get account_and_security => 'الحساب والأمان';
+
+  @override
+  String get edit_profile => 'تعديل الملف الشخصي';
+
+  @override
+  String get edit_profile_subtitle => 'تحديث بياناتك الشخصية والصورة';
+
+  @override
+  String get change_password_subtitle => 'تحديث الرمز السري الخاص بحسابك';
+
+  @override
+  String get two_factor_auth_title => 'المصادقة الثنائية (2FA)';
+
+  @override
+  String get two_factor_auth_subtitle => 'إضافة طبقة حماية إضافية لحسابك';
+
+  @override
+  String get biometric_login => 'تسجيل الدخول الحيوي';
+
+  @override
+  String get biometric_login_subtitle => 'تفعيل البصمة أو التعرف على الوجه';
+
+  @override
+  String get security_alerts => 'تنبيهات الأمان';
+
+  @override
+  String get security_alerts_subtitle => 'إشعارات محاولات الدخول غير المعتادة';
+
+  @override
+  String get preferences => 'التفضيلات';
+
+  @override
+  String get appearance => 'المظهر';
+
+  @override
+  String get appearance_subtitle => 'النظام الافتراضي (فاتح/داكن)';
+
+  @override
+  String get notification_settings => 'إعدادات الإشعارات';
+
+  @override
+  String get notification_settings_subtitle => 'التحكم في التنبيهات والأصوات';
+
+  @override
+  String get help_and_support => 'المساعدة والدعم';
+
+  @override
+  String get faq => 'الأسئلة الشائعة';
+
+  @override
+  String get faq_subtitle => 'إجابات لأكثر الأسئلة طرحاً';
+
+  @override
+  String get contact_us => 'تواصل معنا';
+
+  @override
+  String get contact_us_subtitle => 'فريق الدعم متاح لمساعدتك';
+
+  @override
+  String get about => 'حول';
+
+  @override
+  String get privacy_policy_subtitle => 'كيف نقوم بحماية بياناتك';
+
+  @override
+  String get about_app => 'عن التطبيق';
+
+  @override
+  String get app_version => 'الإصدار 1.0.0';
+
+  @override
+  String get about_developers => 'عن المطورين';
+
+  @override
+  String get about_developers_subtitle => 'تعرف على فريق المطورين';
+
+  @override
+  String get app_appearance => 'مظهر التطبيق';
+
+  @override
+  String get light_mode => 'فاتح';
+
+  @override
+  String get light_mode_subtitle => 'استخدام المظهر الفاتح دائماً';
+
+  @override
+  String get dark_mode => 'داكن';
+
+  @override
+  String get dark_mode_subtitle => 'استخدام المظهر الداكن دائماً';
+
+  @override
+  String get system_mode => 'نظام التشغيل';
+
+  @override
+  String get system_mode_subtitle => 'تغيير المظهر تلقائياً حسب إعدادات جهازك';
 }
