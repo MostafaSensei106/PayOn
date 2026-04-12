@@ -1,8 +1,4 @@
 {
-  "ar": [
-    "privacy_policy"
-  ],
-
   "de": [
     "privacy_policy"
   ],

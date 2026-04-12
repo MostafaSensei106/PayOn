@@ -171,7 +171,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get active => 'نشط';
 
   @override
-  String get privacy_policy => 'Privacy Policy';
+  String get privacy_policy => 'سياسة الخصوصية';
 
   @override
   String get latest_transactions => 'أحدث المعاملات';
