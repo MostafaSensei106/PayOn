@@ -1,7 +1,7 @@
 import '../../../../core/networking/api_error_handler.dart';
 import '../../../../core/networking/api_result/api_result.dart';
 import '../../../../core/networking/api_service/api_service.dart';
-import '../models/account_type_response_body.dart';
+import '../models/account_type/account_type_response_body.dart';
 import 'base_register_repository.dart';
 
 class RegisterReposotory implements BaseRegisterRepository {

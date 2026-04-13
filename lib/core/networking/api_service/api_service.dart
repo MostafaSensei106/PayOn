@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../../modules/get_started/data/models/account_type_response_body.dart';
+import '../../../modules/get_started/data/models/account_type/account_type_response_body.dart';
+import '../../../modules/get_started/data/models/register/register_request_body.dart';
 import '../../../modules/login/data/models/login_request_body.dart';
 import '../../../modules/login/data/models/login_response_body.dart';
 import '../../constants/api_routes.dart';
@@ -14,6 +15,9 @@ abstract class APIService {
 
   @POST(ApiRoutes.authLogin)
   Future<LoginResponseBody> login(@Body() LoginRequestBody body);
+
+  @POST(ApiRoutes.authRegister)
+  Future<RegisterRequestBody> register(@Body() RegisterRequestBody body);
 
   @GET(ApiRoutes.accountGetAccountTypes)
   Future<AccountTypeResponseBody> getAccountTypes();
