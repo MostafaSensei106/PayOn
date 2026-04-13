@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,13 +35,19 @@ class PayOnApp extends StatelessWidget {
             );
             return MaterialApp.router(
               title: AppConfig.appName,
+              onGenerateTitle: (context) => AppConfig.appName,
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: themeMode,
               locale: locale,
+              scrollBehavior: const CupertinoScrollBehavior(),
+              restorationScopeId: 'app',
+
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               routerConfig: AppRouter.router,
+              themeAnimationCurve: Curves.fastOutSlowIn,
+
               builder: (final context, final child) => SafeArea(
                 top: false,
                 left: false,

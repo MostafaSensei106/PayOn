@@ -1,0 +1,34 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'register_request_body.g.dart';
+
+@JsonSerializable()
+final class RegisterRequestBody {
+  RegisterRequestBody({
+    required this.email,
+    required this.phoneNumber,
+    required this.name,
+    required this.birthDate,
+    required this.gender,
+    required this.password,
+    required this.isPhone,
+    required this.referralCode,
+    required this.nationalityCode,
+    required this.country,
+    required this.cityId,
+  });
+
+  final String email;
+  final String phoneNumber;
+  final String name;
+  final String birthDate;
+  final String gender;
+  final String password;
+  final bool isPhone;
+  final String referralCode;
+  final String nationalityCode;
+  final String country;
+  final String cityId;
+
+  Map<String, dynamic> toJson() => _$RegisterRequestBodyToJson(this);
+}
