@@ -126,6 +126,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get info => 'Info';
 
   @override
+  String get app_language => 'App Language';
+
+  @override
+  String get language_name => 'English';
+
+  @override
+  String get language_subtitle => 'English';
+
+  @override
+  String get country_code => 'GB';
+
+  @override
   String get success => 'Success';
 
   @override
@@ -136,6 +148,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cancel => 'Cancel';
+
+  @override
+  String get remember_me => 'Remember Me';
 
   @override
   String get login_with_fingerprint => 'Login with Fingerprint';
@@ -154,6 +169,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get active => 'Active';
+
+  @override
+  String get send_money => 'Send Money';
+
+  @override
+  String get request_money => 'Request Money';
+
+  @override
+  String get receive_money => 'Receive Money';
+
+  @override
+  String get shearch_here => 'Search Here';
+
+  @override
+  String get favouraits => 'Favoraits';
+
+  @override
+  String get iPA => 'IPA';
+
+  @override
+  String get privacy_policy => 'Privacy Policy';
 
   @override
   String get latest_transactions => 'Latest Transactions';
@@ -350,4 +386,109 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get password_not_valid => 'Password is not valid';
+
+  @override
+  String get account_and_security => 'Account & Security';
+
+  @override
+  String get edit_profile => 'Edit Profile';
+
+  @override
+  String get edit_profile_subtitle =>
+      'Update your personal information and photo';
+
+  @override
+  String get change_password_subtitle => 'Update your account\'s secret code';
+
+  @override
+  String get two_factor_auth_title => 'Two-Factor Authentication (2FA)';
+
+  @override
+  String get two_factor_auth_subtitle =>
+      'Add an extra layer of protection to your account';
+
+  @override
+  String get biometric_login => 'Biometric Login';
+
+  @override
+  String get biometric_login_subtitle =>
+      'Enable fingerprint or face recognition';
+
+  @override
+  String get security_alerts => 'Security Alerts';
+
+  @override
+  String get security_alerts_subtitle =>
+      'Notifications of unusual login attempts';
+
+  @override
+  String get preferences => 'Preferences';
+
+  @override
+  String get appearance => 'Appearance';
+
+  @override
+  String get appearance_subtitle => 'System Default (Light/Dark)';
+
+  @override
+  String get notification_settings => 'Notification Settings';
+
+  @override
+  String get notification_settings_subtitle =>
+      'Control notifications and sounds';
+
+  @override
+  String get help_and_support => 'Help & Support';
+
+  @override
+  String get faq => 'FAQ';
+
+  @override
+  String get faq_subtitle => 'Answers to the most frequently asked questions';
+
+  @override
+  String get contact_us => 'Contact Us';
+
+  @override
+  String get contact_us_subtitle => 'Support team is available to help you';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get privacy_policy_subtitle => 'How we protect your data';
+
+  @override
+  String get about_app => 'About App';
+
+  @override
+  String get app_version => 'Version 1.0.0';
+
+  @override
+  String get about_developers => 'About Developers';
+
+  @override
+  String get about_developers_subtitle => 'Meet the development team';
+
+  @override
+  String get app_appearance => 'App Appearance';
+
+  @override
+  String get light_mode => 'Light';
+
+  @override
+  String get light_mode_subtitle => 'Always use light appearance';
+
+  @override
+  String get dark_mode => 'Dark';
+
+  @override
+  String get dark_mode_subtitle => 'Always use dark appearance';
+
+  @override
+  String get system_mode => 'System';
+
+  @override
+  String get system_mode_subtitle =>
+      'Automatically change appearance based on device settings';
 }

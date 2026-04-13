@@ -30,98 +30,95 @@ class SettingsPage extends HookWidget {
             title: l10n.settings,
           ),
 
-          _buildSectionHeader(context, 'الحساب والأمان'),
+          _buildSectionHeader(context, l10n.account_and_security),
           _buildSectionItems([
             SettingsTileData(
-              title: 'تعديل الملف الشخصي',
-              subtitle: 'تحديث بياناتك الشخصية والصورة',
+              title: l10n.edit_profile,
+              subtitle: l10n.edit_profile_subtitle,
               leading: Icons.person_outline,
               onTap: () {},
             ),
             SettingsTileData(
-              title: 'تغيير كلمة المرور',
-              subtitle: 'تحديث الرمز السري الخاص بحسابك',
+              title: l10n.confirm_password,
+              subtitle: l10n.change_password_subtitle,
               leading: Icons.lock_outline,
               onTap: () => context.push(AppRouter.changePassword),
             ),
             SettingsTileData(
-              title: 'المصادقة الثنائية (2FA)',
-              subtitle: 'إضافة طبقة حماية إضافية لحسابك',
+              title: l10n.two_factor_auth_title,
+              subtitle: l10n.two_factor_auth_subtitle,
               leading: Icons.security,
               onTap: () => context.push(AppRouter.twoFactorAuth),
             ),
             SettingsTileData(
-              title: 'تسجيل الدخول الحيوي',
-              subtitle: 'تفعيل البصمة أو التعرف على الوجه',
+              title: l10n.biometric_login,
+              subtitle: l10n.biometric_login_subtitle,
               leading: Icons.fingerprint,
               onTap: () => context.push(AppRouter.fingerprintAuth),
             ),
             SettingsTileData(
-              title: 'تنبيهات الأمان',
-              subtitle: 'إشعارات محاولات الدخول غير المعتادة',
+              title: l10n.security_alerts,
+              subtitle: l10n.security_alerts_subtitle,
               leading: Icons.gpp_maybe_outlined,
               onTap: () => context.push(AppRouter.securityAlerts),
             ),
           ]),
 
-          // ==========================================
-          // 2. سكشن التفضيلات (Preferences)
-          // ==========================================
-          _buildSectionHeader(context, 'التفضيلات'),
+          _buildSectionHeader(context, l10n.preferences),
           _buildSectionItems([
             SettingsTileData(
-              title: 'لغة التطبيق',
-              subtitle: 'العربية', // ممكن تخليها متغيرة حسب لغة التطبيق الحالية
+              title: l10n.app_language,
+              subtitle: l10n.language_name,
               leading: Icons.language,
               onTap: () => context.push(AppRouter.language),
             ),
             SettingsTileData(
-              title: 'المظهر',
-              subtitle: 'النظام الافتراضي (فاتح/داكن)',
+              title: l10n.appearance,
+              subtitle: l10n.appearance_subtitle,
               leading: Icons.dark_mode_outlined,
               onTap: () => context.push(AppRouter.theme),
             ),
             SettingsTileData(
-              title: 'إعدادات الإشعارات',
-              subtitle: 'التحكم في التنبيهات والأصوات',
+              title: l10n.notification_settings,
+              subtitle: l10n.notification_settings_subtitle,
               leading: Icons.notifications_none,
               onTap: () => context.push(AppRouter.notifications),
             ),
           ]),
 
-          _buildSectionHeader(context, 'المساعدة والدعم'),
+          _buildSectionHeader(context, l10n.help_and_support),
           _buildSectionItems([
             SettingsTileData(
-              title: 'الأسئلة الشائعة',
-              subtitle: 'إجابات لأكثر الأسئلة طرحاً',
+              title: l10n.faq,
+              subtitle: l10n.faq_subtitle,
               leading: Icons.help_outline,
               onTap: () => context.push(AppRouter.commonQuestions),
             ),
             SettingsTileData(
-              title: 'تواصل معنا',
-              subtitle: 'فريق الدعم متاح لمساعدتك',
+              title: l10n.contact_us,
+              subtitle: l10n.contact_us_subtitle,
               leading: Icons.support_agent,
               onTap: () => context.push(AppRouter.contactUs),
             ),
           ]),
 
-          _buildSectionHeader(context, 'حول'),
+          _buildSectionHeader(context, l10n.about),
           _buildSectionItems([
             SettingsTileData(
-              title: 'سياسة الخصوصية',
-              subtitle: 'كيف نقوم بحماية بياناتك',
+              title: l10n.privacy_policy,
+              subtitle: l10n.privacy_policy_subtitle,
               leading: Icons.privacy_tip_outlined,
               onTap: () => context.push(AppRouter.privacyPolicy),
             ),
             SettingsTileData(
-              title: 'عن التطبيق',
-              subtitle: 'الإصدار 1.0.0',
+              title: l10n.about_app,
+              subtitle: l10n.app_version,
               leading: Icons.info_outline,
               onTap: () => context.push(AppRouter.appVersion),
             ),
             SettingsTileData(
-              title: 'عن المطورين',
-              subtitle: 'تعرف على فريق المطورين',
+              title: l10n.about_developers,
+              subtitle: l10n.about_developers_subtitle,
               leading: Icons.developer_mode,
               onTap: () => context.push(AppRouter.developerTeam),
             ),

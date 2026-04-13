@@ -5,6 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../modules/login/data/repositories/base_login_repository.dart';
 import '../../modules/login/data/repositories/login_repository.dart';
 import '../../modules/login/logic/cubit/login_cubit.dart';
+import '../localization/data/base_localization_repository.dart';
+import '../localization/data/localization_repository.dart';
+import '../localization/logic/cubit/localization_cubit.dart';
 import '../networking/api_service/api_service.dart';
 import '../networking/dio_factory.dart';
 import '../services/biometrics/base_biometrics_service.dart';
@@ -21,6 +24,9 @@ import '../services/toast/base_toast_service.dart';
 import '../services/toast/toastification_service.dart';
 import '../services/url_launcher/base_url_launcher_services.dart';
 import '../services/url_launcher/url_launcher_service.dart';
+import '../theme/data/base_theme_repository.dart';
+import '../theme/data/theme_repository.dart';
+import '../theme/logic/cubit/theme_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -53,7 +59,9 @@ Future<void> init() async {
   getIt.registerLazySingleton<BaseLoginRepository>(
     () => LoginRepository(getIt<APIService>()),
   );
-  getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt(), getIt()));
+  getIt.registerLazySingleton<LoginCubit>(
+    () => LoginCubit(getIt(), getIt(), getIt()),
+  );
 
   /// Url Launcher
   /// use with getIt<BaseUrlLauncherServices>().launchWebsite('https://google.com');
@@ -73,5 +81,26 @@ Future<void> init() async {
   ///
   getIt.registerLazySingleton<BaseBiometricsService>(
     () => FingerprintService(),
+  );
+
+  // Theme
+  getIt.registerLazySingleton<BaseThemeRepository>(
+    () => ThemeRepository(getIt<BasePrefsStorageService>()),
+  );
+
+  getIt.registerLazySingleton<ThemeCubit>(
+    () => ThemeCubit(getIt<BaseThemeRepository>()),
+  );
+
+  // Localization
+  getIt.registerLazySingleton<BaseLocalizationRepository>(
+    () => LocalizationRepository(
+      getIt<BasePrefsStorageService>(),
+      getIt<L10nService>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<LocalizationCubit>(
+    () => LocalizationCubit(getIt<BaseLocalizationRepository>()),
   );
 }

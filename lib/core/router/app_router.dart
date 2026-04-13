@@ -17,6 +17,7 @@ import '../../modules/notifications/ui/notifications.dart';
 import '../../modules/privacy_policy/ui/privacy_policy.dart';
 import '../../modules/profile/presentation/pages/profile_page.dart';
 import '../../modules/security_alerts/ui/page/security_alerts.dart';
+import '../../modules/send_money/ui/page/send_money.dart';
 import '../../modules/theme/ui/page/theme.dart';
 import '../../modules/two_factor_auth/ui/page/two_factor_auth.dart';
 import '../../modules/welcome/presentation/pages/welcome_page.dart';
@@ -141,6 +142,11 @@ class AppRouter {
         path: developerTeam,
         pageBuilder: (context, state) =>
             const CupertinoPage(child: DeveloperTeam()),
+      ),
+      GoRoute(
+        path: sendMoney,
+        pageBuilder: (context, state) =>
+            const CupertinoPage(child: SendMoney()),
       ),
     ],
   );

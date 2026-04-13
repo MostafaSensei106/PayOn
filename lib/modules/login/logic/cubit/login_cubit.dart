@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
+import '../../../../core/constants/pref_keys.dart';
 import '../../../../core/networking/api_result/api_result.dart';
 import '../../../../core/services/biometrics/base_biometrics_service.dart';
+import '../../../../core/services/shared_prefs/base_prefs_storage_service.dart';
 import '../../../../core/validator/password.dart';
 import '../../../../core/validator/user_name.dart';
 import '../../data/models/login_request_body.dart';
@@ -14,13 +16,17 @@ import 'login_form_state.dart';
 import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState<LoginResponse>> {
-  LoginCubit(this._loginRepository, this._biometricsService)
-    : super(const LoginState<LoginResponse>.initial(LoginFormState())) {
+  LoginCubit(
+    this._loginRepository,
+    this._biometricsService,
+    this._prefsStorageService,
+  ) : super(const LoginState<LoginResponse>.initial(LoginFormState())) {
     unawaited(_checkBiometricsAvailability());
   }
 
   final BaseLoginRepository _loginRepository;
   final BaseBiometricsService _biometricsService;
+  final BasePrefsStorageService _prefsStorageService;
 
   LoginFormState get currentForm => state.form;
 
@@ -42,7 +48,14 @@ class LoginCubit extends Cubit<LoginState<LoginResponse>> {
     );
     final response = await _loginRepository.login(body);
     response.when(
-      success: (r) => emit(LoginState.success(currentForm, data: r)),
+      success: (r) async {
+        if (currentForm.isRememberMe) {
+          await _prefsStorageService.setData(PrefKeys.isRememberMe, true);
+        } else {
+          await _prefsStorageService.setData(PrefKeys.isRememberMe, false);
+        }
+        emit(LoginState.success(currentForm, data: r));
+      },
       failure: (err) => emit(
         LoginState.failure(
           currentForm,
@@ -75,6 +88,11 @@ class LoginCubit extends Cubit<LoginState<LoginResponse>> {
       password: password,
       isValid: Formz.validate([password, currentForm.userName]),
     );
+    emit(LoginState.initial(updatedForm));
+  }
+
+  void rememberMeOnChanged(bool? value) {
+    final updatedForm = currentForm.copyWith(isRememberMe: value ?? false);
     emit(LoginState.initial(updatedForm));
   }
 }

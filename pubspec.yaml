@@ -35,9 +35,7 @@ dependencies:
   formz: ^0.8.0
   local_auth: ^3.0.1
   flutter_secure_storage: ^10.0.0
-  # uuid: ^4.5.3
 
-  pretty_dio_logger: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -49,6 +47,7 @@ dev_dependencies:
   flutter_native_splash: ^2.4.7
   intl_utils: ^2.8.14
   retrofit_generator: ^10.2.3
+  pretty_dio_logger: ^1.4.0
 
 flutter:
   generate: true

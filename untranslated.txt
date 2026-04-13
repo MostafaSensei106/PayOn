@@ -1,1 +1,35 @@
-{}
+{
+  "ar": [
+    "iPA"
+  ],
+
+  "de": [
+    "send_money",
+    "request_money",
+    "receive_money",
+    "shearch_here",
+    "favouraits",
+    "iPA",
+    "privacy_policy"
+  ],
+
+  "fr": [
+    "send_money",
+    "request_money",
+    "receive_money",
+    "shearch_here",
+    "favouraits",
+    "iPA",
+    "privacy_policy"
+  ],
+
+  "ja": [
+    "send_money",
+    "request_money",
+    "receive_money",
+    "shearch_here",
+    "favouraits",
+    "iPA",
+    "privacy_policy"
+  ]
+}

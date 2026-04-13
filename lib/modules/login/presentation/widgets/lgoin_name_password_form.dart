@@ -8,6 +8,7 @@ import '../../../../core/router/app_router.dart';
 import '../../../../core/validator/password.dart';
 import '../../../../core/validator/user_name.dart';
 import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
+import '../../../../core/widgets/inputs/checkbox/checkbox_component.dart';
 import '../../../../core/widgets/inputs/password_form_field/password_form_field_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../../../core/widgets/layout/spacing/spacing_component.dart';
@@ -49,13 +50,20 @@ class LoginNameAndPasswordForm extends StatelessWidget {
                 context.read<LoginCubit>().passwordOnChanged(val),
             errorText: form.password.displayError?.nameWithL10n(context),
           ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: TextButtonComponent(
-              label: l10n.forgot_password,
-              isEnable: !isLoading,
-              onPressed: () => context.push(AppRouter.forgetPassword),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CheckboxComponent(
+                title: l10n.remember_me,
+                value: form.isRememberMe,
+                onChanged: context.read<LoginCubit>().rememberMeOnChanged,
+              ),
+              TextButtonComponent(
+                label: l10n.forgot_password,
+                isEnable: !isLoading,
+                onPressed: () => context.push(AppRouter.forgetPassword),
+              ),
+            ],
           ),
         ],
       ),
