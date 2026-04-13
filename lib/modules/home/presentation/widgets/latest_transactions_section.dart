@@ -4,6 +4,7 @@ import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/utils/settings_tile_data.dart';
+import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 
@@ -28,7 +29,33 @@ class LatestTransactionsSection extends StatelessWidget {
                   l10n.latest_transactions,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                TextButtonComponent(onPressed: () {}, label: l10n.see_all),
+                TextButtonComponent(
+                  onPressed: () => context.showBottomSheetComponent(
+                    child: CustomScrollView(
+                      shrinkWrap: true,
+                      slivers: [
+                        _buildSectionItems(
+                          List.generate(
+                            10,
+                            (index) => SettingsTileData(
+                              title: l10n.money_transfer,
+                              subtitle: 'Today, 12:40 PM',
+                              leading: Iconsax.arrow_up_copy,
+                              trailing: Text(
+                                '-250.00',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.error,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  label: l10n.see_all,
+                ),
               ],
             ),
           ),
