@@ -168,6 +168,24 @@ class AppLocalizationsJa extends AppLocalizations {
   String get active => 'アクティブ';
 
   @override
+  String get send_money => 'Send Money';
+
+  @override
+  String get request_money => 'Request Money';
+
+  @override
+  String get receive_money => 'Receive Money';
+
+  @override
+  String get shearch_here => 'Search Here';
+
+  @override
+  String get favouraits => 'Favoraits';
+
+  @override
+  String get iPA => 'IPA';
+
+  @override
   String get privacy_policy => 'Privacy Policy';
 
   @override

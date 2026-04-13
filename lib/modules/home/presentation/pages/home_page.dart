@@ -168,7 +168,7 @@ class HomePage extends StatelessWidget {
                       QuickActionItem(
                         icon: Iconsax.send_1_copy,
                         label: l10n.send,
-                        onTap: () {},
+                        onTap: () => context.push(AppRouter.sendMoney),
                       ),
                       QuickActionItem(
                         icon: Iconsax.receive_square_2_copy,

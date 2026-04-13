@@ -26,6 +26,15 @@ class AppTheme {
         borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
       ),
     ),
+
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(AppConfig.outBorderRadius),
+        ),
+      ),
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -48,6 +57,15 @@ class AppTheme {
     dialogTheme: DialogThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
+      ),
+    ),
+
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(AppConfig.outBorderRadius),
+        ),
       ),
     ),
   );

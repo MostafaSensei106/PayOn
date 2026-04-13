@@ -422,6 +422,42 @@ abstract class AppLocalizations {
   /// **'Active'**
   String get active;
 
+  /// No description provided for @send_money.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Money'**
+  String get send_money;
+
+  /// No description provided for @request_money.
+  ///
+  /// In en, this message translates to:
+  /// **'Request Money'**
+  String get request_money;
+
+  /// No description provided for @receive_money.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive Money'**
+  String get receive_money;
+
+  /// No description provided for @shearch_here.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Here'**
+  String get shearch_here;
+
+  /// No description provided for @favouraits.
+  ///
+  /// In en, this message translates to:
+  /// **'Favoraits'**
+  String get favouraits;
+
+  /// No description provided for @iPA.
+  ///
+  /// In en, this message translates to:
+  /// **'IPA'**
+  String get iPA;
+
   /// No description provided for @privacy_policy.
   ///
   /// In en, this message translates to:

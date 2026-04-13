@@ -171,6 +171,24 @@ class AppLocalizationsAr extends AppLocalizations {
   String get active => 'نشط';
 
   @override
+  String get send_money => 'إرسال الأموال';
+
+  @override
+  String get request_money => 'طلب الأموال';
+
+  @override
+  String get receive_money => 'استلام الأموال';
+
+  @override
+  String get shearch_here => 'ابحث هنا';
+
+  @override
+  String get favouraits => 'المفضلة';
+
+  @override
+  String get iPA => 'IPA';
+
+  @override
   String get privacy_policy => 'سياسة الخصوصية';
 
   @override

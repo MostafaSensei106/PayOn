@@ -24,12 +24,7 @@ class QuickActionItem extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       ),
       SizedBox(height: 4.h),
-      Text(
-        label,
-        style: Theme.of(
-          context,
-        ).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold),
-      ),
+      Text(label, style: Theme.of(context).textTheme.labelMedium),
     ],
   );
 }

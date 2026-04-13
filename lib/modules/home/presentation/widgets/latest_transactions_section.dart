@@ -26,9 +26,7 @@ class LatestTransactionsSection extends StatelessWidget {
               children: [
                 Text(
                   l10n.latest_transactions,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 TextButtonComponent(onPressed: () {}, label: l10n.see_all),
               ],

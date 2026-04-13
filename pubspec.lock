@@ -801,10 +801,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_android
-      sha256: "914a07484c4380e572998d30486e77e0d9cd2faec72fee268086d07bf7f302c9"
+      sha256: "69cbd515a62b94d32a7944f086b2f82b4ac40a1d45bebfc00813a430ab2dabcd"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   path_provider_foundation:
     dependency: transitive
     description:
@@ -886,7 +886,7 @@ packages:
     source: hosted
     version: "6.5.0"
   pretty_dio_logger:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: pretty_dio_logger
       sha256: "36f2101299786d567869493e2f5731de61ce130faa14679473b26905a92b6407"
@@ -937,10 +937,10 @@ packages:
     dependency: "direct dev"
     description:
       name: retrofit_generator
-      sha256: "302be1d2640e7c69685d44f6ec08f2f9a114944d547f0e6750993a7148d9470e"
+      sha256: b6beaca9c62acfa24e2185c238d627fd265b0d4a5b117d0fbc27223bb724cbea
       url: "https://pub.dev"
     source: hosted
-    version: "10.2.4"
+    version: "10.2.5"
   rxdart:
     dependency: transitive
     description:
