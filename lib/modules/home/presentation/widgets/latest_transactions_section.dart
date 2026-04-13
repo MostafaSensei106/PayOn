@@ -32,11 +32,10 @@ class LatestTransactionsSection extends StatelessWidget {
                 TextButtonComponent(
                   onPressed: () => context.showBottomSheetComponent(
                     child: CustomScrollView(
-                      shrinkWrap: true,
                       slivers: [
                         _buildSectionItems(
                           List.generate(
-                            10,
+                            40,
                             (index) => SettingsTileData(
                               title: l10n.money_transfer,
                               subtitle: 'Today, 12:40 PM',

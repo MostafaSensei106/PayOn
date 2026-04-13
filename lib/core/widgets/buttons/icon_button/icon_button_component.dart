@@ -75,8 +75,7 @@ class IconButtonComponent extends StatelessWidget {
             unawaited(HapticFeedback.vibrate());
             onPressed();
           },
-          color:
-              foregroundColor ?? Theme.of(context).colorScheme.primaryContainer,
+          color: foregroundColor ?? Theme.of(context).colorScheme.primary,
         );
       case IconButtonVariant.filled:
         return IconButton.filled(
