@@ -10,17 +10,17 @@ import '../../../../core/services/shared_prefs/base_prefs_storage_service.dart';
 import '../../../../core/validator/password.dart';
 import '../../../../core/validator/user_name.dart';
 import '../../data/models/login_request_body.dart';
-import '../../data/models/login_response.dart';
+import '../../data/models/login_response_body.dart';
 import '../../data/repositories/base_login_repository.dart';
 import 'login_form_state.dart';
 import 'login_state.dart';
 
-class LoginCubit extends Cubit<LoginState<LoginResponse>> {
+class LoginCubit extends Cubit<LoginState<LoginResponseBody>> {
   LoginCubit(
     this._loginRepository,
     this._biometricsService,
     this._prefsStorageService,
-  ) : super(const LoginState<LoginResponse>.initial(LoginFormState())) {
+  ) : super(const LoginState<LoginResponseBody>.initial(LoginFormState())) {
     unawaited(_checkBiometricsAvailability());
   }
 
