@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'account_type_item.g.dart';
 
 @JsonSerializable()
-class AccountTypeItem {
+final class AccountTypeItem {
   AccountTypeItem({required this.id, required this.type});
 
   final int id;

@@ -7,7 +7,7 @@ import 'account_type_item.dart';
 part 'account_type_data.g.dart';
 
 @JsonSerializable()
-class AccountTypeData {
+final class AccountTypeData {
   AccountTypeData({
     required this.items,
     required this.totalItems,

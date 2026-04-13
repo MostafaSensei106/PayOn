@@ -7,7 +7,7 @@ import 'user_data.dart';
 part 'login_response_body.g.dart';
 
 @JsonSerializable()
-class LoginResponseBody {
+final class LoginResponseBody {
   LoginResponseBody({
     required this.code,
     required this.message,

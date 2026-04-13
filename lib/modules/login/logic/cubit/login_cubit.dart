@@ -15,7 +15,7 @@ import '../../data/repositories/base_login_repository.dart';
 import 'login_form_state.dart';
 import 'login_state.dart';
 
-class LoginCubit extends Cubit<LoginState<LoginResponseBody>> {
+final class LoginCubit extends Cubit<LoginState<LoginResponseBody>> {
   LoginCubit(
     this._loginRepository,
     this._biometricsService,

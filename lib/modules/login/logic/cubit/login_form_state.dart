@@ -6,7 +6,7 @@ import '../../../../core/validator/user_name.dart';
 part 'login_form_state.freezed.dart';
 
 @freezed
-abstract class LoginFormState with _$LoginFormState {
+sealed class LoginFormState with _$LoginFormState {
   const factory LoginFormState({
     @Default(UserName.pure()) UserName userName,
     @Default(Password.pure()) Password password,

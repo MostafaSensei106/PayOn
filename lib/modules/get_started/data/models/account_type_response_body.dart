@@ -7,7 +7,7 @@ import 'account_type_data.dart';
 part 'account_type_response_body.g.dart';
 
 @JsonSerializable()
-class AccountTypeResponseBody {
+final class AccountTypeResponseBody {
   AccountTypeResponseBody({
     required this.code,
     required this.message,

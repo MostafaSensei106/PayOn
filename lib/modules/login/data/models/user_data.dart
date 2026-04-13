@@ -5,7 +5,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user_data.g.dart';
 
 @JsonSerializable()
-class UserDataModel {
+final class UserDataModel {
   UserDataModel({required this.token});
   final String token;
 

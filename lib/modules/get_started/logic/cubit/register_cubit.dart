@@ -7,7 +7,7 @@ import '../../data/repositories/base_register_repository.dart';
 part 'register_state.dart';
 part 'register_cubit.freezed.dart';
 
-class RegisterCubit extends Cubit<RegisterState> {
+final class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this._registerRepository)
     : super(const RegisterState.initial());
 
