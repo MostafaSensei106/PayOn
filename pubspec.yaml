@@ -6,6 +6,7 @@ version: 1.0.0+1
 
 environment:
   sdk: ^3.11.4
+
 dependencies:
   flutter:
     sdk: flutter
@@ -35,6 +36,7 @@ dependencies:
   formz: ^0.8.0
   local_auth: ^3.0.1
   flutter_secure_storage: ^10.0.0
+  argon2: ^1.0.1
 
 dev_dependencies:
   flutter_test:

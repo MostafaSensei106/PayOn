@@ -12,7 +12,6 @@ final class RegisterRequestBody {
     required this.gender,
     required this.password,
     required this.isPhone,
-    required this.referralCode,
     required this.nationalityCode,
     required this.country,
     required this.cityId,
@@ -25,7 +24,6 @@ final class RegisterRequestBody {
   final String gender;
   final String password;
   final bool isPhone;
-  final String referralCode;
   final String nationalityCode;
   final String country;
   final String cityId;

@@ -39,6 +39,7 @@ Future<void> init() async {
   getIt.registerLazySingleton<ThemeService>(() => ThemeService());
 
   /// Shared Preferences
+  /// use with getIt<BasePrefsStorageService>().getUserToken();
   final sharedPreferences = await SharedPreferences.getInstance();
   getIt.registerLazySingleton<BasePrefsStorageService>(
     () => SharedPrefsService(sharedPreferences),
@@ -52,6 +53,7 @@ Future<void> init() async {
   );
 
   /// Dio and API Service
+  /// use with getIt<APIService>();
   final dio = await DioFactory.getDio();
   getIt.registerLazySingleton<APIService>(() => APIService(dio));
 
@@ -83,7 +85,7 @@ Future<void> init() async {
     () => FingerprintService(),
   );
 
-  // Theme
+  /// Theme
   getIt.registerLazySingleton<BaseThemeRepository>(
     () => ThemeRepository(getIt<BasePrefsStorageService>()),
   );
@@ -92,7 +94,7 @@ Future<void> init() async {
     () => ThemeCubit(getIt<BaseThemeRepository>()),
   );
 
-  // Localization
+  /// Localization
   getIt.registerLazySingleton<BaseLocalizationRepository>(
     () => LocalizationRepository(
       getIt<BasePrefsStorageService>(),
@@ -100,6 +102,7 @@ Future<void> init() async {
     ),
   );
 
+  /// Localization
   getIt.registerLazySingleton<LocalizationCubit>(
     () => LocalizationCubit(getIt<BaseLocalizationRepository>()),
   );
