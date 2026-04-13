@@ -6,10 +6,13 @@ part 'account_type_item.g.dart';
 
 @JsonSerializable()
 final class AccountTypeItem {
-  AccountTypeItem({required this.id, required this.type});
+  AccountTypeItem({required this.id, required this.type, this.parentId});
 
   final int id;
   final String type;
+
+  /// Normal is 6 , Merchant = 7
+  final int? parentId;
 
   factory AccountTypeItem.fromJson(Map<String, dynamic> json) =>
       _$AccountTypeItemFromJson(json);
