@@ -542,6 +542,12 @@ abstract class AppLocalizations {
   /// **'Create Account'**
   String get create_account;
 
+  /// No description provided for @account_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Type'**
+  String get account_type;
+
   /// No description provided for @step.
   ///
   /// In en, this message translates to:

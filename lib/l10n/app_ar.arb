@@ -66,6 +66,7 @@
   "confirm_password": "تأكيد كلمة المرور",
   "terms_and_conditions": "الشروط والأحكام",
   "create_account": "إنشاء حساب",
+  "account_type": "نوع الحساب",
   "step": "الخطوة",
   "off": "من",
   "please_wait": "من فضلك انتظر...",

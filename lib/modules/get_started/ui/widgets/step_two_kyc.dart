@@ -1,19 +1,39 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:image_picker/image_picker.dart';
+
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/buttons/outlined_button/outlined_button_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
+import '../../logic/cubit/register/register_cubit.dart';
 
 class StepTwoKYC extends StatelessWidget {
   const StepTwoKYC({required this.dateController, super.key});
 
   final TextEditingController dateController;
 
+  Future<void> _pickFile(BuildContext context, bool isId) async {
+    final picker = ImagePicker();
+    final image = await picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      if (isId) {
+        context.read<RegisterCubit>().idFileOnChanged(File(image.path));
+      } else {
+        context.read<RegisterCubit>().addressFileOnChanged(File(image.path));
+      }
+    }
+  }
+
   @override
   Widget build(final BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
+    final registerCubit = context.read<RegisterCubit>();
+    final form = context.watch<RegisterCubit>().state.form;
 
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
@@ -31,7 +51,8 @@ class StepTwoKYC extends StatelessWidget {
             TextFormFieldComponent(
               label: l10n.full_name_id,
               prefixIcon: Iconsax.user_copy,
-              onChanged: (String? p1) {},
+              initialValue: form.name.value,
+              onChanged: registerCubit.firstNameOnChanged,
             ),
             TextFormFieldComponent(
               controller: dateController,
@@ -41,10 +62,9 @@ class StepTwoKYC extends StatelessWidget {
               onTap: () async {
                 final date = await showDatePicker(
                   context: context,
-                  keyboardType: const TextInputType.numberWithOptions(
-                    decimal: true,
+                  initialDate: DateTime.now().subtract(
+                    const Duration(days: 365 * 18),
                   ),
-                  initialDate: DateTime.now(),
                   firstDate: DateTime(1900),
                   lastDate: DateTime.now(),
                   builder: (final context, final child) => Theme(
@@ -108,15 +128,18 @@ class StepTwoKYC extends StatelessWidget {
                   ),
                 );
                 if (date != null) {
-                  dateController.text = date.toString().split(' ')[0];
+                  final formattedDate = date.toString().split(' ')[0];
+                  dateController.text = formattedDate;
+                  registerCubit.birthDateOnChanged(formattedDate);
                 }
               },
-              onChanged: (String? p1) {},
+              onChanged: (String p1) {},
             ),
             TextFormFieldComponent(
               label: l10n.nationality,
               prefixIcon: Iconsax.global_copy,
-              onChanged: (String? p1) {},
+              initialValue: form.nationalityCode,
+              onChanged: registerCubit.nationalityOnChanged,
             ),
             Text(
               l10n.tier_2_title,
@@ -127,9 +150,15 @@ class StepTwoKYC extends StatelessWidget {
             TextFormFieldComponent(
               label: l10n.national_id_passport,
               prefixIcon: Iconsax.personalcard_copy,
-              onChanged: (String? p1) {},
+              onChanged: (String p1) {},
             ),
-            OutlinedButtonComponent(label: l10n.upload_id, onPressed: () {}),
+            OutlinedButtonComponent.icon(
+              label: form.idFile != null ? 'ID Uploaded' : l10n.upload_id,
+              icon: form.idFile != null
+                  ? Icons.check_circle
+                  : Iconsax.document_upload_copy,
+              onPressed: () => _pickFile(context, true),
+            ),
             Text(
               l10n.tier_3_title,
               style: Theme.of(
@@ -139,11 +168,17 @@ class StepTwoKYC extends StatelessWidget {
             TextFormFieldComponent(
               label: l10n.residential_address,
               prefixIcon: Iconsax.location_copy,
-              onChanged: (String? p1) {},
+              initialValue: form.cityId,
+              onChanged: registerCubit.cityIdOnChanged,
             ),
-            OutlinedButtonComponent(
-              label: l10n.upload_address_proof,
-              onPressed: () {},
+            OutlinedButtonComponent.icon(
+              label: form.addressFile != null
+                  ? 'Proof Uploaded'
+                  : l10n.upload_address_proof,
+              icon: form.addressFile != null
+                  ? Icons.check_circle
+                  : Iconsax.document_upload_copy,
+              onPressed: () => _pickFile(context, false),
             ),
           ],
         ),

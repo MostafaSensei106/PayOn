@@ -12,7 +12,7 @@ part of 'api_service.dart';
 
 class _APIService implements APIService {
   _APIService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://zeinahmed-001-site1.mtempurl.com/api/';
+    baseUrl ??= 'https://mohammed221b-001-site1.jtempurl.com/api/';
   }
 
   final Dio _dio;
@@ -158,6 +158,41 @@ class _APIService implements APIService {
       rethrow;
     }
     return _value;
+  }
+
+  @override
+  Future<void> uploadFiles(File file, String accId, int requiredDocId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.files.add(
+      MapEntry(
+        'File',
+        MultipartFile.fromFileSync(
+          file.path,
+          filename: file.path.split(Platform.pathSeparator).last,
+        ),
+      ),
+    );
+    _data.fields.add(MapEntry('AccId', accId));
+    _data.fields.add(MapEntry('RequierdDocId', requiredDocId.toString()));
+    final _options = _setStreamType<void>(
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
+          .compose(
+            _dio.options,
+            'Account/UploadFiles',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

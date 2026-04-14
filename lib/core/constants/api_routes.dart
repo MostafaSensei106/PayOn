@@ -1,6 +1,6 @@
 final class ApiRoutes {
   static const String apiBaseURL =
-      'https://zeinahmed-001-site1.mtempurl.com/api/';
+      'https://mohammed221b-001-site1.jtempurl.com/api/';
 
   /// Account
   static const String accountGetAccountTypes = 'Account/GetAccountTypes';

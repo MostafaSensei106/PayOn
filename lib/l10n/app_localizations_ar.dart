@@ -231,6 +231,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get create_account => 'إنشاء حساب';
 
   @override
+  String get account_type => 'نوع الحساب';
+
+  @override
   String get step => 'الخطوة';
 
   @override

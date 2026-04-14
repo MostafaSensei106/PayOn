@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -32,4 +34,12 @@ abstract class APIService {
 
   @POST(ApiRoutes.authVerifyOTP)
   Future<VerifyOtpResponseBody> verifyOTP(@Body() VerifyOtpRequestBody body);
+
+  @POST(ApiRoutes.accountUploadFiles)
+  @MultiPart()
+  Future<void> uploadFiles(
+    @Part(name: 'File') File file,
+    @Part(name: 'AccId') String accId,
+    @Part(name: 'RequierdDocId') int requiredDocId,
+  );
 }

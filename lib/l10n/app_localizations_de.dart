@@ -234,6 +234,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get create_account => 'Konto erstellen';
 
   @override
+  String get account_type => 'Account Type';
+
+  @override
   String get step => 'Schritt';
 
   @override

@@ -560,7 +560,7 @@ $RegisterFormStateCopyWith<$Res> get form {
 /// @nodoc
 mixin _$RegisterFormState implements DiagnosticableTreeMixin {
 
- String get name; String get email; String get phoneNumber; String get password; String get birthDate; GenderType get gender; bool get isForgotPassword; String get lang; String get code; bool get isPhone; String get nationalityCode; String get country; String get cityId; bool get isValid;
+ UserName get name; UserName get firstName; UserName get lastName; Email get email; PhoneNumber get phoneNumber; Password get password; Password get confirmPassword; String get birthDate; GenderType get gender; AccountTypeItem? get accountType; File? get idFile; File? get addressFile; bool get isForgotPassword; String get lang; String get code; bool get isPhone; String get nationalityCode; String get country; String get cityId; bool get isValid;
 /// Create a copy of RegisterFormState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -572,21 +572,21 @@ $RegisterFormStateCopyWith<RegisterFormState> get copyWith => _$RegisterFormStat
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RegisterFormState'))
-    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('phoneNumber', phoneNumber))..add(DiagnosticsProperty('password', password))..add(DiagnosticsProperty('birthDate', birthDate))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('isForgotPassword', isForgotPassword))..add(DiagnosticsProperty('lang', lang))..add(DiagnosticsProperty('code', code))..add(DiagnosticsProperty('isPhone', isPhone))..add(DiagnosticsProperty('nationalityCode', nationalityCode))..add(DiagnosticsProperty('country', country))..add(DiagnosticsProperty('cityId', cityId))..add(DiagnosticsProperty('isValid', isValid));
+    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('firstName', firstName))..add(DiagnosticsProperty('lastName', lastName))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('phoneNumber', phoneNumber))..add(DiagnosticsProperty('password', password))..add(DiagnosticsProperty('confirmPassword', confirmPassword))..add(DiagnosticsProperty('birthDate', birthDate))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('accountType', accountType))..add(DiagnosticsProperty('idFile', idFile))..add(DiagnosticsProperty('addressFile', addressFile))..add(DiagnosticsProperty('isForgotPassword', isForgotPassword))..add(DiagnosticsProperty('lang', lang))..add(DiagnosticsProperty('code', code))..add(DiagnosticsProperty('isPhone', isPhone))..add(DiagnosticsProperty('nationalityCode', nationalityCode))..add(DiagnosticsProperty('country', country))..add(DiagnosticsProperty('cityId', cityId))..add(DiagnosticsProperty('isValid', isValid));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RegisterFormState&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.password, password) || other.password == password)&&(identical(other.birthDate, birthDate) || other.birthDate == birthDate)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.isForgotPassword, isForgotPassword) || other.isForgotPassword == isForgotPassword)&&(identical(other.lang, lang) || other.lang == lang)&&(identical(other.code, code) || other.code == code)&&(identical(other.isPhone, isPhone) || other.isPhone == isPhone)&&(identical(other.nationalityCode, nationalityCode) || other.nationalityCode == nationalityCode)&&(identical(other.country, country) || other.country == country)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.isValid, isValid) || other.isValid == isValid));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RegisterFormState&&(identical(other.name, name) || other.name == name)&&(identical(other.firstName, firstName) || other.firstName == firstName)&&(identical(other.lastName, lastName) || other.lastName == lastName)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.birthDate, birthDate) || other.birthDate == birthDate)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.accountType, accountType) || other.accountType == accountType)&&(identical(other.idFile, idFile) || other.idFile == idFile)&&(identical(other.addressFile, addressFile) || other.addressFile == addressFile)&&(identical(other.isForgotPassword, isForgotPassword) || other.isForgotPassword == isForgotPassword)&&(identical(other.lang, lang) || other.lang == lang)&&(identical(other.code, code) || other.code == code)&&(identical(other.isPhone, isPhone) || other.isPhone == isPhone)&&(identical(other.nationalityCode, nationalityCode) || other.nationalityCode == nationalityCode)&&(identical(other.country, country) || other.country == country)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.isValid, isValid) || other.isValid == isValid));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,email,phoneNumber,password,birthDate,gender,isForgotPassword,lang,code,isPhone,nationalityCode,country,cityId,isValid);
+int get hashCode => Object.hashAll([runtimeType,name,firstName,lastName,email,phoneNumber,password,confirmPassword,birthDate,gender,accountType,idFile,addressFile,isForgotPassword,lang,code,isPhone,nationalityCode,country,cityId,isValid]);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RegisterFormState(name: $name, email: $email, phoneNumber: $phoneNumber, password: $password, birthDate: $birthDate, gender: $gender, isForgotPassword: $isForgotPassword, lang: $lang, code: $code, isPhone: $isPhone, nationalityCode: $nationalityCode, country: $country, cityId: $cityId, isValid: $isValid)';
+  return 'RegisterFormState(name: $name, firstName: $firstName, lastName: $lastName, email: $email, phoneNumber: $phoneNumber, password: $password, confirmPassword: $confirmPassword, birthDate: $birthDate, gender: $gender, accountType: $accountType, idFile: $idFile, addressFile: $addressFile, isForgotPassword: $isForgotPassword, lang: $lang, code: $code, isPhone: $isPhone, nationalityCode: $nationalityCode, country: $country, cityId: $cityId, isValid: $isValid)';
 }
 
 
@@ -597,7 +597,7 @@ abstract mixin class $RegisterFormStateCopyWith<$Res>  {
   factory $RegisterFormStateCopyWith(RegisterFormState value, $Res Function(RegisterFormState) _then) = _$RegisterFormStateCopyWithImpl;
 @useResult
 $Res call({
- String name, String email, String phoneNumber, String password, String birthDate, GenderType gender, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, String cityId, bool isValid
+ UserName name, UserName firstName, UserName lastName, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItem? accountType, File? idFile, File? addressFile, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, String cityId, bool isValid
 });
 
 
@@ -614,15 +614,21 @@ class _$RegisterFormStateCopyWithImpl<$Res>
 
 /// Create a copy of RegisterFormState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? email = null,Object? phoneNumber = null,Object? password = null,Object? birthDate = null,Object? gender = null,Object? isForgotPassword = null,Object? lang = null,Object? code = null,Object? isPhone = null,Object? nationalityCode = null,Object? country = null,Object? cityId = null,Object? isValid = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? firstName = null,Object? lastName = null,Object? email = null,Object? phoneNumber = null,Object? password = null,Object? confirmPassword = null,Object? birthDate = null,Object? gender = null,Object? accountType = freezed,Object? idFile = freezed,Object? addressFile = freezed,Object? isForgotPassword = null,Object? lang = null,Object? code = null,Object? isPhone = null,Object? nationalityCode = null,Object? country = null,Object? cityId = null,Object? isValid = null,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,phoneNumber: null == phoneNumber ? _self.phoneNumber : phoneNumber // ignore: cast_nullable_to_non_nullable
-as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as String,birthDate: null == birthDate ? _self.birthDate : birthDate // ignore: cast_nullable_to_non_nullable
+as UserName,firstName: null == firstName ? _self.firstName : firstName // ignore: cast_nullable_to_non_nullable
+as UserName,lastName: null == lastName ? _self.lastName : lastName // ignore: cast_nullable_to_non_nullable
+as UserName,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as Email,phoneNumber: null == phoneNumber ? _self.phoneNumber : phoneNumber // ignore: cast_nullable_to_non_nullable
+as PhoneNumber,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as Password,confirmPassword: null == confirmPassword ? _self.confirmPassword : confirmPassword // ignore: cast_nullable_to_non_nullable
+as Password,birthDate: null == birthDate ? _self.birthDate : birthDate // ignore: cast_nullable_to_non_nullable
 as String,gender: null == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
-as GenderType,isForgotPassword: null == isForgotPassword ? _self.isForgotPassword : isForgotPassword // ignore: cast_nullable_to_non_nullable
+as GenderType,accountType: freezed == accountType ? _self.accountType : accountType // ignore: cast_nullable_to_non_nullable
+as AccountTypeItem?,idFile: freezed == idFile ? _self.idFile : idFile // ignore: cast_nullable_to_non_nullable
+as File?,addressFile: freezed == addressFile ? _self.addressFile : addressFile // ignore: cast_nullable_to_non_nullable
+as File?,isForgotPassword: null == isForgotPassword ? _self.isForgotPassword : isForgotPassword // ignore: cast_nullable_to_non_nullable
 as bool,lang: null == lang ? _self.lang : lang // ignore: cast_nullable_to_non_nullable
 as String,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as String,isPhone: null == isPhone ? _self.isPhone : isPhone // ignore: cast_nullable_to_non_nullable
@@ -712,10 +718,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String email,  String phoneNumber,  String password,  String birthDate,  GenderType gender,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  String cityId,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserName name,  UserName firstName,  UserName lastName,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItem? accountType,  File? idFile,  File? addressFile,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  String cityId,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RegisterFormState() when $default != null:
-return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.birthDate,_that.gender,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.cityId,_that.isValid);case _:
+return $default(_that.name,_that.firstName,_that.lastName,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.idFile,_that.addressFile,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.cityId,_that.isValid);case _:
   return orElse();
 
 }
@@ -733,10 +739,10 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.bi
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String email,  String phoneNumber,  String password,  String birthDate,  GenderType gender,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  String cityId,  bool isValid)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserName name,  UserName firstName,  UserName lastName,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItem? accountType,  File? idFile,  File? addressFile,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  String cityId,  bool isValid)  $default,) {final _that = this;
 switch (_that) {
 case _RegisterFormState():
-return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.birthDate,_that.gender,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.cityId,_that.isValid);}
+return $default(_that.name,_that.firstName,_that.lastName,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.idFile,_that.addressFile,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.cityId,_that.isValid);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -750,10 +756,10 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.bi
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String email,  String phoneNumber,  String password,  String birthDate,  GenderType gender,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  String cityId,  bool isValid)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserName name,  UserName firstName,  UserName lastName,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItem? accountType,  File? idFile,  File? addressFile,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  String cityId,  bool isValid)?  $default,) {final _that = this;
 switch (_that) {
 case _RegisterFormState() when $default != null:
-return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.birthDate,_that.gender,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.cityId,_that.isValid);case _:
+return $default(_that.name,_that.firstName,_that.lastName,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.idFile,_that.addressFile,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.cityId,_that.isValid);case _:
   return null;
 
 }
@@ -765,15 +771,21 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.bi
 
 
 class _RegisterFormState with DiagnosticableTreeMixin implements RegisterFormState {
-  const _RegisterFormState({this.name = UserName.pure(), this.email = Email.pure(), this.phoneNumber = PhoneNumber.pure(), this.password = Password.pure(), this.birthDate = '', this.gender = GenderType.none, this.isForgotPassword = false, this.lang = 'en', this.code = '', this.isPhone = true, this.nationalityCode = '', this.country = '', this.cityId = '', this.isValid = false});
+  const _RegisterFormState({this.name = const UserName.pure(), this.firstName = const UserName.pure(), this.lastName = const UserName.pure(), this.email = const Email.pure(), this.phoneNumber = const PhoneNumber.pure(), this.password = const Password.pure(), this.confirmPassword = const Password.pure(), this.birthDate = '', this.gender = GenderType.none, this.accountType = null, this.idFile = null, this.addressFile = null, this.isForgotPassword = false, this.lang = 'en', this.code = '', this.isPhone = true, this.nationalityCode = '', this.country = '', this.cityId = '', this.isValid = false});
   
 
-@override@JsonKey() final  String name;
-@override@JsonKey() final  String email;
-@override@JsonKey() final  String phoneNumber;
-@override@JsonKey() final  String password;
+@override@JsonKey() final  UserName name;
+@override@JsonKey() final  UserName firstName;
+@override@JsonKey() final  UserName lastName;
+@override@JsonKey() final  Email email;
+@override@JsonKey() final  PhoneNumber phoneNumber;
+@override@JsonKey() final  Password password;
+@override@JsonKey() final  Password confirmPassword;
 @override@JsonKey() final  String birthDate;
 @override@JsonKey() final  GenderType gender;
+@override@JsonKey() final  AccountTypeItem? accountType;
+@override@JsonKey() final  File? idFile;
+@override@JsonKey() final  File? addressFile;
 @override@JsonKey() final  bool isForgotPassword;
 @override@JsonKey() final  String lang;
 @override@JsonKey() final  String code;
@@ -794,21 +806,21 @@ _$RegisterFormStateCopyWith<_RegisterFormState> get copyWith => __$RegisterFormS
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RegisterFormState'))
-    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('phoneNumber', phoneNumber))..add(DiagnosticsProperty('password', password))..add(DiagnosticsProperty('birthDate', birthDate))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('isForgotPassword', isForgotPassword))..add(DiagnosticsProperty('lang', lang))..add(DiagnosticsProperty('code', code))..add(DiagnosticsProperty('isPhone', isPhone))..add(DiagnosticsProperty('nationalityCode', nationalityCode))..add(DiagnosticsProperty('country', country))..add(DiagnosticsProperty('cityId', cityId))..add(DiagnosticsProperty('isValid', isValid));
+    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('firstName', firstName))..add(DiagnosticsProperty('lastName', lastName))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('phoneNumber', phoneNumber))..add(DiagnosticsProperty('password', password))..add(DiagnosticsProperty('confirmPassword', confirmPassword))..add(DiagnosticsProperty('birthDate', birthDate))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('accountType', accountType))..add(DiagnosticsProperty('idFile', idFile))..add(DiagnosticsProperty('addressFile', addressFile))..add(DiagnosticsProperty('isForgotPassword', isForgotPassword))..add(DiagnosticsProperty('lang', lang))..add(DiagnosticsProperty('code', code))..add(DiagnosticsProperty('isPhone', isPhone))..add(DiagnosticsProperty('nationalityCode', nationalityCode))..add(DiagnosticsProperty('country', country))..add(DiagnosticsProperty('cityId', cityId))..add(DiagnosticsProperty('isValid', isValid));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RegisterFormState&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.password, password) || other.password == password)&&(identical(other.birthDate, birthDate) || other.birthDate == birthDate)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.isForgotPassword, isForgotPassword) || other.isForgotPassword == isForgotPassword)&&(identical(other.lang, lang) || other.lang == lang)&&(identical(other.code, code) || other.code == code)&&(identical(other.isPhone, isPhone) || other.isPhone == isPhone)&&(identical(other.nationalityCode, nationalityCode) || other.nationalityCode == nationalityCode)&&(identical(other.country, country) || other.country == country)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.isValid, isValid) || other.isValid == isValid));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RegisterFormState&&(identical(other.name, name) || other.name == name)&&(identical(other.firstName, firstName) || other.firstName == firstName)&&(identical(other.lastName, lastName) || other.lastName == lastName)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.birthDate, birthDate) || other.birthDate == birthDate)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.accountType, accountType) || other.accountType == accountType)&&(identical(other.idFile, idFile) || other.idFile == idFile)&&(identical(other.addressFile, addressFile) || other.addressFile == addressFile)&&(identical(other.isForgotPassword, isForgotPassword) || other.isForgotPassword == isForgotPassword)&&(identical(other.lang, lang) || other.lang == lang)&&(identical(other.code, code) || other.code == code)&&(identical(other.isPhone, isPhone) || other.isPhone == isPhone)&&(identical(other.nationalityCode, nationalityCode) || other.nationalityCode == nationalityCode)&&(identical(other.country, country) || other.country == country)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.isValid, isValid) || other.isValid == isValid));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,email,phoneNumber,password,birthDate,gender,isForgotPassword,lang,code,isPhone,nationalityCode,country,cityId,isValid);
+int get hashCode => Object.hashAll([runtimeType,name,firstName,lastName,email,phoneNumber,password,confirmPassword,birthDate,gender,accountType,idFile,addressFile,isForgotPassword,lang,code,isPhone,nationalityCode,country,cityId,isValid]);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RegisterFormState(name: $name, email: $email, phoneNumber: $phoneNumber, password: $password, birthDate: $birthDate, gender: $gender, isForgotPassword: $isForgotPassword, lang: $lang, code: $code, isPhone: $isPhone, nationalityCode: $nationalityCode, country: $country, cityId: $cityId, isValid: $isValid)';
+  return 'RegisterFormState(name: $name, firstName: $firstName, lastName: $lastName, email: $email, phoneNumber: $phoneNumber, password: $password, confirmPassword: $confirmPassword, birthDate: $birthDate, gender: $gender, accountType: $accountType, idFile: $idFile, addressFile: $addressFile, isForgotPassword: $isForgotPassword, lang: $lang, code: $code, isPhone: $isPhone, nationalityCode: $nationalityCode, country: $country, cityId: $cityId, isValid: $isValid)';
 }
 
 
@@ -819,7 +831,7 @@ abstract mixin class _$RegisterFormStateCopyWith<$Res> implements $RegisterFormS
   factory _$RegisterFormStateCopyWith(_RegisterFormState value, $Res Function(_RegisterFormState) _then) = __$RegisterFormStateCopyWithImpl;
 @override @useResult
 $Res call({
- String name, String email, String phoneNumber, String password, String birthDate, GenderType gender, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, String cityId, bool isValid
+ UserName name, UserName firstName, UserName lastName, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItem? accountType, File? idFile, File? addressFile, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, String cityId, bool isValid
 });
 
 
@@ -836,15 +848,21 @@ class __$RegisterFormStateCopyWithImpl<$Res>
 
 /// Create a copy of RegisterFormState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? email = null,Object? phoneNumber = null,Object? password = null,Object? birthDate = null,Object? gender = null,Object? isForgotPassword = null,Object? lang = null,Object? code = null,Object? isPhone = null,Object? nationalityCode = null,Object? country = null,Object? cityId = null,Object? isValid = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? firstName = null,Object? lastName = null,Object? email = null,Object? phoneNumber = null,Object? password = null,Object? confirmPassword = null,Object? birthDate = null,Object? gender = null,Object? accountType = freezed,Object? idFile = freezed,Object? addressFile = freezed,Object? isForgotPassword = null,Object? lang = null,Object? code = null,Object? isPhone = null,Object? nationalityCode = null,Object? country = null,Object? cityId = null,Object? isValid = null,}) {
   return _then(_RegisterFormState(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,phoneNumber: null == phoneNumber ? _self.phoneNumber : phoneNumber // ignore: cast_nullable_to_non_nullable
-as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as String,birthDate: null == birthDate ? _self.birthDate : birthDate // ignore: cast_nullable_to_non_nullable
+as UserName,firstName: null == firstName ? _self.firstName : firstName // ignore: cast_nullable_to_non_nullable
+as UserName,lastName: null == lastName ? _self.lastName : lastName // ignore: cast_nullable_to_non_nullable
+as UserName,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as Email,phoneNumber: null == phoneNumber ? _self.phoneNumber : phoneNumber // ignore: cast_nullable_to_non_nullable
+as PhoneNumber,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as Password,confirmPassword: null == confirmPassword ? _self.confirmPassword : confirmPassword // ignore: cast_nullable_to_non_nullable
+as Password,birthDate: null == birthDate ? _self.birthDate : birthDate // ignore: cast_nullable_to_non_nullable
 as String,gender: null == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
-as GenderType,isForgotPassword: null == isForgotPassword ? _self.isForgotPassword : isForgotPassword // ignore: cast_nullable_to_non_nullable
+as GenderType,accountType: freezed == accountType ? _self.accountType : accountType // ignore: cast_nullable_to_non_nullable
+as AccountTypeItem?,idFile: freezed == idFile ? _self.idFile : idFile // ignore: cast_nullable_to_non_nullable
+as File?,addressFile: freezed == addressFile ? _self.addressFile : addressFile // ignore: cast_nullable_to_non_nullable
+as File?,isForgotPassword: null == isForgotPassword ? _self.isForgotPassword : isForgotPassword // ignore: cast_nullable_to_non_nullable
 as bool,lang: null == lang ? _self.lang : lang // ignore: cast_nullable_to_non_nullable
 as String,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as String,isPhone: null == isPhone ? _self.isPhone : isPhone // ignore: cast_nullable_to_non_nullable

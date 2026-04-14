@@ -15,7 +15,8 @@
     "shearch_here",
     "favouraits",
     "iPA",
-    "privacy_policy"
+    "privacy_policy",
+    "account_type"
   ],
 
   "fr": [
@@ -30,7 +31,8 @@
     "shearch_here",
     "favouraits",
     "iPA",
-    "privacy_policy"
+    "privacy_policy",
+    "account_type"
   ],
 
   "ja": [
@@ -45,6 +47,7 @@
     "shearch_here",
     "favouraits",
     "iPA",
-    "privacy_policy"
+    "privacy_policy",
+    "account_type"
   ]
 }

@@ -233,6 +233,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get create_account => 'Créer un compte';
 
   @override
+  String get account_type => 'Account Type';
+
+  @override
   String get step => 'Étape';
 
   @override

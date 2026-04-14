@@ -3,8 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../constants/app_config.dart';
+import '../di/di.dart';
+import 'dio_lang_interceptor.dart';
 
-class DioFactory {
+final class DioFactory {
   DioFactory._();
 
   static Dio? dio;
@@ -31,5 +33,6 @@ class DioFactory {
         responseHeader: true,
       ),
     );
+    dio?.interceptors.add(DioLangInterceptor(getIt()));
   }
 }

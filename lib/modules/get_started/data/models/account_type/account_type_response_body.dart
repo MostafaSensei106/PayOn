@@ -17,7 +17,7 @@ final class AccountTypeResponseBody {
 
   final int code;
   final String message;
-  final List<AccountTypeData> data;
+  final AccountTypeData data;
   final bool success;
 
   factory AccountTypeResponseBody.fromJson(Map<String, dynamic> json) =>

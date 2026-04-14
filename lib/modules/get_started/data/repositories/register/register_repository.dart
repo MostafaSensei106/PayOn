@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import '../../../../../core/networking/api_error_handler.dart';
 import '../../../../../core/networking/api_result/api_result.dart';
 import '../../../../../core/networking/api_service/api_service.dart';
@@ -18,6 +20,20 @@ class RegisterRepository implements BaseRegisterRepository {
     try {
       final response = await _apiService.register(body);
       return APIResult<RegisterResponseBody>.success(data: response);
+    } catch (error) {
+      return APIResult.failure(errorHandler: APIErrorHandler.handle(error));
+    }
+  }
+
+  @override
+  Future<APIResult<void>> uploadFiles({
+    required File file,
+    required String accId,
+    required int requiredDocId,
+  }) async {
+    try {
+      await _apiService.uploadFiles(file, accId, requiredDocId);
+      return const APIResult<void>.success(data: null);
     } catch (error) {
       return APIResult.failure(errorHandler: APIErrorHandler.handle(error));
     }

@@ -228,6 +228,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get create_account => 'アカウント作成';
 
   @override
+  String get account_type => 'Account Type';
+
+  @override
   String get step => 'ステップ';
 
   @override

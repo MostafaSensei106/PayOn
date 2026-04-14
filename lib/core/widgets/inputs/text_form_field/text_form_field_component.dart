@@ -19,6 +19,7 @@ class TextFormFieldComponent extends StatelessWidget {
     this.onTap,
     this.controller,
     this.keyboardType,
+    this.initialValue,
   });
   final String label;
   final IconData prefixIcon;
@@ -32,6 +33,7 @@ class TextFormFieldComponent extends StatelessWidget {
   final void Function(String) onChanged;
   final bool isEnable;
   final String? errorText;
+  final String? initialValue;
 
   @override
   Widget build(final BuildContext context) => TextFormField(
@@ -41,6 +43,7 @@ class TextFormFieldComponent extends StatelessWidget {
     readOnly: readOnly,
     onChanged: (val) => onChanged.call(val),
     enabled: isEnable,
+    initialValue: initialValue,
 
     onTap: () {
       unawaited(HapticFeedback.vibrate());

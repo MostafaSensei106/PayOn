@@ -18,7 +18,7 @@ class OtpCubit extends Cubit<OtpState> {
   Future<void> sendOTP() async {
     emit(OtpState.loading(currentForm));
     final body = SendOtpRequestBody(
-      email: currentForm.email,
+      email: currentForm.email.value,
       emailLang: currentForm.lang,
       isForgotPassword: currentForm.isForgotPassword,
     );
@@ -37,7 +37,7 @@ class OtpCubit extends Cubit<OtpState> {
   Future<void> verifyOTP(String otp) async {
     emit(OtpState.loading(currentForm));
     final body = VerifyOtpRequestBody(
-      email: currentForm.email,
+      email: currentForm.email.value,
       code: currentForm.code,
     );
     final response = await _otpRepository.verifyOTP(body);

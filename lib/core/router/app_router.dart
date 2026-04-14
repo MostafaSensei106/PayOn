@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_classes_with_only_static_members
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../modules/app_version/ui/page/app_version.dart';
@@ -9,6 +10,9 @@ import '../../modules/contact_us/ui/page/contact_us.dart';
 import '../../modules/developer_team/ui/page/developer_team.dart';
 import '../../modules/fingerprint_auth/ui/page/fingerprint_auth.dart';
 import '../../modules/forget_password/ui/page/forget_password_page.dart';
+import '../../modules/get_started/logic/cubit/account_type/account_type_cubit.dart';
+import '../../modules/get_started/logic/cubit/otp/otp_cubit.dart';
+import '../../modules/get_started/logic/cubit/register/register_cubit.dart';
 import '../../modules/get_started/ui/pages/get_started_page.dart';
 import '../../modules/language/ui/page/app_language.dart';
 import '../../modules/login/presentation/pages/login_page.dart';
@@ -21,6 +25,7 @@ import '../../modules/send_money/ui/page/send_money.dart';
 import '../../modules/theme/ui/page/theme.dart';
 import '../../modules/two_factor_auth/ui/page/two_factor_auth.dart';
 import '../../modules/welcome/presentation/pages/welcome_page.dart';
+import '../di/di.dart';
 
 class AppRouter {
   static const String welcome = '/';
@@ -65,8 +70,16 @@ class AppRouter {
       ),
       GoRoute(
         path: getStarted,
-        pageBuilder: (final context, final state) =>
-            const CupertinoPage(child: GetStartedPage()),
+        pageBuilder: (final context, final state) => CupertinoPage(
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (_) => getIt<RegisterCubit>()),
+              BlocProvider(create: (context) => getIt<AccountTypeCubit>()),
+              BlocProvider(create: (_) => getIt<OtpCubit>()),
+            ],
+            child: const GetStartedPage(),
+          ),
+        ),
       ),
       GoRoute(
         path: home,

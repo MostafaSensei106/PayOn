@@ -14,6 +14,7 @@ class PasswordFieldComponent extends HookWidget {
     this.errorText,
 
     this.isEnable = true,
+    this.initialValue,
   });
 
   final String label;
@@ -21,6 +22,7 @@ class PasswordFieldComponent extends HookWidget {
   final void Function(String) onChanged;
   final bool isEnable;
   final String? errorText;
+  final String? initialValue;
 
   @override
   Widget build(final BuildContext context) {
@@ -33,6 +35,7 @@ class PasswordFieldComponent extends HookWidget {
       obscureText: obscureText.value,
       isEnable: isEnable,
       errorText: errorText,
+      initialValue: initialValue,
 
       suffixIcon: IconButton(
         icon: Icon(
