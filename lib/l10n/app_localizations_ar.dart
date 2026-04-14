@@ -53,6 +53,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get email_address => 'البريد الإلكتروني';
 
   @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'أنثى';
+
+  @override
+  String get none => 'لا يوجد';
+
+  @override
+  String get other => 'آخر';
+
+  @override
+  String get date_of_birth => 'تاريخ الميلاد';
+
+  @override
   String get password => 'كلمة المرور';
 
   @override

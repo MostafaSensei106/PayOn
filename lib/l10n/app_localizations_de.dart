@@ -55,6 +55,21 @@ class AppLocalizationsDe extends AppLocalizations {
   String get email_address => 'E-Mail-Adresse';
 
   @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get none => 'None';
+
+  @override
+  String get other => 'Other';
+
+  @override
+  String get date_of_birth => 'Date of Birth';
+
+  @override
   String get password => 'Passwort';
 
   @override
