@@ -4,7 +4,7 @@ part 'register_request_body.g.dart';
 
 @JsonSerializable()
 final class RegisterRequestBody {
-  RegisterRequestBody({
+  const RegisterRequestBody({
     required this.email,
     required this.phoneNumber,
     required this.name,

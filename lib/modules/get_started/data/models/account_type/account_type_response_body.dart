@@ -8,7 +8,7 @@ part 'account_type_response_body.g.dart';
 
 @JsonSerializable()
 final class AccountTypeResponseBody {
-  AccountTypeResponseBody({
+  const AccountTypeResponseBody({
     required this.code,
     required this.message,
     required this.data,

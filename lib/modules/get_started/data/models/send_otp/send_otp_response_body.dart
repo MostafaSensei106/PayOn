@@ -2,13 +2,13 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'otp_response_data.dart';
+import 'send_otp_response_data.dart';
 
-part 'otp_response_body.g.dart';
+part 'send_otp_response_body.g.dart';
 
 @JsonSerializable()
-final class OtpResponseBody {
-  OtpResponseBody({
+final class SendOtpResponseBody {
+  SendOtpResponseBody({
     required this.code,
     required this.message,
     required this.data,
@@ -17,9 +17,9 @@ final class OtpResponseBody {
 
   final int code;
   final String message;
-  final OtpResponseData data;
+  final SendOtpResponseData data;
   final bool success;
 
-  factory OtpResponseBody.fromJson(Map<String, dynamic> json) =>
-      _$OtpResponseBodyFromJson(json);
+  factory SendOtpResponseBody.fromJson(Map<String, dynamic> json) =>
+      _$SendOtpResponseBodyFromJson(json);
 }

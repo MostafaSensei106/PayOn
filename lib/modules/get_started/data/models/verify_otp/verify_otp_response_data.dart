@@ -7,7 +7,6 @@ part 'verify_otp_response_data.g.dart';
 @JsonSerializable()
 final class VerifyOtpResponseData {
   VerifyOtpResponseData({required this.result});
-
   final bool result;
 
   factory VerifyOtpResponseData.fromJson(Map<String, dynamic> json) =>

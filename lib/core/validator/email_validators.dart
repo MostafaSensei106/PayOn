@@ -10,9 +10,9 @@ enum EmailValidationError {
   invalidCharacters,
 }
 
-final class EmailValidator extends FormzInput<String, EmailValidationError> {
-  const EmailValidator.pure() : super.pure('');
-  const EmailValidator.dirty([super.value = '']) : super.dirty();
+final class Email extends FormzInput<String, EmailValidationError> {
+  const Email.pure() : super.pure('');
+  const Email.dirty([super.value = '']) : super.dirty();
 
   @override
   EmailValidationError? validator(String value) {

@@ -1,16 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'otp_response_data.dart';
+part of 'send_otp_response_data.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-OtpResponseData _$OtpResponseDataFromJson(Map<String, dynamic> json) =>
-    OtpResponseData(
+SendOtpResponseData _$SendOtpResponseDataFromJson(Map<String, dynamic> json) =>
+    SendOtpResponseData(
       state: json['state'] as String,
       timestamp: json['timestamp'] as String,
     );
 
-Map<String, dynamic> _$OtpResponseDataToJson(OtpResponseData instance) =>
-    <String, dynamic>{'state': instance.state, 'timestamp': instance.timestamp};
+Map<String, dynamic> _$SendOtpResponseDataToJson(
+  SendOtpResponseData instance,
+) => <String, dynamic>{
+  'state': instance.state,
+  'timestamp': instance.timestamp,
+};

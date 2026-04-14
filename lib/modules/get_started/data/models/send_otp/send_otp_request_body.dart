@@ -1,10 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'otp_request_body.g.dart';
+part 'send_otp_request_body.g.dart';
 
 @JsonSerializable()
-final class OtpRequestBody {
-  OtpRequestBody({
+final class SendOtpRequestBody {
+  SendOtpRequestBody({
     required this.email,
     required this.emailLang,
     required this.isForgotPassword,
@@ -16,5 +16,5 @@ final class OtpRequestBody {
   final String emailLang;
   final bool isForgotPassword;
 
-  Map<String, dynamic> toJson() => _$OtpRequestBodyToJson(this);
+  Map<String, dynamic> toJson() => _$SendOtpRequestBodyToJson(this);
 }

@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'otp_request_body.dart';
+part of 'send_otp_request_body.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-OtpRequestBody _$OtpRequestBodyFromJson(Map<String, dynamic> json) =>
-    OtpRequestBody(
+SendOtpRequestBody _$SendOtpRequestBodyFromJson(Map<String, dynamic> json) =>
+    SendOtpRequestBody(
       email: json['emailOrPhone'] as String,
       emailLang: json['lang'] as String,
       isForgotPassword: json['isForgotPassword'] as bool,
     );
 
-Map<String, dynamic> _$OtpRequestBodyToJson(OtpRequestBody instance) =>
+Map<String, dynamic> _$SendOtpRequestBodyToJson(SendOtpRequestBody instance) =>
     <String, dynamic>{
       'emailOrPhone': instance.email,
       'lang': instance.emailLang,
