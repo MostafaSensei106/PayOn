@@ -32,12 +32,16 @@ final class SharePlusService implements BaseShareService {
     String? subject,
     Rect? sharePosition,
   }) async {
-    final params = ShareParams(
-      text: text,
-      subject: subject,
-      sharePositionOrigin: sharePosition,
-    );
-    await SharePlus.instance.share(params);
+    try {
+      final params = ShareParams(
+        text: text,
+        subject: subject,
+        sharePositionOrigin: sharePosition,
+      );
+      await SharePlus.instance.share(params);
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 
   @override
@@ -46,11 +50,15 @@ final class SharePlusService implements BaseShareService {
     String? subject,
     Rect? sharePosition,
   }) async {
-    final params = ShareParams(
-      text: url,
-      subject: subject,
-      sharePositionOrigin: sharePosition,
-    );
-    await SharePlus.instance.share(params);
+    try {
+      final params = ShareParams(
+        text: url,
+        subject: subject,
+        sharePositionOrigin: sharePosition,
+      );
+      await SharePlus.instance.share(params);
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }
