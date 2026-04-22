@@ -260,6 +260,18 @@ abstract class AppLocalizations {
   /// **'Settings'**
   String get settings;
 
+  /// No description provided for @qr_code.
+  ///
+  /// In en, this message translates to:
+  /// **'QR Code'**
+  String get qr_code;
+
+  /// No description provided for @scan_qr_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan QR Code'**
+  String get scan_qr_code;
+
   /// No description provided for @user_name.
   ///
   /// In en, this message translates to:

@@ -92,6 +92,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get settings => 'Paramètres';
 
   @override
+  String get qr_code => 'QR Code';
+
+  @override
+  String get scan_qr_code => 'Scan QR Code';
+
+  @override
   String get user_name => 'Nom d\'utilisateur';
 
   @override

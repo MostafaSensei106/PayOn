@@ -15,8 +15,8 @@ import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart
 import '../../../../core/widgets/inputs/search_bar/search_bar_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_component.dart';
 
-class SendMoney extends HookWidget {
-  const SendMoney({super.key});
+class SendMoneyPage extends HookWidget {
+  const SendMoneyPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -10,8 +10,8 @@ import '../../../../core/widgets/display/list_tile/list_tile_widget_component.da
 import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 import '../../../../l10n/app_localizations.dart';
 
-class AppLanguage extends StatelessWidget {
-  const AppLanguage({super.key});
+class ChangeLanguagePage extends StatelessWidget {
+  const ChangeLanguagePage({super.key});
 
   @override
   Widget build(BuildContext context) {

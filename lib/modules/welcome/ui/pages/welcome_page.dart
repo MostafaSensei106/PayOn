@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
@@ -72,19 +71,21 @@ class _WelcomePageState extends State<WelcomePage> {
                   TextButtonComponent.icon(
                     icon: Iconsax.language_square_copy,
                     label: l10n.app_language,
-                    onPressed: () => context.push(AppRouter.language),
+                    onPressed: () =>
+                        const ChangeLanguageRoute().push<void>(context),
                   ),
                   const Spacer(),
                   FilledButtonComponent.icon(
                     label: l10n.get_started,
                     icon: Iconsax.arrow_right_3_copy,
-                    onPressed: () => context.push(AppRouter.getStarted),
+                    onPressed: () =>
+                        const GetStartedRoute().push<void>(context),
                   ),
                   const SpacingComponent.vertical(AppConfig.padding),
                   OutlinedButtonComponent.icon(
                     label: l10n.login,
                     icon: Iconsax.login_1_copy,
-                    onPressed: () => context.push(AppRouter.login),
+                    onPressed: () => const LoginRoute().push<void>(context),
                   ),
                   const SpacingComponent.vertical(AppConfig.padding),
                 ],

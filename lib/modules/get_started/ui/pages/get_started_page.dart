@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/router/app_router.dart';
 import '../../logic/cubit/register/register_cubit.dart';
@@ -42,7 +41,7 @@ class GetStartedPage extends HookWidget {
       currentPage.value--;
     }
 
-    void nextPage() {
+    Future<void> nextPage() async {
       FocusScope.of(context).unfocus();
       if (currentPage.value < 3) {
         // Validation before moving to next page
@@ -56,7 +55,7 @@ class GetStartedPage extends HookWidget {
 
         if (currentPage.value == 2) {
           // Trigger Registration when moving to OTP step
-          context.read<RegisterCubit>().register();
+          await context.read<RegisterCubit>().register();
         }
 
         unawaited(
@@ -66,7 +65,7 @@ class GetStartedPage extends HookWidget {
           ),
         );
       } else {
-        context.go(AppRouter.home);
+        const LoginRoute().go(context);
       }
     }
 

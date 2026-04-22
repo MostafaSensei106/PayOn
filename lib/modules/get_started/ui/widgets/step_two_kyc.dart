@@ -20,11 +20,13 @@ class StepTwoKYC extends StatelessWidget {
   Future<void> _pickFile(BuildContext context, bool isId) async {
     final picker = ImagePicker();
     final image = await picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
+
+    if (image != null && context.mounted) {
+      final cubit = context.read<RegisterCubit>();
       if (isId) {
-        context.read<RegisterCubit>().idFileOnChanged(File(image.path));
+        cubit.idFileOnChanged(File(image.path));
       } else {
-        context.read<RegisterCubit>().addressFileOnChanged(File(image.path));
+        cubit.addressFileOnChanged(File(image.path));
       }
     }
   }

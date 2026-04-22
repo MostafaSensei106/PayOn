@@ -5,8 +5,8 @@ import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/navigation/bottom_nav_bar/bottom_nav_bar_component.dart';
 import '../../../history/presentation/pages/history_page.dart';
-import '../../../home/presentation/pages/home_page.dart';
-import '../../../settings/presentation/pages/settings_page.dart';
+import '../../../home/ui/pages/home_page.dart';
+import '../../../settings/ui/pages/settings_page.dart';
 import '../../../wallet/presentation/pages/wallet_page.dart';
 
 class MainPage extends StatefulWidget {

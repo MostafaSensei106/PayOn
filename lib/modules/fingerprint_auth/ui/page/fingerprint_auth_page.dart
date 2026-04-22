@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 
-class FingerprintAuth extends StatelessWidget {
-  const FingerprintAuth({super.key});
+class FingerprintAuthPage extends StatelessWidget {
+  const FingerprintAuthPage({super.key});
 
   @override
   Widget build(BuildContext context) {

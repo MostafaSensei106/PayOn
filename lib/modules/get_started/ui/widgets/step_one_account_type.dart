@@ -9,6 +9,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
+import '../../../../core/widgets/display/list_tile/list_tile_widget_component.dart';
 import '../../data/models/account_type/account_type_response_body.dart';
 import '../../logic/cubit/account_type/account_type_cubit.dart';
 import '../../logic/cubit/account_type/account_type_state.dart';
@@ -23,6 +24,8 @@ class StepOneAccountType extends StatelessWidget {
       AccountTypeCubit,
       AccountTypeState<AccountTypeResponseBody>
     >(
+      buildWhen: (previous, current) =>
+          current is Success || current is Failure || current is Loading,
       builder: (context, state) {
         return state.when(
           initial: () {
@@ -119,46 +122,46 @@ class _AccountTypeSkeleton extends StatelessWidget {
       child: ListView(
         padding: const EdgeInsets.all(AppConfig.padding),
         children: const [
-          ListTileIconComponent.top(
+          ListTileWidgetComponent.top(
             title: 'Account Type Placeholder',
             subtitle: 'Description placeholder for account type',
-            leading: Iconsax.user_copy,
+            leading: CircleAvatar(),
             trailing: Radio<int>(value: 1, groupValue: 0),
           ),
-          ListTileIconComponent.middle(
+          ListTileWidgetComponent.middle(
             title: 'Account Type Placeholder',
             subtitle: 'Description placeholder for account type',
-            leading: Iconsax.user_copy,
+            leading: CircleAvatar(),
             trailing: Radio<int>(value: 1, groupValue: 0),
           ),
-          ListTileIconComponent.middle(
+          ListTileWidgetComponent.middle(
             title: 'Account Type Placeholder',
             subtitle: 'Description placeholder for account type',
-            leading: Iconsax.user_copy,
+            leading: CircleAvatar(),
             trailing: Radio<int>(value: 1, groupValue: 0),
           ),
-          ListTileIconComponent.middle(
+          ListTileWidgetComponent.middle(
             title: 'Account Type Placeholder',
             subtitle: 'Description placeholder for account type',
-            leading: Iconsax.user_copy,
+            leading: CircleAvatar(),
             trailing: Radio<int>(value: 1, groupValue: 0),
           ),
-          ListTileIconComponent.middle(
+          ListTileWidgetComponent.middle(
             title: 'Account Type Placeholder',
             subtitle: 'Description placeholder for account type',
-            leading: Iconsax.user_copy,
+            leading: CircleAvatar(),
             trailing: Radio<int>(value: 1, groupValue: 0),
           ),
-          ListTileIconComponent.middle(
+          ListTileWidgetComponent.middle(
             title: 'Account Type Placeholder',
             subtitle: 'Description placeholder for account type',
-            leading: Iconsax.user_copy,
+            leading: CircleAvatar(),
             trailing: Radio<int>(value: 1, groupValue: 0),
           ),
-          ListTileIconComponent.bottom(
+          ListTileWidgetComponent.bottom(
             title: 'Account Type Placeholder',
             subtitle: 'Description placeholder for account type',
-            leading: Iconsax.user_copy,
+            leading: CircleAvatar(),
             trailing: Radio<int>(value: 1, groupValue: 0),
           ),
         ],

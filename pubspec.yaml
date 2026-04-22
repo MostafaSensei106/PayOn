@@ -43,7 +43,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  build_runner: ^2.13.1
+  build_runner: ^2.14.0
   freezed: ^3.2.5
   json_serializable: 6.13.1
   flutter_launcher_icons: ^0.14.4
@@ -51,6 +51,7 @@ dev_dependencies:
   intl_utils: ^2.8.14
   retrofit_generator: ^10.2.3
   pretty_dio_logger: ^1.4.0
+  go_router_builder: ^4.3.0
 
 flutter:
   generate: true

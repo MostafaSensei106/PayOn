@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -116,7 +115,7 @@ class HomePage extends StatelessWidget {
                     ),
                     onTap: () async {
                       unawaited(HapticFeedback.vibrate());
-                      await context.push(AppRouter.profile);
+                      await const ProfileRoute().push<void>(context);
                     },
                     child: const AvatarComponent(
                       imageUrl:
@@ -168,17 +167,19 @@ class HomePage extends StatelessWidget {
                       QuickActionItem(
                         icon: Iconsax.send_1_copy,
                         label: l10n.send,
-                        onTap: () => context.push(AppRouter.sendMoney),
+                        onTap: () => const SendMoneyRoute().push<void>(context),
                       ),
                       QuickActionItem(
                         icon: Iconsax.receive_square_2_copy,
                         label: l10n.request,
-                        onTap: () {},
+                        onTap: () =>
+                            const RequestMoneyRoute().push<void>(context),
                       ),
                       QuickActionItem(
                         icon: Iconsax.scan_barcode_copy,
                         label: l10n.scan,
-                        onTap: () {},
+                        onTap: () =>
+                            const ScanQrCodeRoute().push<void>(context),
                       ),
                       QuickActionItem(
                         icon: Iconsax.more_copy,

@@ -26,6 +26,8 @@
   "lets_get_started": "Let's Get Started",
   "home": "Home",
   "settings": "Settings",
+  "qr_code": "QR Code",
+  "scan_qr_code": "Scan QR Code",
   "user_name": "User Name",
   "profile": "Profile",
   "wallet": "Wallet",

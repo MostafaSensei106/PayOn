@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
@@ -10,7 +9,7 @@ import '../../../../core/utils/settings_tile_data.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
 
-class SettingsPage extends HookWidget {
+final class SettingsPage extends HookWidget {
   const SettingsPage({super.key});
 
   @override
@@ -42,25 +41,25 @@ class SettingsPage extends HookWidget {
               title: l10n.confirm_password,
               subtitle: l10n.change_password_subtitle,
               leading: Icons.lock_outline,
-              onTap: () => context.push(AppRouter.changePassword),
+              onTap: () => const ChangePasswordRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.two_factor_auth_title,
               subtitle: l10n.two_factor_auth_subtitle,
               leading: Icons.security,
-              onTap: () => context.push(AppRouter.twoFactorAuth),
+              onTap: () => const TwoFactorAuthRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.biometric_login,
               subtitle: l10n.biometric_login_subtitle,
               leading: Icons.fingerprint,
-              onTap: () => context.push(AppRouter.fingerprintAuth),
+              onTap: () => const FingerprintAuthRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.security_alerts,
               subtitle: l10n.security_alerts_subtitle,
               leading: Icons.gpp_maybe_outlined,
-              onTap: () => context.push(AppRouter.securityAlerts),
+              onTap: () => const SecurityAlertsRoute().push<void>(context),
             ),
           ]),
 
@@ -70,19 +69,19 @@ class SettingsPage extends HookWidget {
               title: l10n.app_language,
               subtitle: l10n.language_name,
               leading: Icons.language,
-              onTap: () => context.push(AppRouter.language),
+              onTap: () => const ChangeLanguageRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.appearance,
               subtitle: l10n.appearance_subtitle,
               leading: Icons.dark_mode_outlined,
-              onTap: () => context.push(AppRouter.theme),
+              onTap: () => const ChangeThemeRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.notification_settings,
               subtitle: l10n.notification_settings_subtitle,
               leading: Icons.notifications_none,
-              onTap: () => context.push(AppRouter.notifications),
+              onTap: () => const NotificationsRoute().push<void>(context),
             ),
           ]),
 
@@ -92,13 +91,13 @@ class SettingsPage extends HookWidget {
               title: l10n.faq,
               subtitle: l10n.faq_subtitle,
               leading: Icons.help_outline,
-              onTap: () => context.push(AppRouter.commonQuestions),
+              onTap: () => const CommonQuestionsRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.contact_us,
               subtitle: l10n.contact_us_subtitle,
               leading: Icons.support_agent,
-              onTap: () => context.push(AppRouter.contactUs),
+              onTap: () => const ContactUsRoute().push<void>(context),
             ),
           ]),
 
@@ -108,19 +107,19 @@ class SettingsPage extends HookWidget {
               title: l10n.privacy_policy,
               subtitle: l10n.privacy_policy_subtitle,
               leading: Icons.privacy_tip_outlined,
-              onTap: () => context.push(AppRouter.privacyPolicy),
+              onTap: () => const PrivacyPolicyRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.about_app,
               subtitle: l10n.app_version,
               leading: Icons.info_outline,
-              onTap: () => context.push(AppRouter.appVersion),
+              onTap: () {},
             ),
             SettingsTileData(
               title: l10n.about_developers,
               subtitle: l10n.about_developers_subtitle,
               leading: Icons.developer_mode,
-              onTap: () => context.push(AppRouter.developerTeam),
+              onTap: () {},
             ),
           ]),
         ],
