@@ -35,7 +35,7 @@ class PayOnApp extends StatelessWidget {
             );
             return MaterialApp.router(
               title: AppConfig.appName,
-              onGenerateTitle: (context) => AppConfig.appName,
+              onGenerateTitle: (_) => AppConfig.appName,
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: themeMode,

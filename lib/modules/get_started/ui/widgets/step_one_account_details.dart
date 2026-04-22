@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/inputs/checkbox/checkbox_component.dart';
-import '../../../../core/widgets/inputs/password_form_field/password_form_field_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../../../core/widgets/layout/spacing/spacing_component.dart';
+import '../../logic/cubit/register/register_cubit.dart';
 
 class StepOneAccountDetails extends StatelessWidget {
   const StepOneAccountDetails({
@@ -30,6 +31,8 @@ class StepOneAccountDetails extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
+    final registerCubit = context.read<RegisterCubit>();
+    final form = context.watch<RegisterCubit>().state.form;
 
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
@@ -50,7 +53,8 @@ class StepOneAccountDetails extends StatelessWidget {
                   child: TextFormFieldComponent(
                     label: l10n.first_name,
                     prefixIcon: Iconsax.user_copy,
-                    onChanged: (String? p1) {},
+                    initialValue: form.firstName.value,
+                    onChanged: registerCubit.firstNameOnChanged,
                   ),
                 ),
                 const SpacingComponent.horizontal(AppConfig.paddingHalf),
@@ -58,7 +62,8 @@ class StepOneAccountDetails extends StatelessWidget {
                   child: TextFormFieldComponent(
                     label: l10n.last_name,
                     prefixIcon: Iconsax.user_copy,
-                    onChanged: (String? p1) {},
+                    initialValue: form.lastName.value,
+                    onChanged: registerCubit.lastNameOnChanged,
                   ),
                 ),
               ],
@@ -66,20 +71,28 @@ class StepOneAccountDetails extends StatelessWidget {
             TextFormFieldComponent(
               label: l10n.email_address,
               prefixIcon: Iconsax.message_2_copy,
-              onChanged: (String? p1) {},
+              initialValue: form.email.value,
+              onChanged: registerCubit.emailOnChanged,
             ),
             TextFormFieldComponent(
               label: l10n.phone_number,
               prefixIcon: Iconsax.call_copy,
-              onChanged: (String? p1) {},
+              initialValue: form.phoneNumber.value,
+              onChanged: registerCubit.phoneNumberOnChanged,
             ),
-            PasswordFieldComponent(
+            TextFormFieldComponent(
               label: l10n.password,
-              onChanged: (String? p1) {},
+              prefixIcon: Iconsax.lock_copy,
+              initialValue: form.password.value,
+              onChanged: registerCubit.passwordOnChanged,
+              obscureText: true,
             ),
-            PasswordFieldComponent(
+            TextFormFieldComponent(
               label: l10n.confirm_password,
-              onChanged: (String? p1) {},
+              prefixIcon: Iconsax.lock_copy,
+              initialValue: form.confirmPassword.value,
+              onChanged: registerCubit.confirmPasswordOnChanged,
+              obscureText: true,
             ),
             Column(
               children: [

@@ -8,7 +8,7 @@ part 'account_type_data.g.dart';
 
 @JsonSerializable()
 final class AccountTypeData {
-  AccountTypeData({
+  const AccountTypeData({
     required this.items,
     required this.totalItems,
     required this.pageNumber,

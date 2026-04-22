@@ -6,7 +6,7 @@ part 'user_data.g.dart';
 
 @JsonSerializable()
 final class UserDataModel {
-  UserDataModel({required this.token});
+  const UserDataModel({required this.token});
   final String token;
 
   factory UserDataModel.fromJson(Map<String, dynamic> json) =>

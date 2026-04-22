@@ -30,7 +30,7 @@ class GetStartedNavigation extends StatelessWidget {
       padding: const EdgeInsets.all(AppConfig.paddingHalf),
       child: Row(
         children: [
-          if (currentPage > 0 && currentPage != 2) ...[
+          if (currentPage > 0 && currentPage != 3) ...[
             Expanded(
               child: OutlinedButtonComponent.icon(
                 label: l10n.back,
@@ -45,8 +45,8 @@ class GetStartedNavigation extends StatelessWidget {
           Expanded(
             child: FilledButtonComponent.icon(
               key: ValueKey<int>(currentPage),
-              label: currentPage == 2 ? l10n.create_account : l10n.next,
-              icon: currentPage == 2
+              label: currentPage == 3 ? l10n.create_account : l10n.next,
+              icon: currentPage == 3
                   ? Iconsax.user_add_copy
                   : (isRtl
                         ? Iconsax.arrow_left_2_copy

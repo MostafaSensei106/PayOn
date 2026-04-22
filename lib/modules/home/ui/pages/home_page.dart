@@ -1,0 +1,200 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../../core/constants/app_config.dart';
+import '../../../../core/di/di.dart';
+import '../../../../core/router/app_router.dart';
+import '../../../../core/services/l10n/l10n_service.dart';
+import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
+import '../../../../core/widgets/display/avatar/avatar_component.dart';
+import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
+import '../../data/models/account_model.dart';
+import '../widgets/account_balance_card.dart';
+import '../widgets/latest_transactions_section.dart';
+import '../widgets/quick_action_item.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(final BuildContext context) {
+    final l10n = getIt<L10nService>().get(context);
+    final cardController = PageController();
+    final scrollController = ScrollController();
+
+    final accounts = <AccountModel>[
+      AccountModel(
+        currencyName: l10n.egyptian_pound,
+        symbol: 'EGP',
+        balance: '45,250.00',
+        accountId: 'ID: 2024-EGP-88',
+        countryCode: 'EG',
+      ),
+      AccountModel(
+        currencyName: l10n.us_dollar,
+        symbol: 'USD',
+        balance: '1,280.50',
+        accountId: 'ID: 2024-USD-12',
+        countryCode: 'US',
+      ),
+      AccountModel(
+        currencyName: l10n.saudi_riyal,
+        symbol: 'SAR',
+        balance: '15,000.00',
+        accountId: 'ID: 2024-SAR-44',
+        countryCode: 'SA',
+      ),
+      AccountModel(
+        currencyName: l10n.uae_dirham,
+        symbol: 'AED',
+        balance: '8,400.00',
+        accountId: 'ID: 2024-AED-55',
+        countryCode: 'AE',
+      ),
+      AccountModel(
+        currencyName: l10n.british_pound,
+        symbol: 'GBP',
+        balance: '650.00',
+        accountId: 'ID: 2024-GBP-66',
+        countryCode: 'GB',
+      ),
+      AccountModel(
+        currencyName: l10n.japanese_yen,
+        symbol: 'JPY',
+        balance: '150,000,000.00',
+        accountId: 'ID: 2024-JPY-09',
+        countryCode: 'JP',
+      ),
+    ];
+
+    return Scaffold(
+      body: CustomScrollView(
+        controller: scrollController,
+        physics: const AlwaysScrollableScrollPhysics(
+          parent: BouncingScrollPhysics(),
+        ),
+        slivers: [
+          SliverAppBarWithWavesComponent(
+            scrollController: scrollController,
+            expandedHeight: 320.h,
+            leading: Padding(
+              padding: const EdgeInsets.all(AppConfig.paddingHalf),
+              child: Hero(
+                tag: 'profile',
+                flightShuttleBuilder:
+                    (
+                      final flightContext,
+                      final animation,
+                      final flightDirection,
+                      final fromHeroContext,
+                      final toHeroContext,
+                    ) => AnimatedBuilder(
+                      animation: animation,
+                      builder: (final context, final child) => Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            Tween<double>(
+                              begin: 100,
+                              end: 0,
+                            ).evaluate(animation),
+                          ),
+                        ),
+                        child: toHeroContext.widget,
+                      ),
+                    ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(
+                      AppConfig.outBorderRadius,
+                    ),
+                    onTap: () async {
+                      unawaited(HapticFeedback.vibrate());
+                      await const ProfileRoute().push<void>(context);
+                    },
+                    child: const AvatarComponent(
+                      imageUrl:
+                          'https://media.licdn.com/dms/image/v2/D5603AQHpMGFlYFIAyw/profile-displayphoto-scale_400_400/B56ZnjHIJxHIAg-/0/1760451933899?e=1776902400&v=beta&t=ClsT0ppYA0_8z9ViCSbiS4FG81mCgMkabjoNBHSN1hc',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            title: l10n.home,
+            actions: [
+              IconButtonComponent.filled(
+                icon: Iconsax.notification_copy,
+                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                foregroundColor: Theme.of(
+                  context,
+                ).colorScheme.onPrimaryContainer,
+                onPressed: () {},
+              ),
+            ],
+            flexibleSpace: Padding(
+              padding: const EdgeInsets.only(
+                top: kToolbarHeight + AppConfig.padding * 2,
+              ),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: PageView.builder(
+                      controller: cardController,
+                      itemCount: accounts.length,
+                      itemBuilder: (final context, final index) =>
+                          AccountBalanceCard(account: accounts[index]),
+                    ),
+                  ),
+                  const SizedBox(height: AppConfig.paddingHalf),
+                  SmoothPageIndicator(
+                    controller: cardController,
+                    count: accounts.length,
+                    effect: ScrollingDotsEffect(
+                      dotHeight: 6,
+                      dotWidth: 6,
+                      activeDotColor: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                  ),
+                  const SizedBox(height: AppConfig.paddingHalf),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      QuickActionItem(
+                        icon: Iconsax.send_1_copy,
+                        label: l10n.send,
+                        onTap: () => const SendMoneyRoute().push<void>(context),
+                      ),
+                      QuickActionItem(
+                        icon: Iconsax.receive_square_2_copy,
+                        label: l10n.request,
+                        onTap: () =>
+                            const RequestMoneyRoute().push<void>(context),
+                      ),
+                      QuickActionItem(
+                        icon: Iconsax.scan_barcode_copy,
+                        label: l10n.scan,
+                        onTap: () =>
+                            const ScanQrCodeRoute().push<void>(context),
+                      ),
+                      QuickActionItem(
+                        icon: Iconsax.more_copy,
+                        label: l10n.more,
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const LatestTransactionsSection(),
+        ],
+      ),
+    );
+  }
+}

@@ -188,6 +188,36 @@ abstract class AppLocalizations {
   /// **'Email Address'**
   String get email_address;
 
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get female;
+
+  /// No description provided for @none.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get none;
+
+  /// No description provided for @other.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get other;
+
+  /// No description provided for @date_of_birth.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of Birth'**
+  String get date_of_birth;
+
   /// No description provided for @password.
   ///
   /// In en, this message translates to:
@@ -229,6 +259,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settings'**
   String get settings;
+
+  /// No description provided for @qr_code.
+  ///
+  /// In en, this message translates to:
+  /// **'QR Code'**
+  String get qr_code;
+
+  /// No description provided for @scan_qr_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan QR Code'**
+  String get scan_qr_code;
 
   /// No description provided for @user_name.
   ///
@@ -511,6 +553,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Create Account'**
   String get create_account;
+
+  /// No description provided for @account_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Type'**
+  String get account_type;
 
   /// No description provided for @step.
   ///

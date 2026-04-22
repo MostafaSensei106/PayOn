@@ -15,7 +15,7 @@ import '../../data/repositories/base_login_repository.dart';
 import 'login_form_state.dart';
 import 'login_state.dart';
 
-final class LoginCubit extends Cubit<LoginState<LoginResponseBody>> {
+final class LoginCubit extends Cubit<LoginState> {
   LoginCubit(
     this._loginRepository,
     this._biometricsService,
@@ -70,6 +70,21 @@ final class LoginCubit extends Cubit<LoginState<LoginResponseBody>> {
     final isAuthenticated = await _biometricsService.authenticate(
       message: 'Scan your fingerprint to login',
     );
+
+    if (isAuthenticated) {
+      // Note: In a real scenario, you'd usually exchange a stored token
+      // or call a specific biometric login endpoint here.
+      // For now, we emit success if authentication passes.
+      emit(LoginState.success(currentForm, data: 'Biometric login successful'));
+    } else {
+      emit(
+        LoginState.failure(
+          currentForm,
+          error: 'Biometric authentication failed',
+        ),
+      );
+    }
+
     return isAuthenticated;
   }
 

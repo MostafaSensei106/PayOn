@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
 import '../../../../core/widgets/inputs/otp_field/otp_field_component.dart';
+import '../../logic/cubit/otp/otp_cubit.dart';
 
 class StepThreeOTP extends StatelessWidget {
   const StepThreeOTP({super.key});
@@ -24,7 +26,10 @@ class StepThreeOTP extends StatelessWidget {
                 context,
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
-            OtpFieldComponent(onCompleted: (final otp) {}),
+            OtpFieldComponent(
+              onCompleted: (final otp) =>
+                  context.read<OtpCubit>().verifyOTP(otp),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -43,7 +48,7 @@ class StepThreeOTP extends StatelessWidget {
             ),
             Center(
               child: TextButtonComponent(
-                onPressed: () {},
+                onPressed: () => context.read<OtpCubit>().sendOTP(),
                 label: l10n.resend_code,
               ),
             ),

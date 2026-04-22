@@ -8,7 +8,7 @@ part 'account_type_response_body.g.dart';
 
 @JsonSerializable()
 final class AccountTypeResponseBody {
-  AccountTypeResponseBody({
+  const AccountTypeResponseBody({
     required this.code,
     required this.message,
     required this.data,
@@ -17,7 +17,7 @@ final class AccountTypeResponseBody {
 
   final int code;
   final String message;
-  final List<AccountTypeData> data;
+  final AccountTypeData data;
   final bool success;
 
   factory AccountTypeResponseBody.fromJson(Map<String, dynamic> json) =>

@@ -53,6 +53,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get email_address => 'البريد الإلكتروني';
 
   @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'أنثى';
+
+  @override
+  String get none => 'لا يوجد';
+
+  @override
+  String get other => 'آخر';
+
+  @override
+  String get date_of_birth => 'تاريخ الميلاد';
+
+  @override
   String get password => 'كلمة المرور';
 
   @override
@@ -73,6 +88,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get settings => 'الإعدادات';
+
+  @override
+  String get qr_code => 'QR Code';
+
+  @override
+  String get scan_qr_code => 'Scan QR Code';
 
   @override
   String get user_name => 'اسم المستخدم';
@@ -214,6 +235,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get create_account => 'إنشاء حساب';
+
+  @override
+  String get account_type => 'نوع الحساب';
 
   @override
   String get step => 'الخطوة';

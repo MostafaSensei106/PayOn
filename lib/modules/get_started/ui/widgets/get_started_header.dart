@@ -23,18 +23,24 @@ class GetStartedHeader extends StatelessWidget {
     final l10n = getIt<L10nService>().get(context);
     final colorScheme = Theme.of(context).colorScheme;
 
+    final title = switch (currentPage) {
+      0 => l10n.account_type,
+      1 => l10n.account_details,
+      2 => 'KYC',
+      3 => l10n.otp_code,
+      _ => '',
+    };
+
     return SidePageSliverAppBarWithWavesComponent(
       scrollController: scrollController,
       expandedHeight: 180.h,
-      title: currentPage == 0
-          ? l10n.account_details
-          : (currentPage == 1 ? 'KYC' : l10n.otp_code),
+      title: title,
       flexibleSpace: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           SmoothPageIndicator(
             controller: pageController,
-            count: 3,
+            count: 4,
             effect: ScrollingDotsEffect(
               activeDotColor: colorScheme.primary,
               dotColor: colorScheme.outlineVariant,
@@ -47,7 +53,7 @@ class GetStartedHeader extends StatelessWidget {
               vertical: AppConfig.paddingQuarter,
             ),
             child: Text(
-              '${l10n.step} ${currentPage + 1} ${l10n.off} 3',
+              '${l10n.step} ${currentPage + 1} ${l10n.off} 4',
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
                 color: colorScheme.primary,
                 fontWeight: FontWeight.bold,

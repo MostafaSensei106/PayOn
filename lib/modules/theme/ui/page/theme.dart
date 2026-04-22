@@ -9,8 +9,8 @@ import '../../../../core/theme/logic/cubit/theme_cubit.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 
-class AppTheme extends StatelessWidget {
-  const AppTheme({super.key});
+class ChangeThemePage extends StatelessWidget {
+  const ChangeThemePage({super.key});
 
   @override
   Widget build(BuildContext context) {

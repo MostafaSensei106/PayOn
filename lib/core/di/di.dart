@@ -2,6 +2,15 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../modules/get_started/data/repositories/account_type/account_type_repository.dart';
+import '../../modules/get_started/data/repositories/account_type/base_account_type_repository.dart';
+import '../../modules/get_started/data/repositories/otp/base_otp_repository.dart';
+import '../../modules/get_started/data/repositories/otp/otp_repository.dart';
+import '../../modules/get_started/data/repositories/register/base_register_repository.dart';
+import '../../modules/get_started/data/repositories/register/register_repository.dart';
+import '../../modules/get_started/logic/cubit/account_type/account_type_cubit.dart';
+import '../../modules/get_started/logic/cubit/otp/otp_cubit.dart';
+import '../../modules/get_started/logic/cubit/register/register_cubit.dart';
 import '../../modules/login/data/repositories/base_login_repository.dart';
 import '../../modules/login/data/repositories/login_repository.dart';
 import '../../modules/login/logic/cubit/login_cubit.dart';
@@ -39,6 +48,7 @@ Future<void> init() async {
   getIt.registerLazySingleton<ThemeService>(() => ThemeService());
 
   /// Shared Preferences
+  /// use with getIt<BasePrefsStorageService>().getUserToken();
   final sharedPreferences = await SharedPreferences.getInstance();
   getIt.registerLazySingleton<BasePrefsStorageService>(
     () => SharedPrefsService(sharedPreferences),
@@ -52,6 +62,7 @@ Future<void> init() async {
   );
 
   /// Dio and API Service
+  /// use with getIt<APIService>();
   final dio = await DioFactory.getDio();
   getIt.registerLazySingleton<APIService>(() => APIService(dio));
 
@@ -62,6 +73,25 @@ Future<void> init() async {
   getIt.registerLazySingleton<LoginCubit>(
     () => LoginCubit(getIt(), getIt(), getIt()),
   );
+
+  /// Get Started
+  getIt.registerLazySingleton<BaseAccountTypeRepository>(
+    () => AccountTypeRepository(getIt<APIService>()),
+  );
+  getIt.registerLazySingleton<BaseRegisterRepository>(
+    () => RegisterRepository(getIt<APIService>()),
+  );
+  getIt.registerLazySingleton<BaseOtpRepository>(
+    () => OtpRepository(getIt<APIService>()),
+  );
+
+  getIt.registerFactory<AccountTypeCubit>(
+    () => AccountTypeCubit(getIt<BaseAccountTypeRepository>()),
+  );
+  getIt.registerFactory<RegisterCubit>(
+    () => RegisterCubit(getIt<BaseRegisterRepository>()),
+  );
+  getIt.registerFactory<OtpCubit>(() => OtpCubit(getIt<BaseOtpRepository>()));
 
   /// Url Launcher
   /// use with getIt<BaseUrlLauncherServices>().launchWebsite('https://google.com');
@@ -83,7 +113,7 @@ Future<void> init() async {
     () => FingerprintService(),
   );
 
-  // Theme
+  /// Theme
   getIt.registerLazySingleton<BaseThemeRepository>(
     () => ThemeRepository(getIt<BasePrefsStorageService>()),
   );
@@ -92,7 +122,7 @@ Future<void> init() async {
     () => ThemeCubit(getIt<BaseThemeRepository>()),
   );
 
-  // Localization
+  /// Localization
   getIt.registerLazySingleton<BaseLocalizationRepository>(
     () => LocalizationRepository(
       getIt<BasePrefsStorageService>(),
@@ -100,6 +130,7 @@ Future<void> init() async {
     ),
   );
 
+  /// Localization
   getIt.registerLazySingleton<LocalizationCubit>(
     () => LocalizationCubit(getIt<BaseLocalizationRepository>()),
   );

@@ -11,9 +11,7 @@ AccountTypeResponseBody _$AccountTypeResponseBodyFromJson(
 ) => AccountTypeResponseBody(
   code: (json['code'] as num).toInt(),
   message: json['message'] as String,
-  data: (json['data'] as List<dynamic>)
-      .map((e) => AccountTypeData.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  data: AccountTypeData.fromJson(json['data'] as Map<String, dynamic>),
   success: json['success'] as bool,
 );
 
