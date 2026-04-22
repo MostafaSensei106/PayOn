@@ -7,6 +7,7 @@ import '../../../../core/router/app_router.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
 import '../../../../core/widgets/buttons/outlined_button/outlined_button_component.dart';
+import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/layout/spacing/spacing_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
@@ -67,15 +68,22 @@ class _WelcomePageState extends State<WelcomePage> {
                     l10n.track_everything_subtitle,
                   ),
                   const Spacer(),
+
+                  TextButtonComponent.icon(
+                    icon: Iconsax.language_square_copy,
+                    label: l10n.app_language,
+                    onPressed: () => context.push(AppRouter.language),
+                  ),
+                  const Spacer(),
                   FilledButtonComponent.icon(
                     label: l10n.get_started,
-                    icon: Iconsax.arrow_right_1,
+                    icon: Iconsax.arrow_right_3_copy,
                     onPressed: () => context.push(AppRouter.getStarted),
                   ),
                   const SpacingComponent.vertical(AppConfig.padding),
                   OutlinedButtonComponent.icon(
                     label: l10n.login,
-                    icon: Iconsax.arrow_right_1,
+                    icon: Iconsax.login_1_copy,
                     onPressed: () => context.push(AppRouter.login),
                   ),
                   const SpacingComponent.vertical(AppConfig.padding),

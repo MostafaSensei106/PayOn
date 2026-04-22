@@ -85,15 +85,13 @@ Future<void> init() async {
     () => OtpRepository(getIt<APIService>()),
   );
 
-  getIt.registerLazySingleton<AccountTypeCubit>(
+  getIt.registerFactory<AccountTypeCubit>(
     () => AccountTypeCubit(getIt<BaseAccountTypeRepository>()),
   );
-  getIt.registerLazySingleton<RegisterCubit>(
+  getIt.registerFactory<RegisterCubit>(
     () => RegisterCubit(getIt<BaseRegisterRepository>()),
   );
-  getIt.registerLazySingleton<OtpCubit>(
-    () => OtpCubit(getIt<BaseOtpRepository>()),
-  );
+  getIt.registerFactory<OtpCubit>(() => OtpCubit(getIt<BaseOtpRepository>()));
 
   /// Url Launcher
   /// use with getIt<BaseUrlLauncherServices>().launchWebsite('https://google.com');

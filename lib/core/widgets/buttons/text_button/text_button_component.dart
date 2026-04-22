@@ -25,6 +25,7 @@ class TextButtonComponent extends StatelessWidget {
     this.backgroundColor,
     this.foregroundColor,
   });
+
   final String label;
   final VoidCallback onPressed;
   final bool useInBorderRadius;
