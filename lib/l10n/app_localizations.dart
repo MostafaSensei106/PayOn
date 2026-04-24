@@ -500,17 +500,17 @@ abstract class AppLocalizations {
   /// **'Receive Money'**
   String get receive_money;
 
-  /// No description provided for @shearch_here.
+  /// No description provided for @search_here.
   ///
   /// In en, this message translates to:
   /// **'Search Here'**
-  String get shearch_here;
+  String get search_here;
 
-  /// No description provided for @favouraits.
+  /// No description provided for @favorites.
   ///
   /// In en, this message translates to:
-  /// **'Favoraits'**
-  String get favouraits;
+  /// **'Favorites'**
+  String get favorites;
 
   /// No description provided for @iPA.
   ///
@@ -1105,6 +1105,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Automatically change appearance based on device settings'**
   String get system_mode_subtitle;
+
+  /// No description provided for @select_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Account'**
+  String get select_account;
+
+  /// No description provided for @primary_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Primary Account'**
+  String get primary_account;
+
+  /// No description provided for @secondary_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Secondary Account'**
+  String get secondary_account;
+
+  /// No description provided for @to.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get to;
+
+  /// No description provided for @ipa_address.
+  ///
+  /// In en, this message translates to:
+  /// **'IPA Address'**
+  String get ipa_address;
+
+  /// No description provided for @phone_number_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'01xxxxxxxxx'**
+  String get phone_number_hint;
+
+  /// No description provided for @ipa_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'username@payon'**
+  String get ipa_hint;
+
+  /// No description provided for @amount.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get amount;
+
+  /// No description provided for @amount_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'0.00'**
+  String get amount_hint;
 }
 
 class _AppLocalizationsDelegate

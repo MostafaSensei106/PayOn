@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toastification/toastification.dart';
 import 'core/constants/app_config.dart';
+import 'core/constants/font_family.dart';
 import 'core/di/di.dart';
 import 'core/localization/logic/cubit/localization_cubit.dart';
 import 'core/router/app_router.dart';
@@ -33,11 +34,13 @@ class PayOnApp extends StatelessWidget {
             final locale = context.select(
               (LocalizationCubit cubit) => cubit.state.locale,
             );
+
+            final fontFamily = FontFamily.getFontFamily(locale.languageCode);
             return MaterialApp.router(
               title: AppConfig.appName,
               onGenerateTitle: (_) => AppConfig.appName,
-              theme: AppTheme.lightTheme,
-              darkTheme: AppTheme.darkTheme,
+              theme: AppTheme.lightTheme(fontFamily),
+              darkTheme: AppTheme.darkTheme(fontFamily),
               themeMode: themeMode,
               locale: locale,
               scrollBehavior: const CupertinoScrollBehavior(),

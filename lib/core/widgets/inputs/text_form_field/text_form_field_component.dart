@@ -20,9 +20,11 @@ class TextFormFieldComponent extends StatelessWidget {
     this.controller,
     this.keyboardType,
     this.initialValue,
+    this.hintText,
   });
   final String label;
   final IconData prefixIcon;
+  final String? hintText;
   final Widget? suffixIcon;
   final bool obscureText;
   final TextEditingController? controller;
@@ -57,6 +59,7 @@ class TextFormFieldComponent extends StatelessWidget {
         color: Theme.of(context).colorScheme.primary,
       ),
       suffixIcon: suffixIcon,
+      hintText: hintText,
       border: OutlineInputBorder(
         borderRadius: useInBorderRadius
             ? BorderRadius.circular(AppConfig.inBorderRadius)

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../../../core/di/di.dart';
 import '../../../../core/router/app_router.dart';
+import '../../../../core/services/toast/base_toast_service.dart';
 import '../../logic/cubit/register/register_cubit.dart';
 import '../../logic/cubit/register/register_state.dart';
 import '../widgets/get_started_header.dart';
@@ -77,9 +79,7 @@ class GetStartedPage extends HookWidget {
             // context.read<OtpCubit>().sendOTP();
           },
           failure: (form, error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(error), backgroundColor: Colors.red),
-            );
+            getIt<BaseToastService>().showError(context, error);
           },
         );
       },

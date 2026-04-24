@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../constants/app_config.dart';
 
 class AvatarComponent extends StatelessWidget {
@@ -34,6 +35,9 @@ class AvatarComponent extends StatelessWidget {
         ),
         onBackgroundImageError: (final exception, final stackTrace) =>
             fallbackIcon != null ? Icon(fallbackIcon) : null,
+        child: imageUrl.isEmpty
+            ? Icon(fallbackIcon ?? Iconsax.user_copy, size: effectiveRadius)
+            : null,
       ),
     );
   }

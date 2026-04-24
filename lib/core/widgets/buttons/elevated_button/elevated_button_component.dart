@@ -17,9 +17,10 @@ class ElevatedButtonComponent extends StatelessWidget {
   }) : icon = null;
 
   const ElevatedButtonComponent.icon({
+    required this.icon,
+
     required this.label,
     required this.onPressed,
-    required this.icon,
     super.key,
     this.useInBorderRadius = false,
     this.width,
