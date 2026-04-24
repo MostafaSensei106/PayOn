@@ -8,7 +8,10 @@ abstract class CupertinoRouteData extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state);
 
   @override
-  Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return CupertinoPage(key: state.pageKey, child: build(context, state));
-  }
+  Page<void> buildPage(BuildContext context, GoRouterState state) =>
+      CupertinoPage(
+        key: state.pageKey,
+        allowSnapshotting: false,
+        child: build(context, state),
+      );
 }

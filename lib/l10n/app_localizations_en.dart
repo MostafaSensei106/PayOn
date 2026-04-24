@@ -99,6 +99,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get user_name => 'User Name';
 
   @override
+  String get notifications => 'Notifications';
+
+  @override
   String get profile => 'Profile';
 
   @override

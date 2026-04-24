@@ -2,6 +2,7 @@
   "ar": [
     "qr_code",
     "scan_qr_code",
+    "notifications",
     "iPA"
   ],
 
@@ -13,6 +14,7 @@
     "date_of_birth",
     "qr_code",
     "scan_qr_code",
+    "notifications",
     "send_money",
     "request_money",
     "receive_money",
@@ -31,6 +33,7 @@
     "date_of_birth",
     "qr_code",
     "scan_qr_code",
+    "notifications",
     "send_money",
     "request_money",
     "receive_money",
@@ -49,6 +52,7 @@
     "date_of_birth",
     "qr_code",
     "scan_qr_code",
+    "notifications",
     "send_money",
     "request_money",
     "receive_money",

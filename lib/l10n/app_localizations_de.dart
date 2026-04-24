@@ -102,6 +102,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get user_name => 'Benutzername';
 
   @override
+  String get notifications => 'Notifications';
+
+  @override
   String get profile => 'Profil';
 
   @override

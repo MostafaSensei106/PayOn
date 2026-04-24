@@ -96,6 +96,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get user_name => 'ユーザー名';
 
   @override
+  String get notifications => 'Notifications';
+
+  @override
   String get profile => 'プロフィール';
 
   @override

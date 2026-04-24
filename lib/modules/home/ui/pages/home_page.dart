@@ -133,7 +133,7 @@ class HomePage extends StatelessWidget {
                 foregroundColor: Theme.of(
                   context,
                 ).colorScheme.onPrimaryContainer,
-                onPressed: () {},
+                onPressed: () => const NotificationsRoute().push<void>(context),
               ),
             ],
             flexibleSpace: Padding(

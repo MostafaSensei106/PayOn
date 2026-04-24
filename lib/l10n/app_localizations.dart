@@ -278,6 +278,12 @@ abstract class AppLocalizations {
   /// **'User Name'**
   String get user_name;
 
+  /// No description provided for @notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
   /// No description provided for @profile.
   ///
   /// In en, this message translates to:

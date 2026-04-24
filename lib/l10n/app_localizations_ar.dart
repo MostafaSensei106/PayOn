@@ -99,6 +99,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get user_name => 'اسم المستخدم';
 
   @override
+  String get notifications => 'Notifications';
+
+  @override
   String get profile => 'الملف الشخصي';
 
   @override
