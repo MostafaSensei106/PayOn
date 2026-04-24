@@ -27,6 +27,8 @@
   "home": "Home",
   "settings": "Settings",
   "qr_code": "QR Code",
+  "deposit": "Deposit",
+  "withdraw": "Withdraw",
   "scan_qr_code": "Scan QR Code",
   "user_name": "User Name",
   "notifications": "Notifications",

@@ -266,6 +266,18 @@ abstract class AppLocalizations {
   /// **'QR Code'**
   String get qr_code;
 
+  /// No description provided for @deposit.
+  ///
+  /// In en, this message translates to:
+  /// **'Deposit'**
+  String get deposit;
+
+  /// No description provided for @withdraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw'**
+  String get withdraw;
+
   /// No description provided for @scan_qr_code.
   ///
   /// In en, this message translates to:

@@ -1,6 +1,7 @@
 {
   "ar": [
     "qr_code",
+    "withdraw",
     "scan_qr_code",
     "notifications",
     "iPA"
@@ -13,6 +14,8 @@
     "other",
     "date_of_birth",
     "qr_code",
+    "deposit",
+    "withdraw",
     "scan_qr_code",
     "notifications",
     "send_money",
@@ -32,6 +35,8 @@
     "other",
     "date_of_birth",
     "qr_code",
+    "deposit",
+    "withdraw",
     "scan_qr_code",
     "notifications",
     "send_money",
@@ -51,6 +56,8 @@
     "other",
     "date_of_birth",
     "qr_code",
+    "deposit",
+    "withdraw",
     "scan_qr_code",
     "notifications",
     "send_money",

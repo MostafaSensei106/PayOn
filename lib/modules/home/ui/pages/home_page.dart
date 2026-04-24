@@ -133,6 +133,7 @@ class HomePage extends StatelessWidget {
                 foregroundColor: Theme.of(
                   context,
                 ).colorScheme.onPrimaryContainer,
+                padding: 0,
                 onPressed: () => const NotificationsRoute().push<void>(context),
               ),
             ],
@@ -165,9 +166,14 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       QuickActionItem(
-                        icon: Iconsax.send_1_copy,
+                        icon: Iconsax.send_sqaure_2_copy,
                         label: l10n.send,
                         onTap: () => const SendMoneyRoute().push<void>(context),
+                      ),
+                      QuickActionItem(
+                        icon: Iconsax.add_circle_copy,
+                        label: l10n.deposit,
+                        onTap: () {},
                       ),
                       QuickActionItem(
                         icon: Iconsax.receive_square_2_copy,
@@ -180,11 +186,6 @@ class HomePage extends StatelessWidget {
                         label: l10n.scan,
                         onTap: () =>
                             const ScanQrCodeRoute().push<void>(context),
-                      ),
-                      QuickActionItem(
-                        icon: Iconsax.more_copy,
-                        label: l10n.more,
-                        onTap: () {},
                       ),
                     ],
                   ),

@@ -93,6 +93,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get qr_code => 'QR Code';
 
   @override
+  String get deposit => 'إيداع';
+
+  @override
+  String get withdraw => 'Withdraw';
+
+  @override
   String get scan_qr_code => 'Scan QR Code';
 
   @override
@@ -141,7 +147,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get request => 'طلب';
 
   @override
-  String get receive => 'إستلام';
+  String get receive => 'استلام';
 
   @override
   String get error => 'خطأ';
