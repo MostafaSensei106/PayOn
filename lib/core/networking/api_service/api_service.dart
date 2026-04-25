@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../../modules/change_password/data/change_password_request_body.dart';
+import '../../../modules/forget_password/data/reset_password_request_body.dart';
 import '../../../modules/get_started/data/models/account_type/account_type_response_body.dart';
 import '../../../modules/get_started/data/models/register/register_request_body.dart';
 import '../../../modules/get_started/data/models/register/register_response_body.dart';
@@ -42,4 +44,10 @@ abstract class APIService {
     @Part(name: 'AccId') String accId,
     @Part(name: 'RequierdDocId') int requiredDocId,
   );
+
+  @POST(ApiRoutes.authChangePassword)
+  Future<ChangePasswordRequestBody> changePassword();
+
+  @POST(ApiRoutes.authRestPassword)
+  Future<ResetPasswordRequestBody> resetPassword();
 }
