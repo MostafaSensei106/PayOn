@@ -6,8 +6,7 @@ final class ApiExecutor {
     required Future<T> Function() call,
   }) async {
     try {
-      final response = await call();
-      return APIResult<T>.success(data: response);
+      return APIResult<T>.success(data: await call());
     } catch (e) {
       return APIResult<T>.failure(errorHandler: APIErrorHandler.handle(e));
     }

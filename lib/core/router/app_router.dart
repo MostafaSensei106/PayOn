@@ -29,7 +29,7 @@ import '../../modules/theme/ui/page/theme.dart';
 import '../../modules/two_factor_auth/ui/page/two_factor_auth.dart';
 import '../../modules/welcome/ui/pages/welcome_page.dart';
 import '../di/di.dart';
-import '../scan_qrcode/ui/page/scan_qrcode_page.dart';
+import '../../modules/scan_qrcode/ui/page/scan_qrcode_page.dart';
 import 'cupertion_route_data.dart';
 import 'routes_names.dart';
 
