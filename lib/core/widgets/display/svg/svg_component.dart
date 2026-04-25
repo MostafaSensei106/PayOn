@@ -7,8 +7,8 @@ import '../../../constants/app_config.dart';
 final class SvgComponent extends StatelessWidget {
   const SvgComponent({
     required this.path,
-    this.width = 350,
-    this.height = 350,
+    this.width = 300,
+    this.height = 300,
     this.fit = BoxFit.contain,
     this.useInBorderRadius = false,
     super.key,

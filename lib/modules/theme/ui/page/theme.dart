@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
+import '../../../../core/constants/svgs_images.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/theme/logic/cubit/theme_cubit.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
+import '../../../../core/widgets/display/svg/svg_component.dart';
 import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 
 class ChangeThemePage extends StatelessWidget {
@@ -19,13 +21,14 @@ class ChangeThemePage extends StatelessWidget {
       appBar: SidePageAppBarComponent(title: l10n.app_appearance),
       body: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
-          return Padding(
+          return SingleChildScrollView(
             padding: const EdgeInsets.all(AppConfig.padding),
             child: RadioGroup<ThemeMode>(
               groupValue: state.themeMode,
               onChanged: (val) => context.read<ThemeCubit>().changeTheme(val!),
               child: Column(
                 children: [
+                  const SvgComponent(path: SvgsImages.addColorSvg),
                   ListTileIconComponent.top(
                     title: l10n.light_mode,
                     subtitle: l10n.light_mode_subtitle,
