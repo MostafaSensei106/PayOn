@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SliverAppBarComponent extends StatelessWidget {
+final class SliverAppBarComponent extends StatelessWidget {
   const SliverAppBarComponent({
     super.key,
     this.title,

@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../animation/wave_background.dart';
 
-class SliverAppBarWithWavesComponent extends HookWidget {
+final class SliverAppBarWithWavesComponent extends HookWidget {
   const SliverAppBarWithWavesComponent({
     required this.scrollController,
     super.key,

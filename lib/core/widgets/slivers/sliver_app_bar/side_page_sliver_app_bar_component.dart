@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import '../../../constants/app_config.dart';
 
-class SidePageSliverAppBarComponent extends StatelessWidget {
+final class SidePageSliverAppBarComponent extends StatelessWidget {
   const SidePageSliverAppBarComponent({
     super.key,
     this.title,

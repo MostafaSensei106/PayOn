@@ -12,7 +12,7 @@ import 'core/theme/app_theme.dart';
 import 'core/theme/logic/cubit/theme_cubit.dart';
 import 'l10n/app_localizations.dart';
 
-class PayOnApp extends StatelessWidget {
+final class PayOnApp extends StatelessWidget {
   const PayOnApp({super.key});
 
   @override
