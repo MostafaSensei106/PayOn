@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class CheckboxComponent extends StatelessWidget {
+final class CheckboxComponent extends StatelessWidget {
   const CheckboxComponent({
     required this.title,
     required this.value,

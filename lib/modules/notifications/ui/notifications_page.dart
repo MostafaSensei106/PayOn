@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/svgs_images.dart';
+import '../../../core/widgets/display/svg/svg_component.dart';
 import '../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 
 class NotificationsPage extends StatelessWidget {
@@ -9,7 +11,15 @@ class NotificationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: SidePageAppBarComponent(title: 'Notifications'),
-      body: Center(child: Text('Notifications')),
+      body: Center(
+        child: Column(
+          spacing: 18,
+          children: [
+            SvgComponent(path: SvgsImages.notificationsSvg),
+            Text('Notifications'),
+          ],
+        ),
+      ),
     );
   }
 }

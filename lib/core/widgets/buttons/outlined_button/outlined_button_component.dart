@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
 
-class OutlinedButtonComponent extends StatelessWidget {
+final class OutlinedButtonComponent extends StatelessWidget {
   const OutlinedButtonComponent({
     required this.label,
     required this.onPressed,

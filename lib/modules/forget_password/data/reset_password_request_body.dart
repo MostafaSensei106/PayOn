@@ -4,7 +4,6 @@ part 'reset_password_request_body.g.dart';
 
 @JsonSerializable()
 final class ResetPasswordRequestBody {
-
   const ResetPasswordRequestBody({
     required this.emailOrPhone,
     required this.otp,

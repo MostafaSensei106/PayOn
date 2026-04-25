@@ -5,7 +5,7 @@ import 'package:local_auth/local_auth.dart';
 
 import 'base_biometrics_service.dart';
 
-class FingerprintService implements BaseBiometricsService {
+final class FingerprintService implements BaseBiometricsService {
   final LocalAuthentication _localAuth = LocalAuthentication();
 
   @override

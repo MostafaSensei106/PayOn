@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/app_config.dart';
 
-class NetworkImageComponent extends StatelessWidget {
+final class NetworkImageComponent extends StatelessWidget {
   const NetworkImageComponent({
     required this.imageUrl,
     super.key,

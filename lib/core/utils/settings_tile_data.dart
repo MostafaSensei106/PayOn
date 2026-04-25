@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SettingsTileData {
+final class SettingsTileData {
   const SettingsTileData({
     required this.title,
     required this.leading,

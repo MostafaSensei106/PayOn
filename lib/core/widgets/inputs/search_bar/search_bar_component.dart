@@ -5,7 +5,7 @@ import '../../../constants/app_config.dart';
 import '../../../di/di.dart';
 import '../../../services/theme/theme_service.dart';
 
-class SearchBarComponent extends StatelessWidget {
+final class SearchBarComponent extends StatelessWidget {
   const SearchBarComponent({
     required this.controller,
     required this.hintText,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../constants/app_config.dart';
 
-class DialogComponent extends StatelessWidget {
+final class DialogComponent extends StatelessWidget {
   const DialogComponent({
     required this.title,
     required this.content,

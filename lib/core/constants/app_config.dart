@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 /// A utility class that holds all the application-wide constants.
 ///
 /// This includes app metadata, UI dimensions, and other fixed values
@@ -55,4 +57,6 @@ final class AppConfig {
   static const int toastDurationInSeconds = 4;
 
   static const Duration dioTimeout = Duration(seconds: 30);
+
+  static const Color mainColor = Color(0xff664fa2);
 }

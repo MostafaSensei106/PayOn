@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ChipComponent extends StatelessWidget {
+final class ChipComponent extends StatelessWidget {
   const ChipComponent({required this.label, super.key, this.onDeleted});
   final String label;
   final VoidCallback? onDeleted;

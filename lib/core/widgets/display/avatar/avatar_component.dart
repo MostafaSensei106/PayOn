@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../constants/app_config.dart';
 
-class AvatarComponent extends StatelessWidget {
+final class AvatarComponent extends StatelessWidget {
   const AvatarComponent({
     required this.imageUrl,
     super.key,

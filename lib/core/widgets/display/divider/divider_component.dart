@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DividerComponent extends StatelessWidget {
+final class DividerComponent extends StatelessWidget {
   const DividerComponent({super.key, this.indent, this.endIndent});
   final double? indent;
   final double? endIndent;

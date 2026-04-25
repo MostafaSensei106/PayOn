@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'wave_painter.dart';
 
-class WaveBackground extends StatelessWidget {
+final class WaveBackground extends StatelessWidget {
   const WaveBackground({
     required this.animation,
     required this.color,

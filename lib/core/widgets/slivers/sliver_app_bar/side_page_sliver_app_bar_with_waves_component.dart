@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../../constants/app_config.dart';
 import '../../animation/wave_background.dart';
 
-class SidePageSliverAppBarWithWavesComponent extends HookWidget {
+final class SidePageSliverAppBarWithWavesComponent extends HookWidget {
   const SidePageSliverAppBarWithWavesComponent({
     required this.scrollController,
     required this.title,

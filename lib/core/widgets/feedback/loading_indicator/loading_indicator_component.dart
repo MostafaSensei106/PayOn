@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoadingIndicatorComponent extends StatelessWidget {
+final class LoadingIndicatorComponent extends StatelessWidget {
   const LoadingIndicatorComponent({super.key, this.value});
   final double? value;
 

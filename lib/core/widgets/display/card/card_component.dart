@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../constants/app_config.dart';
 
-class CardComponent extends StatelessWidget {
+final class CardComponent extends StatelessWidget {
   const CardComponent({
     required this.child,
     super.key,
