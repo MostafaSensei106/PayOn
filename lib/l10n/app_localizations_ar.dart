@@ -22,8 +22,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get secure_payments_title => 'مدفوعات آمنة';
 
   @override
-  String get secure_payments_subtitle =>
-      'معاملاتك محمية بأمان على مستوى البنوك';
+  String get secure_payments_subtitle => 'معاملاتك محمية بمعايير أمان مصرفية';
 
   @override
   String get track_everything_title => 'تتبع كل شيء';
@@ -71,10 +70,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get password => 'كلمة المرور';
 
   @override
+  String get terms_and_conditions_subtitle =>
+      'يرجى قراءة الشروط والأحكام الخاصة بنا بعناية';
+
+  @override
   String get forgot_password => 'نسيت كلمة المرور؟';
 
   @override
-  String get manage_finances_title => 'إدارة أموالك\nبسهولة وأمان';
+  String get manage_finances_title => 'أدر أموالك\nبسهولة وأمان';
 
   @override
   String get manage_finances_subtitle =>
@@ -180,7 +183,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cancel => 'إلغاء';
 
   @override
-  String get remember_me => 'تذكرنى';
+  String get remember_me => 'تذكرني';
 
   @override
   String get login_with_fingerprint => 'تسجيل الدخول ببصمة الإصبع';
@@ -228,7 +231,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get see_all => 'عرض الكل';
 
   @override
-  String get money_transfer => 'تحويل أموال';
+  String get money_transfer => 'تحويل الأموال';
 
   @override
   String get first_name => 'الاسم الأول';
@@ -255,7 +258,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get off => 'من';
 
   @override
-  String get please_wait => 'من فضلك انتظر...';
+  String get please_wait => 'يرجى الانتظار...';
 
   @override
   String get account_details => 'تفاصيل الحساب';
@@ -288,7 +291,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get personal_details => 'التفاصيل الشخصية';
 
   @override
-  String get upload_id => 'تحميل الهوية الحكومية';
+  String get upload_id => 'رفع وثيقة الهوية';
 
   @override
   String get tier_3_title => 'المستوى 3: التحقق من العنوان';
@@ -324,7 +327,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get accept_all => 'قبول الكل';
 
   @override
-  String get email_empty => 'البريد الإلكتروني لا يمكن أن يكون فارغاً';
+  String get email_empty => 'حقل البريد الإلكتروني مطلوب';
 
   @override
   String get email_missing_at_sign => 'البريد الإلكتروني يفتقد علامة @';
@@ -355,7 +358,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get email_missing_extension => 'البريد الإلكتروني يفتقد الامتداد';
 
   @override
-  String get password_empty => 'كلمة المرور لا يمكن أن تكون فارغة';
+  String get password_empty => 'حقل كلمة المرور مطلوب';
 
   @override
   String get user_name_can_not_be_empty =>
@@ -473,10 +476,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get help_and_support => 'المساعدة والدعم';
 
   @override
+  String get logout_subtitle => 'تسجيل الخروج من حسابك';
+
+  @override
   String get faq => 'الأسئلة الشائعة';
 
   @override
-  String get faq_subtitle => 'إجابات لأكثر الأسئلة طرحاً';
+  String get account_actions => 'إجراءات الحساب';
+
+  @override
+  String get faq_subtitle => 'إجابات عن الأسئلة الأكثر شيوعاً';
 
   @override
   String get contact_us => 'تواصل معنا';

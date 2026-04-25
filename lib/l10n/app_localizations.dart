@@ -224,6 +224,12 @@ abstract class AppLocalizations {
   /// **'Password'**
   String get password;
 
+  /// No description provided for @terms_and_conditions_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Please read our terms and conditions carefully'**
+  String get terms_and_conditions_subtitle;
+
   /// No description provided for @forgot_password.
   ///
   /// In en, this message translates to:
@@ -1004,11 +1010,23 @@ abstract class AppLocalizations {
   /// **'Help & Support'**
   String get help_and_support;
 
+  /// No description provided for @logout_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of your account'**
+  String get logout_subtitle;
+
   /// No description provided for @faq.
   ///
   /// In en, this message translates to:
   /// **'FAQ'**
   String get faq;
+
+  /// No description provided for @account_actions.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Actions'**
+  String get account_actions;
 
   /// No description provided for @faq_subtitle.
   ///

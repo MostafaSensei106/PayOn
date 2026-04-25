@@ -24,6 +24,7 @@ import '../../modules/profile/ui/pages/profile_page.dart';
 import '../../modules/request_money/ui/page/request_money_page.dart';
 import '../../modules/security_alerts/ui/page/security_alerts_page.dart';
 import '../../modules/send_money/ui/page/send_money_page.dart';
+import '../../modules/terms_and_conditions/ui/page/terms_and_conditions_page.dart';
 import '../../modules/theme/ui/page/theme.dart';
 import '../../modules/two_factor_auth/ui/page/two_factor_auth.dart';
 import '../../modules/welcome/ui/pages/welcome_page.dart';
@@ -242,4 +243,14 @@ final class DeveloperTeamRoute extends CupertinoRouteData
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const DeveloperTeam();
+}
+
+@TypedGoRoute<TermsAndConditionsRoute>(path: RoutesNames.termsAndConditions)
+final class TermsAndConditionsRoute extends CupertinoRouteData
+    with $TermsAndConditionsRoute {
+  const TermsAndConditionsRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const TermsAndConditionsPage();
 }

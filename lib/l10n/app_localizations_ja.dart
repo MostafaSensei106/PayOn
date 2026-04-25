@@ -69,6 +69,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get password => 'パスワード';
 
   @override
+  String get terms_and_conditions_subtitle => '利用規約をよくお読みください';
+
+  @override
   String get forgot_password => 'パスワードをお忘れですか？';
 
   @override
@@ -460,7 +463,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get help_and_support => 'ヘルプとサポート';
 
   @override
+  String get logout_subtitle => 'アカウントからサインアウト';
+
+  @override
   String get faq => 'よくある質問';
+
+  @override
+  String get account_actions => 'アカウント操作';
 
   @override
   String get faq_subtitle => 'よくある質問への回答';

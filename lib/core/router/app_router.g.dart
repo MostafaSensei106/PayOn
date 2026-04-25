@@ -28,6 +28,7 @@ List<RouteBase> get $appRoutes => [
   $scanQrCodeRoute,
   $appVersionRoute,
   $developerTeamRoute,
+  $termsAndConditionsRoute,
 ];
 
 RouteBase get $welcomeRoute =>
@@ -547,6 +548,32 @@ mixin $DeveloperTeamRoute on GoRouteData {
 
   @override
   String get location => GoRouteData.$location('/developer-team');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $termsAndConditionsRoute => GoRouteData.$route(
+  path: '/terms-and-conditions',
+  factory: $TermsAndConditionsRoute._fromState,
+);
+
+mixin $TermsAndConditionsRoute on GoRouteData {
+  static TermsAndConditionsRoute _fromState(GoRouterState state) =>
+      const TermsAndConditionsRoute();
+
+  @override
+  String get location => GoRouteData.$location('/terms-and-conditions');
 
   @override
   void go(BuildContext context) => context.go(location);

@@ -73,6 +73,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get password => 'Passwort';
 
   @override
+  String get terms_and_conditions_subtitle =>
+      'Bitte lesen Sie unsere Allgemeinen Geschäftsbedingungen sorgfältig durch';
+
+  @override
   String get forgot_password => 'Passwort vergessen?';
 
   @override
@@ -486,7 +490,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get help_and_support => 'Hilfe & Support';
 
   @override
+  String get logout_subtitle => 'Melden Sie sich von Ihrem Konto ab';
+
+  @override
   String get faq => 'FAQ';
+
+  @override
+  String get account_actions => 'Kontoaktionen';
 
   @override
   String get faq_subtitle =>
