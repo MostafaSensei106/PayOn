@@ -1177,6 +1177,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'0.00'**
   String get amount_hint;
+
+  /// No description provided for @app_version_title.
+  ///
+  /// In en, this message translates to:
+  /// **'App Version'**
+  String get app_version_title;
+
+  /// No description provided for @app_identity_and_version.
+  ///
+  /// In en, this message translates to:
+  /// **'App Identity & Version'**
+  String get app_identity_and_version;
+
+  /// No description provided for @app_name_title.
+  ///
+  /// In en, this message translates to:
+  /// **'App Name'**
+  String get app_name_title;
+
+  /// No description provided for @package_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Package Name'**
+  String get package_name;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get version;
+
+  /// No description provided for @build_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Build Number'**
+  String get build_number;
+
+  /// No description provided for @operating_environment.
+  ///
+  /// In en, this message translates to:
+  /// **'Operating Environment'**
+  String get operating_environment;
+
+  /// No description provided for @operating_system.
+  ///
+  /// In en, this message translates to:
+  /// **'Operating System'**
+  String get operating_system;
+
+  /// No description provided for @os_version.
+  ///
+  /// In en, this message translates to:
+  /// **'OS Version'**
+  String get os_version;
+
+  /// No description provided for @debug_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Debug Mode'**
+  String get debug_mode;
+
+  /// No description provided for @technologies_used.
+  ///
+  /// In en, this message translates to:
+  /// **'Technologies Used'**
+  String get technologies_used;
+
+  /// No description provided for @dart_sdk.
+  ///
+  /// In en, this message translates to:
+  /// **'Dart SDK'**
+  String get dart_sdk;
+
+  /// No description provided for @flutter_sdk.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter SDK'**
+  String get flutter_sdk;
+
+  /// No description provided for @installation_information.
+  ///
+  /// In en, this message translates to:
+  /// **'Installation Information'**
+  String get installation_information;
+
+  /// No description provided for @installer_store.
+  ///
+  /// In en, this message translates to:
+  /// **'Installer Store'**
+  String get installer_store;
+
+  /// No description provided for @install_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Install Date'**
+  String get install_date;
+
+  /// No description provided for @update_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Date'**
+  String get update_date;
 }
 
 class _AppLocalizationsDelegate

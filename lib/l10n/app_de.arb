@@ -178,5 +178,22 @@
   "phone_number_hint": "01xxxxxxxxx",
   "ipa_hint": "benutzername@payon",
   "amount": "Betrag",
-  "amount_hint": "0.00"
+  "amount_hint": "0.00",
+  "app_version_title": "App-Version",
+  "app_identity_and_version": "App-Identität & Version",
+  "app_name_title": "App-Name",
+  "package_name": "Paketname",
+  "version": "Version",
+  "build_number": "Build-Nummer",
+  "operating_environment": "Betriebsumgebung",
+  "operating_system": "Betriebssystem",
+  "os_version": "OS-Version",
+  "debug_mode": "Debug-Modus",
+  "technologies_used": "Verwendete Technologien",
+  "dart_sdk": "Dart SDK",
+  "flutter_sdk": "Flutter SDK",
+  "installation_information": "Installationsinformationen",
+  "installer_store": "Installer-Store",
+  "install_date": "Installationsdatum",
+  "update_date": "Änderungsdatum"
 }

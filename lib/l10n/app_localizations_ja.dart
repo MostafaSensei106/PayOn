@@ -545,4 +545,55 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get amount_hint => '0.00';
+
+  @override
+  String get app_version_title => 'アプリバージョン';
+
+  @override
+  String get app_identity_and_version => 'アプリの識別とバージョン';
+
+  @override
+  String get app_name_title => 'アプリ名';
+
+  @override
+  String get package_name => 'パッケージ名';
+
+  @override
+  String get version => 'バージョン';
+
+  @override
+  String get build_number => 'ビルド番号';
+
+  @override
+  String get operating_environment => '動作環境';
+
+  @override
+  String get operating_system => 'オペレーティングシステム';
+
+  @override
+  String get os_version => 'OSバージョン';
+
+  @override
+  String get debug_mode => 'デバッグモード';
+
+  @override
+  String get technologies_used => '使用技術';
+
+  @override
+  String get dart_sdk => 'Dart SDK';
+
+  @override
+  String get flutter_sdk => 'Flutter SDK';
+
+  @override
+  String get installation_information => 'インストール情報';
+
+  @override
+  String get installer_store => 'インストーラー・ストア';
+
+  @override
+  String get install_date => 'インストール日';
+
+  @override
+  String get update_date => '更新日';
 }

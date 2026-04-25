@@ -558,4 +558,55 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get amount_hint => '0.00';
+
+  @override
+  String get app_version_title => 'إصدار التطبيق';
+
+  @override
+  String get app_identity_and_version => 'هوية وإصدار التطبيق';
+
+  @override
+  String get app_name_title => 'اسم التطبيق';
+
+  @override
+  String get package_name => 'اسم الحزمة';
+
+  @override
+  String get version => 'الإصدار';
+
+  @override
+  String get build_number => 'رقم البناء';
+
+  @override
+  String get operating_environment => 'بيئة التشغيل';
+
+  @override
+  String get operating_system => 'نظام التشغيل';
+
+  @override
+  String get os_version => 'إصدار نظام التشغيل';
+
+  @override
+  String get debug_mode => 'وضع التصحيح';
+
+  @override
+  String get technologies_used => 'التقنيات المستخدمة';
+
+  @override
+  String get dart_sdk => 'Dart SDK';
+
+  @override
+  String get flutter_sdk => 'Flutter SDK';
+
+  @override
+  String get installation_information => 'معلومات التثبيت';
+
+  @override
+  String get installer_store => 'متجر التثبيت';
+
+  @override
+  String get install_date => 'تاريخ التثبيت';
+
+  @override
+  String get update_date => 'تاريخ التحديث';
 }

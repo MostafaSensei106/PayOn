@@ -178,5 +178,22 @@
   "ipa_hint": "username@payon",
   "amount": "المبلغ",
   "amount_hint": "0.00",
-  "iPA": "IPA"
+  "iPA": "IPA",
+  "app_version_title": "إصدار التطبيق",
+  "app_identity_and_version": "هوية وإصدار التطبيق",
+  "app_name_title": "اسم التطبيق",
+  "package_name": "اسم الحزمة",
+  "version": "الإصدار",
+  "build_number": "رقم البناء",
+  "operating_environment": "بيئة التشغيل",
+  "operating_system": "نظام التشغيل",
+  "os_version": "إصدار نظام التشغيل",
+  "debug_mode": "وضع التصحيح",
+  "technologies_used": "التقنيات المستخدمة",
+  "dart_sdk": "Dart SDK",
+  "flutter_sdk": "Flutter SDK",
+  "installation_information": "معلومات التثبيت",
+  "installer_store": "متجر التثبيت",
+  "install_date": "تاريخ التثبيت",
+  "update_date": "تاريخ التحديث"
 }

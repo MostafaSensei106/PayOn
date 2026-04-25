@@ -26,7 +26,7 @@ List<RouteBase> get $appRoutes => [
   $sendMoneyRoute,
   $requestMoneyRoute,
   $scanQrCodeRoute,
-  $appVersionRoute,
+  $aboutAppRoute,
   $developerTeamRoute,
   $termsAndConditionsRoute,
 ];
@@ -511,14 +511,13 @@ mixin $ScanQrCodeRoute on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
-RouteBase get $appVersionRoute => GoRouteData.$route(
+RouteBase get $aboutAppRoute => GoRouteData.$route(
   path: '/app-version',
-  factory: $AppVersionRoute._fromState,
+  factory: $AboutAppRoute._fromState,
 );
 
-mixin $AppVersionRoute on GoRouteData {
-  static AppVersionRoute _fromState(GoRouterState state) =>
-      const AppVersionRoute();
+mixin $AboutAppRoute on GoRouteData {
+  static AboutAppRoute _fromState(GoRouterState state) => const AboutAppRoute();
 
   @override
   String get location => GoRouteData.$location('/app-version');

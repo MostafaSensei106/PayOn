@@ -5,10 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../modules/app_version/ui/page/app_version.dart';
+import '../../modules/about_app/logic/cubit/about_app_cubit.dart';
+import '../../modules/about_app/ui/page/about_app_page.dart';
 import '../../modules/common_questions/ui/page/common_questions_page.dart';
 import '../../modules/contact_us/ui/page/contact_us_page.dart';
-import '../../modules/developer_team/ui/page/developer_team.dart';
+import '../../modules/developer_team/ui/page/developer_team_page.dart';
 import '../../modules/fingerprint_auth/ui/page/fingerprint_auth_page.dart';
 import '../../modules/forget_password/ui/page/forget_password_page.dart';
 import '../../modules/get_started/logic/cubit/account_type/account_type_cubit.dart';
@@ -22,6 +23,7 @@ import '../../modules/notifications/ui/notifications_page.dart';
 import '../../modules/privacy_policy/ui/privacy_policy_page.dart';
 import '../../modules/profile/ui/pages/profile_page.dart';
 import '../../modules/request_money/ui/page/request_money_page.dart';
+import '../../modules/scan_qrcode/ui/page/scan_qrcode_page.dart';
 import '../../modules/security_alerts/ui/page/security_alerts_page.dart';
 import '../../modules/send_money/ui/page/send_money_page.dart';
 import '../../modules/terms_and_conditions/ui/page/terms_and_conditions_page.dart';
@@ -29,7 +31,6 @@ import '../../modules/theme/ui/page/theme.dart';
 import '../../modules/two_factor_auth/ui/page/two_factor_auth.dart';
 import '../../modules/welcome/ui/pages/welcome_page.dart';
 import '../di/di.dart';
-import '../../modules/scan_qrcode/ui/page/scan_qrcode_page.dart';
 import 'cupertion_route_data.dart';
 import 'routes_names.dart';
 
@@ -227,12 +228,15 @@ final class ScanQrCodeRoute extends CupertinoRouteData with $ScanQrCodeRoute {
       const ScanQrcodePage();
 }
 
-@TypedGoRoute<AppVersionRoute>(path: RoutesNames.appVersion)
-final class AppVersionRoute extends CupertinoRouteData with $AppVersionRoute {
-  const AppVersionRoute();
+@TypedGoRoute<AboutAppRoute>(path: RoutesNames.appVersion)
+final class AboutAppRoute extends CupertinoRouteData with $AboutAppRoute {
+  const AboutAppRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => const AppVersion();
+  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
+    create: (context) => getIt<AboutAppCubit>()..getAppDetails(),
+    child: const AboutAppPage(),
+  );
 }
 
 @TypedGoRoute<DeveloperTeamRoute>(path: RoutesNames.developerTeam)
@@ -242,7 +246,7 @@ final class DeveloperTeamRoute extends CupertinoRouteData
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
-      const DeveloperTeam();
+      const DeveloperTeamPage();
 }
 
 @TypedGoRoute<TermsAndConditionsRoute>(path: RoutesNames.termsAndConditions)

@@ -561,4 +561,55 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get amount_hint => '0.00';
+
+  @override
+  String get app_version_title => 'App Version';
+
+  @override
+  String get app_identity_and_version => 'App Identity & Version';
+
+  @override
+  String get app_name_title => 'App Name';
+
+  @override
+  String get package_name => 'Package Name';
+
+  @override
+  String get version => 'Version';
+
+  @override
+  String get build_number => 'Build Number';
+
+  @override
+  String get operating_environment => 'Operating Environment';
+
+  @override
+  String get operating_system => 'Operating System';
+
+  @override
+  String get os_version => 'OS Version';
+
+  @override
+  String get debug_mode => 'Debug Mode';
+
+  @override
+  String get technologies_used => 'Technologies Used';
+
+  @override
+  String get dart_sdk => 'Dart SDK';
+
+  @override
+  String get flutter_sdk => 'Flutter SDK';
+
+  @override
+  String get installation_information => 'Installation Information';
+
+  @override
+  String get installer_store => 'Installer Store';
+
+  @override
+  String get install_date => 'Install Date';
+
+  @override
+  String get update_date => 'Update Date';
 }

@@ -1,7 +1,11 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../modules/about_app/data/about_app_repsitory.dart';
+import '../../modules/about_app/data/base_about_app_repository.dart';
+import '../../modules/about_app/logic/cubit/about_app_cubit.dart';
 import '../../modules/get_started/data/repositories/account_type/account_type_repository.dart';
 import '../../modules/get_started/data/repositories/account_type/base_account_type_repository.dart';
 import '../../modules/get_started/data/repositories/otp/base_otp_repository.dart';
@@ -19,6 +23,10 @@ import '../localization/data/localization_repository.dart';
 import '../localization/logic/cubit/localization_cubit.dart';
 import '../networking/api_service/api_service.dart';
 import '../networking/dio_factory.dart';
+import '../services/app_info/app_info_services.dart';
+import '../services/app_info/base_app_info_service.dart';
+import '../services/app_info/base_package_info_adapter.dart';
+import '../services/app_info/package_info_plus_adapter.dart';
 import '../services/biometrics/base_biometrics_service.dart';
 import '../services/biometrics/fingerprint_service.dart';
 import '../services/l10n/l10n_service.dart';
@@ -65,6 +73,15 @@ Future<void> init() async {
   /// use with getIt<APIService>();
   final dio = await DioFactory.getDio();
   getIt.registerLazySingleton<APIService>(() => APIService(dio));
+
+  final packageInfo = await PackageInfo.fromPlatform();
+  getIt.registerLazySingleton<BasePackageInfoAdapter>(
+    () => PackageInfoPlusAdapter(packageInfo),
+  );
+
+  getIt.registerLazySingleton<BaseAppInfoService>(
+    () => AppInfoServices(getIt<BasePackageInfoAdapter>()),
+  );
 
   /// Login
   getIt.registerLazySingleton<BaseLoginRepository>(
@@ -133,5 +150,14 @@ Future<void> init() async {
   /// Localization
   getIt.registerLazySingleton<LocalizationCubit>(
     () => LocalizationCubit(getIt<BaseLocalizationRepository>()),
+  );
+
+  getIt.registerFactory<BaseAboutAppRepository>(
+    () => AboutAppRepsitory(getIt<BaseAppInfoService>()),
+  );
+
+  /// About App
+  getIt.registerFactory<AboutAppCubit>(
+    () => AboutAppCubit(getIt<BaseAboutAppRepository>()),
   );
 }
