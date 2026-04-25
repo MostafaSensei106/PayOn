@@ -22,6 +22,7 @@ class QuickActionItem extends StatelessWidget {
         icon: icon,
         foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        padding: 8,
       ),
       SizedBox(height: 4.h),
       Text(label, style: Theme.of(context).textTheme.labelMedium),

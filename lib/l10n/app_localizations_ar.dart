@@ -90,13 +90,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get settings => 'الإعدادات';
 
   @override
-  String get qr_code => 'QR Code';
+  String get qr_code => 'رمز QR';
 
   @override
-  String get scan_qr_code => 'Scan QR Code';
+  String get deposit => 'إيداع';
+
+  @override
+  String get withdraw => 'سحب';
+
+  @override
+  String get scan_qr_code => 'مسح رمز QR';
 
   @override
   String get user_name => 'اسم المستخدم';
+
+  @override
+  String get notifications => 'الإشعارات';
 
   @override
   String get profile => 'الملف الشخصي';
@@ -138,7 +147,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get request => 'طلب';
 
   @override
-  String get receive => 'إستلام';
+  String get receive => 'استلام';
 
   @override
   String get error => 'خطأ';
@@ -201,10 +210,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get receive_money => 'استلام الأموال';
 
   @override
-  String get shearch_here => 'ابحث هنا';
+  String get search_here => 'ابحث هنا';
 
   @override
-  String get favouraits => 'المفضلة';
+  String get favorites => 'المفضلة';
 
   @override
   String get iPA => 'IPA';
@@ -513,4 +522,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get system_mode_subtitle => 'تغيير المظهر تلقائياً حسب إعدادات جهازك';
+
+  @override
+  String get select_account => 'اختر الحساب';
+
+  @override
+  String get primary_account => 'الحساب الأساسي';
+
+  @override
+  String get secondary_account => 'الحساب الثانوي';
+
+  @override
+  String get to => 'إلى';
+
+  @override
+  String get ipa_address => 'عنوان IPA';
+
+  @override
+  String get phone_number_hint => '01xxxxxxxxx';
+
+  @override
+  String get ipa_hint => 'username@payon';
+
+  @override
+  String get amount => 'المبلغ';
+
+  @override
+  String get amount_hint => '0.00';
 }

@@ -26,6 +26,8 @@ List<RouteBase> get $appRoutes => [
   $sendMoneyRoute,
   $requestMoneyRoute,
   $scanQrCodeRoute,
+  $appVersionRoute,
+  $developerTeamRoute,
 ];
 
 RouteBase get $welcomeRoute =>
@@ -493,6 +495,58 @@ mixin $ScanQrCodeRoute on GoRouteData {
 
   @override
   String get location => GoRouteData.$location('/scan-qr-code');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $appVersionRoute => GoRouteData.$route(
+  path: '/app-version',
+  factory: $AppVersionRoute._fromState,
+);
+
+mixin $AppVersionRoute on GoRouteData {
+  static AppVersionRoute _fromState(GoRouterState state) =>
+      const AppVersionRoute();
+
+  @override
+  String get location => GoRouteData.$location('/app-version');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $developerTeamRoute => GoRouteData.$route(
+  path: '/developer-team',
+  factory: $DeveloperTeamRoute._fromState,
+);
+
+mixin $DeveloperTeamRoute on GoRouteData {
+  static DeveloperTeamRoute _fromState(GoRouterState state) =>
+      const DeveloperTeamRoute();
+
+  @override
+  String get location => GoRouteData.$location('/developer-team');
 
   @override
   void go(BuildContext context) => context.go(location);

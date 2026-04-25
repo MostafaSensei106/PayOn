@@ -93,10 +93,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get qr_code => 'QR Code';
 
   @override
+  String get deposit => 'Deposit';
+
+  @override
+  String get withdraw => 'Withdraw';
+
+  @override
   String get scan_qr_code => 'Scan QR Code';
 
   @override
   String get user_name => 'User Name';
+
+  @override
+  String get notifications => 'Notifications';
 
   @override
   String get profile => 'Profile';
@@ -201,10 +210,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get receive_money => 'Receive Money';
 
   @override
-  String get shearch_here => 'Search Here';
+  String get search_here => 'Search Here';
 
   @override
-  String get favouraits => 'Favoraits';
+  String get favorites => 'Favorites';
 
   @override
   String get iPA => 'IPA';
@@ -515,4 +524,31 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get system_mode_subtitle =>
       'Automatically change appearance based on device settings';
+
+  @override
+  String get select_account => 'Select Account';
+
+  @override
+  String get primary_account => 'Primary Account';
+
+  @override
+  String get secondary_account => 'Secondary Account';
+
+  @override
+  String get to => 'To';
+
+  @override
+  String get ipa_address => 'IPA Address';
+
+  @override
+  String get phone_number_hint => '01xxxxxxxxx';
+
+  @override
+  String get ipa_hint => 'username@payon';
+
+  @override
+  String get amount => 'Amount';
+
+  @override
+  String get amount_hint => '0.00';
 }

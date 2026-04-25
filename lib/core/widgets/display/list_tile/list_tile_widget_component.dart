@@ -7,8 +7,9 @@ import 'list_tile_component.dart';
 
 class ListTileWidgetComponent extends StatelessWidget {
   const ListTileWidgetComponent({
-    required this.title,
     required this.leading,
+
+    required this.title,
     this.useinBorderRadius = false,
     super.key,
     this.subtitle,

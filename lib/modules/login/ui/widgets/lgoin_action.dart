@@ -36,7 +36,7 @@ class LoginAction extends StatelessWidget {
 
             if (form.isBiometricsAvailable)
               OutlinedButtonComponent.icon(
-                icon: Iconsax.finger_scan_copy,
+                icon: Icons.fingerprint_rounded,
                 label: l10n.login_with_fingerprint,
                 isEnabled: !isLoading,
                 onPressed: () async {

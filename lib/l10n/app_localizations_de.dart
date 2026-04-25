@@ -55,19 +55,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get email_address => 'E-Mail-Adresse';
 
   @override
-  String get male => 'Male';
+  String get male => 'Männlich';
 
   @override
-  String get female => 'Female';
+  String get female => 'Weiblich';
 
   @override
-  String get none => 'None';
+  String get none => 'Keine';
 
   @override
-  String get other => 'Other';
+  String get other => 'Andere';
 
   @override
-  String get date_of_birth => 'Date of Birth';
+  String get date_of_birth => 'Geburtsdatum';
 
   @override
   String get password => 'Passwort';
@@ -93,13 +93,22 @@ class AppLocalizationsDe extends AppLocalizations {
   String get settings => 'Einstellungen';
 
   @override
-  String get qr_code => 'QR Code';
+  String get qr_code => 'QR-Code';
 
   @override
-  String get scan_qr_code => 'Scan QR Code';
+  String get deposit => 'Einzahlung';
+
+  @override
+  String get withdraw => 'Abheben';
+
+  @override
+  String get scan_qr_code => 'QR-Code scannen';
 
   @override
   String get user_name => 'Benutzername';
+
+  @override
+  String get notifications => 'Benachrichtigungen';
 
   @override
   String get profile => 'Profil';
@@ -195,25 +204,25 @@ class AppLocalizationsDe extends AppLocalizations {
   String get active => 'Aktiv';
 
   @override
-  String get send_money => 'Send Money';
+  String get send_money => 'Geld senden';
 
   @override
-  String get request_money => 'Request Money';
+  String get request_money => 'Geld anfordern';
 
   @override
-  String get receive_money => 'Receive Money';
+  String get receive_money => 'Geld empfangen';
 
   @override
-  String get shearch_here => 'Search Here';
+  String get search_here => 'Hier suchen';
 
   @override
-  String get favouraits => 'Favoraits';
+  String get favorites => 'Favoriten';
 
   @override
   String get iPA => 'IPA';
 
   @override
-  String get privacy_policy => 'Privacy Policy';
+  String get privacy_policy => 'Datenschutzerklärung';
 
   @override
   String get latest_transactions => 'Neueste Transaktionen';
@@ -240,7 +249,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get create_account => 'Konto erstellen';
 
   @override
-  String get account_type => 'Account Type';
+  String get account_type => 'Kontotyp';
 
   @override
   String get step => 'Schritt';
@@ -530,4 +539,31 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get system_mode_subtitle =>
       'Erscheinungsbild automatisch an die Geräteeinstellungen anpassen';
+
+  @override
+  String get select_account => 'Konto auswählen';
+
+  @override
+  String get primary_account => 'Hauptkonto';
+
+  @override
+  String get secondary_account => 'Zweitkonto';
+
+  @override
+  String get to => 'An';
+
+  @override
+  String get ipa_address => 'IPA-Adresse';
+
+  @override
+  String get phone_number_hint => '01xxxxxxxxx';
+
+  @override
+  String get ipa_hint => 'benutzername@payon';
+
+  @override
+  String get amount => 'Betrag';
+
+  @override
+  String get amount_hint => '0.00';
 }

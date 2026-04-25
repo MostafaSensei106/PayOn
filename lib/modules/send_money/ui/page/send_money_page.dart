@@ -9,11 +9,16 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
-import '../../../../core/utils/settings_tile_data.dart';
+import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
+import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
+import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
-import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
-import '../../../../core/widgets/inputs/search_bar/search_bar_component.dart';
-import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_component.dart';
+import '../../../../core/widgets/display/avatar/avatar_component.dart';
+import '../../../../core/widgets/display/list_tile/list_tile_widget_component.dart';
+import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
+import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
+
+enum SendMoneyMethod { phone, ipa }
 
 class SendMoneyPage extends HookWidget {
   const SendMoneyPage({super.key});
@@ -21,190 +26,208 @@ class SendMoneyPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
-    final shearchController = useTextEditingController();
+    final selectedMethod = useState(SendMoneyMethod.phone);
+    final showAccountNumber = useState(false);
+    final selectedAccountName = useState(l10n.primary_account);
+    final selectedAccountNumber = useState('1234 5678 9012 4589');
+    final theme = Theme.of(context);
     final scrollController = useScrollController();
+    final title = l10n.send_money;
 
     return Scaffold(
       body: CustomScrollView(
         controller: scrollController,
-        physics: const AlwaysScrollableScrollPhysics(
-          parent: BouncingScrollPhysics(),
-        ),
         slivers: [
-          SidePageSliverAppBarComponent(
-            title: Text(l10n.send_money),
-            pinned: true,
-            floating: true,
-            bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(kToolbarHeight + 16),
-              child: Padding(
-                padding: const EdgeInsetsGeometry.all(AppConfig.paddingHalf),
-                child: SearchBarComponent(
-                  controller: shearchController,
-                  hintText: l10n.shearch_here,
-                ),
-              ),
-            ),
+          SidePageSliverAppBarWithWavesComponent(
+            scrollController: scrollController,
+            title: title,
           ),
-          SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: AppConfig.paddingHalf,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsGeometry.all(AppConfig.paddingHalf),
-                  child: Text(
-                    l10n.favouraits,
-                    style: Theme.of(context).textTheme.titleMedium,
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate([
+                Text(
+                  l10n.select_account,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(
-                  height: 100.h,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(width: AppConfig.paddingHalf),
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          const CircleAvatar(
-                            radius: 20,
-                            child: Icon(Iconsax.user_copy),
-                          ),
-                          const SizedBox(height: AppConfig.paddingHalf),
-                          Text(
-                            'User ${index + 1}',
-                            style: Theme.of(context).textTheme.labelMedium,
-                          ),
-                        ],
-                      );
+                SizedBox(height: 12.h),
+                ListTileWidgetComponent(
+                  leading: const AvatarComponent(imageUrl: ''),
+                  title: selectedAccountName.value,
+                  subtitle: showAccountNumber.value
+                      ? selectedAccountNumber.value
+                      : '•••• •••• •••• ••••',
+                  trailing: IconButtonComponent.filled(
+                    onPressed: () {
+                      unawaited(HapticFeedback.lightImpact());
+                      showAccountNumber.value = !showAccountNumber.value;
+                    },
+                    icon: showAccountNumber.value
+                        ? Iconsax.eye_slash_copy
+                        : Iconsax.eye_copy,
+                  ),
+                  onTap: () => context.showBottomSheetComponent(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ListTileWidgetComponent.top(
+                          leading: const AvatarComponent(imageUrl: ''),
+                          title: l10n.primary_account,
+                          subtitle: '1234 5678 9012 4589',
+                          onTap: () {
+                            selectedAccountName.value = l10n.primary_account;
+                            selectedAccountNumber.value = '1234 5678 9012 4589';
+                            Navigator.pop(context);
+                          },
+                        ),
+                        ListTileWidgetComponent.bottom(
+                          leading: const AvatarComponent(imageUrl: ''),
+                          title: l10n.secondary_account,
+                          subtitle: '9876 5432 1098 7654',
+                          onTap: () {
+                            selectedAccountName.value = l10n.secondary_account;
+                            selectedAccountNumber.value = '9876 5432 1098 7654';
+                            Navigator.pop(context);
+                          },
+                        ),
+                        SizedBox(
+                          height:
+                              MediaQuery.of(context).padding.bottom +
+                              AppConfig.padding,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 24.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      l10n.to,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    TextButtonComponent.icon(
+                      icon: Iconsax.heart_search_copy,
+                      label: l10n.favorites,
+                      onPressed: () => context.showBottomSheetComponent(
+                        child: const Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            ListTileWidgetComponent.top(
+                              leading: AvatarComponent(imageUrl: ''),
+                              title: 'المعلم حلاوة العنتبلي',
+                              subtitle: '1234 5678 9012 4589',
+                            ),
+                            ListTileWidgetComponent.middle(
+                              leading: AvatarComponent(imageUrl: ''),
+                              title: 'الحج كمال ابو رية',
+                              subtitle: '9876 5432 1098 7654',
+                            ),
+                            ListTileWidgetComponent.middle(
+                              leading: AvatarComponent(imageUrl: ''),
+                              title: 'المعلم سردينة',
+                              subtitle: '5544 3322 1100 9988',
+                            ),
+                            ListTileWidgetComponent.middle(
+                              leading: AvatarComponent(imageUrl: ''),
+                              title: 'المعلم عبد الغفور البرعي',
+                              subtitle: '1122 3344 5566 7788',
+                            ),
+                            ListTileWidgetComponent.bottom(
+                              leading: AvatarComponent(imageUrl: ''),
+                              title: 'الحج قرمط',
+                              subtitle: '0000 1111 2222 3333',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 12.h),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      AppConfig.outBorderRadius,
+                    ),
+                  ),
+                  child: SegmentedButton<SendMoneyMethod>(
+                    showSelectedIcon: false,
+                    style: SegmentedButton.styleFrom(
+                      selectedBackgroundColor: theme.colorScheme.primary,
+                      selectedForegroundColor: theme.colorScheme.onPrimary,
+                      side: BorderSide.none,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          AppConfig.outBorderRadius,
+                        ),
+                      ),
+                    ),
+                    segments: [
+                      ButtonSegment(
+                        icon: const Icon(Iconsax.call_copy),
+                        label: Text(l10n.phone_number),
+                        value: SendMoneyMethod.phone,
+                      ),
+                      ButtonSegment(
+                        icon: const Icon(Icons.alternate_email),
+                        label: Text(l10n.ipa_address),
+                        value: SendMoneyMethod.ipa,
+                      ),
+                    ],
+                    selected: {selectedMethod.value},
+                    onSelectionChanged: (Set<SendMoneyMethod> newSelection) {
+                      unawaited(HapticFeedback.vibrate());
+                      selectedMethod.value = newSelection.first;
                     },
                   ),
                 ),
-              ],
-            ),
-          ),
+                SizedBox(height: 24.h),
+                TextFormFieldComponent(
+                  label: selectedMethod.value == SendMoneyMethod.phone
+                      ? l10n.phone_number
+                      : l10n.iPA,
+                  hintText: selectedMethod.value == SendMoneyMethod.phone
+                      ? l10n.phone_number_hint
+                      : l10n.ipa_hint,
+                  prefixIcon: selectedMethod.value == SendMoneyMethod.phone
+                      ? Iconsax.call_copy
+                      : Icons.alternate_email,
 
-          const LatestTransactionsSection(),
-        ],
-      ),
-
-      floatingActionButton: Column(
-        mainAxisSize: MainAxisSize.min,
-        spacing: AppConfig.paddingQuarter,
-        children: [
-          FloatingActionButton(
-            heroTag: 'edit_btn',
-            onPressed: () {
-              unawaited(HapticFeedback.vibrate());
-            },
-            child: const Icon(Iconsax.call_copy),
-          ),
-          FloatingActionButton.extended(
-            heroTag: 'person_btn',
-            onPressed: () {
-              unawaited(HapticFeedback.vibrate());
-            },
-            icon: const Icon(Iconsax.personalcard_copy),
-            label: Text(l10n.iPA),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class LatestTransactionsSection extends StatelessWidget {
-  const LatestTransactionsSection({super.key});
-
-  @override
-  Widget build(final BuildContext context) {
-    final l10n = getIt<L10nService>().get(context);
-
-    return SliverPadding(
-      padding: const EdgeInsetsGeometry.symmetric(
-        horizontal: AppConfig.padding,
-      ),
-      sliver: SliverMainAxisGroup(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  l10n.latest_transactions,
-                  style: Theme.of(context).textTheme.titleMedium,
+                  keyboardType: selectedMethod.value == SendMoneyMethod.phone
+                      ? TextInputType.phone
+                      : TextInputType.emailAddress,
+                  onChanged: (String p1) {},
                 ),
-                TextButtonComponent(onPressed: () {}, label: l10n.see_all),
-              ],
-            ),
-          ),
-          _buildSectionItems(
-            List.generate(
-              10,
-              (index) => SettingsTileData(
-                title: l10n.money_transfer,
-                subtitle: 'Today, 12:40 PM',
-                leading: Iconsax.arrow_up_copy,
-                trailing: Text(
-                  '-250.00',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.error,
+                SizedBox(height: 16.h),
+                TextFormFieldComponent(
+                  label: l10n.amount,
+                  hintText: l10n.amount_hint,
+                  prefixIcon: Iconsax.money_send_copy,
+                  keyboardType: const TextInputType.numberWithOptions(
+                    decimal: true,
                   ),
+                  onChanged: (String p1) {},
                 ),
-              ),
+                SizedBox(height: 32.h),
+                FilledButtonComponent.icon(
+                  icon: Iconsax.send_1_copy,
+                  label: l10n.send,
+                  onPressed: () {
+                    unawaited(HapticFeedback.vibrate());
+                  },
+                ),
+              ]),
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildSectionItems(List<SettingsTileData> items) {
-    return SliverList.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        final item = items[index];
-        final isFirst = index == 0;
-        final isLast = index == items.length - 1;
-        final isSingle = items.length == 1;
-
-        if (isSingle) {
-          return ListTileIconComponent(
-            title: item.title,
-            leading: item.leading,
-            trailing: item.trailing,
-            subtitle: item.subtitle,
-            onTap: item.onTap,
-          );
-        } else if (isFirst) {
-          return ListTileIconComponent.top(
-            title: item.title,
-            leading: item.leading,
-            trailing: item.trailing,
-            subtitle: item.subtitle,
-            onTap: item.onTap,
-          );
-        } else if (isLast) {
-          return ListTileIconComponent.bottom(
-            title: item.title,
-            leading: item.leading,
-            trailing: item.trailing,
-            subtitle: item.subtitle,
-            onTap: item.onTap,
-          );
-        } else {
-          return ListTileIconComponent.middle(
-            title: item.title,
-            leading: item.leading,
-            trailing: item.trailing,
-            subtitle: item.subtitle,
-            onTap: item.onTap,
-          );
-        }
-      },
     );
   }
 }

@@ -51,19 +51,19 @@ class AppLocalizationsJa extends AppLocalizations {
   String get email_address => 'メールアドレス';
 
   @override
-  String get male => 'Male';
+  String get male => '男性';
 
   @override
-  String get female => 'Female';
+  String get female => '女性';
 
   @override
-  String get none => 'None';
+  String get none => 'なし';
 
   @override
-  String get other => 'Other';
+  String get other => 'その他';
 
   @override
-  String get date_of_birth => 'Date of Birth';
+  String get date_of_birth => '生年月日';
 
   @override
   String get password => 'パスワード';
@@ -87,13 +87,22 @@ class AppLocalizationsJa extends AppLocalizations {
   String get settings => '設定';
 
   @override
-  String get qr_code => 'QR Code';
+  String get qr_code => 'QRコード';
 
   @override
-  String get scan_qr_code => 'Scan QR Code';
+  String get deposit => '入金';
+
+  @override
+  String get withdraw => '出金';
+
+  @override
+  String get scan_qr_code => 'QRコードをスキャン';
 
   @override
   String get user_name => 'ユーザー名';
+
+  @override
+  String get notifications => '通知';
 
   @override
   String get profile => 'プロフィール';
@@ -189,25 +198,25 @@ class AppLocalizationsJa extends AppLocalizations {
   String get active => 'アクティブ';
 
   @override
-  String get send_money => 'Send Money';
+  String get send_money => '送金';
 
   @override
-  String get request_money => 'Request Money';
+  String get request_money => '請求';
 
   @override
-  String get receive_money => 'Receive Money';
+  String get receive_money => '受取';
 
   @override
-  String get shearch_here => 'Search Here';
+  String get search_here => 'ここで検索';
 
   @override
-  String get favouraits => 'Favoraits';
+  String get favorites => 'お気に入り';
 
   @override
   String get iPA => 'IPA';
 
   @override
-  String get privacy_policy => 'Privacy Policy';
+  String get privacy_policy => 'プライバシーポリシー';
 
   @override
   String get latest_transactions => '最近の取引';
@@ -234,7 +243,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get create_account => 'アカウント作成';
 
   @override
-  String get account_type => 'Account Type';
+  String get account_type => 'アカウントの種類';
 
   @override
   String get step => 'ステップ';
@@ -500,4 +509,31 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get system_mode_subtitle => 'デバイスの設定に合わせて自動的に切り替えます';
+
+  @override
+  String get select_account => 'アカウントを選択';
+
+  @override
+  String get primary_account => 'メインアカウント';
+
+  @override
+  String get secondary_account => 'サブアカウント';
+
+  @override
+  String get to => '宛先';
+
+  @override
+  String get ipa_address => 'IPAアドレス';
+
+  @override
+  String get phone_number_hint => '01xxxxxxxxx';
+
+  @override
+  String get ipa_hint => 'ユーザー名@payon';
+
+  @override
+  String get amount => '金額';
+
+  @override
+  String get amount_hint => '0.00';
 }

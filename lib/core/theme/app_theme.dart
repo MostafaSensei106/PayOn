@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import '../constants/app_config.dart';
 
 class AppTheme {
-  static ThemeData lightTheme = ThemeData(
+  static ThemeData lightTheme(String fontFamily) => ThemeData(
     brightness: Brightness.light,
     useMaterial3: true,
-    fontFamily: 'Rubik',
+    fontFamily: fontFamily,
 
     appBarTheme: const AppBarTheme(
       elevation: 0,
@@ -37,10 +37,10 @@ class AppTheme {
     ),
   );
 
-  static ThemeData darkTheme = ThemeData(
+  static ThemeData darkTheme(String fontFamily) => ThemeData(
     brightness: Brightness.dark,
     useMaterial3: true,
-    fontFamily: 'Rubik',
+    fontFamily: fontFamily,
 
     appBarTheme: const AppBarTheme(
       elevation: 0,

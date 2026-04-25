@@ -1,11 +1,14 @@
 // ignore_for_file: avoid_classes_with_only_static_members
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../modules/app_version/ui/page/app_version.dart';
 import '../../modules/common_questions/ui/page/common_questions_page.dart';
 import '../../modules/contact_us/ui/page/contact_us_page.dart';
+import '../../modules/developer_team/ui/page/developer_team.dart';
 import '../../modules/fingerprint_auth/ui/page/fingerprint_auth_page.dart';
 import '../../modules/forget_password/ui/page/forget_password_page.dart';
 import '../../modules/get_started/logic/cubit/account_type/account_type_cubit.dart';
@@ -221,4 +224,22 @@ final class ScanQrCodeRoute extends CupertinoRouteData with $ScanQrCodeRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const ScanQrcodePage();
+}
+
+@TypedGoRoute<AppVersionRoute>(path: RoutesNames.appVersion)
+final class AppVersionRoute extends CupertinoRouteData with $AppVersionRoute {
+  const AppVersionRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const AppVersion();
+}
+
+@TypedGoRoute<DeveloperTeamRoute>(path: RoutesNames.developerTeam)
+final class DeveloperTeamRoute extends CupertinoRouteData
+    with $DeveloperTeamRoute {
+  const DeveloperTeamRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const DeveloperTeam();
 }
