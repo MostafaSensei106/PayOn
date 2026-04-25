@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
 
-class ElevatedButtonComponent extends StatelessWidget {
+final class ElevatedButtonComponent extends StatelessWidget {
   const ElevatedButtonComponent({
     required this.label,
     required this.onPressed,

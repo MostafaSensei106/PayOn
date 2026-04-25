@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-class SwitchComponent extends StatelessWidget {
+final class SwitchComponent extends StatelessWidget {
   const SwitchComponent({
     required this.label,
     required this.value,
@@ -14,8 +14,8 @@ class SwitchComponent extends StatelessWidget {
   final void Function(bool) onChanged;
 
   @override
-  Widget build(final BuildContext context) => SwitchListTile(
-    title: Text(label),
+  Widget build(final BuildContext context) => Switch(
+    // title: Text(label),
     value: value,
     onChanged: onChanged,
     activeTrackColor: Theme.of(context).colorScheme.primary,

@@ -8,7 +8,7 @@ import '../l10n/l10n_service.dart';
 import '../theme/theme_service.dart';
 import 'base_toast_service.dart';
 
-class ToastificationService implements BaseToastService {
+final class ToastificationService implements BaseToastService {
   @override
   void showError(BuildContext context, String message) {
     final l10n = getIt<L10nService>().get(context);

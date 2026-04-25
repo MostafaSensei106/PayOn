@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-class WavePainter extends CustomPainter {
+final class WavePainter extends CustomPainter {
   WavePainter({
     required this.animation,
     required this.color,

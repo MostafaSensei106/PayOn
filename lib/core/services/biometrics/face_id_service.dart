@@ -1,6 +1,6 @@
 import 'base_biometrics_service.dart';
 
-class FaceIdService implements BaseBiometricsService {
+final class FaceIdService implements BaseBiometricsService {
   @override
   Future<bool> authenticate({required String message}) {
     // TODO: implement authenticate

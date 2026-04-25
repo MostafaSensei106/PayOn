@@ -4,7 +4,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../text_form_field/text_form_field_component.dart';
 
-class PasswordFieldComponent extends HookWidget {
+final class PasswordFieldComponent extends HookWidget {
   const PasswordFieldComponent({
     required this.label,
     required this.onChanged,

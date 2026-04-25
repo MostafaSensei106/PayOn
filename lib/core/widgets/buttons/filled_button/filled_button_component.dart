@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
 
-class FilledButtonComponent extends StatelessWidget {
+final class FilledButtonComponent extends StatelessWidget {
   const FilledButtonComponent({
     required this.label,
     required this.onPressed,

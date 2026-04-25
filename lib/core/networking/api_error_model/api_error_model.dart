@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'api_error_model.g.dart';
 
 @JsonSerializable()
-class APIErrorModel {
+final class APIErrorModel {
   APIErrorModel({required this.code, required this.message});
   final int code;
   final String? message;

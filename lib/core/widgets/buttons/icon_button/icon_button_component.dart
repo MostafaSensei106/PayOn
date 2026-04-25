@@ -6,7 +6,7 @@ import '../../../constants/app_config.dart';
 
 enum IconButtonVariant { standard, filled, tonal, outlined }
 
-class IconButtonComponent extends StatelessWidget {
+final class IconButtonComponent extends StatelessWidget {
   const IconButtonComponent({
     required this.icon,
     required this.onPressed,

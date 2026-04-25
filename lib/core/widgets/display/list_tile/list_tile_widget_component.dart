@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'list_tile_component.dart';
 
-class ListTileWidgetComponent extends StatelessWidget {
+final class ListTileWidgetComponent extends StatelessWidget {
   const ListTileWidgetComponent({
     required this.leading,
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
 
-class OtpFieldComponent extends StatefulWidget {
+final class OtpFieldComponent extends StatefulWidget {
   const OtpFieldComponent({
     required this.onCompleted,
     super.key,

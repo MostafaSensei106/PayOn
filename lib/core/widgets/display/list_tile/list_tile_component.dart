@@ -3,7 +3,7 @@ import '../../../constants/app_config.dart';
 
 enum ListTileGroupType { top, middle, bottom, single }
 
-class ListTileComponent extends StatelessWidget {
+final class ListTileComponent extends StatelessWidget {
   const ListTileComponent({
     required this.title,
     this.useinBorderRadius = false,

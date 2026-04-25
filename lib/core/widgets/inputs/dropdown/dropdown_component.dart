@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../constants/app_config.dart';
 
-class DropdownComponent<T> extends StatelessWidget {
+final class DropdownComponent<T> extends StatelessWidget {
   const DropdownComponent({
     required this.label,
     required this.items,

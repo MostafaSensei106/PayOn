@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
 
-class TextFormFieldComponent extends StatelessWidget {
+final class TextFormFieldComponent extends StatelessWidget {
   const TextFormFieldComponent({
     required this.label,
     required this.prefixIcon,

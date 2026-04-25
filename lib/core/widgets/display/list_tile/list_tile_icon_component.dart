@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
 import 'list_tile_component.dart';
 
-class ListTileIconComponent extends StatelessWidget {
+final class ListTileIconComponent extends StatelessWidget {
   const ListTileIconComponent({
     required this.title,
     required this.leading,

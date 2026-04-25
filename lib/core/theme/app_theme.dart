@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import '../constants/app_config.dart';
 
-class AppTheme {
+final class AppTheme {
   static ThemeData lightTheme(String fontFamily) => ThemeData(
     brightness: Brightness.light,
     useMaterial3: true,

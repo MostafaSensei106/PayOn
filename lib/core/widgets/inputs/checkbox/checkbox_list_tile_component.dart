@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../constants/app_config.dart';
 
-class CheckboxListTileComponent extends StatelessWidget {
+final class CheckboxListTileComponent extends StatelessWidget {
   const CheckboxListTileComponent({
     required this.title,
     required this.value,

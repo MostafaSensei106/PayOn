@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'base_prefs_storage_service.dart';
 
-class SharedPrefsService implements BasePrefsStorageService {
+final class SharedPrefsService implements BasePrefsStorageService {
   SharedPrefsService(this._prefs);
   final SharedPreferences _prefs;
 

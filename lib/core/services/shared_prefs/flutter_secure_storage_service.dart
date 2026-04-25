@@ -3,7 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../constants/pref_keys.dart';
 import '../local_storage/base_secure_storage_service.dart';
 
-class FlutterSecureStorageService implements BaseSecureStorageService {
+final class FlutterSecureStorageService implements BaseSecureStorageService {
   FlutterSecureStorageService(this._storage);
 
   final FlutterSecureStorage _storage;

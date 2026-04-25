@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../constants/app_config.dart';
 
-class BottomSheetComponent extends StatelessWidget {
+final class BottomSheetComponent extends StatelessWidget {
   const BottomSheetComponent({required this.child, super.key, this.title});
   final Widget child;
   final String? title;

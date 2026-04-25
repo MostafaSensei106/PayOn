@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AssetImageComponent extends StatelessWidget {
+final class AssetImageComponent extends StatelessWidget {
   const AssetImageComponent({
     required this.assetName,
     super.key,
