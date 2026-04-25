@@ -10,12 +10,12 @@ class ThemeRepository implements BaseThemeRepository {
 
   @override
   Future<void> cacheThemeMode(ThemeMode mode) async {
-    await _storage.setData(PrefKeys.themeMode, mode.name);
+    await _storage.setData<String>(PrefKeys.themeMode, mode.name);
   }
 
   @override
   ThemeMode getThemeMode() {
-    final cachedTheme = _storage.getData(PrefKeys.themeMode) as String?;
+    final cachedTheme = _storage.getData<String>(PrefKeys.themeMode);
     return ThemeMode.values.firstWhere(
       (e) => e.name == cachedTheme,
       orElse: () => ThemeMode.system,

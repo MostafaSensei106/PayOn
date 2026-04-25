@@ -1,3 +1,5 @@
+// ignore_for_file: sort_constructors_first
+
 enum FontFamily {
   arabic('ar', 'Rubik'),
   english('en', 'Rubik'),

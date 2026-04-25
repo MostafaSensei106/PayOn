@@ -5,7 +5,7 @@ import '../../services/l10n/l10n_service.dart';
 import '../../services/shared_prefs/base_prefs_storage_service.dart';
 import 'base_localization_repository.dart';
 
-class LocalizationRepository implements BaseLocalizationRepository {
+final class LocalizationRepository implements BaseLocalizationRepository {
   LocalizationRepository(this._storage, this._l10nService);
 
   final BasePrefsStorageService _storage;
@@ -13,12 +13,12 @@ class LocalizationRepository implements BaseLocalizationRepository {
 
   @override
   Future<void> cacheLanguageCode(String langCode) async {
-    await _storage.setData(PrefKeys.language, langCode);
+    await _storage.setData<String>(PrefKeys.language, langCode);
   }
 
   @override
   String getLanguageCode() {
-    final cachedLanguage = _storage.getData(PrefKeys.language) as String?;
+    final cachedLanguage = _storage.getData<String>(PrefKeys.language);
     if (cachedLanguage != null) {
       return cachedLanguage;
     }
