@@ -24,7 +24,7 @@ final class AboutAppPage extends HookWidget {
     final scrollController = useScrollController();
 
     return Scaffold(
-      appBar: SidePageAppBarComponent(title: l10n.app_version_title),
+      appBar: SidePageAppBarComponent(title: l10n.about_app),
       body: BlocBuilder<AboutAppCubit, AboutAppState>(
         builder: (context, state) {
           return state.maybeWhen(
@@ -32,7 +32,7 @@ final class AboutAppPage extends HookWidget {
             success: (info) {
               final sections = <AppInfoSection>[
                 (
-                  sectionTitle: l10n.app_identity_and_version,
+                  sectionTitle: l10n.app_identity,
                   items: [
                     (
                       title: l10n.app_name_title,
@@ -46,7 +46,7 @@ final class AboutAppPage extends HookWidget {
                     ),
                     (
                       title: l10n.version,
-                      subtitle: info.version,
+                      subtitle: 'v${info.version}',
                       icon: Iconsax.information_copy,
                     ),
                     (
@@ -61,19 +61,19 @@ final class AboutAppPage extends HookWidget {
                   items: [
                     (
                       title: l10n.operating_system,
-                      subtitle: info.operatingSystemName,
-                      icon: info.operatingSystemName.toLowerCase() == 'android'
+                      subtitle: info.operatingSystemName.replaceFirst('a', 'A'),
+                      icon: info.operatingSystemName == 'android'
                           ? Iconsax.android_copy
                           : Iconsax.apple_copy,
                     ),
                     (
                       title: l10n.os_version,
                       subtitle: info.operatingSystemVersion,
-                      icon: Iconsax.cpu_copy,
+                      icon: Iconsax.cpu_charge_copy,
                     ),
                     (
-                      title: l10n.debug_mode,
-                      subtitle: info.isDebug.toString(),
+                      title: l10n.app_mode,
+                      subtitle: info.isDebug ? l10n.debug : l10n.release,
                       icon: Iconsax.code_1_copy,
                     ),
                   ],
@@ -87,6 +87,7 @@ final class AboutAppPage extends HookWidget {
                           '${info.dartVersion} (${info.dartChanal ?? "N/A"})',
                       icon: Iconsax.code_1_copy,
                     ),
+
                     (
                       title: l10n.flutter_sdk,
                       subtitle:

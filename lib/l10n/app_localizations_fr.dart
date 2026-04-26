@@ -581,8 +581,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get app_version_title => 'Version de l\'application';
 
   @override
-  String get app_identity_and_version =>
-      'Identité et version de l\'application';
+  String get app_identity => 'Identité de l\'application';
+
+  @override
+  String get about_app_subtitle => 'App identity and environment details';
 
   @override
   String get app_name_title => 'Nom de l\'application';
@@ -606,16 +608,22 @@ class AppLocalizationsFr extends AppLocalizations {
   String get os_version => 'Version de l\'OS';
 
   @override
-  String get debug_mode => 'Mode débogage';
+  String get app_mode => 'App Mode';
 
   @override
   String get technologies_used => 'Technologies utilisées';
 
   @override
-  String get dart_sdk => 'Dart SDK';
+  String get release => 'Release';
 
   @override
-  String get flutter_sdk => 'Flutter SDK';
+  String get debug => 'Debug';
+
+  @override
+  String get dart_sdk => 'Dart Language';
+
+  @override
+  String get flutter_sdk => 'Flutter Framework';
 
   @override
   String get installation_information => 'Informations d\'installation';

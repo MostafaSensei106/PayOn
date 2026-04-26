@@ -1,1 +1,24 @@
-{}
+{
+  "de": [
+    "app_identity",
+    "about_app_subtitle",
+    "app_mode",
+    "release",
+    "debug"
+  ],
+
+  "fr": [
+    "about_app_subtitle",
+    "app_mode",
+    "release",
+    "debug"
+  ],
+
+  "ja": [
+    "app_identity",
+    "about_app_subtitle",
+    "app_mode",
+    "release",
+    "debug"
+  ]
+}

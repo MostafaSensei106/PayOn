@@ -39,17 +39,15 @@ class SidePageAppBarComponent extends StatelessWidget
 
   @override
   Widget build(final BuildContext context) => AppBar(
-    title: Text(title),
-
-    centerTitle: true,
-    scrolledUnderElevation: 0,
-    elevation: 0,
     leading: _buildSidePageAppBarIcon(
       context,
       cheakLocation(context)
           ? Icons.keyboard_double_arrow_right_rounded
           : Icons.keyboard_double_arrow_left_rounded,
     ),
+    title: Text(title),
+    backgroundColor: Theme.of(context).colorScheme.surface,
+    foregroundColor: Theme.of(context).colorScheme.onSurface,
     actions: actions,
   );
 

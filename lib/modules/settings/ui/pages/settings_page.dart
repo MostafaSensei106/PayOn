@@ -118,8 +118,8 @@ final class SettingsPage extends HookWidget {
             ),
             SettingsTileData(
               title: l10n.about_app,
-              subtitle: l10n.app_version,
-              leading: Iconsax.info_circle_copy,
+              subtitle: l10n.about_app_subtitle,
+              leading: Iconsax.information_copy,
               onTap: () => const AboutAppRoute().push<void>(context),
             ),
             SettingsTileData(

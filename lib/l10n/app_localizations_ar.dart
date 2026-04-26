@@ -563,7 +563,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get app_version_title => 'إصدار التطبيق';
 
   @override
-  String get app_identity_and_version => 'هوية وإصدار التطبيق';
+  String get app_identity => 'هوية التطبيق';
+
+  @override
+  String get about_app_subtitle => 'تعرف أكثر على التطبيق';
 
   @override
   String get app_name_title => 'اسم التطبيق';
@@ -584,19 +587,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get operating_system => 'نظام التشغيل';
 
   @override
-  String get os_version => 'إصدار نظام التشغيل';
+  String get os_version => 'إصدار النظام';
 
   @override
-  String get debug_mode => 'وضع التصحيح';
+  String get app_mode => 'وضع التطبيق';
 
   @override
-  String get technologies_used => 'التقنيات المستخدمة';
+  String get technologies_used => 'مبني باستخدام';
 
   @override
-  String get dart_sdk => 'Dart SDK';
+  String get release => 'إصدار نهائي';
 
   @override
-  String get flutter_sdk => 'Flutter SDK';
+  String get debug => 'نسخة المطورين';
+
+  @override
+  String get dart_sdk => 'Dart Language';
+
+  @override
+  String get flutter_sdk => 'Flutter Framework';
 
   @override
   String get installation_information => 'معلومات التثبيت';

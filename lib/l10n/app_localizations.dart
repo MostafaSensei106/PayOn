@@ -1184,11 +1184,17 @@ abstract class AppLocalizations {
   /// **'App Version'**
   String get app_version_title;
 
-  /// No description provided for @app_identity_and_version.
+  /// No description provided for @app_identity.
   ///
   /// In en, this message translates to:
-  /// **'App Identity & Version'**
-  String get app_identity_and_version;
+  /// **'App Identity'**
+  String get app_identity;
+
+  /// No description provided for @about_app_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'App identity and environment details'**
+  String get about_app_subtitle;
 
   /// No description provided for @app_name_title.
   ///
@@ -1232,28 +1238,40 @@ abstract class AppLocalizations {
   /// **'OS Version'**
   String get os_version;
 
-  /// No description provided for @debug_mode.
+  /// No description provided for @app_mode.
   ///
   /// In en, this message translates to:
-  /// **'Debug Mode'**
-  String get debug_mode;
+  /// **'App Mode'**
+  String get app_mode;
 
   /// No description provided for @technologies_used.
   ///
   /// In en, this message translates to:
-  /// **'Technologies Used'**
+  /// **'Built With'**
   String get technologies_used;
+
+  /// No description provided for @release.
+  ///
+  /// In en, this message translates to:
+  /// **'Release'**
+  String get release;
+
+  /// No description provided for @debug.
+  ///
+  /// In en, this message translates to:
+  /// **'Debug'**
+  String get debug;
 
   /// No description provided for @dart_sdk.
   ///
   /// In en, this message translates to:
-  /// **'Dart SDK'**
+  /// **'Dart Language'**
   String get dart_sdk;
 
   /// No description provided for @flutter_sdk.
   ///
   /// In en, this message translates to:
-  /// **'Flutter SDK'**
+  /// **'Flutter Framework'**
   String get flutter_sdk;
 
   /// No description provided for @installation_information.
