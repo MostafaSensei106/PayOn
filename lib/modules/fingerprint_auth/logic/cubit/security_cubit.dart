@@ -23,8 +23,9 @@ final class SecurityCubit extends Cubit<SecurityState> {
     try {
       final settings = _repo.getBiometricsSettings();
       final isSupported = await _biometricsService.isBiometricsAvailable();
+      final updatedSettings = settings.copyWith(isDeviceSupported: isSupported);
       if (isSupported) {
-        emit(SecurityState.success(settings));
+        emit(SecurityState.success(updatedSettings));
       } else {
         emit(
           SecurityState.success(
