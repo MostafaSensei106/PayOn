@@ -18,9 +18,9 @@ import '../../modules/get_started/logic/cubit/register/register_cubit.dart';
 import '../../modules/login/data/repositories/base_login_repository.dart';
 import '../../modules/login/data/repositories/login_repository.dart';
 import '../../modules/login/logic/cubit/login_cubit.dart';
-import '../localization/data/base_localization_repository.dart';
-import '../localization/data/localization_repository.dart';
-import '../localization/logic/cubit/localization_cubit.dart';
+import '../utils/localization/data/base_localization_repository.dart';
+import '../utils/localization/data/localization_repository.dart';
+import '../utils/localization/logic/cubit/localization_cubit.dart';
 import '../networking/api_service/api_service.dart';
 import '../networking/dio_factory.dart';
 import '../services/app_info/app_info_services.dart';
@@ -41,9 +41,9 @@ import '../services/toast/base_toast_service.dart';
 import '../services/toast/toastification_service.dart';
 import '../services/url_launcher/base_url_launcher_services.dart';
 import '../services/url_launcher/url_launcher_service.dart';
-import '../theme/data/base_theme_repository.dart';
-import '../theme/data/theme_repository.dart';
-import '../theme/logic/cubit/theme_cubit.dart';
+import '../utils/theme/data/base_theme_repository.dart';
+import '../utils/theme/data/theme_repository.dart';
+import '../utils/theme/logic/cubit/theme_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 

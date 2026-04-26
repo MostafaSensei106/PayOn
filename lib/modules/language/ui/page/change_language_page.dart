@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/constants/svgs_images.dart';
 import '../../../../core/di/di.dart';
-import '../../../../core/localization/logic/cubit/localization_cubit.dart';
+import '../../../../core/utils/localization/logic/cubit/localization_cubit.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_widget_component.dart';
 import '../../../../core/widgets/display/svg/svg_component.dart';

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-import '../../model/app_info_model.dart';
+import '../../utils/model/app_info_model.dart';
 import 'base_app_info_service.dart';
 import 'base_package_info_adapter.dart';
 
