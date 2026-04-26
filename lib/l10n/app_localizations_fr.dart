@@ -57,6 +57,27 @@ class AppLocalizationsFr extends AppLocalizations {
   String get male => 'Homme';
 
   @override
+  String get biometric_title => 'Biometric Authentication';
+
+  @override
+  String get biometric_subtitle => 'Secure your account';
+
+  @override
+  String get biometric_not_supported =>
+      'Biometric authentication is not supported on this device or not enabled.';
+
+  @override
+  String get biometric_description =>
+      'Use your fingerprint or face recognition to log in quickly and securely.';
+
+  @override
+  String get enable_biometric_title => 'Enable Biometric Authentication';
+
+  @override
+  String get enable_biometric_subtitle =>
+      'Use your fingerprint or face recognition to log in';
+
+  @override
   String get female => 'Femme';
 
   @override

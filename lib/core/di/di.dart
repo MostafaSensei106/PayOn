@@ -6,6 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../modules/about_app/data/about_app_repsitory.dart';
 import '../../modules/about_app/data/base_about_app_repository.dart';
 import '../../modules/about_app/logic/cubit/about_app_cubit.dart';
+import '../../modules/fingerprint_auth/data/repository/base_security_repository.dart';
+import '../../modules/fingerprint_auth/data/repository/security_ropository.dart';
+import '../../modules/fingerprint_auth/logic/cubit/security_cubit.dart';
 import '../../modules/get_started/data/repositories/account_type/account_type_repository.dart';
 import '../../modules/get_started/data/repositories/account_type/base_account_type_repository.dart';
 import '../../modules/get_started/data/repositories/otp/base_otp_repository.dart';
@@ -18,9 +21,6 @@ import '../../modules/get_started/logic/cubit/register/register_cubit.dart';
 import '../../modules/login/data/repositories/base_login_repository.dart';
 import '../../modules/login/data/repositories/login_repository.dart';
 import '../../modules/login/logic/cubit/login_cubit.dart';
-import '../utils/localization/data/base_localization_repository.dart';
-import '../utils/localization/data/localization_repository.dart';
-import '../utils/localization/logic/cubit/localization_cubit.dart';
 import '../networking/api_service/api_service.dart';
 import '../networking/dio_factory.dart';
 import '../services/app_info/app_info_services.dart';
@@ -41,6 +41,9 @@ import '../services/toast/base_toast_service.dart';
 import '../services/toast/toastification_service.dart';
 import '../services/url_launcher/base_url_launcher_services.dart';
 import '../services/url_launcher/url_launcher_service.dart';
+import '../utils/localization/data/base_localization_repository.dart';
+import '../utils/localization/data/localization_repository.dart';
+import '../utils/localization/logic/cubit/localization_cubit.dart';
 import '../utils/theme/data/base_theme_repository.dart';
 import '../utils/theme/data/theme_repository.dart';
 import '../utils/theme/logic/cubit/theme_cubit.dart';
@@ -87,7 +90,7 @@ Future<void> init() async {
   getIt.registerLazySingleton<BaseLoginRepository>(
     () => LoginRepository(getIt<APIService>()),
   );
-  getIt.registerLazySingleton<LoginCubit>(
+  getIt.registerFactory<LoginCubit>(
     () => LoginCubit(getIt(), getIt(), getIt()),
   );
 
@@ -152,6 +155,18 @@ Future<void> init() async {
     () => LocalizationCubit(getIt<BaseLocalizationRepository>()),
   );
 
+  getIt.registerLazySingleton<BaseSecurityRepository>(
+    () => SecurityRopository(getIt<BasePrefsStorageService>()),
+  );
+
+  getIt.registerFactory<SecurityCubit>(
+    () => SecurityCubit(
+      repo: getIt<BaseSecurityRepository>(),
+      biometricsService: getIt<BaseBiometricsService>(),
+    ),
+  );
+
+  /// About AppfactoryFunc)
   getIt.registerFactory<BaseAboutAppRepository>(
     () => AboutAppRepsitory(getIt<BaseAppInfoService>()),
   );

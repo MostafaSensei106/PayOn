@@ -194,6 +194,42 @@ abstract class AppLocalizations {
   /// **'Male'**
   String get male;
 
+  /// No description provided for @biometric_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric Authentication'**
+  String get biometric_title;
+
+  /// No description provided for @biometric_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Secure your account'**
+  String get biometric_subtitle;
+
+  /// No description provided for @biometric_not_supported.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric authentication is not supported on this device or not enabled.'**
+  String get biometric_not_supported;
+
+  /// No description provided for @biometric_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your fingerprint or face recognition to log in quickly and securely.'**
+  String get biometric_description;
+
+  /// No description provided for @enable_biometric_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Biometric Authentication'**
+  String get enable_biometric_title;
+
+  /// No description provided for @enable_biometric_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your fingerprint or face recognition to log in'**
+  String get enable_biometric_subtitle;
+
   /// No description provided for @female.
   ///
   /// In en, this message translates to:

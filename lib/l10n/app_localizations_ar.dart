@@ -55,6 +55,27 @@ class AppLocalizationsAr extends AppLocalizations {
   String get male => 'ذكر';
 
   @override
+  String get biometric_title => 'المصادقة الحيوية';
+
+  @override
+  String get biometric_subtitle => 'تأمين حسابك';
+
+  @override
+  String get biometric_not_supported =>
+      'المصادقة الحيوية غير مدعومة على هذا الجهاز أو غير مفعلة.';
+
+  @override
+  String get biometric_description =>
+      'استخدم بصمة الإصبع أو التعرف على الوجه لتسجيل الدخول بسرعة وأمان.';
+
+  @override
+  String get enable_biometric_title => 'تفعيل المصادقة الحيوية';
+
+  @override
+  String get enable_biometric_subtitle =>
+      'استخدم بصمة الإصبع أو التعرف على الوجه لتسجيل الدخول';
+
+  @override
   String get female => 'أنثى';
 
   @override

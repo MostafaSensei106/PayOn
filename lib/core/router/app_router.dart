@@ -10,6 +10,7 @@ import '../../modules/about_app/ui/page/about_app_page.dart';
 import '../../modules/common_questions/ui/page/common_questions_page.dart';
 import '../../modules/contact_us/ui/page/contact_us_page.dart';
 import '../../modules/developer_team/ui/page/developer_team_page.dart';
+import '../../modules/fingerprint_auth/logic/cubit/security_cubit.dart';
 import '../../modules/fingerprint_auth/ui/page/fingerprint_auth_page.dart';
 import '../../modules/forget_password/ui/page/forget_password_page.dart';
 import '../../modules/get_started/logic/cubit/account_type/account_type_cubit.dart';
@@ -128,8 +129,10 @@ final class FingerprintAuthRoute extends CupertinoRouteData
   const FingerprintAuthRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const FingerprintAuthPage();
+  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
+    create: (_) => getIt<SecurityCubit>(),
+    child: const FingerprintAuthPage(),
+  );
 }
 
 @TypedGoRoute<SecurityAlertsRoute>(path: RoutesNames.securityAlerts)

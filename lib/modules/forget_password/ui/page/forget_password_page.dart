@@ -4,6 +4,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/router/app_router.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
 import '../../../../core/widgets/inputs/otp_field/otp_field_component.dart';
@@ -50,7 +51,7 @@ class ForgetPasswordPage extends HookWidget {
                       FilledButtonComponent(
                         label: l10n.send,
                         onPressed: () {
-                          pageController.jumpTo(1);
+                          const HomeRoute().go(context);
                         },
                       ),
                     ],
