@@ -67,6 +67,7 @@ flutter:
     fonts:
     - asset: assets/fonts/ar/Rubik/static/Rubik-Regular.ttf
     - asset: assets/fonts/ar/Rubik/static/Rubik-Italic.ttf
+    - asset: assets/fonts/ar/Rubik/static/Rubik-Italic.ttf
     - asset: assets/fonts/ar/Rubik/static/Rubik-Light.ttf
     - asset: assets/fonts/ar/Rubik/static/Rubik-LightItalic.ttf
     - asset: assets/fonts/ar/Rubik/static/Rubik-Medium.ttf
