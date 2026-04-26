@@ -48,9 +48,7 @@ class FingerprintAuthPage extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(
-                    height: 48,
-                  ), // مسافة كبيرة تفصل الشرح عن الأكشن
+                  const SizedBox(height: 48),
                   Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
