@@ -30,35 +30,35 @@ final class SettingsPage extends HookWidget {
             title: l10n.settings,
           ),
 
-          _buildSectionHeader(context, l10n.account_and_security),
+          _buildSectionHeader(context, l10n.account_security),
           _buildSectionItems([
             SettingsTileData(
               title: l10n.edit_profile,
-              subtitle: l10n.edit_profile_subtitle,
+              subtitle: l10n.edit_profile_desc,
               leading: Iconsax.user_copy,
               onTap: () {},
             ),
             SettingsTileData(
               title: l10n.confirm_password,
-              subtitle: l10n.change_password_subtitle,
+              subtitle: l10n.change_password_desc,
               leading: Iconsax.lock_copy,
               onTap: () => const ChangePasswordRoute().push<void>(context),
             ),
             SettingsTileData(
-              title: l10n.two_factor_auth_title,
-              subtitle: l10n.two_factor_auth_subtitle,
+              title: l10n.two_factor_auth,
+              subtitle: l10n.two_factor_auth_desc,
               leading: Iconsax.shield_tick_copy,
               onTap: () => const TwoFactorAuthRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.biometric_login,
-              subtitle: l10n.biometric_login_subtitle,
+              subtitle: l10n.biometric_login_desc_settings,
               leading: Iconsax.finger_scan_copy,
               onTap: () => const FingerprintAuthRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.security_alerts,
-              subtitle: l10n.security_alerts_subtitle,
+              subtitle: l10n.security_alerts_desc,
               leading: Iconsax.security_safe_copy,
               onTap: () => const SecurityAlertsRoute().push<void>(context),
             ),
@@ -74,29 +74,29 @@ final class SettingsPage extends HookWidget {
             ),
             SettingsTileData(
               title: l10n.appearance,
-              subtitle: l10n.appearance_subtitle,
+              subtitle: l10n.appearance_desc,
               leading: Iconsax.magicpen_copy,
               onTap: () => const ChangeThemeRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.notification_settings,
-              subtitle: l10n.notification_settings_subtitle,
+              subtitle: l10n.notification_settings_desc,
               leading: Iconsax.notification_copy,
               onTap: () => const NotificationsRoute().push<void>(context),
             ),
           ]),
 
-          _buildSectionHeader(context, l10n.help_and_support),
+          _buildSectionHeader(context, l10n.help_support),
           _buildSectionItems([
             SettingsTileData(
               title: l10n.faq,
-              subtitle: l10n.faq_subtitle,
+              subtitle: l10n.faq_desc,
               leading: Iconsax.message_question_copy,
               onTap: () => const CommonQuestionsRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.contact_us,
-              subtitle: l10n.contact_us_subtitle,
+              subtitle: l10n.contact_us_desc,
               leading: Iconsax.call_calling_copy,
               onTap: () => const ContactUsRoute().push<void>(context),
             ),
@@ -106,25 +106,25 @@ final class SettingsPage extends HookWidget {
           _buildSectionItems([
             SettingsTileData(
               title: l10n.privacy_policy,
-              subtitle: l10n.privacy_policy_subtitle,
+              subtitle: l10n.privacy_policy_desc,
               leading: Iconsax.security_user_copy,
               onTap: () => const PrivacyPolicyRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.terms_and_conditions,
-              subtitle: l10n.terms_and_conditions_subtitle,
+              subtitle: l10n.terms_and_conditions_desc,
               leading: Iconsax.document_text_copy,
               onTap: () => const TermsAndConditionsRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.about_app,
-              subtitle: l10n.about_app_subtitle,
+              subtitle: l10n.about_app_desc,
               leading: Iconsax.information_copy,
               onTap: () => const AboutAppRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.about_developers,
-              subtitle: l10n.about_developers_subtitle,
+              subtitle: l10n.about_developers_desc,
               leading: Iconsax.code_copy,
               onTap: () => const DeveloperTeamRoute().push<void>(context),
             ),
@@ -134,7 +134,7 @@ final class SettingsPage extends HookWidget {
           _buildSectionItems([
             SettingsTileData(
               title: l10n.logout,
-              subtitle: l10n.logout_subtitle,
+              subtitle: l10n.logout_desc,
               leading: Iconsax.logout_copy,
               onTap: () {
                 // TODO: Implement logout logic

@@ -192,7 +192,7 @@ class SendMoneyPage extends HookWidget {
                 TextFormFieldComponent(
                   label: selectedMethod.value == SendMoneyMethod.phone
                       ? l10n.phone_number
-                      : l10n.iPA,
+                      : l10n.ipa,
                   hintText: selectedMethod.value == SendMoneyMethod.phone
                       ? l10n.phone_number_hint
                       : l10n.ipa_hint,

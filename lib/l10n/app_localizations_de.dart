@@ -9,27 +9,27 @@ class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
-  String get welcome_title => 'Willkommen';
+  String get welcome => 'Willkommen';
 
   @override
-  String get send_money_title => 'Geld sofort senden';
+  String get send_money_instantly => 'Geld sofort senden';
 
   @override
-  String get send_money_subtitle =>
+  String get send_money_instantly_desc =>
       'Senden Sie Geld sofort an Ihre Freunde und Familie';
 
   @override
-  String get secure_payments_title => 'Sichere Zahlungen';
+  String get secure_payments => 'Sichere Zahlungen';
 
   @override
-  String get secure_payments_subtitle =>
+  String get secure_payments_desc =>
       'Ihre Transaktionen sind durch bankübliche Sicherheit geschützt';
 
   @override
-  String get track_everything_title => 'Alles im Blick';
+  String get track_everything => 'Alles im Blick';
 
   @override
-  String get track_everything_subtitle =>
+  String get track_everything_desc =>
       'Überwachen Sie Ihre Ausgaben und Ersparnisse';
 
   @override
@@ -48,7 +48,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get welcome_back => 'Willkommen zurück!';
 
   @override
-  String get login_subtitle =>
+  String get login_desc =>
       'Melden Sie sich bei Ihrem Konto an, um fortzufahren';
 
   @override
@@ -58,25 +58,38 @@ class AppLocalizationsDe extends AppLocalizations {
   String get male => 'Männlich';
 
   @override
-  String get biometric_title => 'Biometric Authentication';
+  String get biometric_auth => 'Biometrische Authentifizierung';
 
   @override
-  String get biometric_subtitle => 'Secure your account';
+  String get biometric_auth_desc => 'Sichern Sie Ihr Konto';
+
+  @override
+  String get fingerprint_auth => 'Fingerabdruck-Authentifizierung';
+
+  @override
+  String get fingerprint_auth_desc =>
+      'Verwenden Sie Ihren Fingerabdruck zur Authentifizierung';
+
+  @override
+  String get or => 'oder';
+
+  @override
+  String get face_id => 'Face ID';
 
   @override
   String get biometric_not_supported =>
-      'Biometric authentication is not supported on this device or not enabled.';
+      'Biometrische Authentifizierung wird auf diesem Gerät nicht unterstützt oder ist nicht aktiviert.';
 
   @override
-  String get biometric_description =>
-      'Use your fingerprint or face recognition to log in quickly and securely.';
+  String get biometric_login_desc =>
+      'Verwenden Sie Ihren Fingerabdruck oder die Gesichtserkennung, um sich schnell und sicher anzumelden.';
 
   @override
-  String get enable_biometric_title => 'Enable Biometric Authentication';
+  String get enable_biometric => 'Biometrische Authentifizierung aktivieren';
 
   @override
-  String get enable_biometric_subtitle =>
-      'Use your fingerprint or face recognition to log in';
+  String get enable_biometric_desc =>
+      'Verwenden Sie Ihren Fingerabdruck oder die Gesichtserkennung, um sich anzumelden';
 
   @override
   String get female => 'Weiblich';
@@ -94,18 +107,18 @@ class AppLocalizationsDe extends AppLocalizations {
   String get password => 'Passwort';
 
   @override
-  String get terms_and_conditions_subtitle =>
+  String get terms_and_conditions_desc =>
       'Bitte lesen Sie unsere Allgemeinen Geschäftsbedingungen sorgfältig durch';
 
   @override
   String get forgot_password => 'Passwort vergessen?';
 
   @override
-  String get manage_finances_title =>
+  String get manage_finances =>
       'Verwalten Sie Ihre Finanzen\neinfach und sicher';
 
   @override
-  String get manage_finances_subtitle =>
+  String get manage_finances_desc =>
       'Der sicherste und schnellste Weg, weltweit Geld zu senden und zu empfangen.';
 
   @override
@@ -190,7 +203,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get language_name => 'Deutsch';
 
   @override
-  String get language_subtitle => 'German';
+  String get language_desc => 'German';
 
   @override
   String get country_code => 'DE';
@@ -244,7 +257,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get favorites => 'Favoriten';
 
   @override
-  String get iPA => 'IPA';
+  String get ipa => 'IPA';
 
   @override
   String get privacy_policy => 'Datenschutzerklärung';
@@ -295,7 +308,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get next => 'Weiter';
 
   @override
-  String get tier_1_title => 'Stufe 1: Basis-Verifizierung';
+  String get tier_1_verification => 'Stufe 1: Basis-Verifizierung';
 
   @override
   String get full_name_id => 'Vollständiger Name (wie im Ausweis)';
@@ -307,7 +320,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get nationality => 'Nationalität';
 
   @override
-  String get tier_2_title => 'Stufe 2: Identitätsdokument';
+  String get tier_2_verification => 'Stufe 2: Identitätsdokument';
 
   @override
   String get national_id_passport => 'Personalausweis- / Reisepassnummer';
@@ -319,7 +332,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get upload_id => 'Regierungsausweis hochladen';
 
   @override
-  String get tier_3_title => 'Stufe 3: Adressverifizierung';
+  String get tier_3_verification => 'Stufe 3: Adressverifizierung';
 
   @override
   String get residential_address => 'Wohnanschrift';
@@ -341,65 +354,66 @@ class AppLocalizationsDe extends AppLocalizations {
   String get resend_code => 'Code erneut senden';
 
   @override
-  String get i_accept_terms_and_conditions =>
+  String get accept_terms =>
       'Ich akzeptiere die Allgemeinen Geschäftsbedingungen';
 
   @override
-  String get please_read_terms_and_conditions =>
+  String get read_terms_desc =>
       'Bitte lesen Sie die Allgemeinen Geschäftsbedingungen';
 
   @override
-  String get i_accept_privacy_policy =>
+  String get accept_privacy_policy =>
       'Ich akzeptiere die Datenschutzbestimmungen';
 
   @override
   String get accept_all => 'Alle akzeptieren';
 
   @override
-  String get email_empty => 'E-Mail darf nicht leer sein';
+  String get error_email_empty => 'E-Mail darf nicht leer sein';
 
   @override
-  String get email_missing_at_sign => 'In der E-Mail fehlt das @-Zeichen';
+  String get error_email_missing_at => 'In der E-Mail fehlt das @-Zeichen';
 
   @override
-  String get email_invalid => 'E-Mail ist ungültig';
+  String get error_email_invalid => 'E-Mail ist ungültig';
 
   @override
-  String get email_already_exists => 'E-Mail existiert bereits';
+  String get error_email_exists => 'E-Mail existiert bereits';
 
   @override
-  String get email_not_found => 'E-Mail nicht gefunden';
+  String get error_email_not_found => 'E-Mail nicht gefunden';
 
   @override
-  String get email_not_lower_case =>
+  String get error_email_lowercase =>
       'E-Mail muss in Kleinbuchstaben geschrieben sein';
 
   @override
-  String get email_not_valid => 'E-Mail ist nicht gültig';
+  String get error_email_not_valid => 'E-Mail ist nicht gültig';
 
   @override
-  String get email_missing_domain => 'In der E-Mail fehlt die Domain';
+  String get error_email_missing_domain => 'In der E-Mail fehlt die Domain';
 
   @override
-  String get email_missing_dot => 'In der E-Mail fehlt der Punkt (.)';
+  String get error_email_missing_dot => 'In der E-Mail fehlt der Punkt (.)';
 
   @override
-  String get email_missing_extension => 'In der E-Mail fehlt die Erweiterung';
+  String get error_email_missing_extension =>
+      'In der E-Mail fehlt die Erweiterung';
 
   @override
-  String get password_empty => 'Passwort darf nicht leer sein';
+  String get error_password_empty => 'Passwort darf nicht leer sein';
 
   @override
-  String get user_name_can_not_be_empty => 'Benutzername darf nicht leer sein';
+  String get error_username_empty => 'Benutzername darf nicht leer sein';
 
   @override
-  String get user_name_already_exists => 'Benutzername existiert bereits';
+  String get error_username_exists => 'Benutzername existiert bereits';
 
   @override
-  String get user_name_not_found => 'Benutzername nicht gefunden';
+  String get error_username_not_found => 'Benutzername nicht gefunden';
 
   @override
-  String get user_name_not_valid => 'Benutzername ist nicht gültig';
+  String get error_username_invalid => 'Benutzername ist nicht gültig';
 
   @override
   String get payment_methods => 'Zahlungsmethoden';
@@ -411,84 +425,83 @@ class AppLocalizationsDe extends AppLocalizations {
   String get add_card => 'Karte hinzufügen';
 
   @override
-  String get password_can_not_have_spaces =>
+  String get error_password_spaces =>
       'Passwort darf keine Leerzeichen enthalten';
 
   @override
-  String get user_name_arbic_not_allowed =>
+  String get error_username_arabic =>
       'Benutzername darf keine arabischen Zeichen enthalten';
 
   @override
-  String get user_name_is_too_long_max_20_characters =>
+  String get error_username_too_long =>
       'Benutzername ist zu lang (maximal 20 Zeichen)';
 
   @override
-  String get user_name_is_too_short_min_3_characters =>
+  String get error_username_too_short =>
       'Benutzername ist zu kurz (mindestens 3 Zeichen)';
 
   @override
-  String get user_name_can_not_have_spaces =>
+  String get error_username_spaces =>
       'Benutzername darf keine Leerzeichen enthalten';
 
   @override
-  String get user_name_can_not_have_special_characters =>
+  String get error_username_special_chars =>
       'Benutzername darf keine Sonderzeichen enthalten';
 
   @override
-  String get user_name_can_not_have_emojis =>
+  String get error_username_emojis =>
       'Benutzername darf keine Emojis enthalten';
 
   @override
-  String get please_read_privacy_policy =>
+  String get read_privacy_policy_desc =>
       'Bitte lesen Sie die Datenschutzbestimmungen';
 
   @override
-  String get password_can_not_be_empty => 'Passwort darf nicht leer sein';
+  String get error_password_empty_alt => 'Passwort darf nicht leer sein';
 
   @override
-  String get password_is_too_short_min_8_characters =>
+  String get error_password_too_short =>
       'Passwort ist zu kurz (mindestens 8 Zeichen)';
 
   @override
-  String get password_can_not_have_emojis =>
-      'Passwort darf keine Emojis enthalten';
+  String get error_password_emojis => 'Passwort darf keine Emojis enthalten';
 
   @override
-  String get password_not_valid => 'Passwort ist nicht gültig';
+  String get error_password_invalid => 'Passwort ist nicht gültig';
 
   @override
-  String get account_and_security => 'Konto & Sicherheit';
+  String get account_security => 'Konto & Sicherheit';
 
   @override
   String get edit_profile => 'Profil bearbeiten';
 
   @override
-  String get edit_profile_subtitle =>
+  String get edit_profile_desc =>
       'Aktualisieren Sie Ihre persönlichen Daten und Ihr Foto';
 
   @override
-  String get change_password_subtitle =>
+  String get change_password_desc =>
       'Aktualisieren Sie den Geheimcode Ihres Kontos';
 
   @override
-  String get two_factor_auth_title => 'Zwei-Faktor-Authentisierung (2FA)';
+  String get two_factor_auth => 'Zwei-Faktor-Authentisierung (2FA)';
 
   @override
-  String get two_factor_auth_subtitle =>
+  String get two_factor_auth_desc =>
       'Fügen Sie Ihrem Konto eine zusätzliche Schutzschicht hinzu';
 
   @override
   String get biometric_login => 'Biometrisches Login';
 
   @override
-  String get biometric_login_subtitle =>
+  String get biometric_login_desc_settings =>
       'Fingerabdruck- oder Gesichtserkennung aktivieren';
 
   @override
   String get security_alerts => 'Sicherheitswarnungen';
 
   @override
-  String get security_alerts_subtitle =>
+  String get security_alerts_desc =>
       'Benachrichtigungen über ungewöhnliche Anmeldeversuche';
 
   @override
@@ -498,20 +511,20 @@ class AppLocalizationsDe extends AppLocalizations {
   String get appearance => 'Erscheinungsbild';
 
   @override
-  String get appearance_subtitle => 'Systemstandard (Hell/Dunkel)';
+  String get appearance_desc => 'Systemstandard (Hell/Dunkel)';
 
   @override
   String get notification_settings => 'Benachrichtigungseinstellungen';
 
   @override
-  String get notification_settings_subtitle =>
+  String get notification_settings_desc =>
       'Benachrichtigungen und Töne steuern';
 
   @override
-  String get help_and_support => 'Hilfe & Support';
+  String get help_support => 'Hilfe & Support';
 
   @override
-  String get logout_subtitle => 'Melden Sie sich von Ihrem Konto ab';
+  String get logout_desc => 'Melden Sie sich von Ihrem Konto ab';
 
   @override
   String get faq => 'FAQ';
@@ -520,21 +533,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get account_actions => 'Kontoaktionen';
 
   @override
-  String get faq_subtitle =>
-      'Antworten auf die am häufigsten gestellten Fragen';
+  String get faq_desc => 'Antworten auf die am häufigsten gestellten Fragen';
 
   @override
   String get contact_us => 'Kontaktieren Sie uns';
 
   @override
-  String get contact_us_subtitle =>
-      'Das Support-Team steht Ihnen zur Verfügung';
+  String get contact_us_desc => 'Das Support-Team steht Ihnen zur Verfügung';
 
   @override
   String get about => 'Über';
 
   @override
-  String get privacy_policy_subtitle => 'Wie wir Ihre Daten schützen';
+  String get privacy_policy_desc => 'Wie wir Ihre Daten schützen';
 
   @override
   String get about_app => 'Über die App';
@@ -546,8 +557,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get about_developers => 'Über die Entwickler';
 
   @override
-  String get about_developers_subtitle =>
-      'Lernen Sie das Entwicklungsteam kennen';
+  String get about_developers_desc => 'Lernen Sie das Entwicklungsteam kennen';
 
   @override
   String get app_appearance => 'App-Erscheinungsbild';
@@ -556,19 +566,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get light_mode => 'Hell';
 
   @override
-  String get light_mode_subtitle => 'Immer helles Erscheinungsbild verwenden';
+  String get light_mode_desc => 'Immer helles Erscheinungsbild verwenden';
 
   @override
   String get dark_mode => 'Dunkel';
 
   @override
-  String get dark_mode_subtitle => 'Immer dunkles Erscheinungsbild verwenden';
+  String get dark_mode_desc => 'Immer dunkles Erscheinungsbild verwenden';
 
   @override
   String get system_mode => 'System';
 
   @override
-  String get system_mode_subtitle =>
+  String get system_mode_desc =>
       'Erscheinungsbild automatisch an die Geräteeinstellungen anpassen';
 
   @override
@@ -599,16 +609,16 @@ class AppLocalizationsDe extends AppLocalizations {
   String get amount_hint => '0.00';
 
   @override
-  String get app_version_title => 'App-Version';
+  String get app_version_label => 'App-Version';
 
   @override
-  String get app_identity => 'App Identity';
+  String get app_identity => 'App-Identität';
 
   @override
-  String get about_app_subtitle => 'App identity and environment details';
+  String get about_app_desc => 'Details zur Identität und Umgebung';
 
   @override
-  String get app_name_title => 'App-Name';
+  String get app_name_label => 'App-Name';
 
   @override
   String get package_name => 'Paketname';
@@ -629,10 +639,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get os_version => 'OS-Version';
 
   @override
-  String get app_mode => 'App Mode';
+  String get app_mode => 'App-Modus';
 
   @override
-  String get technologies_used => 'Verwendete Technologien';
+  String get built_with => 'Verwendete Technologien';
 
   @override
   String get release => 'Release';
@@ -647,7 +657,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get flutter_sdk => 'Flutter Framework';
 
   @override
-  String get installation_information => 'Installationsinformationen';
+  String get install_info => 'Installationsinformationen';
 
   @override
   String get installer_store => 'Installer-Store';

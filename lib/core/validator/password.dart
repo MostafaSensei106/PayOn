@@ -37,15 +37,15 @@ extension PasswordErrorExtension on PasswordError {
     final l10n = getIt<L10nService>().get(context);
     switch (this) {
       case PasswordError.empty:
-        return l10n.password_can_not_be_empty;
+        return l10n.error_password_empty;
       case PasswordError.tooShort:
-        return l10n.password_is_too_short_min_8_characters;
+        return l10n.error_password_too_short;
       case PasswordError.hasEmojes:
-        return l10n.password_can_not_have_emojis;
+        return l10n.error_password_emojis;
       case PasswordError.hasSpaces:
-        return l10n.password_can_not_have_spaces;
+        return l10n.error_password_spaces;
       case PasswordError.invalid:
-        return l10n.password_not_valid;
+        return l10n.error_password_invalid;
     }
   }
 }

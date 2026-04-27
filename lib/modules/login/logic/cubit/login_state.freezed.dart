@@ -9,7 +9,7 @@ part of 'login_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
+// dart format of
 T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LoginState<T> {

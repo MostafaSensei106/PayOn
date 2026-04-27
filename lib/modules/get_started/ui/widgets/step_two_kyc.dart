@@ -45,7 +45,7 @@ class StepTwoKYC extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              l10n.tier_1_title,
+              l10n.tier_1_verification,
               style: Theme.of(
                 context,
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -144,7 +144,7 @@ class StepTwoKYC extends StatelessWidget {
               onChanged: registerCubit.nationalityOnChanged,
             ),
             Text(
-              l10n.tier_2_title,
+              l10n.tier_2_verification,
               style: Theme.of(
                 context,
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -162,7 +162,7 @@ class StepTwoKYC extends StatelessWidget {
               onPressed: () => _pickFile(context, true),
             ),
             Text(
-              l10n.tier_3_title,
+              l10n.tier_3_verification,
               style: Theme.of(
                 context,
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),

@@ -46,7 +46,7 @@ class ChangeLanguagePage extends StatelessWidget {
                     final localeData = lookupAppLocalizations(locale);
 
                     final title = localeData.language_name;
-                    final subtitle = localeData.language_subtitle;
+                    final subtitle = localeData.language_desc;
                     final countryCode = localeData.country_code;
 
                     final isFirst = index == 0;

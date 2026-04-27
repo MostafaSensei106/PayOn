@@ -29,10 +29,11 @@ class FingerprintAuthPage extends StatelessWidget {
                 horizontal: AppConfig.padding,
               ),
               child: Column(
+                spacing: AppConfig.margin,
                 children: [
                   const SvgComponent(path: SvgsImages.fingerprintSvg),
                   Text(
-                    l10n.biometric_title,
+                    l10n.biometric_auth,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -40,52 +41,35 @@ class FingerprintAuthPage extends StatelessWidget {
                   ),
 
                   Text(
-                    l10n.biometric_description,
+                    l10n.biometric_login_desc,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey.shade600,
-                      height: 1.6,
-                    ),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
+                  const SizedBox(height: AppConfig.margin),
 
-                  const SizedBox(height: 48),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Colors.grey.withOpacity(0.15)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.02),
-                          blurRadius: 10,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: settings.isDeviceSupported
-                        ? ListTileIconComponent(
-                            leading: Iconsax.finger_cricle_copy,
-                            title: l10n.enable_biometric_title,
-                            subtitle: l10n.enable_biometric_subtitle,
-                            trailing: Switch(
-                              value: settings.isFingerprintEnabled,
-                              onChanged: (value) async {
-                                await context
-                                    .read<SecurityCubit>()
-                                    .toggleBiometricsStatus(isEnabled: value);
-                              },
-                            ),
-                            onTap: () => context
-                                .read<SecurityCubit>()
-                                .toggleBiometricsStatus(
-                                  isEnabled: !settings.isFingerprintEnabled,
-                                ),
-                          )
-                        : ListTile(
-                            title: Text(l10n.biometric_not_supported),
-                            leading: const Icon(Iconsax.info_circle_copy),
+                  settings.isDeviceSupported
+                      ? ListTileIconComponent(
+                          leading: Iconsax.finger_cricle_copy,
+                          title: l10n.fingerprint_auth,
+                          subtitle: l10n.fingerprint_auth_desc,
+                          trailing: Switch(
+                            value: settings.isFingerprintEnabled,
+                            onChanged: (value) async {
+                              await context
+                                  .read<SecurityCubit>()
+                                  .toggleBiometricsStatus(isEnabled: value);
+                            },
                           ),
-                  ),
+                          onTap: () => context
+                              .read<SecurityCubit>()
+                              .toggleBiometricsStatus(
+                                isEnabled: !settings.isFingerprintEnabled,
+                              ),
+                        )
+                      : ListTile(
+                          title: Text(l10n.biometric_not_supported),
+                          leading: const Icon(Iconsax.info_circle_copy),
+                        ),
                 ],
               ),
             ),

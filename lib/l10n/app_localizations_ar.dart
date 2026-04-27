@@ -9,26 +9,27 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get welcome_title => 'أهلاً بك';
+  String get welcome => 'مرحباً بك';
 
   @override
-  String get send_money_title => 'أرسل المال فوراً';
+  String get send_money_instantly => 'إرسال أموال فوري';
 
   @override
-  String get send_money_subtitle =>
-      'أرسل الأموال إلى أصدقائك وعائلتك على الفور';
+  String get send_money_instantly_desc =>
+      'أرسل الأموال إلى الأصدقاء والعائلة فوراً';
 
   @override
-  String get secure_payments_title => 'مدفوعات آمنة';
+  String get secure_payments => 'مدفوعات آمنة';
 
   @override
-  String get secure_payments_subtitle => 'معاملاتك محمية بمعايير أمان مصرفية';
+  String get secure_payments_desc =>
+      'عملياتك محمية بأعلى معايير الأمان المصرفي';
 
   @override
-  String get track_everything_title => 'تتبع كل شيء';
+  String get track_everything => 'تتبع معاملاتك';
 
   @override
-  String get track_everything_subtitle => 'راقب نفقاتك ومدخراتك';
+  String get track_everything_desc => 'راقب مصروفاتك ومدخراتك بسهولة';
 
   @override
   String get english => 'الإنجليزية';
@@ -43,10 +44,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get login => 'تسجيل الدخول';
 
   @override
-  String get welcome_back => 'مرحباً بعودتك!';
+  String get welcome_back => 'مرحباً بعودتك';
 
   @override
-  String get login_subtitle => 'سجل الدخول إلى حسابك للمتابعة';
+  String get login_desc => 'سجل الدخول للمتابعة';
 
   @override
   String get email_address => 'البريد الإلكتروني';
@@ -55,31 +56,42 @@ class AppLocalizationsAr extends AppLocalizations {
   String get male => 'ذكر';
 
   @override
-  String get biometric_title => 'المصادقة الحيوية';
+  String get biometric_auth => 'المصادقة الحيوية';
 
   @override
-  String get biometric_subtitle => 'تأمين حسابك';
+  String get biometric_auth_desc => 'تأمين حسابك بالبصمة أو الوجه';
+
+  @override
+  String get fingerprint_auth => 'بصمة الإصبع';
+
+  @override
+  String get fingerprint_auth_desc => 'استخدم بصمة الإصبع للتحقق';
+
+  @override
+  String get or => 'أو';
+
+  @override
+  String get face_id => 'بصمة الوجه';
 
   @override
   String get biometric_not_supported =>
-      'المصادقة الحيوية غير مدعومة على هذا الجهاز أو غير مفعلة.';
+      'المصادقة الحيوية غير مدعومة أو غير مفعلة';
 
   @override
-  String get biometric_description =>
-      'استخدم بصمة الإصبع أو التعرف على الوجه لتسجيل الدخول بسرعة وأمان.';
+  String get biometric_login_desc =>
+      'استخدم البصمة أو الوجه للدخول السريع والآمن';
 
   @override
-  String get enable_biometric_title => 'تفعيل المصادقة الحيوية';
+  String get enable_biometric => 'تفعيل المصادقة الحيوية';
 
   @override
-  String get enable_biometric_subtitle =>
-      'استخدم بصمة الإصبع أو التعرف على الوجه لتسجيل الدخول';
+  String get enable_biometric_desc => 'استخدم البصمة أو الوجه لتسجيل الدخول';
 
   @override
   String get female => 'أنثى';
 
   @override
-  String get none => 'لا يوجد';
+  String get none => 'بلا';
 
   @override
   String get other => 'آخر';
@@ -91,21 +103,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get password => 'كلمة المرور';
 
   @override
-  String get terms_and_conditions_subtitle =>
-      'يرجى قراءة الشروط والأحكام الخاصة بنا بعناية';
+  String get terms_and_conditions_desc => 'يرجى قراءة الشروط والأحكام بعناية';
 
   @override
   String get forgot_password => 'نسيت كلمة المرور؟';
 
   @override
-  String get manage_finances_title => 'أدر أموالك\nبسهولة وأمان';
+  String get manage_finances => 'إدارة أموالك\nبسهولة وأمان';
 
   @override
-  String get manage_finances_subtitle =>
-      'الطريقة الأكثر أماناً وأسرع لإرسال واستلام الأموال عالمياً.';
+  String get manage_finances_desc =>
+      'أسرع وأكثر الطرق أماناً لإرسال واستلام الأموال';
 
   @override
-  String get lets_get_started => 'لنبدأ الآن';
+  String get lets_get_started => 'لنبدأ';
 
   @override
   String get home => 'الرئيسية';
@@ -123,7 +134,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get withdraw => 'سحب';
 
   @override
-  String get scan_qr_code => 'مسح رمز QR';
+  String get scan_qr_code => 'مسح الرمز';
 
   @override
   String get user_name => 'اسم المستخدم';
@@ -186,7 +197,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get language_name => 'العربية';
 
   @override
-  String get language_subtitle => 'Arabic';
+  String get language_desc => 'اللغة الحالية هي العربية';
 
   @override
   String get country_code => 'EG';
@@ -195,7 +206,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get success => 'نجاح';
 
   @override
-  String get warning => 'تحذير';
+  String get warning => 'تنبيه';
 
   @override
   String get confirm => 'تأكيد';
@@ -207,13 +218,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get remember_me => 'تذكرني';
 
   @override
-  String get login_with_fingerprint => 'تسجيل الدخول ببصمة الإصبع';
+  String get login_with_fingerprint => 'الدخول بالبصمة';
 
   @override
   String get scan => 'مسح';
 
   @override
-  String get top_up => 'شحن';
+  String get top_up => 'شحن الرصيد';
 
   @override
   String get more => 'المزيد';
@@ -225,13 +236,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get active => 'نشط';
 
   @override
-  String get send_money => 'إرسال الأموال';
+  String get send_money => 'إرسال أموال';
 
   @override
-  String get request_money => 'طلب الأموال';
+  String get request_money => 'طلب أموال';
 
   @override
-  String get receive_money => 'استلام الأموال';
+  String get receive_money => 'استلام أموال';
 
   @override
   String get search_here => 'ابحث هنا';
@@ -240,19 +251,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get favorites => 'المفضلة';
 
   @override
-  String get iPA => 'IPA';
+  String get ipa => 'عنوان الدفع اللحظي';
 
   @override
   String get privacy_policy => 'سياسة الخصوصية';
 
   @override
-  String get latest_transactions => 'أحدث المعاملات';
+  String get latest_transactions => 'آخر المعاملات';
 
   @override
   String get see_all => 'عرض الكل';
 
   @override
-  String get money_transfer => 'تحويل الأموال';
+  String get money_transfer => 'تحويل أموال';
 
   @override
   String get first_name => 'الاسم الأول';
@@ -279,19 +290,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get off => 'من';
 
   @override
-  String get please_wait => 'يرجى الانتظار...';
+  String get please_wait => 'يرجى الانتظار';
 
   @override
   String get account_details => 'تفاصيل الحساب';
 
   @override
-  String get back => 'العودة';
+  String get back => 'رجوع';
 
   @override
   String get next => 'التالي';
 
   @override
-  String get tier_1_title => 'المستوى 1: التحقق الأساسي';
+  String get tier_1_verification => 'المستوى 1: تحقق أساسي';
 
   @override
   String get full_name_id => 'الاسم الكامل (كما في الهوية)';
@@ -303,180 +314,173 @@ class AppLocalizationsAr extends AppLocalizations {
   String get nationality => 'الجنسية';
 
   @override
-  String get tier_2_title => 'المستوى 2: وثيقة الهوية';
+  String get tier_2_verification => 'المستوى 2: وثيقة الهوية';
 
   @override
-  String get national_id_passport => 'رقم الهوية الوطنية / جواز السفر';
+  String get national_id_passport => 'رقم الهوية / جواز السفر';
 
   @override
   String get personal_details => 'التفاصيل الشخصية';
 
   @override
-  String get upload_id => 'رفع وثيقة الهوية';
+  String get upload_id => 'رفع الهوية';
 
   @override
-  String get tier_3_title => 'المستوى 3: التحقق من العنوان';
+  String get tier_3_verification => 'المستوى 3: تحقق العنوان';
 
   @override
   String get residential_address => 'عنوان السكن';
 
   @override
-  String get upload_address_proof => 'تحميل إثبات العنوان';
+  String get upload_address_proof => 'رفع إثبات السكن';
 
   @override
-  String get otp_message => 'أدخل الرمز المكون من 6 أرقام المرسل إلى هاتفك';
+  String get otp_message => 'أدخل رمز التحقق المرسل لهاتفك';
 
   @override
-  String get otp_code => 'رمز التحقق (OTP)';
+  String get otp_code => 'رمز التحقق';
 
   @override
-  String get code_expires_in => 'ينتهي الرمز خلال';
+  String get code_expires_in => 'تنتهي صلاحية الرمز خلال';
 
   @override
   String get resend_code => 'إعادة إرسال الرمز';
 
   @override
-  String get i_accept_terms_and_conditions => 'أوافق على الشروط والأحكام';
+  String get accept_terms => 'أوافق على الشروط والأحكام';
 
   @override
-  String get please_read_terms_and_conditions => 'يرجى قراءة الشروط والأحكام';
+  String get read_terms_desc => 'يرجى الاطلاع على الشروط والأحكام';
 
   @override
-  String get i_accept_privacy_policy => 'أوافق على سياسة الخصوصية';
+  String get accept_privacy_policy => 'أوافق على سياسة الخصوصية';
 
   @override
   String get accept_all => 'قبول الكل';
 
   @override
-  String get email_empty => 'حقل البريد الإلكتروني مطلوب';
+  String get error_email_empty => 'البريد الإلكتروني مطلوب';
 
   @override
-  String get email_missing_at_sign => 'البريد الإلكتروني يفتقد علامة @';
+  String get error_email_missing_at => 'البريد الإلكتروني يفتقد علامة @';
 
   @override
-  String get email_invalid => 'البريد الإلكتروني غير صالح';
+  String get error_email_invalid => 'بريد إلكتروني غير صالح';
 
   @override
-  String get email_already_exists => 'البريد الإلكتروني موجود بالفعل';
+  String get error_email_exists => 'البريد الإلكتروني مسجل بالفعل';
 
   @override
-  String get email_not_found => 'البريد الإلكتروني غير موجود';
+  String get error_email_not_found => 'البريد الإلكتروني غير مسجل';
 
   @override
-  String get email_not_lower_case =>
-      'يجب أن يكون البريد الإلكتروني بأحرف صغيرة';
+  String get error_email_lowercase => 'يجب كتابة البريد بأحرف صغيرة';
 
   @override
-  String get email_not_valid => 'البريد الإلكتروني غير صحيح';
+  String get error_email_not_valid => 'عنوان البريد غير صحيح';
 
   @override
-  String get email_missing_domain => 'البريد الإلكتروني يفتقد النطاق (domain)';
+  String get error_email_missing_domain => 'البريد يفتقد النطاق';
 
   @override
-  String get email_missing_dot => 'البريد الإلكتروني يفتقد النقطة (.)';
+  String get error_email_missing_dot => 'البريد يفتقد النقطة';
 
   @override
-  String get email_missing_extension => 'البريد الإلكتروني يفتقد الامتداد';
+  String get error_email_missing_extension => 'البريد يفتقد الامتداد';
 
   @override
-  String get password_empty => 'حقل كلمة المرور مطلوب';
+  String get error_password_empty => 'كلمة المرور مطلوبة';
 
   @override
-  String get user_name_can_not_be_empty =>
-      'اسم المستخدم لا يمكن أن يكون فارغاً';
+  String get error_username_empty => 'اسم المستخدم مطلوب';
 
   @override
-  String get user_name_already_exists => 'اسم المستخدم موجود بالفعل';
+  String get error_username_exists => 'اسم المستخدم محجوز';
 
   @override
-  String get user_name_not_found => 'اسم المستخدم غير موجود';
+  String get error_username_not_found => 'اسم المستخدم غير موجود';
 
   @override
-  String get user_name_not_valid => 'اسم المستخدم غير صالح';
+  String get error_username_invalid => 'اسم مستخدم غير صالح';
 
   @override
   String get payment_methods => 'طرق الدفع';
 
   @override
-  String get saved_cards => 'البطاقات المحفوظة';
+  String get saved_cards => 'بطاقاتي';
 
   @override
   String get add_card => 'إضافة بطاقة';
 
   @override
-  String get password_can_not_have_spaces =>
-      'كلمة المرور لا يمكن أن تحتوي على مسافات';
+  String get error_password_spaces => 'لا يسمح بمسافات في كلمة المرور';
 
   @override
-  String get user_name_arbic_not_allowed =>
-      'اسم المستخدم لا يمكن أن يحتوي على أحرف عربية';
+  String get error_username_arabic => 'لا يسمح بالأحرف العربية في اسم المستخدم';
 
   @override
-  String get user_name_is_too_long_max_20_characters =>
-      'اسم المستخدم طويل جداً (20 حرفاً كحد أقصى)';
+  String get error_username_too_long => 'اسم المستخدم طويل جداً';
 
   @override
-  String get user_name_is_too_short_min_3_characters =>
-      'اسم المستخدم قصير جداً (3 أحرف على الأقل)';
+  String get error_username_too_short => 'اسم المستخدم قصير جداً';
 
   @override
-  String get user_name_can_not_have_spaces =>
-      'اسم المستخدم لا يمكن أن يحتوي على مسافات';
+  String get error_username_spaces => 'لا يسمح بمسافات في اسم المستخدم';
 
   @override
-  String get user_name_can_not_have_special_characters =>
-      'اسم المستخدم لا يمكن أن يحتوي على رموز خاصة';
+  String get error_username_special_chars =>
+      'لا يسمح برموز خاصة في اسم المستخدم';
 
   @override
-  String get user_name_can_not_have_emojis =>
-      'اسم المستخدم لا يمكن أن يحتوي على رموز تعبيرية';
+  String get error_username_emojis =>
+      'لا يسمح بالرموز التعبيرية في اسم المستخدم';
 
   @override
-  String get please_read_privacy_policy => 'يرجى قراءة سياسة الخصوصية';
+  String get read_privacy_policy_desc => 'يرجى قراءة سياسة الخصوصية';
 
   @override
-  String get password_can_not_be_empty => 'كلمة المرور لا يمكن أن تكون فارغة';
+  String get error_password_empty_alt => 'كلمة المرور لا يمكن أن تكون فارغة';
 
   @override
-  String get password_is_too_short_min_8_characters =>
-      'كلمة المرور قصيرة جداً (8 أحرف على الأقل)';
+  String get error_password_too_short => 'كلمة المرور قصيرة جداً';
 
   @override
-  String get password_can_not_have_emojis =>
-      'كلمة المرور لا يمكن أن تحتوي على رموز تعبيرية';
+  String get error_password_emojis =>
+      'لا يسمح بالرموز التعبيرية في كلمة المرور';
 
   @override
-  String get password_not_valid => 'كلمة المرور غير صالحة';
+  String get error_password_invalid => 'كلمة مرور غير صالحة';
 
   @override
-  String get account_and_security => 'الحساب والأمان';
+  String get account_security => 'الحساب والأمان';
 
   @override
   String get edit_profile => 'تعديل الملف الشخصي';
 
   @override
-  String get edit_profile_subtitle => 'تحديث بياناتك الشخصية والصورة';
+  String get edit_profile_desc => 'تحديث المعلومات الشخصية والصورة';
 
   @override
-  String get change_password_subtitle => 'تحديث الرمز السري الخاص بحسابك';
+  String get change_password_desc => 'تحديث كلمة مرور حسابك';
 
   @override
-  String get two_factor_auth_title => 'المصادقة الثنائية (2FA)';
+  String get two_factor_auth => 'المصادقة الثنائية';
 
   @override
-  String get two_factor_auth_subtitle => 'إضافة طبقة حماية إضافية لحسابك';
+  String get two_factor_auth_desc => 'إضافة طبقة حماية إضافية لحسابك';
 
   @override
   String get biometric_login => 'تسجيل الدخول الحيوي';
 
   @override
-  String get biometric_login_subtitle => 'تفعيل البصمة أو التعرف على الوجه';
+  String get biometric_login_desc_settings =>
+      'تفعيل البصمة أو التعرف على الوجه';
 
   @override
   String get security_alerts => 'تنبيهات الأمان';
 
   @override
-  String get security_alerts_subtitle => 'إشعارات محاولات الدخول غير المعتادة';
+  String get security_alerts_desc => 'إشعارات محاولات الدخول المريبة';
 
   @override
   String get preferences => 'التفضيلات';
@@ -485,19 +489,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get appearance => 'المظهر';
 
   @override
-  String get appearance_subtitle => 'النظام الافتراضي (فاتح/داكن)';
+  String get appearance_desc => 'تغيير مظهر التطبيق';
 
   @override
   String get notification_settings => 'إعدادات الإشعارات';
 
   @override
-  String get notification_settings_subtitle => 'التحكم في التنبيهات والأصوات';
+  String get notification_settings_desc => 'التحكم في التنبيهات والأصوات';
 
   @override
-  String get help_and_support => 'المساعدة والدعم';
+  String get help_support => 'المساعدة والدعم';
 
   @override
-  String get logout_subtitle => 'تسجيل الخروج من حسابك';
+  String get logout_desc => 'خروج آمن من حسابك';
 
   @override
   String get faq => 'الأسئلة الشائعة';
@@ -506,31 +510,31 @@ class AppLocalizationsAr extends AppLocalizations {
   String get account_actions => 'إجراءات الحساب';
 
   @override
-  String get faq_subtitle => 'إجابات عن الأسئلة الأكثر شيوعاً';
+  String get faq_desc => 'إجابات على الأسئلة الشائعة';
 
   @override
   String get contact_us => 'تواصل معنا';
 
   @override
-  String get contact_us_subtitle => 'فريق الدعم متاح لمساعدتك';
+  String get contact_us_desc => 'فريق الدعم في خدمتك';
 
   @override
   String get about => 'حول';
 
   @override
-  String get privacy_policy_subtitle => 'كيف نقوم بحماية بياناتك';
+  String get privacy_policy_desc => 'كيفية حماية بياناتك';
 
   @override
   String get about_app => 'عن التطبيق';
 
   @override
-  String get app_version => 'الإصدار 1.0.0';
+  String get app_version => 'الإصدار';
 
   @override
-  String get about_developers => 'عن المطورين';
+  String get about_developers => 'فريق التطوير';
 
   @override
-  String get about_developers_subtitle => 'تعرف على فريق المطورين';
+  String get about_developers_desc => 'تعرف على مطوري التطبيق';
 
   @override
   String get app_appearance => 'مظهر التطبيق';
@@ -539,19 +543,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get light_mode => 'فاتح';
 
   @override
-  String get light_mode_subtitle => 'استخدام المظهر الفاتح دائماً';
+  String get light_mode_desc => 'استخدام المظهر الفاتح';
 
   @override
   String get dark_mode => 'داكن';
 
   @override
-  String get dark_mode_subtitle => 'استخدام المظهر الداكن دائماً';
+  String get dark_mode_desc => 'استخدام المظهر الداكن';
 
   @override
-  String get system_mode => 'نظام التشغيل';
+  String get system_mode => 'تلقائي';
 
   @override
-  String get system_mode_subtitle => 'تغيير المظهر تلقائياً حسب إعدادات جهازك';
+  String get system_mode_desc => 'حسب إعدادات النظام';
 
   @override
   String get select_account => 'اختر الحساب';
@@ -566,13 +570,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get to => 'إلى';
 
   @override
-  String get ipa_address => 'عنوان IPA';
+  String get ipa_address => 'عنوان الدفع اللحظي';
 
   @override
   String get phone_number_hint => '01xxxxxxxxx';
 
   @override
-  String get ipa_hint => 'username@payon';
+  String get ipa_hint => 'الاسم@payon';
 
   @override
   String get amount => 'المبلغ';
@@ -581,16 +585,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get amount_hint => '0.00';
 
   @override
-  String get app_version_title => 'إصدار التطبيق';
+  String get app_version_label => 'إصدار التطبيق';
 
   @override
   String get app_identity => 'هوية التطبيق';
 
   @override
-  String get about_app_subtitle => 'تعرف أكثر على التطبيق';
+  String get about_app_desc => 'تفاصيل الهوية والبيئة';
 
   @override
-  String get app_name_title => 'اسم التطبيق';
+  String get app_name_label => 'اسم التطبيق';
 
   @override
   String get package_name => 'اسم الحزمة';
@@ -614,22 +618,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get app_mode => 'وضع التطبيق';
 
   @override
-  String get technologies_used => 'مبني باستخدام';
+  String get built_with => 'صُنع بواسطة';
 
   @override
-  String get release => 'إصدار نهائي';
+  String get release => 'نسخة نهائية';
 
   @override
-  String get debug => 'نسخة المطورين';
+  String get debug => 'نسخة تجريبية';
 
   @override
-  String get dart_sdk => 'Dart Language';
+  String get dart_sdk => 'Dart';
 
   @override
-  String get flutter_sdk => 'Flutter Framework';
+  String get flutter_sdk => 'Flutter';
 
   @override
-  String get installation_information => 'معلومات التثبيت';
+  String get install_info => 'معلومات التثبيت';
 
   @override
   String get installer_store => 'متجر التثبيت';

@@ -31,7 +31,7 @@ class ChangeThemePage extends StatelessWidget {
                   const SvgComponent(path: SvgsImages.addColorSvg),
                   ListTileIconComponent.top(
                     title: l10n.light_mode,
-                    subtitle: l10n.light_mode_subtitle,
+                    subtitle: l10n.light_mode_desc,
                     leading: Iconsax.sun_fog_copy,
                     trailing: const Radio<ThemeMode>(value: ThemeMode.light),
                     onTap: () =>
@@ -39,7 +39,7 @@ class ChangeThemePage extends StatelessWidget {
                   ),
                   ListTileIconComponent.middle(
                     title: l10n.dark_mode,
-                    subtitle: l10n.dark_mode_subtitle,
+                    subtitle: l10n.dark_mode_desc,
                     leading: Iconsax.moon_copy,
                     trailing: const Radio<ThemeMode>(value: ThemeMode.dark),
                     onTap: () =>
@@ -47,7 +47,7 @@ class ChangeThemePage extends StatelessWidget {
                   ),
                   ListTileIconComponent.bottom(
                     title: l10n.system_mode,
-                    subtitle: l10n.system_mode_subtitle,
+                    subtitle: l10n.system_mode_desc,
                     leading: Iconsax.autobrightness_copy,
                     trailing: const Radio<ThemeMode>(value: ThemeMode.system),
                     onTap: () => context.read<ThemeCubit>().changeTheme(

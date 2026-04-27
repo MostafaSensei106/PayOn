@@ -2,7 +2,7 @@
 
 part of 'api_service.dart';
 
-// dart format off
+// dart format of
 
 // **************************************************************************
 // RetrofitGenerator

@@ -35,7 +35,7 @@ final class AboutAppPage extends HookWidget {
                   sectionTitle: l10n.app_identity,
                   items: [
                     (
-                      title: l10n.app_name_title,
+                      title: l10n.app_name_label,
                       subtitle: info.appName,
                       icon: Iconsax.mobile_programming_copy,
                     ),
@@ -79,7 +79,7 @@ final class AboutAppPage extends HookWidget {
                   ],
                 ),
                 (
-                  sectionTitle: l10n.technologies_used,
+                  sectionTitle: l10n.built_with,
                   items: [
                     (
                       title: l10n.dart_sdk,
@@ -97,7 +97,7 @@ final class AboutAppPage extends HookWidget {
                   ],
                 ),
                 (
-                  sectionTitle: l10n.installation_information,
+                  sectionTitle: l10n.install_info,
                   items: [
                     (
                       title: l10n.installer_store,

@@ -37,7 +37,7 @@ class _WelcomePageState extends State<WelcomePage> {
         slivers: [
           SidePageSliverAppBarWithWavesComponent(
             scrollController: _scrollController,
-            title: l10n.welcome_title,
+            title: l10n.welcome,
             showBackButton: false,
           ),
           SliverFillRemaining(
@@ -51,20 +51,20 @@ class _WelcomePageState extends State<WelcomePage> {
                   const SpacingComponent.vertical(AppConfig.padding),
                   _buildWelcomeCard(
                     Iconsax.flash_1_copy,
-                    l10n.send_money_title,
-                    l10n.send_money_subtitle,
+                    l10n.send_money_instantly,
+                    l10n.send_money_instantly_desc,
                   ),
                   const SpacingComponent.vertical(AppConfig.paddingHalf),
                   _buildWelcomeCard(
                     Iconsax.shield_tick_copy,
-                    l10n.secure_payments_title,
-                    l10n.secure_payments_subtitle,
+                    l10n.secure_payments,
+                    l10n.secure_payments_desc,
                   ),
                   const SpacingComponent.vertical(AppConfig.paddingHalf),
                   _buildWelcomeCard(
                     Iconsax.status_up_copy,
-                    l10n.track_everything_title,
-                    l10n.track_everything_subtitle,
+                    l10n.track_everything,
+                    l10n.track_everything_desc,
                   ),
                   const Spacer(),
 
