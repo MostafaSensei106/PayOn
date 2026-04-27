@@ -35,7 +35,6 @@ final class PayOnApp extends StatelessWidget {
             final locale = context.select(
               (LocalizationCubit cubit) => cubit.state.locale,
             );
-
             final fontFamily = FontFamily.getFontFamily(locale.languageCode);
             return MaterialApp.router(
               title: AppConfig.appName,
