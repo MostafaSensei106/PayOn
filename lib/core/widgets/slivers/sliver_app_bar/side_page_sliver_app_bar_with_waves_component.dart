@@ -89,6 +89,8 @@ final class SidePageSliverAppBarWithWavesComponent extends HookWidget {
           : colorScheme.surface,
       elevation: 0,
       scrolledUnderElevation: 0,
+      actionsPadding: const EdgeInsets.symmetric(horizontal: 4),
+
       leading: showBackButton
           ? Center(
               child: IconButton.filled(

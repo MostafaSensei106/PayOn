@@ -36,9 +36,14 @@ class ChangeLanguagePage extends StatelessWidget {
                 }
               },
               child: Column(
-                mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SvgComponent(path: SvgsImages.languageSvg),
+                  SvgComponent.descriptions(
+                    path: SvgsImages.languageSvg,
+                    title: l10n.app_language,
+                    subtitle: l10n.language_desc,
+                  ),
+                  const SizedBox(height: AppConfig.margin),
+
                   ...List.generate(supportedLocales.length, (index) {
                     final locale = supportedLocales[index];
                     final langCode = locale.languageCode;

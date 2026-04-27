@@ -320,6 +320,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get national_id_passport => 'رقم الهوية / جواز السفر';
 
   @override
+  String get no_security_alerts_for_you => 'لا توجد تنبيهات أمنية لك';
+
+  @override
+  String get no_security_alerts_for_you_desc =>
+      'سنقوم بإخطارك في حالة اكتشاف أي نشاط مشبوه على حسابك';
+
+  @override
+  String get no_notifications_yet => 'لا توجد إشعارات بعد';
+
+  @override
+  String get no_notifications_yet_des => 'ستظهر إشعاراتك هنا بمجرد استلامها.';
+
+  @override
   String get personal_details => 'التفاصيل الشخصية';
 
   @override

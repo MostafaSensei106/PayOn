@@ -48,6 +48,7 @@ class SidePageAppBarComponent extends StatelessWidget
     title: Text(title),
     backgroundColor: Theme.of(context).colorScheme.surface,
     foregroundColor: Theme.of(context).colorScheme.onSurface,
+    actionsPadding: const EdgeInsets.symmetric(horizontal: 4),
     actions: actions,
   );
 

@@ -325,6 +325,20 @@ class AppLocalizationsFr extends AppLocalizations {
   String get national_id_passport => 'Numéro de carte d\'identité / Passeport';
 
   @override
+  String get no_security_alerts_for_you => 'No security alerts for you';
+
+  @override
+  String get no_security_alerts_for_you_desc =>
+      'We\'ll notify you if we detect any suspicious activity on your account.';
+
+  @override
+  String get no_notifications_yet => 'No notifications yet';
+
+  @override
+  String get no_notifications_yet_des =>
+      'You\'ll see your notifications here once you have some.';
+
+  @override
   String get personal_details => 'Détails personnels';
 
   @override

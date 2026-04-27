@@ -65,6 +65,8 @@ final class SidePageSliverAppBarComponent extends StatelessWidget {
     backgroundColor: Theme.of(context).colorScheme.surface,
     centerTitle: centerTitle,
     elevation: 0,
+    actionsPadding: const EdgeInsets.symmetric(horizontal: 4),
+
     scrolledUnderElevation: 0,
   );
 

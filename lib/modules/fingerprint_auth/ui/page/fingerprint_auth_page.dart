@@ -19,31 +19,19 @@ class FingerprintAuthPage extends StatelessWidget {
     final l10n = context.localKeys;
 
     return Scaffold(
-      appBar: SidePageAppBarComponent(title: l10n.biometric_login),
+      appBar: SidePageAppBarComponent(title: l10n.biometric_auth),
       body: BlocBuilder<SecurityCubit, SecurityState>(
         builder: (context, state) {
           return state.maybeWhen(
             loading: () => const Center(child: CircularProgressIndicator()),
             success: (settings) => SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppConfig.padding,
-              ),
+              padding: const EdgeInsets.all(AppConfig.padding),
               child: Column(
-                spacing: AppConfig.margin,
                 children: [
-                  const SvgComponent(path: SvgsImages.fingerprintSvg),
-                  Text(
-                    l10n.biometric_auth,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-
-                  Text(
-                    l10n.biometric_login_desc,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                  SvgComponent.descriptions(
+                    path: SvgsImages.fingerprintSvg,
+                    title: l10n.biometric_auth,
+                    subtitle: l10n.biometric_auth_desc,
                   ),
                   const SizedBox(height: AppConfig.margin),
 

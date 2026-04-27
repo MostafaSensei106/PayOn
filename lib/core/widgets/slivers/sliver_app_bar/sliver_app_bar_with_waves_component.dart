@@ -80,6 +80,8 @@ final class SliverAppBarWithWavesComponent extends HookWidget {
           ? colorScheme.onPrimary
           : colorScheme.surface,
       leading: leading,
+      actionsPadding: const EdgeInsets.symmetric(horizontal: 4),
+
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: [

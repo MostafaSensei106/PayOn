@@ -713,8 +713,32 @@ abstract class AppLocalizations {
   /// No description provided for @national_id_passport.
   ///
   /// In en, this message translates to:
-  /// **'National ID / Passport Number'**
+  /// **'National ID / Passport'**
   String get national_id_passport;
+
+  /// No description provided for @no_security_alerts_for_you.
+  ///
+  /// In en, this message translates to:
+  /// **'No security alerts for you'**
+  String get no_security_alerts_for_you;
+
+  /// No description provided for @no_security_alerts_for_you_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll notify you if we detect any suspicious activity on your account.'**
+  String get no_security_alerts_for_you_desc;
+
+  /// No description provided for @no_notifications_yet.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications yet'**
+  String get no_notifications_yet;
+
+  /// No description provided for @no_notifications_yet_des.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll see your notifications here once you have some.'**
+  String get no_notifications_yet_des;
 
   /// No description provided for @personal_details.
   ///

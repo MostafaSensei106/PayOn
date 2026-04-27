@@ -51,8 +51,8 @@ final class SettingsPage extends HookWidget {
               onTap: () => const TwoFactorAuthRoute().push<void>(context),
             ),
             SettingsTileData(
-              title: l10n.biometric_login,
-              subtitle: l10n.biometric_login_desc_settings,
+              title: l10n.biometric_auth,
+              subtitle: l10n.biometric_auth_desc,
               leading: Iconsax.finger_scan_copy,
               onTap: () => const FingerprintAuthRoute().push<void>(context),
             ),

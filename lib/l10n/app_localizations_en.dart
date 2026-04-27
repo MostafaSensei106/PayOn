@@ -319,7 +319,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tier_2_verification => 'Tier 2: Identity Document';
 
   @override
-  String get national_id_passport => 'National ID / Passport Number';
+  String get national_id_passport => 'National ID / Passport';
+
+  @override
+  String get no_security_alerts_for_you => 'No security alerts for you';
+
+  @override
+  String get no_security_alerts_for_you_desc =>
+      'We\'ll notify you if we detect any suspicious activity on your account.';
+
+  @override
+  String get no_notifications_yet => 'No notifications yet';
+
+  @override
+  String get no_notifications_yet_des =>
+      'You\'ll see your notifications here once you have some.';
 
   @override
   String get personal_details => 'Personal Details';

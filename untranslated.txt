@@ -1,1 +1,22 @@
-{}
+{
+  "de": [
+    "no_security_alerts_for_you",
+    "no_security_alerts_for_you_desc",
+    "no_notifications_yet",
+    "no_notifications_yet_des"
+  ],
+
+  "fr": [
+    "no_security_alerts_for_you",
+    "no_security_alerts_for_you_desc",
+    "no_notifications_yet",
+    "no_notifications_yet_des"
+  ],
+
+  "ja": [
+    "no_security_alerts_for_you",
+    "no_security_alerts_for_you_desc",
+    "no_notifications_yet",
+    "no_notifications_yet_des"
+  ]
+}

@@ -40,5 +40,6 @@ final class SliverAppBarComponent extends StatelessWidget {
     centerTitle: centerTitle,
     elevation: 0,
     scrolledUnderElevation: 0,
+    actionsPadding: const EdgeInsets.symmetric(horizontal: 4),
   );
 }

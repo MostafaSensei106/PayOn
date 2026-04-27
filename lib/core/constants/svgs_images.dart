@@ -64,4 +64,6 @@ final class SvgsImages {
   static const String unboxingSvg = 'assets/svgs/undraw_unboxing_p8sg.svg';
 
   static const String updateSvg = 'assets/svgs/undraw_update_jvp1.svg';
+
+  static const String empySvg = 'assets/svgs/undraw_empty_4zx0.svg';
 }
