@@ -19,6 +19,7 @@ class ChangeThemePage extends HookWidget {
     final l10n = context.localKeys;
     final scrollController = useScrollController();
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: SidePageAppBarComponent(title: l10n.app_appearance),
       body: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
@@ -30,6 +31,9 @@ class ChangeThemePage extends HookWidget {
               onChanged: (val) => context.read<ThemeCubit>().changeTheme(val!),
               child: Column(
                 children: [
+                  const SizedBox(
+                    height: kToolbarHeight + AppConfig.padding + 16,
+                  ),
                   SvgComponent.descriptions(
                     path: SvgsImages.addColorSvg,
                     title: l10n.appearance,

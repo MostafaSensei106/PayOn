@@ -24,6 +24,7 @@ final class AboutAppPage extends HookWidget {
     final scrollController = useScrollController();
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: SidePageAppBarComponent(title: l10n.about_app),
       body: BlocBuilder<AboutAppCubit, AboutAppState>(
         builder: (context, state) {
@@ -128,6 +129,9 @@ final class AboutAppPage extends HookWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(
+                      height: kToolbarHeight + AppConfig.padding + 35,
+                    ),
                     const Center(
                       child: SvgComponent(path: SvgsImages.unboxingSvg),
                     ),

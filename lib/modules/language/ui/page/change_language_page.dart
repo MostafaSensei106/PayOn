@@ -23,6 +23,7 @@ class ChangeLanguagePage extends StatelessWidget {
     final supportedLocales = getIt<L10nService>().supportedLocales;
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: SidePageAppBarComponent(title: l10n.app_language),
       body: BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
@@ -39,6 +40,9 @@ class ChangeLanguagePage extends StatelessWidget {
               },
               child: Column(
                 children: [
+                  const SizedBox(
+                    height: kToolbarHeight + AppConfig.padding + 16,
+                  ),
                   SvgComponent.descriptions(
                     path: SvgsImages.languageSvg,
                     title: l10n.app_language,

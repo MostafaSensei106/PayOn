@@ -50,7 +50,12 @@ final class PayOnApp extends StatelessWidget {
               supportedLocales: AppLocalizations.supportedLocales,
               routerConfig: AppRouter.router,
               themeAnimationCurve: Curves.fastLinearToSlowEaseIn,
-              builder: (final context, final child) => child!,
+              builder: (final context, final child) => SafeArea(
+                top: false,
+                left: false,
+                right: false,
+                child: child!,
+              ),
               debugShowCheckedModeBanner: false,
             );
           },
