@@ -116,6 +116,7 @@ class ChangeLanguagePage extends StatelessWidget {
                       );
                     }
                   }),
+                  SizedBox(height: MediaQuery.of(context).padding.bottom),
                 ],
               ),
             ),

@@ -141,6 +141,9 @@ final class SettingsPage extends HookWidget {
               },
             ),
           ]),
+          SliverToBoxAdapter(
+            child: SizedBox(height: MediaQuery.of(context).padding.bottom + 8),
+          ),
         ],
       ),
     );

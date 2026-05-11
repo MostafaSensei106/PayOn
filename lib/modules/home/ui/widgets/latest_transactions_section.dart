@@ -77,6 +77,9 @@ class LatestTransactionsSection extends StatelessWidget {
               ),
             ),
           ),
+          SliverToBoxAdapter(
+            child: SizedBox(height: MediaQuery.of(context).padding.bottom + 8),
+          ),
         ],
       ),
     );

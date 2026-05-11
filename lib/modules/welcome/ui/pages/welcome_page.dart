@@ -32,67 +32,72 @@ class _WelcomePageState extends State<WelcomePage> {
     final l10n = getIt<L10nService>().get(context);
 
     return Scaffold(
-      body: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          SidePageSliverAppBarWithWavesComponent(
-            scrollController: _scrollController,
-            title: l10n.welcome,
-            showBackButton: false,
-          ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppConfig.padding,
-              ),
-              child: Column(
-                children: [
-                  const SpacingComponent.vertical(AppConfig.padding),
-                  _buildWelcomeCard(
-                    Iconsax.flash_1_copy,
-                    l10n.send_money_instantly,
-                    l10n.send_money_instantly_desc,
-                  ),
-                  const SpacingComponent.vertical(AppConfig.paddingHalf),
-                  _buildWelcomeCard(
-                    Iconsax.shield_tick_copy,
-                    l10n.secure_payments,
-                    l10n.secure_payments_desc,
-                  ),
-                  const SpacingComponent.vertical(AppConfig.paddingHalf),
-                  _buildWelcomeCard(
-                    Iconsax.status_up_copy,
-                    l10n.track_everything,
-                    l10n.track_everything_desc,
-                  ),
-                  const Spacer(),
+      body: Padding(
+        padding: EdgeInsetsGeometry.only(
+          bottom: MediaQuery.of(context).padding.bottom,
+        ),
+        child: CustomScrollView(
+          controller: _scrollController,
+          slivers: [
+            SidePageSliverAppBarWithWavesComponent(
+              scrollController: _scrollController,
+              title: l10n.welcome,
+              showBackButton: false,
+            ),
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppConfig.padding,
+                ),
+                child: Column(
+                  children: [
+                    const SpacingComponent.vertical(AppConfig.padding),
+                    _buildWelcomeCard(
+                      Iconsax.flash_1_copy,
+                      l10n.send_money_instantly,
+                      l10n.send_money_instantly_desc,
+                    ),
+                    const SpacingComponent.vertical(AppConfig.paddingHalf),
+                    _buildWelcomeCard(
+                      Iconsax.shield_tick_copy,
+                      l10n.secure_payments,
+                      l10n.secure_payments_desc,
+                    ),
+                    const SpacingComponent.vertical(AppConfig.paddingHalf),
+                    _buildWelcomeCard(
+                      Iconsax.status_up_copy,
+                      l10n.track_everything,
+                      l10n.track_everything_desc,
+                    ),
+                    const Spacer(),
 
-                  TextButtonComponent.icon(
-                    icon: Iconsax.language_square_copy,
-                    label: l10n.app_language,
-                    onPressed: () =>
-                        const ChangeLanguageRoute().push<void>(context),
-                  ),
-                  const Spacer(),
-                  FilledButtonComponent.icon(
-                    label: l10n.get_started,
-                    icon: Iconsax.arrow_right_3_copy,
-                    onPressed: () =>
-                        const GetStartedRoute().push<void>(context),
-                  ),
-                  const SpacingComponent.vertical(AppConfig.padding),
-                  OutlinedButtonComponent.icon(
-                    label: l10n.login,
-                    icon: Iconsax.login_1_copy,
-                    onPressed: () => const LoginRoute().push<void>(context),
-                  ),
-                  const SpacingComponent.vertical(AppConfig.padding),
-                ],
+                    TextButtonComponent.icon(
+                      icon: Iconsax.language_square_copy,
+                      label: l10n.app_language,
+                      onPressed: () =>
+                          const ChangeLanguageRoute().push<void>(context),
+                    ),
+                    const Spacer(),
+                    FilledButtonComponent.icon(
+                      label: l10n.get_started,
+                      icon: Iconsax.arrow_right_3_copy,
+                      onPressed: () =>
+                          const GetStartedRoute().push<void>(context),
+                    ),
+                    const SpacingComponent.vertical(AppConfig.padding),
+                    OutlinedButtonComponent.icon(
+                      label: l10n.login,
+                      icon: Iconsax.login_1_copy,
+                      onPressed: () => const LoginRoute().push<void>(context),
+                    ),
+                    const SpacingComponent.vertical(AppConfig.padding),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

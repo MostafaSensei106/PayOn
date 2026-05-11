@@ -135,6 +135,7 @@ final class AboutAppPage extends HookWidget {
                     ...sections.map(
                       (section) => _buildSection(context, section),
                     ),
+                    SizedBox(height: MediaQuery.of(context).padding.bottom),
                   ],
                 ),
               );
