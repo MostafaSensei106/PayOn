@@ -9,7 +9,7 @@ part of 'login_form_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format of
+// dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LoginFormState implements DiagnosticableTreeMixin {

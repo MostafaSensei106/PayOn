@@ -9,7 +9,7 @@ part of 'localization_cubit.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format of
+// dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LocalizationState {

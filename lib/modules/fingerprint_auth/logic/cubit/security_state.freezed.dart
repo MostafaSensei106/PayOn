@@ -9,7 +9,7 @@ part of 'security_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format of
+// dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SecurityState {

@@ -9,7 +9,7 @@ part of 'account_type_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format of
+// dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AccountTypeState<T> {
