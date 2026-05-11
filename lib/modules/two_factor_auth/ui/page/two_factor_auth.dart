@@ -19,7 +19,7 @@ class TwoFactorAuth extends HookWidget {
       body: Center(
         child: SingleChildScrollView(
           controller: scrollController,
-          padding: EdgeInsets.all(AppConfig.padding),
+          padding: const EdgeInsets.all(AppConfig.padding),
           child: SvgComponent.descriptions(
             path: SvgsImages.twoFactorAuthSvg,
             title: l10n.two_factor_auth,
