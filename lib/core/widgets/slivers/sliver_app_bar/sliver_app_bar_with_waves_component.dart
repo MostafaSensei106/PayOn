@@ -1,6 +1,7 @@
 // ignore_for_file: discarded_futures
 
 import 'package:flutter/material.dart';
+import 'dart:ui';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../animation/wave_background.dart';
@@ -76,40 +77,52 @@ final class SliverAppBarWithWavesComponent extends HookWidget {
       elevation: 0,
       scrolledUnderElevation: 0,
       backgroundColor: isExpanded.value
-          ? colorScheme.primary
-          : colorScheme.surface,
+          ? (backgroundColor ?? colorScheme.primary)
+          : colorScheme.surface.withValues(alpha: 0.7),
       foregroundColor: isExpanded.value
           ? colorScheme.onPrimary
           : colorScheme.surface,
       leading: leading,
       actionsPadding: const EdgeInsets.symmetric(horizontal: 4),
-
-      flexibleSpace: FlexibleSpaceBar(
-        background: Stack(
-          children: [
-            Container(color: backgroundColor ?? colorScheme.primary),
-            // Secondary Wave (Layer back)
+      flexibleSpace: Stack(
+        children: [
+          FlexibleSpaceBar(
+            background: Stack(
+              children: [
+                Container(color: backgroundColor ?? colorScheme.primary),
+                // Secondary Wave (Layer back)
+                Positioned.fill(
+                  child: WaveBackground(
+                    animation: controller,
+                    color:
+                        secondaryWaveColor ??
+                        colorScheme.surface.withValues(alpha: 0.5),
+                    reverse: true,
+                    amplitude: 20,
+                    waveHeight: 80,
+                  ),
+                ),
+                // Primary Wave (Layer front)
+                Positioned.fill(
+                  child: WaveBackground(
+                    animation: controller,
+                    color: waveColor ?? colorScheme.surface,
+                  ),
+                ),
+                if (flexibleSpace != null) flexibleSpace!,
+              ],
+            ),
+          ),
+          if (!isExpanded.value)
             Positioned.fill(
-              child: WaveBackground(
-                animation: controller,
-                color:
-                    secondaryWaveColor ??
-                    colorScheme.surface.withValues(alpha: 0.5),
-                reverse: true,
-                amplitude: 20,
-                waveHeight: 80,
+              child: ClipRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                  child: Container(color: Colors.transparent),
+                ),
               ),
             ),
-            // Primary Wave (Layer front)
-            Positioned.fill(
-              child: WaveBackground(
-                animation: controller,
-                color: waveColor ?? colorScheme.surface,
-              ),
-            ),
-            ?flexibleSpace,
-          ],
-        ),
+        ],
       ),
     );
   }

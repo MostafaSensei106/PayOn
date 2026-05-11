@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../core/constants/app_config.dart';
@@ -10,18 +11,21 @@ import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_component.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends HookWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(final BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
+    final scrollController = useScrollController();
+
     return Scaffold(
       body: CustomScrollView(
-        controller: ScrollController(),
+        controller: scrollController,
         physics: const BouncingScrollPhysics(),
         slivers: [
           SidePageSliverAppBarComponent(
+            scrollController: scrollController,
             expandedHeight: 400.h,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(

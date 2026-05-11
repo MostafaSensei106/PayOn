@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 /// A custom app bar widget with a transparent background and a centered title.
@@ -15,6 +17,12 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(final BuildContext context) => AppBar(
+    flexibleSpace: ClipRRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: Container(color: Colors.transparent),
+      ),
+    ),
     title: Text(title),
     centerTitle: true,
     elevation: 0,
