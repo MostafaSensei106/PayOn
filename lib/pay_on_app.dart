@@ -51,12 +51,7 @@ final class PayOnApp extends StatelessWidget {
               routerConfig: AppRouter.router,
               themeAnimationCurve: Curves.fastOutSlowIn,
 
-              builder: (final context, final child) => SafeArea(
-                top: false,
-                left: false,
-                right: false,
-                child: child!,
-              ),
+              builder: (final context, final child) => child!,
               debugShowCheckedModeBanner: false,
             );
           },

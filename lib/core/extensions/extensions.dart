@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../di/di.dart';
@@ -11,4 +11,12 @@ extension LocalizationExtensions on BuildContext {
 
 extension ToastExtensions on BuildContext {
   BaseToastService get toast => getIt<BaseToastService>();
+}
+
+extension ThemeExtensions on BuildContext {
+  ThemeData get theme => Theme.of(this);
+}
+
+extension ColorSchemeExtensions on BuildContext {
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
 }
