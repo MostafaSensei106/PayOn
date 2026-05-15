@@ -45,7 +45,6 @@ final class PayOnApp extends StatelessWidget {
               locale: locale,
               scrollBehavior: const CupertinoScrollBehavior(),
               restorationScopeId: 'app',
-
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               routerConfig: AppRouter.router,
