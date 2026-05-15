@@ -8,47 +8,47 @@ import 'list_tile_component.dart';
 
 final class ListTileIconComponent extends StatelessWidget {
   const ListTileIconComponent({
-    required this.title,
     required this.leading,
+    required this.title,
     this.useinBorderRadius = false,
-    super.key,
     this.subtitle,
     this.trailing,
     this.onTap,
     this.selected,
+    super.key,
   }) : groupType = ListTileGroupType.single;
 
   const ListTileIconComponent.top({
-    required this.title,
     required this.leading,
+    required this.title,
     this.useinBorderRadius = false,
-    super.key,
     this.subtitle,
     this.trailing,
     this.onTap,
     this.selected,
+    super.key,
   }) : groupType = ListTileGroupType.top;
 
   const ListTileIconComponent.middle({
-    required this.title,
     required this.leading,
+    required this.title,
     this.useinBorderRadius = false,
-    super.key,
     this.subtitle,
     this.trailing,
     this.onTap,
     this.selected,
+    super.key,
   }) : groupType = ListTileGroupType.middle;
 
   const ListTileIconComponent.bottom({
-    required this.title,
     required this.leading,
+    required this.title,
     this.useinBorderRadius = false,
-    super.key,
     this.subtitle,
     this.trailing,
     this.onTap,
     this.selected,
+    super.key,
   }) : groupType = ListTileGroupType.bottom;
 
   final String title;

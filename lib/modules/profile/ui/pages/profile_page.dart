@@ -10,6 +10,7 @@ import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/extensions/extensions.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
+import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
@@ -21,7 +22,6 @@ class ProfilePage extends HookWidget {
   Widget build(final BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
     final scrollController = useScrollController();
-    final colorScheme = context.colorScheme;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -126,9 +126,34 @@ class ProfilePage extends HookWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () {
+                onTap: () async {
                   unawaited(HapticFeedback.vibrate());
-                  // TODO: Implement image picker
+                  await context.showBottomSheetComponent(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ListTileIconComponent.top(
+                          title: 'Camera',
+                          subtitle: 'Take a new photo using your camera',
+                          leading: Iconsax.camera_copy,
+                          onTap: () => Navigator.pop(context),
+                        ),
+                        ListTileIconComponent.middle(
+                          title: 'Gallery',
+                          subtitle:
+                              'Choose an existing photo from your gallery',
+                          leading: Iconsax.image_copy,
+                          onTap: () => Navigator.pop(context),
+                        ),
+                        ListTileIconComponent.bottom(
+                          title: 'Remove Photo',
+                          subtitle: 'Delete your current profile picture',
+                          leading: Iconsax.trash_copy,
+                          onTap: () => Navigator.pop(context),
+                        ),
+                      ],
+                    ),
+                  );
                 },
                 child: Container(
                   padding: EdgeInsets.all(6.r),
