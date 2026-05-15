@@ -6,10 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_ar.dart';
-import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
-import 'app_localizations_fr.dart';
-import 'app_localizations_ja.dart';
 
 // ignore_for_file: type=lint
 
@@ -98,10 +95,7 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
-    Locale('de'),
     Locale('en'),
-    Locale('fr'),
-    Locale('ja'),
   ];
 
   /// No description provided for @welcome.
@@ -818,6 +812,18 @@ abstract class AppLocalizations {
   /// **'Accept All'**
   String get accept_all;
 
+  /// No description provided for @delete_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get delete_account;
+
+  /// No description provided for @delete_account_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'this will permanently delete your account'**
+  String get delete_account_desc;
+
   /// No description provided for @error_email_empty.
   ///
   /// In en, this message translates to:
@@ -1381,6 +1387,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Update Date'**
   String get update_date;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location;
+
+  /// No description provided for @security_and_privacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Security & Privacy'**
+  String get security_and_privacy;
+
+  /// No description provided for @change_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get change_password;
+
+  /// No description provided for @update_login_credentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Update your login credentials'**
+  String get update_login_credentials;
+
+  /// No description provided for @sign_out.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get sign_out;
+
+  /// No description provided for @securely_logout_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Securely log out of your account'**
+  String get securely_logout_account;
+
+  /// No description provided for @camera.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get camera;
+
+  /// No description provided for @take_photo_camera.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a new photo using your camera'**
+  String get take_photo_camera;
+
+  /// No description provided for @gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get gallery;
+
+  /// No description provided for @choose_photo_gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an existing photo from your gallery'**
+  String get choose_photo_gallery;
+
+  /// No description provided for @remove_photo.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Photo'**
+  String get remove_photo;
+
+  /// No description provided for @delete_profile_picture.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete your current profile picture'**
+  String get delete_profile_picture;
+
+  /// No description provided for @verified_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified Account'**
+  String get verified_account;
 }
 
 class _AppLocalizationsDelegate
@@ -1394,7 +1478,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['ar', 'de', 'en', 'fr', 'ja'].contains(locale.languageCode);
+      <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -1405,14 +1489,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'ar':
       return AppLocalizationsAr();
-    case 'de':
-      return AppLocalizationsDe();
     case 'en':
       return AppLocalizationsEn();
-    case 'fr':
-      return AppLocalizationsFr();
-    case 'ja':
-      return AppLocalizationsJa();
   }
 
   throw FlutterError(

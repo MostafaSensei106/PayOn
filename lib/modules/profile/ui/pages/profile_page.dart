@@ -14,6 +14,7 @@ import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
+import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
 
 class ProfilePage extends HookWidget {
   const ProfilePage({super.key});
@@ -24,70 +25,78 @@ class ProfilePage extends HookWidget {
     final scrollController = useScrollController();
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: SidePageAppBarComponent(title: l10n.profile),
-      body: SingleChildScrollView(
+      body: CustomScrollView(
         controller: scrollController,
         physics: const AlwaysScrollableScrollPhysics(
           parent: BouncingScrollPhysics(),
         ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppConfig.padding.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: kToolbarHeight + AppConfig.padding + 35.h),
-              _buildProfileHeaderCard(context),
-              _buildSectionHeader(context, 'Account Details'),
-              _buildSettingsGroup(
-                context,
-                children: [
-                  ListTileIconComponent.top(
-                    title: l10n.phone_number,
-                    subtitle: '+20 10 1441 4536',
-                    leading: Iconsax.call_copy,
-                    onTap: () {},
-                  ),
-                  ListTileIconComponent.middle(
-                    title: 'Birth Date',
-                    subtitle: '2026-04-09',
-                    leading: Iconsax.calendar_1_copy,
-                    onTap: () {},
-                  ),
-                  ListTileIconComponent.bottom(
-                    title: 'Location',
-                    subtitle: 'Cairo, Egypt',
-                    leading: Iconsax.location_copy,
-                    onTap: () {},
-                  ),
-                ],
-              ),
-
-              _buildSectionHeader(context, 'Security & Privacy'),
-              _buildSettingsGroup(
-                context,
-                children: [
-                  ListTileIconComponent.top(
-                    title: 'Change Password',
-                    subtitle: 'Update your login credentials',
-                    leading: Iconsax.key_copy,
-                    onTap: () {
-                      unawaited(HapticFeedback.mediumImpact());
-                    },
-                  ),
-                  ListTileIconComponent.bottom(
-                    title: 'Sign Out',
-                    subtitle: 'Securely log out of your account',
-                    leading: Iconsax.logout_copy,
-                    onTap: () {
-                      unawaited(HapticFeedback.heavyImpact());
-                    },
-                  ),
-                ],
-              ),
-            ],
+        slivers: [
+          SidePageSliverAppBarWithWavesComponent(
+            scrollController: scrollController,
+            title: l10n.profile,
           ),
-        ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: AppConfig.padding.w,
+                vertical: AppConfig.paddingHalf.h,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildProfileHeaderCard(context),
+                  _buildSectionHeader(context, l10n.account_details),
+                  _buildSettingsGroup(
+                    context,
+                    children: [
+                      ListTileIconComponent.top(
+                        title: l10n.phone_number,
+                        subtitle: '+20 10 1441 4536',
+                        leading: Iconsax.call_copy,
+                        onTap: () {},
+                      ),
+                      ListTileIconComponent.middle(
+                        title: l10n.date_of_birth,
+                        subtitle: '2026-04-09',
+                        leading: Iconsax.calendar_1_copy,
+                        onTap: () {},
+                      ),
+                      ListTileIconComponent.bottom(
+                        title: l10n.location,
+                        subtitle: 'Cairo, Egypt',
+                        leading: Iconsax.location_copy,
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+
+                  _buildSectionHeader(context, l10n.security_and_privacy),
+                  _buildSettingsGroup(
+                    context,
+                    children: [
+                      ListTileIconComponent.top(
+                        title: l10n.change_password,
+                        subtitle: l10n.update_login_credentials,
+                        leading: Iconsax.key_copy,
+                        onTap: () {
+                          unawaited(HapticFeedback.mediumImpact());
+                        },
+                      ),
+                      ListTileIconComponent.bottom(
+                        title: l10n.delete_account,
+                        subtitle: l10n.delete_account_desc,
+                        leading: Iconsax.user_remove_copy,
+                        onTap: () {
+                          unawaited(HapticFeedback.heavyImpact());
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -95,6 +104,7 @@ class ProfilePage extends HookWidget {
   Widget _buildProfileHeaderCard(BuildContext context) {
     final colorScheme = context.colorScheme;
     final textTheme = Theme.of(context).textTheme;
+    final l10n = context.localKeys;
 
     return Container(
       padding: EdgeInsets.all(AppConfig.paddingHalf.w),
@@ -133,21 +143,20 @@ class ProfilePage extends HookWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         ListTileIconComponent.top(
-                          title: 'Camera',
-                          subtitle: 'Take a new photo using your camera',
+                          title: l10n.camera,
+                          subtitle: l10n.take_photo_camera,
                           leading: Iconsax.camera_copy,
                           onTap: () => Navigator.pop(context),
                         ),
                         ListTileIconComponent.middle(
-                          title: 'Gallery',
-                          subtitle:
-                              'Choose an existing photo from your gallery',
+                          title: l10n.gallery,
+                          subtitle: l10n.choose_photo_gallery,
                           leading: Iconsax.image_copy,
                           onTap: () => Navigator.pop(context),
                         ),
                         ListTileIconComponent.bottom(
-                          title: 'Remove Photo',
-                          subtitle: 'Delete your current profile picture',
+                          title: l10n.remove_photo,
+                          subtitle: l10n.delete_profile_picture,
                           leading: Iconsax.trash_copy,
                           onTap: () => Navigator.pop(context),
                         ),
@@ -213,7 +222,7 @@ class ProfilePage extends HookWidget {
                       ),
                       SizedBox(width: 4.w),
                       Text(
-                        'Verified Account',
+                        l10n.verified_account,
                         style: textTheme.labelSmall?.copyWith(
                           color: colorScheme.primary,
                           fontWeight: FontWeight.w600,

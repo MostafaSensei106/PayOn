@@ -113,6 +113,8 @@
   "upload_address_proof": "رفع إثبات السكن",
   "otp_message": "أدخل رمز التحقق المرسل لهاتفك",
   "otp_code": "رمز التحقق",
+  "delete_account": "حذف الحساب",
+  "delete_account_desc": "سيؤدي هذا إلى حذف حسابك نهائياً",
   "code_expires_in": "تنتهي صلاحية الرمز خلال",
   "resend_code": "إعادة إرسال الرمز",
   "accept_terms": "أوافق على الشروط والأحكام",
@@ -212,5 +214,18 @@
   "install_info": "معلومات التثبيت",
   "installer_store": "متجر التثبيت",
   "install_date": "تاريخ التثبيت",
-  "update_date": "تاريخ التحديث"
+  "update_date": "تاريخ التحديث",
+  "location": "الموقع",
+  "security_and_privacy": "الأمان والخصوصية",
+  "change_password": "تغيير كلمة المرور",
+  "update_login_credentials": "تحديث بيانات الدخول الخاصة بك",
+  "sign_out": "تسجيل الخروج",
+  "securely_logout_account": "تسجيل الخروج من حسابك بشكل آمن",
+  "camera": "الكاميرا",
+  "take_photo_camera": "التقاط صورة جديدة باستخدام الكاميرا",
+  "gallery": "المعرض",
+  "choose_photo_gallery": "اختيار صورة موجودة من المعرض",
+  "remove_photo": "إزالة الصورة",
+  "delete_profile_picture": "حذف صورة ملفك الشخصي الحالية",
+  "verified_account": "حساب موثق"
 }

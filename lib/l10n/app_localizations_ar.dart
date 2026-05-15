@@ -372,6 +372,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get accept_all => 'قبول الكل';
 
   @override
+  String get delete_account => 'حذف الحساب';
+
+  @override
+  String get delete_account_desc => 'سيؤدي هذا إلى حذف حسابك نهائياً';
+
+  @override
   String get error_email_empty => 'البريد الإلكتروني مطلوب';
 
   @override
@@ -656,4 +662,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get update_date => 'تاريخ التحديث';
+
+  @override
+  String get location => 'الموقع';
+
+  @override
+  String get security_and_privacy => 'الأمان والخصوصية';
+
+  @override
+  String get change_password => 'تغيير كلمة المرور';
+
+  @override
+  String get update_login_credentials => 'تحديث بيانات الدخول الخاصة بك';
+
+  @override
+  String get sign_out => 'تسجيل الخروج';
+
+  @override
+  String get securely_logout_account => 'تسجيل الخروج من حسابك بشكل آمن';
+
+  @override
+  String get camera => 'الكاميرا';
+
+  @override
+  String get take_photo_camera => 'التقاط صورة جديدة باستخدام الكاميرا';
+
+  @override
+  String get gallery => 'المعرض';
+
+  @override
+  String get choose_photo_gallery => 'اختيار صورة موجودة من المعرض';
+
+  @override
+  String get remove_photo => 'إزالة الصورة';
+
+  @override
+  String get delete_profile_picture => 'حذف صورة ملفك الشخصي الحالية';
+
+  @override
+  String get verified_account => 'حساب موثق';
 }

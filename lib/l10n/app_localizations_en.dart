@@ -375,6 +375,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accept_all => 'Accept All';
 
   @override
+  String get delete_account => 'Delete Account';
+
+  @override
+  String get delete_account_desc => 'this will permanently delete your account';
+
+  @override
   String get error_email_empty => 'Email cannot be empty';
 
   @override
@@ -663,4 +669,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get update_date => 'Update Date';
+
+  @override
+  String get location => 'Location';
+
+  @override
+  String get security_and_privacy => 'Security & Privacy';
+
+  @override
+  String get change_password => 'Change Password';
+
+  @override
+  String get update_login_credentials => 'Update your login credentials';
+
+  @override
+  String get sign_out => 'Sign Out';
+
+  @override
+  String get securely_logout_account => 'Securely log out of your account';
+
+  @override
+  String get camera => 'Camera';
+
+  @override
+  String get take_photo_camera => 'Take a new photo using your camera';
+
+  @override
+  String get gallery => 'Gallery';
+
+  @override
+  String get choose_photo_gallery =>
+      'Choose an existing photo from your gallery';
+
+  @override
+  String get remove_photo => 'Remove Photo';
+
+  @override
+  String get delete_profile_picture => 'Delete your current profile picture';
+
+  @override
+  String get verified_account => 'Verified Account';
 }
