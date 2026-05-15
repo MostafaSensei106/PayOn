@@ -141,7 +141,7 @@ final class SidePageSliverAppBarWithWavesComponent extends HookWidget {
                     color: waveColor ?? colorScheme.surface,
                   ),
                 ),
-                if (flexibleSpace != null) flexibleSpace!,
+                ?flexibleSpace,
               ],
             ),
           ),

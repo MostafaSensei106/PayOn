@@ -33,24 +33,6 @@ final class SettingsPage extends HookWidget {
           _buildSectionHeader(context, l10n.account_security),
           _buildSectionItems([
             SettingsTileData(
-              title: l10n.edit_profile,
-              subtitle: l10n.edit_profile_desc,
-              leading: Iconsax.user_copy,
-              onTap: () {},
-            ),
-            SettingsTileData(
-              title: l10n.confirm_password,
-              subtitle: l10n.change_password_desc,
-              leading: Iconsax.lock_copy,
-              onTap: () => const ChangePasswordRoute().push<void>(context),
-            ),
-            SettingsTileData(
-              title: l10n.two_factor_auth,
-              subtitle: l10n.two_factor_auth_desc,
-              leading: Iconsax.shield_tick_copy,
-              onTap: () => const TwoFactorAuthRoute().push<void>(context),
-            ),
-            SettingsTileData(
               title: l10n.biometric_auth,
               subtitle: l10n.biometric_auth_desc,
               leading: Iconsax.finger_scan_copy,

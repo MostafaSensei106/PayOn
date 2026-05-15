@@ -1,7 +1,8 @@
 // ignore_for_file: discarded_futures
 
-import 'package:flutter/material.dart';
 import 'dart:ui';
+
+import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../animation/wave_background.dart';
@@ -109,7 +110,7 @@ final class SliverAppBarWithWavesComponent extends HookWidget {
                     color: waveColor ?? colorScheme.surface,
                   ),
                 ),
-                if (flexibleSpace != null) flexibleSpace!,
+                ?flexibleSpace,
               ],
             ),
           ),

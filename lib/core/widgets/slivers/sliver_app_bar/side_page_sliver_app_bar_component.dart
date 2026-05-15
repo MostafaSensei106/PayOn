@@ -110,7 +110,7 @@ final class SidePageSliverAppBarComponent extends HookWidget {
           : null,
       flexibleSpace: Stack(
         children: [
-          if (flexibleSpace != null) flexibleSpace!,
+          ?flexibleSpace,
           if (!isExpanded.value)
             Positioned.fill(
               child: ClipRect(

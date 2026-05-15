@@ -84,43 +84,19 @@ class HomePage extends StatelessWidget {
             expandedHeight: 320.h,
             leading: Padding(
               padding: const EdgeInsets.all(AppConfig.paddingHalf),
-              child: Hero(
-                tag: 'profile',
-                flightShuttleBuilder:
-                    (
-                      final flightContext,
-                      final animation,
-                      final flightDirection,
-                      final fromHeroContext,
-                      final toHeroContext,
-                    ) => AnimatedBuilder(
-                      animation: animation,
-                      builder: (final context, final child) => Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            Tween<double>(
-                              begin: 100,
-                              end: 0,
-                            ).evaluate(animation),
-                          ),
-                        ),
-                        child: toHeroContext.widget,
-                      ),
-                    ),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(
-                      AppConfig.outBorderRadius,
-                    ),
-                    onTap: () async {
-                      unawaited(HapticFeedback.vibrate());
-                      await const ProfileRoute().push<void>(context);
-                    },
-                    child: const AvatarComponent(
-                      imageUrl:
-                          'https://media.licdn.com/dms/image/v2/D5603AQHpMGFlYFIAyw/profile-displayphoto-scale_400_400/B56ZnjHIJxHIAg-/0/1760451933899?e=1776902400&v=beta&t=ClsT0ppYA0_8z9ViCSbiS4FG81mCgMkabjoNBHSN1hc',
-                    ),
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(
+                    AppConfig.outBorderRadius,
+                  ),
+                  onTap: () async {
+                    unawaited(HapticFeedback.vibrate());
+                    await const ProfileRoute().push<void>(context);
+                  },
+                  child: const AvatarComponent(
+                    imageUrl:
+                        'https://media.licdn.com/dms/image/v2/D5603AQHpMGFlYFIAyw/profile-displayphoto-scale_400_400/B56ZnjHIJxHIAg-/0/1760451933899?e=1776902400&v=beta&t=ClsT0ppYA0_8z9ViCSbiS4FG81mCgMkabjoNBHSN1hc',
                   ),
                 ),
               ),
