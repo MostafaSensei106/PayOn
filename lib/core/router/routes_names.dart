@@ -23,6 +23,7 @@ abstract class RoutesNames {
   static const String commonQuestions = '/common-questions';
   static const String contactUs = '/contact-us';
   static const String privacyPolicy = '/privacy-policy';
+  static const String termsAndConditions = '/terms-and-conditions';
   static const String appVersion = '/app-version';
   static const String developerTeam = '/developer-team';
   static const String scanQrCode = '/scan-qr-code';

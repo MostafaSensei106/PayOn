@@ -12,17 +12,12 @@ final class SharedPrefsService implements BasePrefsStorageService {
   }
 
   @override
-  dynamic getData(String key) {
-    return _prefs.get(key);
-  }
-
-  @override
   Future<void> removeData(String key) async {
     await _prefs.remove(key);
   }
 
   @override
-  Future<void> setData(String key, dynamic value) async {
+  Future<void> setData<T>(String key, T value) async {
     if (value is String) {
       await _prefs.setString(key, value);
     } else if (value is int) {
@@ -34,7 +29,17 @@ final class SharedPrefsService implements BasePrefsStorageService {
     } else if (value is List<String>) {
       await _prefs.setStringList(key, value);
     } else {
-      throw Exception('Unsupported type');
+      throw Exception('Unsupported type provided for storage');
+    }
+  }
+
+  @override
+  T? getData<T>(String key) {
+    final val = _prefs.get(key);
+    if (val is T) {
+      return val;
+    } else {
+      return null;
     }
   }
 }

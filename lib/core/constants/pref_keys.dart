@@ -4,4 +4,5 @@ final class PrefKeys {
   static const String userToken = 'userToken';
   static const String userId = 'userId';
   static const String isRememberMe = 'isRememberMe';
+  static const String isFingerprintEnabled = 'isFingerprintEnabled';
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show HapticFeedback;
@@ -39,17 +40,24 @@ class SidePageAppBarComponent extends StatelessWidget
 
   @override
   Widget build(final BuildContext context) => AppBar(
-    title: Text(title),
-
-    centerTitle: true,
-    scrolledUnderElevation: 0,
-    elevation: 0,
+    flexibleSpace: ClipRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: Container(color: Colors.transparent),
+      ),
+    ),
     leading: _buildSidePageAppBarIcon(
       context,
       cheakLocation(context)
           ? Icons.keyboard_double_arrow_right_rounded
           : Icons.keyboard_double_arrow_left_rounded,
     ),
+    title: Text(title),
+    backgroundColor: Theme.of(
+      context,
+    ).colorScheme.surface.withValues(alpha: 0.7),
+    foregroundColor: Theme.of(context).colorScheme.onSurface,
+    actionsPadding: const EdgeInsets.symmetric(horizontal: 4),
     actions: actions,
   );
 

@@ -5,9 +5,11 @@ final class SvgsImages {
 
   static const String alertSvg = 'assets/svgs/undraw_alert_w756.svg';
 
-  static const String languageSvg = 'assets/svgs/undraw_around-the-world_1p8h.svg';
+  static const String languageSvg =
+      'assets/svgs/undraw_around-the-world_1p8h.svg';
 
-  static const String completeSvg = 'assets/svgs/undraw_complete-design_pzh6.svg';
+  static const String completeSvg =
+      'assets/svgs/undraw_complete-design_pzh6.svg';
 
   static const String contactUsSvg = 'assets/svgs/undraw_contact-us_s4jn.svg';
 
@@ -17,7 +19,8 @@ final class SvgsImages {
   static const String developerAvatarSvg =
       'assets/svgs/undraw_developer-avatar_f6ac.svg';
 
-  static const String fingerprintSvg = 'assets/svgs/undraw_fingerprint_kdwq.svg';
+  static const String fingerprintSvg =
+      'assets/svgs/undraw_fingerprint_kdwq.svg';
 
   static const String forgotPasswordSvg =
       'assets/svgs/undraw_forgot-password_nttj.svg';
@@ -25,7 +28,8 @@ final class SvgsImages {
   static const String handshakeDealSvg =
       'assets/svgs/undraw_handshake-deal_nwk6.svg';
 
-  static const String maintenanceSvg = 'assets/svgs/undraw_maintenance_4unj.svg';
+  static const String maintenanceSvg =
+      'assets/svgs/undraw_maintenance_4unj.svg';
 
   static const String mobilePaymentsSvg =
       'assets/svgs/undraw_mobile-payments_uate.svg';
@@ -42,7 +46,8 @@ final class SvgsImages {
   static const String privateFilesSvg =
       'assets/svgs/undraw_private-files_m2bw.svg';
 
-  static const String qrCodeScanSvg = 'assets/svgs/undraw_qr-code-scan_bewe.svg';
+  static const String qrCodeScanSvg =
+      'assets/svgs/undraw_qr-code-scan_bewe.svg';
 
   static const String questionsSvg = 'assets/svgs/undraw_questions_52ic.svg';
 
@@ -59,4 +64,6 @@ final class SvgsImages {
   static const String unboxingSvg = 'assets/svgs/undraw_unboxing_p8sg.svg';
 
   static const String updateSvg = 'assets/svgs/undraw_update_jvp1.svg';
+
+  static const String empySvg = 'assets/svgs/undraw_empty_4zx0.svg';
 }

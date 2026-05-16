@@ -22,7 +22,7 @@ class LoginPageHeader extends StatelessWidget {
         ),
         const SpacingComponent.vertical(AppConfig.paddingHalf),
         Text(
-          l10n.login_subtitle,
+          l10n.login_desc,
           style: theme.textTheme.bodyLarge?.copyWith(
             color: theme.colorScheme.onSurfaceVariant,
           ),

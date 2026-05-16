@@ -89,7 +89,7 @@ class AccountBalanceCard extends HookWidget {
                 Row(
                   children: [
                     Text(
-                      '${l10n.iPA}: ${account.accountId}',
+                      '${l10n.ipa}: ${account.accountId}',
                       style: const TextStyle(
                         fontSize: 10,
                         fontFamily: 'monospace',

@@ -62,23 +62,23 @@ extension UserNameErrorExtension on UserNameError {
     final l10n = getIt<L10nService>().get(context);
     switch (this) {
       case UserNameError.empty:
-        return l10n.user_name_can_not_be_empty;
+        return l10n.error_username_empty;
       case UserNameError.tooShort:
-        return l10n.user_name_is_too_short_min_3_characters;
+        return l10n.error_username_too_short;
       case UserNameError.hasSpecialCharacters:
-        return l10n.user_name_can_not_have_special_characters;
+        return l10n.error_username_special_chars;
       case UserNameError.hasSpaces:
-        return l10n.user_name_can_not_have_spaces;
+        return l10n.error_username_spaces;
       case UserNameError.hasImojes:
-        return l10n.user_name_can_not_have_emojis;
+        return l10n.error_username_emojis;
 
       case UserNameError.arbicNotAllowed:
-        return l10n.user_name_arbic_not_allowed;
+        return l10n.error_username_arabic;
 
       case UserNameError.tooLongMax20Characters:
-        return l10n.user_name_is_too_long_max_20_characters;
+        return l10n.error_username_too_long;
       case UserNameError.invalid:
-        return l10n.user_name_not_valid;
+        return l10n.error_username_invalid;
     }
   }
 }

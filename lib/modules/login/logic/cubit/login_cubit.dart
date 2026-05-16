@@ -31,10 +31,14 @@ final class LoginCubit extends Cubit<LoginState> {
   LoginFormState get currentForm => state.form;
 
   Future<void> _checkBiometricsAvailability() async {
-    final isAvailable = await _biometricsService.isBiometricsAvailable();
+    final isSupported = await _biometricsService.isBiometricsAvailable();
+    final isEnabledByUser =
+        _prefsStorageService.getData<bool>(PrefKeys.isFingerprintEnabled) ??
+        false;
+    final shouldShowBiometricButton = isSupported && isEnabledByUser;
     emit(
       LoginState.initial(
-        currentForm.copyWith(isBiometricsAvailable: isAvailable),
+        currentForm.copyWith(isBiometricsAvailable: shouldShowBiometricButton),
       ),
     );
   }
@@ -66,7 +70,6 @@ final class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<bool> loginWithBiometrics() async {
-    if (!await _biometricsService.isBiometricsAvailable()) return false;
     final isAuthenticated = await _biometricsService.authenticate(
       message: 'Scan your fingerprint to login',
     );

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 final class SliverAppBarComponent extends StatelessWidget {
@@ -34,11 +36,24 @@ final class SliverAppBarComponent extends StatelessWidget {
     floating: floating,
     snap: snap,
     expandedHeight: expandedHeight,
-    flexibleSpace: flexibleSpace,
+    flexibleSpace: Stack(
+      children: [
+        ?flexibleSpace,
+        ClipRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Container(color: Colors.transparent),
+          ),
+        ),
+      ],
+    ),
     bottom: bottom,
-    backgroundColor: Theme.of(context).colorScheme.surface,
+    backgroundColor: Theme.of(
+      context,
+    ).colorScheme.surface.withValues(alpha: 0.7),
     centerTitle: centerTitle,
     elevation: 0,
     scrolledUnderElevation: 0,
+    actionsPadding: const EdgeInsets.symmetric(horizontal: 4),
   );
 }

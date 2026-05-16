@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
@@ -29,36 +30,18 @@ final class SettingsPage extends HookWidget {
             title: l10n.settings,
           ),
 
-          _buildSectionHeader(context, l10n.account_and_security),
+          _buildSectionHeader(context, l10n.account_security),
           _buildSectionItems([
             SettingsTileData(
-              title: l10n.edit_profile,
-              subtitle: l10n.edit_profile_subtitle,
-              leading: Icons.person_outline,
-              onTap: () {},
-            ),
-            SettingsTileData(
-              title: l10n.confirm_password,
-              subtitle: l10n.change_password_subtitle,
-              leading: Icons.lock_outline,
-              onTap: () => const ChangePasswordRoute().push<void>(context),
-            ),
-            SettingsTileData(
-              title: l10n.two_factor_auth_title,
-              subtitle: l10n.two_factor_auth_subtitle,
-              leading: Icons.security,
-              onTap: () => const TwoFactorAuthRoute().push<void>(context),
-            ),
-            SettingsTileData(
-              title: l10n.biometric_login,
-              subtitle: l10n.biometric_login_subtitle,
-              leading: Icons.fingerprint,
+              title: l10n.biometric_auth,
+              subtitle: l10n.biometric_auth_desc,
+              leading: Iconsax.finger_scan_copy,
               onTap: () => const FingerprintAuthRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.security_alerts,
-              subtitle: l10n.security_alerts_subtitle,
-              leading: Icons.gpp_maybe_outlined,
+              subtitle: l10n.security_alerts_desc,
+              leading: Iconsax.security_safe_copy,
               onTap: () => const SecurityAlertsRoute().push<void>(context),
             ),
           ]),
@@ -68,35 +51,35 @@ final class SettingsPage extends HookWidget {
             SettingsTileData(
               title: l10n.app_language,
               subtitle: l10n.language_name,
-              leading: Icons.language,
+              leading: Iconsax.global_copy,
               onTap: () => const ChangeLanguageRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.appearance,
-              subtitle: l10n.appearance_subtitle,
-              leading: Icons.dark_mode_outlined,
+              subtitle: l10n.appearance_desc,
+              leading: Iconsax.magicpen_copy,
               onTap: () => const ChangeThemeRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.notification_settings,
-              subtitle: l10n.notification_settings_subtitle,
-              leading: Icons.notifications_none,
+              subtitle: l10n.notification_settings_desc,
+              leading: Iconsax.notification_copy,
               onTap: () => const NotificationsRoute().push<void>(context),
             ),
           ]),
 
-          _buildSectionHeader(context, l10n.help_and_support),
+          _buildSectionHeader(context, l10n.help_support),
           _buildSectionItems([
             SettingsTileData(
               title: l10n.faq,
-              subtitle: l10n.faq_subtitle,
-              leading: Icons.help_outline,
+              subtitle: l10n.faq_desc,
+              leading: Iconsax.message_question_copy,
               onTap: () => const CommonQuestionsRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.contact_us,
-              subtitle: l10n.contact_us_subtitle,
-              leading: Icons.support_agent,
+              subtitle: l10n.contact_us_desc,
+              leading: Iconsax.call_calling_copy,
               onTap: () => const ContactUsRoute().push<void>(context),
             ),
           ]),
@@ -105,23 +88,44 @@ final class SettingsPage extends HookWidget {
           _buildSectionItems([
             SettingsTileData(
               title: l10n.privacy_policy,
-              subtitle: l10n.privacy_policy_subtitle,
-              leading: Icons.privacy_tip_outlined,
+              subtitle: l10n.privacy_policy_desc,
+              leading: Iconsax.security_user_copy,
               onTap: () => const PrivacyPolicyRoute().push<void>(context),
             ),
             SettingsTileData(
+              title: l10n.terms_and_conditions,
+              subtitle: l10n.terms_and_conditions_desc,
+              leading: Iconsax.document_text_copy,
+              onTap: () => const TermsAndConditionsRoute().push<void>(context),
+            ),
+            SettingsTileData(
               title: l10n.about_app,
-              subtitle: l10n.app_version,
-              leading: Icons.info_outline,
-              onTap: () => const AppVersionRoute().push<void>(context),
+              subtitle: l10n.about_app_desc,
+              leading: Iconsax.information_copy,
+              onTap: () => const AboutAppRoute().push<void>(context),
             ),
             SettingsTileData(
               title: l10n.about_developers,
-              subtitle: l10n.about_developers_subtitle,
-              leading: Icons.developer_mode,
+              subtitle: l10n.about_developers_desc,
+              leading: Iconsax.code_copy,
               onTap: () => const DeveloperTeamRoute().push<void>(context),
             ),
           ]),
+
+          _buildSectionHeader(context, l10n.account_actions),
+          _buildSectionItems([
+            SettingsTileData(
+              title: l10n.logout,
+              subtitle: l10n.logout_desc,
+              leading: Iconsax.logout_copy,
+              onTap: () {
+                // TODO: Implement logout logic
+              },
+            ),
+          ]),
+          SliverToBoxAdapter(
+            child: SizedBox(height: MediaQuery.of(context).padding.bottom + 8),
+          ),
         ],
       ),
     );

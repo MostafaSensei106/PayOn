@@ -7,40 +7,68 @@ import '../../../constants/app_config.dart';
 final class SvgComponent extends StatelessWidget {
   const SvgComponent({
     required this.path,
-    this.width = 300,
-    this.height = 300,
     this.fit = BoxFit.contain,
     this.useInBorderRadius = false,
+    super.key,
+  }) : title = null,
+       subtitle = null;
+
+  const SvgComponent.descriptions({
+    required this.path,
+    required this.title,
+    required this.subtitle,
+
+    this.fit = BoxFit.contain,
+    this.useInBorderRadius = false,
+
     super.key,
   });
 
   final String path;
-  final double? width;
-  final double? height;
+  final String? title;
+  final String? subtitle;
+
   final BoxFit fit;
   final bool useInBorderRadius;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-        borderRadius: useInBorderRadius
-            ? BorderRadius.circular(AppConfig.inBorderRadius)
-            : BorderRadius.circular(AppConfig.outBorderRadius),
-      ),
-      child: SvgPicture.asset(
-        path,
-        fit: fit,
-        errorBuilder: (context, error, stackTrace) => Container(
-          color: Theme.of(context).colorScheme.errorContainer,
-          child: Icon(
-            Iconsax.warning_2_copy,
-            color: Theme.of(context).colorScheme.error,
-          ),
+    final svgWidget = SvgPicture.asset(
+      path,
+      fit: fit,
+
+      placeholderBuilder: (context) => Center(
+        child: Icon(
+          Iconsax.warning_2_copy,
+          color: Theme.of(context).colorScheme.error,
         ),
       ),
+    );
+
+    if (title == null && subtitle == null) return svgWidget;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        svgWidget,
+        if (title != null) ...[
+          const SizedBox(height: AppConfig.margin),
+
+          Text(
+            title!,
+            style: Theme.of(context).textTheme.headlineSmall,
+            textAlign: TextAlign.center,
+          ),
+        ],
+
+        if (subtitle != null) ...[
+          Text(
+            subtitle!,
+            style: Theme.of(context).textTheme.bodyMedium,
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ],
     );
   }
 }

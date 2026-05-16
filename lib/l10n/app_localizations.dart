@@ -6,10 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_ar.dart';
-import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
-import 'app_localizations_fr.dart';
-import 'app_localizations_ja.dart';
 
 // ignore_for_file: type=lint
 
@@ -98,53 +95,50 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
-    Locale('de'),
     Locale('en'),
-    Locale('fr'),
-    Locale('ja'),
   ];
 
-  /// No description provided for @welcome_title.
+  /// No description provided for @welcome.
   ///
   /// In en, this message translates to:
   /// **'Welcome'**
-  String get welcome_title;
+  String get welcome;
 
-  /// No description provided for @send_money_title.
+  /// No description provided for @send_money_instantly.
   ///
   /// In en, this message translates to:
   /// **'Send Money Instantly'**
-  String get send_money_title;
+  String get send_money_instantly;
 
-  /// No description provided for @send_money_subtitle.
+  /// No description provided for @send_money_instantly_desc.
   ///
   /// In en, this message translates to:
   /// **'Send money to your friends and family instantly'**
-  String get send_money_subtitle;
+  String get send_money_instantly_desc;
 
-  /// No description provided for @secure_payments_title.
+  /// No description provided for @secure_payments.
   ///
   /// In en, this message translates to:
   /// **'Secure Payments'**
-  String get secure_payments_title;
+  String get secure_payments;
 
-  /// No description provided for @secure_payments_subtitle.
+  /// No description provided for @secure_payments_desc.
   ///
   /// In en, this message translates to:
   /// **'Your transactions are protected with bank-grade security'**
-  String get secure_payments_subtitle;
+  String get secure_payments_desc;
 
-  /// No description provided for @track_everything_title.
+  /// No description provided for @track_everything.
   ///
   /// In en, this message translates to:
   /// **'Track Everything'**
-  String get track_everything_title;
+  String get track_everything;
 
-  /// No description provided for @track_everything_subtitle.
+  /// No description provided for @track_everything_desc.
   ///
   /// In en, this message translates to:
   /// **'Monitor your expenses and savings'**
-  String get track_everything_subtitle;
+  String get track_everything_desc;
 
   /// No description provided for @english.
   ///
@@ -176,11 +170,11 @@ abstract class AppLocalizations {
   /// **'Welcome Back!'**
   String get welcome_back;
 
-  /// No description provided for @login_subtitle.
+  /// No description provided for @login_desc.
   ///
   /// In en, this message translates to:
   /// **'Login to your account to continue'**
-  String get login_subtitle;
+  String get login_desc;
 
   /// No description provided for @email_address.
   ///
@@ -193,6 +187,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Male'**
   String get male;
+
+  /// No description provided for @biometric_auth.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric Authentication'**
+  String get biometric_auth;
+
+  /// No description provided for @biometric_auth_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Secure your account'**
+  String get biometric_auth_desc;
+
+  /// No description provided for @fingerprint_auth.
+  ///
+  /// In en, this message translates to:
+  /// **'Fingerprint Authentication'**
+  String get fingerprint_auth;
+
+  /// No description provided for @fingerprint_auth_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your fingerprint to authenticate'**
+  String get fingerprint_auth_desc;
+
+  /// No description provided for @or.
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get or;
+
+  /// No description provided for @face_id.
+  ///
+  /// In en, this message translates to:
+  /// **'Face ID'**
+  String get face_id;
+
+  /// No description provided for @biometric_not_supported.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric authentication is not supported on this device or not enabled.'**
+  String get biometric_not_supported;
+
+  /// No description provided for @biometric_login_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your fingerprint or face recognition to log in quickly and securely.'**
+  String get biometric_login_desc;
+
+  /// No description provided for @enable_biometric.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Biometric Authentication'**
+  String get enable_biometric;
+
+  /// No description provided for @enable_biometric_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your fingerprint or face recognition to log in'**
+  String get enable_biometric_desc;
 
   /// No description provided for @female.
   ///
@@ -224,23 +278,29 @@ abstract class AppLocalizations {
   /// **'Password'**
   String get password;
 
+  /// No description provided for @terms_and_conditions_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Please read our terms and conditions carefully'**
+  String get terms_and_conditions_desc;
+
   /// No description provided for @forgot_password.
   ///
   /// In en, this message translates to:
   /// **'Forgot Password?'**
   String get forgot_password;
 
-  /// No description provided for @manage_finances_title.
+  /// No description provided for @manage_finances.
   ///
   /// In en, this message translates to:
   /// **'Manage Your Finances\nEasily & Securely'**
-  String get manage_finances_title;
+  String get manage_finances;
 
-  /// No description provided for @manage_finances_subtitle.
+  /// No description provided for @manage_finances_desc.
   ///
   /// In en, this message translates to:
   /// **'The most secure and fastest way to send and receive money globally.'**
-  String get manage_finances_subtitle;
+  String get manage_finances_desc;
 
   /// No description provided for @lets_get_started.
   ///
@@ -404,11 +464,11 @@ abstract class AppLocalizations {
   /// **'English'**
   String get language_name;
 
-  /// No description provided for @language_subtitle.
+  /// No description provided for @language_desc.
   ///
   /// In en, this message translates to:
   /// **'English'**
-  String get language_subtitle;
+  String get language_desc;
 
   /// No description provided for @country_code.
   ///
@@ -512,11 +572,11 @@ abstract class AppLocalizations {
   /// **'Favorites'**
   String get favorites;
 
-  /// No description provided for @iPA.
+  /// No description provided for @ipa.
   ///
   /// In en, this message translates to:
   /// **'IPA'**
-  String get iPA;
+  String get ipa;
 
   /// No description provided for @privacy_policy.
   ///
@@ -614,11 +674,11 @@ abstract class AppLocalizations {
   /// **'Next'**
   String get next;
 
-  /// No description provided for @tier_1_title.
+  /// No description provided for @tier_1_verification.
   ///
   /// In en, this message translates to:
   /// **'Tier 1: Basic Verification'**
-  String get tier_1_title;
+  String get tier_1_verification;
 
   /// No description provided for @full_name_id.
   ///
@@ -638,17 +698,41 @@ abstract class AppLocalizations {
   /// **'Nationality'**
   String get nationality;
 
-  /// No description provided for @tier_2_title.
+  /// No description provided for @tier_2_verification.
   ///
   /// In en, this message translates to:
   /// **'Tier 2: Identity Document'**
-  String get tier_2_title;
+  String get tier_2_verification;
 
   /// No description provided for @national_id_passport.
   ///
   /// In en, this message translates to:
-  /// **'National ID / Passport Number'**
+  /// **'National ID / Passport'**
   String get national_id_passport;
+
+  /// No description provided for @no_security_alerts_for_you.
+  ///
+  /// In en, this message translates to:
+  /// **'No security alerts for you'**
+  String get no_security_alerts_for_you;
+
+  /// No description provided for @no_security_alerts_for_you_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll notify you if we detect any suspicious activity on your account.'**
+  String get no_security_alerts_for_you_desc;
+
+  /// No description provided for @no_notifications_yet.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications yet'**
+  String get no_notifications_yet;
+
+  /// No description provided for @no_notifications_yet_des.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll see your notifications here once you have some.'**
+  String get no_notifications_yet_des;
 
   /// No description provided for @personal_details.
   ///
@@ -662,11 +746,11 @@ abstract class AppLocalizations {
   /// **'Upload Government ID'**
   String get upload_id;
 
-  /// No description provided for @tier_3_title.
+  /// No description provided for @tier_3_verification.
   ///
   /// In en, this message translates to:
   /// **'Tier 3: Address Verification'**
-  String get tier_3_title;
+  String get tier_3_verification;
 
   /// No description provided for @residential_address.
   ///
@@ -704,23 +788,23 @@ abstract class AppLocalizations {
   /// **'Resend Code'**
   String get resend_code;
 
-  /// No description provided for @i_accept_terms_and_conditions.
+  /// No description provided for @accept_terms.
   ///
   /// In en, this message translates to:
   /// **'I accept the Terms and Conditions'**
-  String get i_accept_terms_and_conditions;
+  String get accept_terms;
 
-  /// No description provided for @please_read_terms_and_conditions.
+  /// No description provided for @read_terms_desc.
   ///
   /// In en, this message translates to:
   /// **'Please read the Terms and Conditions'**
-  String get please_read_terms_and_conditions;
+  String get read_terms_desc;
 
-  /// No description provided for @i_accept_privacy_policy.
+  /// No description provided for @accept_privacy_policy.
   ///
   /// In en, this message translates to:
   /// **'I accept the Privacy Policy'**
-  String get i_accept_privacy_policy;
+  String get accept_privacy_policy;
 
   /// No description provided for @accept_all.
   ///
@@ -728,95 +812,107 @@ abstract class AppLocalizations {
   /// **'Accept All'**
   String get accept_all;
 
-  /// No description provided for @email_empty.
+  /// No description provided for @delete_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get delete_account;
+
+  /// No description provided for @delete_account_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'this will permanently delete your account'**
+  String get delete_account_desc;
+
+  /// No description provided for @error_email_empty.
   ///
   /// In en, this message translates to:
   /// **'Email cannot be empty'**
-  String get email_empty;
+  String get error_email_empty;
 
-  /// No description provided for @email_missing_at_sign.
+  /// No description provided for @error_email_missing_at.
   ///
   /// In en, this message translates to:
   /// **'Email is missing @ sign'**
-  String get email_missing_at_sign;
+  String get error_email_missing_at;
 
-  /// No description provided for @email_invalid.
+  /// No description provided for @error_email_invalid.
   ///
   /// In en, this message translates to:
   /// **'Email is invalid'**
-  String get email_invalid;
+  String get error_email_invalid;
 
-  /// No description provided for @email_already_exists.
+  /// No description provided for @error_email_exists.
   ///
   /// In en, this message translates to:
   /// **'Email already exists'**
-  String get email_already_exists;
+  String get error_email_exists;
 
-  /// No description provided for @email_not_found.
+  /// No description provided for @error_email_not_found.
   ///
   /// In en, this message translates to:
   /// **'Email not found'**
-  String get email_not_found;
+  String get error_email_not_found;
 
-  /// No description provided for @email_not_lower_case.
+  /// No description provided for @error_email_lowercase.
   ///
   /// In en, this message translates to:
   /// **'Email must be in lower case'**
-  String get email_not_lower_case;
+  String get error_email_lowercase;
 
-  /// No description provided for @email_not_valid.
+  /// No description provided for @error_email_not_valid.
   ///
   /// In en, this message translates to:
   /// **'Email is not valid'**
-  String get email_not_valid;
+  String get error_email_not_valid;
 
-  /// No description provided for @email_missing_domain.
+  /// No description provided for @error_email_missing_domain.
   ///
   /// In en, this message translates to:
   /// **'Email is missing domain'**
-  String get email_missing_domain;
+  String get error_email_missing_domain;
 
-  /// No description provided for @email_missing_dot.
+  /// No description provided for @error_email_missing_dot.
   ///
   /// In en, this message translates to:
   /// **'Email is missing .'**
-  String get email_missing_dot;
+  String get error_email_missing_dot;
 
-  /// No description provided for @email_missing_extension.
+  /// No description provided for @error_email_missing_extension.
   ///
   /// In en, this message translates to:
   /// **'Email is missing extension'**
-  String get email_missing_extension;
+  String get error_email_missing_extension;
 
-  /// No description provided for @password_empty.
+  /// No description provided for @error_password_empty.
   ///
   /// In en, this message translates to:
   /// **'Password cannot be empty'**
-  String get password_empty;
+  String get error_password_empty;
 
-  /// No description provided for @user_name_can_not_be_empty.
+  /// No description provided for @error_username_empty.
   ///
   /// In en, this message translates to:
   /// **'User name cannot be empty'**
-  String get user_name_can_not_be_empty;
+  String get error_username_empty;
 
-  /// No description provided for @user_name_already_exists.
+  /// No description provided for @error_username_exists.
   ///
   /// In en, this message translates to:
   /// **'User name already exists'**
-  String get user_name_already_exists;
+  String get error_username_exists;
 
-  /// No description provided for @user_name_not_found.
+  /// No description provided for @error_username_not_found.
   ///
   /// In en, this message translates to:
   /// **'User name not found'**
-  String get user_name_not_found;
+  String get error_username_not_found;
 
-  /// No description provided for @user_name_not_valid.
+  /// No description provided for @error_username_invalid.
   ///
   /// In en, this message translates to:
   /// **'User name is not valid'**
-  String get user_name_not_valid;
+  String get error_username_invalid;
 
   /// No description provided for @payment_methods.
   ///
@@ -836,83 +932,83 @@ abstract class AppLocalizations {
   /// **'Add Card'**
   String get add_card;
 
-  /// No description provided for @password_can_not_have_spaces.
+  /// No description provided for @error_password_spaces.
   ///
   /// In en, this message translates to:
   /// **'Password cannot contain spaces'**
-  String get password_can_not_have_spaces;
+  String get error_password_spaces;
 
-  /// No description provided for @user_name_arbic_not_allowed.
+  /// No description provided for @error_username_arabic.
   ///
   /// In en, this message translates to:
   /// **'User name cannot contain Arabic characters'**
-  String get user_name_arbic_not_allowed;
+  String get error_username_arabic;
 
-  /// No description provided for @user_name_is_too_long_max_20_characters.
+  /// No description provided for @error_username_too_long.
   ///
   /// In en, this message translates to:
   /// **'User name is too long (maximum 20 characters)'**
-  String get user_name_is_too_long_max_20_characters;
+  String get error_username_too_long;
 
-  /// No description provided for @user_name_is_too_short_min_3_characters.
+  /// No description provided for @error_username_too_short.
   ///
   /// In en, this message translates to:
   /// **'User name is too short (minimum 3 characters)'**
-  String get user_name_is_too_short_min_3_characters;
+  String get error_username_too_short;
 
-  /// No description provided for @user_name_can_not_have_spaces.
+  /// No description provided for @error_username_spaces.
   ///
   /// In en, this message translates to:
   /// **'User name cannot contain spaces'**
-  String get user_name_can_not_have_spaces;
+  String get error_username_spaces;
 
-  /// No description provided for @user_name_can_not_have_special_characters.
+  /// No description provided for @error_username_special_chars.
   ///
   /// In en, this message translates to:
   /// **'User name cannot contain special characters'**
-  String get user_name_can_not_have_special_characters;
+  String get error_username_special_chars;
 
-  /// No description provided for @user_name_can_not_have_emojis.
+  /// No description provided for @error_username_emojis.
   ///
   /// In en, this message translates to:
   /// **'User name cannot contain emojis'**
-  String get user_name_can_not_have_emojis;
+  String get error_username_emojis;
 
-  /// No description provided for @please_read_privacy_policy.
+  /// No description provided for @read_privacy_policy_desc.
   ///
   /// In en, this message translates to:
   /// **'Please read the Privacy Policy'**
-  String get please_read_privacy_policy;
+  String get read_privacy_policy_desc;
 
-  /// No description provided for @password_can_not_be_empty.
+  /// No description provided for @error_password_empty_alt.
   ///
   /// In en, this message translates to:
   /// **'Password cannot be empty'**
-  String get password_can_not_be_empty;
+  String get error_password_empty_alt;
 
-  /// No description provided for @password_is_too_short_min_8_characters.
+  /// No description provided for @error_password_too_short.
   ///
   /// In en, this message translates to:
   /// **'Password is too short (minimum 8 characters)'**
-  String get password_is_too_short_min_8_characters;
+  String get error_password_too_short;
 
-  /// No description provided for @password_can_not_have_emojis.
+  /// No description provided for @error_password_emojis.
   ///
   /// In en, this message translates to:
   /// **'Password cannot contain emojis'**
-  String get password_can_not_have_emojis;
+  String get error_password_emojis;
 
-  /// No description provided for @password_not_valid.
+  /// No description provided for @error_password_invalid.
   ///
   /// In en, this message translates to:
   /// **'Password is not valid'**
-  String get password_not_valid;
+  String get error_password_invalid;
 
-  /// No description provided for @account_and_security.
+  /// No description provided for @account_security.
   ///
   /// In en, this message translates to:
   /// **'Account & Security'**
-  String get account_and_security;
+  String get account_security;
 
   /// No description provided for @edit_profile.
   ///
@@ -920,29 +1016,29 @@ abstract class AppLocalizations {
   /// **'Edit Profile'**
   String get edit_profile;
 
-  /// No description provided for @edit_profile_subtitle.
+  /// No description provided for @edit_profile_desc.
   ///
   /// In en, this message translates to:
   /// **'Update your personal information and photo'**
-  String get edit_profile_subtitle;
+  String get edit_profile_desc;
 
-  /// No description provided for @change_password_subtitle.
+  /// No description provided for @change_password_desc.
   ///
   /// In en, this message translates to:
   /// **'Update your account\'s secret code'**
-  String get change_password_subtitle;
+  String get change_password_desc;
 
-  /// No description provided for @two_factor_auth_title.
+  /// No description provided for @two_factor_auth.
   ///
   /// In en, this message translates to:
   /// **'Two-Factor Authentication (2FA)'**
-  String get two_factor_auth_title;
+  String get two_factor_auth;
 
-  /// No description provided for @two_factor_auth_subtitle.
+  /// No description provided for @two_factor_auth_desc.
   ///
   /// In en, this message translates to:
   /// **'Add an extra layer of protection to your account'**
-  String get two_factor_auth_subtitle;
+  String get two_factor_auth_desc;
 
   /// No description provided for @biometric_login.
   ///
@@ -950,11 +1046,11 @@ abstract class AppLocalizations {
   /// **'Biometric Login'**
   String get biometric_login;
 
-  /// No description provided for @biometric_login_subtitle.
+  /// No description provided for @biometric_login_desc_settings.
   ///
   /// In en, this message translates to:
   /// **'Enable fingerprint or face recognition'**
-  String get biometric_login_subtitle;
+  String get biometric_login_desc_settings;
 
   /// No description provided for @security_alerts.
   ///
@@ -962,11 +1058,11 @@ abstract class AppLocalizations {
   /// **'Security Alerts'**
   String get security_alerts;
 
-  /// No description provided for @security_alerts_subtitle.
+  /// No description provided for @security_alerts_desc.
   ///
   /// In en, this message translates to:
   /// **'Notifications of unusual login attempts'**
-  String get security_alerts_subtitle;
+  String get security_alerts_desc;
 
   /// No description provided for @preferences.
   ///
@@ -980,11 +1076,11 @@ abstract class AppLocalizations {
   /// **'Appearance'**
   String get appearance;
 
-  /// No description provided for @appearance_subtitle.
+  /// No description provided for @appearance_desc.
   ///
   /// In en, this message translates to:
   /// **'System Default (Light/Dark)'**
-  String get appearance_subtitle;
+  String get appearance_desc;
 
   /// No description provided for @notification_settings.
   ///
@@ -992,17 +1088,23 @@ abstract class AppLocalizations {
   /// **'Notification Settings'**
   String get notification_settings;
 
-  /// No description provided for @notification_settings_subtitle.
+  /// No description provided for @notification_settings_desc.
   ///
   /// In en, this message translates to:
   /// **'Control notifications and sounds'**
-  String get notification_settings_subtitle;
+  String get notification_settings_desc;
 
-  /// No description provided for @help_and_support.
+  /// No description provided for @help_support.
   ///
   /// In en, this message translates to:
   /// **'Help & Support'**
-  String get help_and_support;
+  String get help_support;
+
+  /// No description provided for @logout_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of your account'**
+  String get logout_desc;
 
   /// No description provided for @faq.
   ///
@@ -1010,11 +1112,17 @@ abstract class AppLocalizations {
   /// **'FAQ'**
   String get faq;
 
-  /// No description provided for @faq_subtitle.
+  /// No description provided for @account_actions.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Actions'**
+  String get account_actions;
+
+  /// No description provided for @faq_desc.
   ///
   /// In en, this message translates to:
   /// **'Answers to the most frequently asked questions'**
-  String get faq_subtitle;
+  String get faq_desc;
 
   /// No description provided for @contact_us.
   ///
@@ -1022,11 +1130,11 @@ abstract class AppLocalizations {
   /// **'Contact Us'**
   String get contact_us;
 
-  /// No description provided for @contact_us_subtitle.
+  /// No description provided for @contact_us_desc.
   ///
   /// In en, this message translates to:
   /// **'Support team is available to help you'**
-  String get contact_us_subtitle;
+  String get contact_us_desc;
 
   /// No description provided for @about.
   ///
@@ -1034,11 +1142,11 @@ abstract class AppLocalizations {
   /// **'About'**
   String get about;
 
-  /// No description provided for @privacy_policy_subtitle.
+  /// No description provided for @privacy_policy_desc.
   ///
   /// In en, this message translates to:
   /// **'How we protect your data'**
-  String get privacy_policy_subtitle;
+  String get privacy_policy_desc;
 
   /// No description provided for @about_app.
   ///
@@ -1058,11 +1166,11 @@ abstract class AppLocalizations {
   /// **'About Developers'**
   String get about_developers;
 
-  /// No description provided for @about_developers_subtitle.
+  /// No description provided for @about_developers_desc.
   ///
   /// In en, this message translates to:
   /// **'Meet the development team'**
-  String get about_developers_subtitle;
+  String get about_developers_desc;
 
   /// No description provided for @app_appearance.
   ///
@@ -1076,11 +1184,11 @@ abstract class AppLocalizations {
   /// **'Light'**
   String get light_mode;
 
-  /// No description provided for @light_mode_subtitle.
+  /// No description provided for @light_mode_desc.
   ///
   /// In en, this message translates to:
   /// **'Always use light appearance'**
-  String get light_mode_subtitle;
+  String get light_mode_desc;
 
   /// No description provided for @dark_mode.
   ///
@@ -1088,11 +1196,11 @@ abstract class AppLocalizations {
   /// **'Dark'**
   String get dark_mode;
 
-  /// No description provided for @dark_mode_subtitle.
+  /// No description provided for @dark_mode_desc.
   ///
   /// In en, this message translates to:
   /// **'Always use dark appearance'**
-  String get dark_mode_subtitle;
+  String get dark_mode_desc;
 
   /// No description provided for @system_mode.
   ///
@@ -1100,11 +1208,11 @@ abstract class AppLocalizations {
   /// **'System'**
   String get system_mode;
 
-  /// No description provided for @system_mode_subtitle.
+  /// No description provided for @system_mode_desc.
   ///
   /// In en, this message translates to:
   /// **'Automatically change appearance based on device settings'**
-  String get system_mode_subtitle;
+  String get system_mode_desc;
 
   /// No description provided for @select_account.
   ///
@@ -1159,6 +1267,204 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'0.00'**
   String get amount_hint;
+
+  /// No description provided for @app_version_label.
+  ///
+  /// In en, this message translates to:
+  /// **'App Version'**
+  String get app_version_label;
+
+  /// No description provided for @app_identity.
+  ///
+  /// In en, this message translates to:
+  /// **'App Identity'**
+  String get app_identity;
+
+  /// No description provided for @about_app_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'App identity and environment details'**
+  String get about_app_desc;
+
+  /// No description provided for @app_name_label.
+  ///
+  /// In en, this message translates to:
+  /// **'App Name'**
+  String get app_name_label;
+
+  /// No description provided for @package_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Package Name'**
+  String get package_name;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get version;
+
+  /// No description provided for @build_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Build Number'**
+  String get build_number;
+
+  /// No description provided for @operating_environment.
+  ///
+  /// In en, this message translates to:
+  /// **'Operating Environment'**
+  String get operating_environment;
+
+  /// No description provided for @operating_system.
+  ///
+  /// In en, this message translates to:
+  /// **'Operating System'**
+  String get operating_system;
+
+  /// No description provided for @os_version.
+  ///
+  /// In en, this message translates to:
+  /// **'OS Version'**
+  String get os_version;
+
+  /// No description provided for @app_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'App Mode'**
+  String get app_mode;
+
+  /// No description provided for @built_with.
+  ///
+  /// In en, this message translates to:
+  /// **'Built With'**
+  String get built_with;
+
+  /// No description provided for @release.
+  ///
+  /// In en, this message translates to:
+  /// **'Release'**
+  String get release;
+
+  /// No description provided for @debug.
+  ///
+  /// In en, this message translates to:
+  /// **'Debug'**
+  String get debug;
+
+  /// No description provided for @dart_sdk.
+  ///
+  /// In en, this message translates to:
+  /// **'Dart Language'**
+  String get dart_sdk;
+
+  /// No description provided for @flutter_sdk.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter Framework'**
+  String get flutter_sdk;
+
+  /// No description provided for @install_info.
+  ///
+  /// In en, this message translates to:
+  /// **'Installation Information'**
+  String get install_info;
+
+  /// No description provided for @installer_store.
+  ///
+  /// In en, this message translates to:
+  /// **'Installer Store'**
+  String get installer_store;
+
+  /// No description provided for @install_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Install Date'**
+  String get install_date;
+
+  /// No description provided for @update_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Date'**
+  String get update_date;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location;
+
+  /// No description provided for @security_and_privacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Security & Privacy'**
+  String get security_and_privacy;
+
+  /// No description provided for @change_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get change_password;
+
+  /// No description provided for @update_login_credentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Update your login credentials'**
+  String get update_login_credentials;
+
+  /// No description provided for @sign_out.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get sign_out;
+
+  /// No description provided for @securely_logout_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Securely log out of your account'**
+  String get securely_logout_account;
+
+  /// No description provided for @camera.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get camera;
+
+  /// No description provided for @take_photo_camera.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a new photo using your camera'**
+  String get take_photo_camera;
+
+  /// No description provided for @gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get gallery;
+
+  /// No description provided for @choose_photo_gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an existing photo from your gallery'**
+  String get choose_photo_gallery;
+
+  /// No description provided for @remove_photo.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Photo'**
+  String get remove_photo;
+
+  /// No description provided for @delete_profile_picture.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete your current profile picture'**
+  String get delete_profile_picture;
+
+  /// No description provided for @verified_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified Account'**
+  String get verified_account;
 }
 
 class _AppLocalizationsDelegate
@@ -1172,7 +1478,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['ar', 'de', 'en', 'fr', 'ja'].contains(locale.languageCode);
+      <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -1183,14 +1489,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'ar':
       return AppLocalizationsAr();
-    case 'de':
-      return AppLocalizationsDe();
     case 'en':
       return AppLocalizationsEn();
-    case 'fr':
-      return AppLocalizationsFr();
-    case 'ja':
-      return AppLocalizationsJa();
   }
 
   throw FlutterError(

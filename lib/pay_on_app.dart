@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toastification/toastification.dart';
+
 import 'core/constants/app_config.dart';
 import 'core/constants/font_family.dart';
 import 'core/di/di.dart';
-import 'core/localization/logic/cubit/localization_cubit.dart';
 import 'core/router/app_router.dart';
-import 'core/theme/app_theme.dart';
-import 'core/theme/logic/cubit/theme_cubit.dart';
+import 'core/utils/localization/logic/cubit/localization_cubit.dart';
+import 'core/utils/theme/app_theme.dart';
+import 'core/utils/theme/logic/cubit/theme_cubit.dart';
 import 'l10n/app_localizations.dart';
 
 final class PayOnApp extends StatelessWidget {
@@ -34,7 +35,6 @@ final class PayOnApp extends StatelessWidget {
             final locale = context.select(
               (LocalizationCubit cubit) => cubit.state.locale,
             );
-
             final fontFamily = FontFamily.getFontFamily(locale.languageCode);
             return MaterialApp.router(
               title: AppConfig.appName,
@@ -45,12 +45,10 @@ final class PayOnApp extends StatelessWidget {
               locale: locale,
               scrollBehavior: const CupertinoScrollBehavior(),
               restorationScopeId: 'app',
-
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               routerConfig: AppRouter.router,
-              themeAnimationCurve: Curves.fastOutSlowIn,
-
+              themeAnimationCurve: Curves.fastLinearToSlowEaseIn,
               builder: (final context, final child) => SafeArea(
                 top: false,
                 left: false,

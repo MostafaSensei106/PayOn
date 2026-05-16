@@ -38,7 +38,9 @@ dependencies:
   local_auth: ^3.0.1
   flutter_secure_storage: ^10.0.0
   argon2: ^1.0.1
+  pretty_dio_logger: ^1.4.0
   flutter_svg: ^2.2.4
+  dot_navigation_bar: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -46,12 +48,11 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   build_runner: ^2.14.0
   freezed: ^3.2.5
-  json_serializable: 6.13.1
+  json_serializable: ^6.13.2
   flutter_launcher_icons: ^0.14.4
   flutter_native_splash: ^2.4.7
   intl_utils: ^2.8.14
   retrofit_generator: ^10.2.3
-  pretty_dio_logger: ^1.4.0
   go_router_builder: ^4.3.0
 
 flutter:
@@ -66,6 +67,7 @@ flutter:
   - family: Rubik
     fonts:
     - asset: assets/fonts/ar/Rubik/static/Rubik-Regular.ttf
+    - asset: assets/fonts/ar/Rubik/static/Rubik-Italic.ttf
     - asset: assets/fonts/ar/Rubik/static/Rubik-Italic.ttf
     - asset: assets/fonts/ar/Rubik/static/Rubik-Light.ttf
     - asset: assets/fonts/ar/Rubik/static/Rubik-LightItalic.ttf

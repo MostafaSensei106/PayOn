@@ -97,13 +97,13 @@ class StepOneAccountDetails extends StatelessWidget {
             Column(
               children: [
                 CheckboxComponent(
-                  title: l10n.i_accept_terms_and_conditions,
+                  title: l10n.accept_terms,
                   value: termsAccepted,
                   onChanged: onTermsChanged,
                 ),
                 const SpacingComponent.horizontal(4),
                 CheckboxComponent(
-                  title: l10n.i_accept_privacy_policy,
+                  title: l10n.accept_privacy_policy,
                   value: privacyAccepted,
                   onChanged: onPrivacyChanged,
                 ),
