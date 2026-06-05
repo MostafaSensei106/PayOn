@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
 
-import '../di/di.dart';
-import '../services/l10n/l10n_service.dart';
+import '../../di/di.dart';
+import '../../services/l10n/l10n_service.dart';
 
 enum PasswordError { empty, tooShort, hasEmojes, invalid, hasSpaces }
 

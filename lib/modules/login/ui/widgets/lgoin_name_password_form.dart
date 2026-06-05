@@ -4,8 +4,8 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/router/app_router.dart';
-import '../../../../core/validator/password.dart';
-import '../../../../core/validator/user_name.dart';
+import '../../../../core/utils/validator/password.dart';
+import '../../../../core/utils/validator/user_name.dart';
 import '../../../../core/widgets/buttons/text_button/text_button_component.dart';
 import '../../../../core/widgets/inputs/checkbox/checkbox_component.dart';
 import '../../../../core/widgets/inputs/password_form_field/password_form_field_component.dart';

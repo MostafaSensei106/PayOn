@@ -5,10 +5,10 @@ import 'package:formz/formz.dart';
 
 import '../../../../../core/constants/app_enums.dart';
 import '../../../../../core/networking/api_result/api_result.dart';
-import '../../../../../core/validator/email_validators.dart';
-import '../../../../../core/validator/password.dart';
-import '../../../../../core/validator/phone_number.dart';
-import '../../../../../core/validator/user_name.dart';
+import '../../../../../core/utils/validator/email_validators.dart';
+import '../../../../../core/utils/validator/password.dart';
+import '../../../../../core/utils/validator/phone_number.dart';
+import '../../../../../core/utils/validator/user_name.dart';
 import '../../../data/models/account_type/account_type_item.dart';
 import '../../../data/models/register/register_request_body.dart';
 import '../../../data/repositories/register/base_register_repository.dart';

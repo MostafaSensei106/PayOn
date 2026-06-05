@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/validator/password.dart';
-import '../../../../core/validator/user_name.dart';
+import '../../../../core/utils/validator/password.dart';
+import '../../../../core/utils/validator/user_name.dart';
 part 'login_form_state.freezed.dart';
 
 @freezed
