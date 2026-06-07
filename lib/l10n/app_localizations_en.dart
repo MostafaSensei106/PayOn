@@ -709,4 +709,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get verified_account => 'Verified Account';
+
+  @override
+  String get ok => 'OK';
 }

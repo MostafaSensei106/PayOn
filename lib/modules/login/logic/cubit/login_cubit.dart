@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 import '../../../../core/constants/pref_keys.dart';
-import '../../../../core/networking/api_result/api_result.dart';
+import '../../../../core/constants/types/type_def.dart';
 import '../../../../core/services/biometrics/base_biometrics_service.dart';
-import '../../../../core/services/shared_prefs/base_prefs_storage_service.dart';
+import '../../../../core/services/shared_prefs/base_pref_storage_service.dart';
 import '../../../../core/utils/validator/password.dart';
 import '../../../../core/utils/validator/user_name.dart';
 import '../../data/models/login_request_body.dart';
@@ -26,7 +26,7 @@ final class LoginCubit extends Cubit<LoginState> {
 
   final BaseLoginRepository _loginRepository;
   final BaseBiometricsService _biometricsService;
-  final BasePrefsStorageService _prefsStorageService;
+  final BasePrefStorageService _prefsStorageService;
 
   LoginFormState get currentForm => state.form;
 
@@ -63,7 +63,7 @@ final class LoginCubit extends Cubit<LoginState> {
       failure: (err) => emit(
         LoginState.failure(
           currentForm,
-          error: err.failure.message ?? 'Unknown Error',
+          error: err.message,
         ),
       ),
     );

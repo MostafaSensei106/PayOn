@@ -1,5 +1,5 @@
+import '../../../../core/constants/types/type_def.dart';
 import '../../../../core/networking/api_executor/api_executor.dart';
-import '../../../../core/networking/api_result/api_result.dart';
 import '../../../../core/networking/api_service/api_service.dart';
 import '../models/login_request_body.dart';
 import '../models/login_response_body.dart';
@@ -10,8 +10,8 @@ final class LoginRepository implements BaseLoginRepository {
   final ApiService _apiService;
 
   @override
-  Future<APIResult<LoginResponseBody>> login(LoginRequestBody body) async =>
+  Future<ApiResult<LoginResponseBody>> login(LoginRequestBody body) async =>
       ApiExecutor.execute<LoginResponseBody>(
-        call: () => _apiService.login(body),
+        action: () => _apiService.login(body),
       );
 }

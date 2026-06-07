@@ -227,5 +227,6 @@
   "choose_photo_gallery": "Choose an existing photo from your gallery",
   "remove_photo": "Remove Photo",
   "delete_profile_picture": "Delete your current profile picture",
-  "verified_account": "Verified Account"
+  "verified_account": "Verified Account",
+  "ok": "OK"
 }

@@ -38,7 +38,11 @@ import 'routes_names.dart';
 part 'app_router.g.dart';
 
 final class AppRouter {
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
+
   static final router = GoRouter(
+    navigatorKey: navigatorKey,
     initialLocation: RoutesNames.welcome,
     routes: $appRoutes,
   );

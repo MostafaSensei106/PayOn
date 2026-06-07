@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/networking/api_result/api_result.dart';
+import '../../../../../core/constants/types/type_def.dart';
 import '../../../data/models/send_otp/send_otp_request_body.dart';
 import '../../../data/models/verify_otp/verify_otp_request_body.dart';
 import '../../../data/repositories/otp/base_otp_repository.dart';
@@ -28,7 +28,7 @@ class OtpCubit extends Cubit<OtpState> {
       failure: (e) => emit(
         OtpState.failure(
           currentForm,
-          error: e.failure.message ?? 'Unknown Error',
+          error: e.message,
         ),
       ),
     );
@@ -46,7 +46,7 @@ class OtpCubit extends Cubit<OtpState> {
       failure: (e) => emit(
         OtpState.failure(
           currentForm,
-          error: e.failure.message ?? 'Unknown Error',
+          error: e.message,
         ),
       ),
     );

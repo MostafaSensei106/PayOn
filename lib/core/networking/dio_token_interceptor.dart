@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import '../constants/api_header.dart';
 import '../constants/pref_keys.dart';
 import '../router/app_router.dart';
+import '../router/routes_names.dart';
 import '../services/shared_prefs/base_pref_storage_service.dart';
 import '../widgets/feedback/dialog/dialog_component.dart';
 
@@ -48,13 +49,13 @@ final class DioTokenInterceptor extends Interceptor {
           body: body,
         );
 
-        AppRouter.router.go(AppRouter.login);
+        AppRouter.router.go(RoutesNames.login);
       } else {
         await Future.wait([
           _tokenProvider.removeData(key: PrefKeys.userToken),
           _tokenProvider.removeData(key: PrefKeys.isRememberMe),
         ]);
-        AppRouter.router.go(AppRouter.login);
+        AppRouter.router.go(RoutesNames.login);
       }
     }
     handler.next(err);

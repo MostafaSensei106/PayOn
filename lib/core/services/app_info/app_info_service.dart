@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../utils/model/app_info_model.dart';
+import '../../utils/models/app_info_model.dart';
 import 'interface/base_app_info_service.dart';
 import 'interface/base_package_info_adapter.dart';
 

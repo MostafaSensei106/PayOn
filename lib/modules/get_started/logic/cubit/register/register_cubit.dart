@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 import '../../../../../core/constants/app_enums.dart';
-import '../../../../../core/networking/api_result/api_result.dart';
+import '../../../../../core/constants/types/type_def.dart';
 import '../../../../../core/utils/validator/email_validators.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
@@ -188,7 +188,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       failure: (e) => emit(
         RegisterState.failure(
           currentForm,
-          error: e.failure.message ?? 'Unknown Error',
+          error: e.message,
         ),
       ),
     );

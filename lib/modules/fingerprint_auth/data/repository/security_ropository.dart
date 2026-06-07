@@ -1,12 +1,12 @@
 import '../../../../core/constants/pref_keys.dart';
-import '../../../../core/services/shared_prefs/base_prefs_storage_service.dart';
+import '../../../../core/services/shared_prefs/base_pref_storage_service.dart';
 import '../model/security_settings_model.dart';
 import 'base_security_repository.dart';
 
 final class SecurityRopository extends BaseSecurityRepository {
   SecurityRopository(this._pref);
 
-  final BasePrefsStorageService _pref;
+  final BasePrefStorageService _pref;
 
   @override
   SecuritySettingsModel getBiometricsSettings() {

@@ -701,4 +701,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get verified_account => 'حساب موثق';
+
+  @override
+  String get ok => 'موافق';
 }

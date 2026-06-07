@@ -227,5 +227,6 @@
   "choose_photo_gallery": "اختيار صورة موجودة من المعرض",
   "remove_photo": "إزالة الصورة",
   "delete_profile_picture": "حذف صورة ملفك الشخصي الحالية",
-  "verified_account": "حساب موثق"
+  "verified_account": "حساب موثق",
+  "ok": "موافق"
 }
