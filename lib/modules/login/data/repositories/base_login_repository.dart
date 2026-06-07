@@ -5,4 +5,3 @@ import '../models/login_response_body.dart';
 abstract interface class BaseLoginRepository {
   Future<ApiResult<LoginResponseBody>> login(LoginRequestBody body);
 }
-

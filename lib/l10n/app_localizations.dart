@@ -1471,6 +1471,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'OK'**
   String get ok;
+
+  /// No description provided for @session_expired.
+  ///
+  /// In en, this message translates to:
+  /// **'Session Expired'**
+  String get session_expired;
+
+  /// No description provided for @session_expired_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Your session has expired. Please login again to continue.'**
+  String get session_expired_description;
 }
 
 class _AppLocalizationsDelegate

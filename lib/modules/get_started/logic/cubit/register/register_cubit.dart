@@ -185,12 +185,8 @@ class RegisterCubit extends Cubit<RegisterState> {
       success: (r) async {
         emit(RegisterState.success(currentForm, data: r));
       },
-      failure: (e) => emit(
-        RegisterState.failure(
-          currentForm,
-          error: e.message,
-        ),
-      ),
+      failure: (e) =>
+          emit(RegisterState.failure(currentForm, error: e.message)),
     );
   }
 

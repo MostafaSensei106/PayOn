@@ -69,9 +69,7 @@ class ChangeLanguagePage extends StatelessWidget {
                       groupValue: currentLangCode,
                       onChanged: (val) {
                         if (val != null) {
-                          context
-                              .read<LocalizationCubit>()
-                              .changeLanguage(val);
+                          context.read<LocalizationCubit>().changeLanguage(val);
                         }
                       },
                     );

@@ -25,12 +25,7 @@ class OtpCubit extends Cubit<OtpState> {
     final response = await _otpRepository.sendOTP(body);
     response.when(
       success: (r) => emit(OtpState.success(currentForm, data: r)),
-      failure: (e) => emit(
-        OtpState.failure(
-          currentForm,
-          error: e.message,
-        ),
-      ),
+      failure: (e) => emit(OtpState.failure(currentForm, error: e.message)),
     );
   }
 
@@ -43,12 +38,7 @@ class OtpCubit extends Cubit<OtpState> {
     final response = await _otpRepository.verifyOTP(body);
     response.when(
       success: (r) => emit(OtpState.success(currentForm, data: r)),
-      failure: (e) => emit(
-        OtpState.failure(
-          currentForm,
-          error: e.message,
-        ),
-      ),
+      failure: (e) => emit(OtpState.failure(currentForm, error: e.message)),
     );
   }
 }

@@ -704,4 +704,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ok => 'موافق';
+
+  @override
+  String get session_expired => 'انتهت الجلسة';
+
+  @override
+  String get session_expired_description =>
+      'انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى للمتابعة.';
 }

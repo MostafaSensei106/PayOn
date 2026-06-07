@@ -7,10 +7,8 @@ import '../../data/repository/base_security_repository.dart';
 import 'security_state.dart';
 
 final class SecurityCubit extends Cubit<SecurityState> {
-  SecurityCubit({
-    required this._repo,
-    required this._biometricsService,
-  }) : super(const SecurityState.initial()) {
+  SecurityCubit({required this._repo, required this._biometricsService})
+    : super(const SecurityState.initial()) {
     unawaited(getBiometricsSettings());
   }
   final BaseSecurityRepository _repo;
@@ -19,7 +17,7 @@ final class SecurityCubit extends Cubit<SecurityState> {
   Future<void> getBiometricsSettings() async {
     emit(const SecurityState.loading());
     try {
-      final settings = _repo.getBiometricsSettings();
+      final settings = await _repo.getBiometricsSettings();
       final isSupported = await _biometricsService.isBiometricsAvailable();
       final updatedSettings = settings.copyWith(isDeviceSupported: isSupported);
       if (isSupported) {

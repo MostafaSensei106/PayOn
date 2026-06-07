@@ -17,9 +17,7 @@ class AccountTypeCubit
     final response = await _accountTypeRepository.getAccountTypes();
     response.when(
       success: (r) => emit(AccountTypeState.success(data: r)),
-      failure: (e) => emit(
-        AccountTypeState.failure(error: e.message),
-      ),
+      failure: (e) => emit(AccountTypeState.failure(error: e.message)),
     );
   }
 }

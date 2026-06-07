@@ -228,5 +228,7 @@
   "remove_photo": "Remove Photo",
   "delete_profile_picture": "Delete your current profile picture",
   "verified_account": "Verified Account",
-  "ok": "OK"
+  "ok": "OK",
+  "session_expired": "Session Expired",
+  "session_expired_description": "Your session has expired. Please login again to continue."
 }

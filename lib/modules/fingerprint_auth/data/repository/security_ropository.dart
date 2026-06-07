@@ -9,8 +9,10 @@ final class SecurityRopository extends BaseSecurityRepository {
   final BasePrefStorageService _pref;
 
   @override
-  SecuritySettingsModel getBiometricsSettings() {
-    final isEnabled = _pref.getData<bool>(PrefKeys.isFingerprintEnabled);
+  Future<SecuritySettingsModel> getBiometricsSettings() async {
+    final isEnabled = await _pref.getData<bool>(
+      key: PrefKeys.isFingerprintEnabled,
+    );
     if (isEnabled == null) {
       return const SecuritySettingsModel();
     }
@@ -19,6 +21,9 @@ final class SecurityRopository extends BaseSecurityRepository {
 
   @override
   Future<void> toggleBiometricsStatus({required bool isEnabled}) async {
-    await _pref.setData<bool>(PrefKeys.isFingerprintEnabled, isEnabled);
+    await _pref.setData<bool>(
+      key: PrefKeys.isFingerprintEnabled,
+      value: isEnabled,
+    );
   }
 }

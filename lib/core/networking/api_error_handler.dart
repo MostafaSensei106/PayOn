@@ -24,7 +24,7 @@ class APIErrorHandler {
           final model = APIErrorModel.fromJson(
             error.response!.data as Map<String, dynamic>,
           );
-          return ServerFailure(model.message);
+          return ServerFailure(model.message ?? 'Unknown Server Error');
         }
         return ServerFailure('Bad response: ${error.response?.statusCode}');
       case DioExceptionType.cancel:

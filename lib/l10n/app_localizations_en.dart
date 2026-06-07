@@ -712,4 +712,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ok => 'OK';
+
+  @override
+  String get session_expired => 'Session Expired';
+
+  @override
+  String get session_expired_description =>
+      'Your session has expired. Please login again to continue.';
 }

@@ -1,5 +1,4 @@
 import '../../constants/types/type_def.dart';
-import '../../utils/result/result.dart';
 import '../api_error_handler.dart';
 
 final class ApiExecutor {

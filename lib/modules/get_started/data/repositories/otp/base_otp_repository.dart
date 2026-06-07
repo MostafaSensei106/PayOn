@@ -8,4 +8,3 @@ abstract interface class BaseOtpRepository {
   Future<ApiResult<SendOtpResponseBody>> sendOTP(SendOtpRequestBody body);
   Future<ApiResult<VerifyOtpResponseBody>> verifyOTP(VerifyOtpRequestBody body);
 }
-

@@ -228,5 +228,7 @@
   "remove_photo": "إزالة الصورة",
   "delete_profile_picture": "حذف صورة ملفك الشخصي الحالية",
   "verified_account": "حساب موثق",
-  "ok": "موافق"
+  "ok": "موافق",
+  "session_expired": "انتهت الجلسة",
+  "session_expired_description": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى للمتابعة."
 }

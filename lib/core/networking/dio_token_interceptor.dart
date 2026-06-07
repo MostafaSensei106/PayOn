@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 
 import '../constants/api_header.dart';
 import '../constants/pref_keys.dart';
+import '../extensions/extensions.dart';
 import '../router/app_router.dart';
 import '../router/routes_names.dart';
 import '../services/shared_prefs/base_pref_storage_service.dart';
@@ -41,8 +42,8 @@ final class DioTokenInterceptor extends Interceptor {
           ]),
         );
 
-        final title = context.localeKeys.sessionExpired;
-        final body = context.localeKeys.sessionExpiredDescription;
+        final title = context.localeKeys.session_expired;
+        final body = context.localeKeys.session_expired_description;
         await DialogComponent.showInfo(
           context: context,
           title: title,

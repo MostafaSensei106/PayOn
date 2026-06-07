@@ -33,7 +33,9 @@ final class LoginCubit extends Cubit<LoginState> {
   Future<void> _checkBiometricsAvailability() async {
     final isSupported = await _biometricsService.isBiometricsAvailable();
     final isEnabledByUser =
-        _prefsStorageService.getData<bool>(PrefKeys.isFingerprintEnabled) ??
+        await _prefsStorageService.getData<bool>(
+          key: PrefKeys.isFingerprintEnabled,
+        ) ??
         false;
     final shouldShowBiometricButton = isSupported && isEnabledByUser;
     emit(
@@ -54,18 +56,20 @@ final class LoginCubit extends Cubit<LoginState> {
     response.when(
       success: (r) async {
         if (currentForm.isRememberMe) {
-          await _prefsStorageService.setData(PrefKeys.isRememberMe, true);
+          await _prefsStorageService.setData(
+            key: PrefKeys.isRememberMe,
+            value: true,
+          );
         } else {
-          await _prefsStorageService.setData(PrefKeys.isRememberMe, false);
+          await _prefsStorageService.setData(
+            key: PrefKeys.isRememberMe,
+            value: false,
+          );
         }
         emit(LoginState.success(currentForm, data: r));
       },
-      failure: (err) => emit(
-        LoginState.failure(
-          currentForm,
-          error: err.message,
-        ),
-      ),
+      failure: (err) =>
+          emit(LoginState.failure(currentForm, error: err.message)),
     );
   }
 
