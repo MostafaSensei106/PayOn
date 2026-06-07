@@ -18,6 +18,7 @@ import '../../modules/get_started/logic/cubit/otp/otp_cubit.dart';
 import '../../modules/get_started/logic/cubit/register/register_cubit.dart';
 import '../../modules/get_started/ui/pages/get_started_page.dart';
 import '../../modules/language/ui/page/change_language_page.dart';
+import '../../modules/login/logic/cubit/login_cubit.dart';
 import '../../modules/login/ui/pages/login_page.dart';
 import '../../modules/main/ui/pages/main_page.dart';
 import '../../modules/notifications/ui/notifications_page.dart';
@@ -62,7 +63,10 @@ final class LoginRoute extends CupertinoRouteData with $LoginRoute {
   const LoginRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => const LoginPage();
+  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
+    create: (_) => getIt<LoginCubit>(),
+    child: const LoginPage(),
+  );
 }
 
 @TypedGoRoute<GetStartedRoute>(path: RoutesNames.getStarted)

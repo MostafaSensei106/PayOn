@@ -1,7 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import '../../data/base_about_app_repository.dart';
 import 'about_app_state.dart';
 
+@injectable
 final class AboutAppCubit extends Cubit<AboutAppState> {
   AboutAppCubit(this._repo) : super(const AboutAppState.initial());
   final BaseAboutAppRepository _repo;

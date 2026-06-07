@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/constants/pref_keys.dart';
 import '../../../../core/constants/types/type_def.dart';
@@ -15,6 +16,7 @@ import '../../data/repositories/base_login_repository.dart';
 import 'login_form_state.dart';
 import 'login_state.dart';
 
+@injectable
 final class LoginCubit extends Cubit<LoginState> {
   LoginCubit(
     this._loginRepository,

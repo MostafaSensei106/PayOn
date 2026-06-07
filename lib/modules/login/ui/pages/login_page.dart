@@ -18,38 +18,32 @@ class LoginPage extends HookWidget {
     final scrollController = useScrollController();
 
     return Scaffold(
-      body: BlocProvider(
-        create: (_) => getIt<LoginCubit>(),
-        child: BlocListener<LoginCubit, LoginState>(
-          listenWhen: (previous, current) =>
-              current is Loading || current is Failure || current is Success,
-          listener: (context, state) {
-            state.whenOrNull(
-              success: (form, data) {
-                getIt<BaseToastService>().showSuccess(
-                  context,
-                  l10n.welcome_back,
-                );
-              },
+      body: BlocListener<LoginCubit, LoginState>(
+        listenWhen: (previous, current) =>
+            current is Loading || current is Failure || current is Success,
+        listener: (context, state) {
+          state.whenOrNull(
+            success: (form, data) {
+              getIt<BaseToastService>().showSuccess(context, l10n.welcome_back);
+            },
 
-              failure: (form, error) {
-                getIt<BaseToastService>().showError(context, error);
-              },
+            failure: (form, error) {
+              getIt<BaseToastService>().showError(context, error);
+            },
+          );
+        },
+        child: BlocBuilder<LoginCubit, LoginState>(
+          builder: (context, state) {
+            return LoginPageView(
+              scrollController: scrollController,
+              l10n: l10n,
+              form: state.form,
+              isLoading: state.maybeWhen(
+                loading: (_) => true,
+                orElse: () => false,
+              ),
             );
           },
-          child: BlocBuilder<LoginCubit, LoginState>(
-            builder: (context, state) {
-              return LoginPageView(
-                scrollController: scrollController,
-                l10n: l10n,
-                form: state.form,
-                isLoading: state.maybeWhen(
-                  loading: (_) => true,
-                  orElse: () => false,
-                ),
-              );
-            },
-          ),
         ),
       ),
     );

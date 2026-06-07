@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../../core/constants/app_enums.dart';
 import '../../../../../core/constants/types/type_def.dart';
@@ -14,6 +15,7 @@ import '../../../data/models/register/register_request_body.dart';
 import '../../../data/repositories/register/base_register_repository.dart';
 import 'register_state.dart';
 
+@injectable
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this._registerRepository)
     : super(const RegisterState.initial(RegisterFormState()));

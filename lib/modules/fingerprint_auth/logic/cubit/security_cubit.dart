@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/services/biometrics/base_biometrics_service.dart';
 import '../../data/repository/base_security_repository.dart';
 import 'security_state.dart';
 
+@injectable
 final class SecurityCubit extends Cubit<SecurityState> {
   SecurityCubit({required this._repo, required this._biometricsService})
     : super(const SecurityState.initial()) {

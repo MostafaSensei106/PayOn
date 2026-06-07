@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:injectable/injectable.dart';
+
 import '../../../../../core/constants/types/type_def.dart';
 import '../../../../../core/networking/api_executor/api_executor.dart';
 import '../../../../../core/networking/api_service/api_service.dart';
@@ -8,6 +10,7 @@ import '../../models/register/register_response_body.dart';
 
 import 'base_register_repository.dart';
 
+@LazySingleton(as: BaseRegisterRepository)
 final class RegisterRepository implements BaseRegisterRepository {
   RegisterRepository(this._apiService);
 

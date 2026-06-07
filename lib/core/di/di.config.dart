@@ -27,6 +27,10 @@ import 'package:payon/core/services/app_info/interface/base_package_info_adapter
     as _i153;
 import 'package:payon/core/services/app_info/package_info_plus_adapter.dart'
     as _i594;
+import 'package:payon/core/services/biometrics/base_biometrics_service.dart'
+    as _i553;
+import 'package:payon/core/services/biometrics/fingerprint_service.dart'
+    as _i242;
 import 'package:payon/core/services/l10n/l10n_service.dart' as _i151;
 import 'package:payon/core/services/shared_prefs/base_pref_storage_service.dart'
     as _i333;
@@ -50,6 +54,40 @@ import 'package:payon/core/utils/theme/data/base_theme_repository.dart'
     as _i218;
 import 'package:payon/core/utils/theme/data/theme_repository.dart' as _i941;
 import 'package:payon/core/utils/theme/logic/cubit/theme_cubit.dart' as _i889;
+import 'package:payon/modules/about_app/data/about_app_repsitory.dart' as _i148;
+import 'package:payon/modules/about_app/data/base_about_app_repository.dart'
+    as _i725;
+import 'package:payon/modules/about_app/logic/cubit/about_app_cubit.dart'
+    as _i258;
+import 'package:payon/modules/fingerprint_auth/data/repository/base_security_repository.dart'
+    as _i750;
+import 'package:payon/modules/fingerprint_auth/data/repository/security_ropository.dart'
+    as _i294;
+import 'package:payon/modules/fingerprint_auth/logic/cubit/security_cubit.dart'
+    as _i665;
+import 'package:payon/modules/get_started/data/repositories/account_type/account_type_repository.dart'
+    as _i941;
+import 'package:payon/modules/get_started/data/repositories/account_type/base_account_type_repository.dart'
+    as _i276;
+import 'package:payon/modules/get_started/data/repositories/otp/base_otp_repository.dart'
+    as _i78;
+import 'package:payon/modules/get_started/data/repositories/otp/otp_repository.dart'
+    as _i956;
+import 'package:payon/modules/get_started/data/repositories/register/base_register_repository.dart'
+    as _i1033;
+import 'package:payon/modules/get_started/data/repositories/register/register_repository.dart'
+    as _i937;
+import 'package:payon/modules/get_started/logic/cubit/account_type/account_type_cubit.dart'
+    as _i843;
+import 'package:payon/modules/get_started/logic/cubit/otp/otp_cubit.dart'
+    as _i355;
+import 'package:payon/modules/get_started/logic/cubit/register/register_cubit.dart'
+    as _i225;
+import 'package:payon/modules/login/data/repositories/base_login_repository.dart'
+    as _i845;
+import 'package:payon/modules/login/data/repositories/login_repository.dart'
+    as _i719;
+import 'package:payon/modules/login/logic/cubit/login_cubit.dart' as _i495;
 import 'package:share_plus/share_plus.dart' as _i998;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
@@ -77,6 +115,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i151.L10nService>(() => _i151.L10nService());
     gh.lazySingleton<_i480.ThemeService>(() => _i480.ThemeService());
     gh.lazySingleton<_i889.ThemeCubit>(() => _i889.ThemeCubit());
+    gh.lazySingleton<_i553.BaseBiometricsService>(
+      () => _i242.FingerprintService(),
+    );
     gh.lazySingleton<_i153.BasePackageInfoAdapter>(
       () => _i594.PackageInfoPlusAdapter(gh<_i655.PackageInfo>()),
     );
@@ -131,6 +172,49 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i218.BaseThemeRepository>(
       () => _i941.ThemeRepository(gh<_i333.BasePrefStorageService>()),
     );
+    gh.lazySingleton<_i725.BaseAboutAppRepository>(
+      () => _i148.AboutAppRepsitory(gh<_i361.BaseAppInfoService>()),
+    );
+    gh.lazySingleton<_i1033.BaseRegisterRepository>(
+      () => _i937.RegisterRepository(gh<_i550.ApiService>()),
+    );
+    gh.lazySingleton<_i276.BaseAccountTypeRepository>(
+      () => _i941.AccountTypeRepository(gh<_i550.ApiService>()),
+    );
+    gh.lazySingleton<_i78.BaseOtpRepository>(
+      () => _i956.OtpRepository(gh<_i550.ApiService>()),
+    );
+    gh.lazySingleton<_i750.BaseSecurityRepository>(
+      () => _i294.SecurityRopository(gh<_i333.BasePrefStorageService>()),
+    );
+    gh.factory<_i843.AccountTypeCubit>(
+      () => _i843.AccountTypeCubit(gh<_i276.BaseAccountTypeRepository>()),
+    );
+    gh.factory<_i258.AboutAppCubit>(
+      () => _i258.AboutAppCubit(gh<_i725.BaseAboutAppRepository>()),
+    );
+    gh.lazySingleton<_i845.BaseLoginRepository>(
+      () => _i719.LoginRepository(gh<_i550.ApiService>()),
+    );
+    gh.factory<_i225.RegisterCubit>(
+      () => _i225.RegisterCubit(gh<_i1033.BaseRegisterRepository>()),
+    );
+    gh.factory<_i355.OtpCubit>(
+      () => _i355.OtpCubit(gh<_i78.BaseOtpRepository>()),
+    );
+    gh.factory<_i665.SecurityCubit>(
+      () => _i665.SecurityCubit(
+        repo: gh<_i750.BaseSecurityRepository>(),
+        biometricsService: gh<_i553.BaseBiometricsService>(),
+      ),
+    );
+    gh.factory<_i495.LoginCubit>(
+      () => _i495.LoginCubit(
+        gh<_i845.BaseLoginRepository>(),
+        gh<_i553.BaseBiometricsService>(),
+        gh<_i333.BasePrefStorageService>(),
+      ),
+    );
     return this;
   }
 
@@ -139,6 +223,9 @@ extension GetItInjectableX on _i174.GetIt {
   _i480.ThemeService get themeService => get<_i480.ThemeService>();
 
   _i889.ThemeCubit get themeCubit => get<_i889.ThemeCubit>();
+
+  _i242.FingerprintService get fingerprintService =>
+      get<_i242.FingerprintService>();
 
   _i594.PackageInfoPlusAdapter get packageInfoPlusAdapter =>
       get<_i594.PackageInfoPlusAdapter>();
@@ -167,6 +254,34 @@ extension GetItInjectableX on _i174.GetIt {
       get<_i538.LocalizationRepository>();
 
   _i941.ThemeRepository get themeRepository => get<_i941.ThemeRepository>();
+
+  _i148.AboutAppRepsitory get aboutAppRepsitory =>
+      get<_i148.AboutAppRepsitory>();
+
+  _i937.RegisterRepository get registerRepository =>
+      get<_i937.RegisterRepository>();
+
+  _i941.AccountTypeRepository get accountTypeRepository =>
+      get<_i941.AccountTypeRepository>();
+
+  _i956.OtpRepository get otpRepository => get<_i956.OtpRepository>();
+
+  _i294.SecurityRopository get securityRopository =>
+      get<_i294.SecurityRopository>();
+
+  _i843.AccountTypeCubit get accountTypeCubit => get<_i843.AccountTypeCubit>();
+
+  _i258.AboutAppCubit get aboutAppCubit => get<_i258.AboutAppCubit>();
+
+  _i719.LoginRepository get loginRepository => get<_i719.LoginRepository>();
+
+  _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
+
+  _i355.OtpCubit get otpCubit => get<_i355.OtpCubit>();
+
+  _i665.SecurityCubit get securityCubit => get<_i665.SecurityCubit>();
+
+  _i495.LoginCubit get loginCubit => get<_i495.LoginCubit>();
 }
 
 class _$InjectionModule extends _i570.InjectionModule {}

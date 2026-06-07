@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../../core/constants/types/type_def.dart';
 import '../../../data/models/send_otp/send_otp_request_body.dart';
@@ -7,6 +8,7 @@ import '../../../data/repositories/otp/base_otp_repository.dart';
 import '../register/register_state.dart';
 import 'otp_state.dart';
 
+@injectable
 class OtpCubit extends Cubit<OtpState> {
   OtpCubit(this._otpRepository)
     : super(const OtpState.initial(RegisterFormState()));
