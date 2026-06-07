@@ -8,7 +8,7 @@ import '../services/toast/base_toast_service.dart';
 import '../widgets/feedback/dialog/dialog_component.dart';
 
 extension LocalizationExtensions on BuildContext {
-  AppLocalizations get localKeys => getIt<L10nService>().get(this);
+  AppLocalizations get localeKeys => getIt<L10nService>().get(this);
   bool get isArabic => Localizations.localeOf(this).languageCode == 'ar';
 }
 

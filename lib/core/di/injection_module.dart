@@ -7,7 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../networking/api_service/api_service.dart';
 import '../networking/dio_factory.dart';
+import '../networking/network_info/interface/base_network_info.dart';
+import '../services/shared_prefs/base_pref_storage_service.dart';
 import '../utils/localization/logic/cubit/localization_cubit.dart';
+import '../utils/network/logic/cubit/network_cubit.dart';
 
 @module
 abstract class InjectionModule {

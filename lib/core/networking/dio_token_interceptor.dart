@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 
 import '../constants/api_header.dart';
 import '../constants/pref_keys.dart';
-import '../extensions/extensions.dart';
 import '../router/app_router.dart';
 import '../services/shared_prefs/base_pref_storage_service.dart';
 import '../widgets/feedback/dialog/dialog_component.dart';
