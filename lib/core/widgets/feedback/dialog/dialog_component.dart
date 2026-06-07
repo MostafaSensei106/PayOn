@@ -73,7 +73,7 @@ final class DialogComponent extends StatelessWidget {
         builder: (context) => PopScope(
           canPop: false,
           child: DialogComponent(
-            title: Text(context.localeKeys.pleaseWait),
+            title: Text(context.localeKeys.please_wait),
             content: const Padding(
               padding: EdgeInsets.only(top: 16),
               child: Center(child: CupertinoActivityIndicator()),

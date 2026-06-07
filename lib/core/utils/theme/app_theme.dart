@@ -168,4 +168,12 @@ final class AppTheme {
       },
     ),
   );
+
+  static ThemeData lightTheme(String fontFamily) => light.copyWith(
+    textTheme: light.textTheme.apply(fontFamily: fontFamily),
+  );
+
+  static ThemeData darkTheme(String fontFamily) => dark.copyWith(
+    textTheme: dark.textTheme.apply(fontFamily: fontFamily),
+  );
 }

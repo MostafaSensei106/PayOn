@@ -103,7 +103,7 @@ class ProfilePage extends HookWidget {
   Widget _buildProfileHeaderCard(BuildContext context) {
     final colorScheme = context.colorScheme;
     final textTheme = Theme.of(context).textTheme;
-    final l10n = context.localKeys;
+    final l10n = context.localeKeys;
 
     return Container(
       padding: EdgeInsets.all(AppConfig.paddingHalf.w),

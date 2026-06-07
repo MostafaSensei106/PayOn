@@ -12,7 +12,7 @@ class SecurityAlertsPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.localKeys;
+    final l10n = context.localeKeys;
     final scrollController = useScrollController();
     return Scaffold(
       appBar: SidePageAppBarComponent(title: l10n.security_alerts),

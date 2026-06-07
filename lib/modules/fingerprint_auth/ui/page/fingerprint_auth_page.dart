@@ -16,7 +16,7 @@ class FingerprintAuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.localKeys;
+    final l10n = context.localeKeys;
 
     return Scaffold(
       appBar: SidePageAppBarComponent(title: l10n.biometric_auth),
