@@ -7,7 +7,7 @@ import 'base_login_repository.dart';
 
 final class LoginRepository implements BaseLoginRepository {
   LoginRepository(this._apiService);
-  final APIService _apiService;
+  final ApiService _apiService;
 
   @override
   Future<APIResult<LoginResponseBody>> login(LoginRequestBody body) async =>

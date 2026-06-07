@@ -8,11 +8,9 @@ import 'security_state.dart';
 
 final class SecurityCubit extends Cubit<SecurityState> {
   SecurityCubit({
-    required BaseSecurityRepository repo,
-    required BaseBiometricsService biometricsService,
-  }) : _repo = repo,
-       _biometricsService = biometricsService,
-       super(const SecurityState.initial()) {
+    required this._repo,
+    required this._biometricsService,
+  }) : super(const SecurityState.initial()) {
     unawaited(getBiometricsSettings());
   }
   final BaseSecurityRepository _repo;

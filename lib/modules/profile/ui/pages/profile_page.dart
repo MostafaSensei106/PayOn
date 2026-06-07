@@ -13,7 +13,6 @@ import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
-import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
 
 class ProfilePage extends HookWidget {

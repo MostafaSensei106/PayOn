@@ -19,8 +19,8 @@ import '../../constants/api_routes.dart';
 part 'api_service.g.dart';
 
 @RestApi(baseUrl: ApiRoutes.apiBaseURL)
-abstract class APIService {
-  factory APIService(Dio dio, {String? baseUrl}) = _APIService;
+abstract class ApiService {
+  factory ApiService(Dio dio, {String? baseUrl}) = _ApiService;
 
   @POST(ApiRoutes.authLogin)
   Future<LoginResponseBody> login(@Body() LoginRequestBody body);

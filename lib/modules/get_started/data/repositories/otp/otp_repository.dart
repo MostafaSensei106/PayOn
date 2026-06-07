@@ -10,7 +10,7 @@ import 'base_otp_repository.dart';
 final class OtpRepository implements BaseOtpRepository {
   OtpRepository(this._apiService);
 
-  final APIService _apiService;
+  final ApiService _apiService;
   @override
   Future<APIResult<SendOtpResponseBody>> sendOTP(
     SendOtpRequestBody body,

@@ -1,7 +1,9 @@
+import 'package:injectable/injectable.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import 'base_package_info_adapter.dart';
+import 'interface/base_package_info_adapter.dart';
 
+@LazySingleton(as: BasePackageInfoAdapter)
 final class PackageInfoPlusAdapter implements BasePackageInfoAdapter {
   PackageInfoPlusAdapter(this._info);
   final PackageInfo _info;

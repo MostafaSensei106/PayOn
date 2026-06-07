@@ -11,7 +11,7 @@ import 'base_register_repository.dart';
 final class RegisterRepository implements BaseRegisterRepository {
   RegisterRepository(this._apiService);
 
-  final APIService _apiService;
+  final ApiService _apiService;
 
   @override
   Future<APIResult<RegisterResponseBody>> register(

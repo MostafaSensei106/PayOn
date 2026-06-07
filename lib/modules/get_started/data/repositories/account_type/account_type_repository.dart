@@ -7,7 +7,7 @@ import 'base_account_type_repository.dart';
 final class AccountTypeRepository implements BaseAccountTypeRepository {
   AccountTypeRepository(this._apiService);
 
-  final APIService _apiService;
+  final ApiService _apiService;
 
   @override
   Future<APIResult<AccountTypeResponseBody>> getAccountTypes() async =>
