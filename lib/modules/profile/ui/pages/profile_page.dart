@@ -20,7 +20,6 @@ import '../../../../core/widgets/buttons/filled_button/filled_button_component.d
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
-import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../logic/cubit/user_profile_cubit.dart';
@@ -396,7 +395,7 @@ class _ProfileHeaderCard extends StatelessWidget {
 }
 
 class Sheet3 extends StatelessWidget {
-  const Sheet3({super.key, required this.l10n, required this.data});
+  const Sheet3({required this.l10n, required this.data, super.key});
 
   final AppLocalizations l10n;
   final UserProfileEntity data;

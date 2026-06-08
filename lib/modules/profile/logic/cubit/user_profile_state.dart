@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../core/utils/validator/email_validators.dart';
 import '../../../../core/utils/validator/full_name.dart';
