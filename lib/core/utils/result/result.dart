@@ -9,11 +9,11 @@ sealed class Result<T, E> with _$Result<T, E> {
 
   static Future<Result<T, E>> tryCatching<T, E>({
     required Future<T> Function() action,
-    required E Function(Exception e) onError,
+    required E Function(Object e) onError,
   }) async {
     try {
       return Result.success(data: await action());
-    } on Exception catch (e) {
+    } catch (e) {
       return Result.failure(error: onError(e));
     }
   }

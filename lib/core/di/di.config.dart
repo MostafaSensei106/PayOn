@@ -83,11 +83,12 @@ import 'package:payon/modules/get_started/logic/cubit/otp/otp_cubit.dart'
     as _i355;
 import 'package:payon/modules/get_started/logic/cubit/register/register_cubit.dart'
     as _i225;
-import 'package:payon/modules/login/data/repositories/base_login_repository.dart'
-    as _i845;
 import 'package:payon/modules/login/data/repositories/login_repository.dart'
     as _i719;
 import 'package:payon/modules/login/logic/cubit/login_cubit.dart' as _i495;
+import 'package:payon/modules/login/logic/repository/login_repository_impl.dart'
+    as _i370;
+import 'package:payon/modules/login/logic/usecase/login_usecase.dart' as _i358;
 import 'package:share_plus/share_plus.dart' as _i998;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
@@ -193,14 +194,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i258.AboutAppCubit>(
       () => _i258.AboutAppCubit(gh<_i725.BaseAboutAppRepository>()),
     );
-    gh.lazySingleton<_i845.BaseLoginRepository>(
-      () => _i719.LoginRepository(gh<_i550.ApiService>()),
-    );
     gh.factory<_i225.RegisterCubit>(
       () => _i225.RegisterCubit(gh<_i1033.BaseRegisterRepository>()),
     );
     gh.factory<_i355.OtpCubit>(
       () => _i355.OtpCubit(gh<_i78.BaseOtpRepository>()),
+    );
+    gh.lazySingleton<_i719.LoginRepository>(
+      () => _i370.LoginRepositoryImpl(
+        gh<_i550.ApiService>(),
+        gh<_i333.BasePrefStorageService>(),
+      ),
     );
     gh.factory<_i665.SecurityCubit>(
       () => _i665.SecurityCubit(
@@ -208,11 +212,13 @@ extension GetItInjectableX on _i174.GetIt {
         biometricsService: gh<_i553.BaseBiometricsService>(),
       ),
     );
+    gh.factory<_i358.LoginUsecase>(
+      () => _i358.LoginUsecase(repo: gh<_i719.LoginRepository>()),
+    );
     gh.factory<_i495.LoginCubit>(
       () => _i495.LoginCubit(
-        gh<_i845.BaseLoginRepository>(),
+        gh<_i358.LoginUsecase>(),
         gh<_i553.BaseBiometricsService>(),
-        gh<_i333.BasePrefStorageService>(),
       ),
     );
     return this;
@@ -273,13 +279,16 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i258.AboutAppCubit get aboutAppCubit => get<_i258.AboutAppCubit>();
 
-  _i719.LoginRepository get loginRepository => get<_i719.LoginRepository>();
-
   _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
 
   _i355.OtpCubit get otpCubit => get<_i355.OtpCubit>();
 
+  _i370.LoginRepositoryImpl get loginRepositoryImpl =>
+      get<_i370.LoginRepositoryImpl>();
+
   _i665.SecurityCubit get securityCubit => get<_i665.SecurityCubit>();
+
+  _i358.LoginUsecase get loginUsecase => get<_i358.LoginUsecase>();
 
   _i495.LoginCubit get loginCubit => get<_i495.LoginCubit>();
 }

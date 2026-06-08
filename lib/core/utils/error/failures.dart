@@ -34,3 +34,7 @@ class OfflineFailure extends Failures {
 class LocalStorageFailure extends Failures {
   const LocalStorageFailure(super.message);
 }
+
+final class ParsingFailure extends Failures {
+  const ParsingFailure(super.message);
+}

@@ -381,34 +381,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get delete_account_desc => 'this will permanently delete your account';
 
   @override
-  String get error_email_empty => 'Email cannot be empty';
+  String get error_email_cant_be_empty => 'Email cannot be empty';
 
   @override
-  String get error_email_missing_at => 'Email is missing @ sign';
+  String get error_email_not_invalid_format => 'Email format is invalid';
 
   @override
-  String get error_email_invalid => 'Email is invalid';
+  String get error_email_contains_invalid_characters =>
+      'Email contains invalid characters';
+
+  @override
+  String get error_email_must_contain_at_symbol =>
+      'Email must contain @ symbol';
+
+  @override
+  String get error_email_must_be_in_lowercase => 'Email must be in lower case';
+
+  @override
+  String get error_arabic_not_allowed => 'Arabic characters are not allowed';
+
+  @override
+  String get error_email_emoji_not_allowed => 'Emojis are not allowed in email';
 
   @override
   String get error_email_exists => 'Email already exists';
 
   @override
   String get error_email_not_found => 'Email not found';
-
-  @override
-  String get error_email_lowercase => 'Email must be in lower case';
-
-  @override
-  String get error_email_not_valid => 'Email is not valid';
-
-  @override
-  String get error_email_missing_domain => 'Email is missing domain';
-
-  @override
-  String get error_email_missing_dot => 'Email is missing .';
-
-  @override
-  String get error_email_missing_extension => 'Email is missing extension';
 
   @override
   String get error_password_empty => 'Password cannot be empty';

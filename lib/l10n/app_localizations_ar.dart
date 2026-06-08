@@ -378,34 +378,37 @@ class AppLocalizationsAr extends AppLocalizations {
   String get delete_account_desc => 'سيؤدي هذا إلى حذف حسابك نهائياً';
 
   @override
-  String get error_email_empty => 'البريد الإلكتروني مطلوب';
+  String get error_email_cant_be_empty =>
+      'لا يمكن أن يكون البريد الإلكتروني فارغاً';
 
   @override
-  String get error_email_missing_at => 'البريد الإلكتروني يفتقد علامة @';
+  String get error_email_not_invalid_format =>
+      'صيغة البريد الإلكتروني غير صحيحة';
 
   @override
-  String get error_email_invalid => 'بريد إلكتروني غير صالح';
+  String get error_email_contains_invalid_characters =>
+      'يحتوي البريد الإلكتروني على أحرف غير صالحة';
+
+  @override
+  String get error_email_must_contain_at_symbol =>
+      'يجب أن يحتوي البريد الإلكتروني على رمز @';
+
+  @override
+  String get error_email_must_be_in_lowercase =>
+      'يجب أن يكون البريد الإلكتروني بأحرف صغيرة';
+
+  @override
+  String get error_arabic_not_allowed => 'الأحرف العربية غير مسموح بها';
+
+  @override
+  String get error_email_emoji_not_allowed =>
+      'الرموز التعبيرية غير مسموح بها في البريد الإلكتروني';
 
   @override
   String get error_email_exists => 'البريد الإلكتروني مسجل بالفعل';
 
   @override
   String get error_email_not_found => 'البريد الإلكتروني غير مسجل';
-
-  @override
-  String get error_email_lowercase => 'يجب كتابة البريد بأحرف صغيرة';
-
-  @override
-  String get error_email_not_valid => 'عنوان البريد غير صحيح';
-
-  @override
-  String get error_email_missing_domain => 'البريد يفتقد النطاق';
-
-  @override
-  String get error_email_missing_dot => 'البريد يفتقد النقطة';
-
-  @override
-  String get error_email_missing_extension => 'البريد يفتقد الامتداد';
 
   @override
   String get error_password_empty => 'كلمة المرور مطلوبة';

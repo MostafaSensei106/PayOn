@@ -1,13 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
+
+import '../../constants/validation_regex.dart';
+import '../../extensions/extensions.dart';
+import 'base/validation_pipeline.dart';
 
 enum EmailValidationError {
   empty,
-  notLowerCase,
-  missingAtSign,
-  missingDot,
-  missingDomain,
-  missingExtension,
+  invalid,
   invalidCharacters,
+  missingAtSign,
+  notInLowerCase,
+  arabicNotAllowed,
+  emojiNotAllowed,
 }
 
 final class Email extends FormzInput<String, EmailValidationError> {
@@ -16,23 +21,36 @@ final class Email extends FormzInput<String, EmailValidationError> {
 
   @override
   EmailValidationError? validator(String value) {
-    if (value.isEmpty) return EmailValidationError.empty;
+    return ValidationPipeline<EmailValidationError>(value)
+        .required(EmailValidationError.empty)
+        .contains('@', EmailValidationError.missingAtSign)
+        .isLowerCase(EmailValidationError.notInLowerCase)
+        .matches(ValidationRegex.emailRegExp, EmailValidationError.invalid)
+        .notMatches(
+          ValidationRegex.arabicRegExp,
+          EmailValidationError.arabicNotAllowed,
+        )
+        .notMatches(
+          ValidationRegex.emojiRegExp,
+          EmailValidationError.emojiNotAllowed,
+        )
+        .evaluate();
+  }
+}
 
-    if (value.toLowerCase() != value) return EmailValidationError.notLowerCase;
-
-    if (!value.contains('@')) return EmailValidationError.missingAtSign;
-
-    final parts = value.split('@');
-    final domainPart = parts.length > 1 ? parts[1] : '';
-
-    if (domainPart.isEmpty) return EmailValidationError.missingDomain;
-
-    if (!domainPart.contains('.')) return EmailValidationError.missingExtension;
-
-    final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (!emailRegExp.hasMatch(value)) {
-      return EmailValidationError.invalidCharacters;
-    }
-    return null;
+extension EmailValidationErrorExtension on EmailValidationError {
+  String message(BuildContext context) {
+    final l = context.localeKeys;
+    return switch (this) {
+      EmailValidationError.empty => l.error_email_cant_be_empty,
+      EmailValidationError.invalid => l.error_email_not_invalid_format,
+      EmailValidationError.invalidCharacters =>
+        l.error_email_contains_invalid_characters,
+      EmailValidationError.missingAtSign =>
+        l.error_email_must_contain_at_symbol,
+      EmailValidationError.notInLowerCase => l.error_email_must_be_in_lowercase,
+      EmailValidationError.arabicNotAllowed => l.error_arabic_not_allowed,
+      EmailValidationError.emojiNotAllowed => l.error_email_emoji_not_allowed,
+    };
   }
 }
