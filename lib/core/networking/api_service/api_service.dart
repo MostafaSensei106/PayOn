@@ -15,6 +15,8 @@ import '../../../modules/get_started/data/models/verify_otp/verify_otp_response_
 import '../../../modules/home/data/models/get_wallets_response_body.dart';
 import '../../../modules/login/data/models/login_request_body.dart';
 import '../../../modules/login/data/models/login_response_body.dart';
+import '../../../modules/profile/data/models/edit_user_porfile_response_body.dart';
+import '../../../modules/profile/data/models/edit_user_profile_request_body.dart';
 import '../../../modules/profile/data/models/get_user_profile_response_body.dart';
 import '../../constants/api_routes.dart';
 
@@ -28,8 +30,12 @@ abstract class ApiService {
   @GET(ApiRoutes.accountGetUserProfile)
   Future<GetUserProfileResponseBody> getUserProfile();
 
-  /// Auth
+  @PUT(ApiRoutes.profileEditUserProfile)
+  Future<EditUserPorfileResponseBody> editUserProfile(
+    @Body() EditUserProfileRequestBody body,
+  );
 
+  /// Auth
   @POST(ApiRoutes.authLogin)
   Future<LoginResponseBody> login(@Body() LoginRequestBody body);
 

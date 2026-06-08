@@ -98,8 +98,6 @@ import 'package:payon/modules/login/logic/repository/login_repository_impl.dart'
 import 'package:payon/modules/login/logic/usecase/login_usecase.dart' as _i358;
 import 'package:payon/modules/profile/data/repository/user_profile_repository.dart'
     as _i709;
-import 'package:payon/modules/profile/logic/cubit/user_profile_cubit.dart'
-    as _i72;
 import 'package:payon/modules/profile/logic/repository/user_profile_reposiotry_impl.dart'
     as _i116;
 import 'package:payon/modules/profile/logic/usecase/get_user_profile_usecase.dart'
@@ -241,9 +239,6 @@ extension GetItInjectableX on _i174.GetIt {
         biometricsService: gh<_i958.BiometricsService>(),
       ),
     );
-    gh.lazySingleton<_i72.UserProfileCubit>(
-      () => _i72.UserProfileCubit(gh<_i624.GetUserProfileUsecase>()),
-    );
     gh.factory<_i358.LoginUsecase>(
       () => _i358.LoginUsecase(repo: gh<_i719.LoginRepository>()),
     );
@@ -334,8 +329,6 @@ extension GetItInjectableX on _i174.GetIt {
   _i797.HomeCubit get homeCubit => get<_i797.HomeCubit>();
 
   _i665.SecurityCubit get securityCubit => get<_i665.SecurityCubit>();
-
-  _i72.UserProfileCubit get userProfileCubit => get<_i72.UserProfileCubit>();
 
   _i358.LoginUsecase get loginUsecase => get<_i358.LoginUsecase>();
 
