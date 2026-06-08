@@ -14,6 +14,7 @@ import '../../../modules/profile/logic/cubit/user_profile_cubit.dart';
 import '../../../modules/profile/ui/pages/profile_page.dart';
 import '../../../modules/request_money/ui/page/request_money_page.dart';
 import '../../../modules/scan_qrcode/ui/page/scan_qrcode_page.dart';
+import '../../../modules/send_money/logic/cubit/send_money_cubit.dart';
 import '../../../modules/send_money/ui/page/send_money_page.dart';
 import '../../../modules/terms_and_conditions/ui/page/terms_and_conditions_page.dart';
 import '../../../modules/theme/ui/page/theme.dart';
@@ -113,8 +114,10 @@ final class SendMoneyRoute extends CupertinoRouteData with $SendMoneyRoute {
   const SendMoneyRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const SendMoneyPage();
+  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
+    create: (context) => getIt<SendMoneyCubit>(),
+    child: const SendMoneyPage(),
+  );
 }
 
 @TypedGoRoute<RequestMoneyRoute>(path: RoutesNames.requestMoney)

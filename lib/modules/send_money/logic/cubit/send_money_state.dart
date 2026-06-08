@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../core/utils/validator/email_validators.dart';
 import '../../../../core/utils/validator/user_info_validator.dart';
 import '../entity/check_wallet_entity.dart';
 
