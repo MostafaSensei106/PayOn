@@ -241,7 +241,7 @@ extension GetItInjectableX on _i174.GetIt {
         biometricsService: gh<_i958.BiometricsService>(),
       ),
     );
-    gh.factory<_i72.UserProfileCubit>(
+    gh.lazySingleton<_i72.UserProfileCubit>(
       () => _i72.UserProfileCubit(gh<_i624.GetUserProfileUsecase>()),
     );
     gh.factory<_i358.LoginUsecase>(

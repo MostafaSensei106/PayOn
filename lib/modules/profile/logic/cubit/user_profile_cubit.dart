@@ -6,7 +6,7 @@ import '../../../../core/utils/use_case/base_use_case.dart';
 import '../usecase/get_user_profile_usecase.dart';
 import 'user_profile_state.dart';
 
-@injectable
+@lazySingleton
 class UserProfileCubit extends Cubit<UserProfileState> {
   UserProfileCubit(this._u) : super(const UserProfileState.initial());
 

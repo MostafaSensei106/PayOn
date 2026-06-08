@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
-import '../../../../core/di/di.dart';
-import '../../../../core/services/l10n/l10n_service.dart';
+import '../../../../core/extensions/extensions.dart';
 import '../../../../core/widgets/navigation/bottom_nav_bar/bottom_nav_bar_component.dart';
+import '../../../home/logic/cubit/home_cubit.dart';
+import '../../../profile/logic/cubit/user_profile_cubit.dart';
 
 class MainPage extends HookWidget {
   const MainPage({required this.navigationShell, super.key});
@@ -19,7 +21,16 @@ class MainPage extends HookWidget {
 
   @override
   Widget build(final BuildContext context) {
-    final l10n = getIt<L10nService>().get(context);
+    final l10n = context.localeKeys;
+
+    useEffect(() {
+      // ignore: discarded_futures
+      Future.wait([
+        context.read<HomeCubit>().getWallets(),
+        context.read<UserProfileCubit>().getProfile(),
+      ]);
+      return null;
+    }, const []);
 
     return Scaffold(
       extendBody: true,
