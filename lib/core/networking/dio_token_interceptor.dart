@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 
 import '../constants/api_header.dart';
+import '../constants/api_routes.dart';
 import '../constants/pref_keys.dart';
 import '../extensions/extensions.dart';
 import '../router/app_router.dart';
@@ -34,7 +35,8 @@ final class DioTokenInterceptor extends Interceptor {
   ) async {
     final requestPath = err.requestOptions.path;
 
-    if (err.response?.statusCode == 401 && !requestPath.contains('/Login')) {
+    if (err.response?.statusCode == 401 &&
+        !requestPath.contains(ApiRoutes.authLogin)) {
       final context = AppRouter.navigatorKey.currentContext;
       if (context != null) {
         unawaited(
