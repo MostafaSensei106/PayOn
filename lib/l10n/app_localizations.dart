@@ -866,6 +866,12 @@ abstract class AppLocalizations {
   /// **'Emojis are not allowed in email'**
   String get error_email_emoji_not_allowed;
 
+  /// No description provided for @unverified_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Unverified Account'**
+  String get unverified_account;
+
   /// No description provided for @error_full_name_cant_be_empty.
   ///
   /// In en, this message translates to:

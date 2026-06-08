@@ -10,6 +10,7 @@ import '../../../modules/developer_team/ui/page/developer_team_page.dart';
 import '../../../modules/language/ui/page/change_language_page.dart';
 import '../../../modules/notifications/ui/notifications_page.dart';
 import '../../../modules/privacy_policy/ui/privacy_policy_page.dart';
+import '../../../modules/profile/logic/cubit/user_profile_cubit.dart';
 import '../../../modules/profile/ui/pages/profile_page.dart';
 import '../../../modules/request_money/ui/page/request_money_page.dart';
 import '../../../modules/scan_qrcode/ui/page/scan_qrcode_page.dart';
@@ -43,8 +44,10 @@ final class ProfileRoute extends CupertinoRouteData with $ProfileRoute {
   const ProfileRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const ProfilePage();
+  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
+    create: (_) => getIt<UserProfileCubit>()..getProfile(),
+    child: const ProfilePage(),
+  );
 }
 
 @TypedGoRoute<ChangeLanguageRoute>(path: RoutesNames.language)

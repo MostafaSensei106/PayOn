@@ -100,6 +100,7 @@
   "full_name_id": "الاسم الكامل (كما في الهوية)",
   "dob": "تاريخ الميلاد",
   "nationality": "الجنسية",
+  "unverified_account": "حساب غير موثق",
   "tier_2_verification": "المستوى 2: وثيقة الهوية",
   "national_id_passport": "رقم الهوية / جواز السفر",
   "personal_details": "التفاصيل الشخصية",

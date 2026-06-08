@@ -15,6 +15,7 @@ import '../../../modules/get_started/data/models/verify_otp/verify_otp_response_
 import '../../../modules/home/data/models/get_wallets_response_body.dart';
 import '../../../modules/login/data/models/login_request_body.dart';
 import '../../../modules/login/data/models/login_response_body.dart';
+import '../../../modules/profile/data/models/get_user_profile_response_body.dart';
 import '../../constants/api_routes.dart';
 
 part 'api_service.g.dart';
@@ -22,6 +23,12 @@ part 'api_service.g.dart';
 @RestApi(baseUrl: ApiRoutes.apiBaseURL)
 abstract class ApiService {
   factory ApiService(Dio dio, {String? baseUrl}) = _ApiService;
+
+  /// User Profile
+  @GET(ApiRoutes.accountGetUserProfile)
+  Future<GetUserProfileResponseBody> getUserProfile();
+
+  /// Auth
 
   @POST(ApiRoutes.authLogin)
   Future<LoginResponseBody> login(@Body() LoginRequestBody body);

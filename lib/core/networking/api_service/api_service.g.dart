@@ -22,6 +22,33 @@ class _ApiService implements ApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
+  Future<GetUserProfileResponseBody> getUserProfile() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GetUserProfileResponseBody>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'Account/GetUserProfile',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GetUserProfileResponseBody _value;
+    try {
+      _value = GetUserProfileResponseBody.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<LoginResponseBody> login(LoginRequestBody body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

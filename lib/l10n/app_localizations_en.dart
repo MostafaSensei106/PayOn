@@ -404,6 +404,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get error_email_emoji_not_allowed => 'Emojis are not allowed in email';
 
   @override
+  String get unverified_account => 'Unverified Account';
+
+  @override
   String get error_full_name_cant_be_empty => 'Full name cannot be empty';
 
   @override

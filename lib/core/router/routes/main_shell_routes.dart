@@ -1,9 +1,10 @@
+// ignore_for_file: discarded_futures
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../modules/history/presentation/pages/history_page.dart';
-
 import '../../../modules/home/logic/cubit/home_cubit.dart';
 import '../../../modules/home/ui/pages/home_page.dart';
 import '../../../modules/main/ui/pages/main_page.dart';
@@ -62,9 +63,8 @@ class HomeRoute extends CupertinoRouteData with $HomeRoute {
   const HomeRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
-    // ignore: discarded_futures
-    create: (_) => getIt<HomeCubit>()..getWallets(),
+  Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
+    providers: [BlocProvider(create: (_) => getIt<HomeCubit>()..getWallets())],
     child: const HomePage(),
   );
 }

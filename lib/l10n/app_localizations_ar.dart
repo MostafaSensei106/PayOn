@@ -405,6 +405,9 @@ class AppLocalizationsAr extends AppLocalizations {
       'الرموز التعبيرية غير مسموح بها في البريد الإلكتروني';
 
   @override
+  String get unverified_account => 'حساب غير موثق';
+
+  @override
   String get error_full_name_cant_be_empty =>
       'لا يمكن أن يكون الاسم الكامل فارغاً';
 
