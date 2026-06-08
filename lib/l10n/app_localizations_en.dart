@@ -404,13 +404,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get error_email_emoji_not_allowed => 'Emojis are not allowed in email';
 
   @override
+  String get error_full_name_cant_be_empty => 'Full name cannot be empty';
+
+  @override
+  String get error_full_name_too_long_max_255_chars =>
+      'Full name is too long (maximum 255 characters)';
+
+  @override
+  String get error_full_name_invalid_characters =>
+      'Full name contains invalid characters';
+
+  @override
   String get error_email_exists => 'Email already exists';
+
+  @override
+  String get error_phone_number_cant_be_empty => 'Phone number cannot be empty';
+
+  @override
+  String get error_phone_number_invalid => 'Phone number is invalid';
 
   @override
   String get error_email_not_found => 'Email not found';
 
   @override
+  String get error_password_cant_be_empty => 'Password cannot be empty';
+
+  @override
   String get error_password_empty => 'Password cannot be empty';
+
+  @override
+  String get error_password_too_short_min_8_chars =>
+      'Password is too short (minimum 8 characters)';
 
   @override
   String get error_username_empty => 'User name cannot be empty';

@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/utils/validator/password.dart';
-import '../../../../core/utils/validator/user_name.dart';
+import '../../../../core/utils/validator/login/login_validation.dart';
 
 part 'login_state.freezed.dart';
 
@@ -20,8 +19,8 @@ sealed class LoginState<T> with _$LoginState<T> {
 @freezed
 sealed class LoginFormState with _$LoginFormState {
   const factory LoginFormState({
-    @Default(UserName.pure()) UserName userName,
-    @Default(Password.pure()) Password password,
+    @Default(LoginPhoneValidator.pure()) LoginPhoneValidator userName,
+    @Default(LoginPasswordValidator.pure()) LoginPasswordValidator password,
     @Default(false) bool isValid,
     @Default(false) bool isBiometricsAvailable,
     @Default(false) bool isRememberMe,

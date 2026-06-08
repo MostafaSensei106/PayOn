@@ -8,8 +8,7 @@ import '../../../../core/constants/pref_keys.dart';
 import '../../../../core/constants/types/type_def.dart';
 import '../../../../core/services/biometrics/biometrics_service.dart';
 import '../../../../core/services/shared_prefs/base_pref_storage_service.dart';
-import '../../../../core/utils/validator/password.dart';
-import '../../../../core/utils/validator/user_name.dart';
+import '../../../../core/utils/validator/login/login_validation.dart';
 import '../entities/login_entity.dart';
 import '../entities/params/login_params.dart';
 import '../usecase/login_usecase.dart';
@@ -90,7 +89,7 @@ final class LoginCubit extends Cubit<LoginState> {
   }
 
   void userNameOnChanged(String value) {
-    final userName = UserName.dirty(value);
+    final userName = LoginPhoneValidator.dirty(value);
     final updatedForm = currentForm.copyWith(
       userName: userName,
       isValid: Formz.validate([userName, currentForm.password]),
@@ -99,7 +98,7 @@ final class LoginCubit extends Cubit<LoginState> {
   }
 
   void passwordOnChanged(String value) {
-    final password = Password.dirty(value);
+    final password = LoginPasswordValidator.dirty(value);
     final updatedForm = currentForm.copyWith(
       password: password,
       isValid: Formz.validate([password, currentForm.userName]),

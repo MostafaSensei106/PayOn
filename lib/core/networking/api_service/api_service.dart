@@ -12,6 +12,7 @@ import '../../../modules/get_started/data/models/send_otp/send_otp_request_body.
 import '../../../modules/get_started/data/models/send_otp/send_otp_response_body.dart';
 import '../../../modules/get_started/data/models/verify_otp/verify_otp_request_body.dart';
 import '../../../modules/get_started/data/models/verify_otp/verify_otp_response_body.dart';
+import '../../../modules/home/data/models/get_wallets_response_body.dart';
 import '../../../modules/login/data/models/login_request_body.dart';
 import '../../../modules/login/data/models/login_response_body.dart';
 import '../../constants/api_routes.dart';
@@ -50,4 +51,10 @@ abstract class ApiService {
 
   @POST(ApiRoutes.authRestPassword)
   Future<ResetPasswordRequestBody> resetPassword();
+
+  @GET(ApiRoutes.accountGetWallets)
+  Future<GetWalletsResponseBody> getWallets({
+    @Query('page') int page,
+    @Query('size') int size,
+  });
 }

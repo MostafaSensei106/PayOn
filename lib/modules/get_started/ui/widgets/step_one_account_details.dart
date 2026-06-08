@@ -47,26 +47,11 @@ class StepOneAccountDetails extends StatelessWidget {
                 context,
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: TextFormFieldComponent(
-                    label: l10n.first_name,
-                    prefixIcon: Iconsax.user_copy,
-                    initialValue: form.firstName.value,
-                    onChanged: registerCubit.firstNameOnChanged,
-                  ),
-                ),
-                const SpacingComponent.horizontal(AppConfig.paddingHalf),
-                Expanded(
-                  child: TextFormFieldComponent(
-                    label: l10n.last_name,
-                    prefixIcon: Iconsax.user_copy,
-                    initialValue: form.lastName.value,
-                    onChanged: registerCubit.lastNameOnChanged,
-                  ),
-                ),
-              ],
+            TextFormFieldComponent(
+              label: l10n.user_name,
+              prefixIcon: Iconsax.user_copy,
+              initialValue: form.name.value,
+              onChanged: registerCubit.firstNameOnChanged,
             ),
             TextFormFieldComponent(
               label: l10n.email_address,

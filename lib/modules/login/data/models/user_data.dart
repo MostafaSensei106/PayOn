@@ -6,8 +6,10 @@ part 'user_data.g.dart';
 
 @JsonSerializable()
 final class UserDataModel {
-  const UserDataModel({required this.token});
+  const UserDataModel({required this.token, this.accountID});
   final String token;
+  @JsonKey(name: 'accountId')
+  final String? accountID;
 
   factory UserDataModel.fromJson(Map<String, dynamic> json) =>
       _$UserDataModelFromJson(json);

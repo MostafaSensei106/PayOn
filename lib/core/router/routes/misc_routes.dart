@@ -23,27 +23,28 @@ import '../routes_names.dart';
 part 'misc_routes.g.dart';
 
 List<RouteBase> get miscRoutes => [
-      $profileRoute,
-      $changeLanguageRoute,
-      $changeThemeRoute,
-      $notificationsRoute,
-      $commonQuestionsRoute,
-      $privacyPolicyRoute,
-      $contactUsRoute,
-      $sendMoneyRoute,
-      $requestMoneyRoute,
-      $scanQrCodeRoute,
-      $aboutAppRoute,
-      $developerTeamRoute,
-      $termsAndConditionsRoute,
-    ];
+  $profileRoute,
+  $changeLanguageRoute,
+  $changeThemeRoute,
+  $notificationsRoute,
+  $commonQuestionsRoute,
+  $privacyPolicyRoute,
+  $contactUsRoute,
+  $sendMoneyRoute,
+  $requestMoneyRoute,
+  $scanQrCodeRoute,
+  $aboutAppRoute,
+  $developerTeamRoute,
+  $termsAndConditionsRoute,
+];
 
 @TypedGoRoute<ProfileRoute>(path: RoutesNames.profile)
 final class ProfileRoute extends CupertinoRouteData with $ProfileRoute {
   const ProfileRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => const ProfilePage();
+  Widget build(BuildContext context, GoRouterState state) =>
+      const ProfilePage();
 }
 
 @TypedGoRoute<ChangeLanguageRoute>(path: RoutesNames.language)
@@ -138,9 +139,9 @@ final class AboutAppRoute extends CupertinoRouteData with $AboutAppRoute {
 
   @override
   Widget build(BuildContext context, GoRouterState state) => BlocProvider(
-        create: (context) => getIt<AboutAppCubit>()..getAppDetails(),
-        child: const AboutAppPage(),
-      );
+    create: (context) => getIt<AboutAppCubit>()..getAppDetails(),
+    child: const AboutAppPage(),
+  );
 }
 
 @TypedGoRoute<DeveloperTeamRoute>(path: RoutesNames.developerTeam)

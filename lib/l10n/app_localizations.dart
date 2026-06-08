@@ -866,11 +866,41 @@ abstract class AppLocalizations {
   /// **'Emojis are not allowed in email'**
   String get error_email_emoji_not_allowed;
 
+  /// No description provided for @error_full_name_cant_be_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name cannot be empty'**
+  String get error_full_name_cant_be_empty;
+
+  /// No description provided for @error_full_name_too_long_max_255_chars.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name is too long (maximum 255 characters)'**
+  String get error_full_name_too_long_max_255_chars;
+
+  /// No description provided for @error_full_name_invalid_characters.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name contains invalid characters'**
+  String get error_full_name_invalid_characters;
+
   /// No description provided for @error_email_exists.
   ///
   /// In en, this message translates to:
   /// **'Email already exists'**
   String get error_email_exists;
+
+  /// No description provided for @error_phone_number_cant_be_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number cannot be empty'**
+  String get error_phone_number_cant_be_empty;
+
+  /// No description provided for @error_phone_number_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number is invalid'**
+  String get error_phone_number_invalid;
 
   /// No description provided for @error_email_not_found.
   ///
@@ -878,11 +908,23 @@ abstract class AppLocalizations {
   /// **'Email not found'**
   String get error_email_not_found;
 
+  /// No description provided for @error_password_cant_be_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password cannot be empty'**
+  String get error_password_cant_be_empty;
+
   /// No description provided for @error_password_empty.
   ///
   /// In en, this message translates to:
   /// **'Password cannot be empty'**
   String get error_password_empty;
+
+  /// No description provided for @error_password_too_short_min_8_chars.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is too short (minimum 8 characters)'**
+  String get error_password_too_short_min_8_chars;
 
   /// No description provided for @error_username_empty.
   ///

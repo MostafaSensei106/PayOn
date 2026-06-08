@@ -530,7 +530,7 @@ $LoginFormStateCopyWith<$Res> get form {
 /// @nodoc
 mixin _$LoginFormState {
 
- UserName get userName; Password get password; bool get isValid; bool get isBiometricsAvailable; bool get isRememberMe;
+ LoginPhoneValidator get userName; LoginPasswordValidator get password; bool get isValid; bool get isBiometricsAvailable; bool get isRememberMe;
 /// Create a copy of LoginFormState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -561,7 +561,7 @@ abstract mixin class $LoginFormStateCopyWith<$Res>  {
   factory $LoginFormStateCopyWith(LoginFormState value, $Res Function(LoginFormState) _then) = _$LoginFormStateCopyWithImpl;
 @useResult
 $Res call({
- UserName userName, Password password, bool isValid, bool isBiometricsAvailable, bool isRememberMe
+ LoginPhoneValidator userName, LoginPasswordValidator password, bool isValid, bool isBiometricsAvailable, bool isRememberMe
 });
 
 
@@ -581,8 +581,8 @@ class _$LoginFormStateCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? userName = null,Object? password = null,Object? isValid = null,Object? isBiometricsAvailable = null,Object? isRememberMe = null,}) {
   return _then(_self.copyWith(
 userName: null == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
-as UserName,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as Password,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as LoginPhoneValidator,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as LoginPasswordValidator,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,isBiometricsAvailable: null == isBiometricsAvailable ? _self.isBiometricsAvailable : isBiometricsAvailable // ignore: cast_nullable_to_non_nullable
 as bool,isRememberMe: null == isRememberMe ? _self.isRememberMe : isRememberMe // ignore: cast_nullable_to_non_nullable
 as bool,
@@ -667,7 +667,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserName userName,  Password password,  bool isValid,  bool isBiometricsAvailable,  bool isRememberMe)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( LoginPhoneValidator userName,  LoginPasswordValidator password,  bool isValid,  bool isBiometricsAvailable,  bool isRememberMe)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LoginFormState() when $default != null:
 return $default(_that.userName,_that.password,_that.isValid,_that.isBiometricsAvailable,_that.isRememberMe);case _:
@@ -688,7 +688,7 @@ return $default(_that.userName,_that.password,_that.isValid,_that.isBiometricsAv
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserName userName,  Password password,  bool isValid,  bool isBiometricsAvailable,  bool isRememberMe)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( LoginPhoneValidator userName,  LoginPasswordValidator password,  bool isValid,  bool isBiometricsAvailable,  bool isRememberMe)  $default,) {final _that = this;
 switch (_that) {
 case _LoginFormState():
 return $default(_that.userName,_that.password,_that.isValid,_that.isBiometricsAvailable,_that.isRememberMe);}
@@ -705,7 +705,7 @@ return $default(_that.userName,_that.password,_that.isValid,_that.isBiometricsAv
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserName userName,  Password password,  bool isValid,  bool isBiometricsAvailable,  bool isRememberMe)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( LoginPhoneValidator userName,  LoginPasswordValidator password,  bool isValid,  bool isBiometricsAvailable,  bool isRememberMe)?  $default,) {final _that = this;
 switch (_that) {
 case _LoginFormState() when $default != null:
 return $default(_that.userName,_that.password,_that.isValid,_that.isBiometricsAvailable,_that.isRememberMe);case _:
@@ -720,11 +720,11 @@ return $default(_that.userName,_that.password,_that.isValid,_that.isBiometricsAv
 
 
 class _LoginFormState implements LoginFormState {
-  const _LoginFormState({this.userName = const UserName.pure(), this.password = const Password.pure(), this.isValid = false, this.isBiometricsAvailable = false, this.isRememberMe = false});
+  const _LoginFormState({this.userName = const LoginPhoneValidator.pure(), this.password = const LoginPasswordValidator.pure(), this.isValid = false, this.isBiometricsAvailable = false, this.isRememberMe = false});
   
 
-@override@JsonKey() final  UserName userName;
-@override@JsonKey() final  Password password;
+@override@JsonKey() final  LoginPhoneValidator userName;
+@override@JsonKey() final  LoginPasswordValidator password;
 @override@JsonKey() final  bool isValid;
 @override@JsonKey() final  bool isBiometricsAvailable;
 @override@JsonKey() final  bool isRememberMe;
@@ -759,7 +759,7 @@ abstract mixin class _$LoginFormStateCopyWith<$Res> implements $LoginFormStateCo
   factory _$LoginFormStateCopyWith(_LoginFormState value, $Res Function(_LoginFormState) _then) = __$LoginFormStateCopyWithImpl;
 @override @useResult
 $Res call({
- UserName userName, Password password, bool isValid, bool isBiometricsAvailable, bool isRememberMe
+ LoginPhoneValidator userName, LoginPasswordValidator password, bool isValid, bool isBiometricsAvailable, bool isRememberMe
 });
 
 
@@ -779,8 +779,8 @@ class __$LoginFormStateCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? userName = null,Object? password = null,Object? isValid = null,Object? isBiometricsAvailable = null,Object? isRememberMe = null,}) {
   return _then(_LoginFormState(
 userName: null == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
-as UserName,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as Password,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as LoginPhoneValidator,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as LoginPasswordValidator,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,isBiometricsAvailable: null == isBiometricsAvailable ? _self.isBiometricsAvailable : isBiometricsAvailable // ignore: cast_nullable_to_non_nullable
 as bool,isRememberMe: null == isRememberMe ? _self.isRememberMe : isRememberMe // ignore: cast_nullable_to_non_nullable
 as bool,

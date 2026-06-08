@@ -8,7 +8,6 @@ import '../../../../../core/utils/validator/email_validators.dart';
 import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
-import '../../../../../core/utils/validator/user_name.dart';
 import '../../../data/models/account_type/account_type_item.dart';
 
 part 'register_state.freezed.dart';

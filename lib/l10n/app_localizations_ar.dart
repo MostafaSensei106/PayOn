@@ -405,13 +405,40 @@ class AppLocalizationsAr extends AppLocalizations {
       'الرموز التعبيرية غير مسموح بها في البريد الإلكتروني';
 
   @override
+  String get error_full_name_cant_be_empty =>
+      'لا يمكن أن يكون الاسم الكامل فارغاً';
+
+  @override
+  String get error_full_name_too_long_max_255_chars =>
+      'الاسم الكامل طويل جداً (الحد الأقصى 255 حرفاً)';
+
+  @override
+  String get error_full_name_invalid_characters =>
+      'يحتوي الاسم الكامل على أحرف غير صالحة';
+
+  @override
   String get error_email_exists => 'البريد الإلكتروني مسجل بالفعل';
+
+  @override
+  String get error_phone_number_cant_be_empty =>
+      'لا يمكن أن يكون رقم الهاتف فارغاً';
+
+  @override
+  String get error_phone_number_invalid => 'رقم الهاتف غير صحيح';
 
   @override
   String get error_email_not_found => 'البريد الإلكتروني غير مسجل';
 
   @override
+  String get error_password_cant_be_empty =>
+      'لا يمكن أن تكون كلمة المرور فارغة';
+
+  @override
   String get error_password_empty => 'كلمة المرور مطلوبة';
+
+  @override
+  String get error_password_too_short_min_8_chars =>
+      'كلمة المرور قصيرة جداً (8 أحرف على الأقل)';
 
   @override
   String get error_username_empty => 'اسم المستخدم مطلوب';

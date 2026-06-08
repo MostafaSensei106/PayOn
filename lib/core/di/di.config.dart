@@ -83,6 +83,12 @@ import 'package:payon/modules/get_started/logic/cubit/otp/otp_cubit.dart'
     as _i355;
 import 'package:payon/modules/get_started/logic/cubit/register/register_cubit.dart'
     as _i225;
+import 'package:payon/modules/home/data/repository/wallets_repostory.dart'
+    as _i620;
+import 'package:payon/modules/home/logic/repository/wallets_repository_impl.dart'
+    as _i443;
+import 'package:payon/modules/home/logic/usecase/get_wallets_usecase.dart'
+    as _i990;
 import 'package:payon/modules/login/data/repositories/login_repository.dart'
     as _i719;
 import 'package:payon/modules/login/logic/cubit/login_cubit.dart' as _i495;
@@ -189,11 +195,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i843.AccountTypeCubit>(
       () => _i843.AccountTypeCubit(gh<_i276.BaseAccountTypeRepository>()),
     );
+    gh.lazySingleton<_i620.WalletsRepostory>(
+      () => _i443.WalletsRepositoryImpl(api: gh<_i550.ApiService>()),
+    );
     gh.factory<_i258.AboutAppCubit>(
       () => _i258.AboutAppCubit(gh<_i725.BaseAboutAppRepository>()),
     );
     gh.factory<_i225.RegisterCubit>(
       () => _i225.RegisterCubit(gh<_i1033.BaseRegisterRepository>()),
+    );
+    gh.factory<_i990.GetWalletsUsecase>(
+      () => _i990.GetWalletsUsecase(repo: gh<_i620.WalletsRepostory>()),
     );
     gh.factory<_i355.OtpCubit>(
       () => _i355.OtpCubit(gh<_i78.BaseOtpRepository>()),
@@ -276,9 +288,15 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i843.AccountTypeCubit get accountTypeCubit => get<_i843.AccountTypeCubit>();
 
+  _i443.WalletsRepositoryImpl get walletsRepositoryImpl =>
+      get<_i443.WalletsRepositoryImpl>();
+
   _i258.AboutAppCubit get aboutAppCubit => get<_i258.AboutAppCubit>();
 
   _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
+
+  _i990.GetWalletsUsecase get getWalletsUsecase =>
+      get<_i990.GetWalletsUsecase>();
 
   _i355.OtpCubit get otpCubit => get<_i355.OtpCubit>();
 
