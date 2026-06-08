@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
 
+import '../../constants/validation_regex.dart';
 import '../../di/di.dart';
 import '../../services/l10n/l10n_service.dart';
+import 'base/validation_pipeline.dart';
 
-enum PasswordError { empty, tooShort, hasEmojes, invalid, hasSpaces }
+enum PasswordError { empty, minLength, hasEmojes, invalid, hasSpaces }
 
 final class Password extends FormzInput<String, PasswordError> {
   const Password.pure() : super.pure('');
@@ -12,23 +14,13 @@ final class Password extends FormzInput<String, PasswordError> {
 
   @override
   PasswordError? validator(String value) {
-    if (value.isEmpty) return PasswordError.empty;
-
-    if (value.trim().length < 8) return PasswordError.tooShort;
-
-    final emojiRegExp = RegExp(
-      r'[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]',
-      unicode: true,
-    );
-    if (emojiRegExp.hasMatch(value)) {
-      return PasswordError.hasEmojes;
-    }
-
-    if (RegExp(r'\s').hasMatch(value)) {
-      return PasswordError.hasSpaces;
-    }
-
-    return null;
+    return ValidationPipeline<PasswordError>(value)
+        .required(PasswordError.empty)
+        .notMatches(RegExp(r'\s'), PasswordError.hasSpaces)
+        .minLength(8, PasswordError.minLength)
+        .matches(ValidationRegex.strongPasswordRegExp, PasswordError.invalid)
+        .matches(ValidationRegex.emojiRegExp, PasswordError.hasEmojes)
+        .evaluate();
   }
 }
 
@@ -38,8 +30,8 @@ extension PasswordErrorExtension on PasswordError {
     switch (this) {
       case PasswordError.empty:
         return l10n.error_password_empty;
-      case PasswordError.tooShort:
-        return l10n.error_password_too_short;
+      case PasswordError.minLength:
+        return l10n.error_password_too_short_min_8_chars;
       case PasswordError.hasEmojes:
         return l10n.error_password_emojis;
       case PasswordError.hasSpaces:

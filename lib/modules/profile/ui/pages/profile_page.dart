@@ -78,7 +78,7 @@ class ProfilePage extends HookWidget {
                         subtitle: l10n.update_login_credentials,
                         leading: Iconsax.key_copy,
                         onTap: () {
-                          unawaited(HapticFeedback.mediumImpact());
+                          unawaited(HapticFeedback.vibrate());
                         },
                       ),
                       ListTileIconComponent.bottom(
@@ -86,7 +86,7 @@ class ProfilePage extends HookWidget {
                         subtitle: l10n.delete_account_desc,
                         leading: Iconsax.user_remove_copy,
                         onTap: () {
-                          unawaited(HapticFeedback.heavyImpact());
+                          unawaited(HapticFeedback.vibrate());
                         },
                       ),
                     ],

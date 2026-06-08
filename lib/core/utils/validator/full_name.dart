@@ -1,6 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
 
-enum FullNameError { empty, oneWordMin3Characters, hasSpecialCharacters }
+import '../../extensions/extensions.dart';
+import '../../constants/validation_regex.dart';
+import 'base/validation_pipeline.dart';
+
+enum FullNameError {
+  empty,
+  minLenth3Characters,
+  maxLenth255Characters,
+  hasSpecialCharacters,
+}
 
 final class FullName extends FormzInput<String, FullNameError> {
   const FullName.pure() : super.pure('');
@@ -8,12 +18,27 @@ final class FullName extends FormzInput<String, FullNameError> {
 
   @override
   FullNameError? validator(String value) {
-    if (value.isEmpty) {
-      return FullNameError.empty;
-    }
+    return ValidationPipeline<FullNameError>(value)
+        .required(FullNameError.empty)
+        .notMatches(
+          ValidationRegex.invalidSpecialCharsRegExp,
+          FullNameError.hasSpecialCharacters,
+        )
+        .minLength(3, FullNameError.minLenth3Characters)
+        .maxLength(255, FullNameError.maxLenth255Characters)
+        .evaluate();
+  }
+}
 
-    //TODO:
-
-    return null;
+extension FullNameValidationExtension on FullNameError {
+  String message(BuildContext context) {
+    final l = context.localeKeys;
+    return switch (this) {
+      FullNameError.empty => l.error_full_name_cant_be_empty,
+      FullNameError.minLenth3Characters => l.error_full_name_too_short,
+      FullNameError.maxLenth255Characters => l.error_full_name_too_long,
+      FullNameError.hasSpecialCharacters =>
+        l.error_full_name_invalid_characters,
+    };
   }
 }

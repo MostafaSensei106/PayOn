@@ -35,75 +35,78 @@ class StepOneAccountType extends StatelessWidget {
           loading: () => const _AccountTypeSkeleton(),
           success: (data) {
             final allItems = data.data.items;
-            return ListView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppConfig.padding,
-                vertical: AppConfig.paddingHalf,
-              ),
-              children: List.generate(allItems.length, (index) {
-                final item = allItems[index];
-                void onTap() =>
-                    context.read<RegisterCubit>().accountTypeOnChanged(item);
+            return RefreshIndicator(
+              onRefresh: () =>
+                  context.read<AccountTypeCubit>().getAccountTypes(),
 
-                if (index == 0) {
-                  return ListTileIconComponent.top(
-                    title: item.type,
-                    subtitle: ' item.description',
-                    leading: item.parentId == 7
-                        ? Iconsax.shop_copy
-                        : Iconsax.user_copy,
-                    trailing: Radio<int>(
-                      value: item.id,
-                      groupValue: context
-                          .watch<RegisterCubit>()
-                          .state
-                          .form
-                          .accountType
-                          ?.id,
-                      onChanged: (_) => onTap(),
-                    ),
-                    onTap: onTap,
-                  );
-                } else if (index == allItems.length - 1) {
-                  return ListTileIconComponent.bottom(
-                    title: item.type,
-                    subtitle: 'item.description',
-                    leading: item.parentId == 7
-                        ? Iconsax.shop_copy
-                        : Iconsax.user_copy,
-                    trailing: Radio<int>(
-                      value: item.id,
-                      groupValue: context
-                          .watch<RegisterCubit>()
-                          .state
-                          .form
-                          .accountType
-                          ?.id,
-                      onChanged: (_) => onTap(),
-                    ),
-                    onTap: onTap,
-                  );
-                } else {
-                  return ListTileIconComponent.middle(
-                    title: item.type,
-                    subtitle: 'item.description',
-                    leading: item.parentId == 7
-                        ? Iconsax.shop_copy
-                        : Iconsax.user_copy,
-                    trailing: Radio<int>(
-                      value: item.id,
-                      groupValue: context
-                          .watch<RegisterCubit>()
-                          .state
-                          .form
-                          .accountType
-                          ?.id,
-                      onChanged: (_) => onTap(),
-                    ),
-                    onTap: onTap,
-                  );
-                }
-              }),
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppConfig.padding,
+                  vertical: AppConfig.paddingHalf,
+                ),
+                itemCount: allItems.length,
+                itemBuilder: (context, index) {
+                  final item = allItems[index];
+                  void onTap() =>
+                      context.read<RegisterCubit>().accountTypeOnChanged(item);
+
+                  if (index == 0) {
+                    return ListTileIconComponent.top(
+                      title: item.type,
+                      leading: item.parentId == 7
+                          ? Iconsax.shop_copy
+                          : Iconsax.user_copy,
+                      trailing: Radio<int>(
+                        value: item.id,
+                        groupValue: context
+                            .watch<RegisterCubit>()
+                            .state
+                            .form
+                            .accountType
+                            ?.id,
+                        onChanged: (_) => onTap(),
+                      ),
+                      onTap: onTap,
+                    );
+                  } else if (index == allItems.length - 1) {
+                    return ListTileIconComponent.bottom(
+                      title: item.type,
+                      leading: item.parentId == 7
+                          ? Iconsax.shop_copy
+                          : Iconsax.user_copy,
+                      trailing: Radio<int>(
+                        value: item.id,
+                        groupValue: context
+                            .watch<RegisterCubit>()
+                            .state
+                            .form
+                            .accountType
+                            ?.id,
+                        onChanged: (_) => onTap(),
+                      ),
+                      onTap: onTap,
+                    );
+                  } else {
+                    return ListTileIconComponent.middle(
+                      title: item.type,
+                      leading: item.parentId == 7
+                          ? Iconsax.shop_copy
+                          : Iconsax.user_copy,
+                      trailing: Radio<int>(
+                        value: item.id,
+                        groupValue: context
+                            .watch<RegisterCubit>()
+                            .state
+                            .form
+                            .accountType
+                            ?.id,
+                        onChanged: (_) => onTap(),
+                      ),
+                      onTap: onTap,
+                    );
+                  }
+                },
+              ),
             );
           },
           failure: (final error) => Center(child: Text(error)),

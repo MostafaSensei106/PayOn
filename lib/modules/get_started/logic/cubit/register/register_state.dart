@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/constants/app_enums.dart';
 import '../../../../../core/utils/validator/email_validators.dart';
+import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
 import '../../../../../core/utils/validator/user_name.dart';
@@ -29,9 +30,7 @@ sealed class RegisterState<T> with _$RegisterState<T> {
 @freezed
 sealed class RegisterFormState with _$RegisterFormState {
   const factory RegisterFormState({
-    @Default(UserName.pure()) UserName name,
-    @Default(UserName.pure()) UserName firstName,
-    @Default(UserName.pure()) UserName lastName,
+    @Default(FullName.pure()) FullName name,
     @Default(Email.pure()) Email email,
     @Default(PhoneNumber.pure()) PhoneNumber phoneNumber,
     @Default(Password.pure()) Password password,
