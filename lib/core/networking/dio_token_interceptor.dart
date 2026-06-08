@@ -32,7 +32,9 @@ final class DioTokenInterceptor extends Interceptor {
     DioException err,
     ErrorInterceptorHandler handler,
   ) async {
-    if (err.response?.statusCode == 401) {
+    final requestPath = err.requestOptions.path;
+
+    if (err.response?.statusCode == 401 && !requestPath.contains('/Login')) {
       final context = AppRouter.navigatorKey.currentContext;
       if (context != null) {
         unawaited(

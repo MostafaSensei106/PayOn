@@ -53,10 +53,10 @@ final class APIErrorHandler {
     if (responseData != null && responseData is Map<String, dynamic>) {
       try {
         final model = APIErrorModel.fromJson(responseData);
-        final errorMessage =
-            model.message ??
-            responseData['error']?.toString() ??
-            responseData['message']?.toString();
+        final errorMessage = model.message.isNotEmpty
+            ? model.message
+            : responseData['error']?.toString() ??
+                  responseData['message']?.toString();
 
         return ServerFailure(errorMessage ?? 'Server error ($statusCode)');
       } catch (_) {
