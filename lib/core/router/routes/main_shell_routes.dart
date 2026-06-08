@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../modules/history/presentation/pages/history_page.dart';
 
+import '../../../modules/home/logic/cubit/home_cubit.dart';
 import '../../../modules/home/ui/pages/home_page.dart';
 import '../../../modules/main/ui/pages/main_page.dart';
 import '../../../modules/settings/ui/pages/settings_page.dart';
 import '../../../modules/wallet/presentation/pages/wallet_page.dart';
+import '../../di/di.dart';
 import '../cupertion_route_data.dart';
 import '../routes_names.dart';
 
@@ -59,7 +62,11 @@ class HomeRoute extends CupertinoRouteData with $HomeRoute {
   const HomeRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => const HomePage();
+  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
+    // ignore: discarded_futures
+    create: (_) => getIt<HomeCubit>()..getWallets(),
+    child: const HomePage(),
+  );
 }
 
 class WalletBranchData extends StatefulShellBranchData {

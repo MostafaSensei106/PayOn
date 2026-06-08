@@ -101,6 +101,7 @@ extension GetWalletsBodyMapper on GetWalletsResponseBody {
               isActive: item.isActive,
               isDefault: item.isDefault,
               filesVerified: item.filesVerified,
+              country: item.country,
             ),
           )
           .toList(),

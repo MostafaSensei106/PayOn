@@ -54,7 +54,7 @@ abstract class ApiService {
 
   @GET(ApiRoutes.accountGetWallets)
   Future<GetWalletsResponseBody> getWallets({
-    @Query('page') int page,
-    @Query('size') int size,
+    @Query('page') required int page,
+    @Query('size') required int size,
   });
 }

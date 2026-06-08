@@ -250,7 +250,10 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<GetWalletsResponseBody> getWallets({int page, int size}) async {
+  Future<GetWalletsResponseBody> getWallets({
+    required int page,
+    required int size,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page, r'size': size};
     final _headers = <String, dynamic>{};

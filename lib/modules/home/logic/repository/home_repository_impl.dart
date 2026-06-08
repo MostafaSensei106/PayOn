@@ -3,14 +3,14 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/constants/types/type_def.dart';
 import '../../../../core/networking/api_executor/api_executor.dart';
 import '../../../../core/networking/api_service/api_service.dart';
-import '../../data/repository/wallets_repostory.dart';
-import '../entitys/params/get_wallet_params.dart';
 import '../../data/models/get_wallets_response_body.dart';
+import '../../data/repository/home_repostory.dart';
+import '../entitys/params/get_wallet_params.dart';
 import '../entitys/wallets_entity.dart';
 
-@LazySingleton(as: WalletsRepostory)
-class WalletsRepositoryImpl implements WalletsRepostory {
-  WalletsRepositoryImpl({required this._api});
+@LazySingleton(as: HomeRepostory)
+class HomeRepositoryImpl implements HomeRepostory {
+  HomeRepositoryImpl({required this._api});
 
   final ApiService _api;
 
