@@ -3,8 +3,8 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/constants/types/type_def.dart';
 import '../../../../core/networking/api_executor/api_executor.dart';
 import '../../../../core/networking/api_service/api_service.dart';
-import '../../data/models/check_wallet_request_body.dart';
-import '../../data/models/check_wallet_response_body.dart';
+import '../../data/models/check_wallet/check_wallet_request_body.dart';
+import '../../data/models/check_wallet/check_wallet_response_body.dart';
 import '../../data/repository/send_money_repository.dart';
 import '../entity/check_wallet_entity.dart';
 

@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/constants/types/type_def.dart';
 import '../../../../core/utils/validator/user_info_validator.dart';
-import '../../data/models/check_wallet_request_body.dart';
+import '../../data/models/check_wallet/check_wallet_request_body.dart';
 import '../usecase/check_wallet_usecase.dart';
 import 'send_money_state.dart';
 

@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../logic/entity/check_wallet_entity.dart';
+import '../../../logic/entity/check_wallet_entity.dart';
 
 part 'check_wallet_response_body.g.dart';
 

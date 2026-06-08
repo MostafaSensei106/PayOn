@@ -18,8 +18,8 @@ import '../../../modules/login/data/models/login_response_body.dart';
 import '../../../modules/profile/data/models/edit_user_porfile_response_body.dart';
 import '../../../modules/profile/data/models/edit_user_profile_request_body.dart';
 import '../../../modules/profile/data/models/get_user_profile_response_body.dart';
-import '../../../modules/send_money/data/models/check_wallet_request_body.dart';
-import '../../../modules/send_money/data/models/check_wallet_response_body.dart';
+import '../../../modules/send_money/data/models/check_wallet/check_wallet_request_body.dart';
+import '../../../modules/send_money/data/models/check_wallet/check_wallet_response_body.dart';
 import '../../constants/api_routes.dart';
 
 part 'api_service.g.dart';
