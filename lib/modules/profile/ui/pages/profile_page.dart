@@ -6,15 +6,23 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/constants/app_enums.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/extensions/extensions.dart';
+import '../../../../core/utils/validator/email_validators.dart';
+import '../../../../core/utils/validator/full_name.dart';
 import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
+import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
+import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
+import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../logic/cubit/user_profile_cubit.dart';
 import '../../logic/cubit/user_profile_state.dart';
 import '../../logic/entity/user_profile_entity.dart';
@@ -265,6 +273,7 @@ class _ProfileHeaderCard extends StatelessWidget {
                 onTap: () async {
                   unawaited(HapticFeedback.vibrate());
                   await context.showBottomSheetComponent(
+                    title: l10n.edit_profile,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -363,9 +372,85 @@ class _ProfileHeaderCard extends StatelessWidget {
               ],
             ),
           ),
-          IconButtonComponent.filled(icon: Iconsax.edit_copy, onPressed: () {}),
+          IconButtonComponent.filled(
+            icon: Iconsax.edit_copy,
+            onPressed: () => context.showBottomSheetComponent(
+              title: l10n.edit_profile,
+              child: MultiBlocProvider(
+                providers: [
+                  BlocProvider.value(value: getIt<UserProfileCubit>()),
+                  BlocProvider<EditProfileCubit>(
+                    create: (_) => getIt<EditProfileCubit>()
+                      ..onNameChanged(data.name)
+                      ..onEmailChanged(data.email),
+                  ),
+                ],
+                child: Sheet3(l10n: l10n, data: data),
+              ),
+            ),
+          ),
         ],
       ),
+    );
+  }
+}
+
+class Sheet3 extends StatelessWidget {
+  const Sheet3({super.key, required this.l10n, required this.data});
+
+  final AppLocalizations l10n;
+  final UserProfileEntity data;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<EditProfileCubit, EditProfileState>(
+      listener: (context, state) async {
+        await state.whenOrNull(
+          loading: (_) {
+            context.dialog.showLoading();
+          },
+          success: (_, response) async {
+            context.pop();
+            await context.read<UserProfileCubit>().getProfile();
+            if (context.mounted) context.pop(true);
+          },
+          failure: (_, e) async {
+            context.pop();
+            await context.dialog.showError(title: l10n.error, error: e);
+          },
+        );
+      },
+      builder: (context, state) {
+        final cubit = context.read<EditProfileCubit>();
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextFormFieldComponent(
+              initialValue: state.formState.name.value,
+              label: l10n.user_name,
+              prefixIcon: Iconsax.user_copy,
+              onChanged: cubit.onNameChanged,
+              errorText: state.formState.name.error?.message(context),
+            ),
+            SizedBox(height: 16.h),
+            TextFormFieldComponent(
+              initialValue: data.email,
+              label: l10n.email_address,
+              prefixIcon: Iconsax.sms_copy,
+              onChanged: cubit.onEmailChanged,
+              errorText: state.formState.email.error?.message(context),
+            ),
+            SizedBox(height: 16.h),
+            FilledButtonComponent.icon(
+              icon: Iconsax.save_2_copy,
+              label: l10n.ok,
+              onPressed: state.formState.isValid == true
+                  ? cubit.editProfile
+                  : () {},
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -69,6 +69,7 @@ class SendMoneyPage extends HookWidget {
                         : Iconsax.eye_copy,
                   ),
                   onTap: () => context.showBottomSheetComponent(
+                    title: l10n.favorites,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -116,6 +117,7 @@ class SendMoneyPage extends HookWidget {
                       icon: Iconsax.heart_search_copy,
                       label: l10n.favorites,
                       onPressed: () => context.showBottomSheetComponent(
+                        title: l10n.favorites,
                         child: const Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [

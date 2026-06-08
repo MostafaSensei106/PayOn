@@ -1,13 +1,11 @@
-import 'dart:ffi';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/constants/types/type_def.dart';
 import '../../../../core/utils/use_case/base_use_case.dart';
 import '../../../../core/utils/validator/email_validators.dart';
 import '../../../../core/utils/validator/full_name.dart';
-import '../../data/models/edit_user_porfile_response_body.dart';
 import '../../data/models/edit_user_profile_request_body.dart';
 import '../usecase/edit_user_profile_usecase.dart';
 import '../usecase/get_user_profile_usecase.dart';
@@ -15,43 +13,60 @@ import 'user_profile_state.dart';
 
 @lazySingleton
 class UserProfileCubit extends Cubit<UserProfileState> {
-  UserProfileCubit(this._getU, this._editU)
-    : super(const UserProfileState.initial(EditProfileFormState()));
+  UserProfileCubit(this._u) : super(const UserProfileState.initial());
 
-  final GetUserProfileUsecase _getU;
-  final EditUserProfileUsecase _editU;
+  final GetUserProfileUsecase _u;
 
   Future<void> getProfile() async {
-    final form = state.formState;
-    emit(UserProfileState.loading(form));
+    emit(const UserProfileState.loading());
+    final response = await _u.call(const NoParams());
+    response.when(
+      success: (t) => emit(UserProfileState.success(data: t)),
+      failure: (e) => emit(UserProfileState.failure(message: e.message)),
+    );
+  }
+}
 
-    final response = await _getU.call(const NoParams());
+@injectable
+class EditProfileCubit extends Cubit<EditProfileState> {
+  EditProfileCubit(this._u)
+    : super(const EditProfileState.initial(EditProfileFormState()));
+
+  final EditUserProfileUsecase _u;
+
+  Future<void> editProfile() async {
+    if (state.formState.isValid == false) return;
+
+    final cForm = state.formState;
+
+    emit(EditProfileState.loading(cForm));
+
+    final response = await _u.call(
+      EditUserProfileRequestBody(
+        name: cForm.name.value,
+        email: cForm.email.value,
+      ),
+    );
 
     response.when(
-      success: (t) {
-        final updatedForm = form.copyWith(
-          name: FullName.dirty(t.name),
-          email: Email.dirty(t.email),
-          isValid: true,
-        );
-        emit(UserProfileState.success(updatedForm, data: t));
-      },
-      failure: (e) => emit(UserProfileState.failure(form, message: e.message)),
+      success: (t) => emit(EditProfileState.success(cForm, data: t)),
+      failure: (e) => emit(EditProfileState.failure(cForm, message: e.message)),
     );
   }
 
-  Future<Void> editUserProfile() async {
-    if (!state.formState.isValid) return;
-    final form = state.formState;
-    emit(UserProfileState.loading(form));
+  void onNameChanged(String value) {
+    final name = FullName.dirty(value);
+    _validate(state.formState.copyWith(name: name));
+  }
 
-    final body = EditUserProfileRequestBody(
-      name: form.name.value,
-      email: form.email.value,
-    );
+  void onEmailChanged(String value) {
+    final email = Email.dirty(value);
+    _validate(state.formState.copyWith(email: email));
+  }
 
-    final response = await _editU.call(body);
-
-    response.when(success: (t) => ), failure: failure)
+  void _validate(EditProfileFormState form) {
+    final isValid = Formz.validate([form.name, form.email]);
+    final updatedForm = form.copyWith(isValid: isValid);
+    emit(EditProfileState.initial(updatedForm));
   }
 }

@@ -33,6 +33,7 @@ class LatestTransactionsSection extends StatelessWidget {
                 ),
                 TextButtonComponent(
                   onPressed: () => context.showBottomSheetComponent(
+                    title: l10n.latest_transactions,
                     child: CustomScrollView(
                       slivers: [
                         _buildSectionItems(

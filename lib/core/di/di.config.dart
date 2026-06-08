@@ -98,8 +98,12 @@ import 'package:payon/modules/login/logic/repository/login_repository_impl.dart'
 import 'package:payon/modules/login/logic/usecase/login_usecase.dart' as _i358;
 import 'package:payon/modules/profile/data/repository/user_profile_repository.dart'
     as _i709;
+import 'package:payon/modules/profile/logic/cubit/user_profile_cubit.dart'
+    as _i72;
 import 'package:payon/modules/profile/logic/repository/user_profile_reposiotry_impl.dart'
     as _i116;
+import 'package:payon/modules/profile/logic/usecase/edit_user_profile_usecase.dart'
+    as _i771;
 import 'package:payon/modules/profile/logic/usecase/get_user_profile_usecase.dart'
     as _i624;
 import 'package:share_plus/share_plus.dart' as _i998;
@@ -205,6 +209,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i750.BaseSecurityRepository>(
       () => _i294.SecurityRopository(gh<_i333.BasePrefStorageService>()),
     );
+    gh.factory<_i771.EditUserProfileUsecase>(
+      () =>
+          _i771.EditUserProfileUsecase(repo: gh<_i709.UserProfileRepository>()),
+    );
     gh.factory<_i624.GetUserProfileUsecase>(
       () =>
           _i624.GetUserProfileUsecase(repo: gh<_i709.UserProfileRepository>()),
@@ -238,6 +246,12 @@ extension GetItInjectableX on _i174.GetIt {
         repo: gh<_i750.BaseSecurityRepository>(),
         biometricsService: gh<_i958.BiometricsService>(),
       ),
+    );
+    gh.factory<_i72.EditProfileCubit>(
+      () => _i72.EditProfileCubit(gh<_i771.EditUserProfileUsecase>()),
+    );
+    gh.lazySingleton<_i72.UserProfileCubit>(
+      () => _i72.UserProfileCubit(gh<_i624.GetUserProfileUsecase>()),
     );
     gh.factory<_i358.LoginUsecase>(
       () => _i358.LoginUsecase(repo: gh<_i719.LoginRepository>()),
@@ -309,6 +323,9 @@ extension GetItInjectableX on _i174.GetIt {
   _i294.SecurityRopository get securityRopository =>
       get<_i294.SecurityRopository>();
 
+  _i771.EditUserProfileUsecase get editUserProfileUsecase =>
+      get<_i771.EditUserProfileUsecase>();
+
   _i624.GetUserProfileUsecase get getUserProfileUsecase =>
       get<_i624.GetUserProfileUsecase>();
 
@@ -329,6 +346,10 @@ extension GetItInjectableX on _i174.GetIt {
   _i797.HomeCubit get homeCubit => get<_i797.HomeCubit>();
 
   _i665.SecurityCubit get securityCubit => get<_i665.SecurityCubit>();
+
+  _i72.EditProfileCubit get editProfileCubit => get<_i72.EditProfileCubit>();
+
+  _i72.UserProfileCubit get userProfileCubit => get<_i72.UserProfileCubit>();
 
   _i358.LoginUsecase get loginUsecase => get<_i358.LoginUsecase>();
 
