@@ -129,6 +129,7 @@
   "error_arabic_not_allowed": "Arabic characters are not allowed",
   "error_email_emoji_not_allowed": "Emojis are not allowed in email",
   "unverified_account": "Unverified Account",
+  "gender": "Gender",
   "error_full_name_cant_be_empty": "Full name cannot be empty",
   "error_full_name_too_long_max_255_chars": "Full name is too long (maximum 255 characters)",
   "error_full_name_invalid_characters": "Full name contains invalid characters",

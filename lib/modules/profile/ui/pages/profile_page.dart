@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/constants/app_config.dart';
+import '../../../../core/constants/app_enums.dart';
 import '../../../../core/extensions/extensions.dart';
 import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
@@ -173,8 +174,13 @@ class _ProfileSuccessState extends StatelessWidget {
                   onTap: () {},
                 ),
                 ListTileIconComponent.middle(
-                  title: 'Gender',
-                  subtitle: data.gender,
+                  title: l10n.gender,
+                  subtitle: GenderType.values
+                      .firstWhere(
+                        (e) => e.code == data.gender,
+                        orElse: () => GenderType.none,
+                      )
+                      .nameWithL10n(context),
                   leading: Iconsax.user_copy,
                   onTap: () {},
                 ),

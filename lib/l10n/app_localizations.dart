@@ -872,6 +872,12 @@ abstract class AppLocalizations {
   /// **'Unverified Account'**
   String get unverified_account;
 
+  /// No description provided for @gender.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get gender;
+
   /// No description provided for @error_full_name_cant_be_empty.
   ///
   /// In en, this message translates to:

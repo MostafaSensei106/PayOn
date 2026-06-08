@@ -408,6 +408,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get unverified_account => 'حساب غير موثق';
 
   @override
+  String get gender => 'النوع';
+
+  @override
   String get error_full_name_cant_be_empty =>
       'لا يمكن أن يكون الاسم الكامل فارغاً';
 

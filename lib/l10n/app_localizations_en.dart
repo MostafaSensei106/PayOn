@@ -407,6 +407,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get unverified_account => 'Unverified Account';
 
   @override
+  String get gender => 'Gender';
+
+  @override
   String get error_full_name_cant_be_empty => 'Full name cannot be empty';
 
   @override
