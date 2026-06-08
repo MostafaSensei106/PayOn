@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CheckWalletEntity {
 
- String get name; String get reciverId; String get currencyId; String get img; String get founded;
+ String get name; String get reciverId; int get currencyId; String get img; bool get founded;
 /// Create a copy of CheckWalletEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $CheckWalletEntityCopyWith<$Res>  {
   factory $CheckWalletEntityCopyWith(CheckWalletEntity value, $Res Function(CheckWalletEntity) _then) = _$CheckWalletEntityCopyWithImpl;
 @useResult
 $Res call({
- String name, String reciverId, String currencyId, String img, String founded
+ String name, String reciverId, int currencyId, String img, bool founded
 });
 
 
@@ -67,9 +67,9 @@ class _$CheckWalletEntityCopyWithImpl<$Res>
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,reciverId: null == reciverId ? _self.reciverId : reciverId // ignore: cast_nullable_to_non_nullable
 as String,currencyId: null == currencyId ? _self.currencyId : currencyId // ignore: cast_nullable_to_non_nullable
-as String,img: null == img ? _self.img : img // ignore: cast_nullable_to_non_nullable
+as int,img: null == img ? _self.img : img // ignore: cast_nullable_to_non_nullable
 as String,founded: null == founded ? _self.founded : founded // ignore: cast_nullable_to_non_nullable
-as String,
+as bool,
   ));
 }
 
@@ -154,7 +154,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String reciverId,  String currencyId,  String img,  String founded)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CheckWalletEntity() when $default != null:
 return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _:
@@ -175,7 +175,7 @@ return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.foun
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String reciverId,  String currencyId,  String img,  String founded)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)  $default,) {final _that = this;
 switch (_that) {
 case _CheckWalletEntity():
 return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _:
@@ -195,7 +195,7 @@ return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.foun
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String reciverId,  String currencyId,  String img,  String founded)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)?  $default,) {final _that = this;
 switch (_that) {
 case _CheckWalletEntity() when $default != null:
 return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _:
@@ -215,9 +215,9 @@ class _CheckWalletEntity implements CheckWalletEntity {
 
 @override final  String name;
 @override final  String reciverId;
-@override final  String currencyId;
+@override final  int currencyId;
 @override final  String img;
-@override final  String founded;
+@override final  bool founded;
 
 /// Create a copy of CheckWalletEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -249,7 +249,7 @@ abstract mixin class _$CheckWalletEntityCopyWith<$Res> implements $CheckWalletEn
   factory _$CheckWalletEntityCopyWith(_CheckWalletEntity value, $Res Function(_CheckWalletEntity) _then) = __$CheckWalletEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String name, String reciverId, String currencyId, String img, String founded
+ String name, String reciverId, int currencyId, String img, bool founded
 });
 
 
@@ -271,9 +271,9 @@ class __$CheckWalletEntityCopyWithImpl<$Res>
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,reciverId: null == reciverId ? _self.reciverId : reciverId // ignore: cast_nullable_to_non_nullable
 as String,currencyId: null == currencyId ? _self.currencyId : currencyId // ignore: cast_nullable_to_non_nullable
-as String,img: null == img ? _self.img : img // ignore: cast_nullable_to_non_nullable
+as int,img: null == img ? _self.img : img // ignore: cast_nullable_to_non_nullable
 as String,founded: null == founded ? _self.founded : founded // ignore: cast_nullable_to_non_nullable
-as String,
+as bool,
   ));
 }
 

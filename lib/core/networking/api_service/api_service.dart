@@ -18,6 +18,8 @@ import '../../../modules/login/data/models/login_response_body.dart';
 import '../../../modules/profile/data/models/edit_user_porfile_response_body.dart';
 import '../../../modules/profile/data/models/edit_user_profile_request_body.dart';
 import '../../../modules/profile/data/models/get_user_profile_response_body.dart';
+import '../../../modules/send_money/data/models/check_wallet_request_body.dart';
+import '../../../modules/send_money/data/models/check_wallet_response_body.dart';
 import '../../constants/api_routes.dart';
 
 part 'api_service.g.dart';
@@ -65,9 +67,16 @@ abstract class ApiService {
   @POST(ApiRoutes.authRestPassword)
   Future<ResetPasswordRequestBody> resetPassword();
 
+  /// Home
   @GET(ApiRoutes.accountGetWallets)
   Future<GetWalletsResponseBody> getWallets({
     @Query('page') required int page,
     @Query('size') required int size,
   });
+
+  /// Send Mony
+  @POST(ApiRoutes.transactionCheckWallet)
+  Future<CheckWalletResponseBody> checkWallet(
+    @Body() CheckWalletRequestBody body,
+  );
 }

@@ -6,9 +6,9 @@ part of 'check_wallet_response_body.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CheackWalletResponseBody _$CheackWalletResponseBodyFromJson(
+CheckWalletResponseBody _$CheckWalletResponseBodyFromJson(
   Map<String, dynamic> json,
-) => CheackWalletResponseBody(
+) => CheckWalletResponseBody(
   code: (json['code'] as num).toInt(),
   message: json['message'] as String,
   data: WalletData.fromJson(json['data'] as Map<String, dynamic>),
@@ -16,8 +16,8 @@ CheackWalletResponseBody _$CheackWalletResponseBodyFromJson(
   success: json['success'] as bool,
 );
 
-Map<String, dynamic> _$CheackWalletResponseBodyToJson(
-  CheackWalletResponseBody instance,
+Map<String, dynamic> _$CheckWalletResponseBodyToJson(
+  CheckWalletResponseBody instance,
 ) => <String, dynamic>{
   'code': instance.code,
   'message': instance.message,

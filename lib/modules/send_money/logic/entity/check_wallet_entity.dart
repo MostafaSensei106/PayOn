@@ -7,8 +7,8 @@ abstract class CheckWalletEntity with _$CheckWalletEntity {
   const factory CheckWalletEntity({
     required String name,
     required String reciverId,
-    required String currencyId,
+    required int currencyId,
     required String img,
-    required String founded,
+    required bool founded,
   }) = _CheckWalletEntity;
 }

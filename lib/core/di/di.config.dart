@@ -106,6 +106,12 @@ import 'package:payon/modules/profile/logic/usecase/edit_user_profile_usecase.da
     as _i771;
 import 'package:payon/modules/profile/logic/usecase/get_user_profile_usecase.dart'
     as _i624;
+import 'package:payon/modules/send_money/data/repository/send_money_repository.dart'
+    as _i860;
+import 'package:payon/modules/send_money/logic/repository/send_money_repository_impl.dart'
+    as _i321;
+import 'package:payon/modules/send_money/logic/usecase/check_wallet_usecase.dart'
+    as _i685;
 import 'package:share_plus/share_plus.dart' as _i998;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
@@ -223,6 +229,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i258.AboutAppCubit>(
       () => _i258.AboutAppCubit(gh<_i725.BaseAboutAppRepository>()),
     );
+    gh.lazySingleton<_i860.SendMoneyRepository>(
+      () => _i321.SendMoneyRepositoryImpl(api: gh<_i550.ApiService>()),
+    );
     gh.factory<_i225.RegisterCubit>(
       () => _i225.RegisterCubit(gh<_i1033.BaseRegisterRepository>()),
     );
@@ -249,6 +258,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i72.EditProfileCubit>(
       () => _i72.EditProfileCubit(gh<_i771.EditUserProfileUsecase>()),
+    );
+    gh.factory<_i685.CheckWalletUsecase>(
+      () => _i685.CheckWalletUsecase(repo: gh<_i860.SendMoneyRepository>()),
     );
     gh.lazySingleton<_i72.UserProfileCubit>(
       () => _i72.UserProfileCubit(gh<_i624.GetUserProfileUsecase>()),
@@ -333,6 +345,9 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i258.AboutAppCubit get aboutAppCubit => get<_i258.AboutAppCubit>();
 
+  _i321.SendMoneyRepositoryImpl get sendMoneyRepositoryImpl =>
+      get<_i321.SendMoneyRepositoryImpl>();
+
   _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
 
   _i355.OtpCubit get otpCubit => get<_i355.OtpCubit>();
@@ -348,6 +363,9 @@ extension GetItInjectableX on _i174.GetIt {
   _i665.SecurityCubit get securityCubit => get<_i665.SecurityCubit>();
 
   _i72.EditProfileCubit get editProfileCubit => get<_i72.EditProfileCubit>();
+
+  _i685.CheckWalletUsecase get checkWalletUsecase =>
+      get<_i685.CheckWalletUsecase>();
 
   _i72.UserProfileCubit get userProfileCubit => get<_i72.UserProfileCubit>();
 

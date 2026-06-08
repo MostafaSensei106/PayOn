@@ -1,10 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../logic/entity/check_wallet_entity.dart';
+
 part 'check_wallet_response_body.g.dart';
 
 @JsonSerializable()
-class CheackWalletResponseBody {
-  CheackWalletResponseBody({
+class CheckWalletResponseBody {
+  CheckWalletResponseBody({
     required this.code,
     required this.message,
     required this.data,
@@ -12,8 +14,8 @@ class CheackWalletResponseBody {
     required this.success,
   });
 
-  factory CheackWalletResponseBody.fromJson(Map<String, dynamic> json) =>
-      _$CheackWalletResponseBodyFromJson(json);
+  factory CheckWalletResponseBody.fromJson(Map<String, dynamic> json) =>
+      _$CheckWalletResponseBodyFromJson(json);
 
   final int code;
   final String message;
@@ -40,4 +42,16 @@ class WalletData {
   final int currencyId;
   final String img;
   final bool founded;
+}
+
+extension CheckWalletResponseMapper on CheckWalletResponseBody {
+  CheckWalletEntity toEntity() {
+    return CheckWalletEntity(
+      name: data.name,
+      reciverId: data.reciverId,
+      currencyId: data.currencyId,
+      img: data.img,
+      founded: data.founded,
+    );
+  }
 }
