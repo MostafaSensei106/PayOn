@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
                   },
                   child: const AvatarComponent(
                     imageUrl:
-                        'https://media.licdn.com/dms/image/v2/D5603AQHpMGFlYFIAyw/profile-displayphoto-scale_400_400/B56ZnjHIJxHIAg-/0/1760451933899?e=1776902400&v=beta&t=ClsT0ppYA0_8z9ViCSbiS4FG81mCgMkabjoNBHSN1hc',
+                        'https://hips.hearstapps.com/hmg-prod/images/demon-slayer-kimetsu-no-yaiba-646f30ac5433e.jpg',
                   ),
                 ),
               ),

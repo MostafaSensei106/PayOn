@@ -45,6 +45,7 @@ final class ProfileRoute extends CupertinoRouteData with $ProfileRoute {
 
   @override
   Widget build(BuildContext context, GoRouterState state) => BlocProvider(
+    // ignore: discarded_futures
     create: (_) => getIt<UserProfileCubit>()..getProfile(),
     child: const ProfilePage(),
   );

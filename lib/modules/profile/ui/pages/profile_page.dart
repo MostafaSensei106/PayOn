@@ -48,144 +48,13 @@ class ProfileView extends HookWidget {
           ),
           BlocBuilder<UserProfileCubit, UserProfileState>(
             builder: (context, state) {
-              return state.maybeWhen(
-                loading: () => SliverToBoxAdapter(
-                  child: Skeletonizer(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: AppConfig.padding.w,
-                        vertical: AppConfig.paddingHalf.h,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _buildProfileHeaderCard(
-                            context,
-                            const UserProfileEntity.placeholder(
-                              name: 'User Name Placeholder',
-                              email: 'email@placeholder.com',
-                            ),
-                          ),
-                          _buildSectionHeader(context, l10n.account_details),
-                          _buildSettingsGroup(
-                            context,
-                            children: [
-                              ListTileIconComponent.top(
-                                title: l10n.phone_number,
-                                subtitle: '+20 1234567890',
-                                leading: Iconsax.call_copy,
-                                onTap: () {},
-                              ),
-                              ListTileIconComponent.middle(
-                                title: l10n.date_of_birth,
-                                subtitle: '01/01/1990',
-                                leading: Iconsax.calendar_1_copy,
-                                onTap: () {},
-                              ),
-                              ListTileIconComponent.bottom(
-                                title: l10n.location,
-                                subtitle: 'Cairo, Egypt',
-                                leading: Iconsax.location_copy,
-                                onTap: () {},
-                              ),
-                            ],
-                          ),
-                          _buildSectionHeader(
-                            context,
-                            l10n.security_and_privacy,
-                          ),
-                          _buildSettingsGroup(
-                            context,
-                            children: [
-                              ListTileIconComponent.top(
-                                title: l10n.change_password,
-                                subtitle: l10n.update_login_credentials,
-                                leading: Iconsax.key_copy,
-                                onTap: () {},
-                              ),
-                              ListTileIconComponent.bottom(
-                                title: l10n.delete_account,
-                                subtitle: l10n.delete_account_desc,
-                                leading: Iconsax.user_remove_copy,
-                                onTap: () {},
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                success: (data) => SliverToBoxAdapter(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: AppConfig.padding.w,
-                      vertical: AppConfig.paddingHalf.h,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _buildProfileHeaderCard(context, data),
-                        _buildSectionHeader(context, l10n.account_details),
-                        _buildSettingsGroup(
-                          context,
-                          children: [
-                            ListTileIconComponent.top(
-                              title: l10n.phone_number,
-                              subtitle: data.phone,
-                              leading: Iconsax.call_copy,
-                              onTap: () {},
-                            ),
-                            ListTileIconComponent.middle(
-                              title: l10n.date_of_birth,
-                              subtitle: data.birthData,
-                              leading: Iconsax.calendar_1_copy,
-                              onTap: () {},
-                            ),
-                            ListTileIconComponent.bottom(
-                              title: 'IPA',
-                              subtitle: data.ipa,
-                              leading: Iconsax.personalcard_copy,
-                              onTap: () {},
-                            ),
-                          ],
-                        ),
-                        _buildSectionHeader(context, l10n.security_and_privacy),
-                        _buildSettingsGroup(
-                          context,
-                          children: [
-                            ListTileIconComponent.top(
-                              title: 'National ID',
-                              subtitle: data.nationalId,
-                              leading: Iconsax.card_tick_copy,
-                              onTap: () {},
-                            ),
-                            ListTileIconComponent.middle(
-                              title: l10n.change_password,
-                              subtitle: l10n.update_login_credentials,
-                              leading: Iconsax.key_copy,
-                              onTap: () {
-                                unawaited(HapticFeedback.vibrate());
-                              },
-                            ),
-                            ListTileIconComponent.bottom(
-                              title: l10n.delete_account,
-                              subtitle: l10n.delete_account_desc,
-                              leading: Iconsax.user_remove_copy,
-                              onTap: () {
-                                unawaited(HapticFeedback.vibrate());
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+              return state.when(
+                initial: () =>
+                    const SliverToBoxAdapter(child: SizedBox.shrink()),
+                loading: () => const _ProfileLoadingState(),
+                success: (data) => _ProfileSuccessState(data: data),
                 failure: (message) =>
                     SliverFillRemaining(child: Center(child: Text(message))),
-                orElse: () =>
-                    const SliverToBoxAdapter(child: SizedBox.shrink()),
               );
             },
           ),
@@ -193,8 +62,166 @@ class ProfileView extends HookWidget {
       ),
     );
   }
+}
 
-  Widget _buildProfileHeaderCard(BuildContext context, UserProfileEntity data) {
+class _ProfileLoadingState extends StatelessWidget {
+  const _ProfileLoadingState();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.localeKeys;
+    return SliverToBoxAdapter(
+      child: Skeletonizer(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppConfig.padding.w,
+            vertical: AppConfig.paddingHalf.h,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const _ProfileHeaderCard(
+                data: UserProfileEntity.placeholder(
+                  name: 'User Name Placeholder',
+                  email: 'email@placeholder.com',
+                ),
+              ),
+              _SectionHeader(title: l10n.account_details),
+              Column(
+                children: [
+                  ListTileIconComponent.top(
+                    title: l10n.phone_number,
+                    subtitle: '+20 1234567890',
+                    leading: Iconsax.call_copy,
+                    onTap: () {},
+                  ),
+                  ListTileIconComponent.middle(
+                    title: l10n.date_of_birth,
+                    subtitle: '01/01/1990',
+                    leading: Iconsax.calendar_1_copy,
+                    onTap: () {},
+                  ),
+                  ListTileIconComponent.bottom(
+                    title: l10n.location,
+                    subtitle: 'Cairo, Egypt',
+                    leading: Iconsax.location_copy,
+                    onTap: () {},
+                  ),
+                ],
+              ),
+              _SectionHeader(title: l10n.security_and_privacy),
+              Column(
+                children: [
+                  ListTileIconComponent.top(
+                    title: l10n.change_password,
+                    subtitle: l10n.update_login_credentials,
+                    leading: Iconsax.key_copy,
+                    onTap: () {},
+                  ),
+                  ListTileIconComponent.bottom(
+                    title: l10n.delete_account,
+                    subtitle: l10n.delete_account_desc,
+                    leading: Iconsax.user_remove_copy,
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ProfileSuccessState extends StatelessWidget {
+  const _ProfileSuccessState({required this.data});
+  final UserProfileEntity data;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.localeKeys;
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: AppConfig.padding.w,
+          vertical: AppConfig.paddingHalf.h,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _ProfileHeaderCard(data: data),
+            _SectionHeader(title: l10n.account_details),
+            Column(
+              children: [
+                ListTileIconComponent.top(
+                  title: l10n.phone_number,
+                  subtitle: data.phone,
+                  leading: Iconsax.call_copy,
+                  onTap: () {},
+                ),
+                ListTileIconComponent.middle(
+                  title: l10n.date_of_birth,
+                  subtitle: data.birthData,
+                  leading: Iconsax.calendar_1_copy,
+                  onTap: () {},
+                ),
+                ListTileIconComponent.middle(
+                  title: 'IPA',
+                  subtitle: data.ipa,
+                  leading: Iconsax.personalcard_copy,
+                  onTap: () {},
+                ),
+                ListTileIconComponent.middle(
+                  title: 'Gender',
+                  subtitle: data.gender,
+                  leading: Iconsax.user_copy,
+                  onTap: () {},
+                ),
+                ListTileIconComponent.bottom(
+                  title: 'Status',
+                  subtitle: data.status,
+                  leading: Iconsax.information_copy,
+                  onTap: () {},
+                ),
+              ],
+            ),
+            _SectionHeader(title: l10n.security_and_privacy),
+            Column(
+              children: [
+                ListTileIconComponent.top(
+                  title: 'National ID',
+                  subtitle: data.nationalId,
+                  leading: Iconsax.card_tick_copy,
+                  onTap: () {},
+                ),
+                ListTileIconComponent.middle(
+                  title: l10n.change_password,
+                  subtitle: l10n.update_login_credentials,
+                  leading: Iconsax.key_copy,
+                  onTap: () => unawaited(HapticFeedback.vibrate()),
+                ),
+                ListTileIconComponent.bottom(
+                  title: l10n.delete_account,
+                  subtitle: l10n.delete_account_desc,
+                  leading: Iconsax.user_remove_copy,
+                  onTap: () => unawaited(HapticFeedback.vibrate()),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ProfileHeaderCard extends StatelessWidget {
+  const _ProfileHeaderCard({required this.data});
+  final UserProfileEntity data;
+
+  @override
+  Widget build(BuildContext context) {
     final colorScheme = context.colorScheme;
     final textTheme = Theme.of(context).textTheme;
     final l10n = context.localeKeys;
@@ -220,7 +247,6 @@ class ProfileView extends HookWidget {
                     height: 76.r,
                     memCacheHeight: 200,
                     imageUrl:
-                        data.imageUrl ??
                         'https://hips.hearstapps.com/hmg-prod/images/demon-slayer-kimetsu-no-yaiba-646f30ac5433e.jpg',
                     placeholder: (context, url) =>
                         const Icon(Iconsax.user_copy),
@@ -336,8 +362,14 @@ class ProfileView extends HookWidget {
       ),
     );
   }
+}
 
-  Widget _buildSectionHeader(BuildContext context, String title) {
+class _SectionHeader extends StatelessWidget {
+  const _SectionHeader({required this.title});
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
         left: AppConfig.padding,
@@ -352,12 +384,5 @@ class ProfileView extends HookWidget {
         ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
       ),
     );
-  }
-
-  Widget _buildSettingsGroup(
-    BuildContext context, {
-    required List<Widget> children,
-  }) {
-    return Column(children: children);
   }
 }
