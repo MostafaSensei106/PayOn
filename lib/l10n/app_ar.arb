@@ -100,6 +100,7 @@
   "full_name_id": "الاسم الكامل (كما في الهوية)",
   "dob": "تاريخ الميلاد",
   "nationality": "الجنسية",
+  "error_cant_be_empty": "هذا الحقل لا يمكن أن يكون فارغاً",
   "gender": "النوع",
   "unverified_account": "حساب غير موثق",
   "tier_2_verification": "المستوى 2: وثيقة الهوية",

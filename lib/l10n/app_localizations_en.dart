@@ -427,6 +427,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get error_phone_number_cant_be_empty => 'Phone number cannot be empty';
 
   @override
+  String get error_cant_be_empty => 'This field cannot be empty';
+
+  @override
   String get error_phone_number_invalid => 'Phone number is invalid';
 
   @override

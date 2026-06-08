@@ -908,6 +908,12 @@ abstract class AppLocalizations {
   /// **'Phone number cannot be empty'**
   String get error_phone_number_cant_be_empty;
 
+  /// No description provided for @error_cant_be_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'This field cannot be empty'**
+  String get error_cant_be_empty;
+
   /// No description provided for @error_phone_number_invalid.
   ///
   /// In en, this message translates to:

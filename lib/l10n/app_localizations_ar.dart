@@ -430,6 +430,9 @@ class AppLocalizationsAr extends AppLocalizations {
       'لا يمكن أن يكون رقم الهاتف فارغاً';
 
   @override
+  String get error_cant_be_empty => 'هذا الحقل لا يمكن أن يكون فارغاً';
+
+  @override
   String get error_phone_number_invalid => 'رقم الهاتف غير صحيح';
 
   @override

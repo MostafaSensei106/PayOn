@@ -108,6 +108,8 @@ import 'package:payon/modules/profile/logic/usecase/get_user_profile_usecase.dar
     as _i624;
 import 'package:payon/modules/send_money/data/repository/send_money_repository.dart'
     as _i860;
+import 'package:payon/modules/send_money/logic/cubit/send_money_cubit.dart'
+    as _i274;
 import 'package:payon/modules/send_money/logic/repository/send_money_repository_impl.dart'
     as _i321;
 import 'package:payon/modules/send_money/logic/usecase/check_wallet_usecase.dart'
@@ -268,6 +270,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i358.LoginUsecase>(
       () => _i358.LoginUsecase(repo: gh<_i719.LoginRepository>()),
     );
+    gh.factory<_i274.SendMoneyCubit>(
+      () => _i274.SendMoneyCubit(gh<_i685.CheckWalletUsecase>()),
+    );
     gh.factory<_i495.LoginCubit>(
       () => _i495.LoginCubit(
         gh<_i358.LoginUsecase>(),
@@ -370,6 +375,8 @@ extension GetItInjectableX on _i174.GetIt {
   _i72.UserProfileCubit get userProfileCubit => get<_i72.UserProfileCubit>();
 
   _i358.LoginUsecase get loginUsecase => get<_i358.LoginUsecase>();
+
+  _i274.SendMoneyCubit get sendMoneyCubit => get<_i274.SendMoneyCubit>();
 
   _i495.LoginCubit get loginCubit => get<_i495.LoginCubit>();
 }
