@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/services/biometrics/base_biometrics_service.dart';
+import '../../../../core/services/biometrics/biometrics_service.dart';
 import '../../data/repository/base_security_repository.dart';
 import 'security_state.dart';
 
@@ -14,7 +14,7 @@ final class SecurityCubit extends Cubit<SecurityState> {
     unawaited(getBiometricsSettings());
   }
   final BaseSecurityRepository _repo;
-  final BaseBiometricsService _biometricsService;
+  final BiometricsService _biometricsService;
 
   Future<void> getBiometricsSettings() async {
     emit(const SecurityState.loading());

@@ -27,8 +27,8 @@ import 'package:payon/core/services/app_info/interface/base_package_info_adapter
     as _i153;
 import 'package:payon/core/services/app_info/package_info_plus_adapter.dart'
     as _i594;
-import 'package:payon/core/services/biometrics/base_biometrics_service.dart'
-    as _i553;
+import 'package:payon/core/services/biometrics/biometrics_service.dart'
+    as _i958;
 import 'package:payon/core/services/biometrics/fingerprint_service.dart'
     as _i242;
 import 'package:payon/core/services/l10n/l10n_service.dart' as _i151;
@@ -116,12 +116,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i151.L10nService>(() => _i151.L10nService());
     gh.lazySingleton<_i480.ThemeService>(() => _i480.ThemeService());
     gh.lazySingleton<_i889.ThemeCubit>(() => _i889.ThemeCubit());
-    gh.lazySingleton<_i553.BaseBiometricsService>(
-      () => _i242.FingerprintService(),
-    );
     gh.lazySingleton<_i153.BasePackageInfoAdapter>(
       () => _i594.PackageInfoPlusAdapter(gh<_i655.PackageInfo>()),
     );
+    gh.lazySingleton<_i958.BiometricsService>(() => _i242.FingerprintService());
     gh.lazySingleton<_i255.BaseNetworkInfo>(
       () => _i577.NetworkInfo(gh<_i895.Connectivity>()),
     );
@@ -209,7 +207,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i665.SecurityCubit>(
       () => _i665.SecurityCubit(
         repo: gh<_i750.BaseSecurityRepository>(),
-        biometricsService: gh<_i553.BaseBiometricsService>(),
+        biometricsService: gh<_i958.BiometricsService>(),
       ),
     );
     gh.factory<_i358.LoginUsecase>(
@@ -218,7 +216,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i495.LoginCubit>(
       () => _i495.LoginCubit(
         gh<_i358.LoginUsecase>(),
-        gh<_i553.BaseBiometricsService>(),
+        gh<_i958.BiometricsService>(),
+        gh<_i333.BasePrefStorageService>(),
       ),
     );
     return this;
@@ -230,11 +229,11 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i889.ThemeCubit get themeCubit => get<_i889.ThemeCubit>();
 
-  _i242.FingerprintService get fingerprintService =>
-      get<_i242.FingerprintService>();
-
   _i594.PackageInfoPlusAdapter get packageInfoPlusAdapter =>
       get<_i594.PackageInfoPlusAdapter>();
+
+  _i242.FingerprintService get fingerprintService =>
+      get<_i242.FingerprintService>();
 
   _i577.NetworkInfo get networkInfo => get<_i577.NetworkInfo>();
 

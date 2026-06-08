@@ -86,11 +86,12 @@ extension LoginEntityPatterns on LoginEntity {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _LoginEntity value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _LoginEntity value)?  $default,{TResult Function( _Empty value)?  empty,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _LoginEntity() when $default != null:
-return $default(_that);case _:
+return $default(_that);case _Empty() when empty != null:
+return empty(_that);case _:
   return orElse();
 
 }
@@ -108,11 +109,12 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _LoginEntity value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _LoginEntity value)  $default,{required TResult Function( _Empty value)  empty,}){
 final _that = this;
 switch (_that) {
 case _LoginEntity():
-return $default(_that);case _:
+return $default(_that);case _Empty():
+return empty(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -129,11 +131,12 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _LoginEntity value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _LoginEntity value)?  $default,{TResult? Function( _Empty value)?  empty,}){
 final _that = this;
 switch (_that) {
 case _LoginEntity() when $default != null:
-return $default(_that);case _:
+return $default(_that);case _Empty() when empty != null:
+return empty(_that);case _:
   return null;
 
 }
@@ -150,10 +153,11 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String token)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String token)?  $default,{TResult Function( String token)?  empty,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LoginEntity() when $default != null:
-return $default(_that.token);case _:
+return $default(_that.token);case _Empty() when empty != null:
+return empty(_that.token);case _:
   return orElse();
 
 }
@@ -171,10 +175,11 @@ return $default(_that.token);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String token)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String token)  $default,{required TResult Function( String token)  empty,}) {final _that = this;
 switch (_that) {
 case _LoginEntity():
-return $default(_that.token);case _:
+return $default(_that.token);case _Empty():
+return empty(_that.token);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +196,11 @@ return $default(_that.token);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String token)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String token)?  $default,{TResult? Function( String token)?  empty,}) {final _that = this;
 switch (_that) {
 case _LoginEntity() when $default != null:
-return $default(_that.token);case _:
+return $default(_that.token);case _Empty() when empty != null:
+return empty(_that.token);case _:
   return null;
 
 }
@@ -260,6 +266,72 @@ class __$LoginEntityCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? token = null,}) {
   return _then(_LoginEntity(
+token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _Empty implements LoginEntity {
+  const _Empty({this.token = ''});
+  
+
+@override@JsonKey() final  String token;
+
+/// Create a copy of LoginEntity
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$EmptyCopyWith<_Empty> get copyWith => __$EmptyCopyWithImpl<_Empty>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Empty&&(identical(other.token, token) || other.token == token));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,token);
+
+@override
+String toString() {
+  return 'LoginEntity.empty(token: $token)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$EmptyCopyWith<$Res> implements $LoginEntityCopyWith<$Res> {
+  factory _$EmptyCopyWith(_Empty value, $Res Function(_Empty) _then) = __$EmptyCopyWithImpl;
+@override @useResult
+$Res call({
+ String token
+});
+
+
+
+
+}
+/// @nodoc
+class __$EmptyCopyWithImpl<$Res>
+    implements _$EmptyCopyWith<$Res> {
+  __$EmptyCopyWithImpl(this._self, this._then);
+
+  final _Empty _self;
+  final $Res Function(_Empty) _then;
+
+/// Create a copy of LoginEntity
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? token = null,}) {
+  return _then(_Empty(
 token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
 as String,
   ));

@@ -13,7 +13,7 @@ import '../../../../core/widgets/inputs/text_form_field/text_form_field_componen
 import '../../../../core/widgets/layout/spacing/spacing_component.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../logic/cubit/login_cubit.dart';
-import '../../logic/cubit/login_form_state.dart';
+import '../../logic/cubit/login_state.dart';
 
 class LoginNameAndPasswordForm extends StatelessWidget {
   const LoginNameAndPasswordForm({

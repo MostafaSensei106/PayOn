@@ -29,11 +29,10 @@ final class LoginRepositoryImpl implements LoginRepository {
 
     return response.when(
       success: (t) async {
-        await _pref.setData(key: PrefKeys.userToken, value: t.userData.token);
-        await _pref.setData(
-          key: PrefKeys.isRememberMe,
-          value: params.isRememberMe,
-        );
+        await Future.wait([
+          _pref.setData(key: PrefKeys.userToken, value: t.userData.token),
+          _pref.setData(key: PrefKeys.isRememberMe, value: params.isRememberMe),
+        ]);
         return ApiResult<LoginEntity>.success(data: t.toEntity());
       },
       failure: (e) => ApiResult<LoginEntity>.failure(error: e),

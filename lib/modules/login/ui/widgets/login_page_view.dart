@@ -4,7 +4,7 @@ import '../../../../core/constants/app_config.dart';
 import '../../../../core/widgets/layout/spacing/spacing_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../logic/cubit/login_form_state.dart';
+import '../../logic/cubit/login_state.dart';
 import 'lgoin_action.dart';
 import 'lgoin_name_password_form.dart';
 import 'login_page_header.dart';
