@@ -3,6 +3,8 @@ abstract class RoutesNames {
   static const String login = '/login';
   static const String getStarted = '/get-started';
   static const String home = '/home';
+  static const String wallet = '/wallet';
+  static const String history = '/history';
   static const String profile = '/profile';
   static const String settings = '/settings';
   static const String helpCenter = '/helpCenter';
