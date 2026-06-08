@@ -177,10 +177,10 @@ class _ProfileSuccessState extends StatelessWidget {
                   title: l10n.gender,
                   subtitle: GenderType.values
                       .firstWhere(
-                        (e) => e.code == data.gender,
+                        (e) => e.key == data.gender,
                         orElse: () => GenderType.none,
                       )
-                      .nameWithL10n(context),
+                      .message(context),
                   leading: Iconsax.user_copy,
                   onTap: () {},
                 ),
