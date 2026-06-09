@@ -114,6 +114,8 @@ import 'package:payon/modules/send_money/logic/repository/send_money_repository_
     as _i321;
 import 'package:payon/modules/send_money/logic/usecase/check_wallet_usecase.dart'
     as _i685;
+import 'package:payon/modules/send_money/logic/usecase/get_user_favorites_usecase.dart'
+    as _i537;
 import 'package:share_plus/share_plus.dart' as _i998;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
@@ -264,6 +266,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i685.CheckWalletUsecase>(
       () => _i685.CheckWalletUsecase(repo: gh<_i860.SendMoneyRepository>()),
     );
+    gh.factory<_i537.GetUserFavoritesUsecase>(
+      () =>
+          _i537.GetUserFavoritesUsecase(repo: gh<_i860.SendMoneyRepository>()),
+    );
     gh.lazySingleton<_i72.UserProfileCubit>(
       () => _i72.UserProfileCubit(gh<_i624.GetUserProfileUsecase>()),
     );
@@ -371,6 +377,9 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i685.CheckWalletUsecase get checkWalletUsecase =>
       get<_i685.CheckWalletUsecase>();
+
+  _i537.GetUserFavoritesUsecase get getUserFavoritesUsecase =>
+      get<_i537.GetUserFavoritesUsecase>();
 
   _i72.UserProfileCubit get userProfileCubit => get<_i72.UserProfileCubit>();
 
