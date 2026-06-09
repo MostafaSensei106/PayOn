@@ -239,5 +239,9 @@
   "verified_account": "حساب موثق",
   "ok": "موافق",
   "session_expired": "انتهت الجلسة",
-  "session_expired_description": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى للمتابعة."
+  "session_expired_description": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى للمتابعة.",
+  "description": "الوصف",
+  "description_hint": "أدخل الوصف (اختياري)",
+  "confirm_transaction": "تأكيد المعاملة",
+  "confirm_transaction_body": "هل أنت متأكد أنك تريد إرسال {amount} إلى {name}؟"
 }

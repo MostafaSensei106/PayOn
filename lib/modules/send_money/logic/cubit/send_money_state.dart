@@ -28,6 +28,7 @@ abstract class SendMoneyFormState with _$SendMoneyFormState {
   const factory SendMoneyFormState({
     @Default(UserInfo.pure()) UserInfo userInfo,
     @Default(Amount.pure()) Amount amount,
+    @Default('') String description,
     @Default(false) bool isValid,
   }) = _SendMoneyFormState;
 }

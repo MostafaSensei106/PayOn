@@ -50,9 +50,9 @@ final class SendMoneyCubit extends Cubit<SendMoneyState> {
     final params = CreateTransactionParams(
       senderId: senderId,
       receiverId: receiverId,
-      paymentId: '', // TODO: What is paymentId?
+      paymentId: '',
       amount: double.parse(form.amount.value),
-      description: '',
+      description: form.description,
       isTransactionByPhone: isTransactionByPhone,
     );
 
@@ -72,6 +72,10 @@ final class SendMoneyCubit extends Cubit<SendMoneyState> {
   void onAmountChanged(String value) {
     final amount = Amount.dirty(value);
     _validate(state.formState.copyWith(amount: amount));
+  }
+
+  void onDescriptionChanged(String value) {
+    _validate(state.formState.copyWith(description: value));
   }
 
   void _validate(SendMoneyFormState form) {

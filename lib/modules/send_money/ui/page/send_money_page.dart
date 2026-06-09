@@ -53,8 +53,8 @@ class SendMoneyPage extends HookWidget {
 
     return Scaffold(
       body: BlocConsumer<SendMoneyCubit, SendMoneyState>(
-        listener: (context, state) {
-          state.whenOrNull(
+        listener: (context, state) async {
+          await state.whenOrNull(
             loading: (_) {
               context.dialog.showLoading();
             },
@@ -62,8 +62,9 @@ class SendMoneyPage extends HookWidget {
               Navigator.pop(context);
               context.toast.showSuccess(context, l10n.success);
             },
-            failure: (_, message) {
+            failure: (_, message) async {
               Navigator.pop(context);
+              await context.dialog.showError(title: l10n.error, error: message);
             },
           );
         },

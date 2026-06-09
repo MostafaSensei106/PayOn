@@ -656,7 +656,7 @@ $SendMoneyFormStateCopyWith<$Res> get formState {
 /// @nodoc
 mixin _$SendMoneyFormState implements DiagnosticableTreeMixin {
 
- UserInfo get userInfo; Amount get amount; bool get isValid;
+ UserInfo get userInfo; Amount get amount; String get description; bool get isValid;
 /// Create a copy of SendMoneyFormState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -668,21 +668,21 @@ $SendMoneyFormStateCopyWith<SendMoneyFormState> get copyWith => _$SendMoneyFormS
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'SendMoneyFormState'))
-    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('isValid', isValid));
+    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('isValid', isValid));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.isValid, isValid) || other.isValid == isValid));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.description, description) || other.description == description)&&(identical(other.isValid, isValid) || other.isValid == isValid));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userInfo,amount,isValid);
+int get hashCode => Object.hash(runtimeType,userInfo,amount,description,isValid);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SendMoneyFormState(userInfo: $userInfo, amount: $amount, isValid: $isValid)';
+  return 'SendMoneyFormState(userInfo: $userInfo, amount: $amount, description: $description, isValid: $isValid)';
 }
 
 
@@ -693,7 +693,7 @@ abstract mixin class $SendMoneyFormStateCopyWith<$Res>  {
   factory $SendMoneyFormStateCopyWith(SendMoneyFormState value, $Res Function(SendMoneyFormState) _then) = _$SendMoneyFormStateCopyWithImpl;
 @useResult
 $Res call({
- UserInfo userInfo, Amount amount, bool isValid
+ UserInfo userInfo, Amount amount, String description, bool isValid
 });
 
 
@@ -710,11 +710,12 @@ class _$SendMoneyFormStateCopyWithImpl<$Res>
 
 /// Create a copy of SendMoneyFormState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? userInfo = null,Object? amount = null,Object? isValid = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? userInfo = null,Object? amount = null,Object? description = null,Object? isValid = null,}) {
   return _then(_self.copyWith(
 userInfo: null == userInfo ? _self.userInfo : userInfo // ignore: cast_nullable_to_non_nullable
 as UserInfo,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
-as Amount,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as Amount,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -800,10 +801,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserInfo userInfo,  Amount amount,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserInfo userInfo,  Amount amount,  String description,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SendMoneyFormState() when $default != null:
-return $default(_that.userInfo,_that.amount,_that.isValid);case _:
+return $default(_that.userInfo,_that.amount,_that.description,_that.isValid);case _:
   return orElse();
 
 }
@@ -821,10 +822,10 @@ return $default(_that.userInfo,_that.amount,_that.isValid);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserInfo userInfo,  Amount amount,  bool isValid)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserInfo userInfo,  Amount amount,  String description,  bool isValid)  $default,) {final _that = this;
 switch (_that) {
 case _SendMoneyFormState():
-return $default(_that.userInfo,_that.amount,_that.isValid);case _:
+return $default(_that.userInfo,_that.amount,_that.description,_that.isValid);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -841,10 +842,10 @@ return $default(_that.userInfo,_that.amount,_that.isValid);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserInfo userInfo,  Amount amount,  bool isValid)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserInfo userInfo,  Amount amount,  String description,  bool isValid)?  $default,) {final _that = this;
 switch (_that) {
 case _SendMoneyFormState() when $default != null:
-return $default(_that.userInfo,_that.amount,_that.isValid);case _:
+return $default(_that.userInfo,_that.amount,_that.description,_that.isValid);case _:
   return null;
 
 }
@@ -856,11 +857,12 @@ return $default(_that.userInfo,_that.amount,_that.isValid);case _:
 
 
 class _SendMoneyFormState with DiagnosticableTreeMixin implements SendMoneyFormState {
-  const _SendMoneyFormState({this.userInfo = const UserInfo.pure(), this.amount = const Amount.pure(), this.isValid = false});
+  const _SendMoneyFormState({this.userInfo = const UserInfo.pure(), this.amount = const Amount.pure(), this.description = '', this.isValid = false});
   
 
 @override@JsonKey() final  UserInfo userInfo;
 @override@JsonKey() final  Amount amount;
+@override@JsonKey() final  String description;
 @override@JsonKey() final  bool isValid;
 
 /// Create a copy of SendMoneyFormState
@@ -874,21 +876,21 @@ _$SendMoneyFormStateCopyWith<_SendMoneyFormState> get copyWith => __$SendMoneyFo
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'SendMoneyFormState'))
-    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('isValid', isValid));
+    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('isValid', isValid));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.isValid, isValid) || other.isValid == isValid));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.description, description) || other.description == description)&&(identical(other.isValid, isValid) || other.isValid == isValid));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userInfo,amount,isValid);
+int get hashCode => Object.hash(runtimeType,userInfo,amount,description,isValid);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SendMoneyFormState(userInfo: $userInfo, amount: $amount, isValid: $isValid)';
+  return 'SendMoneyFormState(userInfo: $userInfo, amount: $amount, description: $description, isValid: $isValid)';
 }
 
 
@@ -899,7 +901,7 @@ abstract mixin class _$SendMoneyFormStateCopyWith<$Res> implements $SendMoneyFor
   factory _$SendMoneyFormStateCopyWith(_SendMoneyFormState value, $Res Function(_SendMoneyFormState) _then) = __$SendMoneyFormStateCopyWithImpl;
 @override @useResult
 $Res call({
- UserInfo userInfo, Amount amount, bool isValid
+ UserInfo userInfo, Amount amount, String description, bool isValid
 });
 
 
@@ -916,11 +918,12 @@ class __$SendMoneyFormStateCopyWithImpl<$Res>
 
 /// Create a copy of SendMoneyFormState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? userInfo = null,Object? amount = null,Object? isValid = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? userInfo = null,Object? amount = null,Object? description = null,Object? isValid = null,}) {
   return _then(_SendMoneyFormState(
 userInfo: null == userInfo ? _self.userInfo : userInfo // ignore: cast_nullable_to_non_nullable
 as UserInfo,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
-as Amount,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as Amount,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

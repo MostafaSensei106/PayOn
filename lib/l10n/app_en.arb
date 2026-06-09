@@ -239,5 +239,9 @@
   "verified_account": "Verified Account",
   "ok": "OK",
   "session_expired": "Session Expired",
-  "session_expired_description": "Your session has expired. Please login again to continue."
+  "session_expired_description": "Your session has expired. Please login again to continue.",
+  "description": "Description",
+  "description_hint": "Enter description (optional)",
+  "confirm_transaction": "Confirm Transaction",
+  "confirm_transaction_body": "Are you sure you want to send {amount} to {name}?"
 }
