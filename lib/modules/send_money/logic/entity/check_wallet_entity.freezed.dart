@@ -90,11 +90,12 @@ extension CheckWalletEntityPatterns on CheckWalletEntity {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CheckWalletEntity value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CheckWalletEntity value)?  $default,{TResult Function( _Placeholder value)?  placeholder,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _CheckWalletEntity() when $default != null:
-return $default(_that);case _:
+return $default(_that);case _Placeholder() when placeholder != null:
+return placeholder(_that);case _:
   return orElse();
 
 }
@@ -112,11 +113,12 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CheckWalletEntity value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CheckWalletEntity value)  $default,{required TResult Function( _Placeholder value)  placeholder,}){
 final _that = this;
 switch (_that) {
 case _CheckWalletEntity():
-return $default(_that);case _:
+return $default(_that);case _Placeholder():
+return placeholder(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -133,11 +135,12 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CheckWalletEntity value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CheckWalletEntity value)?  $default,{TResult? Function( _Placeholder value)?  placeholder,}){
 final _that = this;
 switch (_that) {
 case _CheckWalletEntity() when $default != null:
-return $default(_that);case _:
+return $default(_that);case _Placeholder() when placeholder != null:
+return placeholder(_that);case _:
   return null;
 
 }
@@ -154,10 +157,11 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)?  $default,{TResult Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)?  placeholder,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CheckWalletEntity() when $default != null:
-return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _:
+return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _Placeholder() when placeholder != null:
+return placeholder(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _:
   return orElse();
 
 }
@@ -175,10 +179,11 @@ return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.foun
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)  $default,{required TResult Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)  placeholder,}) {final _that = this;
 switch (_that) {
 case _CheckWalletEntity():
-return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _:
+return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _Placeholder():
+return placeholder(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -195,10 +200,11 @@ return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.foun
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)?  $default,{TResult? Function( String name,  String reciverId,  int currencyId,  String img,  bool founded)?  placeholder,}) {final _that = this;
 switch (_that) {
 case _CheckWalletEntity() when $default != null:
-return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _:
+return $default(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _Placeholder() when placeholder != null:
+return placeholder(_that.name,_that.reciverId,_that.currencyId,_that.img,_that.founded);case _:
   return null;
 
 }
@@ -268,6 +274,80 @@ class __$CheckWalletEntityCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? reciverId = null,Object? currencyId = null,Object? img = null,Object? founded = null,}) {
   return _then(_CheckWalletEntity(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,reciverId: null == reciverId ? _self.reciverId : reciverId // ignore: cast_nullable_to_non_nullable
+as String,currencyId: null == currencyId ? _self.currencyId : currencyId // ignore: cast_nullable_to_non_nullable
+as int,img: null == img ? _self.img : img // ignore: cast_nullable_to_non_nullable
+as String,founded: null == founded ? _self.founded : founded // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _Placeholder implements CheckWalletEntity {
+   _Placeholder({this.name = '', this.reciverId = '', this.currencyId = 0, this.img = '', this.founded = false});
+  
+
+@override@JsonKey() final  String name;
+@override@JsonKey() final  String reciverId;
+@override@JsonKey() final  int currencyId;
+@override@JsonKey() final  String img;
+@override@JsonKey() final  bool founded;
+
+/// Create a copy of CheckWalletEntity
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PlaceholderCopyWith<_Placeholder> get copyWith => __$PlaceholderCopyWithImpl<_Placeholder>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Placeholder&&(identical(other.name, name) || other.name == name)&&(identical(other.reciverId, reciverId) || other.reciverId == reciverId)&&(identical(other.currencyId, currencyId) || other.currencyId == currencyId)&&(identical(other.img, img) || other.img == img)&&(identical(other.founded, founded) || other.founded == founded));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,name,reciverId,currencyId,img,founded);
+
+@override
+String toString() {
+  return 'CheckWalletEntity.placeholder(name: $name, reciverId: $reciverId, currencyId: $currencyId, img: $img, founded: $founded)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PlaceholderCopyWith<$Res> implements $CheckWalletEntityCopyWith<$Res> {
+  factory _$PlaceholderCopyWith(_Placeholder value, $Res Function(_Placeholder) _then) = __$PlaceholderCopyWithImpl;
+@override @useResult
+$Res call({
+ String name, String reciverId, int currencyId, String img, bool founded
+});
+
+
+
+
+}
+/// @nodoc
+class __$PlaceholderCopyWithImpl<$Res>
+    implements _$PlaceholderCopyWith<$Res> {
+  __$PlaceholderCopyWithImpl(this._self, this._then);
+
+  final _Placeholder _self;
+  final $Res Function(_Placeholder) _then;
+
+/// Create a copy of CheckWalletEntity
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? reciverId = null,Object? currencyId = null,Object? img = null,Object? founded = null,}) {
+  return _then(_Placeholder(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,reciverId: null == reciverId ? _self.reciverId : reciverId // ignore: cast_nullable_to_non_nullable
 as String,currencyId: null == currencyId ? _self.currencyId : currencyId // ignore: cast_nullable_to_non_nullable

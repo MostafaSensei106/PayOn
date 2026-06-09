@@ -12,11 +12,11 @@ abstract class CheckWalletEntity with _$CheckWalletEntity {
     required bool founded,
   }) = _CheckWalletEntity;
 
-  factory CheckWalletEntity.placeholder() => const CheckWalletEntity(
-    name: '',
-    reciverId: '',
-    currencyId: 0,
-    img: '',
-    founded: false,
-  );
+  factory CheckWalletEntity.placeholder({
+    @Default('') String name,
+    @Default('') String reciverId,
+    @Default(0) int currencyId,
+    @Default('') String img,
+    @Default(false) bool founded,
+  }) = _Placeholder;
 }
