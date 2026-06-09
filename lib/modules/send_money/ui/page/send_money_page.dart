@@ -15,6 +15,7 @@ import '../../../home/logic/cubit/home_state.dart';
 import '../../../home/logic/entitys/wallets_entity.dart';
 import '../../logic/cubit/send_money_cubit.dart';
 import '../../logic/cubit/send_money_state.dart';
+import '../../logic/cubit/user_favorites_cubit.dart';
 import '../widgets/amount_input_and_submit_component.dart';
 import '../widgets/receiver_selection_component.dart';
 import '../widgets/sender_account_selection_component.dart';
@@ -46,7 +47,7 @@ class SendMoneyPage extends HookWidget {
     );
 
     useEffect(() {
-      context.read<SendMoneyCubit>().getUserFavorites();
+      unawaited(context.read<UserFavoritesCubit>().getUserFavorites());
       return null;
     }, []);
 
