@@ -114,6 +114,8 @@ import 'package:payon/modules/send_money/logic/repository/send_money_repository_
     as _i321;
 import 'package:payon/modules/send_money/logic/usecase/check_wallet_usecase.dart'
     as _i685;
+import 'package:payon/modules/send_money/logic/usecase/create_transaction_draft_usecase.dart'
+    as _i712;
 import 'package:payon/modules/send_money/logic/usecase/get_user_favorites_usecase.dart'
     as _i537;
 import 'package:share_plus/share_plus.dart' as _i998;
@@ -251,7 +253,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i990.GetWalletsUsecase>(
       () => _i990.GetWalletsUsecase(repo: gh<_i746.HomeRepostory>()),
     );
-    gh.factory<_i797.HomeCubit>(
+    gh.lazySingleton<_i797.HomeCubit>(
       () => _i797.HomeCubit(gh<_i990.GetWalletsUsecase>()),
     );
     gh.factory<_i665.SecurityCubit>(
@@ -266,6 +268,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i685.CheckWalletUsecase>(
       () => _i685.CheckWalletUsecase(repo: gh<_i860.SendMoneyRepository>()),
     );
+    gh.factory<_i712.CreateTransactionDraftUsecase>(
+      () => _i712.CreateTransactionDraftUsecase(
+        repo: gh<_i860.SendMoneyRepository>(),
+      ),
+    );
     gh.factory<_i537.GetUserFavoritesUsecase>(
       () =>
           _i537.GetUserFavoritesUsecase(repo: gh<_i860.SendMoneyRepository>()),
@@ -273,11 +280,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i72.UserProfileCubit>(
       () => _i72.UserProfileCubit(gh<_i624.GetUserProfileUsecase>()),
     );
+    gh.factory<_i274.SendMoneyCubit>(
+      () => _i274.SendMoneyCubit(
+        gh<_i685.CheckWalletUsecase>(),
+        gh<_i712.CreateTransactionDraftUsecase>(),
+      ),
+    );
     gh.factory<_i358.LoginUsecase>(
       () => _i358.LoginUsecase(repo: gh<_i719.LoginRepository>()),
-    );
-    gh.factory<_i274.SendMoneyCubit>(
-      () => _i274.SendMoneyCubit(gh<_i685.CheckWalletUsecase>()),
     );
     gh.factory<_i495.LoginCubit>(
       () => _i495.LoginCubit(
@@ -378,14 +388,17 @@ extension GetItInjectableX on _i174.GetIt {
   _i685.CheckWalletUsecase get checkWalletUsecase =>
       get<_i685.CheckWalletUsecase>();
 
+  _i712.CreateTransactionDraftUsecase get createTransactionDraftUsecase =>
+      get<_i712.CreateTransactionDraftUsecase>();
+
   _i537.GetUserFavoritesUsecase get getUserFavoritesUsecase =>
       get<_i537.GetUserFavoritesUsecase>();
 
   _i72.UserProfileCubit get userProfileCubit => get<_i72.UserProfileCubit>();
 
-  _i358.LoginUsecase get loginUsecase => get<_i358.LoginUsecase>();
-
   _i274.SendMoneyCubit get sendMoneyCubit => get<_i274.SendMoneyCubit>();
+
+  _i358.LoginUsecase get loginUsecase => get<_i358.LoginUsecase>();
 
   _i495.LoginCubit get loginCubit => get<_i495.LoginCubit>();
 }

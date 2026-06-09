@@ -6,7 +6,7 @@ import '../entitys/params/get_wallet_params.dart';
 import '../usecase/get_wallets_usecase.dart';
 import 'home_state.dart';
 
-@injectable
+@lazySingleton
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this._u) : super(const HomeState.initial());
 

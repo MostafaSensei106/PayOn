@@ -205,11 +205,25 @@ RouteBase get $sendMoneyRoute => GoRouteData.$route(
 );
 
 mixin $SendMoneyRoute on GoRouteData {
-  static SendMoneyRoute _fromState(GoRouterState state) =>
-      const SendMoneyRoute();
+  static SendMoneyRoute _fromState(GoRouterState state) => SendMoneyRoute(
+    walletIndex:
+        _$convertMapValue(
+          'wallet-index',
+          state.uri.queryParameters,
+          int.parse,
+        ) ??
+        0,
+  );
+
+  SendMoneyRoute get _self => this as SendMoneyRoute;
 
   @override
-  String get location => GoRouteData.$location('/send-money');
+  String get location => GoRouteData.$location(
+    '/send-money',
+    queryParams: {
+      if (_self.walletIndex != 0) 'wallet-index': _self.walletIndex.toString(),
+    },
+  );
 
   @override
   void go(BuildContext context) => context.go(location);
@@ -223,6 +237,15 @@ mixin $SendMoneyRoute on GoRouteData {
 
   @override
   void replace(BuildContext context) => context.replace(location);
+}
+
+T? _$convertMapValue<T>(
+  String key,
+  Map<String, String> map,
+  T? Function(String) converter,
+) {
+  final value = map[key];
+  return value == null ? null : converter(value);
 }
 
 RouteBase get $requestMoneyRoute => GoRouteData.$route(

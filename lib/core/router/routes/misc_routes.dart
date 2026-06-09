@@ -111,12 +111,14 @@ final class ContactUsRoute extends CupertinoRouteData with $ContactUsRoute {
 
 @TypedGoRoute<SendMoneyRoute>(path: RoutesNames.sendMoney)
 final class SendMoneyRoute extends CupertinoRouteData with $SendMoneyRoute {
-  const SendMoneyRoute();
+  const SendMoneyRoute({this.walletIndex = 0});
+
+  final int walletIndex;
 
   @override
   Widget build(BuildContext context, GoRouterState state) => BlocProvider(
     create: (context) => getIt<SendMoneyCubit>(),
-    child: const SendMoneyPage(),
+    child: SendMoneyPage(walletIndex: walletIndex),
   );
 }
 

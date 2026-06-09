@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../../core/utils/validator/amount_validator.dart';
 import '../../../../core/utils/validator/user_info_validator.dart';
 import '../entity/check_wallet_entity.dart';
 
@@ -13,6 +14,9 @@ sealed class SendMoneyState with _$SendMoneyState {
     SendMoneyFormState formState, {
     required CheckWalletEntity data,
   }) = Success;
+  const factory SendMoneyState.transactionDraftSuccess(
+    SendMoneyFormState formState,
+  ) = TransactionDraftSuccess;
   const factory SendMoneyState.failure(
     SendMoneyFormState formState, {
     required String message,
@@ -23,6 +27,7 @@ sealed class SendMoneyState with _$SendMoneyState {
 abstract class SendMoneyFormState with _$SendMoneyFormState {
   const factory SendMoneyFormState({
     @Default(UserInfo.pure()) UserInfo userInfo,
+    @Default(Amount.pure()) Amount amount,
     @Default(false) bool isValid,
   }) = _SendMoneyFormState;
 }

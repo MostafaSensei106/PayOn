@@ -101,13 +101,14 @@ extension SendMoneyStatePatterns on SendMoneyState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Loading value)?  loading,TResult Function( Success value)?  success,TResult Function( Failure value)?  failure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Loading value)?  loading,TResult Function( Success value)?  success,TResult Function( TransactionDraftSuccess value)?  transactionDraftSuccess,TResult Function( Failure value)?  failure,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case Loading() when loading != null:
 return loading(_that);case Success() when success != null:
-return success(_that);case Failure() when failure != null:
+return success(_that);case TransactionDraftSuccess() when transactionDraftSuccess != null:
+return transactionDraftSuccess(_that);case Failure() when failure != null:
 return failure(_that);case _:
   return orElse();
 
@@ -126,13 +127,14 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Loading value)  loading,required TResult Function( Success value)  success,required TResult Function( Failure value)  failure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Loading value)  loading,required TResult Function( Success value)  success,required TResult Function( TransactionDraftSuccess value)  transactionDraftSuccess,required TResult Function( Failure value)  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case Loading():
 return loading(_that);case Success():
-return success(_that);case Failure():
+return success(_that);case TransactionDraftSuccess():
+return transactionDraftSuccess(_that);case Failure():
 return failure(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -147,13 +149,14 @@ return failure(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Loading value)?  loading,TResult? Function( Success value)?  success,TResult? Function( Failure value)?  failure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Loading value)?  loading,TResult? Function( Success value)?  success,TResult? Function( TransactionDraftSuccess value)?  transactionDraftSuccess,TResult? Function( Failure value)?  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case Loading() when loading != null:
 return loading(_that);case Success() when success != null:
-return success(_that);case Failure() when failure != null:
+return success(_that);case TransactionDraftSuccess() when transactionDraftSuccess != null:
+return transactionDraftSuccess(_that);case Failure() when failure != null:
 return failure(_that);case _:
   return null;
 
@@ -171,12 +174,13 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SendMoneyFormState formState)?  initial,TResult Function( SendMoneyFormState formState)?  loading,TResult Function( SendMoneyFormState formState,  CheckWalletEntity data)?  success,TResult Function( SendMoneyFormState formState,  String message)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SendMoneyFormState formState)?  initial,TResult Function( SendMoneyFormState formState)?  loading,TResult Function( SendMoneyFormState formState,  CheckWalletEntity data)?  success,TResult Function( SendMoneyFormState formState)?  transactionDraftSuccess,TResult Function( SendMoneyFormState formState,  String message)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that.formState);case Loading() when loading != null:
 return loading(_that.formState);case Success() when success != null:
-return success(_that.formState,_that.data);case Failure() when failure != null:
+return success(_that.formState,_that.data);case TransactionDraftSuccess() when transactionDraftSuccess != null:
+return transactionDraftSuccess(_that.formState);case Failure() when failure != null:
 return failure(_that.formState,_that.message);case _:
   return orElse();
 
@@ -195,12 +199,13 @@ return failure(_that.formState,_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SendMoneyFormState formState)  initial,required TResult Function( SendMoneyFormState formState)  loading,required TResult Function( SendMoneyFormState formState,  CheckWalletEntity data)  success,required TResult Function( SendMoneyFormState formState,  String message)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SendMoneyFormState formState)  initial,required TResult Function( SendMoneyFormState formState)  loading,required TResult Function( SendMoneyFormState formState,  CheckWalletEntity data)  success,required TResult Function( SendMoneyFormState formState)  transactionDraftSuccess,required TResult Function( SendMoneyFormState formState,  String message)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that.formState);case Loading():
 return loading(_that.formState);case Success():
-return success(_that.formState,_that.data);case Failure():
+return success(_that.formState,_that.data);case TransactionDraftSuccess():
+return transactionDraftSuccess(_that.formState);case Failure():
 return failure(_that.formState,_that.message);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -215,12 +220,13 @@ return failure(_that.formState,_that.message);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SendMoneyFormState formState)?  initial,TResult? Function( SendMoneyFormState formState)?  loading,TResult? Function( SendMoneyFormState formState,  CheckWalletEntity data)?  success,TResult? Function( SendMoneyFormState formState,  String message)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SendMoneyFormState formState)?  initial,TResult? Function( SendMoneyFormState formState)?  loading,TResult? Function( SendMoneyFormState formState,  CheckWalletEntity data)?  success,TResult? Function( SendMoneyFormState formState)?  transactionDraftSuccess,TResult? Function( SendMoneyFormState formState,  String message)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that.formState);case Loading() when loading != null:
 return loading(_that.formState);case Success() when success != null:
-return success(_that.formState,_that.data);case Failure() when failure != null:
+return success(_that.formState,_that.data);case TransactionDraftSuccess() when transactionDraftSuccess != null:
+return transactionDraftSuccess(_that.formState);case Failure() when failure != null:
 return failure(_that.formState,_that.message);case _:
   return null;
 
@@ -486,6 +492,87 @@ $CheckWalletEntityCopyWith<$Res> get data {
 /// @nodoc
 
 
+class TransactionDraftSuccess with DiagnosticableTreeMixin implements SendMoneyState {
+  const TransactionDraftSuccess(this.formState);
+  
+
+@override final  SendMoneyFormState formState;
+
+/// Create a copy of SendMoneyState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TransactionDraftSuccessCopyWith<TransactionDraftSuccess> get copyWith => _$TransactionDraftSuccessCopyWithImpl<TransactionDraftSuccess>(this, _$identity);
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'SendMoneyState.transactionDraftSuccess'))
+    ..add(DiagnosticsProperty('formState', formState));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransactionDraftSuccess&&(identical(other.formState, formState) || other.formState == formState));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,formState);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'SendMoneyState.transactionDraftSuccess(formState: $formState)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $TransactionDraftSuccessCopyWith<$Res> implements $SendMoneyStateCopyWith<$Res> {
+  factory $TransactionDraftSuccessCopyWith(TransactionDraftSuccess value, $Res Function(TransactionDraftSuccess) _then) = _$TransactionDraftSuccessCopyWithImpl;
+@override @useResult
+$Res call({
+ SendMoneyFormState formState
+});
+
+
+@override $SendMoneyFormStateCopyWith<$Res> get formState;
+
+}
+/// @nodoc
+class _$TransactionDraftSuccessCopyWithImpl<$Res>
+    implements $TransactionDraftSuccessCopyWith<$Res> {
+  _$TransactionDraftSuccessCopyWithImpl(this._self, this._then);
+
+  final TransactionDraftSuccess _self;
+  final $Res Function(TransactionDraftSuccess) _then;
+
+/// Create a copy of SendMoneyState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? formState = null,}) {
+  return _then(TransactionDraftSuccess(
+null == formState ? _self.formState : formState // ignore: cast_nullable_to_non_nullable
+as SendMoneyFormState,
+  ));
+}
+
+/// Create a copy of SendMoneyState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SendMoneyFormStateCopyWith<$Res> get formState {
+  
+  return $SendMoneyFormStateCopyWith<$Res>(_self.formState, (value) {
+    return _then(_self.copyWith(formState: value));
+  });
+}
+}
+
+/// @nodoc
+
+
 class Failure with DiagnosticableTreeMixin implements SendMoneyState {
   const Failure(this.formState, {required this.message});
   
@@ -569,7 +656,7 @@ $SendMoneyFormStateCopyWith<$Res> get formState {
 /// @nodoc
 mixin _$SendMoneyFormState implements DiagnosticableTreeMixin {
 
- UserInfo get userInfo; bool get isValid;
+ UserInfo get userInfo; Amount get amount; bool get isValid;
 /// Create a copy of SendMoneyFormState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -581,21 +668,21 @@ $SendMoneyFormStateCopyWith<SendMoneyFormState> get copyWith => _$SendMoneyFormS
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'SendMoneyFormState'))
-    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('isValid', isValid));
+    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('isValid', isValid));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.isValid, isValid) || other.isValid == isValid));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.isValid, isValid) || other.isValid == isValid));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userInfo,isValid);
+int get hashCode => Object.hash(runtimeType,userInfo,amount,isValid);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SendMoneyFormState(userInfo: $userInfo, isValid: $isValid)';
+  return 'SendMoneyFormState(userInfo: $userInfo, amount: $amount, isValid: $isValid)';
 }
 
 
@@ -606,7 +693,7 @@ abstract mixin class $SendMoneyFormStateCopyWith<$Res>  {
   factory $SendMoneyFormStateCopyWith(SendMoneyFormState value, $Res Function(SendMoneyFormState) _then) = _$SendMoneyFormStateCopyWithImpl;
 @useResult
 $Res call({
- UserInfo userInfo, bool isValid
+ UserInfo userInfo, Amount amount, bool isValid
 });
 
 
@@ -623,10 +710,11 @@ class _$SendMoneyFormStateCopyWithImpl<$Res>
 
 /// Create a copy of SendMoneyFormState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? userInfo = null,Object? isValid = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? userInfo = null,Object? amount = null,Object? isValid = null,}) {
   return _then(_self.copyWith(
 userInfo: null == userInfo ? _self.userInfo : userInfo // ignore: cast_nullable_to_non_nullable
-as UserInfo,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as UserInfo,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as Amount,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -712,10 +800,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserInfo userInfo,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserInfo userInfo,  Amount amount,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SendMoneyFormState() when $default != null:
-return $default(_that.userInfo,_that.isValid);case _:
+return $default(_that.userInfo,_that.amount,_that.isValid);case _:
   return orElse();
 
 }
@@ -733,10 +821,10 @@ return $default(_that.userInfo,_that.isValid);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserInfo userInfo,  bool isValid)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserInfo userInfo,  Amount amount,  bool isValid)  $default,) {final _that = this;
 switch (_that) {
 case _SendMoneyFormState():
-return $default(_that.userInfo,_that.isValid);case _:
+return $default(_that.userInfo,_that.amount,_that.isValid);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -753,10 +841,10 @@ return $default(_that.userInfo,_that.isValid);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserInfo userInfo,  bool isValid)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserInfo userInfo,  Amount amount,  bool isValid)?  $default,) {final _that = this;
 switch (_that) {
 case _SendMoneyFormState() when $default != null:
-return $default(_that.userInfo,_that.isValid);case _:
+return $default(_that.userInfo,_that.amount,_that.isValid);case _:
   return null;
 
 }
@@ -768,10 +856,11 @@ return $default(_that.userInfo,_that.isValid);case _:
 
 
 class _SendMoneyFormState with DiagnosticableTreeMixin implements SendMoneyFormState {
-  const _SendMoneyFormState({this.userInfo = const UserInfo.pure(), this.isValid = false});
+  const _SendMoneyFormState({this.userInfo = const UserInfo.pure(), this.amount = const Amount.pure(), this.isValid = false});
   
 
 @override@JsonKey() final  UserInfo userInfo;
+@override@JsonKey() final  Amount amount;
 @override@JsonKey() final  bool isValid;
 
 /// Create a copy of SendMoneyFormState
@@ -785,21 +874,21 @@ _$SendMoneyFormStateCopyWith<_SendMoneyFormState> get copyWith => __$SendMoneyFo
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'SendMoneyFormState'))
-    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('isValid', isValid));
+    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('isValid', isValid));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.isValid, isValid) || other.isValid == isValid));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.isValid, isValid) || other.isValid == isValid));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userInfo,isValid);
+int get hashCode => Object.hash(runtimeType,userInfo,amount,isValid);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SendMoneyFormState(userInfo: $userInfo, isValid: $isValid)';
+  return 'SendMoneyFormState(userInfo: $userInfo, amount: $amount, isValid: $isValid)';
 }
 
 
@@ -810,7 +899,7 @@ abstract mixin class _$SendMoneyFormStateCopyWith<$Res> implements $SendMoneyFor
   factory _$SendMoneyFormStateCopyWith(_SendMoneyFormState value, $Res Function(_SendMoneyFormState) _then) = __$SendMoneyFormStateCopyWithImpl;
 @override @useResult
 $Res call({
- UserInfo userInfo, bool isValid
+ UserInfo userInfo, Amount amount, bool isValid
 });
 
 
@@ -827,10 +916,11 @@ class __$SendMoneyFormStateCopyWithImpl<$Res>
 
 /// Create a copy of SendMoneyFormState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? userInfo = null,Object? isValid = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? userInfo = null,Object? amount = null,Object? isValid = null,}) {
   return _then(_SendMoneyFormState(
 userInfo: null == userInfo ? _self.userInfo : userInfo // ignore: cast_nullable_to_non_nullable
-as UserInfo,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as UserInfo,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as Amount,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
