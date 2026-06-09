@@ -11,4 +11,12 @@ abstract class CheckWalletEntity with _$CheckWalletEntity {
     required String img,
     required bool founded,
   }) = _CheckWalletEntity;
+
+  factory CheckWalletEntity.placeholder() => const CheckWalletEntity(
+    name: '',
+    reciverId: '',
+    currencyId: 0,
+    img: '',
+    founded: false,
+  );
 }

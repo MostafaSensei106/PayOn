@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../logic/entity/user_favorites_entity.dart';
+
 part 'get_user_favorites_response_body.g.dart';
 
 @JsonSerializable()
@@ -40,4 +42,10 @@ class FavoritesData {
   final int pageSize;
   final List<dynamic> items;
   final int totalPages;
+}
+
+extension GetUserFavoritesMapper on GetUserFavoritesResponseBody {
+  UserFavoritesEntity toEntity() {
+    return UserFavoritesEntity();
+  }
 }
