@@ -381,37 +381,69 @@ class AppLocalizationsEn extends AppLocalizations {
   String get delete_account_desc => 'this will permanently delete your account';
 
   @override
-  String get error_email_empty => 'Email cannot be empty';
+  String get error_email_cant_be_empty => 'Email cannot be empty';
 
   @override
-  String get error_email_missing_at => 'Email is missing @ sign';
+  String get error_email_not_invalid_format => 'Email format is invalid';
 
   @override
-  String get error_email_invalid => 'Email is invalid';
+  String get error_email_contains_invalid_characters =>
+      'Email contains invalid characters';
+
+  @override
+  String get error_email_must_contain_at_symbol =>
+      'Email must contain @ symbol';
+
+  @override
+  String get error_email_must_be_in_lowercase => 'Email must be in lower case';
+
+  @override
+  String get error_arabic_not_allowed => 'Arabic characters are not allowed';
+
+  @override
+  String get error_email_emoji_not_allowed => 'Emojis are not allowed in email';
+
+  @override
+  String get unverified_account => 'Unverified Account';
+
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get error_full_name_cant_be_empty => 'Full name cannot be empty';
+
+  @override
+  String get error_full_name_too_long_max_255_chars =>
+      'Full name is too long (maximum 255 characters)';
+
+  @override
+  String get error_full_name_invalid_characters =>
+      'Full name contains invalid characters';
 
   @override
   String get error_email_exists => 'Email already exists';
 
   @override
+  String get error_phone_number_cant_be_empty => 'Phone number cannot be empty';
+
+  @override
+  String get error_cant_be_empty => 'This field cannot be empty';
+
+  @override
+  String get error_phone_number_invalid => 'Phone number is invalid';
+
+  @override
   String get error_email_not_found => 'Email not found';
 
   @override
-  String get error_email_lowercase => 'Email must be in lower case';
-
-  @override
-  String get error_email_not_valid => 'Email is not valid';
-
-  @override
-  String get error_email_missing_domain => 'Email is missing domain';
-
-  @override
-  String get error_email_missing_dot => 'Email is missing .';
-
-  @override
-  String get error_email_missing_extension => 'Email is missing extension';
+  String get error_password_cant_be_empty => 'Password cannot be empty';
 
   @override
   String get error_password_empty => 'Password cannot be empty';
+
+  @override
+  String get error_password_too_short_min_8_chars =>
+      'Password is too short (minimum 8 characters)';
 
   @override
   String get error_username_empty => 'User name cannot be empty';
@@ -709,4 +741,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get verified_account => 'Verified Account';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get session_expired => 'Session Expired';
+
+  @override
+  String get session_expired_description =>
+      'Your session has expired. Please login again to continue.';
 }

@@ -33,9 +33,9 @@ class ChangeLanguagePage extends StatelessWidget {
             padding: const EdgeInsets.all(AppConfig.padding),
             child: RadioGroup<String>(
               groupValue: currentLangCode,
-              onChanged: (val) async {
+              onChanged: (val) {
                 if (val != null) {
-                  await context.read<LocalizationCubit>().changeLanguage(val);
+                  context.read<LocalizationCubit>().changeLanguage(val);
                 }
               },
               child: Column(
@@ -67,11 +67,9 @@ class ChangeLanguagePage extends StatelessWidget {
                     final radioWidget = Radio<String>(
                       value: langCode,
                       groupValue: currentLangCode,
-                      onChanged: (val) async {
+                      onChanged: (val) {
                         if (val != null) {
-                          await context
-                              .read<LocalizationCubit>()
-                              .changeLanguage(val);
+                          context.read<LocalizationCubit>().changeLanguage(val);
                         }
                       },
                     );

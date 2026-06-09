@@ -2,48 +2,52 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
-import '../../../../core/di/di.dart';
-import '../../../../core/services/l10n/l10n_service.dart';
+import '../../../../core/extensions/extensions.dart';
 import '../../../../core/widgets/navigation/bottom_nav_bar/bottom_nav_bar_component.dart';
-import '../../../history/presentation/pages/history_page.dart';
-import '../../../home/ui/pages/home_page.dart';
-import '../../../settings/ui/pages/settings_page.dart';
-import '../../../wallet/presentation/pages/wallet_page.dart';
+import '../../../home/logic/cubit/home_cubit.dart';
+import '../../../profile/logic/cubit/user_profile_cubit.dart';
 
 class MainPage extends HookWidget {
-  const MainPage({super.key});
+  const MainPage({required this.navigationShell, super.key});
 
-  static const List<Widget> _pages = [
-    HomePage(),
-    WalletPage(),
-    HistoryPage(),
-    SettingsPage(),
-  ];
+  final StatefulNavigationShell navigationShell;
 
   @override
   Widget build(final BuildContext context) {
-    final currentIndex = useState(0);
-    final l10n = getIt<L10nService>().get(context);
+    final l10n = context.localeKeys;
+
+    useEffect(() {
+      // ignore: discarded_futures
+      Future.wait([
+        context.read<HomeCubit>().getWallets(),
+        context.read<UserProfileCubit>().getProfile(),
+      ]);
+      return null;
+    }, const []);
 
     return Scaffold(
       extendBody: true,
-      body: IndexedStack(index: currentIndex.value, children: _pages),
-
+      body: navigationShell,
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(bottom: 16.h, left: 45.w, right: 45.w),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
             child: BottomNavBarComponent(
-              currentIndex: currentIndex.value,
+              currentIndex: navigationShell.currentIndex,
               onTap: (final index) {
                 unawaited(HapticFeedback.vibrate());
-                currentIndex.value = index;
+                navigationShell.goBranch(
+                  index,
+                  initialLocation: index == navigationShell.currentIndex,
+                );
               },
               items: [
                 BottomNavigationBarItem(
@@ -54,7 +58,7 @@ class MainPage extends HookWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: const Icon(Iconsax.wallet_copy),
-                  activeIcon: const Icon(Iconsax.wallet),
+                  activeIcon: const Icon(Iconsax.wallet, size: 24),
                   label: l10n.wallet,
                   tooltip: l10n.wallet,
                 ),

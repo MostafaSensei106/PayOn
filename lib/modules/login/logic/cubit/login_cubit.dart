@@ -2,40 +2,43 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/constants/pref_keys.dart';
-import '../../../../core/networking/api_result/api_result.dart';
-import '../../../../core/services/biometrics/base_biometrics_service.dart';
-import '../../../../core/services/shared_prefs/base_prefs_storage_service.dart';
-import '../../../../core/validator/password.dart';
-import '../../../../core/validator/user_name.dart';
-import '../../data/models/login_request_body.dart';
-import '../../data/models/login_response_body.dart';
-import '../../data/repositories/base_login_repository.dart';
-import 'login_form_state.dart';
+import '../../../../core/constants/types/type_def.dart';
+import '../../../../core/services/biometrics/biometrics_service.dart';
+import '../../../../core/services/shared_prefs/base_pref_storage_service.dart';
+import '../../../../core/utils/validator/login/login_validation.dart';
+import '../entities/login_entity.dart';
+import '../entities/params/login_params.dart';
+import '../usecase/login_usecase.dart';
 import 'login_state.dart';
 
+@injectable
 final class LoginCubit extends Cubit<LoginState> {
   LoginCubit(
-    this._loginRepository,
+    this._loginUsecase,
     this._biometricsService,
     this._prefsStorageService,
-  ) : super(const LoginState<LoginResponseBody>.initial(LoginFormState())) {
+  ) : super(const LoginState<LoginEntity>.initial(LoginFormState())) {
     unawaited(_checkBiometricsAvailability());
   }
 
-  final BaseLoginRepository _loginRepository;
-  final BaseBiometricsService _biometricsService;
-  final BasePrefsStorageService _prefsStorageService;
+  final LoginUsecase _loginUsecase;
+  final BiometricsService _biometricsService;
+  final BasePrefStorageService _prefsStorageService;
 
-  LoginFormState get currentForm => state.form;
+  LoginFormState get currentForm => state.formState;
 
   Future<void> _checkBiometricsAvailability() async {
     final isSupported = await _biometricsService.isBiometricsAvailable();
     final isEnabledByUser =
-        _prefsStorageService.getData<bool>(PrefKeys.isFingerprintEnabled) ??
+        await _prefsStorageService.getData<bool>(
+          key: PrefKeys.isFingerprintEnabled,
+        ) ??
         false;
     final shouldShowBiometricButton = isSupported && isEnabledByUser;
+
     emit(
       LoginState.initial(
         currentForm.copyWith(isBiometricsAvailable: shouldShowBiometricButton),
@@ -45,27 +48,24 @@ final class LoginCubit extends Cubit<LoginState> {
 
   Future<void> login() async {
     if (!currentForm.isValid) return;
+
     emit(LoginState.loading(currentForm));
-    final body = LoginRequestBody(
+
+    final params = LoginParams(
       userName: currentForm.userName.value,
       password: currentForm.password.value,
+      isRememberMe: currentForm.isRememberMe,
     );
-    final response = await _loginRepository.login(body);
+
+    final response = await _loginUsecase.call(params);
+
     response.when(
-      success: (r) async {
-        if (currentForm.isRememberMe) {
-          await _prefsStorageService.setData(PrefKeys.isRememberMe, true);
-        } else {
-          await _prefsStorageService.setData(PrefKeys.isRememberMe, false);
-        }
-        emit(LoginState.success(currentForm, data: r));
+      success: (t) {
+        emit(LoginState.success(currentForm, data: t));
       },
-      failure: (err) => emit(
-        LoginState.failure(
-          currentForm,
-          error: err.failure.message ?? 'Unknown Error',
-        ),
-      ),
+      failure: (e) {
+        emit(LoginState.failure(currentForm, error: e.message));
+      },
     );
   }
 
@@ -75,10 +75,7 @@ final class LoginCubit extends Cubit<LoginState> {
     );
 
     if (isAuthenticated) {
-      // Note: In a real scenario, you'd usually exchange a stored token
-      // or call a specific biometric login endpoint here.
-      // For now, we emit success if authentication passes.
-      emit(LoginState.success(currentForm, data: 'Biometric login successful'));
+      emit(LoginState.success(currentForm, data: const LoginEntity.empty()));
     } else {
       emit(
         LoginState.failure(
@@ -92,7 +89,7 @@ final class LoginCubit extends Cubit<LoginState> {
   }
 
   void userNameOnChanged(String value) {
-    final userName = UserName.dirty(value);
+    final userName = LoginPhoneValidator.dirty(value);
     final updatedForm = currentForm.copyWith(
       userName: userName,
       isValid: Formz.validate([userName, currentForm.password]),
@@ -101,7 +98,7 @@ final class LoginCubit extends Cubit<LoginState> {
   }
 
   void passwordOnChanged(String value) {
-    final password = Password.dirty(value);
+    final password = LoginPasswordValidator.dirty(value);
     final updatedForm = currentForm.copyWith(
       password: password,
       isValid: Formz.validate([password, currentForm.userName]),

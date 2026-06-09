@@ -1,10 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
-import '../../../../../core/networking/api_result/api_result.dart';
+import '../../../../../core/constants/types/type_def.dart';
 import '../../../data/models/account_type/account_type_response_body.dart';
 import '../../../data/repositories/account_type/base_account_type_repository.dart';
 import 'account_type_state.dart';
 
+@injectable
 class AccountTypeCubit
     extends Cubit<AccountTypeState<AccountTypeResponseBody>> {
   AccountTypeCubit(this._accountTypeRepository)
@@ -17,9 +19,7 @@ class AccountTypeCubit
     final response = await _accountTypeRepository.getAccountTypes();
     response.when(
       success: (r) => emit(AccountTypeState.success(data: r)),
-      failure: (e) => emit(
-        AccountTypeState.failure(error: e.failure.message ?? 'Unknown Error'),
-      ),
+      failure: (e) => emit(AccountTypeState.failure(error: e.message)),
     );
   }
 }

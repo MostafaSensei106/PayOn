@@ -3,25 +3,44 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/constants/app_config.dart';
+import '../../../../core/constants/app_enums.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/extensions/extensions.dart';
-import '../../../../core/services/l10n/l10n_service.dart';
+import '../../../../core/utils/validator/email_validators.dart';
+import '../../../../core/utils/validator/full_name.dart';
 import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
+import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
-import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
+import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../logic/cubit/user_profile_cubit.dart';
+import '../../logic/cubit/user_profile_state.dart';
+import '../../logic/entity/user_profile_entity.dart';
 
 class ProfilePage extends HookWidget {
   const ProfilePage({super.key});
 
   @override
-  Widget build(final BuildContext context) {
-    final l10n = getIt<L10nService>().get(context);
+  Widget build(BuildContext context) {
+    return const ProfileView();
+  }
+}
+
+class ProfileView extends HookWidget {
+  const ProfileView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.localeKeys;
     final scrollController = useScrollController();
 
     return Scaffold(
@@ -35,76 +54,190 @@ class ProfilePage extends HookWidget {
             scrollController: scrollController,
             title: l10n.profile,
           ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: AppConfig.padding.w,
-                vertical: AppConfig.paddingHalf.h,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildProfileHeaderCard(context),
-                  _buildSectionHeader(context, l10n.account_details),
-                  _buildSettingsGroup(
-                    context,
-                    children: [
-                      ListTileIconComponent.top(
-                        title: l10n.phone_number,
-                        subtitle: '+20 10 1441 4536',
-                        leading: Iconsax.call_copy,
-                        onTap: () {},
-                      ),
-                      ListTileIconComponent.middle(
-                        title: l10n.date_of_birth,
-                        subtitle: '2026-04-09',
-                        leading: Iconsax.calendar_1_copy,
-                        onTap: () {},
-                      ),
-                      ListTileIconComponent.bottom(
-                        title: l10n.location,
-                        subtitle: 'Cairo, Egypt',
-                        leading: Iconsax.location_copy,
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
-
-                  _buildSectionHeader(context, l10n.security_and_privacy),
-                  _buildSettingsGroup(
-                    context,
-                    children: [
-                      ListTileIconComponent.top(
-                        title: l10n.change_password,
-                        subtitle: l10n.update_login_credentials,
-                        leading: Iconsax.key_copy,
-                        onTap: () {
-                          unawaited(HapticFeedback.mediumImpact());
-                        },
-                      ),
-                      ListTileIconComponent.bottom(
-                        title: l10n.delete_account,
-                        subtitle: l10n.delete_account_desc,
-                        leading: Iconsax.user_remove_copy,
-                        onTap: () {
-                          unawaited(HapticFeedback.heavyImpact());
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+          BlocBuilder<UserProfileCubit, UserProfileState>(
+            builder: (context, state) {
+              return state.when(
+                initial: () =>
+                    const SliverToBoxAdapter(child: SizedBox.shrink()),
+                loading: () => const _ProfileLoadingState(),
+                success: (data) => _ProfileSuccessState(data: data),
+                failure: (message) =>
+                    SliverFillRemaining(child: Center(child: Text(message))),
+              );
+            },
           ),
         ],
       ),
     );
   }
+}
 
-  Widget _buildProfileHeaderCard(BuildContext context) {
+class _ProfileLoadingState extends StatelessWidget {
+  const _ProfileLoadingState();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.localeKeys;
+    return SliverToBoxAdapter(
+      child: Skeletonizer(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppConfig.padding.w,
+            vertical: AppConfig.paddingHalf.h,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const _ProfileHeaderCard(
+                data: UserProfileEntity.placeholder(
+                  name: 'User Name Placeholder',
+                  email: 'email@placeholder.com',
+                ),
+              ),
+              _SectionHeader(title: l10n.account_details),
+              Column(
+                children: [
+                  ListTileIconComponent.top(
+                    title: l10n.phone_number,
+                    subtitle: '+20 1234567890',
+                    leading: Iconsax.call_copy,
+                    onTap: () {},
+                  ),
+                  ListTileIconComponent.middle(
+                    title: l10n.date_of_birth,
+                    subtitle: '01/01/1990',
+                    leading: Iconsax.calendar_1_copy,
+                    onTap: () {},
+                  ),
+                  ListTileIconComponent.bottom(
+                    title: l10n.location,
+                    subtitle: 'Cairo, Egypt',
+                    leading: Iconsax.location_copy,
+                    onTap: () {},
+                  ),
+                ],
+              ),
+              _SectionHeader(title: l10n.security_and_privacy),
+              Column(
+                children: [
+                  ListTileIconComponent.top(
+                    title: l10n.change_password,
+                    subtitle: l10n.update_login_credentials,
+                    leading: Iconsax.key_copy,
+                    onTap: () {},
+                  ),
+                  ListTileIconComponent.bottom(
+                    title: l10n.delete_account,
+                    subtitle: l10n.delete_account_desc,
+                    leading: Iconsax.user_remove_copy,
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ProfileSuccessState extends StatelessWidget {
+  const _ProfileSuccessState({required this.data});
+  final UserProfileEntity data;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.localeKeys;
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: AppConfig.padding.w,
+          vertical: AppConfig.paddingHalf.h,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _ProfileHeaderCard(data: data),
+            _SectionHeader(title: l10n.account_details),
+            Column(
+              children: [
+                ListTileIconComponent.top(
+                  title: l10n.phone_number,
+                  subtitle: data.phone,
+                  leading: Iconsax.call_copy,
+                  onTap: () {},
+                ),
+                ListTileIconComponent.middle(
+                  title: l10n.date_of_birth,
+                  subtitle: data.birthData,
+                  leading: Iconsax.calendar_1_copy,
+                  onTap: () {},
+                ),
+                ListTileIconComponent.middle(
+                  title: 'IPA',
+                  subtitle: data.ipa,
+                  leading: Iconsax.personalcard_copy,
+                  onTap: () {},
+                ),
+                ListTileIconComponent.middle(
+                  title: l10n.gender,
+                  subtitle: GenderType.values
+                      .firstWhere(
+                        (e) => e.key == data.gender,
+                        orElse: () => GenderType.none,
+                      )
+                      .message(context),
+                  leading: Iconsax.user_copy,
+                  onTap: () {},
+                ),
+                ListTileIconComponent.bottom(
+                  title: 'Status',
+                  subtitle: data.status,
+                  leading: Iconsax.information_copy,
+                  onTap: () {},
+                ),
+              ],
+            ),
+            _SectionHeader(title: l10n.security_and_privacy),
+            Column(
+              children: [
+                ListTileIconComponent.top(
+                  title: 'National ID',
+                  subtitle: data.nationalId,
+                  leading: Iconsax.card_tick_copy,
+                  onTap: () {},
+                ),
+                ListTileIconComponent.middle(
+                  title: l10n.change_password,
+                  subtitle: l10n.update_login_credentials,
+                  leading: Iconsax.key_copy,
+                  onTap: () => unawaited(HapticFeedback.vibrate()),
+                ),
+                ListTileIconComponent.bottom(
+                  title: l10n.delete_account,
+                  subtitle: l10n.delete_account_desc,
+                  leading: Iconsax.user_remove_copy,
+                  onTap: () => unawaited(HapticFeedback.vibrate()),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ProfileHeaderCard extends StatelessWidget {
+  const _ProfileHeaderCard({required this.data});
+  final UserProfileEntity data;
+
+  @override
+  Widget build(BuildContext context) {
     final colorScheme = context.colorScheme;
     final textTheme = Theme.of(context).textTheme;
-    final l10n = context.localKeys;
+    final l10n = context.localeKeys;
 
     return Container(
       padding: EdgeInsets.all(AppConfig.paddingHalf.w),
@@ -127,7 +260,7 @@ class ProfilePage extends HookWidget {
                     height: 76.r,
                     memCacheHeight: 200,
                     imageUrl:
-                        'https://media.licdn.com/dms/image/v2/D5603AQHpMGFlYFIAyw/profile-displayphoto-scale_400_400/B56ZnjHIJxHIAg-/0/1760451933899?e=1776902400&v=beta&t=ClsT0ppYA0_8z9ViCSbiS4FG81mCgMkabjoNBHSN1hc',
+                        'https://hips.hearstapps.com/hmg-prod/images/demon-slayer-kimetsu-no-yaiba-646f30ac5433e.jpg',
                     placeholder: (context, url) =>
                         const Icon(Iconsax.user_copy),
                     errorWidget: (context, url, error) =>
@@ -139,6 +272,7 @@ class ProfilePage extends HookWidget {
                 onTap: () async {
                   unawaited(HapticFeedback.vibrate());
                   await context.showBottomSheetComponent(
+                    title: l10n.edit_profile,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -186,7 +320,7 @@ class ProfilePage extends HookWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Mostafa Mahmoud',
+                  data.name,
                   style: textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                     letterSpacing: -0.5,
@@ -195,7 +329,7 @@ class ProfilePage extends HookWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  'MostafaSensei106@gmail.com',
+                  data.email,
                   style: textTheme.bodySmall?.copyWith(
                     color: colorScheme.onSurfaceVariant,
                   ),
@@ -203,44 +337,129 @@ class ProfilePage extends HookWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 6.h),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 4.h,
-                  ),
-                  decoration: BoxDecoration(
-                    color: colorScheme.primary.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(100.r),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Iconsax.verify_copy,
-                        size: 12.r,
-                        color: colorScheme.primary,
-                      ),
-                      SizedBox(width: 4.w),
-                      Text(
-                        l10n.verified_account,
-                        style: textTheme.labelSmall?.copyWith(
+                if (data.phoneVerified)
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 4.h,
+                    ),
+                    decoration: BoxDecoration(
+                      color: colorScheme.primary.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(100.r),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Iconsax.verify_copy,
+                          size: 12.r,
                           color: colorScheme.primary,
-                          fontWeight: FontWeight.w600,
                         ),
-                      ),
-                    ],
+                        SizedBox(width: 4.w),
+                        Text(
+                          data.phoneVerified
+                              ? l10n.verified_account
+                              : l10n.unverified_account,
+                          style: textTheme.labelSmall?.copyWith(
+                            color: colorScheme.primary,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
               ],
             ),
           ),
-          IconButtonComponent.filled(icon: Iconsax.edit_copy, onPressed: () {}),
+          IconButtonComponent.filled(
+            icon: Iconsax.edit_copy,
+            onPressed: () => context.showBottomSheetComponent(
+              title: l10n.edit_profile,
+              child: MultiBlocProvider(
+                providers: [
+                  BlocProvider.value(value: getIt<UserProfileCubit>()),
+                  BlocProvider<EditProfileCubit>(
+                    create: (_) => getIt<EditProfileCubit>()
+                      ..onNameChanged(data.name)
+                      ..onEmailChanged(data.email),
+                  ),
+                ],
+                child: Sheet3(l10n: l10n, data: data),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
+}
 
-  Widget _buildSectionHeader(BuildContext context, String title) {
+class Sheet3 extends StatelessWidget {
+  const Sheet3({required this.l10n, required this.data, super.key});
+
+  final AppLocalizations l10n;
+  final UserProfileEntity data;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<EditProfileCubit, EditProfileState>(
+      listener: (context, state) async {
+        await state.whenOrNull(
+          loading: (_) {
+            context.dialog.showLoading();
+          },
+          success: (_, response) async {
+            context.pop();
+            await context.read<UserProfileCubit>().getProfile();
+            if (context.mounted) context.pop(true);
+          },
+          failure: (_, e) async {
+            context.pop();
+            await context.dialog.showError(title: l10n.error, error: e);
+          },
+        );
+      },
+      builder: (context, state) {
+        final cubit = context.read<EditProfileCubit>();
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextFormFieldComponent(
+              initialValue: state.formState.name.value,
+              label: l10n.user_name,
+              prefixIcon: Iconsax.user_copy,
+              onChanged: cubit.onNameChanged,
+              errorText: state.formState.name.error?.message(context),
+            ),
+            SizedBox(height: 16.h),
+            TextFormFieldComponent(
+              initialValue: data.email,
+              label: l10n.email_address,
+              prefixIcon: Iconsax.sms_copy,
+              onChanged: cubit.onEmailChanged,
+              errorText: state.formState.email.error?.message(context),
+            ),
+            SizedBox(height: 16.h),
+            FilledButtonComponent.icon(
+              icon: Iconsax.save_2_copy,
+              label: l10n.ok,
+              onPressed: state.formState.isValid == true
+                  ? cubit.editProfile
+                  : () {},
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class _SectionHeader extends StatelessWidget {
+  const _SectionHeader({required this.title});
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
         left: AppConfig.padding,
@@ -255,12 +474,5 @@ class ProfilePage extends HookWidget {
         ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
       ),
     );
-  }
-
-  Widget _buildSettingsGroup(
-    BuildContext context, {
-    required List<Widget> children,
-  }) {
-    return Column(children: children);
   }
 }

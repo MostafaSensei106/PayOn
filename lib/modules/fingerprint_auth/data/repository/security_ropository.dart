@@ -1,16 +1,21 @@
+import 'package:injectable/injectable.dart';
+
 import '../../../../core/constants/pref_keys.dart';
-import '../../../../core/services/shared_prefs/base_prefs_storage_service.dart';
+import '../../../../core/services/shared_prefs/base_pref_storage_service.dart';
 import '../model/security_settings_model.dart';
 import 'base_security_repository.dart';
 
+@LazySingleton(as: BaseSecurityRepository)
 final class SecurityRopository extends BaseSecurityRepository {
   SecurityRopository(this._pref);
 
-  final BasePrefsStorageService _pref;
+  final BasePrefStorageService _pref;
 
   @override
-  SecuritySettingsModel getBiometricsSettings() {
-    final isEnabled = _pref.getData<bool>(PrefKeys.isFingerprintEnabled);
+  Future<SecuritySettingsModel> getBiometricsSettings() async {
+    final isEnabled = await _pref.getData<bool>(
+      key: PrefKeys.isFingerprintEnabled,
+    );
     if (isEnabled == null) {
       return const SecuritySettingsModel();
     }
@@ -19,6 +24,9 @@ final class SecurityRopository extends BaseSecurityRepository {
 
   @override
   Future<void> toggleBiometricsStatus({required bool isEnabled}) async {
-    await _pref.setData<bool>(PrefKeys.isFingerprintEnabled, isEnabled);
+    await _pref.setData<bool>(
+      key: PrefKeys.isFingerprintEnabled,
+      value: isEnabled,
+    );
   }
 }

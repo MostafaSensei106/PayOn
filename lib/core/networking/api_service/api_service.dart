@@ -12,16 +12,35 @@ import '../../../modules/get_started/data/models/send_otp/send_otp_request_body.
 import '../../../modules/get_started/data/models/send_otp/send_otp_response_body.dart';
 import '../../../modules/get_started/data/models/verify_otp/verify_otp_request_body.dart';
 import '../../../modules/get_started/data/models/verify_otp/verify_otp_response_body.dart';
+import '../../../modules/home/data/models/get_wallets_response_body.dart';
 import '../../../modules/login/data/models/login_request_body.dart';
 import '../../../modules/login/data/models/login_response_body.dart';
+import '../../../modules/profile/data/models/edit_user_porfile_response_body.dart';
+import '../../../modules/profile/data/models/edit_user_profile_request_body.dart';
+import '../../../modules/profile/data/models/get_user_profile_response_body.dart';
+import '../../../modules/send_money/data/models/check_wallet/check_wallet_request_body.dart';
+import '../../../modules/send_money/data/models/check_wallet/check_wallet_response_body.dart';
+import '../../../modules/send_money/data/models/create_transaction_draft/create_transaction_draft_request_body.dart';
+import '../../../modules/send_money/data/models/create_transaction_draft/create_transaction_draft_response_body.dart';
+import '../../../modules/send_money/data/models/get_favorites/get_user_favorites_response_body.dart';
 import '../../constants/api_routes.dart';
 
 part 'api_service.g.dart';
 
 @RestApi(baseUrl: ApiRoutes.apiBaseURL)
-abstract class APIService {
-  factory APIService(Dio dio, {String? baseUrl}) = _APIService;
+abstract class ApiService {
+  factory ApiService(Dio dio, {String? baseUrl}) = _ApiService;
 
+  /// User Profile
+  @GET(ApiRoutes.accountGetUserProfile)
+  Future<GetUserProfileResponseBody> getUserProfile();
+
+  @PUT(ApiRoutes.profileEditUserProfile)
+  Future<EditUserPorfileResponseBody> editUserProfile(
+    @Body() EditUserProfileRequestBody body,
+  );
+
+  /// Auth
   @POST(ApiRoutes.authLogin)
   Future<LoginResponseBody> login(@Body() LoginRequestBody body);
 
@@ -50,4 +69,30 @@ abstract class APIService {
 
   @POST(ApiRoutes.authRestPassword)
   Future<ResetPasswordRequestBody> resetPassword();
+
+  /// Home
+  @GET(ApiRoutes.accountGetWallets)
+  Future<GetWalletsResponseBody> getWallets({
+    @Query('page') required int page,
+    @Query('size') required int size,
+  });
+
+  /// Send Mony
+  @POST(ApiRoutes.transactionCheckWallet)
+  Future<CheckWalletResponseBody> checkWallet(
+    @Body() CheckWalletRequestBody body,
+  );
+
+  @POST(ApiRoutes.transactionCreateTransactionDraft)
+  Future<CreateTransactionDraftResponseBody> createTransactionDraft(
+    @Body() CreateTransactionDraftRequestBody body,
+  );
+
+  @GET(ApiRoutes.accountGetUserFavorites)
+  Future<GetUserFavoritesResponseBody> getUserFavorites({
+    @Query('page') required int page,
+    @Query('size') required int size,
+    @Query('search') required String shearch,
+    @Query('isAddedByIPA') required bool isAddedByIPA,
+  });
 }

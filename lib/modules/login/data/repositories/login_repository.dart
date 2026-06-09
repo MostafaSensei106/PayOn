@@ -1,17 +1,7 @@
-import '../../../../core/networking/api_executor/api_executor.dart';
-import '../../../../core/networking/api_result/api_result.dart';
-import '../../../../core/networking/api_service/api_service.dart';
-import '../models/login_request_body.dart';
-import '../models/login_response_body.dart';
-import 'base_login_repository.dart';
+import '../../../../core/constants/types/type_def.dart';
+import '../../logic/entities/login_entity.dart';
+import '../../logic/entities/params/login_params.dart';
 
-final class LoginRepository implements BaseLoginRepository {
-  LoginRepository(this._apiService);
-  final APIService _apiService;
-
-  @override
-  Future<APIResult<LoginResponseBody>> login(LoginRequestBody body) async =>
-      ApiExecutor.execute<LoginResponseBody>(
-        call: () => _apiService.login(body),
-      );
+abstract interface class LoginRepository {
+  Future<ApiResult<LoginEntity>> login(LoginParams prams);
 }

@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LocalizationState {
 
- Locale get locale;
+ String get langCode;
 /// Create a copy of LocalizationState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $LocalizationStateCopyWith<LocalizationState> get copyWith => _$LocalizationStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocalizationState&&(identical(other.locale, locale) || other.locale == locale));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocalizationState&&(identical(other.langCode, langCode) || other.langCode == langCode));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,locale);
+int get hashCode => Object.hash(runtimeType,langCode);
 
 @override
 String toString() {
-  return 'LocalizationState(locale: $locale)';
+  return 'LocalizationState(langCode: $langCode)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $LocalizationStateCopyWith<$Res>  {
   factory $LocalizationStateCopyWith(LocalizationState value, $Res Function(LocalizationState) _then) = _$LocalizationStateCopyWithImpl;
 @useResult
 $Res call({
- Locale locale
+ String langCode
 });
 
 
@@ -62,10 +62,10 @@ class _$LocalizationStateCopyWithImpl<$Res>
 
 /// Create a copy of LocalizationState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? locale = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? langCode = null,}) {
   return _then(_self.copyWith(
-locale: null == locale ? _self.locale : locale // ignore: cast_nullable_to_non_nullable
-as Locale,
+langCode: null == langCode ? _self.langCode : langCode // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -147,10 +147,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Locale locale)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String langCode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LocalizationState() when $default != null:
-return $default(_that.locale);case _:
+return $default(_that.langCode);case _:
   return orElse();
 
 }
@@ -168,10 +168,10 @@ return $default(_that.locale);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Locale locale)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String langCode)  $default,) {final _that = this;
 switch (_that) {
 case _LocalizationState():
-return $default(_that.locale);}
+return $default(_that.langCode);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -185,10 +185,10 @@ return $default(_that.locale);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Locale locale)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String langCode)?  $default,) {final _that = this;
 switch (_that) {
 case _LocalizationState() when $default != null:
-return $default(_that.locale);case _:
+return $default(_that.langCode);case _:
   return null;
 
 }
@@ -200,10 +200,10 @@ return $default(_that.locale);case _:
 
 
 class _LocalizationState implements LocalizationState {
-  const _LocalizationState({required this.locale});
+  const _LocalizationState({required this.langCode});
   
 
-@override final  Locale locale;
+@override final  String langCode;
 
 /// Create a copy of LocalizationState
 /// with the given fields replaced by the non-null parameter values.
@@ -215,16 +215,16 @@ _$LocalizationStateCopyWith<_LocalizationState> get copyWith => __$LocalizationS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocalizationState&&(identical(other.locale, locale) || other.locale == locale));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocalizationState&&(identical(other.langCode, langCode) || other.langCode == langCode));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,locale);
+int get hashCode => Object.hash(runtimeType,langCode);
 
 @override
 String toString() {
-  return 'LocalizationState(locale: $locale)';
+  return 'LocalizationState(langCode: $langCode)';
 }
 
 
@@ -235,7 +235,7 @@ abstract mixin class _$LocalizationStateCopyWith<$Res> implements $LocalizationS
   factory _$LocalizationStateCopyWith(_LocalizationState value, $Res Function(_LocalizationState) _then) = __$LocalizationStateCopyWithImpl;
 @override @useResult
 $Res call({
- Locale locale
+ String langCode
 });
 
 
@@ -252,10 +252,10 @@ class __$LocalizationStateCopyWithImpl<$Res>
 
 /// Create a copy of LocalizationState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? locale = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? langCode = null,}) {
   return _then(_LocalizationState(
-locale: null == locale ? _self.locale : locale // ignore: cast_nullable_to_non_nullable
-as Locale,
+langCode: null == langCode ? _self.langCode : langCode // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

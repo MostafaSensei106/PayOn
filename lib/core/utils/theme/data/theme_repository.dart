@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
-
+import 'package:injectable/injectable.dart';
 import '../../../constants/pref_keys.dart';
-import '../../../services/shared_prefs/base_prefs_storage_service.dart';
+import '../../../services/shared_prefs/base_pref_storage_service.dart';
 import 'base_theme_repository.dart';
 
+@LazySingleton(as: BaseThemeRepository)
 class ThemeRepository implements BaseThemeRepository {
   ThemeRepository(this._storage);
-  final BasePrefsStorageService _storage;
+  final BasePrefStorageService _storage;
 
   @override
-  Future<void> cacheThemeMode(ThemeMode mode) async {
-    await _storage.setData<String>(PrefKeys.themeMode, mode.name);
+  Future<void> cacheThemeMode(ThemeMode themeMode) async {
+    await _storage.setData(key: PrefKeys.themeMode, value: themeMode.name);
   }
 
   @override
-  ThemeMode getThemeMode() {
-    final cachedTheme = _storage.getData<String>(PrefKeys.themeMode);
+  Future<ThemeMode> getThemeMode() async {
+    final cachedThemeName = await _storage.getData<String>(
+      key: PrefKeys.themeMode,
+    );
+    if (cachedThemeName == null) return ThemeMode.system;
+
     return ThemeMode.values.firstWhere(
-      (e) => e.name == cachedTheme,
+      (e) => e.name == cachedThemeName,
       orElse: () => ThemeMode.system,
     );
   }

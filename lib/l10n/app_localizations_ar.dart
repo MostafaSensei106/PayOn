@@ -378,37 +378,76 @@ class AppLocalizationsAr extends AppLocalizations {
   String get delete_account_desc => 'سيؤدي هذا إلى حذف حسابك نهائياً';
 
   @override
-  String get error_email_empty => 'البريد الإلكتروني مطلوب';
+  String get error_email_cant_be_empty =>
+      'لا يمكن أن يكون البريد الإلكتروني فارغاً';
 
   @override
-  String get error_email_missing_at => 'البريد الإلكتروني يفتقد علامة @';
+  String get error_email_not_invalid_format =>
+      'صيغة البريد الإلكتروني غير صحيحة';
 
   @override
-  String get error_email_invalid => 'بريد إلكتروني غير صالح';
+  String get error_email_contains_invalid_characters =>
+      'يحتوي البريد الإلكتروني على أحرف غير صالحة';
+
+  @override
+  String get error_email_must_contain_at_symbol =>
+      'يجب أن يحتوي البريد الإلكتروني على رمز @';
+
+  @override
+  String get error_email_must_be_in_lowercase =>
+      'يجب أن يكون البريد الإلكتروني بأحرف صغيرة';
+
+  @override
+  String get error_arabic_not_allowed => 'الأحرف العربية غير مسموح بها';
+
+  @override
+  String get error_email_emoji_not_allowed =>
+      'الرموز التعبيرية غير مسموح بها في البريد الإلكتروني';
+
+  @override
+  String get unverified_account => 'حساب غير موثق';
+
+  @override
+  String get gender => 'النوع';
+
+  @override
+  String get error_full_name_cant_be_empty =>
+      'لا يمكن أن يكون الاسم الكامل فارغاً';
+
+  @override
+  String get error_full_name_too_long_max_255_chars =>
+      'الاسم الكامل طويل جداً (الحد الأقصى 255 حرفاً)';
+
+  @override
+  String get error_full_name_invalid_characters =>
+      'يحتوي الاسم الكامل على أحرف غير صالحة';
 
   @override
   String get error_email_exists => 'البريد الإلكتروني مسجل بالفعل';
 
   @override
+  String get error_phone_number_cant_be_empty =>
+      'لا يمكن أن يكون رقم الهاتف فارغاً';
+
+  @override
+  String get error_cant_be_empty => 'هذا الحقل لا يمكن أن يكون فارغاً';
+
+  @override
+  String get error_phone_number_invalid => 'رقم الهاتف غير صحيح';
+
+  @override
   String get error_email_not_found => 'البريد الإلكتروني غير مسجل';
 
   @override
-  String get error_email_lowercase => 'يجب كتابة البريد بأحرف صغيرة';
-
-  @override
-  String get error_email_not_valid => 'عنوان البريد غير صحيح';
-
-  @override
-  String get error_email_missing_domain => 'البريد يفتقد النطاق';
-
-  @override
-  String get error_email_missing_dot => 'البريد يفتقد النقطة';
-
-  @override
-  String get error_email_missing_extension => 'البريد يفتقد الامتداد';
+  String get error_password_cant_be_empty =>
+      'لا يمكن أن تكون كلمة المرور فارغة';
 
   @override
   String get error_password_empty => 'كلمة المرور مطلوبة';
+
+  @override
+  String get error_password_too_short_min_8_chars =>
+      'كلمة المرور قصيرة جداً (8 أحرف على الأقل)';
 
   @override
   String get error_username_empty => 'اسم المستخدم مطلوب';
@@ -701,4 +740,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get verified_account => 'حساب موثق';
+
+  @override
+  String get ok => 'موافق';
+
+  @override
+  String get session_expired => 'انتهت الجلسة';
+
+  @override
+  String get session_expired_description =>
+      'انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى للمتابعة.';
 }

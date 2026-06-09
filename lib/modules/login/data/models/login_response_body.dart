@@ -2,6 +2,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../logic/entities/login_entity.dart';
 import 'user_data.dart';
 
 part 'login_response_body.g.dart';
@@ -23,4 +24,10 @@ final class LoginResponseBody {
 
   factory LoginResponseBody.fromJson(Map<String, dynamic> json) =>
       _$LoginResponseBodyFromJson(json);
+}
+
+extension LoginResponseBodyMapper on LoginResponseBody {
+  LoginEntity toEntity() {
+    return LoginEntity(token: userData.token);
+  }
 }

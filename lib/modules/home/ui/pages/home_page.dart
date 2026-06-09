@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/constants/app_config.dart';
@@ -13,7 +15,9 @@ import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/avatar/avatar_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
-import '../../data/models/account_model.dart';
+import '../../logic/cubit/home_cubit.dart';
+import '../../logic/cubit/home_state.dart';
+import '../../logic/entitys/wallets_entity.dart';
 import '../widgets/account_balance_card.dart';
 import '../widgets/latest_transactions_section.dart';
 import '../widgets/quick_action_item.dart';
@@ -26,51 +30,6 @@ class HomePage extends StatelessWidget {
     final l10n = getIt<L10nService>().get(context);
     final cardController = PageController();
     final scrollController = ScrollController();
-
-    final accounts = <AccountModel>[
-      AccountModel(
-        currencyName: l10n.egyptian_pound,
-        symbol: 'EGP',
-        balance: '45,250.00',
-        accountId: 'ID: 2024-EGP-88',
-        countryCode: 'EG',
-      ),
-      AccountModel(
-        currencyName: l10n.us_dollar,
-        symbol: 'USD',
-        balance: '1,280.50',
-        accountId: 'ID: 2024-USD-12',
-        countryCode: 'US',
-      ),
-      AccountModel(
-        currencyName: l10n.saudi_riyal,
-        symbol: 'SAR',
-        balance: '15,000.00',
-        accountId: 'ID: 2024-SAR-44',
-        countryCode: 'SA',
-      ),
-      AccountModel(
-        currencyName: l10n.uae_dirham,
-        symbol: 'AED',
-        balance: '8,400.00',
-        accountId: 'ID: 2024-AED-55',
-        countryCode: 'AE',
-      ),
-      AccountModel(
-        currencyName: l10n.british_pound,
-        symbol: 'GBP',
-        balance: '650.00',
-        accountId: 'ID: 2024-GBP-66',
-        countryCode: 'GB',
-      ),
-      AccountModel(
-        currencyName: l10n.japanese_yen,
-        symbol: 'JPY',
-        balance: '150,000,000.00',
-        accountId: 'ID: 2024-JPY-09',
-        countryCode: 'JP',
-      ),
-    ];
 
     return Scaffold(
       body: CustomScrollView(
@@ -96,7 +55,7 @@ class HomePage extends StatelessWidget {
                   },
                   child: const AvatarComponent(
                     imageUrl:
-                        'https://media.licdn.com/dms/image/v2/D5603AQHpMGFlYFIAyw/profile-displayphoto-scale_400_400/B56ZnjHIJxHIAg-/0/1760451933899?e=1776902400&v=beta&t=ClsT0ppYA0_8z9ViCSbiS4FG81mCgMkabjoNBHSN1hc',
+                        'https://hips.hearstapps.com/hmg-prod/images/demon-slayer-kimetsu-no-yaiba-646f30ac5433e.jpg',
                   ),
                 ),
               ),
@@ -120,22 +79,45 @@ class HomePage extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(
-                    child: PageView.builder(
-                      controller: cardController,
-                      itemCount: accounts.length,
-                      itemBuilder: (final context, final index) =>
-                          AccountBalanceCard(account: accounts[index]),
+                    child: BlocBuilder<HomeCubit, HomeState>(
+                      builder: (context, state) {
+                        return state.maybeWhen(
+                          success: (t) => PageView.builder(
+                            controller: cardController,
+                            itemCount: t.wallets.length,
+                            itemBuilder: (final context, final index) =>
+                                AccountBalanceCard(w: t.wallets[index]),
+                          ),
+                          loading: () => const Skeletonizer(
+                            child: AccountBalanceCard(
+                              w: WalletItemEntity.placeholder(),
+                            ),
+                          ),
+                          failure: (message) => Center(child: Text(message)),
+                          orElse: () =>
+                              const Center(child: CircularProgressIndicator()),
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(height: AppConfig.paddingHalf),
-                  SmoothPageIndicator(
-                    controller: cardController,
-                    count: accounts.length,
-                    effect: ScrollingDotsEffect(
-                      dotHeight: 6,
-                      dotWidth: 6,
-                      activeDotColor: Theme.of(context).colorScheme.onPrimary,
-                    ),
+                  BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                        success: (wallets) => SmoothPageIndicator(
+                          controller: cardController,
+                          count: wallets.wallets.length,
+                          effect: ScrollingDotsEffect(
+                            dotHeight: 6,
+                            dotWidth: 6,
+                            activeDotColor: Theme.of(
+                              context,
+                            ).colorScheme.onPrimary,
+                          ),
+                        ),
+                        orElse: () => const SizedBox.shrink(),
+                      );
+                    },
                   ),
                   const SizedBox(height: AppConfig.paddingHalf),
                   Row(

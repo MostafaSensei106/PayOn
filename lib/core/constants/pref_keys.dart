@@ -5,4 +5,5 @@ final class PrefKeys {
   static const String userId = 'userId';
   static const String isRememberMe = 'isRememberMe';
   static const String isFingerprintEnabled = 'isFingerprintEnabled';
+  static const String hasSeenOnboarding = 'hasSeenOnboarding';
 }

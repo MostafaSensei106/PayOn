@@ -1,33 +1,37 @@
 import 'package:flutter/material.dart';
-
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../constants/app_config.dart';
 import '../../di/di.dart';
 import '../../services/theme/theme_service.dart';
+import '../navigation/app_bar/side_page_app_bar_component.dart';
 
 extension BottomSheetExtension on BuildContext {
   // ignore: unused_element
   Future<void> showBottomSheetComponent({
+    required String title,
     required Widget child,
-    bool isScrollControlled = true,
-    bool isDismissible = true,
-    bool enableDrag = true,
   }) {
-    return showModalBottomSheet(
+    return showCupertinoModalBottomSheet(
       context: this,
-      showDragHandle: true,
-      isDismissible: isDismissible,
-      enableDrag: enableDrag,
+      isDismissible: true,
+      useRootNavigator: true,
       backgroundColor: getIt<ThemeService>().get(this).surface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(AppConfig.outBorderRadius),
         ),
       ),
-      builder: (context) => SizedBox(
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(AppConfig.paddingHalf),
-          child: child,
+
+      builder: (context) => Material(
+        child: Scaffold(
+          appBar: SidePageAppBarComponent(title: title),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppConfig.padding,
+              vertical: AppConfig.padding,
+            ),
+            child: child,
+          ),
         ),
       ),
     );

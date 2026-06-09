@@ -1,45 +1,71 @@
-// /home/ottafa/Devolpments/PayOn/lib/core/networking/api_error_handler/api_error_handler.dart
 import 'package:dio/dio.dart';
+import '../utils/error/failures.dart';
 import 'api_error_model/api_error_model.dart';
 
-class APIErrorHandler implements Exception {
-  APIErrorHandler.handle(dynamic error) {
+final class APIErrorHandler {
+  const APIErrorHandler._();
+
+  static Failures handle(Object error) {
     if (error is DioException) {
-      apiErrorModel = _handleError(error);
+      return _handleDioError(error);
+    } else if (error is TypeError || error is FormatException) {
+      return const ParsingFailure('Data parsing error');
     } else {
-      apiErrorModel = APIErrorModel(
-        code: 0,
-        message: 'An unexpected error occurred',
-      );
+      return UnknownFailure(error.toString());
     }
   }
-  late APIErrorModel apiErrorModel;
 
-  APIErrorModel get failure => apiErrorModel;
-
-  APIErrorModel _handleError(DioException error) {
+  static Failures _handleDioError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
-        return APIErrorModel(code: -1, message: 'Connection timeout');
       case DioExceptionType.sendTimeout:
-        return APIErrorModel(code: -2, message: 'Send timeout');
       case DioExceptionType.receiveTimeout:
-        return APIErrorModel(code: -3, message: 'Receive timeout');
+        return const TimeoutFailure('Server connection timeout');
+
       case DioExceptionType.badResponse:
-        if (error.response?.data != null &&
-            error.response?.data is Map<String, dynamic>) {
-          return APIErrorModel.fromJson(
-            error.response!.data as Map<String, dynamic>,
-          );
-        }
-        return APIErrorModel(
-          code: error.response?.statusCode ?? -4,
-          message: 'Bad response',
-        );
+        return _parseServerResponseError(error.response);
+
       case DioExceptionType.cancel:
-        return APIErrorModel(code: -5, message: 'Request cancelled');
-      default:
-        return APIErrorModel(code: -6, message: 'Something went wrong');
+        return const ServerFailure('Request was cancelled');
+
+      case DioExceptionType.connectionError:
+        return const NetworkFailure('No internet connection');
+
+      case DioExceptionType.badCertificate:
+        return const ServerFailure('Bad certificate error');
+
+      case DioExceptionType.unknown:
+        if (error.message?.contains('SocketException') ?? false) {
+          return const NetworkFailure('No internet connection');
+        }
+        return UnknownFailure(error.message ?? 'Unknown network error');
     }
+  }
+
+  static Failures _parseServerResponseError(Response? response) {
+    if (response == null) {
+      return const ServerFailure('Empty response from server');
+    }
+
+    final responseData = response.data;
+    final statusCode = response.statusCode;
+
+    if (responseData != null && responseData is Map<String, dynamic>) {
+      try {
+        final model = APIErrorModel.fromJson(responseData);
+        final errorMessage = model.message.isNotEmpty
+            ? model.message
+            : responseData['error']?.toString() ??
+                  responseData['message']?.toString();
+
+        return ServerFailure(errorMessage ?? 'Server error ($statusCode)');
+      } catch (_) {
+        return ServerFailure('Server parsing error ($statusCode)');
+      }
+    } else if (responseData is String && responseData.isNotEmpty) {
+      return ServerFailure(responseData);
+    }
+
+    return ServerFailure('Request failed with status code: $statusCode');
   }
 }

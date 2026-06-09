@@ -824,23 +824,77 @@ abstract class AppLocalizations {
   /// **'this will permanently delete your account'**
   String get delete_account_desc;
 
-  /// No description provided for @error_email_empty.
+  /// No description provided for @error_email_cant_be_empty.
   ///
   /// In en, this message translates to:
   /// **'Email cannot be empty'**
-  String get error_email_empty;
+  String get error_email_cant_be_empty;
 
-  /// No description provided for @error_email_missing_at.
+  /// No description provided for @error_email_not_invalid_format.
   ///
   /// In en, this message translates to:
-  /// **'Email is missing @ sign'**
-  String get error_email_missing_at;
+  /// **'Email format is invalid'**
+  String get error_email_not_invalid_format;
 
-  /// No description provided for @error_email_invalid.
+  /// No description provided for @error_email_contains_invalid_characters.
   ///
   /// In en, this message translates to:
-  /// **'Email is invalid'**
-  String get error_email_invalid;
+  /// **'Email contains invalid characters'**
+  String get error_email_contains_invalid_characters;
+
+  /// No description provided for @error_email_must_contain_at_symbol.
+  ///
+  /// In en, this message translates to:
+  /// **'Email must contain @ symbol'**
+  String get error_email_must_contain_at_symbol;
+
+  /// No description provided for @error_email_must_be_in_lowercase.
+  ///
+  /// In en, this message translates to:
+  /// **'Email must be in lower case'**
+  String get error_email_must_be_in_lowercase;
+
+  /// No description provided for @error_arabic_not_allowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic characters are not allowed'**
+  String get error_arabic_not_allowed;
+
+  /// No description provided for @error_email_emoji_not_allowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Emojis are not allowed in email'**
+  String get error_email_emoji_not_allowed;
+
+  /// No description provided for @unverified_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Unverified Account'**
+  String get unverified_account;
+
+  /// No description provided for @gender.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get gender;
+
+  /// No description provided for @error_full_name_cant_be_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name cannot be empty'**
+  String get error_full_name_cant_be_empty;
+
+  /// No description provided for @error_full_name_too_long_max_255_chars.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name is too long (maximum 255 characters)'**
+  String get error_full_name_too_long_max_255_chars;
+
+  /// No description provided for @error_full_name_invalid_characters.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name contains invalid characters'**
+  String get error_full_name_invalid_characters;
 
   /// No description provided for @error_email_exists.
   ///
@@ -848,47 +902,47 @@ abstract class AppLocalizations {
   /// **'Email already exists'**
   String get error_email_exists;
 
+  /// No description provided for @error_phone_number_cant_be_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number cannot be empty'**
+  String get error_phone_number_cant_be_empty;
+
+  /// No description provided for @error_cant_be_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'This field cannot be empty'**
+  String get error_cant_be_empty;
+
+  /// No description provided for @error_phone_number_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number is invalid'**
+  String get error_phone_number_invalid;
+
   /// No description provided for @error_email_not_found.
   ///
   /// In en, this message translates to:
   /// **'Email not found'**
   String get error_email_not_found;
 
-  /// No description provided for @error_email_lowercase.
+  /// No description provided for @error_password_cant_be_empty.
   ///
   /// In en, this message translates to:
-  /// **'Email must be in lower case'**
-  String get error_email_lowercase;
-
-  /// No description provided for @error_email_not_valid.
-  ///
-  /// In en, this message translates to:
-  /// **'Email is not valid'**
-  String get error_email_not_valid;
-
-  /// No description provided for @error_email_missing_domain.
-  ///
-  /// In en, this message translates to:
-  /// **'Email is missing domain'**
-  String get error_email_missing_domain;
-
-  /// No description provided for @error_email_missing_dot.
-  ///
-  /// In en, this message translates to:
-  /// **'Email is missing .'**
-  String get error_email_missing_dot;
-
-  /// No description provided for @error_email_missing_extension.
-  ///
-  /// In en, this message translates to:
-  /// **'Email is missing extension'**
-  String get error_email_missing_extension;
+  /// **'Password cannot be empty'**
+  String get error_password_cant_be_empty;
 
   /// No description provided for @error_password_empty.
   ///
   /// In en, this message translates to:
   /// **'Password cannot be empty'**
   String get error_password_empty;
+
+  /// No description provided for @error_password_too_short_min_8_chars.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is too short (minimum 8 characters)'**
+  String get error_password_too_short_min_8_chars;
 
   /// No description provided for @error_username_empty.
   ///
@@ -1465,6 +1519,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Verified Account'**
   String get verified_account;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// No description provided for @session_expired.
+  ///
+  /// In en, this message translates to:
+  /// **'Session Expired'**
+  String get session_expired;
+
+  /// No description provided for @session_expired_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Your session has expired. Please login again to continue.'**
+  String get session_expired_description;
 }
 
 class _AppLocalizationsDelegate

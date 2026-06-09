@@ -1,20 +1,34 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../data/base_theme_repository.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:injectable/injectable.dart';
 
 part 'theme_state.dart';
 part 'theme_cubit.freezed.dart';
 
-class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit(this._themeRepository)
-    : super(ThemeState(themeMode: _themeRepository.getThemeMode()));
-  final BaseThemeRepository _themeRepository;
+@lazySingleton
+class ThemeCubit extends HydratedCubit<ThemeState> {
+  ThemeCubit() : super(const ThemeState());
 
   Future<void> changeTheme(ThemeMode newMode) async {
     if (state.themeMode == newMode) return;
 
     emit(state.copyWith(themeMode: newMode));
-    await _themeRepository.cacheThemeMode(newMode);
+  }
+
+  @override
+  ThemeState? fromJson(Map<String, dynamic> json) {
+    final index = json['themeMode'] as int?;
+    if (index != null) {
+      return ThemeState(themeMode: ThemeMode.values[index]);
+    }
+    return const ThemeState();
+  }
+
+  @override
+  Map<String, dynamic>? toJson(ThemeState state) {
+    return {'themeMode': state.themeMode.index};
   }
 }

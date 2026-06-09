@@ -2,18 +2,20 @@ import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../../core/constants/app_enums.dart';
-import '../../../../../core/networking/api_result/api_result.dart';
-import '../../../../../core/validator/email_validators.dart';
-import '../../../../../core/validator/password.dart';
-import '../../../../../core/validator/phone_number.dart';
-import '../../../../../core/validator/user_name.dart';
+import '../../../../../core/constants/types/type_def.dart';
+import '../../../../../core/utils/validator/email_validators.dart';
+import '../../../../../core/utils/validator/full_name.dart';
+import '../../../../../core/utils/validator/password.dart';
+import '../../../../../core/utils/validator/phone_number.dart';
 import '../../../data/models/account_type/account_type_item.dart';
 import '../../../data/models/register/register_request_body.dart';
 import '../../../data/repositories/register/base_register_repository.dart';
 import 'register_state.dart';
 
+@injectable
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this._registerRepository)
     : super(const RegisterState.initial(RegisterFormState()));
@@ -32,11 +34,8 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   void firstNameOnChanged(String value) {
-    final firstName = UserName.dirty(value);
-    final fullName = '$value ${currentForm.lastName.value}'.trim();
-    final name = UserName.dirty(fullName);
-
-    final updatedForm = currentForm.copyWith(firstName: firstName, name: name);
+    final name = FullName.dirty(value);
+    final updatedForm = currentForm.copyWith(name: name);
     emit(
       RegisterState.initial(
         updatedForm.copyWith(isValid: _validate(updatedForm)),
@@ -45,11 +44,8 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   void lastNameOnChanged(String value) {
-    final lastName = UserName.dirty(value);
-    final fullName = '${currentForm.firstName.value} $value'.trim();
-    final name = UserName.dirty(fullName);
-
-    final updatedForm = currentForm.copyWith(lastName: lastName, name: name);
+    final name = FullName.dirty(value);
+    final updatedForm = currentForm.copyWith(name: name);
     emit(
       RegisterState.initial(
         updatedForm.copyWith(isValid: _validate(updatedForm)),
@@ -153,8 +149,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   bool _validate(RegisterFormState form) {
     return Formz.validate([
-          form.firstName,
-          form.lastName,
+          form.name,
           form.email,
           form.phoneNumber,
           form.password,
@@ -185,12 +180,8 @@ class RegisterCubit extends Cubit<RegisterState> {
       success: (r) async {
         emit(RegisterState.success(currentForm, data: r));
       },
-      failure: (e) => emit(
-        RegisterState.failure(
-          currentForm,
-          error: e.failure.message ?? 'Unknown Error',
-        ),
-      ),
+      failure: (e) =>
+          emit(RegisterState.failure(currentForm, error: e.message)),
     );
   }
 

@@ -1,16 +1,17 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'api_error_model.freezed.dart';
 part 'api_error_model.g.dart';
 
-@JsonSerializable()
-final class APIErrorModel {
-  APIErrorModel({required this.code, required this.message});
-  final int code;
-  final String? message;
+@freezed
+abstract class APIErrorModel with _$APIErrorModel {
+  const factory APIErrorModel({
+    @JsonKey(name: 'code') @Default(0) int code,
+    @JsonKey(name: 'message') @Default('') String message,
+    @JsonKey(name: 'errors') List<String>? errors,
+    @JsonKey(name: 'success') @Default(false) bool success,
+  }) = _APIErrorModel;
 
-  // ignore: sort_constructors_first
   factory APIErrorModel.fromJson(Map<String, dynamic> json) =>
       _$APIErrorModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$APIErrorModelToJson(this);
 }

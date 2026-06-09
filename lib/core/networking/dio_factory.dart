@@ -1,31 +1,54 @@
 import 'package:dio/dio.dart';
-// ignore: depend_on_referenced_packages
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import '../constants/api_header.dart';
 import '../constants/app_config.dart';
 import '../di/di.dart';
-import 'dio_lang_interceptor.dart';
+import '../services/shared_prefs/base_pref_storage_service.dart';
+import '../utils/localization/logic/cubit/localization_cubit.dart';
+import '../utils/network/logic/cubit/network_cubit.dart';
+import 'dio_connectivity_request_retrier.dart';
+import 'dio_locale_interceptor.dart';
+import 'dio_token_interceptor.dart';
+import 'network_info/interface/base_network_info.dart';
 
-final class DioFactory {
+class DioFactory {
   DioFactory._();
 
   static Dio? dio;
 
-  static Future<Dio> getDio() async {
-    const timeOut = AppConfig.dioTimeout;
+  static Future<Dio> getDio({
+    required LocalizationCubit localizationCubit,
+    required BasePrefStorageService prefStorageService,
+    required BaseNetworkInfo networkInfo,
+    required NetworkCubit networkCubit,
+  }) async {
     if (dio == null) {
       dio = Dio();
       dio!
-        ..options.connectTimeout = timeOut
-        ..options.receiveTimeout = timeOut;
-      addDioInterceptors();
+        ..options.headers[ApiHeader.accept] = ApiHeader.applicationJson
+        ..options.headers[ApiHeader.contentType] = ApiHeader.applicationJson
+        ..options.connectTimeout = AppConfig.dioTimeOut
+        ..options.receiveTimeout = AppConfig.dioTimeOut;
+      addDioInterceptors(
+        localizationCubit: localizationCubit,
+        prefStorageService: prefStorageService,
+        networkInfo: networkInfo,
+        networkCubit: networkCubit,
+      );
       return dio!;
     } else {
       return dio!;
     }
   }
 
-  static void addDioInterceptors() {
+  static void addDioInterceptors({
+    required LocalizationCubit localizationCubit,
+    required BasePrefStorageService prefStorageService,
+    required BaseNetworkInfo networkInfo,
+    required NetworkCubit networkCubit,
+  }) {
+    // dio?.interceptors.add(DioCertificatePinningInterceptor());
     dio?.interceptors.add(
       PrettyDioLogger(
         requestHeader: true,
@@ -33,6 +56,16 @@ final class DioFactory {
         responseHeader: true,
       ),
     );
-    dio?.interceptors.add(DioLangInterceptor(getIt()));
+    dio?.interceptors.add(DioLocaleInterceptor(localizationCubit));
+    dio?.interceptors.add(DioTokenInterceptor(prefStorageService));
+    dio?.interceptors.add(
+      DioConnectivityInterceptor(
+        dio: dio!,
+        networkInfo: getIt<BaseNetworkInfo>(),
+        onConnectionChanged: (isConnected) {
+          getIt<NetworkCubit>().forceUpdateStatus(isConnected: isConnected);
+        },
+      ),
+    );
   }
 }

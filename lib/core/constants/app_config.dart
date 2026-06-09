@@ -59,4 +59,6 @@ final class AppConfig {
   static const Duration dioTimeout = Duration(seconds: 30);
 
   static const Color mainColor = Color(0xff664fa2);
+
+  static const Duration dioTimeOut = Duration(seconds: 30);
 }

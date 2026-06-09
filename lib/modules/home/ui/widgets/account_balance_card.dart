@@ -8,11 +8,11 @@ import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/services/theme/theme_service.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
-import '../../data/models/account_model.dart';
+import '../../logic/entitys/wallets_entity.dart';
 
 class AccountBalanceCard extends HookWidget {
-  const AccountBalanceCard({required this.account, super.key});
-  final AccountModel account;
+  const AccountBalanceCard({required this.w, super.key});
+  final WalletItemEntity w;
 
   @override
   Widget build(final BuildContext context) {
@@ -38,17 +38,14 @@ class AccountBalanceCard extends HookWidget {
               children: [
                 Row(
                   children: [
-                    CountryFlag.fromCountryCode(account.countryCode),
+                    CountryFlag.fromCountryCode(w.country),
                     const SizedBox(width: 12),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text(w.currency, style: const TextStyle(fontSize: 12)),
                         Text(
-                          account.currencyName,
-                          style: const TextStyle(fontSize: 12),
-                        ),
-                        Text(
-                          account.symbol,
+                          w.currencyCode,
                           style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
@@ -73,8 +70,8 @@ class AccountBalanceCard extends HookWidget {
                 FittedBox(
                   child: Text(
                     showBalance.value
-                        ? '${account.balance} ${account.symbol}'
-                        : '•••••• ${account.symbol}',
+                        ? '${w.balance} ${w.currencyCode}'
+                        : '•••••• ${w.currencyCode}',
                     style: const TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.w600,
@@ -89,7 +86,7 @@ class AccountBalanceCard extends HookWidget {
                 Row(
                   children: [
                     Text(
-                      '${l10n.ipa}: ${account.accountId}',
+                      '${l10n.ipa}: ${w.ipa}',
                       style: const TextStyle(
                         fontSize: 10,
                         fontFamily: 'monospace',

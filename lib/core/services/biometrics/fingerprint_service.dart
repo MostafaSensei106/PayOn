@@ -1,11 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:injectable/injectable.dart';
 import 'package:local_auth/local_auth.dart';
 
-import 'base_biometrics_service.dart';
+import 'biometrics_service.dart';
 
-final class FingerprintService implements BaseBiometricsService {
+@LazySingleton(as: BiometricsService)
+final class FingerprintService implements BiometricsService {
   final LocalAuthentication _localAuth = LocalAuthentication();
 
   @override
