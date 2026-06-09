@@ -9,7 +9,7 @@ import '../usecase/check_wallet_usecase.dart';
 import 'send_money_state.dart';
 
 @injectable
-class SendMoneyCubit extends Cubit<SendMoneyState> {
+final class SendMoneyCubit extends Cubit<SendMoneyState> {
   SendMoneyCubit(this._u)
     : super(const SendMoneyState.initial(SendMoneyFormState()));
 
