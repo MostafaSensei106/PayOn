@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/extensions/extensions.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
 import '../../../home/logic/cubit/home_cubit.dart';
@@ -48,16 +49,15 @@ class SendMoneyPage extends HookWidget {
       body: BlocConsumer<SendMoneyCubit, SendMoneyState>(
         listener: (context, state) {
           state.whenOrNull(
-            transactionDraftSuccess: (_) {
-              // Handle success navigation or message
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('تم إنشاء المسودة بنجاح')),
-              );
+            loading: (_) {
+              context.dialog.showLoading();
+            },
+            transactionDraftSuccess: (t) {
+              Navigator.pop(context);
+              context.toast.showSuccess(context, l10n.success);
             },
             failure: (_, message) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(message)),
-              );
+              Navigator.pop(context);
             },
           );
         },

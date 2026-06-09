@@ -52,33 +52,35 @@ class ReceiverSelectionComponent extends StatelessWidget {
           ],
         ),
         SizedBox(height: 12.h),
-        SegmentedButton<SendMoneyMethod>(
-          showSelectedIcon: false,
-          style: SegmentedButton.styleFrom(
-            selectedBackgroundColor: theme.colorScheme.primary,
-            selectedForegroundColor: theme.colorScheme.onPrimary,
-            side: BorderSide.none,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
+        Center(
+          child: SegmentedButton<SendMoneyMethod>(
+            showSelectedIcon: false,
+            style: SegmentedButton.styleFrom(
+              selectedBackgroundColor: theme.colorScheme.primary,
+              selectedForegroundColor: theme.colorScheme.onPrimary,
+              side: BorderSide.none,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
+              ),
             ),
+            segments: [
+              ButtonSegment(
+                icon: const Icon(Iconsax.call_copy),
+                label: Text(l10n.phone_number),
+                value: SendMoneyMethod.phone,
+              ),
+              ButtonSegment(
+                icon: const Icon(Icons.alternate_email),
+                label: Text(l10n.ipa_address),
+                value: SendMoneyMethod.ipa,
+              ),
+            ],
+            selected: {selectedMethod},
+            onSelectionChanged: (newSelection) {
+              unawaited(HapticFeedback.vibrate());
+              onMethodChanged(newSelection.first);
+            },
           ),
-          segments: [
-            ButtonSegment(
-              icon: const Icon(Iconsax.call_copy),
-              label: Text(l10n.phone_number),
-              value: SendMoneyMethod.phone,
-            ),
-            ButtonSegment(
-              icon: const Icon(Icons.alternate_email),
-              label: Text(l10n.ipa_address),
-              value: SendMoneyMethod.ipa,
-            ),
-          ],
-          selected: {selectedMethod},
-          onSelectionChanged: (newSelection) {
-            unawaited(HapticFeedback.vibrate());
-            onMethodChanged(newSelection.first);
-          },
         ),
         SizedBox(height: 24.h),
         TextFormFieldComponent(
