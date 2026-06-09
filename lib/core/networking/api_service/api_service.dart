@@ -20,9 +20,12 @@ import '../../../modules/profile/data/models/edit_user_profile_request_body.dart
 import '../../../modules/profile/data/models/get_user_profile_response_body.dart';
 import '../../../modules/send_money/data/models/check_wallet/check_wallet_request_body.dart';
 import '../../../modules/send_money/data/models/check_wallet/check_wallet_response_body.dart';
+import '../../../modules/send_money/data/models/check_wallet_pin/check_wallet_pin_request_body.dart';
+import '../../../modules/send_money/data/models/check_wallet_pin/check_wallet_pin_rsponse_body.dart';
 import '../../../modules/send_money/data/models/create_transaction_draft/create_transaction_draft_request_body.dart';
 import '../../../modules/send_money/data/models/create_transaction_draft/create_transaction_draft_response_body.dart';
 import '../../../modules/send_money/data/models/get_favorites/get_user_favorites_response_body.dart';
+import '../../../modules/send_money/data/models/save_transaction/save_transaction_request_body.dart';
 import '../../constants/api_routes.dart';
 
 part 'api_service.g.dart';
@@ -86,6 +89,15 @@ abstract class ApiService {
   @POST(ApiRoutes.transactionCreateTransactionDraft)
   Future<CreateTransactionDraftResponseBody> createTransactionDraft(
     @Body() CreateTransactionDraftRequestBody body,
+  );
+
+  @POST(ApiRoutes.transactionCheckWalletPin)
+  Future<CheckWalletPinRsponseBody> checkWalletPin(
+    @Body() CheckWalletPinRequestBody body,
+  );
+
+  Future<SaveTransactionRequestBody> saveTransaction(
+    @Body() SaveTransactionRequestBody,
   );
 
   @GET(ApiRoutes.accountGetUserFavorites)
