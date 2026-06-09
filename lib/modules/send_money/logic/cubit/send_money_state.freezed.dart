@@ -656,7 +656,7 @@ $SendMoneyFormStateCopyWith<$Res> get formState {
 /// @nodoc
 mixin _$SendMoneyFormState implements DiagnosticableTreeMixin {
 
- UserInfo get userInfo; Amount get amount; List<FavoriteItemEntity> get favorites; bool get isLoadingFavorites; bool get isValid;
+ UserInfo get userInfo; Amount get amount; bool get isValid;
 /// Create a copy of SendMoneyFormState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -668,21 +668,21 @@ $SendMoneyFormStateCopyWith<SendMoneyFormState> get copyWith => _$SendMoneyFormS
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'SendMoneyFormState'))
-    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('favorites', favorites))..add(DiagnosticsProperty('isLoadingFavorites', isLoadingFavorites))..add(DiagnosticsProperty('isValid', isValid));
+    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('isValid', isValid));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.amount, amount) || other.amount == amount)&&const DeepCollectionEquality().equals(other.favorites, favorites)&&(identical(other.isLoadingFavorites, isLoadingFavorites) || other.isLoadingFavorites == isLoadingFavorites)&&(identical(other.isValid, isValid) || other.isValid == isValid));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.isValid, isValid) || other.isValid == isValid));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userInfo,amount,const DeepCollectionEquality().hash(favorites),isLoadingFavorites,isValid);
+int get hashCode => Object.hash(runtimeType,userInfo,amount,isValid);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SendMoneyFormState(userInfo: $userInfo, amount: $amount, favorites: $favorites, isLoadingFavorites: $isLoadingFavorites, isValid: $isValid)';
+  return 'SendMoneyFormState(userInfo: $userInfo, amount: $amount, isValid: $isValid)';
 }
 
 
@@ -693,7 +693,7 @@ abstract mixin class $SendMoneyFormStateCopyWith<$Res>  {
   factory $SendMoneyFormStateCopyWith(SendMoneyFormState value, $Res Function(SendMoneyFormState) _then) = _$SendMoneyFormStateCopyWithImpl;
 @useResult
 $Res call({
- UserInfo userInfo, Amount amount, List<FavoriteItemEntity> favorites, bool isLoadingFavorites, bool isValid
+ UserInfo userInfo, Amount amount, bool isValid
 });
 
 
@@ -710,13 +710,11 @@ class _$SendMoneyFormStateCopyWithImpl<$Res>
 
 /// Create a copy of SendMoneyFormState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? userInfo = null,Object? amount = null,Object? favorites = null,Object? isLoadingFavorites = null,Object? isValid = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? userInfo = null,Object? amount = null,Object? isValid = null,}) {
   return _then(_self.copyWith(
 userInfo: null == userInfo ? _self.userInfo : userInfo // ignore: cast_nullable_to_non_nullable
 as UserInfo,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
-as Amount,favorites: null == favorites ? _self.favorites : favorites // ignore: cast_nullable_to_non_nullable
-as List<FavoriteItemEntity>,isLoadingFavorites: null == isLoadingFavorites ? _self.isLoadingFavorites : isLoadingFavorites // ignore: cast_nullable_to_non_nullable
-as bool,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as Amount,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -802,10 +800,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserInfo userInfo,  Amount amount,  List<FavoriteItemEntity> favorites,  bool isLoadingFavorites,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserInfo userInfo,  Amount amount,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SendMoneyFormState() when $default != null:
-return $default(_that.userInfo,_that.amount,_that.favorites,_that.isLoadingFavorites,_that.isValid);case _:
+return $default(_that.userInfo,_that.amount,_that.isValid);case _:
   return orElse();
 
 }
@@ -823,10 +821,10 @@ return $default(_that.userInfo,_that.amount,_that.favorites,_that.isLoadingFavor
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserInfo userInfo,  Amount amount,  List<FavoriteItemEntity> favorites,  bool isLoadingFavorites,  bool isValid)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserInfo userInfo,  Amount amount,  bool isValid)  $default,) {final _that = this;
 switch (_that) {
 case _SendMoneyFormState():
-return $default(_that.userInfo,_that.amount,_that.favorites,_that.isLoadingFavorites,_that.isValid);case _:
+return $default(_that.userInfo,_that.amount,_that.isValid);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -843,10 +841,10 @@ return $default(_that.userInfo,_that.amount,_that.favorites,_that.isLoadingFavor
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserInfo userInfo,  Amount amount,  List<FavoriteItemEntity> favorites,  bool isLoadingFavorites,  bool isValid)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserInfo userInfo,  Amount amount,  bool isValid)?  $default,) {final _that = this;
 switch (_that) {
 case _SendMoneyFormState() when $default != null:
-return $default(_that.userInfo,_that.amount,_that.favorites,_that.isLoadingFavorites,_that.isValid);case _:
+return $default(_that.userInfo,_that.amount,_that.isValid);case _:
   return null;
 
 }
@@ -858,19 +856,11 @@ return $default(_that.userInfo,_that.amount,_that.favorites,_that.isLoadingFavor
 
 
 class _SendMoneyFormState with DiagnosticableTreeMixin implements SendMoneyFormState {
-  const _SendMoneyFormState({this.userInfo = const UserInfo.pure(), this.amount = const Amount.pure(), final  List<FavoriteItemEntity> favorites = const [], this.isLoadingFavorites = false, this.isValid = false}): _favorites = favorites;
+  const _SendMoneyFormState({this.userInfo = const UserInfo.pure(), this.amount = const Amount.pure(), this.isValid = false});
   
 
 @override@JsonKey() final  UserInfo userInfo;
 @override@JsonKey() final  Amount amount;
- final  List<FavoriteItemEntity> _favorites;
-@override@JsonKey() List<FavoriteItemEntity> get favorites {
-  if (_favorites is EqualUnmodifiableListView) return _favorites;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_favorites);
-}
-
-@override@JsonKey() final  bool isLoadingFavorites;
 @override@JsonKey() final  bool isValid;
 
 /// Create a copy of SendMoneyFormState
@@ -884,21 +874,21 @@ _$SendMoneyFormStateCopyWith<_SendMoneyFormState> get copyWith => __$SendMoneyFo
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'SendMoneyFormState'))
-    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('favorites', favorites))..add(DiagnosticsProperty('isLoadingFavorites', isLoadingFavorites))..add(DiagnosticsProperty('isValid', isValid));
+    ..add(DiagnosticsProperty('userInfo', userInfo))..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('isValid', isValid));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.amount, amount) || other.amount == amount)&&const DeepCollectionEquality().equals(other._favorites, _favorites)&&(identical(other.isLoadingFavorites, isLoadingFavorites) || other.isLoadingFavorites == isLoadingFavorites)&&(identical(other.isValid, isValid) || other.isValid == isValid));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SendMoneyFormState&&(identical(other.userInfo, userInfo) || other.userInfo == userInfo)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.isValid, isValid) || other.isValid == isValid));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userInfo,amount,const DeepCollectionEquality().hash(_favorites),isLoadingFavorites,isValid);
+int get hashCode => Object.hash(runtimeType,userInfo,amount,isValid);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SendMoneyFormState(userInfo: $userInfo, amount: $amount, favorites: $favorites, isLoadingFavorites: $isLoadingFavorites, isValid: $isValid)';
+  return 'SendMoneyFormState(userInfo: $userInfo, amount: $amount, isValid: $isValid)';
 }
 
 
@@ -909,7 +899,7 @@ abstract mixin class _$SendMoneyFormStateCopyWith<$Res> implements $SendMoneyFor
   factory _$SendMoneyFormStateCopyWith(_SendMoneyFormState value, $Res Function(_SendMoneyFormState) _then) = __$SendMoneyFormStateCopyWithImpl;
 @override @useResult
 $Res call({
- UserInfo userInfo, Amount amount, List<FavoriteItemEntity> favorites, bool isLoadingFavorites, bool isValid
+ UserInfo userInfo, Amount amount, bool isValid
 });
 
 
@@ -926,13 +916,11 @@ class __$SendMoneyFormStateCopyWithImpl<$Res>
 
 /// Create a copy of SendMoneyFormState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? userInfo = null,Object? amount = null,Object? favorites = null,Object? isLoadingFavorites = null,Object? isValid = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? userInfo = null,Object? amount = null,Object? isValid = null,}) {
   return _then(_SendMoneyFormState(
 userInfo: null == userInfo ? _self.userInfo : userInfo // ignore: cast_nullable_to_non_nullable
 as UserInfo,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
-as Amount,favorites: null == favorites ? _self._favorites : favorites // ignore: cast_nullable_to_non_nullable
-as List<FavoriteItemEntity>,isLoadingFavorites: null == isLoadingFavorites ? _self.isLoadingFavorites : isLoadingFavorites // ignore: cast_nullable_to_non_nullable
-as bool,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as Amount,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

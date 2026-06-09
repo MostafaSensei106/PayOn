@@ -45,6 +45,11 @@ class SendMoneyPage extends HookWidget {
           : const WalletItemEntity.placeholder(),
     );
 
+    useEffect(() {
+      context.read<SendMoneyCubit>().getUserFavorites();
+      return null;
+    }, []);
+
     return Scaffold(
       body: BlocConsumer<SendMoneyCubit, SendMoneyState>(
         listener: (context, state) {

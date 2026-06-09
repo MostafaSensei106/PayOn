@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../core/utils/validator/amount_validator.dart';
 import '../../../../core/utils/validator/user_info_validator.dart';
 import '../entity/check_wallet_entity.dart';
-import '../entity/user_favorites_entity.dart';
 
 part 'send_money_state.freezed.dart';
 
@@ -29,8 +28,6 @@ abstract class SendMoneyFormState with _$SendMoneyFormState {
   const factory SendMoneyFormState({
     @Default(UserInfo.pure()) UserInfo userInfo,
     @Default(Amount.pure()) Amount amount,
-    @Default([]) List<FavoriteItemEntity> favorites,
-    @Default(false) bool isLoadingFavorites,
     @Default(false) bool isValid,
   }) = _SendMoneyFormState;
 }
