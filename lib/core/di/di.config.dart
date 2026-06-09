@@ -91,6 +91,8 @@ import 'package:payon/modules/home/data/repository/home_repostory.dart'
 import 'package:payon/modules/home/logic/cubit/home_cubit.dart' as _i797;
 import 'package:payon/modules/home/logic/repository/home_repository_impl.dart'
     as _i265;
+import 'package:payon/modules/home/logic/usecase/get_transactions_usecase.dart'
+    as _i900;
 import 'package:payon/modules/home/logic/usecase/get_wallets_usecase.dart'
     as _i990;
 import 'package:payon/modules/login/data/repositories/login_repository.dart'
@@ -260,16 +262,22 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i333.BasePrefStorageService>(),
       ),
     );
+    gh.factory<_i900.GetTransactionsUsecase>(
+      () => _i900.GetTransactionsUsecase(repo: gh<_i746.HomeRepostory>()),
+    );
     gh.factory<_i990.GetWalletsUsecase>(
       () => _i990.GetWalletsUsecase(repo: gh<_i746.HomeRepostory>()),
-    );
-    gh.lazySingleton<_i797.HomeCubit>(
-      () => _i797.HomeCubit(gh<_i990.GetWalletsUsecase>()),
     );
     gh.factory<_i665.SecurityCubit>(
       () => _i665.SecurityCubit(
         repo: gh<_i750.BaseSecurityRepository>(),
         biometricsService: gh<_i958.BiometricsService>(),
+      ),
+    );
+    gh.lazySingleton<_i797.HomeCubit>(
+      () => _i797.HomeCubit(
+        gh<_i990.GetWalletsUsecase>(),
+        gh<_i900.GetTransactionsUsecase>(),
       ),
     );
     gh.factory<_i72.EditProfileCubit>(
@@ -400,12 +408,15 @@ extension GetItInjectableX on _i174.GetIt {
   _i370.LoginRepositoryImpl get loginRepositoryImpl =>
       get<_i370.LoginRepositoryImpl>();
 
+  _i900.GetTransactionsUsecase get getTransactionsUsecase =>
+      get<_i900.GetTransactionsUsecase>();
+
   _i990.GetWalletsUsecase get getWalletsUsecase =>
       get<_i990.GetWalletsUsecase>();
 
-  _i797.HomeCubit get homeCubit => get<_i797.HomeCubit>();
-
   _i665.SecurityCubit get securityCubit => get<_i665.SecurityCubit>();
+
+  _i797.HomeCubit get homeCubit => get<_i797.HomeCubit>();
 
   _i72.EditProfileCubit get editProfileCubit => get<_i72.EditProfileCubit>();
 

@@ -82,12 +82,15 @@ class HomePage extends StatelessWidget {
                     child: BlocBuilder<HomeCubit, HomeState>(
                       builder: (context, state) {
                         return state.maybeWhen(
-                          success: (t) => PageView.builder(
-                            controller: cardController,
-                            itemCount: t.wallets.length,
-                            itemBuilder: (final context, final index) =>
-                                AccountBalanceCard(w: t.wallets[index]),
-                          ),
+                          success: (wallets, transactions, hasMore) =>
+                              PageView.builder(
+                                controller: cardController,
+                                itemCount: wallets.wallets.length,
+                                itemBuilder: (final context, final index) =>
+                                    AccountBalanceCard(
+                                      w: wallets.wallets[index],
+                                    ),
+                              ),
                           loading: () => const Skeletonizer(
                             child: AccountBalanceCard(
                               w: WalletItemEntity.placeholder(),
@@ -104,17 +107,18 @@ class HomePage extends StatelessWidget {
                   BlocBuilder<HomeCubit, HomeState>(
                     builder: (context, state) {
                       return state.maybeWhen(
-                        success: (wallets) => SmoothPageIndicator(
-                          controller: cardController,
-                          count: wallets.wallets.length,
-                          effect: ScrollingDotsEffect(
-                            dotHeight: 6,
-                            dotWidth: 6,
-                            activeDotColor: Theme.of(
-                              context,
-                            ).colorScheme.onPrimary,
-                          ),
-                        ),
+                        success: (wallets, transactions, hasMore) =>
+                            SmoothPageIndicator(
+                              controller: cardController,
+                              count: wallets.wallets.length,
+                              effect: ScrollingDotsEffect(
+                                dotHeight: 6,
+                                dotWidth: 6,
+                                activeDotColor: Theme.of(
+                                  context,
+                                ).colorScheme.onPrimary,
+                              ),
+                            ),
                         orElse: () => const SizedBox.shrink(),
                       );
                     },

@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../logic/entity/transaction_entity.dart';
+
 part 'get_transaction_response_body.g.dart';
 
 @JsonSerializable()
@@ -118,4 +120,69 @@ class TransactionItemModel {
   final bool isTransactionByPhone;
   final String senderBalance;
   final String? receiverBalance;
+}
+
+extension GetTransactionResponseBodyMapper on GetTransactionResponseBody {
+  GetTransactionEntity toEntity() {
+    return GetTransactionEntity(
+      code: code,
+      message: message,
+      data: data.toEntity(),
+      success: success,
+      errors: errors,
+    );
+  }
+}
+
+extension TransactionsDataModelMapper on TransactionsDataModel {
+  TransactionsDataEntity toEntity() {
+    return TransactionsDataEntity(
+      totalItems: totalItems,
+      pageNumber: pageNumber,
+      pageSize: pageSize,
+      items: items.map((e) => e.toEntity()).toList(),
+      totalPages: totalPages,
+    );
+  }
+}
+
+extension TransactionItemModelMapper on TransactionItemModel {
+  TransactionItemEntity toEntity() {
+    return TransactionItemEntity(
+      id: id,
+      createdAt: DateTime.parse(createdAt),
+      senderId: senderId,
+      sender: sender,
+      senderPhone: senderPhone,
+      senderIpa: senderIpa,
+      senderImage: senderImage,
+      receiverId: receiverId,
+      receiver: receiver,
+      receiverPhone: receiverPhone,
+      receiverIpa: receiverIpa,
+      receiverImage: receiverImage,
+      transactionType: transactionType,
+      transactionCategory: transactionCategory,
+      currencyCode: currencyCode,
+      targetCurrency: targetCurrency,
+      convertedAmount: convertedAmount,
+      amount: amount,
+      totalAmount: totalAmount,
+      totalConvertedAmount: totalConvertedAmount,
+      adjustedAmount: adjustedAmount,
+      fees: fees,
+      convertedFees: convertedFees,
+      paymentMethod: paymentMethod,
+      status: status,
+      description: description,
+      referenceNumber: referenceNumber,
+      isSender: isSender,
+      isInternalTransfer: isInternalTransfer,
+      isMultiCurrency: isMultiCurrency,
+      isMerchant: isMerchant,
+      isTransactionByPhone: isTransactionByPhone,
+      senderBalance: senderBalance,
+      receiverBalance: receiverBalance,
+    );
+  }
 }

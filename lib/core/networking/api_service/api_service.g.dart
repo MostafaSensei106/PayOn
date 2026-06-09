@@ -457,6 +457,56 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<GetTransactionResponseBody> getTransactions({
+    double? minAmount,
+    double? maxAmount,
+    int? transactionTypeId,
+    String? fromDate,
+    String? toDate,
+    String? searchQuery,
+    String? accountId,
+    int? currencyId,
+    int? page,
+    int? size,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'MinAmount': minAmount,
+      r'MaxAmount': maxAmount,
+      r'TransactionTypeId': transactionTypeId,
+      r'FromDate': fromDate,
+      r'ToDate': toDate,
+      r'searchQuery': searchQuery,
+      r'accountId': accountId,
+      r'currencyId': currencyId,
+      r'Page': page,
+      r'Size': size,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GetTransactionResponseBody>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'Transaction/GetTransactions',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GetTransactionResponseBody _value;
+    try {
+      _value = GetTransactionResponseBody.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<GetUserFavoritesResponseBody> getUserFavorites({
     required int page,
     required int size,

@@ -12,6 +12,7 @@ import '../../../modules/get_started/data/models/send_otp/send_otp_request_body.
 import '../../../modules/get_started/data/models/send_otp/send_otp_response_body.dart';
 import '../../../modules/get_started/data/models/verify_otp/verify_otp_request_body.dart';
 import '../../../modules/get_started/data/models/verify_otp/verify_otp_response_body.dart';
+import '../../../modules/home/data/models/get_transaction_response_body.dart';
 import '../../../modules/home/data/models/get_wallets_response_body.dart';
 import '../../../modules/login/data/models/login_request_body.dart';
 import '../../../modules/login/data/models/login_response_body.dart';
@@ -101,6 +102,20 @@ abstract class ApiService {
   Future<SaveTransactionResponseBody> saveTransaction(
     @Body() SaveTransactionRequestBody body,
   );
+
+  @GET(ApiRoutes.transactionGetTransactions)
+  Future<GetTransactionResponseBody> getTransactions({
+    @Query('MinAmount') double? minAmount,
+    @Query('MaxAmount') double? maxAmount,
+    @Query('TransactionTypeId') int? transactionTypeId,
+    @Query('FromDate') String? fromDate,
+    @Query('ToDate') String? toDate,
+    @Query('searchQuery') String? searchQuery,
+    @Query('accountId') String? accountId,
+    @Query('currencyId') int? currencyId,
+    @Query('Page') int? page,
+    @Query('Size') int? size,
+  });
 
   @GET(ApiRoutes.accountGetUserFavorites)
   Future<GetUserFavoritesResponseBody> getUserFavorites({
