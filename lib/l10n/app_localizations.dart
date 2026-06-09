@@ -1579,6 +1579,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Total Amount'**
   String get total_amount;
+
+  /// No description provided for @transaction_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction Details'**
+  String get transaction_details;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// No description provided for @from.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get from;
+
+  /// No description provided for @transaction_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction Type'**
+  String get transaction_type;
+
+  /// No description provided for @reference_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference Number'**
+  String get reference_number;
+
+  /// No description provided for @adjusted_amount.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjusted Amount'**
+  String get adjusted_amount;
+
+  /// No description provided for @balance_after_transaction.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance After Transaction'**
+  String get balance_after_transaction;
+
+  /// No description provided for @payment_method.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get payment_method;
 }
 
 class _AppLocalizationsDelegate

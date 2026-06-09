@@ -246,5 +246,14 @@
   "confirm_transaction_body": "Are you sure you want to send {amount} to {name}?",
   "enter_pin": "Enter your PIN",
   "fees": "Fees",
-  "total_amount": "Total Amount"
+  "total_amount": "Total Amount",
+  "transaction_details": "Transaction Details",
+  "status": "Status",
+  "date": "Date",
+  "from": "From",
+  "transaction_type": "Transaction Type",
+  "reference_number": "Reference Number",
+  "adjusted_amount": "Adjusted Amount",
+  "balance_after_transaction": "Balance After Transaction",
+  "payment_method": "Payment Method"
 }

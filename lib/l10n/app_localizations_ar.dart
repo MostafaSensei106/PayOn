@@ -773,4 +773,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get total_amount => 'المبلغ الإجمالي';
+
+  @override
+  String get transaction_details => 'تفاصيل المعاملة';
+
+  @override
+  String get status => 'الحالة';
+
+  @override
+  String get date => 'التاريخ';
+
+  @override
+  String get from => 'من';
+
+  @override
+  String get transaction_type => 'نوع المعاملة';
+
+  @override
+  String get reference_number => 'الرقم المرجعي';
+
+  @override
+  String get adjusted_amount => 'المبلغ المعدل';
+
+  @override
+  String get balance_after_transaction => 'الرصيد بعد المعاملة';
+
+  @override
+  String get payment_method => 'طريقة الدفع';
 }

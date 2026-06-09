@@ -246,5 +246,14 @@
   "confirm_transaction_body": "هل أنت متأكد أنك تريد إرسال {amount} إلى {name}؟",
   "enter_pin": "أدخل رمز PIN الخاص بك",
   "fees": "الرسوم",
-  "total_amount": "المبلغ الإجمالي"
+  "total_amount": "المبلغ الإجمالي",
+  "transaction_details": "تفاصيل المعاملة",
+  "status": "الحالة",
+  "date": "التاريخ",
+  "from": "من",
+  "transaction_type": "نوع المعاملة",
+  "reference_number": "الرقم المرجعي",
+  "adjusted_amount": "المبلغ المعدل",
+  "balance_after_transaction": "الرصيد بعد المعاملة",
+  "payment_method": "طريقة الدفع"
 }

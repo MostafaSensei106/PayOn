@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/extensions/extensions.dart';
@@ -6,7 +7,7 @@ import '../../../../core/widgets/buttons/filled_button/filled_button_component.d
 import '../../../../core/widgets/inputs/otp_field/otp_field_component.dart';
 import '../../logic/entity/create_tracnsaction_draft_entity.dart';
 
-class SendMoneySummaryBottomSheet extends StatefulWidget {
+class SendMoneySummaryBottomSheet extends HookWidget {
   const SendMoneySummaryBottomSheet({
     required this.draft,
     required this.onConfirm,
@@ -17,16 +18,8 @@ class SendMoneySummaryBottomSheet extends StatefulWidget {
   final void Function(String pin) onConfirm;
 
   @override
-  State<SendMoneySummaryBottomSheet> createState() =>
-      _SendMoneySummaryBottomSheetState();
-}
-
-class _SendMoneySummaryBottomSheetState
-    extends State<SendMoneySummaryBottomSheet> {
-  String _pin = '';
-
-  @override
   Widget build(BuildContext context) {
+    final pinState = useState('');
     final l10n = context.localeKeys;
 
     return Padding(
@@ -48,18 +41,16 @@ class _SendMoneySummaryBottomSheetState
           const SizedBox(height: AppConfig.padding),
           _SummaryRow(
             label: l10n.amount,
-            value:
-                '${widget.draft.originalAmount} ${widget.draft.originalCurrency}',
+            value: '${draft.originalAmount} ${draft.originalCurrency}',
           ),
           _SummaryRow(
             label: l10n.fees,
-            value: '${widget.draft.fess} ${widget.draft.originalCurrency}',
+            value: '${draft.fess} ${draft.originalCurrency}',
           ),
           const Divider(),
           _SummaryRow(
             label: l10n.total_amount,
-            value:
-                '${widget.draft.totalAmount} ${widget.draft.originalCurrency}',
+            value: '${draft.totalAmount} ${draft.originalCurrency}',
             isTotal: true,
           ),
           const SizedBox(height: AppConfig.padding * 2),
@@ -70,21 +61,14 @@ class _SendMoneySummaryBottomSheetState
           ),
           const SizedBox(height: AppConfig.padding),
           OtpFieldComponent(
-            length: 5,
-            onChanged: (pin) {
-              setState(() {
-                _pin = pin;
-              });
-            },
-            onCompleted: (pin) {
-              setState(() {
-                _pin = pin;
-              });
-            },
+            onChanged: (pin) => pinState.value = pin,
+            onCompleted: (pin) => pinState.value = pin,
           ),
           const SizedBox(height: AppConfig.padding * 2),
           FilledButtonComponent(
-            onPressed: _pin.length == 5 ? () => widget.onConfirm(_pin) : () {},
+            onPressed: pinState.value.length == 6
+                ? () => onConfirm(pinState.value)
+                : () {},
             label: l10n.confirm,
           ),
         ],

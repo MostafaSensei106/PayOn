@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GetTransactionsParams {
 
- double get minAmount; double get maxAmount; int get transactionTypeId; String get fromDate; String get toDate; String get searchQuery; String get accountId; int get currencyId; int get page; int get size;
+ double? get minAmount; double? get maxAmount; int? get transactionTypeId; String? get fromDate; String? get toDate; String? get searchQuery; String? get accountId; int? get currencyId; int get page; int get size;
 /// Create a copy of GetTransactionsParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $GetTransactionsParamsCopyWith<$Res>  {
   factory $GetTransactionsParamsCopyWith(GetTransactionsParams value, $Res Function(GetTransactionsParams) _then) = _$GetTransactionsParamsCopyWithImpl;
 @useResult
 $Res call({
- double minAmount, double maxAmount, int transactionTypeId, String fromDate, String toDate, String searchQuery, String accountId, int currencyId, int page, int size
+ double? minAmount, double? maxAmount, int? transactionTypeId, String? fromDate, String? toDate, String? searchQuery, String? accountId, int? currencyId, int page, int size
 });
 
 
@@ -62,17 +62,17 @@ class _$GetTransactionsParamsCopyWithImpl<$Res>
 
 /// Create a copy of GetTransactionsParams
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? minAmount = null,Object? maxAmount = null,Object? transactionTypeId = null,Object? fromDate = null,Object? toDate = null,Object? searchQuery = null,Object? accountId = null,Object? currencyId = null,Object? page = null,Object? size = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? minAmount = freezed,Object? maxAmount = freezed,Object? transactionTypeId = freezed,Object? fromDate = freezed,Object? toDate = freezed,Object? searchQuery = freezed,Object? accountId = freezed,Object? currencyId = freezed,Object? page = null,Object? size = null,}) {
   return _then(_self.copyWith(
-minAmount: null == minAmount ? _self.minAmount : minAmount // ignore: cast_nullable_to_non_nullable
-as double,maxAmount: null == maxAmount ? _self.maxAmount : maxAmount // ignore: cast_nullable_to_non_nullable
-as double,transactionTypeId: null == transactionTypeId ? _self.transactionTypeId : transactionTypeId // ignore: cast_nullable_to_non_nullable
-as int,fromDate: null == fromDate ? _self.fromDate : fromDate // ignore: cast_nullable_to_non_nullable
-as String,toDate: null == toDate ? _self.toDate : toDate // ignore: cast_nullable_to_non_nullable
-as String,searchQuery: null == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable
-as String,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
-as String,currencyId: null == currencyId ? _self.currencyId : currencyId // ignore: cast_nullable_to_non_nullable
-as int,page: null == page ? _self.page : page // ignore: cast_nullable_to_non_nullable
+minAmount: freezed == minAmount ? _self.minAmount : minAmount // ignore: cast_nullable_to_non_nullable
+as double?,maxAmount: freezed == maxAmount ? _self.maxAmount : maxAmount // ignore: cast_nullable_to_non_nullable
+as double?,transactionTypeId: freezed == transactionTypeId ? _self.transactionTypeId : transactionTypeId // ignore: cast_nullable_to_non_nullable
+as int?,fromDate: freezed == fromDate ? _self.fromDate : fromDate // ignore: cast_nullable_to_non_nullable
+as String?,toDate: freezed == toDate ? _self.toDate : toDate // ignore: cast_nullable_to_non_nullable
+as String?,searchQuery: freezed == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable
+as String?,accountId: freezed == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
+as String?,currencyId: freezed == currencyId ? _self.currencyId : currencyId // ignore: cast_nullable_to_non_nullable
+as int?,page: null == page ? _self.page : page // ignore: cast_nullable_to_non_nullable
 as int,size: null == size ? _self.size : size // ignore: cast_nullable_to_non_nullable
 as int,
   ));
@@ -159,7 +159,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double minAmount,  double maxAmount,  int transactionTypeId,  String fromDate,  String toDate,  String searchQuery,  String accountId,  int currencyId,  int page,  int size)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double? minAmount,  double? maxAmount,  int? transactionTypeId,  String? fromDate,  String? toDate,  String? searchQuery,  String? accountId,  int? currencyId,  int page,  int size)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GetTransactionsParams() when $default != null:
 return $default(_that.minAmount,_that.maxAmount,_that.transactionTypeId,_that.fromDate,_that.toDate,_that.searchQuery,_that.accountId,_that.currencyId,_that.page,_that.size);case _:
@@ -180,7 +180,7 @@ return $default(_that.minAmount,_that.maxAmount,_that.transactionTypeId,_that.fr
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double minAmount,  double maxAmount,  int transactionTypeId,  String fromDate,  String toDate,  String searchQuery,  String accountId,  int currencyId,  int page,  int size)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double? minAmount,  double? maxAmount,  int? transactionTypeId,  String? fromDate,  String? toDate,  String? searchQuery,  String? accountId,  int? currencyId,  int page,  int size)  $default,) {final _that = this;
 switch (_that) {
 case _GetTransactionsParams():
 return $default(_that.minAmount,_that.maxAmount,_that.transactionTypeId,_that.fromDate,_that.toDate,_that.searchQuery,_that.accountId,_that.currencyId,_that.page,_that.size);case _:
@@ -200,7 +200,7 @@ return $default(_that.minAmount,_that.maxAmount,_that.transactionTypeId,_that.fr
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double minAmount,  double maxAmount,  int transactionTypeId,  String fromDate,  String toDate,  String searchQuery,  String accountId,  int currencyId,  int page,  int size)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double? minAmount,  double? maxAmount,  int? transactionTypeId,  String? fromDate,  String? toDate,  String? searchQuery,  String? accountId,  int? currencyId,  int page,  int size)?  $default,) {final _that = this;
 switch (_that) {
 case _GetTransactionsParams() when $default != null:
 return $default(_that.minAmount,_that.maxAmount,_that.transactionTypeId,_that.fromDate,_that.toDate,_that.searchQuery,_that.accountId,_that.currencyId,_that.page,_that.size);case _:
@@ -215,17 +215,17 @@ return $default(_that.minAmount,_that.maxAmount,_that.transactionTypeId,_that.fr
 
 
 class _GetTransactionsParams implements GetTransactionsParams {
-  const _GetTransactionsParams({this.minAmount = 0.0, this.maxAmount = 0.0, this.transactionTypeId = 0, this.fromDate = '', this.toDate = '', this.searchQuery = '', this.accountId = '', this.currencyId = 0, this.page = 1, this.size = 20});
+  const _GetTransactionsParams({this.minAmount, this.maxAmount, this.transactionTypeId, this.fromDate, this.toDate, this.searchQuery, this.accountId, this.currencyId, this.page = 1, this.size = 20});
   
 
-@override@JsonKey() final  double minAmount;
-@override@JsonKey() final  double maxAmount;
-@override@JsonKey() final  int transactionTypeId;
-@override@JsonKey() final  String fromDate;
-@override@JsonKey() final  String toDate;
-@override@JsonKey() final  String searchQuery;
-@override@JsonKey() final  String accountId;
-@override@JsonKey() final  int currencyId;
+@override final  double? minAmount;
+@override final  double? maxAmount;
+@override final  int? transactionTypeId;
+@override final  String? fromDate;
+@override final  String? toDate;
+@override final  String? searchQuery;
+@override final  String? accountId;
+@override final  int? currencyId;
 @override@JsonKey() final  int page;
 @override@JsonKey() final  int size;
 
@@ -259,7 +259,7 @@ abstract mixin class _$GetTransactionsParamsCopyWith<$Res> implements $GetTransa
   factory _$GetTransactionsParamsCopyWith(_GetTransactionsParams value, $Res Function(_GetTransactionsParams) _then) = __$GetTransactionsParamsCopyWithImpl;
 @override @useResult
 $Res call({
- double minAmount, double maxAmount, int transactionTypeId, String fromDate, String toDate, String searchQuery, String accountId, int currencyId, int page, int size
+ double? minAmount, double? maxAmount, int? transactionTypeId, String? fromDate, String? toDate, String? searchQuery, String? accountId, int? currencyId, int page, int size
 });
 
 
@@ -276,17 +276,17 @@ class __$GetTransactionsParamsCopyWithImpl<$Res>
 
 /// Create a copy of GetTransactionsParams
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? minAmount = null,Object? maxAmount = null,Object? transactionTypeId = null,Object? fromDate = null,Object? toDate = null,Object? searchQuery = null,Object? accountId = null,Object? currencyId = null,Object? page = null,Object? size = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? minAmount = freezed,Object? maxAmount = freezed,Object? transactionTypeId = freezed,Object? fromDate = freezed,Object? toDate = freezed,Object? searchQuery = freezed,Object? accountId = freezed,Object? currencyId = freezed,Object? page = null,Object? size = null,}) {
   return _then(_GetTransactionsParams(
-minAmount: null == minAmount ? _self.minAmount : minAmount // ignore: cast_nullable_to_non_nullable
-as double,maxAmount: null == maxAmount ? _self.maxAmount : maxAmount // ignore: cast_nullable_to_non_nullable
-as double,transactionTypeId: null == transactionTypeId ? _self.transactionTypeId : transactionTypeId // ignore: cast_nullable_to_non_nullable
-as int,fromDate: null == fromDate ? _self.fromDate : fromDate // ignore: cast_nullable_to_non_nullable
-as String,toDate: null == toDate ? _self.toDate : toDate // ignore: cast_nullable_to_non_nullable
-as String,searchQuery: null == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable
-as String,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
-as String,currencyId: null == currencyId ? _self.currencyId : currencyId // ignore: cast_nullable_to_non_nullable
-as int,page: null == page ? _self.page : page // ignore: cast_nullable_to_non_nullable
+minAmount: freezed == minAmount ? _self.minAmount : minAmount // ignore: cast_nullable_to_non_nullable
+as double?,maxAmount: freezed == maxAmount ? _self.maxAmount : maxAmount // ignore: cast_nullable_to_non_nullable
+as double?,transactionTypeId: freezed == transactionTypeId ? _self.transactionTypeId : transactionTypeId // ignore: cast_nullable_to_non_nullable
+as int?,fromDate: freezed == fromDate ? _self.fromDate : fromDate // ignore: cast_nullable_to_non_nullable
+as String?,toDate: freezed == toDate ? _self.toDate : toDate // ignore: cast_nullable_to_non_nullable
+as String?,searchQuery: freezed == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable
+as String?,accountId: freezed == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
+as String?,currencyId: freezed == currencyId ? _self.currencyId : currencyId // ignore: cast_nullable_to_non_nullable
+as int?,page: null == page ? _self.page : page // ignore: cast_nullable_to_non_nullable
 as int,size: null == size ? _self.size : size // ignore: cast_nullable_to_non_nullable
 as int,
   ));

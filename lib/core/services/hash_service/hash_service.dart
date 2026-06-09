@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:argon2/argon2.dart';
 import 'package:flutter/foundation.dart';
@@ -31,7 +32,7 @@ class HashService implements BaseHashService {
     final result = Uint8List(hashLength);
     generator.generateBytes(utf8.encode(password), result, 0, result.length);
 
-    debugPrint('Hash Password ===> ${result.toHexString()}');
+    log('Hash Password ===> ${result.toHexString()}');
     return result.toHexString();
   }
 }

@@ -774,4 +774,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get total_amount => 'Total Amount';
+
+  @override
+  String get transaction_details => 'Transaction Details';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get from => 'From';
+
+  @override
+  String get transaction_type => 'Transaction Type';
+
+  @override
+  String get reference_number => 'Reference Number';
+
+  @override
+  String get adjusted_amount => 'Adjusted Amount';
+
+  @override
+  String get balance_after_transaction => 'Balance After Transaction';
+
+  @override
+  String get payment_method => 'Payment Method';
 }
