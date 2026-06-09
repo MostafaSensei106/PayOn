@@ -162,16 +162,11 @@ extension TransactionItemModelMapper on TransactionItemModel {
       receiverIpa: receiverIpa,
       receiverImage: receiverImage,
       transactionType: transactionType,
-      transactionCategory: transactionCategory,
       currencyCode: currencyCode,
-      targetCurrency: targetCurrency,
-      convertedAmount: convertedAmount,
       amount: amount,
       totalAmount: totalAmount,
-      totalConvertedAmount: totalConvertedAmount,
       adjustedAmount: adjustedAmount,
       fees: fees,
-      convertedFees: convertedFees,
       paymentMethod: paymentMethod,
       status: status,
       description: description,
@@ -179,10 +174,8 @@ extension TransactionItemModelMapper on TransactionItemModel {
       isSender: isSender,
       isInternalTransfer: isInternalTransfer,
       isMultiCurrency: isMultiCurrency,
-      isMerchant: isMerchant,
       isTransactionByPhone: isTransactionByPhone,
       senderBalance: senderBalance,
-      receiverBalance: receiverBalance,
     );
   }
 }

@@ -582,7 +582,7 @@ as int,
 /// @nodoc
 mixin _$TransactionItemEntity {
 
- int get id; DateTime get createdAt; String get senderId; String get sender; String get senderPhone; String get senderIpa; String get senderImage; String get receiverId; String get receiver; String get receiverPhone; String get receiverIpa; String get receiverImage; String get transactionType; String? get transactionCategory; String get currencyCode; String? get targetCurrency; double? get convertedAmount; double get amount; double get totalAmount; double? get totalConvertedAmount; double get adjustedAmount; double get fees; double? get convertedFees; String get paymentMethod; String get status; String get description; String get referenceNumber; bool get isSender; bool get isInternalTransfer; bool get isMultiCurrency; bool? get isMerchant; bool get isTransactionByPhone; String get senderBalance; String? get receiverBalance;
+ int get id; DateTime get createdAt; String get senderId; String get sender; String get senderPhone; String get senderIpa; String get senderImage; String get receiverId; String get receiver; String get receiverPhone; String get receiverIpa; String get receiverImage; String get transactionType; String get currencyCode; double get amount; double get totalAmount; double get adjustedAmount; double get fees; String get paymentMethod; String get status; String get description; String get referenceNumber; bool get isSender; bool get isInternalTransfer; bool get isMultiCurrency; bool get isTransactionByPhone; String get senderBalance;
 /// Create a copy of TransactionItemEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -593,16 +593,16 @@ $TransactionItemEntityCopyWith<TransactionItemEntity> get copyWith => _$Transact
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransactionItemEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.senderId, senderId) || other.senderId == senderId)&&(identical(other.sender, sender) || other.sender == sender)&&(identical(other.senderPhone, senderPhone) || other.senderPhone == senderPhone)&&(identical(other.senderIpa, senderIpa) || other.senderIpa == senderIpa)&&(identical(other.senderImage, senderImage) || other.senderImage == senderImage)&&(identical(other.receiverId, receiverId) || other.receiverId == receiverId)&&(identical(other.receiver, receiver) || other.receiver == receiver)&&(identical(other.receiverPhone, receiverPhone) || other.receiverPhone == receiverPhone)&&(identical(other.receiverIpa, receiverIpa) || other.receiverIpa == receiverIpa)&&(identical(other.receiverImage, receiverImage) || other.receiverImage == receiverImage)&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.transactionCategory, transactionCategory) || other.transactionCategory == transactionCategory)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.targetCurrency, targetCurrency) || other.targetCurrency == targetCurrency)&&(identical(other.convertedAmount, convertedAmount) || other.convertedAmount == convertedAmount)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.totalConvertedAmount, totalConvertedAmount) || other.totalConvertedAmount == totalConvertedAmount)&&(identical(other.adjustedAmount, adjustedAmount) || other.adjustedAmount == adjustedAmount)&&(identical(other.fees, fees) || other.fees == fees)&&(identical(other.convertedFees, convertedFees) || other.convertedFees == convertedFees)&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.status, status) || other.status == status)&&(identical(other.description, description) || other.description == description)&&(identical(other.referenceNumber, referenceNumber) || other.referenceNumber == referenceNumber)&&(identical(other.isSender, isSender) || other.isSender == isSender)&&(identical(other.isInternalTransfer, isInternalTransfer) || other.isInternalTransfer == isInternalTransfer)&&(identical(other.isMultiCurrency, isMultiCurrency) || other.isMultiCurrency == isMultiCurrency)&&(identical(other.isMerchant, isMerchant) || other.isMerchant == isMerchant)&&(identical(other.isTransactionByPhone, isTransactionByPhone) || other.isTransactionByPhone == isTransactionByPhone)&&(identical(other.senderBalance, senderBalance) || other.senderBalance == senderBalance)&&(identical(other.receiverBalance, receiverBalance) || other.receiverBalance == receiverBalance));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransactionItemEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.senderId, senderId) || other.senderId == senderId)&&(identical(other.sender, sender) || other.sender == sender)&&(identical(other.senderPhone, senderPhone) || other.senderPhone == senderPhone)&&(identical(other.senderIpa, senderIpa) || other.senderIpa == senderIpa)&&(identical(other.senderImage, senderImage) || other.senderImage == senderImage)&&(identical(other.receiverId, receiverId) || other.receiverId == receiverId)&&(identical(other.receiver, receiver) || other.receiver == receiver)&&(identical(other.receiverPhone, receiverPhone) || other.receiverPhone == receiverPhone)&&(identical(other.receiverIpa, receiverIpa) || other.receiverIpa == receiverIpa)&&(identical(other.receiverImage, receiverImage) || other.receiverImage == receiverImage)&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.adjustedAmount, adjustedAmount) || other.adjustedAmount == adjustedAmount)&&(identical(other.fees, fees) || other.fees == fees)&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.status, status) || other.status == status)&&(identical(other.description, description) || other.description == description)&&(identical(other.referenceNumber, referenceNumber) || other.referenceNumber == referenceNumber)&&(identical(other.isSender, isSender) || other.isSender == isSender)&&(identical(other.isInternalTransfer, isInternalTransfer) || other.isInternalTransfer == isInternalTransfer)&&(identical(other.isMultiCurrency, isMultiCurrency) || other.isMultiCurrency == isMultiCurrency)&&(identical(other.isTransactionByPhone, isTransactionByPhone) || other.isTransactionByPhone == isTransactionByPhone)&&(identical(other.senderBalance, senderBalance) || other.senderBalance == senderBalance));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,id,createdAt,senderId,sender,senderPhone,senderIpa,senderImage,receiverId,receiver,receiverPhone,receiverIpa,receiverImage,transactionType,transactionCategory,currencyCode,targetCurrency,convertedAmount,amount,totalAmount,totalConvertedAmount,adjustedAmount,fees,convertedFees,paymentMethod,status,description,referenceNumber,isSender,isInternalTransfer,isMultiCurrency,isMerchant,isTransactionByPhone,senderBalance,receiverBalance]);
+int get hashCode => Object.hashAll([runtimeType,id,createdAt,senderId,sender,senderPhone,senderIpa,senderImage,receiverId,receiver,receiverPhone,receiverIpa,receiverImage,transactionType,currencyCode,amount,totalAmount,adjustedAmount,fees,paymentMethod,status,description,referenceNumber,isSender,isInternalTransfer,isMultiCurrency,isTransactionByPhone,senderBalance]);
 
 @override
 String toString() {
-  return 'TransactionItemEntity(id: $id, createdAt: $createdAt, senderId: $senderId, sender: $sender, senderPhone: $senderPhone, senderIpa: $senderIpa, senderImage: $senderImage, receiverId: $receiverId, receiver: $receiver, receiverPhone: $receiverPhone, receiverIpa: $receiverIpa, receiverImage: $receiverImage, transactionType: $transactionType, transactionCategory: $transactionCategory, currencyCode: $currencyCode, targetCurrency: $targetCurrency, convertedAmount: $convertedAmount, amount: $amount, totalAmount: $totalAmount, totalConvertedAmount: $totalConvertedAmount, adjustedAmount: $adjustedAmount, fees: $fees, convertedFees: $convertedFees, paymentMethod: $paymentMethod, status: $status, description: $description, referenceNumber: $referenceNumber, isSender: $isSender, isInternalTransfer: $isInternalTransfer, isMultiCurrency: $isMultiCurrency, isMerchant: $isMerchant, isTransactionByPhone: $isTransactionByPhone, senderBalance: $senderBalance, receiverBalance: $receiverBalance)';
+  return 'TransactionItemEntity(id: $id, createdAt: $createdAt, senderId: $senderId, sender: $sender, senderPhone: $senderPhone, senderIpa: $senderIpa, senderImage: $senderImage, receiverId: $receiverId, receiver: $receiver, receiverPhone: $receiverPhone, receiverIpa: $receiverIpa, receiverImage: $receiverImage, transactionType: $transactionType, currencyCode: $currencyCode, amount: $amount, totalAmount: $totalAmount, adjustedAmount: $adjustedAmount, fees: $fees, paymentMethod: $paymentMethod, status: $status, description: $description, referenceNumber: $referenceNumber, isSender: $isSender, isInternalTransfer: $isInternalTransfer, isMultiCurrency: $isMultiCurrency, isTransactionByPhone: $isTransactionByPhone, senderBalance: $senderBalance)';
 }
 
 
@@ -613,7 +613,7 @@ abstract mixin class $TransactionItemEntityCopyWith<$Res>  {
   factory $TransactionItemEntityCopyWith(TransactionItemEntity value, $Res Function(TransactionItemEntity) _then) = _$TransactionItemEntityCopyWithImpl;
 @useResult
 $Res call({
- int id, DateTime createdAt, String senderId, String sender, String senderPhone, String senderIpa, String senderImage, String receiverId, String receiver, String receiverPhone, String receiverIpa, String receiverImage, String transactionType, String? transactionCategory, String currencyCode, String? targetCurrency, double? convertedAmount, double amount, double totalAmount, double? totalConvertedAmount, double adjustedAmount, double fees, double? convertedFees, String paymentMethod, String status, String description, String referenceNumber, bool isSender, bool isInternalTransfer, bool isMultiCurrency, bool? isMerchant, bool isTransactionByPhone, String senderBalance, String? receiverBalance
+ int id, DateTime createdAt, String senderId, String sender, String senderPhone, String senderIpa, String senderImage, String receiverId, String receiver, String receiverPhone, String receiverIpa, String receiverImage, String transactionType, String currencyCode, double amount, double totalAmount, double adjustedAmount, double fees, String paymentMethod, String status, String description, String referenceNumber, bool isSender, bool isInternalTransfer, bool isMultiCurrency, bool isTransactionByPhone, String senderBalance
 });
 
 
@@ -630,7 +630,7 @@ class _$TransactionItemEntityCopyWithImpl<$Res>
 
 /// Create a copy of TransactionItemEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? createdAt = null,Object? senderId = null,Object? sender = null,Object? senderPhone = null,Object? senderIpa = null,Object? senderImage = null,Object? receiverId = null,Object? receiver = null,Object? receiverPhone = null,Object? receiverIpa = null,Object? receiverImage = null,Object? transactionType = null,Object? transactionCategory = freezed,Object? currencyCode = null,Object? targetCurrency = freezed,Object? convertedAmount = freezed,Object? amount = null,Object? totalAmount = null,Object? totalConvertedAmount = freezed,Object? adjustedAmount = null,Object? fees = null,Object? convertedFees = freezed,Object? paymentMethod = null,Object? status = null,Object? description = null,Object? referenceNumber = null,Object? isSender = null,Object? isInternalTransfer = null,Object? isMultiCurrency = null,Object? isMerchant = freezed,Object? isTransactionByPhone = null,Object? senderBalance = null,Object? receiverBalance = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? createdAt = null,Object? senderId = null,Object? sender = null,Object? senderPhone = null,Object? senderIpa = null,Object? senderImage = null,Object? receiverId = null,Object? receiver = null,Object? receiverPhone = null,Object? receiverIpa = null,Object? receiverImage = null,Object? transactionType = null,Object? currencyCode = null,Object? amount = null,Object? totalAmount = null,Object? adjustedAmount = null,Object? fees = null,Object? paymentMethod = null,Object? status = null,Object? description = null,Object? referenceNumber = null,Object? isSender = null,Object? isInternalTransfer = null,Object? isMultiCurrency = null,Object? isTransactionByPhone = null,Object? senderBalance = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
@@ -645,28 +645,21 @@ as String,receiverPhone: null == receiverPhone ? _self.receiverPhone : receiverP
 as String,receiverIpa: null == receiverIpa ? _self.receiverIpa : receiverIpa // ignore: cast_nullable_to_non_nullable
 as String,receiverImage: null == receiverImage ? _self.receiverImage : receiverImage // ignore: cast_nullable_to_non_nullable
 as String,transactionType: null == transactionType ? _self.transactionType : transactionType // ignore: cast_nullable_to_non_nullable
-as String,transactionCategory: freezed == transactionCategory ? _self.transactionCategory : transactionCategory // ignore: cast_nullable_to_non_nullable
-as String?,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
-as String,targetCurrency: freezed == targetCurrency ? _self.targetCurrency : targetCurrency // ignore: cast_nullable_to_non_nullable
-as String?,convertedAmount: freezed == convertedAmount ? _self.convertedAmount : convertedAmount // ignore: cast_nullable_to_non_nullable
-as double?,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as String,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
+as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as double,totalAmount: null == totalAmount ? _self.totalAmount : totalAmount // ignore: cast_nullable_to_non_nullable
-as double,totalConvertedAmount: freezed == totalConvertedAmount ? _self.totalConvertedAmount : totalConvertedAmount // ignore: cast_nullable_to_non_nullable
-as double?,adjustedAmount: null == adjustedAmount ? _self.adjustedAmount : adjustedAmount // ignore: cast_nullable_to_non_nullable
+as double,adjustedAmount: null == adjustedAmount ? _self.adjustedAmount : adjustedAmount // ignore: cast_nullable_to_non_nullable
 as double,fees: null == fees ? _self.fees : fees // ignore: cast_nullable_to_non_nullable
-as double,convertedFees: freezed == convertedFees ? _self.convertedFees : convertedFees // ignore: cast_nullable_to_non_nullable
-as double?,paymentMethod: null == paymentMethod ? _self.paymentMethod : paymentMethod // ignore: cast_nullable_to_non_nullable
+as double,paymentMethod: null == paymentMethod ? _self.paymentMethod : paymentMethod // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,referenceNumber: null == referenceNumber ? _self.referenceNumber : referenceNumber // ignore: cast_nullable_to_non_nullable
 as String,isSender: null == isSender ? _self.isSender : isSender // ignore: cast_nullable_to_non_nullable
 as bool,isInternalTransfer: null == isInternalTransfer ? _self.isInternalTransfer : isInternalTransfer // ignore: cast_nullable_to_non_nullable
 as bool,isMultiCurrency: null == isMultiCurrency ? _self.isMultiCurrency : isMultiCurrency // ignore: cast_nullable_to_non_nullable
-as bool,isMerchant: freezed == isMerchant ? _self.isMerchant : isMerchant // ignore: cast_nullable_to_non_nullable
-as bool?,isTransactionByPhone: null == isTransactionByPhone ? _self.isTransactionByPhone : isTransactionByPhone // ignore: cast_nullable_to_non_nullable
+as bool,isTransactionByPhone: null == isTransactionByPhone ? _self.isTransactionByPhone : isTransactionByPhone // ignore: cast_nullable_to_non_nullable
 as bool,senderBalance: null == senderBalance ? _self.senderBalance : senderBalance // ignore: cast_nullable_to_non_nullable
-as String,receiverBalance: freezed == receiverBalance ? _self.receiverBalance : receiverBalance // ignore: cast_nullable_to_non_nullable
-as String?,
+as String,
   ));
 }
 
@@ -751,10 +744,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  DateTime createdAt,  String senderId,  String sender,  String senderPhone,  String senderIpa,  String senderImage,  String receiverId,  String receiver,  String receiverPhone,  String receiverIpa,  String receiverImage,  String transactionType,  String? transactionCategory,  String currencyCode,  String? targetCurrency,  double? convertedAmount,  double amount,  double totalAmount,  double? totalConvertedAmount,  double adjustedAmount,  double fees,  double? convertedFees,  String paymentMethod,  String status,  String description,  String referenceNumber,  bool isSender,  bool isInternalTransfer,  bool isMultiCurrency,  bool? isMerchant,  bool isTransactionByPhone,  String senderBalance,  String? receiverBalance)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  DateTime createdAt,  String senderId,  String sender,  String senderPhone,  String senderIpa,  String senderImage,  String receiverId,  String receiver,  String receiverPhone,  String receiverIpa,  String receiverImage,  String transactionType,  String currencyCode,  double amount,  double totalAmount,  double adjustedAmount,  double fees,  String paymentMethod,  String status,  String description,  String referenceNumber,  bool isSender,  bool isInternalTransfer,  bool isMultiCurrency,  bool isTransactionByPhone,  String senderBalance)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TransactionItemEntity() when $default != null:
-return $default(_that.id,_that.createdAt,_that.senderId,_that.sender,_that.senderPhone,_that.senderIpa,_that.senderImage,_that.receiverId,_that.receiver,_that.receiverPhone,_that.receiverIpa,_that.receiverImage,_that.transactionType,_that.transactionCategory,_that.currencyCode,_that.targetCurrency,_that.convertedAmount,_that.amount,_that.totalAmount,_that.totalConvertedAmount,_that.adjustedAmount,_that.fees,_that.convertedFees,_that.paymentMethod,_that.status,_that.description,_that.referenceNumber,_that.isSender,_that.isInternalTransfer,_that.isMultiCurrency,_that.isMerchant,_that.isTransactionByPhone,_that.senderBalance,_that.receiverBalance);case _:
+return $default(_that.id,_that.createdAt,_that.senderId,_that.sender,_that.senderPhone,_that.senderIpa,_that.senderImage,_that.receiverId,_that.receiver,_that.receiverPhone,_that.receiverIpa,_that.receiverImage,_that.transactionType,_that.currencyCode,_that.amount,_that.totalAmount,_that.adjustedAmount,_that.fees,_that.paymentMethod,_that.status,_that.description,_that.referenceNumber,_that.isSender,_that.isInternalTransfer,_that.isMultiCurrency,_that.isTransactionByPhone,_that.senderBalance);case _:
   return orElse();
 
 }
@@ -772,10 +765,10 @@ return $default(_that.id,_that.createdAt,_that.senderId,_that.sender,_that.sende
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  DateTime createdAt,  String senderId,  String sender,  String senderPhone,  String senderIpa,  String senderImage,  String receiverId,  String receiver,  String receiverPhone,  String receiverIpa,  String receiverImage,  String transactionType,  String? transactionCategory,  String currencyCode,  String? targetCurrency,  double? convertedAmount,  double amount,  double totalAmount,  double? totalConvertedAmount,  double adjustedAmount,  double fees,  double? convertedFees,  String paymentMethod,  String status,  String description,  String referenceNumber,  bool isSender,  bool isInternalTransfer,  bool isMultiCurrency,  bool? isMerchant,  bool isTransactionByPhone,  String senderBalance,  String? receiverBalance)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  DateTime createdAt,  String senderId,  String sender,  String senderPhone,  String senderIpa,  String senderImage,  String receiverId,  String receiver,  String receiverPhone,  String receiverIpa,  String receiverImage,  String transactionType,  String currencyCode,  double amount,  double totalAmount,  double adjustedAmount,  double fees,  String paymentMethod,  String status,  String description,  String referenceNumber,  bool isSender,  bool isInternalTransfer,  bool isMultiCurrency,  bool isTransactionByPhone,  String senderBalance)  $default,) {final _that = this;
 switch (_that) {
 case _TransactionItemEntity():
-return $default(_that.id,_that.createdAt,_that.senderId,_that.sender,_that.senderPhone,_that.senderIpa,_that.senderImage,_that.receiverId,_that.receiver,_that.receiverPhone,_that.receiverIpa,_that.receiverImage,_that.transactionType,_that.transactionCategory,_that.currencyCode,_that.targetCurrency,_that.convertedAmount,_that.amount,_that.totalAmount,_that.totalConvertedAmount,_that.adjustedAmount,_that.fees,_that.convertedFees,_that.paymentMethod,_that.status,_that.description,_that.referenceNumber,_that.isSender,_that.isInternalTransfer,_that.isMultiCurrency,_that.isMerchant,_that.isTransactionByPhone,_that.senderBalance,_that.receiverBalance);case _:
+return $default(_that.id,_that.createdAt,_that.senderId,_that.sender,_that.senderPhone,_that.senderIpa,_that.senderImage,_that.receiverId,_that.receiver,_that.receiverPhone,_that.receiverIpa,_that.receiverImage,_that.transactionType,_that.currencyCode,_that.amount,_that.totalAmount,_that.adjustedAmount,_that.fees,_that.paymentMethod,_that.status,_that.description,_that.referenceNumber,_that.isSender,_that.isInternalTransfer,_that.isMultiCurrency,_that.isTransactionByPhone,_that.senderBalance);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -792,10 +785,10 @@ return $default(_that.id,_that.createdAt,_that.senderId,_that.sender,_that.sende
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  DateTime createdAt,  String senderId,  String sender,  String senderPhone,  String senderIpa,  String senderImage,  String receiverId,  String receiver,  String receiverPhone,  String receiverIpa,  String receiverImage,  String transactionType,  String? transactionCategory,  String currencyCode,  String? targetCurrency,  double? convertedAmount,  double amount,  double totalAmount,  double? totalConvertedAmount,  double adjustedAmount,  double fees,  double? convertedFees,  String paymentMethod,  String status,  String description,  String referenceNumber,  bool isSender,  bool isInternalTransfer,  bool isMultiCurrency,  bool? isMerchant,  bool isTransactionByPhone,  String senderBalance,  String? receiverBalance)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  DateTime createdAt,  String senderId,  String sender,  String senderPhone,  String senderIpa,  String senderImage,  String receiverId,  String receiver,  String receiverPhone,  String receiverIpa,  String receiverImage,  String transactionType,  String currencyCode,  double amount,  double totalAmount,  double adjustedAmount,  double fees,  String paymentMethod,  String status,  String description,  String referenceNumber,  bool isSender,  bool isInternalTransfer,  bool isMultiCurrency,  bool isTransactionByPhone,  String senderBalance)?  $default,) {final _that = this;
 switch (_that) {
 case _TransactionItemEntity() when $default != null:
-return $default(_that.id,_that.createdAt,_that.senderId,_that.sender,_that.senderPhone,_that.senderIpa,_that.senderImage,_that.receiverId,_that.receiver,_that.receiverPhone,_that.receiverIpa,_that.receiverImage,_that.transactionType,_that.transactionCategory,_that.currencyCode,_that.targetCurrency,_that.convertedAmount,_that.amount,_that.totalAmount,_that.totalConvertedAmount,_that.adjustedAmount,_that.fees,_that.convertedFees,_that.paymentMethod,_that.status,_that.description,_that.referenceNumber,_that.isSender,_that.isInternalTransfer,_that.isMultiCurrency,_that.isMerchant,_that.isTransactionByPhone,_that.senderBalance,_that.receiverBalance);case _:
+return $default(_that.id,_that.createdAt,_that.senderId,_that.sender,_that.senderPhone,_that.senderIpa,_that.senderImage,_that.receiverId,_that.receiver,_that.receiverPhone,_that.receiverIpa,_that.receiverImage,_that.transactionType,_that.currencyCode,_that.amount,_that.totalAmount,_that.adjustedAmount,_that.fees,_that.paymentMethod,_that.status,_that.description,_that.referenceNumber,_that.isSender,_that.isInternalTransfer,_that.isMultiCurrency,_that.isTransactionByPhone,_that.senderBalance);case _:
   return null;
 
 }
@@ -807,7 +800,7 @@ return $default(_that.id,_that.createdAt,_that.senderId,_that.sender,_that.sende
 
 
 class _TransactionItemEntity implements TransactionItemEntity {
-  const _TransactionItemEntity({required this.id, required this.createdAt, required this.senderId, required this.sender, required this.senderPhone, required this.senderIpa, required this.senderImage, required this.receiverId, required this.receiver, required this.receiverPhone, required this.receiverIpa, required this.receiverImage, required this.transactionType, this.transactionCategory, required this.currencyCode, this.targetCurrency, this.convertedAmount, required this.amount, required this.totalAmount, this.totalConvertedAmount, required this.adjustedAmount, required this.fees, this.convertedFees, required this.paymentMethod, required this.status, required this.description, required this.referenceNumber, required this.isSender, required this.isInternalTransfer, required this.isMultiCurrency, this.isMerchant, required this.isTransactionByPhone, required this.senderBalance, this.receiverBalance});
+  const _TransactionItemEntity({required this.id, required this.createdAt, required this.senderId, required this.sender, required this.senderPhone, required this.senderIpa, required this.senderImage, required this.receiverId, required this.receiver, required this.receiverPhone, required this.receiverIpa, required this.receiverImage, required this.transactionType, required this.currencyCode, required this.amount, required this.totalAmount, required this.adjustedAmount, required this.fees, required this.paymentMethod, required this.status, required this.description, required this.referenceNumber, required this.isSender, required this.isInternalTransfer, required this.isMultiCurrency, required this.isTransactionByPhone, required this.senderBalance});
   
 
 @override final  int id;
@@ -823,16 +816,11 @@ class _TransactionItemEntity implements TransactionItemEntity {
 @override final  String receiverIpa;
 @override final  String receiverImage;
 @override final  String transactionType;
-@override final  String? transactionCategory;
 @override final  String currencyCode;
-@override final  String? targetCurrency;
-@override final  double? convertedAmount;
 @override final  double amount;
 @override final  double totalAmount;
-@override final  double? totalConvertedAmount;
 @override final  double adjustedAmount;
 @override final  double fees;
-@override final  double? convertedFees;
 @override final  String paymentMethod;
 @override final  String status;
 @override final  String description;
@@ -840,10 +828,8 @@ class _TransactionItemEntity implements TransactionItemEntity {
 @override final  bool isSender;
 @override final  bool isInternalTransfer;
 @override final  bool isMultiCurrency;
-@override final  bool? isMerchant;
 @override final  bool isTransactionByPhone;
 @override final  String senderBalance;
-@override final  String? receiverBalance;
 
 /// Create a copy of TransactionItemEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -855,16 +841,16 @@ _$TransactionItemEntityCopyWith<_TransactionItemEntity> get copyWith => __$Trans
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TransactionItemEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.senderId, senderId) || other.senderId == senderId)&&(identical(other.sender, sender) || other.sender == sender)&&(identical(other.senderPhone, senderPhone) || other.senderPhone == senderPhone)&&(identical(other.senderIpa, senderIpa) || other.senderIpa == senderIpa)&&(identical(other.senderImage, senderImage) || other.senderImage == senderImage)&&(identical(other.receiverId, receiverId) || other.receiverId == receiverId)&&(identical(other.receiver, receiver) || other.receiver == receiver)&&(identical(other.receiverPhone, receiverPhone) || other.receiverPhone == receiverPhone)&&(identical(other.receiverIpa, receiverIpa) || other.receiverIpa == receiverIpa)&&(identical(other.receiverImage, receiverImage) || other.receiverImage == receiverImage)&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.transactionCategory, transactionCategory) || other.transactionCategory == transactionCategory)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.targetCurrency, targetCurrency) || other.targetCurrency == targetCurrency)&&(identical(other.convertedAmount, convertedAmount) || other.convertedAmount == convertedAmount)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.totalConvertedAmount, totalConvertedAmount) || other.totalConvertedAmount == totalConvertedAmount)&&(identical(other.adjustedAmount, adjustedAmount) || other.adjustedAmount == adjustedAmount)&&(identical(other.fees, fees) || other.fees == fees)&&(identical(other.convertedFees, convertedFees) || other.convertedFees == convertedFees)&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.status, status) || other.status == status)&&(identical(other.description, description) || other.description == description)&&(identical(other.referenceNumber, referenceNumber) || other.referenceNumber == referenceNumber)&&(identical(other.isSender, isSender) || other.isSender == isSender)&&(identical(other.isInternalTransfer, isInternalTransfer) || other.isInternalTransfer == isInternalTransfer)&&(identical(other.isMultiCurrency, isMultiCurrency) || other.isMultiCurrency == isMultiCurrency)&&(identical(other.isMerchant, isMerchant) || other.isMerchant == isMerchant)&&(identical(other.isTransactionByPhone, isTransactionByPhone) || other.isTransactionByPhone == isTransactionByPhone)&&(identical(other.senderBalance, senderBalance) || other.senderBalance == senderBalance)&&(identical(other.receiverBalance, receiverBalance) || other.receiverBalance == receiverBalance));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TransactionItemEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.senderId, senderId) || other.senderId == senderId)&&(identical(other.sender, sender) || other.sender == sender)&&(identical(other.senderPhone, senderPhone) || other.senderPhone == senderPhone)&&(identical(other.senderIpa, senderIpa) || other.senderIpa == senderIpa)&&(identical(other.senderImage, senderImage) || other.senderImage == senderImage)&&(identical(other.receiverId, receiverId) || other.receiverId == receiverId)&&(identical(other.receiver, receiver) || other.receiver == receiver)&&(identical(other.receiverPhone, receiverPhone) || other.receiverPhone == receiverPhone)&&(identical(other.receiverIpa, receiverIpa) || other.receiverIpa == receiverIpa)&&(identical(other.receiverImage, receiverImage) || other.receiverImage == receiverImage)&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.adjustedAmount, adjustedAmount) || other.adjustedAmount == adjustedAmount)&&(identical(other.fees, fees) || other.fees == fees)&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.status, status) || other.status == status)&&(identical(other.description, description) || other.description == description)&&(identical(other.referenceNumber, referenceNumber) || other.referenceNumber == referenceNumber)&&(identical(other.isSender, isSender) || other.isSender == isSender)&&(identical(other.isInternalTransfer, isInternalTransfer) || other.isInternalTransfer == isInternalTransfer)&&(identical(other.isMultiCurrency, isMultiCurrency) || other.isMultiCurrency == isMultiCurrency)&&(identical(other.isTransactionByPhone, isTransactionByPhone) || other.isTransactionByPhone == isTransactionByPhone)&&(identical(other.senderBalance, senderBalance) || other.senderBalance == senderBalance));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,id,createdAt,senderId,sender,senderPhone,senderIpa,senderImage,receiverId,receiver,receiverPhone,receiverIpa,receiverImage,transactionType,transactionCategory,currencyCode,targetCurrency,convertedAmount,amount,totalAmount,totalConvertedAmount,adjustedAmount,fees,convertedFees,paymentMethod,status,description,referenceNumber,isSender,isInternalTransfer,isMultiCurrency,isMerchant,isTransactionByPhone,senderBalance,receiverBalance]);
+int get hashCode => Object.hashAll([runtimeType,id,createdAt,senderId,sender,senderPhone,senderIpa,senderImage,receiverId,receiver,receiverPhone,receiverIpa,receiverImage,transactionType,currencyCode,amount,totalAmount,adjustedAmount,fees,paymentMethod,status,description,referenceNumber,isSender,isInternalTransfer,isMultiCurrency,isTransactionByPhone,senderBalance]);
 
 @override
 String toString() {
-  return 'TransactionItemEntity(id: $id, createdAt: $createdAt, senderId: $senderId, sender: $sender, senderPhone: $senderPhone, senderIpa: $senderIpa, senderImage: $senderImage, receiverId: $receiverId, receiver: $receiver, receiverPhone: $receiverPhone, receiverIpa: $receiverIpa, receiverImage: $receiverImage, transactionType: $transactionType, transactionCategory: $transactionCategory, currencyCode: $currencyCode, targetCurrency: $targetCurrency, convertedAmount: $convertedAmount, amount: $amount, totalAmount: $totalAmount, totalConvertedAmount: $totalConvertedAmount, adjustedAmount: $adjustedAmount, fees: $fees, convertedFees: $convertedFees, paymentMethod: $paymentMethod, status: $status, description: $description, referenceNumber: $referenceNumber, isSender: $isSender, isInternalTransfer: $isInternalTransfer, isMultiCurrency: $isMultiCurrency, isMerchant: $isMerchant, isTransactionByPhone: $isTransactionByPhone, senderBalance: $senderBalance, receiverBalance: $receiverBalance)';
+  return 'TransactionItemEntity(id: $id, createdAt: $createdAt, senderId: $senderId, sender: $sender, senderPhone: $senderPhone, senderIpa: $senderIpa, senderImage: $senderImage, receiverId: $receiverId, receiver: $receiver, receiverPhone: $receiverPhone, receiverIpa: $receiverIpa, receiverImage: $receiverImage, transactionType: $transactionType, currencyCode: $currencyCode, amount: $amount, totalAmount: $totalAmount, adjustedAmount: $adjustedAmount, fees: $fees, paymentMethod: $paymentMethod, status: $status, description: $description, referenceNumber: $referenceNumber, isSender: $isSender, isInternalTransfer: $isInternalTransfer, isMultiCurrency: $isMultiCurrency, isTransactionByPhone: $isTransactionByPhone, senderBalance: $senderBalance)';
 }
 
 
@@ -875,7 +861,7 @@ abstract mixin class _$TransactionItemEntityCopyWith<$Res> implements $Transacti
   factory _$TransactionItemEntityCopyWith(_TransactionItemEntity value, $Res Function(_TransactionItemEntity) _then) = __$TransactionItemEntityCopyWithImpl;
 @override @useResult
 $Res call({
- int id, DateTime createdAt, String senderId, String sender, String senderPhone, String senderIpa, String senderImage, String receiverId, String receiver, String receiverPhone, String receiverIpa, String receiverImage, String transactionType, String? transactionCategory, String currencyCode, String? targetCurrency, double? convertedAmount, double amount, double totalAmount, double? totalConvertedAmount, double adjustedAmount, double fees, double? convertedFees, String paymentMethod, String status, String description, String referenceNumber, bool isSender, bool isInternalTransfer, bool isMultiCurrency, bool? isMerchant, bool isTransactionByPhone, String senderBalance, String? receiverBalance
+ int id, DateTime createdAt, String senderId, String sender, String senderPhone, String senderIpa, String senderImage, String receiverId, String receiver, String receiverPhone, String receiverIpa, String receiverImage, String transactionType, String currencyCode, double amount, double totalAmount, double adjustedAmount, double fees, String paymentMethod, String status, String description, String referenceNumber, bool isSender, bool isInternalTransfer, bool isMultiCurrency, bool isTransactionByPhone, String senderBalance
 });
 
 
@@ -892,7 +878,7 @@ class __$TransactionItemEntityCopyWithImpl<$Res>
 
 /// Create a copy of TransactionItemEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? createdAt = null,Object? senderId = null,Object? sender = null,Object? senderPhone = null,Object? senderIpa = null,Object? senderImage = null,Object? receiverId = null,Object? receiver = null,Object? receiverPhone = null,Object? receiverIpa = null,Object? receiverImage = null,Object? transactionType = null,Object? transactionCategory = freezed,Object? currencyCode = null,Object? targetCurrency = freezed,Object? convertedAmount = freezed,Object? amount = null,Object? totalAmount = null,Object? totalConvertedAmount = freezed,Object? adjustedAmount = null,Object? fees = null,Object? convertedFees = freezed,Object? paymentMethod = null,Object? status = null,Object? description = null,Object? referenceNumber = null,Object? isSender = null,Object? isInternalTransfer = null,Object? isMultiCurrency = null,Object? isMerchant = freezed,Object? isTransactionByPhone = null,Object? senderBalance = null,Object? receiverBalance = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? createdAt = null,Object? senderId = null,Object? sender = null,Object? senderPhone = null,Object? senderIpa = null,Object? senderImage = null,Object? receiverId = null,Object? receiver = null,Object? receiverPhone = null,Object? receiverIpa = null,Object? receiverImage = null,Object? transactionType = null,Object? currencyCode = null,Object? amount = null,Object? totalAmount = null,Object? adjustedAmount = null,Object? fees = null,Object? paymentMethod = null,Object? status = null,Object? description = null,Object? referenceNumber = null,Object? isSender = null,Object? isInternalTransfer = null,Object? isMultiCurrency = null,Object? isTransactionByPhone = null,Object? senderBalance = null,}) {
   return _then(_TransactionItemEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
@@ -907,28 +893,21 @@ as String,receiverPhone: null == receiverPhone ? _self.receiverPhone : receiverP
 as String,receiverIpa: null == receiverIpa ? _self.receiverIpa : receiverIpa // ignore: cast_nullable_to_non_nullable
 as String,receiverImage: null == receiverImage ? _self.receiverImage : receiverImage // ignore: cast_nullable_to_non_nullable
 as String,transactionType: null == transactionType ? _self.transactionType : transactionType // ignore: cast_nullable_to_non_nullable
-as String,transactionCategory: freezed == transactionCategory ? _self.transactionCategory : transactionCategory // ignore: cast_nullable_to_non_nullable
-as String?,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
-as String,targetCurrency: freezed == targetCurrency ? _self.targetCurrency : targetCurrency // ignore: cast_nullable_to_non_nullable
-as String?,convertedAmount: freezed == convertedAmount ? _self.convertedAmount : convertedAmount // ignore: cast_nullable_to_non_nullable
-as double?,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as String,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
+as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as double,totalAmount: null == totalAmount ? _self.totalAmount : totalAmount // ignore: cast_nullable_to_non_nullable
-as double,totalConvertedAmount: freezed == totalConvertedAmount ? _self.totalConvertedAmount : totalConvertedAmount // ignore: cast_nullable_to_non_nullable
-as double?,adjustedAmount: null == adjustedAmount ? _self.adjustedAmount : adjustedAmount // ignore: cast_nullable_to_non_nullable
+as double,adjustedAmount: null == adjustedAmount ? _self.adjustedAmount : adjustedAmount // ignore: cast_nullable_to_non_nullable
 as double,fees: null == fees ? _self.fees : fees // ignore: cast_nullable_to_non_nullable
-as double,convertedFees: freezed == convertedFees ? _self.convertedFees : convertedFees // ignore: cast_nullable_to_non_nullable
-as double?,paymentMethod: null == paymentMethod ? _self.paymentMethod : paymentMethod // ignore: cast_nullable_to_non_nullable
+as double,paymentMethod: null == paymentMethod ? _self.paymentMethod : paymentMethod // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,referenceNumber: null == referenceNumber ? _self.referenceNumber : referenceNumber // ignore: cast_nullable_to_non_nullable
 as String,isSender: null == isSender ? _self.isSender : isSender // ignore: cast_nullable_to_non_nullable
 as bool,isInternalTransfer: null == isInternalTransfer ? _self.isInternalTransfer : isInternalTransfer // ignore: cast_nullable_to_non_nullable
 as bool,isMultiCurrency: null == isMultiCurrency ? _self.isMultiCurrency : isMultiCurrency // ignore: cast_nullable_to_non_nullable
-as bool,isMerchant: freezed == isMerchant ? _self.isMerchant : isMerchant // ignore: cast_nullable_to_non_nullable
-as bool?,isTransactionByPhone: null == isTransactionByPhone ? _self.isTransactionByPhone : isTransactionByPhone // ignore: cast_nullable_to_non_nullable
+as bool,isTransactionByPhone: null == isTransactionByPhone ? _self.isTransactionByPhone : isTransactionByPhone // ignore: cast_nullable_to_non_nullable
 as bool,senderBalance: null == senderBalance ? _self.senderBalance : senderBalance // ignore: cast_nullable_to_non_nullable
-as String,receiverBalance: freezed == receiverBalance ? _self.receiverBalance : receiverBalance // ignore: cast_nullable_to_non_nullable
-as String?,
+as String,
   ));
 }
 

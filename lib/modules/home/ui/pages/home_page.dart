@@ -32,131 +32,149 @@ class HomePage extends StatelessWidget {
     final scrollController = ScrollController();
 
     return Scaffold(
-      body: CustomScrollView(
-        controller: scrollController,
-        physics: const AlwaysScrollableScrollPhysics(
-          parent: BouncingScrollPhysics(),
-        ),
-        slivers: [
-          SliverAppBarWithWavesComponent(
-            scrollController: scrollController,
-            expandedHeight: 320.h,
-            leading: Padding(
-              padding: const EdgeInsets.all(AppConfig.paddingHalf),
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(
-                    AppConfig.outBorderRadius,
-                  ),
-                  onTap: () async {
-                    unawaited(HapticFeedback.vibrate());
-                    await const ProfileRoute().push<void>(context);
-                  },
-                  child: const AvatarComponent(
-                    imageUrl:
-                        'https://hips.hearstapps.com/hmg-prod/images/demon-slayer-kimetsu-no-yaiba-646f30ac5433e.jpg',
+      body: RefreshIndicator(
+        onRefresh: () => context.read<HomeCubit>().getWallets(),
+        child: CustomScrollView(
+          controller: scrollController,
+          physics: const AlwaysScrollableScrollPhysics(
+            parent: BouncingScrollPhysics(),
+          ),
+          slivers: [
+            SliverAppBarWithWavesComponent(
+              scrollController: scrollController,
+              expandedHeight: 320.h,
+              leading: Padding(
+                padding: const EdgeInsets.all(AppConfig.paddingHalf),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(
+                      AppConfig.outBorderRadius,
+                    ),
+                    onTap: () async {
+                      unawaited(HapticFeedback.vibrate());
+                      await const ProfileRoute().push<void>(context);
+                    },
+                    child: const AvatarComponent(
+                      imageUrl:
+                          'https://hips.hearstapps.com/hmg-prod/images/demon-slayer-kimetsu-no-yaiba-646f30ac5433e.jpg',
+                    ),
                   ),
                 ),
               ),
-            ),
-            title: l10n.home,
-            actions: [
-              IconButtonComponent.filled(
-                icon: Iconsax.notification_copy,
-                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                foregroundColor: Theme.of(
-                  context,
-                ).colorScheme.onPrimaryContainer,
-                padding: 0,
-                onPressed: () => const NotificationsRoute().push<void>(context),
-              ),
-            ],
-            flexibleSpace: Padding(
-              padding: const EdgeInsets.only(
-                top: kToolbarHeight + AppConfig.padding * 2,
-              ),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: BlocBuilder<HomeCubit, HomeState>(
+              title: l10n.home,
+              actions: [
+                IconButtonComponent.filled(
+                  icon: Iconsax.notification_copy,
+                  backgroundColor: Theme.of(
+                    context,
+                  ).colorScheme.primaryContainer,
+                  foregroundColor: Theme.of(
+                    context,
+                  ).colorScheme.onPrimaryContainer,
+                  padding: 0,
+                  onPressed: () =>
+                      const NotificationsRoute().push<void>(context),
+                ),
+              ],
+              flexibleSpace: Padding(
+                padding: const EdgeInsets.only(
+                  top: kToolbarHeight + AppConfig.padding * 2,
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: BlocBuilder<HomeCubit, HomeState>(
+                        builder: (context, state) {
+                          return state.maybeWhen(
+                            success:
+                                (
+                                  wallets,
+                                  transactions,
+                                  isTransactionsLoading,
+                                  currentFilters,
+                                ) => PageView.builder(
+                                  controller: cardController,
+                                  itemCount: wallets.wallets.length,
+                                  itemBuilder: (final context, final index) =>
+                                      AccountBalanceCard(
+                                        w: wallets.wallets[index],
+                                      ),
+                                ),
+                            loading: () => const Skeletonizer(
+                              child: AccountBalanceCard(
+                                w: WalletItemEntity.placeholder(),
+                              ),
+                            ),
+                            failure: (message) => Center(child: Text(message)),
+                            orElse: () => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: AppConfig.paddingHalf),
+                    BlocBuilder<HomeCubit, HomeState>(
                       builder: (context, state) {
                         return state.maybeWhen(
-                          success: (wallets, transactions, hasMore) =>
-                              PageView.builder(
+                          success:
+                              (
+                                wallets,
+                                transactions,
+                                isTransactionsLoading,
+                                currentFilters,
+                              ) => SmoothPageIndicator(
                                 controller: cardController,
-                                itemCount: wallets.wallets.length,
-                                itemBuilder: (final context, final index) =>
-                                    AccountBalanceCard(
-                                      w: wallets.wallets[index],
-                                    ),
+                                count: wallets.wallets.length,
+                                effect: ScrollingDotsEffect(
+                                  dotHeight: 6,
+                                  dotWidth: 6,
+                                  activeDotColor: Theme.of(
+                                    context,
+                                  ).colorScheme.onPrimary,
+                                ),
                               ),
-                          loading: () => const Skeletonizer(
-                            child: AccountBalanceCard(
-                              w: WalletItemEntity.placeholder(),
-                            ),
-                          ),
-                          failure: (message) => Center(child: Text(message)),
-                          orElse: () =>
-                              const Center(child: CircularProgressIndicator()),
+                          orElse: () => const SizedBox.shrink(),
                         );
                       },
                     ),
-                  ),
-                  const SizedBox(height: AppConfig.paddingHalf),
-                  BlocBuilder<HomeCubit, HomeState>(
-                    builder: (context, state) {
-                      return state.maybeWhen(
-                        success: (wallets, transactions, hasMore) =>
-                            SmoothPageIndicator(
-                              controller: cardController,
-                              count: wallets.wallets.length,
-                              effect: ScrollingDotsEffect(
-                                dotHeight: 6,
-                                dotWidth: 6,
-                                activeDotColor: Theme.of(
-                                  context,
-                                ).colorScheme.onPrimary,
-                              ),
-                            ),
-                        orElse: () => const SizedBox.shrink(),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: AppConfig.paddingHalf),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      QuickActionItem(
-                        icon: Iconsax.send_sqaure_2_copy,
-                        label: l10n.send,
-                        onTap: () => const SendMoneyRoute().push<void>(context),
-                      ),
-                      QuickActionItem(
-                        icon: Iconsax.add_circle_copy,
-                        label: l10n.deposit,
-                        onTap: () {},
-                      ),
-                      QuickActionItem(
-                        icon: Iconsax.receive_square_2_copy,
-                        label: l10n.request,
-                        onTap: () =>
-                            const RequestMoneyRoute().push<void>(context),
-                      ),
-                      QuickActionItem(
-                        icon: Iconsax.scan_barcode_copy,
-                        label: l10n.scan,
-                        onTap: () =>
-                            const ScanQrCodeRoute().push<void>(context),
-                      ),
-                    ],
-                  ),
-                ],
+                    const SizedBox(height: AppConfig.paddingHalf),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        QuickActionItem(
+                          icon: Iconsax.send_sqaure_2_copy,
+                          label: l10n.send,
+                          onTap: () =>
+                              const SendMoneyRoute().push<void>(context),
+                        ),
+                        QuickActionItem(
+                          icon: Iconsax.add_circle_copy,
+                          label: l10n.deposit,
+                          onTap: () {},
+                        ),
+                        QuickActionItem(
+                          icon: Iconsax.receive_square_2_copy,
+                          label: l10n.request,
+                          onTap: () =>
+                              const RequestMoneyRoute().push<void>(context),
+                        ),
+                        QuickActionItem(
+                          icon: Iconsax.scan_barcode_copy,
+                          label: l10n.scan,
+                          onTap: () =>
+                              const ScanQrCodeRoute().push<void>(context),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          const LatestTransactionsSection(),
-        ],
+            const LatestTransactionsSection(),
+          ],
+        ),
       ),
     );
   }

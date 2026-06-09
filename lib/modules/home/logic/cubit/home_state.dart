@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../entity/params/get_transactions_params.dart';
 import '../entity/transaction_entity.dart';
 import '../entitys/wallets_entity.dart';
 
@@ -12,6 +13,7 @@ sealed class HomeState with _$HomeState {
     required WalletsEntity wallets,
     @Default([]) List<TransactionItemEntity> transactions,
     @Default(false) bool isTransactionsLoading,
+    @Default(GetTransactionsParams()) GetTransactionsParams transactionFilters,
   }) = Success;
   const factory HomeState.failure({required String message}) = Failure;
 }
