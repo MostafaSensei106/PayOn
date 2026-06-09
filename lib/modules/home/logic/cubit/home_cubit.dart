@@ -24,7 +24,7 @@ class HomeCubit extends Cubit<HomeState> {
 
     response.when(
       success: (t) {
-        emit(HomeState.success(wallets: t));
+        emit(HomeState.success(wallets: t, isTransactionsLoading: true));
         unawaited(getLatestTransactions());
       },
       failure: (e) => emit(HomeState.failure(message: e.message)),
@@ -32,24 +32,23 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<void> getLatestTransactions() async {
+    final currentState = state;
+    if (currentState is! Success) return;
+
+    emit(currentState.copyWith(isTransactionsLoading: true));
+
+    final response = await _getTransactionsU.call(currentState.transactionFilters);
+
     if (state is! Success) return;
-
-    emit((state as Success).copyWith(isTransactionsLoading: true));
-
-    final filters = (state as Success).transactionFilters;
-    final response = await _getTransactionsU.call(filters);
-
-    if (state is! Success) return;
-    final currentState = state as Success;
 
     response.when(
       success: (t) => emit(
-        currentState.copyWith(
+        (state as Success).copyWith(
           isTransactionsLoading: false,
           transactions: t.data.items,
         ),
       ),
-      failure: (e) => emit(currentState.copyWith(isTransactionsLoading: false)),
+      failure: (e) => emit((state as Success).copyWith(isTransactionsLoading: false)),
     );
   }
 
