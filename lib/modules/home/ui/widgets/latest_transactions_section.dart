@@ -30,41 +30,11 @@ class LatestTransactionsSection extends StatelessWidget {
     return state.maybeWhen(
       success: (wallets, transactions, isTransactionsLoading, currentFilters) {
         final displayTransactions = isTransactionsLoading
-            ? List.generate(
-                5,
-                (index) => TransactionItemEntity(
-                  id: index,
-                  createdAt: DateTime.now(),
-                  senderId: '',
-                  sender: 'Sender Name',
-                  senderPhone: '',
-                  senderIpa: '',
-                  senderImage: '',
-                  receiverId: '',
-                  receiver: 'Receiver Name',
-                  receiverPhone: '',
-                  receiverIpa: '',
-                  receiverImage: '',
-                  transactionType: 'Transfer',
-                  currencyCode: 'EGP',
-                  amount: 0,
-                  totalAmount: 0,
-                  adjustedAmount: 0,
-                  fees: 0,
-                  paymentMethod: '',
-                  status: 'Success',
-                  description: 'Transaction Description',
-                  referenceNumber: '',
-                  isSender: true,
-                  isInternalTransfer: true,
-                  isMultiCurrency: false,
-                  isTransactionByPhone: false,
-                  senderBalance: '0',
-                ),
-              )
+            ? List.generate(5, (index) => TransactionItemEntity.placeholder())
             : transactions;
 
-        final hasFilters = currentFilters.minAmount > 0 || currentFilters.maxAmount > 0;
+        final hasFilters =
+            currentFilters.minAmount > 0 || currentFilters.maxAmount > 0;
 
         return SliverPadding(
           padding: const EdgeInsetsGeometry.symmetric(
@@ -80,29 +50,30 @@ class LatestTransactionsSection extends StatelessWidget {
                       children: [
                         Text(
                           l10n.latest_transactions,
-                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        const SizedBox(width: AppConfig.paddingHalf),
-                        IconButtonComponent(
-                          icon: Iconsax.setting_4_copy,
-                          foregroundColor: hasFilters ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onSurfaceVariant,
-                          iconSize: 20,
-                          onPressed: () {
-                            unawaited(showModalBottomSheet<void>(
-                              context: context,
-                              isScrollControlled: true,
-                              builder: (final _) => BlocProvider.value(
-                                value: context.read<HomeCubit>(),
-                                child: TransactionsFilterBottomSheet(
-                                  initialFilters: currentFilters,
-                                ),
-                              ),
-                            ));
-                          },
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(fontWeight: FontWeight.w600),
                         ),
                       ],
+                    ),
+                    IconButtonComponent.filled(
+                      icon: Iconsax.setting_4_copy,
+                      foregroundColor: hasFilters
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.onSurfaceVariant,
+                      iconSize: 20,
+                      onPressed: () {
+                        unawaited(
+                          context.showBottomSheetComponent(
+                            title: l10n.latest_transactions,
+                            child: BlocProvider.value(
+                              value: context.read<HomeCubit>(),
+                              child: TransactionsFilterBottomSheet(
+                                initialFilters: currentFilters,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     if (!isTransactionsLoading && transactions.isNotEmpty)
                       TextButtonComponent(

@@ -37,7 +37,7 @@ class HomeCubit extends Cubit<HomeState> {
 
     emit(currentState.copyWith(isTransactionsLoading: true));
 
-    final filters = currentState.transactionFilters.copyWith(size: 10);
+    final filters = currentState.transactionFilters;
     final response = await _getTransactionsU.call(filters);
 
     response.when(
