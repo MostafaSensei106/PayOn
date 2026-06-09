@@ -26,6 +26,7 @@ import '../../../modules/send_money/data/models/create_transaction_draft/create_
 import '../../../modules/send_money/data/models/create_transaction_draft/create_transaction_draft_response_body.dart';
 import '../../../modules/send_money/data/models/get_favorites/get_user_favorites_response_body.dart';
 import '../../../modules/send_money/data/models/save_transaction/save_transaction_request_body.dart';
+import '../../../modules/send_money/data/models/save_transaction/save_transaction_response_body.dart';
 import '../../constants/api_routes.dart';
 
 part 'api_service.g.dart';
@@ -96,8 +97,9 @@ abstract class ApiService {
     @Body() CheckWalletPinRequestBody body,
   );
 
-  Future<SaveTransactionRequestBody> saveTransaction(
-    @Body() SaveTransactionRequestBody,
+  @POST(ApiRoutes.transactionSaveTransaction)
+  Future<SaveTransactionResponseBody> saveTransaction(
+    @Body() SaveTransactionRequestBody body,
   );
 
   @GET(ApiRoutes.accountGetUserFavorites)

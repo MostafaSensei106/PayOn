@@ -243,5 +243,8 @@
   "description": "الوصف",
   "description_hint": "أدخل الوصف (اختياري)",
   "confirm_transaction": "تأكيد المعاملة",
-  "confirm_transaction_body": "هل أنت متأكد أنك تريد إرسال {amount} إلى {name}؟"
+  "confirm_transaction_body": "هل أنت متأكد أنك تريد إرسال {amount} إلى {name}؟",
+  "enter_pin": "أدخل رمز PIN الخاص بك",
+  "fees": "الرسوم",
+  "total_amount": "المبلغ الإجمالي"
 }

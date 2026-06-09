@@ -46,30 +46,76 @@ class TransactionsDataModel {
 class TransactionItemModel {
   const TransactionItemModel({
     required this.id,
-    required this.amount,
-    required this.currency,
-    required this.type,
-    required this.status,
     required this.createdAt,
+    required this.senderId,
+    required this.sender,
+    required this.senderPhone,
+    required this.senderIpa,
+    required this.senderImage,
+    required this.receiverId,
+    required this.receiver,
+    required this.receiverPhone,
+    required this.receiverIpa,
+    required this.receiverImage,
+    required this.transactionType,
+    required this.currencyCode,
+    required this.amount,
+    required this.totalAmount,
+    required this.adjustedAmount,
+    required this.fees,
+    required this.paymentMethod,
+    required this.status,
     required this.description,
-    required this.reference,
-    required this.senderName,
-    required this.receiverName,
+    required this.referenceNumber,
+    required this.isSender,
+    required this.isInternalTransfer,
+    required this.isMultiCurrency,
+    required this.isTransactionByPhone,
+    required this.senderBalance,
+    this.transactionCategory,
+    this.targetCurrency,
+    this.convertedAmount,
+    this.totalConvertedAmount,
+    this.convertedFees,
+    this.isMerchant,
+    this.receiverBalance,
   });
 
   factory TransactionItemModel.fromJson(Map<String, dynamic> json) =>
       _$TransactionItemModelFromJson(json);
 
-  final String id;
-  final double amount;
-  final String currency;
-  final String type;
-  final String status;
+  final int id;
   final String createdAt;
+  final String senderId;
+  final String sender;
+  final String senderPhone;
+  final String senderIpa;
+  final String senderImage;
+  final String receiverId;
+  final String receiver;
+  final String receiverPhone;
+  final String receiverIpa;
+  final String receiverImage;
+  final String transactionType;
+  final String? transactionCategory;
+  final String currencyCode;
+  final String? targetCurrency;
+  final double? convertedAmount;
+  final double amount;
+  final double totalAmount;
+  final double? totalConvertedAmount;
+  final double adjustedAmount;
+  final double fees;
+  final double? convertedFees;
+  final String paymentMethod;
+  final String status;
   final String description;
-  final String reference;
-  @JsonKey(name: 'sender_name')
-  final String? senderName;
-  @JsonKey(name: 'receiver_name')
-  final String? receiverName;
+  final String referenceNumber;
+  final bool isSender;
+  final bool isInternalTransfer;
+  final bool isMultiCurrency;
+  final bool? isMerchant;
+  final bool isTransactionByPhone;
+  final String senderBalance;
+  final String? receiverBalance;
 }

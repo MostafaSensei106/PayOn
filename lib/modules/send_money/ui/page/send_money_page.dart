@@ -18,6 +18,7 @@ import '../../logic/cubit/send_money_state.dart';
 import '../../logic/cubit/user_favorites_cubit.dart';
 import '../widgets/amount_input_and_submit_component.dart';
 import '../widgets/receiver_selection_component.dart';
+import '../widgets/send_money_summary_bottom_sheet.dart';
 import '../widgets/sender_account_selection_component.dart';
 
 enum SendMoneyMethod { phone, ipa }
@@ -60,25 +61,37 @@ class SendMoneyPage extends HookWidget {
             },
             success: (form, data) async {
               Navigator.pop(context);
-              await context.dialog.showConfirmation<void>(
-                title: l10n.confirm_transaction,
-                body: l10n.confirm_transaction_body(
-                  form.amount.value,
-                  data.name,
+              unawaited(
+                context.read<SendMoneyCubit>().createTransactionDraft(
+                  senderId: selectedWallet.value.walletId,
+                  receiverId: data.reciverId,
+                  isTransactionByPhone:
+                      selectedMethod.value == SendMoneyMethod.phone,
                 ),
-                onConfirm: () {
-                  unawaited(
-                    context.read<SendMoneyCubit>().createTransactionDraft(
-                      senderId: selectedWallet.value.walletId,
-                      receiverId: data.reciverId,
-                      isTransactionByPhone:
-                          selectedMethod.value == SendMoneyMethod.phone,
-                    ),
-                  );
-                },
               );
             },
-            transactionDraftSuccess: (_) {
+            transactionDraftSuccess: (form, draft) {
+              Navigator.pop(context);
+              showModalBottomSheet<void>(
+                context: context,
+                isScrollControlled: true,
+                builder: (final _) => BlocProvider.value(
+                  value: context.read<SendMoneyCubit>(),
+                  child: SendMoneySummaryBottomSheet(
+                    draft: draft,
+                    onConfirm: (pin) {
+                      context.read<SendMoneyCubit>().confirmTransaction(
+                        pin: pin,
+                        walletId: selectedWallet.value.walletId,
+                        draftIds: draft.draftIds,
+                      );
+                    },
+                  ),
+                ),
+              );
+            },
+            transactionSaved: (form, data) {
+              Navigator.pop(context);
               Navigator.pop(context);
               context.toast.showSuccess(context, l10n.success);
             },

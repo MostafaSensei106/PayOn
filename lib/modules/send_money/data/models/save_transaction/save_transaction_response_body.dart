@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../logic/entity/save_transaction_entity.dart';
+
 part 'save_transaction_response_body.g.dart';
 
 @JsonSerializable()
@@ -56,4 +58,21 @@ class SaveTransactionData {
   final double? convertedAmount;
   final double? exchangeRate;
   final String? backLink;
+}
+
+extension SaveTransactionMapper on SaveTransactionResponseBody {
+  SaveTransactionEntity toEntity() {
+    return SaveTransactionEntity(
+      transactionIds: data.transactionIds,
+      statusCode: data.statusCode,
+      isMultiCurrency: data.isMultiCurrency,
+      originalAmount: data.originalAmount,
+      totalAmount: data.totalAmount,
+      originalCurrency: data.originalCurrency,
+      targetCurrency: data.targetCurrency,
+      convertedAmount: data.convertedAmount,
+      exchangeRate: data.exchangeRate,
+      backLink: data.backLink,
+    );
+  }
 }

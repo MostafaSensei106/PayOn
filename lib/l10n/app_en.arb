@@ -243,5 +243,8 @@
   "description": "Description",
   "description_hint": "Enter description (optional)",
   "confirm_transaction": "Confirm Transaction",
-  "confirm_transaction_body": "Are you sure you want to send {amount} to {name}?"
+  "confirm_transaction_body": "Are you sure you want to send {amount} to {name}?",
+  "enter_pin": "Enter your PIN",
+  "fees": "Fees",
+  "total_amount": "Total Amount"
 }

@@ -764,4 +764,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String confirm_transaction_body(Object amount, Object name) {
     return 'هل أنت متأكد أنك تريد إرسال $amount إلى $name؟';
   }
+
+  @override
+  String get enter_pin => 'أدخل رمز PIN الخاص بك';
+
+  @override
+  String get fees => 'الرسوم';
+
+  @override
+  String get total_amount => 'المبلغ الإجمالي';
 }

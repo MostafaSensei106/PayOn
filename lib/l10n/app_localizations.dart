@@ -1561,6 +1561,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Are you sure you want to send {amount} to {name}?'**
   String confirm_transaction_body(Object amount, Object name);
+
+  /// No description provided for @enter_pin.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your PIN'**
+  String get enter_pin;
+
+  /// No description provided for @fees.
+  ///
+  /// In en, this message translates to:
+  /// **'Fees'**
+  String get fees;
+
+  /// No description provided for @total_amount.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Amount'**
+  String get total_amount;
 }
 
 class _AppLocalizationsDelegate

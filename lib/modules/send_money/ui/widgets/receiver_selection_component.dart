@@ -181,7 +181,8 @@ class ReceiverSelectionComponent extends StatelessWidget {
                       }
                     }),
                     SizedBox(
-                      height: MediaQuery.of(context).padding.bottom +
+                      height:
+                          MediaQuery.of(context).padding.bottom +
                           AppConfig.padding,
                     ),
                   ],

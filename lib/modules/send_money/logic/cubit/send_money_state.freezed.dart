@@ -101,14 +101,15 @@ extension SendMoneyStatePatterns on SendMoneyState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Loading value)?  loading,TResult Function( Success value)?  success,TResult Function( TransactionDraftSuccess value)?  transactionDraftSuccess,TResult Function( Failure value)?  failure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Loading value)?  loading,TResult Function( Success value)?  success,TResult Function( TransactionDraftSuccess value)?  transactionDraftSuccess,TResult Function( TransactionSaved value)?  transactionSaved,TResult Function( Failure value)?  failure,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case Loading() when loading != null:
 return loading(_that);case Success() when success != null:
 return success(_that);case TransactionDraftSuccess() when transactionDraftSuccess != null:
-return transactionDraftSuccess(_that);case Failure() when failure != null:
+return transactionDraftSuccess(_that);case TransactionSaved() when transactionSaved != null:
+return transactionSaved(_that);case Failure() when failure != null:
 return failure(_that);case _:
   return orElse();
 
@@ -127,14 +128,15 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Loading value)  loading,required TResult Function( Success value)  success,required TResult Function( TransactionDraftSuccess value)  transactionDraftSuccess,required TResult Function( Failure value)  failure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Loading value)  loading,required TResult Function( Success value)  success,required TResult Function( TransactionDraftSuccess value)  transactionDraftSuccess,required TResult Function( TransactionSaved value)  transactionSaved,required TResult Function( Failure value)  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case Loading():
 return loading(_that);case Success():
 return success(_that);case TransactionDraftSuccess():
-return transactionDraftSuccess(_that);case Failure():
+return transactionDraftSuccess(_that);case TransactionSaved():
+return transactionSaved(_that);case Failure():
 return failure(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -149,14 +151,15 @@ return failure(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Loading value)?  loading,TResult? Function( Success value)?  success,TResult? Function( TransactionDraftSuccess value)?  transactionDraftSuccess,TResult? Function( Failure value)?  failure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Loading value)?  loading,TResult? Function( Success value)?  success,TResult? Function( TransactionDraftSuccess value)?  transactionDraftSuccess,TResult? Function( TransactionSaved value)?  transactionSaved,TResult? Function( Failure value)?  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case Loading() when loading != null:
 return loading(_that);case Success() when success != null:
 return success(_that);case TransactionDraftSuccess() when transactionDraftSuccess != null:
-return transactionDraftSuccess(_that);case Failure() when failure != null:
+return transactionDraftSuccess(_that);case TransactionSaved() when transactionSaved != null:
+return transactionSaved(_that);case Failure() when failure != null:
 return failure(_that);case _:
   return null;
 
@@ -174,13 +177,14 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SendMoneyFormState formState)?  initial,TResult Function( SendMoneyFormState formState)?  loading,TResult Function( SendMoneyFormState formState,  CheckWalletEntity data)?  success,TResult Function( SendMoneyFormState formState)?  transactionDraftSuccess,TResult Function( SendMoneyFormState formState,  String message)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SendMoneyFormState formState)?  initial,TResult Function( SendMoneyFormState formState)?  loading,TResult Function( SendMoneyFormState formState,  CheckWalletEntity data)?  success,TResult Function( SendMoneyFormState formState,  CreateTracnsactionDraftEntity draft)?  transactionDraftSuccess,TResult Function( SendMoneyFormState formState,  SaveTransactionEntity data)?  transactionSaved,TResult Function( SendMoneyFormState formState,  String message)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that.formState);case Loading() when loading != null:
 return loading(_that.formState);case Success() when success != null:
 return success(_that.formState,_that.data);case TransactionDraftSuccess() when transactionDraftSuccess != null:
-return transactionDraftSuccess(_that.formState);case Failure() when failure != null:
+return transactionDraftSuccess(_that.formState,_that.draft);case TransactionSaved() when transactionSaved != null:
+return transactionSaved(_that.formState,_that.data);case Failure() when failure != null:
 return failure(_that.formState,_that.message);case _:
   return orElse();
 
@@ -199,13 +203,14 @@ return failure(_that.formState,_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SendMoneyFormState formState)  initial,required TResult Function( SendMoneyFormState formState)  loading,required TResult Function( SendMoneyFormState formState,  CheckWalletEntity data)  success,required TResult Function( SendMoneyFormState formState)  transactionDraftSuccess,required TResult Function( SendMoneyFormState formState,  String message)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SendMoneyFormState formState)  initial,required TResult Function( SendMoneyFormState formState)  loading,required TResult Function( SendMoneyFormState formState,  CheckWalletEntity data)  success,required TResult Function( SendMoneyFormState formState,  CreateTracnsactionDraftEntity draft)  transactionDraftSuccess,required TResult Function( SendMoneyFormState formState,  SaveTransactionEntity data)  transactionSaved,required TResult Function( SendMoneyFormState formState,  String message)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that.formState);case Loading():
 return loading(_that.formState);case Success():
 return success(_that.formState,_that.data);case TransactionDraftSuccess():
-return transactionDraftSuccess(_that.formState);case Failure():
+return transactionDraftSuccess(_that.formState,_that.draft);case TransactionSaved():
+return transactionSaved(_that.formState,_that.data);case Failure():
 return failure(_that.formState,_that.message);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -220,13 +225,14 @@ return failure(_that.formState,_that.message);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SendMoneyFormState formState)?  initial,TResult? Function( SendMoneyFormState formState)?  loading,TResult? Function( SendMoneyFormState formState,  CheckWalletEntity data)?  success,TResult? Function( SendMoneyFormState formState)?  transactionDraftSuccess,TResult? Function( SendMoneyFormState formState,  String message)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SendMoneyFormState formState)?  initial,TResult? Function( SendMoneyFormState formState)?  loading,TResult? Function( SendMoneyFormState formState,  CheckWalletEntity data)?  success,TResult? Function( SendMoneyFormState formState,  CreateTracnsactionDraftEntity draft)?  transactionDraftSuccess,TResult? Function( SendMoneyFormState formState,  SaveTransactionEntity data)?  transactionSaved,TResult? Function( SendMoneyFormState formState,  String message)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that.formState);case Loading() when loading != null:
 return loading(_that.formState);case Success() when success != null:
 return success(_that.formState,_that.data);case TransactionDraftSuccess() when transactionDraftSuccess != null:
-return transactionDraftSuccess(_that.formState);case Failure() when failure != null:
+return transactionDraftSuccess(_that.formState,_that.draft);case TransactionSaved() when transactionSaved != null:
+return transactionSaved(_that.formState,_that.data);case Failure() when failure != null:
 return failure(_that.formState,_that.message);case _:
   return null;
 
@@ -493,10 +499,11 @@ $CheckWalletEntityCopyWith<$Res> get data {
 
 
 class TransactionDraftSuccess with DiagnosticableTreeMixin implements SendMoneyState {
-  const TransactionDraftSuccess(this.formState);
+  const TransactionDraftSuccess(this.formState, {required this.draft});
   
 
 @override final  SendMoneyFormState formState;
+ final  CreateTracnsactionDraftEntity draft;
 
 /// Create a copy of SendMoneyState
 /// with the given fields replaced by the non-null parameter values.
@@ -509,21 +516,21 @@ $TransactionDraftSuccessCopyWith<TransactionDraftSuccess> get copyWith => _$Tran
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'SendMoneyState.transactionDraftSuccess'))
-    ..add(DiagnosticsProperty('formState', formState));
+    ..add(DiagnosticsProperty('formState', formState))..add(DiagnosticsProperty('draft', draft));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransactionDraftSuccess&&(identical(other.formState, formState) || other.formState == formState));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransactionDraftSuccess&&(identical(other.formState, formState) || other.formState == formState)&&(identical(other.draft, draft) || other.draft == draft));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,formState);
+int get hashCode => Object.hash(runtimeType,formState,draft);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SendMoneyState.transactionDraftSuccess(formState: $formState)';
+  return 'SendMoneyState.transactionDraftSuccess(formState: $formState, draft: $draft)';
 }
 
 
@@ -534,11 +541,11 @@ abstract mixin class $TransactionDraftSuccessCopyWith<$Res> implements $SendMone
   factory $TransactionDraftSuccessCopyWith(TransactionDraftSuccess value, $Res Function(TransactionDraftSuccess) _then) = _$TransactionDraftSuccessCopyWithImpl;
 @override @useResult
 $Res call({
- SendMoneyFormState formState
+ SendMoneyFormState formState, CreateTracnsactionDraftEntity draft
 });
 
 
-@override $SendMoneyFormStateCopyWith<$Res> get formState;
+@override $SendMoneyFormStateCopyWith<$Res> get formState;$CreateTracnsactionDraftEntityCopyWith<$Res> get draft;
 
 }
 /// @nodoc
@@ -551,10 +558,11 @@ class _$TransactionDraftSuccessCopyWithImpl<$Res>
 
 /// Create a copy of SendMoneyState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? formState = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? formState = null,Object? draft = null,}) {
   return _then(TransactionDraftSuccess(
 null == formState ? _self.formState : formState // ignore: cast_nullable_to_non_nullable
-as SendMoneyFormState,
+as SendMoneyFormState,draft: null == draft ? _self.draft : draft // ignore: cast_nullable_to_non_nullable
+as CreateTracnsactionDraftEntity,
   ));
 }
 
@@ -566,6 +574,107 @@ $SendMoneyFormStateCopyWith<$Res> get formState {
   
   return $SendMoneyFormStateCopyWith<$Res>(_self.formState, (value) {
     return _then(_self.copyWith(formState: value));
+  });
+}/// Create a copy of SendMoneyState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CreateTracnsactionDraftEntityCopyWith<$Res> get draft {
+  
+  return $CreateTracnsactionDraftEntityCopyWith<$Res>(_self.draft, (value) {
+    return _then(_self.copyWith(draft: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class TransactionSaved with DiagnosticableTreeMixin implements SendMoneyState {
+  const TransactionSaved(this.formState, {required this.data});
+  
+
+@override final  SendMoneyFormState formState;
+ final  SaveTransactionEntity data;
+
+/// Create a copy of SendMoneyState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TransactionSavedCopyWith<TransactionSaved> get copyWith => _$TransactionSavedCopyWithImpl<TransactionSaved>(this, _$identity);
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'SendMoneyState.transactionSaved'))
+    ..add(DiagnosticsProperty('formState', formState))..add(DiagnosticsProperty('data', data));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransactionSaved&&(identical(other.formState, formState) || other.formState == formState)&&(identical(other.data, data) || other.data == data));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,formState,data);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'SendMoneyState.transactionSaved(formState: $formState, data: $data)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $TransactionSavedCopyWith<$Res> implements $SendMoneyStateCopyWith<$Res> {
+  factory $TransactionSavedCopyWith(TransactionSaved value, $Res Function(TransactionSaved) _then) = _$TransactionSavedCopyWithImpl;
+@override @useResult
+$Res call({
+ SendMoneyFormState formState, SaveTransactionEntity data
+});
+
+
+@override $SendMoneyFormStateCopyWith<$Res> get formState;$SaveTransactionEntityCopyWith<$Res> get data;
+
+}
+/// @nodoc
+class _$TransactionSavedCopyWithImpl<$Res>
+    implements $TransactionSavedCopyWith<$Res> {
+  _$TransactionSavedCopyWithImpl(this._self, this._then);
+
+  final TransactionSaved _self;
+  final $Res Function(TransactionSaved) _then;
+
+/// Create a copy of SendMoneyState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? formState = null,Object? data = null,}) {
+  return _then(TransactionSaved(
+null == formState ? _self.formState : formState // ignore: cast_nullable_to_non_nullable
+as SendMoneyFormState,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as SaveTransactionEntity,
+  ));
+}
+
+/// Create a copy of SendMoneyState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SendMoneyFormStateCopyWith<$Res> get formState {
+  
+  return $SendMoneyFormStateCopyWith<$Res>(_self.formState, (value) {
+    return _then(_self.copyWith(formState: value));
+  });
+}/// Create a copy of SendMoneyState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SaveTransactionEntityCopyWith<$Res> get data {
+  
+  return $SaveTransactionEntityCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
   });
 }
 }

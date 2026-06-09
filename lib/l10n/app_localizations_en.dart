@@ -765,4 +765,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String confirm_transaction_body(Object amount, Object name) {
     return 'Are you sure you want to send $amount to $name?';
   }
+
+  @override
+  String get enter_pin => 'Enter your PIN';
+
+  @override
+  String get fees => 'Fees';
+
+  @override
+  String get total_amount => 'Total Amount';
 }
