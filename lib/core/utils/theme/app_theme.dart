@@ -62,6 +62,7 @@ final class AppTheme {
       surfaceContainerHigh: Color(0xffece6ee),
       surfaceContainerHighest: Color(0xffe6e1e9),
     ),
+
     dialogTheme: DialogThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
