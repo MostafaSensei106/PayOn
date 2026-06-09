@@ -14,7 +14,6 @@ import '../../../../core/widgets/display/empty_state/empty_state_component.dart'
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../logic/cubit/home_cubit.dart';
 import '../../logic/cubit/home_state.dart';
-import '../../logic/entity/params/get_transactions_params.dart';
 import '../../logic/entity/transaction_entity.dart';
 import 'transaction_details_bottom_sheet.dart';
 
@@ -58,10 +57,7 @@ class LatestTransactionsSection extends StatelessWidget {
               ],
             ),
           ),
-          Skeletonizer.sliver(
-            enabled: true,
-            child: _buildSectionItems(placeholders),
-          ),
+          Skeletonizer.sliver(child: _buildSectionItems(placeholders)),
           SliverToBoxAdapter(
             child: SizedBox(height: MediaQuery.of(context).padding.bottom + 8),
           ),

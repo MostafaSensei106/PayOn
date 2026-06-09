@@ -22,57 +22,49 @@ class SendMoneySummaryBottomSheet extends HookWidget {
     final pinState = useState('');
     final l10n = context.localeKeys;
 
-    return Padding(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom + AppConfig.padding,
-        left: AppConfig.padding,
-        right: AppConfig.padding,
-        top: AppConfig.padding,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            l10n.confirm_transaction,
-            style: Theme.of(context).textTheme.titleLarge,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppConfig.padding),
-          _SummaryRow(
-            label: l10n.amount,
-            value: '${draft.originalAmount} ${draft.originalCurrency}',
-          ),
-          _SummaryRow(
-            label: l10n.fees,
-            value: '${draft.fess} ${draft.originalCurrency}',
-          ),
-          const Divider(),
-          _SummaryRow(
-            label: l10n.total_amount,
-            value: '${draft.totalAmount} ${draft.originalCurrency}',
-            isTotal: true,
-          ),
-          const SizedBox(height: AppConfig.padding * 2),
-          Text(
-            l10n.enter_pin,
-            style: Theme.of(context).textTheme.bodyMedium,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppConfig.padding),
-          OtpFieldComponent(
-            onChanged: (pin) => pinState.value = pin,
-            onCompleted: (pin) => pinState.value = pin,
-          ),
-          const SizedBox(height: AppConfig.padding * 2),
-          FilledButtonComponent(
-            onPressed: pinState.value.length == 6
-                ? () => onConfirm(pinState.value)
-                : () {},
-            label: l10n.confirm,
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          l10n.confirm_transaction,
+          style: Theme.of(context).textTheme.titleLarge,
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: AppConfig.padding),
+        _SummaryRow(
+          label: l10n.amount,
+          value: '${draft.originalAmount} ${draft.originalCurrency}',
+        ),
+        _SummaryRow(
+          label: l10n.fees,
+          value: '${draft.fess} ${draft.originalCurrency}',
+        ),
+        const Divider(),
+        _SummaryRow(
+          label: l10n.total_amount,
+          value: '${draft.totalAmount} ${draft.originalCurrency}',
+          isTotal: true,
+        ),
+        const SizedBox(height: AppConfig.padding * 2),
+        Text(
+          l10n.enter_pin,
+          style: Theme.of(context).textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: AppConfig.padding),
+        OtpFieldComponent(
+          onChanged: (pin) => pinState.value = pin,
+          onCompleted: (pin) => pinState.value = pin,
+        ),
+        const SizedBox(height: AppConfig.padding * 2),
+        FilledButtonComponent(
+          onPressed: pinState.value.length == 6
+              ? () => onConfirm(pinState.value)
+              : () {},
+          label: l10n.confirm,
+        ),
+      ],
     );
   }
 }

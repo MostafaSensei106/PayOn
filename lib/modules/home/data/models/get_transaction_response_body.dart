@@ -86,39 +86,39 @@ class TransactionItemModel {
   factory TransactionItemModel.fromJson(Map<String, dynamic> json) =>
       _$TransactionItemModelFromJson(json);
 
-  final int id;
-  final String createdAt;
-  final String senderId;
-  final String sender;
-  final String senderPhone;
-  final String senderIpa;
-  final String senderImage;
-  final String receiverId;
-  final String receiver;
-  final String receiverPhone;
-  final String receiverIpa;
-  final String receiverImage;
-  final String transactionType;
+  final int? id;
+  final String? createdAt;
+  final String? senderId;
+  final String? sender;
+  final String? senderPhone;
+  final String? senderIpa;
+  final String? senderImage;
+  final String? receiverId;
+  final String? receiver;
+  final String? receiverPhone;
+  final String? receiverIpa;
+  final String? receiverImage;
+  final String? transactionType;
   final String? transactionCategory;
-  final String currencyCode;
+  final String? currencyCode;
   final String? targetCurrency;
   final double? convertedAmount;
-  final double amount;
-  final double totalAmount;
+  final double? amount;
+  final double? totalAmount;
   final double? totalConvertedAmount;
-  final double adjustedAmount;
-  final double fees;
+  final double? adjustedAmount;
+  final double? fees;
   final double? convertedFees;
-  final String paymentMethod;
-  final String status;
-  final String description;
-  final String referenceNumber;
-  final bool isSender;
-  final bool isInternalTransfer;
-  final bool isMultiCurrency;
+  final String? paymentMethod;
+  final String? status;
+  final String? description;
+  final String? referenceNumber;
+  final bool? isSender;
+  final bool? isInternalTransfer;
+  final bool? isMultiCurrency;
   final bool? isMerchant;
-  final bool isTransactionByPhone;
-  final String senderBalance;
+  final bool? isTransactionByPhone;
+  final String? senderBalance;
   final String? receiverBalance;
 }
 
@@ -149,33 +149,33 @@ extension TransactionsDataModelMapper on TransactionsDataModel {
 extension TransactionItemModelMapper on TransactionItemModel {
   TransactionItemEntity toEntity() {
     return TransactionItemEntity(
-      id: id,
-      createdAt: DateTime.parse(createdAt),
-      senderId: senderId,
-      sender: sender,
-      senderPhone: senderPhone,
-      senderIpa: senderIpa,
-      senderImage: senderImage,
-      receiverId: receiverId,
-      receiver: receiver,
-      receiverPhone: receiverPhone,
-      receiverIpa: receiverIpa,
-      receiverImage: receiverImage,
-      transactionType: transactionType,
-      currencyCode: currencyCode,
-      amount: amount,
-      totalAmount: totalAmount,
-      adjustedAmount: adjustedAmount,
-      fees: fees,
-      paymentMethod: paymentMethod,
-      status: status,
-      description: description,
-      referenceNumber: referenceNumber,
-      isSender: isSender,
-      isInternalTransfer: isInternalTransfer,
-      isMultiCurrency: isMultiCurrency,
-      isTransactionByPhone: isTransactionByPhone,
-      senderBalance: senderBalance,
+      id: id ?? 0,
+      createdAt: DateTime.tryParse(createdAt ?? '') ?? DateTime.now(),
+      senderId: senderId ?? '',
+      sender: sender ?? '',
+      senderPhone: senderPhone ?? '',
+      senderIpa: senderIpa ?? '',
+      senderImage: senderImage ?? '',
+      receiverId: receiverId ?? '',
+      receiver: receiver ?? '',
+      receiverPhone: receiverPhone ?? '',
+      receiverIpa: receiverIpa ?? '',
+      receiverImage: receiverImage ?? '',
+      transactionType: transactionType ?? '',
+      currencyCode: currencyCode ?? '',
+      amount: amount ?? 0.0,
+      totalAmount: totalAmount ?? 0.0,
+      adjustedAmount: adjustedAmount ?? 0.0,
+      fees: fees ?? 0.0,
+      paymentMethod: paymentMethod ?? '',
+      status: status ?? '',
+      description: description ?? '',
+      referenceNumber: referenceNumber ?? '',
+      isSender: isSender ?? false,
+      isInternalTransfer: isInternalTransfer ?? false,
+      isMultiCurrency: isMultiCurrency ?? false,
+      isTransactionByPhone: isTransactionByPhone ?? false,
+      senderBalance: senderBalance ?? '',
     );
   }
 }

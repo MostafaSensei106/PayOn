@@ -9,6 +9,7 @@ import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/extensions/extensions.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
+import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
 import '../../../home/logic/cubit/home_cubit.dart';
 import '../../../home/logic/cubit/home_state.dart';
@@ -71,17 +72,16 @@ class SendMoneyPage extends HookWidget {
                 ),
               );
             },
-            transactionDraftSuccess: (form, draft) {
+            transactionDraftSuccess: (form, draft) async {
               Navigator.pop(context);
-              showModalBottomSheet<void>(
-                context: context,
-                isScrollControlled: true,
-                builder: (final _) => BlocProvider.value(
+              await context.showBottomSheetComponent(
+                title: l10n.transaction_details,
+                child: BlocProvider.value(
                   value: context.read<SendMoneyCubit>(),
                   child: SendMoneySummaryBottomSheet(
                     draft: draft,
-                    onConfirm: (pin) {
-                      context.read<SendMoneyCubit>().confirmTransaction(
+                    onConfirm: (pin) async {
+                      await context.read<SendMoneyCubit>().confirmTransaction(
                         pin: pin,
                         walletId: selectedWallet.value.walletId,
                         draftIds: draft.draftIds,

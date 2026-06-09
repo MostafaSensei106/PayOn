@@ -32,13 +32,15 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<void> getLatestTransactions() async {
-    final currentState = state;
-    if (currentState is! Success) return;
+    if (state is! Success) return;
 
-    emit(currentState.copyWith(isTransactionsLoading: true));
+    emit((state as Success).copyWith(isTransactionsLoading: true));
 
-    final filters = currentState.transactionFilters;
+    final filters = (state as Success).transactionFilters;
     final response = await _getTransactionsU.call(filters);
+
+    if (state is! Success) return;
+    final currentState = state as Success;
 
     response.when(
       success: (t) => emit(

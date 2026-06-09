@@ -9,11 +9,12 @@ part of 'get_transaction_response_body.dart';
 GetTransactionResponseBody _$GetTransactionResponseBodyFromJson(
   Map<String, dynamic> json,
 ) => GetTransactionResponseBody(
-  code: (json['code'] as num).toInt(),
-  message: json['message'] as String,
+  code: (json['code'] as num?)?.toInt() ?? 0,
+  message: json['message'] as String? ?? '',
   data: TransactionsDataModel.fromJson(json['data'] as Map<String, dynamic>),
-  success: json['success'] as bool,
-  errors: (json['errors'] as List<dynamic>).map((e) => e as String).toList(),
+  success: json['success'] as bool? ?? false,
+  errors: (json['errors'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+      const [],
 );
 
 Map<String, dynamic> _$GetTransactionResponseBodyToJson(
@@ -29,13 +30,14 @@ Map<String, dynamic> _$GetTransactionResponseBodyToJson(
 TransactionsDataModel _$TransactionsDataModelFromJson(
   Map<String, dynamic> json,
 ) => TransactionsDataModel(
-  totalItems: (json['totalItems'] as num).toInt(),
-  pageNumber: (json['pageNumber'] as num).toInt(),
-  pageSize: (json['pageSize'] as num).toInt(),
-  items: (json['items'] as List<dynamic>)
-      .map((e) => TransactionItemModel.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  totalPages: (json['totalPages'] as num).toInt(),
+  totalItems: (json['totalItems'] as num?)?.toInt() ?? 0,
+  pageNumber: (json['pageNumber'] as num?)?.toInt() ?? 0,
+  pageSize: (json['pageSize'] as num?)?.toInt() ?? 0,
+  items: (json['items'] as List<dynamic>?)
+          ?.map((e) => TransactionItemModel.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const [],
+  totalPages: (json['totalPages'] as num?)?.toInt() ?? 0,
 );
 
 Map<String, dynamic> _$TransactionsDataModelToJson(
@@ -51,33 +53,33 @@ Map<String, dynamic> _$TransactionsDataModelToJson(
 TransactionItemModel _$TransactionItemModelFromJson(
   Map<String, dynamic> json,
 ) => TransactionItemModel(
-  id: (json['id'] as num).toInt(),
-  createdAt: json['createdAt'] as String,
-  senderId: json['senderId'] as String,
-  sender: json['sender'] as String,
-  senderPhone: json['senderPhone'] as String,
-  senderIpa: json['senderIpa'] as String,
-  senderImage: json['senderImage'] as String,
-  receiverId: json['receiverId'] as String,
-  receiver: json['receiver'] as String,
-  receiverPhone: json['receiverPhone'] as String,
-  receiverIpa: json['receiverIpa'] as String,
-  receiverImage: json['receiverImage'] as String,
-  transactionType: json['transactionType'] as String,
-  currencyCode: json['currencyCode'] as String,
-  amount: (json['amount'] as num).toDouble(),
-  totalAmount: (json['totalAmount'] as num).toDouble(),
-  adjustedAmount: (json['adjustedAmount'] as num).toDouble(),
-  fees: (json['fees'] as num).toDouble(),
-  paymentMethod: json['paymentMethod'] as String,
-  status: json['status'] as String,
-  description: json['description'] as String,
-  referenceNumber: json['referenceNumber'] as String,
-  isSender: json['isSender'] as bool,
-  isInternalTransfer: json['isInternalTransfer'] as bool,
-  isMultiCurrency: json['isMultiCurrency'] as bool,
-  isTransactionByPhone: json['isTransactionByPhone'] as bool,
-  senderBalance: json['senderBalance'] as String,
+  id: (json['id'] as num?)?.toInt(),
+  createdAt: json['createdAt'] as String?,
+  senderId: json['senderId'] as String?,
+  sender: json['sender'] as String?,
+  senderPhone: json['senderPhone'] as String?,
+  senderIpa: json['senderIpa'] as String?,
+  senderImage: json['senderImage'] as String?,
+  receiverId: json['receiverId'] as String?,
+  receiver: json['receiver'] as String?,
+  receiverPhone: json['receiverPhone'] as String?,
+  receiverIpa: json['receiverIpa'] as String?,
+  receiverImage: json['receiverImage'] as String?,
+  transactionType: json['transactionType'] as String?,
+  currencyCode: json['currencyCode'] as String?,
+  amount: (json['amount'] as num?)?.toDouble(),
+  totalAmount: (json['totalAmount'] as num?)?.toDouble(),
+  adjustedAmount: (json['adjustedAmount'] as num?)?.toDouble(),
+  fees: (json['fees'] as num?)?.toDouble(),
+  paymentMethod: json['paymentMethod'] as String?,
+  status: json['status'] as String?,
+  description: json['description'] as String?,
+  referenceNumber: json['referenceNumber'] as String?,
+  isSender: json['isSender'] as bool?,
+  isInternalTransfer: json['isInternalTransfer'] as bool?,
+  isMultiCurrency: json['isMultiCurrency'] as bool?,
+  isTransactionByPhone: json['isTransactionByPhone'] as bool?,
+  senderBalance: json['senderBalance'] as String?,
   transactionCategory: json['transactionCategory'] as String?,
   targetCurrency: json['targetCurrency'] as String?,
   convertedAmount: (json['convertedAmount'] as num?)?.toDouble(),
