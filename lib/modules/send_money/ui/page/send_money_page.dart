@@ -52,7 +52,7 @@ class SendMoneyPage extends HookWidget {
             loading: (_) {
               context.dialog.showLoading();
             },
-            transactionDraftSuccess: (t) {
+            transactionDraftSuccess: (_) {
               Navigator.pop(context);
               context.toast.showSuccess(context, l10n.success);
             },

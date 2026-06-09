@@ -40,12 +40,42 @@ class FavoritesData {
   final int totalItems;
   final int pageNumber;
   final int pageSize;
-  final List<dynamic> items;
+  final List<FavoriteItemModel> items;
   final int totalPages;
+}
+
+@JsonSerializable()
+class FavoriteItemModel {
+  FavoriteItemModel({
+    required this.id,
+    required this.name,
+    required this.image,
+  });
+
+  factory FavoriteItemModel.fromJson(Map<String, dynamic> json) =>
+      _$FavoriteItemModelFromJson(json);
+
+  final String id;
+  final String name;
+  final String image;
 }
 
 extension GetUserFavoritesMapper on GetUserFavoritesResponseBody {
   UserFavoritesEntity toEntity() {
-    return UserFavoritesEntity();
+    return UserFavoritesEntity(
+      totalItems: data.totalItems,
+      totalPages: data.totalPages,
+      items: data.items.map((e) => e.toEntity()).toList(),
+    );
+  }
+}
+
+extension FavoriteItemMapper on FavoriteItemModel {
+  FavoriteItemEntity toEntity() {
+    return FavoriteItemEntity(
+      id: id,
+      name: name,
+      image: image,
+    );
   }
 }

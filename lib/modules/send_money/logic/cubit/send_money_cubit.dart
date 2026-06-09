@@ -7,17 +7,37 @@ import '../../../../core/utils/validator/amount_validator.dart';
 import '../../../../core/utils/validator/user_info_validator.dart';
 import '../../data/models/check_wallet/check_wallet_request_body.dart';
 import '../entity/params/create_transaction_params.dart';
+import '../entity/params/get_user_favorites_params.dart';
 import '../usecase/check_wallet_usecase.dart';
 import '../usecase/create_transaction_draft_usecase.dart';
+import '../usecase/get_user_favorites_usecase.dart';
 import 'send_money_state.dart';
 
 @injectable
 final class SendMoneyCubit extends Cubit<SendMoneyState> {
-  SendMoneyCubit(this._checkWalletU, this._createDraftU)
+  SendMoneyCubit(this._checkWalletU, this._createDraftU, this._getFavoritesU)
     : super(const SendMoneyState.initial(SendMoneyFormState()));
 
   final CheckWalletUsecase _checkWalletU;
   final CreateTransactionDraftUsecase _createDraftU;
+  final GetUserFavoritesUsecase _getFavoritesU;
+
+  Future<void> getUserFavorites() async {
+    emit(SendMoneyState.initial(
+      state.formState.copyWith(isLoadingFavorites: true),
+    ));
+
+    final response = await _getFavoritesU.call(const GetUserFavoritesParams());
+
+    response.when(
+      success: (t) => emit(SendMoneyState.initial(
+        state.formState.copyWith(favorites: t.items, isLoadingFavorites: false),
+      )),
+      failure: (e) => emit(SendMoneyState.initial(
+        state.formState.copyWith(isLoadingFavorites: false),
+      )),
+    );
+  }
 
   Future<void> checkWallet() async {
     if (state.formState.isValid == false) return;

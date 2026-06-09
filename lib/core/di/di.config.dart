@@ -284,6 +284,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i274.SendMoneyCubit(
         gh<_i685.CheckWalletUsecase>(),
         gh<_i712.CreateTransactionDraftUsecase>(),
+        gh<_i537.GetUserFavoritesUsecase>(),
       ),
     );
     gh.factory<_i358.LoginUsecase>(
