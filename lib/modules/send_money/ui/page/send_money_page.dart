@@ -58,6 +58,26 @@ class SendMoneyPage extends HookWidget {
             loading: (_) {
               context.dialog.showLoading();
             },
+            success: (form, data) async {
+              Navigator.pop(context);
+              await context.dialog.showConfirmation<void>(
+                title: l10n.confirm_transaction,
+                body: l10n.confirm_transaction_body(
+                  form.amount.value,
+                  data.name,
+                ),
+                onConfirm: () {
+                  unawaited(
+                    context.read<SendMoneyCubit>().createTransactionDraft(
+                      senderId: selectedWallet.value.walletId,
+                      receiverId: data.reciverId,
+                      isTransactionByPhone:
+                          selectedMethod.value == SendMoneyMethod.phone,
+                    ),
+                  );
+                },
+              );
+            },
             transactionDraftSuccess: (_) {
               Navigator.pop(context);
               context.toast.showSuccess(context, l10n.success);
@@ -103,15 +123,11 @@ class SendMoneyPage extends HookWidget {
                     AmountInputAndSubmitComponent(
                       onAmountChanged: (val) =>
                           context.read<SendMoneyCubit>().onAmountChanged(val),
+                      onDescriptionChanged: (val) => context
+                          .read<SendMoneyCubit>()
+                          .onDescriptionChanged(val),
                       onSubmit: () {
-                        unawaited(
-                          context.read<SendMoneyCubit>().createTransactionDraft(
-                            senderId: selectedWallet.value.walletId,
-                            receiverId: state.formState.userInfo.value,
-                            isTransactionByPhone:
-                                selectedMethod.value == SendMoneyMethod.phone,
-                          ),
-                        );
+                        unawaited(context.read<SendMoneyCubit>().checkWallet());
                       },
                       l10n: l10n,
                     ),

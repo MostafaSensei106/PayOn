@@ -751,4 +751,18 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get session_expired_description =>
       'Your session has expired. Please login again to continue.';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get description_hint => 'Enter description (optional)';
+
+  @override
+  String get confirm_transaction => 'Confirm Transaction';
+
+  @override
+  String confirm_transaction_body(Object amount, Object name) {
+    return 'Are you sure you want to send $amount to $name?';
+  }
 }

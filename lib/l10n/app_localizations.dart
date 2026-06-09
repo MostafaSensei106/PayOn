@@ -1537,6 +1537,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your session has expired. Please login again to continue.'**
   String get session_expired_description;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @description_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter description (optional)'**
+  String get description_hint;
+
+  /// No description provided for @confirm_transaction.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Transaction'**
+  String get confirm_transaction;
+
+  /// No description provided for @confirm_transaction_body.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to send {amount} to {name}?'**
+  String confirm_transaction_body(Object amount, Object name);
 }
 
 class _AppLocalizationsDelegate

@@ -750,4 +750,18 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get session_expired_description =>
       'انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى للمتابعة.';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get description_hint => 'أدخل الوصف (اختياري)';
+
+  @override
+  String get confirm_transaction => 'تأكيد المعاملة';
+
+  @override
+  String confirm_transaction_body(Object amount, Object name) {
+    return 'هل أنت متأكد أنك تريد إرسال $amount إلى $name؟';
+  }
 }
