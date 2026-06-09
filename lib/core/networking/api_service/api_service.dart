@@ -20,6 +20,8 @@ import '../../../modules/profile/data/models/edit_user_profile_request_body.dart
 import '../../../modules/profile/data/models/get_user_profile_response_body.dart';
 import '../../../modules/send_money/data/models/check_wallet/check_wallet_request_body.dart';
 import '../../../modules/send_money/data/models/check_wallet/check_wallet_response_body.dart';
+import '../../../modules/send_money/data/models/create_transaction_draft/create_transaction_draft_request_body.dart';
+import '../../../modules/send_money/data/models/create_transaction_draft/create_transaction_draft_response_body.dart';
 import '../../../modules/send_money/data/models/get_favorites/get_user_favorites_response_body.dart';
 import '../../constants/api_routes.dart';
 
@@ -79,6 +81,11 @@ abstract class ApiService {
   @POST(ApiRoutes.transactionCheckWallet)
   Future<CheckWalletResponseBody> checkWallet(
     @Body() CheckWalletRequestBody body,
+  );
+
+  @POST(ApiRoutes.transactionCreateTransactionDraft)
+  Future<CreateTransactionDraftResponseBody> createTransactionDraft(
+    @Body() CreateTransactionDraftRequestBody body,
   );
 
   @GET(ApiRoutes.accountGetUserFavorites)

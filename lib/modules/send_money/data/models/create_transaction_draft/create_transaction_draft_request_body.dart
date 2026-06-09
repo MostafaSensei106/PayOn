@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'create_transaction_draft_request_body.g.dart';
 
 @JsonSerializable()
-class CreateTransactionDraftRequestBody {
+final class CreateTransactionDraftRequestBody {
   const CreateTransactionDraftRequestBody({
     required this.senderId,
     required this.receiverId,
