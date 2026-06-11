@@ -62,8 +62,9 @@ class GetStartedPage extends HookWidget {
       } else if (currentPage.value == 1) {
         if (!registerForm.isValid ||
             !termsAccepted.value ||
-            !privacyAccepted.value)
+            !privacyAccepted.value) {
           return;
+        }
         await cubit.register();
       } else if (currentPage.value == 2) {
         // OTP logic usually verifies itself and moves forward or we move forward on success
@@ -83,7 +84,7 @@ class GetStartedPage extends HookWidget {
                 await context.read<RegisterCubit>().createAccount();
               },
               createAccountSuccess: (form, data) {
-                final targetPage = 2;
+                const targetPage = 2;
                 pageController.animateToPage(
                   targetPage,
                   duration: const Duration(milliseconds: 300),
@@ -92,7 +93,7 @@ class GetStartedPage extends HookWidget {
                 context.read<RegisterCubit>().setStep(targetPage);
               },
               getRequiredFilesSuccess: (form, files) {
-                final targetPage = 3;
+                const targetPage = 3;
                 pageController.animateToPage(
                   targetPage,
                   duration: const Duration(milliseconds: 300),
@@ -168,7 +169,7 @@ class GetStartedPage extends HookWidget {
               currentPage: currentPage.value,
               onPrevious: previousPage,
               onNext: nextPage,
-              isEnabled: registerForm.isValid && !(registerState is Loading),
+              isEnabled: registerForm.isValid && registerState is! Loading,
             ),
           ],
         ),

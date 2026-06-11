@@ -90,7 +90,7 @@ class StepOneAccountDetails extends StatelessWidget {
               onChanged: (_) {},
             ),
             DropdownButtonFormField<GenderType>(
-              value: form.gender == GenderType.none ? null : form.gender,
+              initialValue: form.gender == GenderType.none ? null : form.gender,
               hint: Text(l10n.gender),
               items: [GenderType.male, GenderType.female]
                   .map((e) => DropdownMenuItem(value: e, child: Text(e.name)))

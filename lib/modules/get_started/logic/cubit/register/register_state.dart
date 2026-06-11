@@ -8,8 +8,8 @@ import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
 import '../../../data/models/account_type/account_type_item.dart';
-import '../../../data/models/register/register_response_body.dart';
 import '../../../data/models/register/create_account_response_body.dart';
+import '../../../data/models/register/register_response_body.dart';
 import '../../../data/models/required_files/get_required_files_response_body.dart';
 
 part 'register_state.freezed.dart';
