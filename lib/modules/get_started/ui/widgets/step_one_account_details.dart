@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
+import '../../../../core/constants/app_enums.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/inputs/checkbox/checkbox_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
-import '../../../../core/widgets/layout/spacing/spacing_component.dart';
 import '../../logic/cubit/register/register_cubit.dart';
 
 class StepOneAccountDetails extends StatelessWidget {
@@ -18,6 +18,7 @@ class StepOneAccountDetails extends StatelessWidget {
     required this.onPrivacyChanged,
     required this.allAccepted,
     required this.onAllChanged,
+    required this.dateController,
     super.key,
   });
 
@@ -27,6 +28,7 @@ class StepOneAccountDetails extends StatelessWidget {
   final ValueChanged<bool?> onTermsChanged;
   final ValueChanged<bool?> onPrivacyChanged;
   final ValueChanged<bool?> onAllChanged;
+  final TextEditingController dateController;
 
   @override
   Widget build(final BuildContext context) {
@@ -51,7 +53,7 @@ class StepOneAccountDetails extends StatelessWidget {
               label: l10n.user_name,
               prefixIcon: Iconsax.user_copy,
               initialValue: form.name.value,
-              onChanged: registerCubit.firstNameOnChanged,
+              onChanged: registerCubit.nameOnChanged,
             ),
             TextFormFieldComponent(
               label: l10n.email_address,
@@ -64,6 +66,62 @@ class StepOneAccountDetails extends StatelessWidget {
               prefixIcon: Iconsax.call_copy,
               initialValue: form.phoneNumber.value,
               onChanged: registerCubit.phoneNumberOnChanged,
+            ),
+            TextFormFieldComponent(
+              controller: dateController,
+              label: l10n.dob,
+              prefixIcon: Iconsax.calendar_1_copy,
+              readOnly: true,
+              onTap: () async {
+                final date = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now().subtract(
+                    const Duration(days: 365 * 18),
+                  ),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (date != null) {
+                  final formattedDate = date.toString().split(' ')[0];
+                  dateController.text = formattedDate;
+                  registerCubit.birthDateOnChanged(formattedDate);
+                }
+              },
+              onChanged: (_) {},
+            ),
+            DropdownButtonFormField<GenderType>(
+              value: form.gender == GenderType.none ? null : form.gender,
+              hint: Text(l10n.gender),
+              items: [GenderType.male, GenderType.female]
+                  .map((e) => DropdownMenuItem(value: e, child: Text(e.name)))
+                  .toList(),
+              onChanged: (val) => registerCubit.genderOnChanged(val!),
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Iconsax.user_tag_copy),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    AppConfig.outBorderRadius,
+                  ),
+                ),
+              ),
+            ),
+            TextFormFieldComponent(
+              label: l10n.nationality,
+              prefixIcon: Iconsax.global_copy,
+              initialValue: form.nationalityCode,
+              onChanged: registerCubit.nationalityOnChanged,
+            ),
+            TextFormFieldComponent(
+              label: 'Country',
+              prefixIcon: Iconsax.location_copy,
+              initialValue: form.country,
+              onChanged: registerCubit.countryOnChanged,
+            ),
+            TextFormFieldComponent(
+              label: 'City ID',
+              prefixIcon: Iconsax.building_3_copy,
+              initialValue: form.cityId,
+              onChanged: registerCubit.cityIdOnChanged,
             ),
             TextFormFieldComponent(
               label: l10n.password,
@@ -86,7 +144,6 @@ class StepOneAccountDetails extends StatelessWidget {
                   value: termsAccepted,
                   onChanged: onTermsChanged,
                 ),
-                const SpacingComponent.horizontal(4),
                 CheckboxComponent(
                   title: l10n.accept_privacy_policy,
                   value: privacyAccepted,

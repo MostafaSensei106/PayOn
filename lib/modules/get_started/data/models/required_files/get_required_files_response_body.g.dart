@@ -30,8 +30,8 @@ RequiredFileModel _$RequiredFileModelFromJson(Map<String, dynamic> json) =>
     RequiredFileModel(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
-      description: json['description'] as String?,
       isRequired: json['isRequired'] as bool,
+      description: json['description'] as String?,
     );
 
 Map<String, dynamic> _$RequiredFileModelToJson(RequiredFileModel instance) =>

@@ -5,7 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/constants/app_enums.dart';
-import '../../../../../core/constants/types/type_def.dart';
+import '../../../../../core/utils/result/result.dart';
 import '../../../../../core/utils/validator/email_validators.dart';
 import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
@@ -25,31 +25,32 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   RegisterFormState get currentForm => state.form;
 
+  void setStep(int step) {
+    emit(
+      RegisterState.initial(
+        currentForm.copyWith(
+          currentStep: step,
+          isValid: _validate(currentForm, step: step),
+        ),
+      ),
+    );
+  }
+
   void accountTypeOnChanged(AccountTypeItem? accountType) {
     final updatedForm = currentForm.copyWith(accountType: accountType);
     emit(
       RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 0)),
       ),
     );
   }
 
-  void firstNameOnChanged(String value) {
+  void nameOnChanged(String value) {
     final name = FullName.dirty(value);
     final updatedForm = currentForm.copyWith(name: name);
     emit(
       RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
-      ),
-    );
-  }
-
-  void lastNameOnChanged(String value) {
-    final name = FullName.dirty(value);
-    final updatedForm = currentForm.copyWith(name: name);
-    emit(
-      RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
       ),
     );
   }
@@ -59,7 +60,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     final updatedForm = currentForm.copyWith(email: email);
     emit(
       RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
       ),
     );
   }
@@ -69,7 +70,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     final updatedForm = currentForm.copyWith(phoneNumber: phoneNumber);
     emit(
       RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
       ),
     );
   }
@@ -79,7 +80,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     final updatedForm = currentForm.copyWith(password: password);
     emit(
       RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
       ),
     );
   }
@@ -89,7 +90,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     final updatedForm = currentForm.copyWith(confirmPassword: confirmPassword);
     emit(
       RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
       ),
     );
   }
@@ -98,7 +99,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     final updatedForm = currentForm.copyWith(birthDate: birthDate);
     emit(
       RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
       ),
     );
   }
@@ -107,7 +108,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     final updatedForm = currentForm.copyWith(gender: gender);
     emit(
       RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
       ),
     );
   }
@@ -116,7 +117,16 @@ class RegisterCubit extends Cubit<RegisterState> {
     final updatedForm = currentForm.copyWith(nationalityCode: nationalityCode);
     emit(
       RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
+      ),
+    );
+  }
+
+  void countryOnChanged(String country) {
+    final updatedForm = currentForm.copyWith(country: country);
+    emit(
+      RegisterState.initial(
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
       ),
     );
   }
@@ -125,43 +135,49 @@ class RegisterCubit extends Cubit<RegisterState> {
     final updatedForm = currentForm.copyWith(cityId: cityId);
     emit(
       RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
       ),
     );
   }
 
-  void idFileOnChanged(File? file) {
-    final updatedForm = currentForm.copyWith(idFile: file);
+  void updateFile(int docId, File file) {
+    final updatedFiles = Map<int, File>.from(currentForm.files)..[docId] = file;
+    final updatedForm = currentForm.copyWith(files: updatedFiles);
     emit(
       RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 3)),
       ),
     );
   }
 
-  void addressFileOnChanged(File? file) {
-    final updatedForm = currentForm.copyWith(addressFile: file);
-    emit(
-      RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm)),
-      ),
-    );
-  }
-
-  bool _validate(RegisterFormState form) {
-    return Formz.validate([
-          form.name,
-          form.email,
-          form.phoneNumber,
-          form.password,
-          form.confirmPassword,
-        ]) &&
-        form.password.value == form.confirmPassword.value &&
-        form.accountType != null;
+  bool _validate(RegisterFormState form, {required int step}) {
+    switch (step) {
+      case 0:
+        return form.accountType != null;
+      case 1:
+        return Formz.validate([
+              form.name,
+              form.email,
+              form.phoneNumber,
+              form.password,
+              form.confirmPassword,
+            ]) &&
+            form.password.value == form.confirmPassword.value &&
+            form.birthDate.isNotEmpty &&
+            form.gender != GenderType.none &&
+            form.country.isNotEmpty &&
+            form.cityId.isNotEmpty;
+      case 2: // OTP
+        return true;
+      case 3: // Documents
+        return form.files.isNotEmpty;
+      default:
+        return false;
+    }
   }
 
   Future<void> register() async {
-    if (!currentForm.isValid) return;
+    if (!_validate(currentForm, step: 1)) return;
     emit(RegisterState.loading(currentForm));
     final body = RegisterRequestBody(
       email: currentForm.email.value,
@@ -176,12 +192,11 @@ class RegisterCubit extends Cubit<RegisterState> {
       cityId: currentForm.cityId,
     );
 
-    final response = await _registerRepository.register(body);
-    response.when(
-      success: (r) async {
-        emit(RegisterState.success(currentForm, data: r));
-      },
-      failure: (e) =>
+    final result = await _registerRepository.register(body);
+    result.fold(
+      onSuccess: (r) =>
+          emit(RegisterState.registerSuccess(currentForm, data: r)),
+      onFailure: (e) =>
           emit(RegisterState.failure(currentForm, error: e.message)),
     );
   }
@@ -203,38 +218,36 @@ class RegisterCubit extends Cubit<RegisterState> {
       categoryId: categoryId,
     );
 
-    final response = await _registerRepository.createAccount(body);
-    response.when(
-      success: (r) => emit(RegisterState.success(currentForm, data: r)),
-      failure: (e) =>
+    final result = await _registerRepository.createAccount(body);
+    result.fold(
+      onSuccess: (r) =>
+          emit(RegisterState.createAccountSuccess(currentForm, data: r)),
+      onFailure: (e) =>
           emit(RegisterState.failure(currentForm, error: e.message)),
     );
   }
 
   Future<void> getRequiredFiles() async {
     emit(RegisterState.loading(currentForm));
-    final response = await _registerRepository.getRequiredFiles();
-    response.when(
-      success: (r) => emit(RegisterState.success(currentForm, data: r.data)),
-      failure: (e) =>
+    final result = await _registerRepository.getRequiredFiles();
+    result.fold(
+      onSuccess: (r) => emit(
+        RegisterState.getRequiredFilesSuccess(currentForm, files: r.data),
+      ),
+      onFailure: (e) =>
           emit(RegisterState.failure(currentForm, error: e.message)),
     );
   }
 
   Future<void> uploadKYCFiles(String accId) async {
-    if (currentForm.idFile != null) {
+    emit(RegisterState.loading(currentForm));
+    for (final entry in currentForm.files.entries) {
       await _registerRepository.uploadFiles(
-        file: currentForm.idFile!,
+        file: entry.value,
         accId: accId,
-        requiredDocId: 1,
+        requiredDocId: entry.key,
       );
     }
-    if (currentForm.addressFile != null) {
-      await _registerRepository.uploadFiles(
-        file: currentForm.addressFile!,
-        accId: accId,
-        requiredDocId: 2,
-      );
-    }
+    emit(RegisterState.initial(currentForm));
   }
 }

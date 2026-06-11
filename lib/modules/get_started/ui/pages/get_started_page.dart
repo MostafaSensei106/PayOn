@@ -7,6 +7,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/services/toast/base_toast_service.dart';
+import '../../logic/cubit/otp/otp_cubit.dart';
+import '../../logic/cubit/otp/otp_state.dart' as otp;
 import '../../logic/cubit/register/register_cubit.dart';
 import '../../logic/cubit/register/register_state.dart';
 import '../widgets/get_started_header.dart';
@@ -30,59 +32,90 @@ class GetStartedPage extends HookWidget {
     final privacyAccepted = useState(false);
     final allAccepted = useState(false);
 
-    final registerForm = context.watch<RegisterCubit>().state.form;
+    final registerState = context.watch<RegisterCubit>().state;
+    final registerForm = registerState.form;
 
     void previousPage() {
       FocusScope.of(context).unfocus();
+      final targetPage = currentPage.value - 1;
       unawaited(
         pageController.previousPage(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
         ),
       );
-      currentPage.value--;
+      currentPage.value = targetPage;
+      context.read<RegisterCubit>().setStep(targetPage);
     }
 
     Future<void> nextPage() async {
       FocusScope.of(context).unfocus();
-      if (currentPage.value < 3) {
-        // Validation before moving to next page
-        if (currentPage.value == 0 && registerForm.accountType == null) {
-          return;
-        }
-        if (currentPage.value == 1 && !registerForm.isValid) {
-          // If we want to be strict, but for now we let it pass if terms are accepted
-          if (!termsAccepted.value || !privacyAccepted.value) return;
-        }
+      final cubit = context.read<RegisterCubit>();
 
-        if (currentPage.value == 2) {
-          // Trigger Registration when moving to OTP step
-          await context.read<RegisterCubit>().register();
-        }
-
-        unawaited(
-          pageController.nextPage(
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.easeInOut,
-          ),
+      if (currentPage.value == 0) {
+        if (registerForm.accountType == null) return;
+        pageController.nextPage(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
         );
-      } else {
+        cubit.setStep(1);
+      } else if (currentPage.value == 1) {
+        if (!registerForm.isValid ||
+            !termsAccepted.value ||
+            !privacyAccepted.value)
+          return;
+        await cubit.register();
+      } else if (currentPage.value == 2) {
+        // OTP logic usually verifies itself and moves forward or we move forward on success
+        // But if user clicks 'Next' manually (if enabled), we could try to verify or just wait for cubit
+      } else if (currentPage.value == 3) {
+        // KYC Upload
         const LoginRoute().go(context);
       }
     }
 
-    return BlocListener<RegisterCubit, RegisterState>(
-      listener: (context, state) {
-        state.whenOrNull(
-          success: (form, data) {
-            // If registration successful, maybe send OTP automatically
-            // context.read<OtpCubit>().sendOTP();
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<RegisterCubit, RegisterState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              registerSuccess: (form, data) async {
+                await context.read<RegisterCubit>().createAccount();
+              },
+              createAccountSuccess: (form, data) {
+                final targetPage = 2;
+                pageController.animateToPage(
+                  targetPage,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+                context.read<RegisterCubit>().setStep(targetPage);
+              },
+              getRequiredFilesSuccess: (form, files) {
+                final targetPage = 3;
+                pageController.animateToPage(
+                  targetPage,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+                context.read<RegisterCubit>().setStep(targetPage);
+              },
+              failure: (form, error) {
+                getIt<BaseToastService>().showError(context, error);
+              },
+            );
           },
-          failure: (form, error) {
-            getIt<BaseToastService>().showError(context, error);
+        ),
+        BlocListener<OtpCubit, otp.OtpState>(
+          listener: (context, state) async {
+            if (state is otp.Success) {
+              await context.read<RegisterCubit>().getRequiredFiles();
+            } else if (state is otp.Failure) {
+              getIt<BaseToastService>().showError(context, state.error);
+            }
           },
-        );
-      },
+        ),
+      ],
       child: Scaffold(
         body: Column(
           children: [
@@ -105,6 +138,7 @@ class GetStartedPage extends HookWidget {
                   children: [
                     const StepOneAccountType(),
                     StepOneAccountDetails(
+                      dateController: dateController,
                       termsAccepted: termsAccepted.value,
                       onTermsChanged: (final val) {
                         termsAccepted.value = val ?? false;
@@ -124,8 +158,8 @@ class GetStartedPage extends HookWidget {
                         privacyAccepted.value = allAccepted.value;
                       },
                     ),
-                    StepTwoKYC(dateController: dateController),
                     const StepThreeOTP(),
+                    const StepTwoKYC(),
                   ],
                 ),
               ),
@@ -134,14 +168,7 @@ class GetStartedPage extends HookWidget {
               currentPage: currentPage.value,
               onPrevious: previousPage,
               onNext: nextPage,
-              isEnabled:
-                  (currentPage.value == 0 &&
-                      registerForm.accountType != null) ||
-                  (currentPage.value == 1 &&
-                      termsAccepted.value &&
-                      privacyAccepted.value) ||
-                  (currentPage.value == 2) ||
-                  (currentPage.value == 3),
+              isEnabled: registerForm.isValid && !(registerState is Loading),
             ),
           ],
         ),
