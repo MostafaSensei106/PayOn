@@ -37,7 +37,9 @@ class HomeCubit extends Cubit<HomeState> {
 
     emit(currentState.copyWith(isTransactionsLoading: true));
 
-    final response = await _getTransactionsU.call(currentState.transactionFilters);
+    final response = await _getTransactionsU.call(
+      currentState.transactionFilters,
+    );
 
     if (state is! Success) return;
 
@@ -48,7 +50,8 @@ class HomeCubit extends Cubit<HomeState> {
           transactions: t.data.items,
         ),
       ),
-      failure: (e) => emit((state as Success).copyWith(isTransactionsLoading: false)),
+      failure: (e) =>
+          emit((state as Success).copyWith(isTransactionsLoading: false)),
     );
   }
 

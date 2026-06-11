@@ -11,6 +11,7 @@ import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
 import '../../../data/models/account_type/account_type_item.dart';
+import '../../../data/models/register/create_account_request_body.dart';
 import '../../../data/models/register/register_request_body.dart';
 import '../../../data/repositories/register/base_register_repository.dart';
 import 'register_state.dart';
@@ -180,6 +181,41 @@ class RegisterCubit extends Cubit<RegisterState> {
       success: (r) async {
         emit(RegisterState.success(currentForm, data: r));
       },
+      failure: (e) =>
+          emit(RegisterState.failure(currentForm, error: e.message)),
+    );
+  }
+
+  Future<void> createAccount({
+    double? latitude,
+    double? longitude,
+    int? categoryId,
+  }) async {
+    final accountTypeId = currentForm.accountType?.id;
+    if (accountTypeId == null) return;
+
+    emit(RegisterState.loading(currentForm));
+
+    final body = CreateAccountRequestBody(
+      accountTypeId: accountTypeId,
+      latitude: accountTypeId == 1 ? null : latitude,
+      longitude: accountTypeId == 1 ? null : longitude,
+      categoryId: categoryId,
+    );
+
+    final response = await _registerRepository.createAccount(body);
+    response.when(
+      success: (r) => emit(RegisterState.success(currentForm, data: r)),
+      failure: (e) =>
+          emit(RegisterState.failure(currentForm, error: e.message)),
+    );
+  }
+
+  Future<void> getRequiredFiles() async {
+    emit(RegisterState.loading(currentForm));
+    final response = await _registerRepository.getRequiredFiles();
+    response.when(
+      success: (r) => emit(RegisterState.success(currentForm, data: r.data)),
       failure: (e) =>
           emit(RegisterState.failure(currentForm, error: e.message)),
     );

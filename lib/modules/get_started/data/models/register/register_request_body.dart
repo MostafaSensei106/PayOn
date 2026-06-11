@@ -1,9 +1,9 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'register_request_body.g.dart';
 
 @JsonSerializable()
-final class RegisterRequestBody {
+class RegisterRequestBody {
   const RegisterRequestBody({
     required this.email,
     required this.phoneNumber,
@@ -15,7 +15,11 @@ final class RegisterRequestBody {
     required this.nationalityCode,
     required this.country,
     required this.cityId,
+    this.referralCode,
   });
+
+  factory RegisterRequestBody.fromJson(Map<String, dynamic> json) =>
+      _$RegisterRequestBodyFromJson(json);
 
   final String email;
   final String phoneNumber;
@@ -27,6 +31,7 @@ final class RegisterRequestBody {
   final String nationalityCode;
   final String country;
   final String cityId;
+  final String? referralCode;
 
   Map<String, dynamic> toJson() => _$RegisterRequestBodyToJson(this);
 }

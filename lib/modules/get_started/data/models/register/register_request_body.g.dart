@@ -18,6 +18,7 @@ RegisterRequestBody _$RegisterRequestBodyFromJson(Map<String, dynamic> json) =>
       nationalityCode: json['nationalityCode'] as String,
       country: json['country'] as String,
       cityId: json['cityId'] as String,
+      referralCode: json['referralCode'] as String?,
     );
 
 Map<String, dynamic> _$RegisterRequestBodyToJson(
@@ -33,4 +34,5 @@ Map<String, dynamic> _$RegisterRequestBodyToJson(
   'nationalityCode': instance.nationalityCode,
   'country': instance.country,
   'cityId': instance.cityId,
+  'referralCode': instance.referralCode,
 };

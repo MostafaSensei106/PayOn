@@ -5,6 +5,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/router/routes/misc_routes.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/services/theme/theme_service.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
@@ -85,13 +86,33 @@ class AccountBalanceCard extends HookWidget {
               children: [
                 Row(
                   children: [
-                    Text(
-                      '${l10n.ipa}: ${w.ipa}',
-                      style: const TextStyle(
-                        fontSize: 10,
-                        fontFamily: 'monospace',
+                    if (w.ipa.isNotEmpty)
+                      Text(
+                        '${l10n.ipa}: ${w.ipa}',
+                        style: const TextStyle(
+                          fontSize: 10,
+                          fontFamily: 'monospace',
+                        ),
+                      )
+                    else if (w.isActive)
+                      TextButton(
+                        onPressed: () =>
+                            const CreateWalletRoute().push<void>(context),
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          minimumSize: Size.zero,
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        ),
+                        child: const Text(
+                          'Complete Setup',
+                          style: TextStyle(fontSize: 10),
+                        ),
+                      )
+                    else
+                      const Text(
+                        'Awaiting Approval',
+                        style: TextStyle(fontSize: 10),
                       ),
-                    ),
                   ],
                 ),
                 Container(
@@ -100,14 +121,17 @@ class AccountBalanceCard extends HookWidget {
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
+                    color: w.isActive
+                        ? Colors.green.withValues(alpha: 0.1)
+                        : Colors.orange.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
-                    l10n.active,
+                    w.isActive ? l10n.active : 'Pending',
                     style: TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
-                      color: colorScheme.onPrimaryContainer,
+                      color: w.isActive ? Colors.green : Colors.orange,
                     ),
                   ),
                 ),

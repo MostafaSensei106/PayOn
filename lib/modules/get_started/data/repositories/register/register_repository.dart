@@ -5,8 +5,11 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/constants/types/type_def.dart';
 import '../../../../../core/networking/api_executor/api_executor.dart';
 import '../../../../../core/networking/api_service/api_service.dart';
+import '../../models/register/create_account_request_body.dart';
+import '../../models/register/create_account_response_body.dart';
 import '../../models/register/register_request_body.dart';
 import '../../models/register/register_response_body.dart';
+import '../../models/required_files/get_required_files_response_body.dart';
 
 import 'base_register_repository.dart';
 
@@ -22,6 +25,19 @@ final class RegisterRepository implements BaseRegisterRepository {
   ) async => ApiExecutor.execute<RegisterResponseBody>(
     action: () => _apiService.register(body),
   );
+
+  @override
+  Future<ApiResult<CreateAccountResponseBody>> createAccount(
+    CreateAccountRequestBody body,
+  ) async => ApiExecutor.execute<CreateAccountResponseBody>(
+    action: () => _apiService.createAccount(body),
+  );
+
+  @override
+  Future<ApiResult<GetRequiredFilesResponseBody>> getRequiredFiles() async =>
+      ApiExecutor.execute<GetRequiredFilesResponseBody>(
+        action: () => _apiService.getRequiredFiles(),
+      );
 
   @override
   Future<ApiResult<void>> uploadFiles({

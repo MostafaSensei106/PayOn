@@ -9,12 +9,11 @@ part of 'get_transaction_response_body.dart';
 GetTransactionResponseBody _$GetTransactionResponseBodyFromJson(
   Map<String, dynamic> json,
 ) => GetTransactionResponseBody(
-  code: (json['code'] as num?)?.toInt() ?? 0,
-  message: json['message'] as String? ?? '',
+  code: (json['code'] as num).toInt(),
+  message: json['message'] as String,
   data: TransactionsDataModel.fromJson(json['data'] as Map<String, dynamic>),
-  success: json['success'] as bool? ?? false,
-  errors: (json['errors'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-      const [],
+  success: json['success'] as bool,
+  errors: (json['errors'] as List<dynamic>).map((e) => e as String).toList(),
 );
 
 Map<String, dynamic> _$GetTransactionResponseBodyToJson(
@@ -30,14 +29,13 @@ Map<String, dynamic> _$GetTransactionResponseBodyToJson(
 TransactionsDataModel _$TransactionsDataModelFromJson(
   Map<String, dynamic> json,
 ) => TransactionsDataModel(
-  totalItems: (json['totalItems'] as num?)?.toInt() ?? 0,
-  pageNumber: (json['pageNumber'] as num?)?.toInt() ?? 0,
-  pageSize: (json['pageSize'] as num?)?.toInt() ?? 0,
-  items: (json['items'] as List<dynamic>?)
-          ?.map((e) => TransactionItemModel.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-      const [],
-  totalPages: (json['totalPages'] as num?)?.toInt() ?? 0,
+  totalItems: (json['totalItems'] as num).toInt(),
+  pageNumber: (json['pageNumber'] as num).toInt(),
+  pageSize: (json['pageSize'] as num).toInt(),
+  items: (json['items'] as List<dynamic>)
+      .map((e) => TransactionItemModel.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  totalPages: (json['totalPages'] as num).toInt(),
 );
 
 Map<String, dynamic> _$TransactionsDataModelToJson(

@@ -18,6 +18,7 @@ final class ApiRoutes {
   static const String accountGetWallets = 'Account/GetWallets';
   static const String accountGetWalletsForWeb = 'Account/GetWalletsForWeb';
   static const String accountCreateWallet = 'Account/CreateWallet';
+  static const String accountCreateAccount = 'Account/CreateAccount';
   static const String accountCreateWalletPin = 'Account/CreateWalletPin';
   static const String accountEditWalletPin = 'Account/EditWalletPin';
   static const String accountGetUserFavorites = 'Account/GetUserFavorites';

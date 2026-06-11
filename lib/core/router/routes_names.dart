@@ -29,4 +29,6 @@ abstract class RoutesNames {
   static const String appVersion = '/app-version';
   static const String developerTeam = '/developer-team';
   static const String scanQrCode = '/scan-qr-code';
+  static const String createWallet = '/create-wallet';
+  static const String createWalletPin = '/create-wallet-pin';
 }

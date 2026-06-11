@@ -7,6 +7,8 @@ part of 'misc_routes.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
+  $createWalletRoute,
+  $createWalletPinRoute,
   $profileRoute,
   $changeLanguageRoute,
   $changeThemeRoute,
@@ -21,6 +23,58 @@ List<RouteBase> get $appRoutes => [
   $developerTeamRoute,
   $termsAndConditionsRoute,
 ];
+
+RouteBase get $createWalletRoute => GoRouteData.$route(
+  path: '/create-wallet',
+  factory: $CreateWalletRoute._fromState,
+);
+
+mixin $CreateWalletRoute on GoRouteData {
+  static CreateWalletRoute _fromState(GoRouterState state) =>
+      const CreateWalletRoute();
+
+  @override
+  String get location => GoRouteData.$location('/create-wallet');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $createWalletPinRoute => GoRouteData.$route(
+  path: '/create-wallet-pin',
+  factory: $CreateWalletPinRoute._fromState,
+);
+
+mixin $CreateWalletPinRoute on GoRouteData {
+  static CreateWalletPinRoute _fromState(GoRouterState state) =>
+      const CreateWalletPinRoute();
+
+  @override
+  String get location => GoRouteData.$location('/create-wallet-pin');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
 
 RouteBase get $profileRoute =>
     GoRouteData.$route(path: '/profile', factory: $ProfileRoute._fromState);

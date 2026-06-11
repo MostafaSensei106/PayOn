@@ -6,6 +6,9 @@ import '../../../modules/about_app/logic/cubit/about_app_cubit.dart';
 import '../../../modules/about_app/ui/page/about_app_page.dart';
 import '../../../modules/common_questions/ui/page/common_questions_page.dart';
 import '../../../modules/contact_us/ui/page/contact_us_page.dart';
+import '../../../modules/create_wallet/logic/cubit/create_wallet_cubit.dart';
+import '../../../modules/create_wallet/ui/pages/create_wallet_page.dart';
+import '../../../modules/create_wallet/ui/pages/create_wallet_pin_page.dart';
 import '../../../modules/developer_team/ui/page/developer_team_page.dart';
 import '../../../modules/language/ui/page/change_language_page.dart';
 import '../../../modules/notifications/ui/notifications_page.dart';
@@ -39,7 +42,33 @@ List<RouteBase> get miscRoutes => [
   $aboutAppRoute,
   $developerTeamRoute,
   $termsAndConditionsRoute,
+  $createWalletRoute,
+  $createWalletPinRoute,
 ];
+
+@TypedGoRoute<CreateWalletRoute>(path: RoutesNames.createWallet)
+final class CreateWalletRoute extends CupertinoRouteData
+    with $CreateWalletRoute {
+  const CreateWalletRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
+    create: (context) => getIt<CreateWalletCubit>()..getCurrencies(),
+    child: const CreateWalletPage(),
+  );
+}
+
+@TypedGoRoute<CreateWalletPinRoute>(path: RoutesNames.createWalletPin)
+final class CreateWalletPinRoute extends CupertinoRouteData
+    with $CreateWalletPinRoute {
+  const CreateWalletPinRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
+    create: (context) => getIt<CreateWalletCubit>(),
+    child: const CreateWalletPinPage(),
+  );
+}
 
 @TypedGoRoute<ProfileRoute>(path: RoutesNames.profile)
 final class ProfileRoute extends CupertinoRouteData with $ProfileRoute {

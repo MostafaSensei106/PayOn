@@ -62,6 +62,18 @@ import 'package:payon/modules/about_app/data/base_about_app_repository.dart'
     as _i725;
 import 'package:payon/modules/about_app/logic/cubit/about_app_cubit.dart'
     as _i258;
+import 'package:payon/modules/create_wallet/data/repositories/create_wallet_repository.dart'
+    as _i206;
+import 'package:payon/modules/create_wallet/data/repositories/create_wallet_repository_impl.dart'
+    as _i364;
+import 'package:payon/modules/create_wallet/logic/cubit/create_wallet_cubit.dart'
+    as _i854;
+import 'package:payon/modules/create_wallet/logic/usecase/create_wallet_pin_usecase.dart'
+    as _i263;
+import 'package:payon/modules/create_wallet/logic/usecase/create_wallet_usecase.dart'
+    as _i760;
+import 'package:payon/modules/create_wallet/logic/usecase/get_currencies_usecase.dart'
+    as _i860;
 import 'package:payon/modules/fingerprint_auth/data/repository/base_security_repository.dart'
     as _i750;
 import 'package:payon/modules/fingerprint_auth/data/repository/security_ropository.dart'
@@ -244,11 +256,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i843.AccountTypeCubit>(
       () => _i843.AccountTypeCubit(gh<_i276.BaseAccountTypeRepository>()),
     );
+    gh.lazySingleton<_i206.CreateWalletRepository>(
+      () => _i364.CreateWalletRepositoryImpl(gh<_i550.ApiService>()),
+    );
     gh.factory<_i258.AboutAppCubit>(
       () => _i258.AboutAppCubit(gh<_i725.BaseAboutAppRepository>()),
     );
     gh.lazySingleton<_i860.SendMoneyRepository>(
       () => _i321.SendMoneyRepositoryImpl(api: gh<_i550.ApiService>()),
+    );
+    gh.factory<_i263.CreateWalletPinUseCase>(
+      () => _i263.CreateWalletPinUseCase(gh<_i206.CreateWalletRepository>()),
+    );
+    gh.factory<_i760.CreateWalletUseCase>(
+      () => _i760.CreateWalletUseCase(gh<_i206.CreateWalletRepository>()),
+    );
+    gh.factory<_i860.GetCurrenciesUseCase>(
+      () => _i860.GetCurrenciesUseCase(gh<_i206.CreateWalletRepository>()),
     );
     gh.factory<_i225.RegisterCubit>(
       () => _i225.RegisterCubit(gh<_i1033.BaseRegisterRepository>()),
@@ -300,6 +324,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i914.SaveTransactionUsecase>(
       () => _i914.SaveTransactionUsecase(repo: gh<_i860.SendMoneyRepository>()),
+    );
+    gh.factory<_i854.CreateWalletCubit>(
+      () => _i854.CreateWalletCubit(
+        gh<_i860.GetCurrenciesUseCase>(),
+        gh<_i760.CreateWalletUseCase>(),
+        gh<_i263.CreateWalletPinUseCase>(),
+      ),
     );
     gh.lazySingleton<_i72.UserProfileCubit>(
       () => _i72.UserProfileCubit(gh<_i624.GetUserProfileUsecase>()),
@@ -396,10 +427,22 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i843.AccountTypeCubit get accountTypeCubit => get<_i843.AccountTypeCubit>();
 
+  _i364.CreateWalletRepositoryImpl get createWalletRepositoryImpl =>
+      get<_i364.CreateWalletRepositoryImpl>();
+
   _i258.AboutAppCubit get aboutAppCubit => get<_i258.AboutAppCubit>();
 
   _i321.SendMoneyRepositoryImpl get sendMoneyRepositoryImpl =>
       get<_i321.SendMoneyRepositoryImpl>();
+
+  _i263.CreateWalletPinUseCase get createWalletPinUseCase =>
+      get<_i263.CreateWalletPinUseCase>();
+
+  _i760.CreateWalletUseCase get createWalletUseCase =>
+      get<_i760.CreateWalletUseCase>();
+
+  _i860.GetCurrenciesUseCase get getCurrenciesUseCase =>
+      get<_i860.GetCurrenciesUseCase>();
 
   _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
 
@@ -434,6 +477,9 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i914.SaveTransactionUsecase get saveTransactionUsecase =>
       get<_i914.SaveTransactionUsecase>();
+
+  _i854.CreateWalletCubit get createWalletCubit =>
+      get<_i854.CreateWalletCubit>();
 
   _i72.UserProfileCubit get userProfileCubit => get<_i72.UserProfileCubit>();
 
