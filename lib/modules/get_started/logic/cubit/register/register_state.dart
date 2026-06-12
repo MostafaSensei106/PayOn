@@ -57,7 +57,7 @@ abstract class RegisterFormState with _$RegisterFormState {
 
     @Default('') String nationalityCode,
     @Default('') String country,
-    @Default('') String cityId,
+    @Default(0) int cityId,
 
     @Default(0) int currentStep,
     @Default(false) bool isValid,

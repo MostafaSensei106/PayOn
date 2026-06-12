@@ -6,6 +6,9 @@ import '../../../../core/constants/app_config.dart';
 import '../../../../core/constants/app_enums.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
+import '../../../../core/utils/validator/email_validators.dart';
+import '../../../../core/utils/validator/full_name.dart';
+import '../../../../core/utils/validator/phone_number.dart';
 import '../../../../core/widgets/inputs/checkbox/checkbox_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../logic/cubit/register/register_cubit.dart';
@@ -54,18 +57,26 @@ class StepOneAccountDetails extends StatelessWidget {
               prefixIcon: Iconsax.user_copy,
               initialValue: form.name.value,
               onChanged: registerCubit.nameOnChanged,
+              errorText: registerCubit.state.form.name.displayError?.message(
+                context,
+              ),
             ),
             TextFormFieldComponent(
               label: l10n.email_address,
               prefixIcon: Iconsax.message_2_copy,
               initialValue: form.email.value,
               onChanged: registerCubit.emailOnChanged,
+              errorText: registerCubit.state.form.email.displayError?.message(
+                context,
+              ),
             ),
             TextFormFieldComponent(
               label: l10n.phone_number,
               prefixIcon: Iconsax.call_copy,
               initialValue: form.phoneNumber.value,
               onChanged: registerCubit.phoneNumberOnChanged,
+              errorText: registerCubit.state.form.phoneNumber.displayError
+                  ?.message(context),
             ),
             TextFormFieldComponent(
               controller: dateController,
@@ -93,9 +104,15 @@ class StepOneAccountDetails extends StatelessWidget {
               initialValue: form.gender == GenderType.none ? null : form.gender,
               hint: Text(l10n.gender),
               items: [GenderType.male, GenderType.female]
-                  .map((e) => DropdownMenuItem(value: e, child: Text(e.name)))
+                  .map(
+                    (e) => DropdownMenuItem(
+                      value: e,
+                      child: Text(e.message(context)),
+                    ),
+                  )
                   .toList(),
-              onChanged: (val) => registerCubit.genderOnChanged(val!),
+              onChanged: (val) =>
+                  registerCubit.genderOnChanged(val ?? GenderType.none),
               decoration: InputDecoration(
                 prefixIcon: const Icon(Iconsax.user_tag_copy),
                 border: OutlineInputBorder(
@@ -117,12 +134,7 @@ class StepOneAccountDetails extends StatelessWidget {
               initialValue: form.country,
               onChanged: registerCubit.countryOnChanged,
             ),
-            TextFormFieldComponent(
-              label: 'City ID',
-              prefixIcon: Iconsax.building_3_copy,
-              initialValue: form.cityId,
-              onChanged: registerCubit.cityIdOnChanged,
-            ),
+
             TextFormFieldComponent(
               label: l10n.password,
               prefixIcon: Iconsax.lock_copy,

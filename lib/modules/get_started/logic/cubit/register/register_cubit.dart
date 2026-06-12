@@ -131,15 +131,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
   }
 
-  void cityIdOnChanged(String cityId) {
-    final updatedForm = currentForm.copyWith(cityId: cityId);
-    emit(
-      RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
-      ),
-    );
-  }
-
   void updateFile(int docId, File file) {
     final updatedFiles = Map<int, File>.from(currentForm.files)..[docId] = file;
     final updatedForm = currentForm.copyWith(files: updatedFiles);
@@ -165,8 +156,7 @@ class RegisterCubit extends Cubit<RegisterState> {
             form.password.value == form.confirmPassword.value &&
             form.birthDate.isNotEmpty &&
             form.gender != GenderType.none &&
-            form.country.isNotEmpty &&
-            form.cityId.isNotEmpty;
+            form.country.isNotEmpty;
       case 2: // OTP
         return true;
       case 3: // Documents

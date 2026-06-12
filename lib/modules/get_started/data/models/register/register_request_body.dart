@@ -30,7 +30,7 @@ class RegisterRequestBody {
   final bool isPhone;
   final String nationalityCode;
   final String country;
-  final String cityId;
+  final int cityId;
   final String? referralCode;
 
   Map<String, dynamic> toJson() => _$RegisterRequestBodyToJson(this);
