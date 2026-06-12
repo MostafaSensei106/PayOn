@@ -12,7 +12,7 @@ part of 'api_service.dart';
 
 class _ApiService implements ApiService {
   _ApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://mohammed221b-001-site1.jtempurl.com/api/';
+    baseUrl ??= 'https://mahmoudappis-001-site1.jtempurl.com/api/';
   }
 
   final Dio _dio;
