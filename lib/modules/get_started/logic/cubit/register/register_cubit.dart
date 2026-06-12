@@ -193,10 +193,9 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
 
     final result = await _registerRepository.register(body);
-    result.fold(
-      onSuccess: (r) =>
-          emit(RegisterState.registerSuccess(currentForm, data: r)),
-      onFailure: (e) =>
+    result.when(
+      success: (r) => emit(RegisterState.registerSuccess(currentForm, data: r)),
+      failure: (e) =>
           emit(RegisterState.failure(currentForm, error: e.message)),
     );
   }
