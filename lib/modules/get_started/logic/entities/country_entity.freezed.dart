@@ -280,7 +280,7 @@ as int,
 /// @nodoc
 mixin _$CountryItemEntity {
 
- int get id; String get name; String get nicename; int get phoneCode; String get iso;
+ int get id; String get name; int get phoneCode; int get numCode; String get iso; String get code; bool get isActive;
 /// Create a copy of CountryItemEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -291,16 +291,16 @@ $CountryItemEntityCopyWith<CountryItemEntity> get copyWith => _$CountryItemEntit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CountryItemEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.nicename, nicename) || other.nicename == nicename)&&(identical(other.phoneCode, phoneCode) || other.phoneCode == phoneCode)&&(identical(other.iso, iso) || other.iso == iso));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CountryItemEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.phoneCode, phoneCode) || other.phoneCode == phoneCode)&&(identical(other.numCode, numCode) || other.numCode == numCode)&&(identical(other.iso, iso) || other.iso == iso)&&(identical(other.code, code) || other.code == code)&&(identical(other.isActive, isActive) || other.isActive == isActive));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,nicename,phoneCode,iso);
+int get hashCode => Object.hash(runtimeType,id,name,phoneCode,numCode,iso,code,isActive);
 
 @override
 String toString() {
-  return 'CountryItemEntity(id: $id, name: $name, nicename: $nicename, phoneCode: $phoneCode, iso: $iso)';
+  return 'CountryItemEntity(id: $id, name: $name, phoneCode: $phoneCode, numCode: $numCode, iso: $iso, code: $code, isActive: $isActive)';
 }
 
 
@@ -311,7 +311,7 @@ abstract mixin class $CountryItemEntityCopyWith<$Res>  {
   factory $CountryItemEntityCopyWith(CountryItemEntity value, $Res Function(CountryItemEntity) _then) = _$CountryItemEntityCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String nicename, int phoneCode, String iso
+ int id, String name, int phoneCode, int numCode, String iso, String code, bool isActive
 });
 
 
@@ -328,14 +328,16 @@ class _$CountryItemEntityCopyWithImpl<$Res>
 
 /// Create a copy of CountryItemEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? nicename = null,Object? phoneCode = null,Object? iso = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? phoneCode = null,Object? numCode = null,Object? iso = null,Object? code = null,Object? isActive = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,nicename: null == nicename ? _self.nicename : nicename // ignore: cast_nullable_to_non_nullable
 as String,phoneCode: null == phoneCode ? _self.phoneCode : phoneCode // ignore: cast_nullable_to_non_nullable
+as int,numCode: null == numCode ? _self.numCode : numCode // ignore: cast_nullable_to_non_nullable
 as int,iso: null == iso ? _self.iso : iso // ignore: cast_nullable_to_non_nullable
-as String,
+as String,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
+as String,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -420,10 +422,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String nicename,  int phoneCode,  String iso)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  int phoneCode,  int numCode,  String iso,  String code,  bool isActive)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CountryItemEntity() when $default != null:
-return $default(_that.id,_that.name,_that.nicename,_that.phoneCode,_that.iso);case _:
+return $default(_that.id,_that.name,_that.phoneCode,_that.numCode,_that.iso,_that.code,_that.isActive);case _:
   return orElse();
 
 }
@@ -441,10 +443,10 @@ return $default(_that.id,_that.name,_that.nicename,_that.phoneCode,_that.iso);ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String nicename,  int phoneCode,  String iso)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  int phoneCode,  int numCode,  String iso,  String code,  bool isActive)  $default,) {final _that = this;
 switch (_that) {
 case _CountryItemEntity():
-return $default(_that.id,_that.name,_that.nicename,_that.phoneCode,_that.iso);case _:
+return $default(_that.id,_that.name,_that.phoneCode,_that.numCode,_that.iso,_that.code,_that.isActive);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -461,10 +463,10 @@ return $default(_that.id,_that.name,_that.nicename,_that.phoneCode,_that.iso);ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String nicename,  int phoneCode,  String iso)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  int phoneCode,  int numCode,  String iso,  String code,  bool isActive)?  $default,) {final _that = this;
 switch (_that) {
 case _CountryItemEntity() when $default != null:
-return $default(_that.id,_that.name,_that.nicename,_that.phoneCode,_that.iso);case _:
+return $default(_that.id,_that.name,_that.phoneCode,_that.numCode,_that.iso,_that.code,_that.isActive);case _:
   return null;
 
 }
@@ -476,14 +478,16 @@ return $default(_that.id,_that.name,_that.nicename,_that.phoneCode,_that.iso);ca
 
 
 class _CountryItemEntity implements CountryItemEntity {
-  const _CountryItemEntity({required this.id, required this.name, required this.nicename, required this.phoneCode, required this.iso});
+  const _CountryItemEntity({required this.id, required this.name, required this.phoneCode, required this.numCode, required this.iso, required this.code, required this.isActive});
   
 
 @override final  int id;
 @override final  String name;
-@override final  String nicename;
 @override final  int phoneCode;
+@override final  int numCode;
 @override final  String iso;
+@override final  String code;
+@override final  bool isActive;
 
 /// Create a copy of CountryItemEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -495,16 +499,16 @@ _$CountryItemEntityCopyWith<_CountryItemEntity> get copyWith => __$CountryItemEn
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CountryItemEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.nicename, nicename) || other.nicename == nicename)&&(identical(other.phoneCode, phoneCode) || other.phoneCode == phoneCode)&&(identical(other.iso, iso) || other.iso == iso));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CountryItemEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.phoneCode, phoneCode) || other.phoneCode == phoneCode)&&(identical(other.numCode, numCode) || other.numCode == numCode)&&(identical(other.iso, iso) || other.iso == iso)&&(identical(other.code, code) || other.code == code)&&(identical(other.isActive, isActive) || other.isActive == isActive));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,nicename,phoneCode,iso);
+int get hashCode => Object.hash(runtimeType,id,name,phoneCode,numCode,iso,code,isActive);
 
 @override
 String toString() {
-  return 'CountryItemEntity(id: $id, name: $name, nicename: $nicename, phoneCode: $phoneCode, iso: $iso)';
+  return 'CountryItemEntity(id: $id, name: $name, phoneCode: $phoneCode, numCode: $numCode, iso: $iso, code: $code, isActive: $isActive)';
 }
 
 
@@ -515,7 +519,7 @@ abstract mixin class _$CountryItemEntityCopyWith<$Res> implements $CountryItemEn
   factory _$CountryItemEntityCopyWith(_CountryItemEntity value, $Res Function(_CountryItemEntity) _then) = __$CountryItemEntityCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String nicename, int phoneCode, String iso
+ int id, String name, int phoneCode, int numCode, String iso, String code, bool isActive
 });
 
 
@@ -532,14 +536,16 @@ class __$CountryItemEntityCopyWithImpl<$Res>
 
 /// Create a copy of CountryItemEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? nicename = null,Object? phoneCode = null,Object? iso = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? phoneCode = null,Object? numCode = null,Object? iso = null,Object? code = null,Object? isActive = null,}) {
   return _then(_CountryItemEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,nicename: null == nicename ? _self.nicename : nicename // ignore: cast_nullable_to_non_nullable
 as String,phoneCode: null == phoneCode ? _self.phoneCode : phoneCode // ignore: cast_nullable_to_non_nullable
+as int,numCode: null == numCode ? _self.numCode : numCode // ignore: cast_nullable_to_non_nullable
 as int,iso: null == iso ? _self.iso : iso // ignore: cast_nullable_to_non_nullable
-as String,
+as String,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
+as String,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

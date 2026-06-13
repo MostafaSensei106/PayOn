@@ -58,8 +58,8 @@ abstract class RegisterFormState with _$RegisterFormState {
 
     @Default(true) bool isPhone,
 
-    @Default(0) int nationalityCode,
-    @Default(0) int country,
+    @Default('') String nationalityCode,
+    @Default('') String country,
     @Default([]) List<CountryItemEntity> countries,
     @Default(2) int cityId,
 

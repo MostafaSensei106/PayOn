@@ -34,9 +34,14 @@ class CountryItem {
   const CountryItem({
     required this.id,
     required this.name,
+    required this.arName,
+    required this.trName,
     required this.nicename,
+    required this.numCode,
     required this.phoneCode,
     required this.iso,
+    required this.code,
+    required this.isActive,
   });
 
   factory CountryItem.fromJson(Map<String, dynamic> json) =>
@@ -44,7 +49,12 @@ class CountryItem {
 
   final int id;
   final String name;
+  final String arName;
+  final String trName;
   final String nicename;
+  final int numCode;
   final int phoneCode;
   final String iso;
+  final String code;
+  final bool isActive;
 }

@@ -132,18 +132,17 @@ class _StepOneAccountDetailsState extends State<StepOneAccountDetails> {
                 ),
               ),
             ),
-            DropdownButtonFormField<int>(
-              initialValue: form.nationalityCode == 0 ? null : form.nationalityCode,
+            DropdownButtonFormField<String>(
+              initialValue: form.nationalityCode.isEmpty
+                  ? null
+                  : form.nationalityCode,
               hint: Text(l10n.nationality),
               items: form.countries
                   .map(
-                    (e) => DropdownMenuItem(
-                      value: e.id,
-                      child: Text(e.nicename),
-                    ),
+                    (e) => DropdownMenuItem(value: e.code, child: Text(e.name)),
                   )
                   .toList(),
-              onChanged: (val) => registerCubit.nationalityOnChanged(val ?? 0),
+              onChanged: (val) => registerCubit.nationalityOnChanged(val ?? ''),
               decoration: InputDecoration(
                 prefixIcon: const Icon(Iconsax.global_copy),
                 border: OutlineInputBorder(
@@ -153,18 +152,15 @@ class _StepOneAccountDetailsState extends State<StepOneAccountDetails> {
                 ),
               ),
             ),
-            DropdownButtonFormField<int>(
-              initialValue: form.country == 0 ? null : form.country,
+            DropdownButtonFormField<String>(
+              initialValue: form.country.isEmpty ? null : form.country,
               hint: const Text('Country'),
               items: form.countries
                   .map(
-                    (e) => DropdownMenuItem(
-                      value: e.id,
-                      child: Text(e.name),
-                    ),
+                    (e) => DropdownMenuItem(value: e.code, child: Text(e.name)),
                   )
                   .toList(),
-              onChanged: (val) => registerCubit.countryOnChanged(val ?? 0),
+              onChanged: (val) => registerCubit.countryOnChanged(val ?? ''),
               decoration: InputDecoration(
                 prefixIcon: const Icon(Iconsax.location_copy),
                 border: OutlineInputBorder(

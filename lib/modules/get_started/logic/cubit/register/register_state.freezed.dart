@@ -809,7 +809,7 @@ $RegisterFormStateCopyWith<$Res> get form {
 /// @nodoc
 mixin _$RegisterFormState {
 
- FullName get name; Email get email; PhoneNumber get phoneNumber; Password get password; Password get confirmPassword; String get birthDate; GenderType get gender; AccountTypeItemEntity? get accountType; Map<int, File> get files; bool get isForgotPassword; String get lang; String get code; bool get isPhone; int get nationalityCode; int get country; List<CountryItemEntity> get countries; int get cityId; int get currentStep; bool get isValid;
+ FullName get name; Email get email; PhoneNumber get phoneNumber; Password get password; Password get confirmPassword; String get birthDate; GenderType get gender; AccountTypeItemEntity? get accountType; Map<int, File> get files; bool get isForgotPassword; String get lang; String get code; bool get isPhone; String get nationalityCode; String get country; List<CountryItemEntity> get countries; int get cityId; int get currentStep; bool get isValid;
 /// Create a copy of RegisterFormState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -840,7 +840,7 @@ abstract mixin class $RegisterFormStateCopyWith<$Res>  {
   factory $RegisterFormStateCopyWith(RegisterFormState value, $Res Function(RegisterFormState) _then) = _$RegisterFormStateCopyWithImpl;
 @useResult
 $Res call({
- FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItemEntity? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, int nationalityCode, int country, List<CountryItemEntity> countries, int cityId, int currentStep, bool isValid
+ FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItemEntity? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, List<CountryItemEntity> countries, int cityId, int currentStep, bool isValid
 });
 
 
@@ -873,8 +873,8 @@ as bool,lang: null == lang ? _self.lang : lang // ignore: cast_nullable_to_non_n
 as String,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as String,isPhone: null == isPhone ? _self.isPhone : isPhone // ignore: cast_nullable_to_non_nullable
 as bool,nationalityCode: null == nationalityCode ? _self.nationalityCode : nationalityCode // ignore: cast_nullable_to_non_nullable
-as int,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
-as int,countries: null == countries ? _self.countries : countries // ignore: cast_nullable_to_non_nullable
+as String,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String,countries: null == countries ? _self.countries : countries // ignore: cast_nullable_to_non_nullable
 as List<CountryItemEntity>,cityId: null == cityId ? _self.cityId : cityId // ignore: cast_nullable_to_non_nullable
 as int,currentStep: null == currentStep ? _self.currentStep : currentStep // ignore: cast_nullable_to_non_nullable
 as int,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
@@ -975,7 +975,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  int nationalityCode,  int country,  List<CountryItemEntity> countries,  int cityId,  int currentStep,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  List<CountryItemEntity> countries,  int cityId,  int currentStep,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RegisterFormState() when $default != null:
 return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.countries,_that.cityId,_that.currentStep,_that.isValid);case _:
@@ -996,7 +996,7 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.co
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  int nationalityCode,  int country,  List<CountryItemEntity> countries,  int cityId,  int currentStep,  bool isValid)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  List<CountryItemEntity> countries,  int cityId,  int currentStep,  bool isValid)  $default,) {final _that = this;
 switch (_that) {
 case _RegisterFormState():
 return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.countries,_that.cityId,_that.currentStep,_that.isValid);case _:
@@ -1016,7 +1016,7 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.co
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  int nationalityCode,  int country,  List<CountryItemEntity> countries,  int cityId,  int currentStep,  bool isValid)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  List<CountryItemEntity> countries,  int cityId,  int currentStep,  bool isValid)?  $default,) {final _that = this;
 switch (_that) {
 case _RegisterFormState() when $default != null:
 return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.countries,_that.cityId,_that.currentStep,_that.isValid);case _:
@@ -1031,7 +1031,7 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.co
 
 
 class _RegisterFormState implements RegisterFormState {
-  const _RegisterFormState({this.name = const FullName.pure(), this.email = const Email.pure(), this.phoneNumber = const PhoneNumber.pure(), this.password = const Password.pure(), this.confirmPassword = const Password.pure(), this.birthDate = '', this.gender = GenderType.none, this.accountType = null, final  Map<int, File> files = const {}, this.isForgotPassword = false, this.lang = 'en', this.code = '', this.isPhone = true, this.nationalityCode = 0, this.country = 0, final  List<CountryItemEntity> countries = const [], this.cityId = 2, this.currentStep = 0, this.isValid = false}): _files = files,_countries = countries;
+  const _RegisterFormState({this.name = const FullName.pure(), this.email = const Email.pure(), this.phoneNumber = const PhoneNumber.pure(), this.password = const Password.pure(), this.confirmPassword = const Password.pure(), this.birthDate = '', this.gender = GenderType.none, this.accountType = null, final  Map<int, File> files = const {}, this.isForgotPassword = false, this.lang = 'en', this.code = '', this.isPhone = true, this.nationalityCode = '', this.country = '', final  List<CountryItemEntity> countries = const [], this.cityId = 2, this.currentStep = 0, this.isValid = false}): _files = files,_countries = countries;
   
 
 @override@JsonKey() final  FullName name;
@@ -1053,8 +1053,8 @@ class _RegisterFormState implements RegisterFormState {
 @override@JsonKey() final  String lang;
 @override@JsonKey() final  String code;
 @override@JsonKey() final  bool isPhone;
-@override@JsonKey() final  int nationalityCode;
-@override@JsonKey() final  int country;
+@override@JsonKey() final  String nationalityCode;
+@override@JsonKey() final  String country;
  final  List<CountryItemEntity> _countries;
 @override@JsonKey() List<CountryItemEntity> get countries {
   if (_countries is EqualUnmodifiableListView) return _countries;
@@ -1096,7 +1096,7 @@ abstract mixin class _$RegisterFormStateCopyWith<$Res> implements $RegisterFormS
   factory _$RegisterFormStateCopyWith(_RegisterFormState value, $Res Function(_RegisterFormState) _then) = __$RegisterFormStateCopyWithImpl;
 @override @useResult
 $Res call({
- FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItemEntity? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, int nationalityCode, int country, List<CountryItemEntity> countries, int cityId, int currentStep, bool isValid
+ FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItemEntity? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, List<CountryItemEntity> countries, int cityId, int currentStep, bool isValid
 });
 
 
@@ -1129,8 +1129,8 @@ as bool,lang: null == lang ? _self.lang : lang // ignore: cast_nullable_to_non_n
 as String,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as String,isPhone: null == isPhone ? _self.isPhone : isPhone // ignore: cast_nullable_to_non_nullable
 as bool,nationalityCode: null == nationalityCode ? _self.nationalityCode : nationalityCode // ignore: cast_nullable_to_non_nullable
-as int,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
-as int,countries: null == countries ? _self._countries : countries // ignore: cast_nullable_to_non_nullable
+as String,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String,countries: null == countries ? _self._countries : countries // ignore: cast_nullable_to_non_nullable
 as List<CountryItemEntity>,cityId: null == cityId ? _self.cityId : cityId // ignore: cast_nullable_to_non_nullable
 as int,currentStep: null == currentStep ? _self.currentStep : currentStep // ignore: cast_nullable_to_non_nullable
 as int,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable

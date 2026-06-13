@@ -15,10 +15,9 @@ RegisterRequestBody _$RegisterRequestBodyFromJson(Map<String, dynamic> json) =>
       gender: json['gender'] as String,
       password: json['password'] as String,
       isPhone: json['isPhone'] as bool,
-      nationalityCode: (json['nationalityCode'] as num).toInt(),
-      country: (json['country'] as num).toInt(),
+      nationalityCode: json['nationalityCode'] as String,
+      country: json['country'] as String,
       cityId: (json['cityId'] as num).toInt(),
-      referralCode: json['referralCode'] as String?,
     );
 
 Map<String, dynamic> _$RegisterRequestBodyToJson(
@@ -34,5 +33,4 @@ Map<String, dynamic> _$RegisterRequestBodyToJson(
   'nationalityCode': instance.nationalityCode,
   'country': instance.country,
   'cityId': instance.cityId,
-  'referralCode': instance.referralCode,
 };

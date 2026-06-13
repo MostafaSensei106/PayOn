@@ -15,9 +15,11 @@ extension CountryItemMapper on CountryItem {
     return CountryItemEntity(
       id: id,
       name: name,
-      nicename: nicename,
       phoneCode: phoneCode,
+      numCode: numCode,
       iso: iso,
+      code: code,
+      isActive: isActive,
     );
   }
 }

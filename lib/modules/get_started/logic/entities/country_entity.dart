@@ -15,8 +15,10 @@ abstract class CountryItemEntity with _$CountryItemEntity {
   const factory CountryItemEntity({
     required int id,
     required String name,
-    required String nicename,
     required int phoneCode,
+    required int numCode,
     required String iso,
+    required String code,
+    required bool isActive,
   }) = _CountryItemEntity;
 }

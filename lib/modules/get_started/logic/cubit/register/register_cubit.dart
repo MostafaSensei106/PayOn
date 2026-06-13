@@ -40,6 +40,97 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   RegisterFormState get currentForm => state.form;
 
+  Future<void> register() async {
+    if (!_validate(currentForm, step: 1)) return;
+    emit(RegisterState.loading(currentForm));
+
+    final body = RegisterRequestBody(
+      email: currentForm.email.value,
+      phoneNumber: currentForm.phoneNumber.value,
+      name: currentForm.name.value,
+      birthDate: currentForm.birthDate,
+      gender: currentForm.gender.code,
+      password: currentForm.password.value,
+      isPhone: currentForm.isPhone,
+      nationalityCode: currentForm.nationalityCode,
+      country: currentForm.country,
+      cityId: currentForm.cityId,
+    );
+
+    final result = await _registerUseCase(body);
+    result.fold(
+      onSuccess: (data) =>
+          emit(RegisterState.registerSuccess(currentForm, data: data)),
+      onFailure: (error) =>
+          emit(RegisterState.failure(currentForm, error: error.message)),
+    );
+  }
+
+  Future<void> createAccount({
+    double? latitude,
+    double? longitude,
+    int? categoryId,
+  }) async {
+    final accountTypeId = currentForm.accountType?.id;
+    if (accountTypeId == null) return;
+
+    emit(RegisterState.loading(currentForm));
+
+    final body = CreateAccountRequestBody(
+      accountTypeId: accountTypeId,
+      latitude: accountTypeId == 1 ? null : latitude,
+      longitude: accountTypeId == 1 ? null : longitude,
+      categoryId: categoryId,
+    );
+
+    final result = await _createAccountUseCase(body);
+    result.fold(
+      onSuccess: (data) =>
+          emit(RegisterState.createAccountSuccess(currentForm, data: data)),
+      onFailure: (error) =>
+          emit(RegisterState.failure(currentForm, error: error.message)),
+    );
+  }
+
+  Future<void> getCountries() async {
+    if (currentForm.countries.isNotEmpty) return;
+    emit(RegisterState.loading(currentForm));
+    final result = await _getAllCountriesUseCase(const NoParams());
+    result.fold(
+      onSuccess: (data) {
+        final updatedForm = currentForm.copyWith(countries: data.items);
+        emit(
+          RegisterState.getCountriesSuccess(updatedForm, countries: data.items),
+        );
+      },
+      onFailure: (error) =>
+          emit(RegisterState.failure(currentForm, error: error.message)),
+    );
+  }
+
+  Future<void> getRequiredFiles() async {
+    emit(RegisterState.loading(currentForm));
+    final result = await _getRequiredFilesUseCase(const NoParams());
+    result.fold(
+      onSuccess: (data) =>
+          emit(RegisterState.getRequiredFilesSuccess(currentForm, files: data)),
+      onFailure: (error) =>
+          emit(RegisterState.failure(currentForm, error: error.message)),
+    );
+  }
+
+  Future<void> uploadKYCFiles(String accId) async {
+    emit(RegisterState.loading(currentForm));
+    final result = await _uploadKycFilesUseCase(
+      UploadKycFilesParams(accId: accId, files: currentForm.files),
+    );
+    result.fold(
+      onSuccess: (_) => emit(RegisterState.initial(currentForm)),
+      onFailure: (error) =>
+          emit(RegisterState.failure(currentForm, error: error.message)),
+    );
+  }
+
   void setStep(int step) {
     emit(
       RegisterState.initial(
@@ -128,7 +219,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
   }
 
-  void nationalityOnChanged(int nationalityCode) {
+  void nationalityOnChanged(String nationalityCode) {
     final updatedForm = currentForm.copyWith(nationalityCode: nationalityCode);
     emit(
       RegisterState.initial(
@@ -137,7 +228,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
   }
 
-  void countryOnChanged(int country) {
+  void countryOnChanged(String country) {
     final updatedForm = currentForm.copyWith(country: country);
     emit(
       RegisterState.initial(
@@ -171,7 +262,7 @@ class RegisterCubit extends Cubit<RegisterState> {
             form.password.value == form.confirmPassword.value &&
             form.birthDate.isNotEmpty &&
             form.gender != GenderType.none &&
-            form.country != 0;
+            form.country.isNotEmpty;
       case 2: // OTP
         return true;
       case 3: // Documents
@@ -179,93 +270,5 @@ class RegisterCubit extends Cubit<RegisterState> {
       default:
         return false;
     }
-  }
-
-  Future<void> register() async {
-    if (!_validate(currentForm, step: 1)) return;
-    emit(RegisterState.loading(currentForm));
-    final body = RegisterRequestBody(
-      email: currentForm.email.value,
-      phoneNumber: currentForm.phoneNumber.value,
-      name: currentForm.name.value,
-      birthDate: currentForm.birthDate,
-      gender: currentForm.gender.code,
-      password: currentForm.password.value,
-      isPhone: currentForm.isPhone,
-      nationalityCode: currentForm.nationalityCode,
-      country: currentForm.country,
-      cityId: currentForm.cityId,
-    );
-
-    final result = await _registerUseCase(body);
-    result.fold(
-      onSuccess: (data) =>
-          emit(RegisterState.registerSuccess(currentForm, data: data)),
-      onFailure: (error) =>
-          emit(RegisterState.failure(currentForm, error: error.message)),
-    );
-  }
-
-  Future<void> createAccount({
-    double? latitude,
-    double? longitude,
-    int? categoryId,
-  }) async {
-    final accountTypeId = currentForm.accountType?.id;
-    if (accountTypeId == null) return;
-
-    emit(RegisterState.loading(currentForm));
-
-    final body = CreateAccountRequestBody(
-      accountTypeId: accountTypeId,
-      latitude: accountTypeId == 1 ? null : latitude,
-      longitude: accountTypeId == 1 ? null : longitude,
-      categoryId: categoryId,
-    );
-
-    final result = await _createAccountUseCase(body);
-    result.fold(
-      onSuccess: (data) =>
-          emit(RegisterState.createAccountSuccess(currentForm, data: data)),
-      onFailure: (error) =>
-          emit(RegisterState.failure(currentForm, error: error.message)),
-    );
-  }
-
-  Future<void> getCountries() async {
-    if (currentForm.countries.isNotEmpty) return;
-    emit(RegisterState.loading(currentForm));
-    final result = await _getAllCountriesUseCase(const NoParams());
-    result.fold(
-      onSuccess: (data) {
-        final updatedForm = currentForm.copyWith(countries: data.items);
-        emit(RegisterState.getCountriesSuccess(updatedForm, countries: data.items));
-      },
-      onFailure: (error) =>
-          emit(RegisterState.failure(currentForm, error: error.message)),
-    );
-  }
-
-  Future<void> getRequiredFiles() async {
-    emit(RegisterState.loading(currentForm));
-    final result = await _getRequiredFilesUseCase(const NoParams());
-    result.fold(
-      onSuccess: (data) =>
-          emit(RegisterState.getRequiredFilesSuccess(currentForm, files: data)),
-      onFailure: (error) =>
-          emit(RegisterState.failure(currentForm, error: error.message)),
-    );
-  }
-
-  Future<void> uploadKYCFiles(String accId) async {
-    emit(RegisterState.loading(currentForm));
-    final result = await _uploadKycFilesUseCase(
-      UploadKycFilesParams(accId: accId, files: currentForm.files),
-    );
-    result.fold(
-      onSuccess: (_) => emit(RegisterState.initial(currentForm)),
-      onFailure: (error) =>
-          emit(RegisterState.failure(currentForm, error: error.message)),
-    );
   }
 }

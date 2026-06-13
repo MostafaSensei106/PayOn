@@ -39,16 +39,26 @@ Map<String, dynamic> _$CountriesDataToJson(CountriesData instance) =>
 CountryItem _$CountryItemFromJson(Map<String, dynamic> json) => CountryItem(
   id: (json['id'] as num).toInt(),
   name: json['name'] as String,
+  arName: json['arName'] as String,
+  trName: json['trName'] as String,
   nicename: json['nicename'] as String,
+  numCode: (json['numCode'] as num).toInt(),
   phoneCode: (json['phoneCode'] as num).toInt(),
   iso: json['iso'] as String,
+  code: json['code'] as String,
+  isActive: json['isActive'] as bool,
 );
 
 Map<String, dynamic> _$CountryItemToJson(CountryItem instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'arName': instance.arName,
+      'trName': instance.trName,
       'nicename': instance.nicename,
+      'numCode': instance.numCode,
       'phoneCode': instance.phoneCode,
       'iso': instance.iso,
+      'code': instance.code,
+      'isActive': instance.isActive,
     };
