@@ -32,6 +32,13 @@ class CreateWalletPage extends HookWidget {
 
     useListenable(ipaController);
 
+    useEffect(() {
+      if (currenciesList.value.isEmpty) {
+        context.read<CreateWalletCubit>().getCurrencies().ignore();
+      }
+      return null;
+    }, []);
+
     return Scaffold(
       appBar: const SidePageAppBarComponent(title: 'Create Wallet'),
       body: BlocConsumer<CreateWalletCubit, CreateWalletState>(
@@ -44,7 +51,7 @@ class CreateWalletPage extends HookWidget {
               }
             },
             walletCreated: () =>
-                unawaited(const CreateWalletPinRoute().push<void>(context)),
+                unawaited(CreateWalletPinRoute(accountId: accountId).push<void>(context)),
             failure: (final message) => unawaited(
               DialogComponent.showError(
                 context: context,
@@ -144,7 +151,7 @@ class CreateWalletPage extends HookWidget {
                         unawaited(
                           context.read<CreateWalletCubit>().createWallet(
                             accountId: accountId,
-                            ipa: ipaController.text,
+                            ipa: '${ipaController.text}@payreb',
                             currencyId: selectedCurrency.value!.id,
                           ),
                         );

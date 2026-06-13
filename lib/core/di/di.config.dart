@@ -140,6 +140,14 @@ import 'package:payon/modules/profile/logic/usecase/edit_user_profile_usecase.da
     as _i771;
 import 'package:payon/modules/profile/logic/usecase/get_user_profile_usecase.dart'
     as _i624;
+import 'package:payon/modules/request_money/data/repositories/request_money_repository.dart'
+    as _i316;
+import 'package:payon/modules/request_money/data/repositories/request_money_repository_impl.dart'
+    as _i500;
+import 'package:payon/modules/request_money/logic/cubit/request_money_cubit.dart'
+    as _i626;
+import 'package:payon/modules/request_money/logic/usecase/get_pending_transactions_usecase.dart'
+    as _i566;
 import 'package:payon/modules/send_money/data/repository/send_money_repository.dart'
     as _i860;
 import 'package:payon/modules/send_money/logic/cubit/send_money_cubit.dart'
@@ -254,6 +262,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i1033.BaseRegisterRepository>(
       () => _i937.RegisterRepository(gh<_i550.ApiService>()),
     );
+    gh.lazySingleton<_i316.RequestMoneyRepository>(
+      () => _i500.RequestMoneyRepositoryImpl(api: gh<_i550.ApiService>()),
+    );
     gh.lazySingleton<_i276.BaseAccountTypeRepository>(
       () => _i941.AccountTypeRepository(gh<_i550.ApiService>()),
     );
@@ -310,6 +321,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i69.GetAccountTypesUseCase>(
       () => _i69.GetAccountTypesUseCase(gh<_i276.BaseAccountTypeRepository>()),
     );
+    gh.factory<_i566.GetPendingTransactionsUseCase>(
+      () => _i566.GetPendingTransactionsUseCase(
+        repo: gh<_i316.RequestMoneyRepository>(),
+      ),
+    );
     gh.lazySingleton<_i719.LoginRepository>(
       () => _i370.LoginRepositoryImpl(
         gh<_i550.ApiService>(),
@@ -339,18 +355,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i990.GetWalletsUsecase>(
       () => _i990.GetWalletsUsecase(repo: gh<_i746.HomeRepostory>()),
     );
-    gh.lazySingleton<_i797.HomeCubit>(
-      () => _i797.HomeCubit(
-        gh<_i990.GetWalletsUsecase>(),
-        gh<_i900.GetTransactionsUsecase>(),
-        gh<_i122.CreateAccountUseCase>(),
-      ),
-    );
     gh.factory<_i665.SecurityCubit>(
       () => _i665.SecurityCubit(
         repo: gh<_i750.BaseSecurityRepository>(),
         biometricsService: gh<_i958.BiometricsService>(),
       ),
+    );
+    gh.factory<_i626.RequestMoneyCubit>(
+      () => _i626.RequestMoneyCubit(gh<_i566.GetPendingTransactionsUseCase>()),
     );
     gh.factory<_i72.EditProfileCubit>(
       () => _i72.EditProfileCubit(gh<_i771.EditUserProfileUsecase>()),
@@ -394,6 +406,14 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i126.UserFavoritesCubit>(
       () => _i126.UserFavoritesCubit(gh<_i537.GetUserFavoritesUsecase>()),
+    );
+    gh.lazySingleton<_i797.HomeCubit>(
+      () => _i797.HomeCubit(
+        gh<_i990.GetWalletsUsecase>(),
+        gh<_i900.GetTransactionsUsecase>(),
+        gh<_i122.CreateAccountUseCase>(),
+        gh<_i760.CreateWalletUseCase>(),
+      ),
     );
     gh.factory<_i358.LoginUsecase>(
       () => _i358.LoginUsecase(repo: gh<_i719.LoginRepository>()),
@@ -467,6 +487,9 @@ extension GetItInjectableX on _i174.GetIt {
   _i937.RegisterRepository get registerRepository =>
       get<_i937.RegisterRepository>();
 
+  _i500.RequestMoneyRepositoryImpl get requestMoneyRepositoryImpl =>
+      get<_i500.RequestMoneyRepositoryImpl>();
+
   _i941.AccountTypeRepository get accountTypeRepository =>
       get<_i941.AccountTypeRepository>();
 
@@ -518,6 +541,9 @@ extension GetItInjectableX on _i174.GetIt {
   _i69.GetAccountTypesUseCase get getAccountTypesUseCase =>
       get<_i69.GetAccountTypesUseCase>();
 
+  _i566.GetPendingTransactionsUseCase get getPendingTransactionsUseCase =>
+      get<_i566.GetPendingTransactionsUseCase>();
+
   _i370.LoginRepositoryImpl get loginRepositoryImpl =>
       get<_i370.LoginRepositoryImpl>();
 
@@ -533,9 +559,10 @@ extension GetItInjectableX on _i174.GetIt {
   _i990.GetWalletsUsecase get getWalletsUsecase =>
       get<_i990.GetWalletsUsecase>();
 
-  _i797.HomeCubit get homeCubit => get<_i797.HomeCubit>();
-
   _i665.SecurityCubit get securityCubit => get<_i665.SecurityCubit>();
+
+  _i626.RequestMoneyCubit get requestMoneyCubit =>
+      get<_i626.RequestMoneyCubit>();
 
   _i72.EditProfileCubit get editProfileCubit => get<_i72.EditProfileCubit>();
 
@@ -565,6 +592,8 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i126.UserFavoritesCubit get userFavoritesCubit =>
       get<_i126.UserFavoritesCubit>();
+
+  _i797.HomeCubit get homeCubit => get<_i797.HomeCubit>();
 
   _i358.LoginUsecase get loginUsecase => get<_i358.LoginUsecase>();
 

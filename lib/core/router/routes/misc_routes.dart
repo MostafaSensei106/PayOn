@@ -16,6 +16,7 @@ import '../../../modules/notifications/ui/notifications_page.dart';
 import '../../../modules/privacy_policy/ui/privacy_policy_page.dart';
 import '../../../modules/profile/logic/cubit/user_profile_cubit.dart';
 import '../../../modules/profile/ui/pages/profile_page.dart';
+import '../../../modules/request_money/logic/cubit/request_money_cubit.dart';
 import '../../../modules/request_money/ui/page/request_money_page.dart';
 import '../../../modules/scan_qrcode/ui/page/scan_qrcode_page.dart';
 import '../../../modules/send_money/logic/cubit/send_money_cubit.dart';
@@ -58,19 +59,21 @@ final class CreateWalletRoute extends CupertinoRouteData
   Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
     providers: [
       BlocProvider(
-        create: (context) =>
-            getIt<CreateWalletCubit>()..getCurrencies().ignore(),
+        create: (context) => getIt<CreateWalletCubit>(),
       ),
       BlocProvider.value(value: getIt<UserProfileCubit>()),
     ],
     child: CreateWalletPage(accountId: accountId),
   );
-}
+  }
 
-@TypedGoRoute<CreateWalletPinRoute>(path: RoutesNames.createWalletPin)
+
+@TypedGoRoute<CreateWalletPinRoute>(path: '${RoutesNames.createWalletPin}/:accountId')
 final class CreateWalletPinRoute extends CupertinoRouteData
     with $CreateWalletPinRoute {
-  const CreateWalletPinRoute();
+  const CreateWalletPinRoute({required this.accountId});
+
+  final String accountId;
 
   @override
   Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
@@ -78,7 +81,7 @@ final class CreateWalletPinRoute extends CupertinoRouteData
       BlocProvider(create: (context) => getIt<CreateWalletCubit>()),
       BlocProvider.value(value: getIt<HomeCubit>()),
     ],
-    child: const CreateWalletPinPage(),
+    child: CreateWalletPinPage(accountId: accountId),
   );
 }
 
@@ -168,14 +171,16 @@ final class SendMoneyRoute extends CupertinoRouteData with $SendMoneyRoute {
 }
 
 @TypedGoRoute<RequestMoneyRoute>(path: RoutesNames.requestMoney)
-final class RequestMoneyRoute extends CupertinoRouteData
-    with $RequestMoneyRoute {
+final class RequestMoneyRoute extends CupertinoRouteData with $RequestMoneyRoute {
   const RequestMoneyRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const RequestMoneyPage();
+  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
+        create: (context) => getIt<RequestMoneyCubit>(),
+        child: const RequestMoneyPage(),
+      );
 }
+
 
 @TypedGoRoute<ScanQrCodeRoute>(path: RoutesNames.scanQrCode)
 final class ScanQrCodeRoute extends CupertinoRouteData with $ScanQrCodeRoute {

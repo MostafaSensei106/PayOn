@@ -800,4 +800,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get payment_method => 'طريقة الدفع';
+
+  @override
+  String get common_questions => 'الأسئلة الشائعة';
+
+  @override
+  String get developer_team => 'فريق التطوير';
 }

@@ -55,16 +55,20 @@ mixin $CreateWalletRoute on GoRouteData {
 }
 
 RouteBase get $createWalletPinRoute => GoRouteData.$route(
-  path: '/create-wallet-pin',
+  path: '/create-wallet-pin/:accountId',
   factory: $CreateWalletPinRoute._fromState,
 );
 
 mixin $CreateWalletPinRoute on GoRouteData {
   static CreateWalletPinRoute _fromState(GoRouterState state) =>
-      const CreateWalletPinRoute();
+      CreateWalletPinRoute(accountId: state.pathParameters['accountId']!);
+
+  CreateWalletPinRoute get _self => this as CreateWalletPinRoute;
 
   @override
-  String get location => GoRouteData.$location('/create-wallet-pin');
+  String get location => GoRouteData.$location(
+    '/create-wallet-pin/${Uri.encodeComponent(_self.accountId)}',
+  );
 
   @override
   void go(BuildContext context) => context.go(location);

@@ -67,10 +67,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     final result = await _registerUseCase(body);
     result.fold(
       onSuccess: (data) async {
-        final updatedFormWithAccId = currentForm.copyWith(
-          accountId: data.accountId ?? '',
-        );
-
         final createAccountBody = CreateAccountRequestBody(
           accountTypeId: currentForm.accountType!.id,
         );

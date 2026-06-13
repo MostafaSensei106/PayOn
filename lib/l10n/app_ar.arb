@@ -255,5 +255,7 @@
   "reference_number": "الرقم المرجعي",
   "adjusted_amount": "المبلغ المعدل",
   "balance_after_transaction": "الرصيد بعد المعاملة",
-  "payment_method": "طريقة الدفع"
+  "payment_method": "طريقة الدفع",
+  "common_questions": "الأسئلة الشائعة",
+  "developer_team": "فريق التطوير"
 }

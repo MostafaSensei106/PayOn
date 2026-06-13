@@ -801,4 +801,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get payment_method => 'Payment Method';
+
+  @override
+  String get common_questions => 'Common Questions';
+
+  @override
+  String get developer_team => 'Developer Team';
 }

@@ -1633,6 +1633,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Payment Method'**
   String get payment_method;
+
+  /// No description provided for @common_questions.
+  ///
+  /// In en, this message translates to:
+  /// **'Common Questions'**
+  String get common_questions;
+
+  /// No description provided for @developer_team.
+  ///
+  /// In en, this message translates to:
+  /// **'Developer Team'**
+  String get developer_team;
 }
 
 class _AppLocalizationsDelegate

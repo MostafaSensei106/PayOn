@@ -16,27 +16,21 @@ import '../../../../core/widgets/display/card/card_component.dart';
 import '../../../../core/widgets/feedback/dialog/dialog_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../../home/logic/cubit/home_cubit.dart';
-import '../../../profile/logic/cubit/user_profile_cubit.dart';
-import '../../../profile/logic/cubit/user_profile_state.dart';
 import '../../logic/cubit/create_wallet_cubit.dart';
 import '../../logic/cubit/create_wallet_state.dart';
 
 class CreateWalletPinPage extends HookWidget {
-  const CreateWalletPinPage({super.key});
+  const CreateWalletPinPage({required this.accountId, super.key});
+
+  final String accountId;
 
   @override
   Widget build(final BuildContext context) {
     final pinController = useTextEditingController();
     final confirmPinController = useTextEditingController();
-    final userProfileState = context.watch<UserProfileCubit>().state;
 
     useListenable(pinController);
     useListenable(confirmPinController);
-
-    final accountId = userProfileState.maybeWhen(
-      success: (final data) => data.nationalId,
-      orElse: () => '',
-    );
 
     return Scaffold(
       appBar: AppBar(title: const Text('Set Wallet PIN'), centerTitle: true),
@@ -54,13 +48,11 @@ class CreateWalletPinPage extends HookWidget {
                 context.go(RoutesNames.home);
               }
             },
-            failure: (final message) => unawaited(
-              DialogComponent.showError(
-                context: context,
-                title: 'Error',
-                error: message,
-              ),
-            ),
+            failure: (final String message) => unawaited(DialogComponent.showError(
+              context: context,
+              title: 'Error',
+              error: message,
+            )),
             orElse: () {},
           );
         },

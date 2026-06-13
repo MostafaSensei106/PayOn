@@ -283,6 +283,36 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<GetPendingRewardUsersResponseBody> getPendingRewardUsers({
+    int page = 1,
+    int size = 20,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': page, r'size': size};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GetPendingRewardUsersResponseBody>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'Account/GetPendingRewardUsers',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GetPendingRewardUsersResponseBody _value;
+    try {
+      _value = GetPendingRewardUsersResponseBody.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<GetAllCountriesResponseBody> getCountries({
     bool isActive = true,
   }) async {
@@ -671,6 +701,36 @@ class _ApiService implements ApiService {
           .compose(
             _dio.options,
             'Transaction/GetTransactions',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GetTransactionResponseBody _value;
+    try {
+      _value = GetTransactionResponseBody.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<GetTransactionResponseBody> getPendingTransactions({
+    int page = 1,
+    int size = 20,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'Page': page, r'Size': size};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GetTransactionResponseBody>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'Transaction/GetPendingTransactions',
             queryParameters: queryParameters,
             data: _data,
           )

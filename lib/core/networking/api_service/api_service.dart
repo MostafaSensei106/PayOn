@@ -28,6 +28,7 @@ import '../../../modules/login/data/models/login_response_body.dart';
 import '../../../modules/profile/data/models/edit_user_porfile_response_body.dart';
 import '../../../modules/profile/data/models/edit_user_profile_request_body.dart';
 import '../../../modules/profile/data/models/get_user_profile_response_body.dart';
+import '../../../modules/request_money/data/models/get_pending_reward_users_response_body.dart';
 import '../../../modules/send_money/data/models/check_wallet/check_wallet_request_body.dart';
 import '../../../modules/send_money/data/models/check_wallet/check_wallet_response_body.dart';
 import '../../../modules/send_money/data/models/check_wallet_pin/check_wallet_pin_request_body.dart';
@@ -80,6 +81,12 @@ abstract class ApiService {
     @Query('AccountTypeId') required int accountTypeId,
     @Query('Page') int page = 1,
     @Query('Size') int size = 20,
+  });
+
+  @GET(ApiRoutes.accountGetPendingRewardUsers)
+  Future<GetPendingRewardUsersResponseBody> getPendingRewardUsers({
+    @Query('page') int page = 1,
+    @Query('size') int size = 20,
   });
 
   @GET(ApiRoutes.accountGetCountries)
@@ -154,6 +161,12 @@ abstract class ApiService {
     @Query('currencyId') int? currencyId,
     @Query('Page') int? page,
     @Query('Size') int? size,
+  });
+
+  @GET(ApiRoutes.transactionGetPendingTransactions)
+  Future<GetTransactionResponseBody> getPendingTransactions({
+    @Query('Page') int page = 1,
+    @Query('Size') int size = 20,
   });
 
   @GET(ApiRoutes.accountGetUserFavorites)

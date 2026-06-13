@@ -255,5 +255,7 @@
   "reference_number": "Reference Number",
   "adjusted_amount": "Adjusted Amount",
   "balance_after_transaction": "Balance After Transaction",
-  "payment_method": "Payment Method"
+  "payment_method": "Payment Method",
+  "common_questions": "Common Questions",
+  "developer_team": "Developer Team"
 }

@@ -20,8 +20,6 @@ import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart'
 import '../../../../core/widgets/display/avatar/avatar_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
-import '../../../../modules/profile/logic/cubit/user_profile_cubit.dart';
-import '../../../../modules/profile/logic/cubit/user_profile_state.dart';
 import '../../../get_started/logic/use_cases/get_account_types_use_case.dart';
 import '../../logic/cubit/home_cubit.dart';
 import '../../logic/cubit/home_state.dart';
@@ -43,8 +41,8 @@ class HomePage extends StatelessWidget {
     if (!context.mounted) return;
     context.pop(); // Close loading
 
-    await result.when(
-      success: (accountTypes) async {
+    await result.fold(
+      onSuccess: (accountTypes) async {
         final selectedType = await showModalBottomSheet<int>(
           context: context,
           isScrollControlled: true,
@@ -84,12 +82,12 @@ class HomePage extends StatelessWidget {
           if (context.mounted) {
             context.pop(); // Close loading
             if (accountId != null && accountId.isNotEmpty) {
-              await CreateWalletRoute(accountId: accountId).push<void>(context);
+              unawaited(CreateWalletRoute(accountId: accountId).push<void>(context));
             }
           }
         }
       },
-      failure: (error) =>
+      onFailure: (error) async =>
           context.dialog.showError(title: 'Error', error: error.message),
     );
   }
