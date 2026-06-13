@@ -84,10 +84,14 @@ class GetStartedPage extends HookWidget {
           listener: (context, state) async {
             state.whenOrNull(
               registerSuccess: (form, data) async {
-                await context.dialog.showInfo(
-                  title: context.localeKeys.success,
-                  body: data.message,
+                context.pop();
+                const targetPage = 2;
+                await pageController.animateToPage(
+                  targetPage,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
                 );
+                context.read<RegisterCubit>().setStep(targetPage);
               },
               loading: (form) => context.dialog.showLoading(),
               createAccountSuccess: (form, data) async {

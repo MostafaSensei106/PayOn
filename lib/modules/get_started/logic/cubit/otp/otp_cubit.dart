@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/utils/result/result.dart';
+import '../../../../../core/utils/validator/phone_number.dart';
 import '../../../data/models/send_otp/send_otp_request_body.dart';
 import '../../../data/models/verify_otp/verify_otp_request_body.dart';
 import '../../use_cases/send_otp_use_case.dart';
@@ -19,32 +20,41 @@ class OtpCubit extends Cubit<OtpState> {
 
   RegisterFormState get currentForm => state.form;
 
-  Future<void> sendOTP() async {
-    emit(OtpState.loading(currentForm));
+  Future<void> sendOTP({String? phone, String? lang, bool? isForgotPassword}) async {
+    final updatedForm = currentForm.copyWith(
+      phoneNumber: phone != null ? PhoneNumber.dirty(phone) : currentForm.phoneNumber,
+      lang: lang ?? currentForm.lang,
+      isForgotPassword: isForgotPassword ?? currentForm.isForgotPassword,
+    );
+    emit(OtpState.loading(updatedForm));
     final body = SendOtpRequestBody(
-      email: currentForm.email.value,
-      emailLang: currentForm.lang,
-      isForgotPassword: currentForm.isForgotPassword,
+      phone: updatedForm.phoneNumber.value,
+      emailLang: updatedForm.lang,
+      isForgotPassword: updatedForm.isForgotPassword,
     );
     final result = await _sendOtpUseCase(body);
     result.fold(
-      onSuccess: (data) => emit(OtpState.success(currentForm, data: data)),
+      onSuccess: (data) => emit(OtpState.success(updatedForm, data: data)),
       onFailure: (error) =>
-          emit(OtpState.failure(currentForm, error: error.message)),
+          emit(OtpState.failure(updatedForm, error: error.message)),
     );
   }
 
-  Future<void> verifyOTP(String otp) async {
-    emit(OtpState.loading(currentForm));
+  Future<void> verifyOTP(String otp, {String? phone}) async {
+    final updatedForm = currentForm.copyWith(
+      phoneNumber: phone != null ? PhoneNumber.dirty(phone) : currentForm.phoneNumber,
+      code: otp,
+    );
+    emit(OtpState.loading(updatedForm));
     final body = VerifyOtpRequestBody(
-      email: currentForm.email.value,
-      code: currentForm.code,
+      email: updatedForm.phoneNumber.value,
+      code: updatedForm.code,
     );
     final result = await _verifyOtpUseCase(body);
     result.fold(
-      onSuccess: (data) => emit(OtpState.success(currentForm, data: data)),
+      onSuccess: (data) => emit(OtpState.success(updatedForm, data: data)),
       onFailure: (error) =>
-          emit(OtpState.failure(currentForm, error: error.message)),
+          emit(OtpState.failure(updatedForm, error: error.message)),
     );
   }
 }

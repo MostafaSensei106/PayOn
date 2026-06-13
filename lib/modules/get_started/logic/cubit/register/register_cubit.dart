@@ -8,17 +8,16 @@ import '../../../../../core/constants/app_enums.dart';
 import '../../../../../core/utils/result/result.dart';
 import '../../../../../core/utils/use_case/base_use_case.dart';
 import '../../../../../core/utils/validator/email_validators.dart';
-
 import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
-import '../../../data/models/register/create_account_request_body.dart';
 import '../../../data/models/register/register_request_body.dart';
+import '../../../data/models/send_otp/send_otp_request_body.dart';
 import '../../entities/account_type_entity.dart';
-import '../../use_cases/create_account_use_case.dart';
 import '../../use_cases/get_all_countries_use_case.dart';
 import '../../use_cases/get_required_files_use_case.dart';
 import '../../use_cases/register_use_case.dart';
+import '../../use_cases/send_otp_use_case.dart';
 import '../../use_cases/upload_kyc_files_use_case.dart';
 import 'register_state.dart';
 
@@ -29,12 +28,14 @@ class RegisterCubit extends Cubit<RegisterState> {
     this._getRequiredFilesUseCase,
     this._uploadKycFilesUseCase,
     this._getAllCountriesUseCase,
+    this._sendOtpUseCase,
   ) : super(const RegisterState.initial(RegisterFormState()));
 
   final RegisterUseCase _registerUseCase;
   final GetRequiredFilesUseCase _getRequiredFilesUseCase;
   final UploadKycFilesUseCase _uploadKycFilesUseCase;
   final GetAllCountriesUseCase _getAllCountriesUseCase;
+  final SendOtpUseCase _sendOtpUseCase;
 
   RegisterFormState get currentForm => state.form;
 
@@ -57,8 +58,20 @@ class RegisterCubit extends Cubit<RegisterState> {
 
     final result = await _registerUseCase(body);
     result.fold(
-      onSuccess: (data) =>
-          emit(RegisterState.registerSuccess(currentForm, data: data)),
+      onSuccess: (data) async {
+        final otpBody = SendOtpRequestBody(
+          phone: currentForm.phoneNumber.value,
+          emailLang: currentForm.lang,
+          isForgotPassword: false,
+        );
+        final otpResult = await _sendOtpUseCase(otpBody);
+        otpResult.fold(
+          onSuccess: (_) =>
+              emit(RegisterState.registerSuccess(currentForm, data: data)),
+          onFailure: (error) =>
+              emit(RegisterState.failure(currentForm, error: error.message)),
+        );
+      },
       onFailure: (error) =>
           emit(RegisterState.failure(currentForm, error: error.message)),
     );

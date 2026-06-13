@@ -317,15 +317,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i392.VerifyOtpUseCase>(
       () => _i392.VerifyOtpUseCase(gh<_i78.BaseOtpRepository>()),
     );
-    gh.factory<_i225.RegisterCubit>(
-      () => _i225.RegisterCubit(
-        gh<_i615.RegisterUseCase>(),
-        gh<_i122.CreateAccountUseCase>(),
-        gh<_i280.GetRequiredFilesUseCase>(),
-        gh<_i919.UploadKycFilesUseCase>(),
-        gh<_i29.GetAllCountriesUseCase>(),
-      ),
-    );
     gh.factory<_i900.GetTransactionsUsecase>(
       () => _i900.GetTransactionsUsecase(repo: gh<_i746.HomeRepostory>()),
     );
@@ -386,6 +377,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i126.UserFavoritesCubit>(
       () => _i126.UserFavoritesCubit(gh<_i537.GetUserFavoritesUsecase>()),
+    );
+    gh.factory<_i225.RegisterCubit>(
+      () => _i225.RegisterCubit(
+        gh<_i615.RegisterUseCase>(),
+        gh<_i280.GetRequiredFilesUseCase>(),
+        gh<_i919.UploadKycFilesUseCase>(),
+        gh<_i29.GetAllCountriesUseCase>(),
+        gh<_i271.SendOtpUseCase>(),
+      ),
     );
     gh.factory<_i358.LoginUsecase>(
       () => _i358.LoginUsecase(repo: gh<_i719.LoginRepository>()),
@@ -515,8 +515,6 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i392.VerifyOtpUseCase get verifyOtpUseCase => get<_i392.VerifyOtpUseCase>();
 
-  _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
-
   _i900.GetTransactionsUsecase get getTransactionsUsecase =>
       get<_i900.GetTransactionsUsecase>();
 
@@ -555,6 +553,8 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i126.UserFavoritesCubit get userFavoritesCubit =>
       get<_i126.UserFavoritesCubit>();
+
+  _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
 
   _i358.LoginUsecase get loginUsecase => get<_i358.LoginUsecase>();
 
