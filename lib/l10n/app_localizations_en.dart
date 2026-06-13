@@ -807,4 +807,400 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get developer_team => 'Developer Team';
+
+  @override
+  String get pp_last_updated => 'Last Updated: June 2026';
+
+  @override
+  String get pp_section1_title => '1. Introduction';
+
+  @override
+  String get pp_section1_content =>
+      'Welcome to PayOn. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at privacy@payon.com.';
+
+  @override
+  String get pp_section2_title => '2. Information We Collect';
+
+  @override
+  String get pp_section2_content =>
+      'We collect personal information that you voluntarily provide to us when registering at the App, expressing an interest in obtaining information about us or our products and services. This includes identifiers (Name, DOB, SSN), financial information (Bank details, transaction history), and device data.';
+
+  @override
+  String get pp_section3_title => '3. KYC & AML Compliance';
+
+  @override
+  String get pp_section3_content =>
+      'As a financial service provider, we are legally required to verify the identity of our users to prevent money laundering and terrorist financing. This involves collecting government-issued IDs and performing background checks.';
+
+  @override
+  String get pp_section4_title => '4. Purpose of Processing';
+
+  @override
+  String get pp_section4_content =>
+      'We process your information for purposes based on legitimate business interests, the fulfillment of our contract with you, compliance with our legal obligations, and/or your consent.';
+
+  @override
+  String get pp_section5_title => '5. Data Sharing';
+
+  @override
+  String get pp_section5_content =>
+      'We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations. This includes sharing with banking partners and payment processors like Stripe.';
+
+  @override
+  String get pp_section6_title => '6. Data Retention';
+
+  @override
+  String get pp_section6_content =>
+      'We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy policy, unless a longer retention period is required or permitted by law (such as tax, accounting or other legal requirements).';
+
+  @override
+  String get pp_section7_title => '7. Security Measures';
+
+  @override
+  String get pp_section7_content =>
+      'We use appropriate technical and organizational security measures including AES-256 encryption and multi-factor authentication to protect the security of any personal information we process.';
+
+  @override
+  String get pp_section8_title => '8. User Rights (GDPR/CCPA)';
+
+  @override
+  String get pp_section8_content =>
+      'Depending on your location, you may have rights such as the right to access, rectify, or delete your personal data, as well as the right to data portability and to object to certain processing.';
+
+  @override
+  String get pp_section9_title => '9. International Transfers';
+
+  @override
+  String get pp_section9_content =>
+      'Our servers are located in various regions globally. If you are accessing our App from outside these regions, please be aware that your information may be transferred to, stored, and processed by us in our facilities.';
+
+  @override
+  String get pp_section10_title => '10. Cookies and Tracking';
+
+  @override
+  String get pp_section10_content =>
+      'We use cookies and similar tracking technologies to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Notice.';
+
+  @override
+  String get pp_section11_title => '11. Third-Party Websites';
+
+  @override
+  String get pp_section11_content =>
+      'The App may contain advertisements from third parties that are not affiliated with us and which may link to other websites, online services or mobile applications. We cannot guarantee the safety and privacy of data you provide to any third parties.';
+
+  @override
+  String get pp_section12_title => '12. Privacy Rights for Minors';
+
+  @override
+  String get pp_section12_content =>
+      'We do not knowingly solicit data from or market to children under 18 years of age. By using the App, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the App.';
+
+  @override
+  String get pp_section13_title => '13. California Privacy Rights';
+
+  @override
+  String get pp_section13_content =>
+      'California Civil Code Section 1798.83, also known as the \'Shine The Light\' law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information we disclosed to third parties for direct marketing purposes.';
+
+  @override
+  String get pp_section14_title => '14. Policy Updates';
+
+  @override
+  String get pp_section14_content =>
+      'We may update this privacy policy from time to time. The updated version will be indicated by an updated \'Revised\' date and the updated version will be effective as soon as it is accessible.';
+
+  @override
+  String get pp_section15_title => '15. Contact Us about this Policy';
+
+  @override
+  String get pp_section15_content =>
+      'If you have questions or comments about this policy, you may email us at privacy@payon.com or by post to: PayOn Inc., 123 Finance Plaza, Suite 400, New York, NY 10001.';
+
+  @override
+  String get faq_cat_general => 'General Questions';
+
+  @override
+  String get faq_cat_security => 'Security & Privacy';
+
+  @override
+  String get faq_cat_transactions => 'Transactions & Limits';
+
+  @override
+  String get faq_q1_title => 'What is PayOn?';
+
+  @override
+  String get faq_q1_answer =>
+      'PayOn is a next-generation mobile wallet designed for instant and secure financial transactions globally.';
+
+  @override
+  String get faq_q2_title => 'Is my money safe?';
+
+  @override
+  String get faq_q2_answer =>
+      'Yes, your funds are held in regulated partner banks and protected by state-of-the-art encryption and security protocols.';
+
+  @override
+  String get faq_q3_title => 'How do I verify my account?';
+
+  @override
+  String get faq_q3_answer =>
+      'You can verify your account by uploading a clear photo of your National ID or Passport in the \'Tier Verification\' section of your profile.';
+
+  @override
+  String get faq_q4_title => 'What are the transfer limits?';
+
+  @override
+  String get faq_q4_answer =>
+      'Limits vary by verification tier. Tier 1 users have daily limits of \$500, while Tier 3 users can enjoy unlimited transactions.';
+
+  @override
+  String get faq_q5_title => 'Can I cancel a transaction?';
+
+  @override
+  String get faq_q5_answer =>
+      'Once a transaction is confirmed and processed, it cannot be reversed. Please double-check the recipient\'s details before confirming.';
+
+  @override
+  String get faq_q6_title => 'Does PayOn work internationally?';
+
+  @override
+  String get faq_q6_answer =>
+      'Yes, PayOn supports cross-border payments in multiple currencies with real-time exchange rates.';
+
+  @override
+  String get faq_q7_title => 'What if I lose my phone?';
+
+  @override
+  String get faq_q7_answer =>
+      'Your account is tied to your identity, not just the device. You can log in from another device and instantly disable the old session for security.';
+
+  @override
+  String get faq_q8_title => 'Are there any hidden fees?';
+
+  @override
+  String get faq_q8_answer =>
+      'No, we believe in full transparency. All fees are clearly displayed on the confirmation screen before you authorize any payment.';
+
+  @override
+  String get faq_q9_title => 'How do I contact support?';
+
+  @override
+  String get faq_q9_answer =>
+      'Our support team is available 24/7 via the \'Contact Us\' page or through live chat within the app.';
+
+  @override
+  String get faq_q10_title => 'Is PayOn regulated?';
+
+  @override
+  String get faq_q10_answer =>
+      'Yes, PayOn operates under strict financial regulations and holds the necessary licenses in all jurisdictions where it provides services.';
+
+  @override
+  String get faq_q11_title => 'How do I change my account password?';
+
+  @override
+  String get faq_q11_answer =>
+      'Go to \'Settings\' > \'Security\' > \'Change Password\'. You will need to enter your current password followed by your new password twice.';
+
+  @override
+  String get faq_q12_title => 'What should I do if my payment failed?';
+
+  @override
+  String get faq_q12_answer =>
+      'If a payment fails, first check your internet connection and balance. If the issue persists, check the \'History\' tab for a specific error code or contact support.';
+
+  @override
+  String get faq_q13_title => 'Can I have multiple wallets?';
+
+  @override
+  String get faq_q13_answer =>
+      'Currently, PayOn supports one primary wallet per verified identity to comply with financial regulations and ensure maximum security.';
+
+  @override
+  String get faq_q14_title => 'How do I update my personal information?';
+
+  @override
+  String get faq_q14_answer =>
+      'Basic info can be updated in \'Edit Profile\'. For sensitive data like your name or ID, you must contact our compliance team for verification.';
+
+  @override
+  String get faq_q15_title => 'How do I close my PayOn account?';
+
+  @override
+  String get faq_q15_answer =>
+      'To close your account, please ensure your balance is zero and contact support. Note that financial data must be retained for 7 years by law.';
+
+  @override
+  String get contact_us_address =>
+      '123 Finance Plaza, Suite 400, New York, NY 10001';
+
+  @override
+  String get contact_us_phone => '+1 (800) 123-4567';
+
+  @override
+  String get contact_us_email => 'support@payon.com';
+
+  @override
+  String get contact_us_hours => 'Monday - Friday: 9am - 6pm EST';
+
+  @override
+  String get social_linkedin => 'LinkedIn';
+
+  @override
+  String get social_twitter => 'Twitter';
+
+  @override
+  String get social_github => 'GitHub';
+
+  @override
+  String get dev_team_mission =>
+      'Driven by innovation, our team is dedicated to building the future of digital finance with security and user experience at the core.';
+
+  @override
+  String get dev_member1_name => 'Ahmed Mohamed';
+
+  @override
+  String get dev_member1_role => 'Lead Software Engineer';
+
+  @override
+  String get dev_member1_bio =>
+      'Ahmed is a visionary leader with over 10 years of experience in Fintech, focused on scaling secure architectural solutions.';
+
+  @override
+  String get dev_member2_name => 'Sarah Hassan';
+
+  @override
+  String get dev_member2_role => 'Senior Mobile Developer';
+
+  @override
+  String get dev_member2_bio =>
+      'Sarah is a Flutter expert passionate about crafting pixel-perfect, performant mobile interfaces that users love.';
+
+  @override
+  String get dev_member3_name => 'John Doe';
+
+  @override
+  String get dev_member3_role => 'Backend Architect';
+
+  @override
+  String get dev_member3_bio =>
+      'John specializes in high-concurrency systems and distributed databases, ensuring PayOn\'s backbone is indestructible.';
+
+  @override
+  String get dev_member4_name => 'Layla Ali';
+
+  @override
+  String get dev_member4_role => 'UI/UX Designer';
+
+  @override
+  String get dev_member4_bio =>
+      'Layla brings a human-centric approach to finance, designing intuitive flows that make complex actions feel simple.';
+
+  @override
+  String get tc_last_updated => 'Last Updated: June 2026';
+
+  @override
+  String get tc_section1_title => '1. Introduction';
+
+  @override
+  String get tc_section1_content =>
+      'Welcome to PayOn. These Terms and Conditions govern your use of our mobile application and services. By accessing or using PayOn, you agree to be bound by these terms.';
+
+  @override
+  String get tc_section2_title => '2. Acceptance of Terms';
+
+  @override
+  String get tc_section2_content =>
+      'By creating an account or using the App, you agree to these Terms and our Privacy Policy. If you do not agree, you must not use our services.';
+
+  @override
+  String get tc_section3_title => '3. User Eligibility';
+
+  @override
+  String get tc_section3_content =>
+      'You must be at least 18 years old to use PayOn. By using the App, you represent that you have the legal capacity to enter into a binding agreement.';
+
+  @override
+  String get tc_section4_title => '4. Account Registration';
+
+  @override
+  String get tc_section4_content =>
+      'You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must provide accurate and complete information.';
+
+  @override
+  String get tc_section5_title => '5. Transaction Rules';
+
+  @override
+  String get tc_section5_content =>
+      'All transactions are final once processed. Users are responsible for verifying recipient details before confirming any payment or transfer.';
+
+  @override
+  String get tc_section6_title => '6. Fees and Payments';
+
+  @override
+  String get tc_section6_content =>
+      'We may charge fees for certain services. All applicable fees will be disclosed to you before you complete a transaction.';
+
+  @override
+  String get tc_section7_title => '7. Prohibited Activities';
+
+  @override
+  String get tc_section7_content =>
+      'You may not use PayOn for any illegal purposes, including money laundering, fraud, or the purchase of prohibited goods and services.';
+
+  @override
+  String get tc_section8_title => '8. Intellectual Property';
+
+  @override
+  String get tc_section8_content =>
+      'All content, features, and functionality on the App are the exclusive property of PayOn Inc. and are protected by international copyright and trademark laws.';
+
+  @override
+  String get tc_section9_title => '9. User Content';
+
+  @override
+  String get tc_section9_content =>
+      'You retain ownership of any data you upload, but you grant PayOn a license to use, store, and process such data to provide the services.';
+
+  @override
+  String get tc_section10_title => '10. Third-Party Services';
+
+  @override
+  String get tc_section10_content =>
+      'The App may integrate with third-party services. We are not responsible for the content or practices of these third parties.';
+
+  @override
+  String get tc_section11_title => '11. Termination';
+
+  @override
+  String get tc_section11_content =>
+      'We reserve the right to suspend or terminate your account at any time for violations of these Terms or suspicious activity.';
+
+  @override
+  String get tc_section12_title => '12. Limitation of Liability';
+
+  @override
+  String get tc_section12_content =>
+      'PayOn shall not be liable for any indirect, incidental, special, or consequential damages arising out of your use of the services.';
+
+  @override
+  String get tc_section13_title => '13. Disclaimer of Warranties';
+
+  @override
+  String get tc_section13_content =>
+      'The services are provided \'as is\' without any warranties of any kind, either express or implied.';
+
+  @override
+  String get tc_section14_title => '14. Governing Law';
+
+  @override
+  String get tc_section14_content =>
+      'These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which PayOn Inc. is registered.';
+
+  @override
+  String get tc_section15_title => '15. Changes to Terms';
+
+  @override
+  String get tc_section15_content =>
+      'We may update these Terms from time to time. Your continued use of the App after changes are posted constitutes acceptance of the new Terms.';
 }

@@ -806,4 +806,401 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get developer_team => 'فريق التطوير';
+
+  @override
+  String get pp_last_updated => 'آخر تحديث: يونيو 2026';
+
+  @override
+  String get pp_section1_title => '1. مقدمة';
+
+  @override
+  String get pp_section1_content =>
+      'مرحباً بك في PayOn. نحن ملتزمون بحماية معلوماتك الشخصية وحقك في الخصوصية. إذا كان لديك أي أسئلة أو مخاوف بشأن سياستنا، أو ممارساتنا فيما يتعلق بمعلوماتك الشخصية، يرجى الاتصال بنا على privacy@payon.com.';
+
+  @override
+  String get pp_section2_title => '2. المعلومات التي نجمعها';
+
+  @override
+  String get pp_section2_content =>
+      'نجمع المعلومات الشخصية التي تقدمها لنا طواعية عند التسجيل في التطبيق، أو الإعراب عن اهتمامك بالحصول على معلومات عنا أو عن منتجاتنا وخدماتنا. ويشمل ذلك المعرفات (الاسم، تاريخ الميلاد، الرقم القومي)، والمعلومات المالية (تفاصيل البنك، سجل المعاملات)، وبيانات الجهاز.';
+
+  @override
+  String get pp_section3_title => '3. الامتثال لـ KYC و AML';
+
+  @override
+  String get pp_section3_content =>
+      'بصفتنا مزود خدمة مالية، نحن مطالبون قانوناً بالتحقق من هوية مستخدمينا لمنع غسيل الأموال وتمويل الإرهاب. يتضمن ذلك جمع الهويات الصادرة عن الحكومة وإجراء فحص للخلفية.';
+
+  @override
+  String get pp_section4_title => '4. الغرض من المعالجة';
+
+  @override
+  String get pp_section4_content =>
+      'نحن نعالج معلوماتك لأغراض تستند إلى مصالح تجارية مشروعة، وتنفيذ عقدنا معك، والامتثال لالتزاماتنا القانونية، و/أو موافقتك.';
+
+  @override
+  String get pp_section5_title => '5. مشاركة البيانات';
+
+  @override
+  String get pp_section5_content =>
+      'نحن نشارك المعلومات فقط بموافقتك، للامتثال للقوانين، لتزويدك بالخدمات، لحماية حقوقك، أو للوفاء بالالتزامات التجارية. يتضمن ذلك المشاركة مع الشركاء المصرفيين ومعالجي الدفع مثل Stripe.';
+
+  @override
+  String get pp_section6_title => '6. الاحتفاظ بالبيانات';
+
+  @override
+  String get pp_section6_content =>
+      'سنحتفظ بمعلوماتك الشخصية فقط طالما كانت ضرورية للأغراض المحددة في سياسة الخصوصية هذه، ما لم يكن مطلوباً أو مسموحاً بفترة احتفاظ أطول بموجب القانون (مثل المتطلبات الضريبية أو المحاسبية أو القانونية الأخرى).';
+
+  @override
+  String get pp_section7_title => '7. التدابير الأمنية';
+
+  @override
+  String get pp_section7_content =>
+      'نستخدم تدابير أمنية فنية وتنظيمية مناسبة بما في ذلك تشفير AES-256 والمصادقة متعددة العوامل لحماية أمن أي معلومات شخصية نعالجها.';
+
+  @override
+  String get pp_section8_title => '8. حقوق المستخدم (GDPR/CCPA)';
+
+  @override
+  String get pp_section8_content =>
+      'اعتماداً على موقعك، قد يكون لديك حقوق مثل الحق في الوصول إلى بياناتك الشخصية أو تصحيحها أو حذفها، بالإضافة إلى الحق في نقل البيانات والاعتراض على معالجة معينة.';
+
+  @override
+  String get pp_section9_title => '9. التحويلات الدولية';
+
+  @override
+  String get pp_section9_content =>
+      'توجد خوادمنا في مناطق مختلفة على مستوى العالم. إذا كنت تصل إلى تطبيقنا من خارج هذه المناطق، فيرجى العلم أن معلوماتك قد يتم نقلها وتخزينها ومعالجتها من قبلنا في منشآتنا.';
+
+  @override
+  String get pp_section10_title => '10. ملفات تعريف الارتباط والتتبع';
+
+  @override
+  String get pp_section10_content =>
+      'نستخدم ملفات تعريف الارتباط وتقنيات التتبع المماثلة للوصول إلى المعلومات أو تخزينها. تتوفر معلومات محددة حول كيفية استخدامنا لهذه التقنيات وكيف يمكنك رفض بعض ملفات تعريف الارتباط في إشعار ملفات تعريف الارتباط الخاص بنا.';
+
+  @override
+  String get pp_section11_title => '11. مواقع الطرف الثالث';
+
+  @override
+  String get pp_section11_content =>
+      'قد يحتوي التطبيق على إعلانات من أطراف ثالثة غير تابعة لنا والتي قد ترتبط بمواقع ويب أخرى أو خدمات عبر الإنترنت أو تطبيقات الهاتف المحمول. لا يمكننا ضمان سلامة وخصوصية البيانات التي تقدمها لأي أطراف ثالثة.';
+
+  @override
+  String get pp_section12_title => '12. حقوق الخصوصية للقاصرين';
+
+  @override
+  String get pp_section12_content =>
+      'نحن لا نطلب بيانات عن قصد من الأطفال دون سن 18 عاماً أو نسوق لهم. باستخدام التطبيق، فإنك تقر بأنك تبلغ من العمر 18 عاماً على الأقل أو أنك والد أو وصي مثل هذا القاصر وتوافق على استخدام هذا القاصر المعال للتطبيق.';
+
+  @override
+  String get pp_section13_title => '13. حقوق الخصوصية في كاليفورنيا';
+
+  @override
+  String get pp_section13_content =>
+      'يسمح قانون القانون المدني لولاية كاليفورنيا القسم 1798.83، المعروف أيضاً باسم قانون \'Shine The Light\'، لمستخدمينا المقيمين في كاليفورنيا بطلب والحصول منا، مرة واحدة في السنة ومجاناً، على معلومات حول فئات المعلومات الشخصية التي كشفنا عنها لأطراف ثالثة لأغراض التسويق المباشر.';
+
+  @override
+  String get pp_section14_title => '14. تحديثات السياسة';
+
+  @override
+  String get pp_section14_content =>
+      'قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سيتم الإشارة إلى النسخة المحدثة من خلال تاريخ \'مراجعة\' محدث وستكون النسخة المحدثة سارية بمجرد الوصول إليها.';
+
+  @override
+  String get pp_section15_title => '15. كيفية الاتصال بنا بخصوص هذه السياسة';
+
+  @override
+  String get pp_section15_content =>
+      'إذا كان لديك أسئلة أو تعليقات حول هذه السياسة، يمكنك مراسلتنا عبر البريد الإلكتروني على privacy@payon.com أو عن طريق البريد إلى: PayOn Inc., 123 Finance Plaza, Suite 400, New York, NY 10001.';
+
+  @override
+  String get faq_cat_general => 'أسئلة عامة';
+
+  @override
+  String get faq_cat_security => 'الأمن والخصوصية';
+
+  @override
+  String get faq_cat_transactions => 'المعاملات والحدود';
+
+  @override
+  String get faq_q1_title => 'ما هو PayOn؟';
+
+  @override
+  String get faq_q1_answer =>
+      'PayOn هو محفظة هاتف محمول من الجيل القادم مصممة للمعاملات المالية الفورية والآمنة عالمياً.';
+
+  @override
+  String get faq_q2_title => 'هل أموالي آمنة؟';
+
+  @override
+  String get faq_q2_answer =>
+      'نعم، يتم الاحتفاظ بأموالك في بنوك شريكة منظمة ومحمية بأحدث بروتوكولات التشفير والأمن.';
+
+  @override
+  String get faq_q3_title => 'كيف يمكنني توثيق حسابي؟';
+
+  @override
+  String get faq_q3_answer =>
+      'يمكنك توثيق حسابك عن طريق تحميل صورة واضحة لهويتك الوطنية أو جواز سفرك في قسم \'توثيق المستويات\' في ملفك الشخصي.';
+
+  @override
+  String get faq_q4_title => 'ما هي حدود التحويل؟';
+
+  @override
+  String get faq_q4_answer =>
+      'تختلف الحدود حسب مستوى التوثيق. مستخدمو المستوى 1 لديهم حدود يومية قدرها 500 دولار، بينما يمكن لمستخدمي المستوى 3 الاستمتاع بمعاملات غير محدودة.';
+
+  @override
+  String get faq_q5_title => 'هل يمكنني إلغاء معاملة؟';
+
+  @override
+  String get faq_q5_answer =>
+      'بمجرد تأكيد المعاملة ومعالجتها، لا يمكن التراجع عنها. يرجى التأكد جيداً من تفاصيل المستلم قبل التأكيد.';
+
+  @override
+  String get faq_q6_title => 'هل يعمل PayOn دولياً؟';
+
+  @override
+  String get faq_q6_answer =>
+      'نعم، يدعم PayOn المدفوعات عبر الحدود بعملات متعددة مع أسعار صرف في الوقت الفعلي.';
+
+  @override
+  String get faq_q7_title => 'ماذا لو فقدت هاتفي؟';
+
+  @override
+  String get faq_q7_answer =>
+      'حسابك مرتبط بهويتك وليس فقط بالجهاز. يمكنك تسجيل الدخول من جهاز آخر وتعطيل الجلسة القديمة فوراً للأمان.';
+
+  @override
+  String get faq_q8_title => 'هل هناك أي رسوم خفية؟';
+
+  @override
+  String get faq_q8_answer =>
+      'لا، نحن نؤمن بالشفافية الكاملة. يتم عرض جميع الرسوم بوضوح على شاشة التأكيد قبل تفويض أي دفعة.';
+
+  @override
+  String get faq_q9_title => 'كيف أتواصل مع الدعم؟';
+
+  @override
+  String get faq_q9_answer =>
+      'فريق الدعم لدينا متاح على مدار الساعة طوال أيام الأسبوع عبر صفحة \'تواصل معنا\' أو من خلال الدردشة المباشرة داخل التطبيق.';
+
+  @override
+  String get faq_q10_title => 'هل PayOn منظم قانونياً؟';
+
+  @override
+  String get faq_q10_answer =>
+      'نعم، يعمل PayOn بموجب لوائح مالية صارمة ويحمل التراخيص اللازمة في جميع الولايات القضائية التي يقدم فيها خدماته.';
+
+  @override
+  String get faq_q11_title => 'كيف أغير كلمة مرور حسابي؟';
+
+  @override
+  String get faq_q11_answer =>
+      'انتقل إلى \'الإعدادات\' > \'الأمان\' > \'تغيير كلمة المرور\'. ستحتاج إلى إدخال كلمة المرور الحالية متبوعة بكلمة المرور الجديدة مرتين.';
+
+  @override
+  String get faq_q12_title => 'ماذا أفعل إذا فشلت عملية الدفع الخاصة بي؟';
+
+  @override
+  String get faq_q12_answer =>
+      'في حالة فشل عملية الدفع، تحقق أولاً من اتصالك بالإنترنت ورصيدك. إذا استمرت المشكلة، فتحقق من علامة التبويب \'السجل\' بحثاً عن رمز خطأ محدد أو اتصل بالدعم.';
+
+  @override
+  String get faq_q13_title => 'هل يمكنني الحصول على محافظ متعددة؟';
+
+  @override
+  String get faq_q13_answer =>
+      'حالياً، يدعم PayOn محفظة أساسية واحدة لكل هوية تم التحقق منها للامتثال للوائح المالية وضمان أقصى قدر من الأمن.';
+
+  @override
+  String get faq_q14_title => 'كيف يمكنني تحديث معلوماتي الشخصية؟';
+
+  @override
+  String get faq_q14_answer =>
+      'يمكن تحديث المعلومات الأساسية في \'تعديل الملف الشخصي\'. بالنسبة للبيانات الحساسة مثل اسمك أو هويتك، يجب عليك الاتصال بفريق الامتثال لدينا للتحقق.';
+
+  @override
+  String get faq_q15_title => 'كيف أغلق حسابي في PayOn؟';
+
+  @override
+  String get faq_q15_answer =>
+      'لإغلاق حسابك، يرجى التأكد من أن رصيدك صفر والاتصال بالدعم. لاحظ أنه يجب الاحتفاظ بالبيانات المالية لمدة 7 سنوات بموجب القانون.';
+
+  @override
+  String get contact_us_address =>
+      '123 Finance Plaza, Suite 400, New York, NY 10001';
+
+  @override
+  String get contact_us_phone => '+1 (800) 123-4567';
+
+  @override
+  String get contact_us_email => 'support@payon.com';
+
+  @override
+  String get contact_us_hours =>
+      'الاثنين - الجمعة: 9 صباحاً - 6 مساءً بتوقيت شرق الولايات المتحدة';
+
+  @override
+  String get social_linkedin => 'LinkedIn';
+
+  @override
+  String get social_twitter => 'Twitter';
+
+  @override
+  String get social_github => 'GitHub';
+
+  @override
+  String get dev_team_mission =>
+      'مدفوعاً بالابتكار، فريقنا مكرس لبناء مستقبل التمويل الرقمي مع وضع الأمان وتجربة المستخدم في جوهر عملنا.';
+
+  @override
+  String get dev_member1_name => 'أحمد محمد';
+
+  @override
+  String get dev_member1_role => 'رئيس المهندسين';
+
+  @override
+  String get dev_member1_bio =>
+      'أحمد هو قائد رؤيوي يتمتع بخبرة تزيد عن 10 سنوات في مجال التكنولوجيا المالية، ويركز على توسيع الحلول المعمارية الآمنة.';
+
+  @override
+  String get dev_member2_name => 'سارة حسن';
+
+  @override
+  String get dev_member2_role => 'مطور تطبيقات أول';
+
+  @override
+  String get dev_member2_bio =>
+      'سارة خبيرة في Flutter وشغوفة بصياغة واجهات موبايل مثالية الأداء يحبها المستخدمون.';
+
+  @override
+  String get dev_member3_name => 'جون دو';
+
+  @override
+  String get dev_member3_role => 'مهندس النظم الخلفية';
+
+  @override
+  String get dev_member3_bio =>
+      'يتخصص جون في الأنظمة عالية التزامن وقواعد البيانات الموزعة، مما يضمن أن البنية التحتية لـ PayOn غير قابلة للاختراق.';
+
+  @override
+  String get dev_member4_name => 'ليلى علي';
+
+  @override
+  String get dev_member4_role => 'مصمم واجهة المستخدم';
+
+  @override
+  String get dev_member4_bio =>
+      'تضفي ليلى نهجاً يركز على الإنسان في التمويل، حيث تصمم تدفقات بديهية تجعل الإجراءات المعقدة تبدو بسيطة.';
+
+  @override
+  String get tc_last_updated => 'آخر تحديث: يونيو 2026';
+
+  @override
+  String get tc_section1_title => '1. مقدمة';
+
+  @override
+  String get tc_section1_content =>
+      'مرحباً بك في PayOn. تحكم هذه الشروط والأحكام استخدامك لتطبيقنا وخدماتنا. من خلال الوصول إلى PayOn أو استخدامه، فإنك توافق على الالتزام بهذه الشروط.';
+
+  @override
+  String get tc_section2_title => '2. قبول الشروط';
+
+  @override
+  String get tc_section2_content =>
+      'بإنشاء حساب أو استخدام التطبيق، فإنك توافق على هذه الشروط وسياسة الخصوصية الخاصة بنا. إذا كنت لا توافق، يجب عليك عدم استخدام خدماتنا.';
+
+  @override
+  String get tc_section3_title => '3. أهلية المستخدم';
+
+  @override
+  String get tc_section3_content =>
+      'يجب أن يكون عمرك 18 عاماً على الأقل لاستخدام PayOn. باستخدام التطبيق، فإنك تقر بأن لديك الأهلية القانونية للدخول في اتفاقية ملزمة.';
+
+  @override
+  String get tc_section4_title => '4. تسجيل الحساب';
+
+  @override
+  String get tc_section4_content =>
+      'أنت مسؤول عن الحفاظ على سرية بيانات اعتماد حسابك وعن جميع الأنشطة التي تحدث تحت حسابك. يجب عليك تقديم معلومات دقيقة وكاملة.';
+
+  @override
+  String get tc_section5_title => '5. قواعد المعاملات';
+
+  @override
+  String get tc_section5_content =>
+      'جميع المعاملات نهائية بمجرد معالجتها. المستخدمون مسؤولون عن التحقق من تفاصيل المستلم قبل تأكيد أي دفع أو تحويل.';
+
+  @override
+  String get tc_section6_title => '6. الرسوم والمدفوعات';
+
+  @override
+  String get tc_section6_content =>
+      'قد نفرض رسوماً على خدمات معينة. سيتم الكشف عن جميع الرسوم المعمول بها لك قبل إتمام المعاملة.';
+
+  @override
+  String get tc_section7_title => '7. الأنشطة المحظورة';
+
+  @override
+  String get tc_section7_content =>
+      'لا يجوز لك استخدام PayOn لأي أغراض غير قانونية، بما في ذلك غسيل الأموال أو الاحتيال أو شراء السلع والخدمات المحظورة.';
+
+  @override
+  String get tc_section8_title => '8. الملكية الفكرية';
+
+  @override
+  String get tc_section8_content =>
+      'جميع المحتويات والميزات والوظائف الموجودة في التطبيق هي ملكية حصرية لشركة PayOn Inc. ومحمية بموجب قوانين حقوق النشر والعلامات التجارية الدولية.';
+
+  @override
+  String get tc_section9_title => '9. محتوى المستخدم';
+
+  @override
+  String get tc_section9_content =>
+      'تحتفظ بملكية أي بيانات تقوم بتحميلها، ولكنك تمنح PayOn ترخيصاً لاستخدام وتخزين ومعالجة هذه البيانات لتقديم الخدمات.';
+
+  @override
+  String get tc_section10_title => '10. خدمات الطرف الثالث';
+
+  @override
+  String get tc_section10_content =>
+      'قد يتكامل التطبيق مع خدمات الطرف الثالث. نحن لسنا مسؤولين عن محتوى أو ممارسات هذه الأطراف الثالثة.';
+
+  @override
+  String get tc_section11_title => '11. إنهاء الخدمة';
+
+  @override
+  String get tc_section11_content =>
+      'نحتفظ بالحق في تعليق أو إنهاء حسابك في أي وقت بسبب انتهاكات هذه الشروط أو الأنشطة المشبوهة.';
+
+  @override
+  String get tc_section12_title => '12. تحديد المسؤولية';
+
+  @override
+  String get tc_section12_content =>
+      'لن تكون PayOn مسؤولة عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية تنشأ عن استخدامك للخدمات.';
+
+  @override
+  String get tc_section13_title => '13. إخلاء المسؤولية عن الضمانات';
+
+  @override
+  String get tc_section13_content =>
+      'يتم تقديم الخدمات \'كما هي\' دون أي ضمانات من أي نوع، سواء كانت صريحة أو ضمنية.';
+
+  @override
+  String get tc_section14_title => '14. القانون الواجب التطبيق';
+
+  @override
+  String get tc_section14_content =>
+      'تخضع هذه الشروط وتفسر وفقاً لقوانين الولاية القضائية التي تم تسجيل شركة PayOn Inc. فيها.';
+
+  @override
+  String get tc_section15_title => '15. التغييرات على الشروط';
+
+  @override
+  String get tc_section15_content =>
+      'قد نقوم بتحديث هذه الشروط من وقت لآخر. استمرارك في استخدام التطبيق بعد نشر التغييرات يشكل قبولاً للشروط الجديدة.';
 }
