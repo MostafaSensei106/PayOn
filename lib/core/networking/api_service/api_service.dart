@@ -76,10 +76,16 @@ abstract class ApiService {
   );
 
   @GET(ApiRoutes.accountGetRequiredFiles)
-  Future<GetRequiredFilesResponseBody> getRequiredFiles();
+  Future<GetRequiredFilesResponseBody> getRequiredFiles({
+    @Query('AccountTypeId') required int accountTypeId,
+    @Query('Page') int page = 1,
+    @Query('Size') int size = 20,
+  });
 
   @GET(ApiRoutes.accountGetCountries)
-  Future<GetAllCountriesResponseBody> getCountries();
+  Future<GetAllCountriesResponseBody> getCountries({
+    @Query('IsActive') bool isActive = true,
+  });
 
   @GET(ApiRoutes.accountGetCurrencies)
   Future<GetCurrenciesResponseBody> getCurrencies();

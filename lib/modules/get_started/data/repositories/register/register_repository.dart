@@ -35,10 +35,18 @@ final class RegisterRepository implements BaseRegisterRepository {
   );
 
   @override
-  Future<ApiResult<GetRequiredFilesResponseBody>> getRequiredFiles() async =>
-      ApiExecutor.execute<GetRequiredFilesResponseBody>(
-        action: () => _apiService.getRequiredFiles(),
-      );
+  Future<ApiResult<GetRequiredFilesResponseBody>> getRequiredFiles({
+    required int accountTypeId,
+    int page = 1,
+    int size = 20,
+  }) async => ApiExecutor.execute<GetRequiredFilesResponseBody>(
+    action:
+        () => _apiService.getRequiredFiles(
+          accountTypeId: accountTypeId,
+          page: page,
+          size: size,
+        ),
+  );
 
   @override
   Future<ApiResult<GetAllCountriesResponseBody>> getCountries() async =>

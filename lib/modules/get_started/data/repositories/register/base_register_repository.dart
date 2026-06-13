@@ -13,7 +13,11 @@ abstract class BaseRegisterRepository {
   Future<ApiResult<CreateAccountResponseBody>> createAccount(
     CreateAccountRequestBody body,
   );
-  Future<ApiResult<GetRequiredFilesResponseBody>> getRequiredFiles();
+  Future<ApiResult<GetRequiredFilesResponseBody>> getRequiredFiles({
+    required int accountTypeId,
+    int page = 1,
+    int size = 20,
+  });
   Future<ApiResult<GetAllCountriesResponseBody>> getCountries();
   Future<ApiResult<void>> uploadFiles({
     required File file,

@@ -248,9 +248,17 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<GetRequiredFilesResponseBody> getRequiredFiles() async {
+  Future<GetRequiredFilesResponseBody> getRequiredFiles({
+    required int accountTypeId,
+    int page = 1,
+    int size = 20,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'AccountTypeId': accountTypeId,
+      r'Page': page,
+      r'Size': size,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<GetRequiredFilesResponseBody>(
@@ -275,9 +283,11 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<GetAllCountriesResponseBody> getCountries() async {
+  Future<GetAllCountriesResponseBody> getCountries({
+    bool isActive = true,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'IsActive': isActive};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<GetAllCountriesResponseBody>(

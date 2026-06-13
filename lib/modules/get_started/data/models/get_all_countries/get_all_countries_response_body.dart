@@ -37,11 +37,11 @@ class CountryItem {
     required this.arName,
     required this.trName,
     required this.nicename,
-    required this.numCode,
     required this.phoneCode,
     required this.iso,
     required this.code,
     required this.isActive,
+    required this.numCode,
   });
 
   factory CountryItem.fromJson(Map<String, dynamic> json) =>

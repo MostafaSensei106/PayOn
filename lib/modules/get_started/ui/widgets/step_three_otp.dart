@@ -9,6 +9,7 @@ import '../../../../core/widgets/buttons/text_button/text_button_component.dart'
 import '../../../../core/widgets/inputs/otp_field/otp_field_component.dart';
 import '../../logic/cubit/otp/otp_cubit.dart';
 import '../../logic/cubit/register/register_cubit.dart';
+import '../../logic/cubit/register/register_state.dart';
 
 class StepThreeOTP extends HookWidget {
   const StepThreeOTP({super.key});
@@ -16,7 +17,7 @@ class StepThreeOTP extends HookWidget {
   @override
   Widget build(final BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
-    final timeLeft = useState(60);
+    final timeLeft = useState(120);
     final canResend = useState(false);
 
     useEffect(() {
@@ -35,15 +36,15 @@ class StepThreeOTP extends HookWidget {
         canResend.value = true;
       }
       return timer?.cancel;
-    }, [timeLeft.value == 60]);
+    }, [timeLeft.value == 120]);
 
-    void resendCode() {
+    Future<void> resendCode() async {
       final registerForm = context.read<RegisterCubit>().state.form;
-      context.read<OtpCubit>().sendOTP(
-        phone: registerForm.phoneNumber.value,
+      await context.read<OtpCubit>().sendOTP(
+        phone: registerForm.formattedPhoneNumber,
         lang: registerForm.lang,
       );
-      timeLeft.value = 60;
+      timeLeft.value = 120;
     }
 
     String formatTime(int seconds) {
@@ -65,9 +66,12 @@ class StepThreeOTP extends HookWidget {
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
             OtpFieldComponent(
-              onCompleted: (final otp) {
+              onCompleted: (final otp) async {
                 final registerForm = context.read<RegisterCubit>().state.form;
-                context.read<OtpCubit>().verifyOTP(otp, phone: registerForm.phoneNumber.value);
+                await context.read<OtpCubit>().verifyOTP(
+                  otp,
+                  phone: registerForm.formattedPhoneNumber,
+                );
               },
             ),
             Row(

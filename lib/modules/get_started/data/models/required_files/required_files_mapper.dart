@@ -5,9 +5,8 @@ extension RequiredFileModelMapper on RequiredFileModel {
   RequiredFileEntity toEntity() {
     return RequiredFileEntity(
       id: id,
-      name: name,
-      isRequired: isRequired,
-      description: description,
+      name: fileName,
+      isRequired: isMandatory,
     );
   }
 }

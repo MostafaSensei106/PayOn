@@ -61,9 +61,29 @@ abstract class RegisterFormState with _$RegisterFormState {
     @Default('') String nationalityCode,
     @Default('') String country,
     @Default([]) List<CountryItemEntity> countries,
+    @Default([]) List<RequiredFileEntity> requiredFiles,
     @Default(2) int cityId,
 
     @Default(0) int currentStep,
     @Default(false) bool isValid,
+    @Default(false) bool isOcrProcessing,
   }) = _RegisterFormState;
+}
+
+extension RegisterFormStateX on RegisterFormState {
+  String get formattedPhoneNumber {
+    if (countries.isEmpty || country.isEmpty) return phoneNumber.value;
+    final countryItem = countries.firstWhere(
+      (e) => e.code == country,
+      orElse: () => countries.first,
+    );
+    final phoneCode = countryItem.phoneCode;
+    var formatted = phoneNumber.value;
+    if (formatted.startsWith('0')) {
+      formatted = '+$phoneCode${formatted.substring(1)}';
+    } else if (!formatted.startsWith('+') && formatted.isNotEmpty) {
+      formatted = '+$phoneCode$formatted';
+    }
+    return formatted;
+  }
 }

@@ -42,11 +42,11 @@ CountryItem _$CountryItemFromJson(Map<String, dynamic> json) => CountryItem(
   arName: json['arName'] as String,
   trName: json['trName'] as String,
   nicename: json['nicename'] as String,
-  numCode: (json['numCode'] as num).toInt(),
   phoneCode: (json['phoneCode'] as num).toInt(),
   iso: json['iso'] as String,
   code: json['code'] as String,
   isActive: json['isActive'] as bool,
+  numCode: (json['numCode'] as num).toInt(),
 );
 
 Map<String, dynamic> _$CountryItemToJson(CountryItem instance) =>

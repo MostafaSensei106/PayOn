@@ -12,9 +12,7 @@ GetRequiredFilesResponseBody _$GetRequiredFilesResponseBodyFromJson(
   code: (json['code'] as num).toInt(),
   message: json['message'] as String,
   success: json['success'] as bool,
-  data: (json['data'] as List<dynamic>)
-      .map((e) => RequiredFileModel.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  data: RequiredFilesData.fromJson(json['data'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$GetRequiredFilesResponseBodyToJson(
@@ -26,18 +24,36 @@ Map<String, dynamic> _$GetRequiredFilesResponseBodyToJson(
   'data': instance.data,
 };
 
+RequiredFilesData _$RequiredFilesDataFromJson(Map<String, dynamic> json) =>
+    RequiredFilesData(
+      totalItems: (json['totalItems'] as num).toInt(),
+      pageNumber: (json['pageNumber'] as num).toInt(),
+      pageSize: (json['pageSize'] as num).toInt(),
+      items: (json['items'] as List<dynamic>)
+          .map((e) => RequiredFileModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      totalPages: (json['totalPages'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$RequiredFilesDataToJson(RequiredFilesData instance) =>
+    <String, dynamic>{
+      'totalItems': instance.totalItems,
+      'pageNumber': instance.pageNumber,
+      'pageSize': instance.pageSize,
+      'totalPages': instance.totalPages,
+      'items': instance.items,
+    };
+
 RequiredFileModel _$RequiredFileModelFromJson(Map<String, dynamic> json) =>
     RequiredFileModel(
       id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      isRequired: json['isRequired'] as bool,
-      description: json['description'] as String?,
+      fileName: json['fileName'] as String,
+      isMandatory: json['isMandatory'] as bool,
     );
 
 Map<String, dynamic> _$RequiredFileModelToJson(RequiredFileModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
-      'description': instance.description,
-      'isRequired': instance.isRequired,
+      'fileName': instance.fileName,
+      'isMandatory': instance.isMandatory,
     };

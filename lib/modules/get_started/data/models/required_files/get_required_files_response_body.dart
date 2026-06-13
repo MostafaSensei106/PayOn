@@ -17,27 +17,47 @@ class GetRequiredFilesResponseBody {
   final int code;
   final String message;
   final bool success;
-  final List<RequiredFileModel> data;
+  final RequiredFilesData data;
 
   Map<String, dynamic> toJson() => _$GetRequiredFilesResponseBodyToJson(this);
+}
+
+@JsonSerializable()
+class RequiredFilesData {
+  const RequiredFilesData({
+    required this.totalItems,
+    required this.pageNumber,
+    required this.pageSize,
+    required this.items,
+    required this.totalPages,
+  });
+
+  factory RequiredFilesData.fromJson(Map<String, dynamic> json) =>
+      _$RequiredFilesDataFromJson(json);
+
+  final int totalItems;
+  final int pageNumber;
+  final int pageSize;
+  final int totalPages;
+  final List<RequiredFileModel> items;
+
+  Map<String, dynamic> toJson() => _$RequiredFilesDataToJson(this);
 }
 
 @JsonSerializable()
 class RequiredFileModel {
   const RequiredFileModel({
     required this.id,
-    required this.name,
-    required this.isRequired,
-    this.description,
+    required this.fileName,
+    required this.isMandatory,
   });
 
   factory RequiredFileModel.fromJson(Map<String, dynamic> json) =>
       _$RequiredFileModelFromJson(json);
 
   final int id;
-  final String name;
-  final String? description;
-  final bool isRequired;
+  final String fileName;
+  final bool isMandatory;
 
   Map<String, dynamic> toJson() => _$RequiredFileModelToJson(this);
 }

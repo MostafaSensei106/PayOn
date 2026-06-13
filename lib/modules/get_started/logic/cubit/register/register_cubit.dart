@@ -5,6 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/constants/app_enums.dart';
+import '../../../../../core/services/ocr/ocr_service.dart';
 import '../../../../../core/utils/result/result.dart';
 import '../../../../../core/utils/use_case/base_use_case.dart';
 import '../../../../../core/utils/validator/email_validators.dart';
@@ -16,6 +17,7 @@ import '../../../data/models/send_otp/send_otp_request_body.dart';
 import '../../entities/account_type_entity.dart';
 import '../../use_cases/get_all_countries_use_case.dart';
 import '../../use_cases/get_required_files_use_case.dart';
+import '../../use_cases/params/get_required_files_params.dart';
 import '../../use_cases/register_use_case.dart';
 import '../../use_cases/send_otp_use_case.dart';
 import '../../use_cases/upload_kyc_files_use_case.dart';
@@ -29,6 +31,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     this._uploadKycFilesUseCase,
     this._getAllCountriesUseCase,
     this._sendOtpUseCase,
+    this._ocrService,
   ) : super(const RegisterState.initial(RegisterFormState()));
 
   final RegisterUseCase _registerUseCase;
@@ -36,6 +39,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   final UploadKycFilesUseCase _uploadKycFilesUseCase;
   final GetAllCountriesUseCase _getAllCountriesUseCase;
   final SendOtpUseCase _sendOtpUseCase;
+  final OcrService _ocrService;
 
   RegisterFormState get currentForm => state.form;
 
@@ -45,7 +49,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
     final body = RegisterRequestBody(
       email: currentForm.email.value,
-      phoneNumber: currentForm.phoneNumber.value,
+      phoneNumber: currentForm.formattedPhoneNumber,
       name: currentForm.name.value,
       birthDate: currentForm.birthDate,
       gender: currentForm.gender.code,
@@ -60,7 +64,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     result.fold(
       onSuccess: (data) async {
         final otpBody = SendOtpRequestBody(
-          phone: currentForm.phoneNumber.value,
+          phone: currentForm.formattedPhoneNumber,
           emailLang: currentForm.lang,
           isForgotPassword: false,
         );
@@ -94,11 +98,18 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   Future<void> getRequiredFiles() async {
+    final accountTypeId = currentForm.accountType?.id;
+    if (accountTypeId == null) return;
+
     emit(RegisterState.loading(currentForm));
-    final result = await _getRequiredFilesUseCase(const NoParams());
+    final result = await _getRequiredFilesUseCase(
+      GetRequiredFilesParams(accountTypeId: accountTypeId),
+    );
     result.fold(
-      onSuccess: (data) =>
-          emit(RegisterState.getRequiredFilesSuccess(currentForm, files: data)),
+      onSuccess: (data) {
+        final updatedForm = currentForm.copyWith(requiredFiles: data);
+        emit(RegisterState.getRequiredFilesSuccess(updatedForm, files: data));
+      },
       onFailure: (error) =>
           emit(RegisterState.failure(currentForm, error: error.message)),
     );
@@ -222,14 +233,44 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
   }
 
-  void updateFile(int docId, File file) {
-    final updatedFiles = Map<int, File>.from(currentForm.files)..[docId] = file;
-    final updatedForm = currentForm.copyWith(files: updatedFiles);
+  Future<void> updateFile(int docId, File file) async {
     emit(
-      RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm, step: 3)),
-      ),
+      RegisterState.initial(currentForm.copyWith(isOcrProcessing: true)),
     );
+
+    try {
+      final extractedText = await _ocrService.extractText(file);
+
+      if (extractedText.trim().isEmpty) {
+        emit(
+          RegisterState.failure(
+            currentForm.copyWith(isOcrProcessing: false),
+            error:
+                'Could not read text from the image. Please take a clearer photo.',
+          ),
+        );
+        return;
+      }
+
+      final updatedFiles =
+          Map<int, File>.from(currentForm.files)..[docId] = file;
+      final updatedForm = currentForm.copyWith(
+        files: updatedFiles,
+        isOcrProcessing: false,
+      );
+      emit(
+        RegisterState.initial(
+          updatedForm.copyWith(isValid: _validate(updatedForm, step: 3)),
+        ),
+      );
+    } catch (e) {
+      emit(
+        RegisterState.failure(
+          currentForm.copyWith(isOcrProcessing: false),
+          error: 'OCR Processing failed: $e',
+        ),
+      );
+    }
   }
 
   bool _validate(RegisterFormState form, {required int step}) {
