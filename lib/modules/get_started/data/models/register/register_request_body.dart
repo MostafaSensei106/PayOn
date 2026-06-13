@@ -28,8 +28,8 @@ class RegisterRequestBody {
   final String gender;
   final String password;
   final bool isPhone;
-  final String nationalityCode;
-  final String country;
+  final int nationalityCode;
+  final int country;
   final int cityId;
   final String? referralCode;
 

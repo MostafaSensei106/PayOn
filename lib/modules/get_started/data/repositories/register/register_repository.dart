@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/constants/types/type_def.dart';
 import '../../../../../core/networking/api_executor/api_executor.dart';
 import '../../../../../core/networking/api_service/api_service.dart';
+import '../../models/get_all_countries/get_all_countries_response_body.dart';
 import '../../models/register/create_account_request_body.dart';
 import '../../models/register/create_account_response_body.dart';
 import '../../models/register/register_request_body.dart';
@@ -37,6 +38,12 @@ final class RegisterRepository implements BaseRegisterRepository {
   Future<ApiResult<GetRequiredFilesResponseBody>> getRequiredFiles() async =>
       ApiExecutor.execute<GetRequiredFilesResponseBody>(
         action: () => _apiService.getRequiredFiles(),
+      );
+
+  @override
+  Future<ApiResult<GetAllCountriesResponseBody>> getCountries() async =>
+      ApiExecutor.execute<GetAllCountriesResponseBody>(
+        action: () => _apiService.getCountries(),
       );
 
   @override

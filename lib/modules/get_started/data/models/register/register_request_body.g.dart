@@ -15,8 +15,8 @@ RegisterRequestBody _$RegisterRequestBodyFromJson(Map<String, dynamic> json) =>
       gender: json['gender'] as String,
       password: json['password'] as String,
       isPhone: json['isPhone'] as bool,
-      nationalityCode: json['nationalityCode'] as String,
-      country: json['country'] as String,
+      nationalityCode: (json['nationalityCode'] as num).toInt(),
+      country: (json['country'] as num).toInt(),
       cityId: (json['cityId'] as num).toInt(),
       referralCode: json['referralCode'] as String?,
     );

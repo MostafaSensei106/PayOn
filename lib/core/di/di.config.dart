@@ -102,6 +102,8 @@ import 'package:payon/modules/get_started/logic/use_cases/create_account_use_cas
     as _i122;
 import 'package:payon/modules/get_started/logic/use_cases/get_account_types_use_case.dart'
     as _i69;
+import 'package:payon/modules/get_started/logic/use_cases/get_all_countries_use_case.dart'
+    as _i29;
 import 'package:payon/modules/get_started/logic/use_cases/get_required_files_use_case.dart'
     as _i280;
 import 'package:payon/modules/get_started/logic/use_cases/register_use_case.dart'
@@ -253,6 +255,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i122.CreateAccountUseCase>(
       () => _i122.CreateAccountUseCase(gh<_i1033.BaseRegisterRepository>()),
     );
+    gh.factory<_i29.GetAllCountriesUseCase>(
+      () => _i29.GetAllCountriesUseCase(gh<_i1033.BaseRegisterRepository>()),
+    );
     gh.factory<_i280.GetRequiredFilesUseCase>(
       () => _i280.GetRequiredFilesUseCase(gh<_i1033.BaseRegisterRepository>()),
     );
@@ -300,14 +305,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i69.GetAccountTypesUseCase>(
       () => _i69.GetAccountTypesUseCase(gh<_i276.BaseAccountTypeRepository>()),
     );
-    gh.factory<_i225.RegisterCubit>(
-      () => _i225.RegisterCubit(
-        gh<_i615.RegisterUseCase>(),
-        gh<_i122.CreateAccountUseCase>(),
-        gh<_i280.GetRequiredFilesUseCase>(),
-        gh<_i919.UploadKycFilesUseCase>(),
-      ),
-    );
     gh.lazySingleton<_i719.LoginRepository>(
       () => _i370.LoginRepositoryImpl(
         gh<_i550.ApiService>(),
@@ -319,6 +316,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i392.VerifyOtpUseCase>(
       () => _i392.VerifyOtpUseCase(gh<_i78.BaseOtpRepository>()),
+    );
+    gh.factory<_i225.RegisterCubit>(
+      () => _i225.RegisterCubit(
+        gh<_i615.RegisterUseCase>(),
+        gh<_i122.CreateAccountUseCase>(),
+        gh<_i280.GetRequiredFilesUseCase>(),
+        gh<_i919.UploadKycFilesUseCase>(),
+        gh<_i29.GetAllCountriesUseCase>(),
+      ),
     );
     gh.factory<_i900.GetTransactionsUsecase>(
       () => _i900.GetTransactionsUsecase(repo: gh<_i746.HomeRepostory>()),
@@ -457,6 +463,9 @@ extension GetItInjectableX on _i174.GetIt {
   _i122.CreateAccountUseCase get createAccountUseCase =>
       get<_i122.CreateAccountUseCase>();
 
+  _i29.GetAllCountriesUseCase get getAllCountriesUseCase =>
+      get<_i29.GetAllCountriesUseCase>();
+
   _i280.GetRequiredFilesUseCase get getRequiredFilesUseCase =>
       get<_i280.GetRequiredFilesUseCase>();
 
@@ -499,14 +508,14 @@ extension GetItInjectableX on _i174.GetIt {
   _i69.GetAccountTypesUseCase get getAccountTypesUseCase =>
       get<_i69.GetAccountTypesUseCase>();
 
-  _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
-
   _i370.LoginRepositoryImpl get loginRepositoryImpl =>
       get<_i370.LoginRepositoryImpl>();
 
   _i271.SendOtpUseCase get sendOtpUseCase => get<_i271.SendOtpUseCase>();
 
   _i392.VerifyOtpUseCase get verifyOtpUseCase => get<_i392.VerifyOtpUseCase>();
+
+  _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
 
   _i900.GetTransactionsUsecase get getTransactionsUsecase =>
       get<_i900.GetTransactionsUsecase>();

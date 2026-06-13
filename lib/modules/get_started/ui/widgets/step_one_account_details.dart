@@ -135,14 +135,16 @@ class _StepOneAccountDetailsState extends State<StepOneAccountDetails> {
             TextFormFieldComponent(
               label: l10n.nationality,
               prefixIcon: Iconsax.global_copy,
-              initialValue: form.nationalityCode,
-              onChanged: registerCubit.nationalityOnChanged,
+              initialValue: form.nationalityCode.toString(),
+              onChanged: (val) =>
+                  registerCubit.nationalityOnChanged(int.tryParse(val) ?? 0),
             ),
             TextFormFieldComponent(
               label: 'Country',
               prefixIcon: Iconsax.location_copy,
-              initialValue: form.country,
-              onChanged: registerCubit.countryOnChanged,
+              initialValue: form.country.toString(),
+              onChanged: (val) =>
+                  registerCubit.countryOnChanged(int.tryParse(val) ?? 0),
             ),
 
             TextFormFieldComponent(

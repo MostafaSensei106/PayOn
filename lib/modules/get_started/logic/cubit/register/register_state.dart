@@ -8,6 +8,7 @@ import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
 import '../../entities/account_type_entity.dart';
+import '../../entities/country_entity.dart';
 import '../../entities/register_entities.dart';
 
 part 'register_state.freezed.dart';
@@ -28,6 +29,10 @@ sealed class RegisterState with _$RegisterState {
     RegisterFormState form, {
     required List<RequiredFileEntity> files,
   }) = _GetRequiredFilesSuccess;
+  const factory RegisterState.getCountriesSuccess(
+    RegisterFormState form, {
+    required List<CountryItemEntity> countries,
+  }) = _GetCountriesSuccess;
   const factory RegisterState.failure(
     RegisterFormState form, {
     required String error,
@@ -53,8 +58,8 @@ abstract class RegisterFormState with _$RegisterFormState {
 
     @Default(true) bool isPhone,
 
-    @Default('') String nationalityCode,
-    @Default('') String country,
+    @Default(0) int nationalityCode,
+    @Default(0) int country,
     @Default(2) int cityId,
 
     @Default(0) int currentStep,

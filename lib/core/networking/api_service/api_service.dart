@@ -11,6 +11,7 @@ import '../../../modules/create_wallet/data/models/create_wallet_response_body.d
 import '../../../modules/forget_password/data/reset_password_request_body.dart';
 import '../../../modules/get_started/data/models/account_type/account_type_response_body.dart';
 import '../../../modules/get_started/data/models/currencies/get_currencies_response_body.dart';
+import '../../../modules/get_started/data/models/get_all_countries/get_all_countries_response_body.dart';
 import '../../../modules/get_started/data/models/register/create_account_request_body.dart';
 import '../../../modules/get_started/data/models/register/create_account_response_body.dart';
 import '../../../modules/get_started/data/models/register/register_request_body.dart';
@@ -76,6 +77,9 @@ abstract class ApiService {
 
   @GET(ApiRoutes.accountGetRequiredFiles)
   Future<GetRequiredFilesResponseBody> getRequiredFiles();
+
+  @GET(ApiRoutes.accountGetCountries)
+  Future<GetAllCountriesResponseBody> getCountries();
 
   @GET(ApiRoutes.accountGetCurrencies)
   Future<GetCurrenciesResponseBody> getCurrencies();

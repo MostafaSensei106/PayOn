@@ -16,6 +16,7 @@ import '../../../data/models/register/create_account_request_body.dart';
 import '../../../data/models/register/register_request_body.dart';
 import '../../entities/account_type_entity.dart';
 import '../../use_cases/create_account_use_case.dart';
+import '../../use_cases/get_all_countries_use_case.dart';
 import '../../use_cases/get_required_files_use_case.dart';
 import '../../use_cases/register_use_case.dart';
 import '../../use_cases/upload_kyc_files_use_case.dart';
@@ -28,12 +29,14 @@ class RegisterCubit extends Cubit<RegisterState> {
     this._createAccountUseCase,
     this._getRequiredFilesUseCase,
     this._uploadKycFilesUseCase,
+    this._getAllCountriesUseCase,
   ) : super(const RegisterState.initial(RegisterFormState()));
 
   final RegisterUseCase _registerUseCase;
   final CreateAccountUseCase _createAccountUseCase;
   final GetRequiredFilesUseCase _getRequiredFilesUseCase;
   final UploadKycFilesUseCase _uploadKycFilesUseCase;
+  final GetAllCountriesUseCase _getAllCountriesUseCase;
 
   RegisterFormState get currentForm => state.form;
 
@@ -125,7 +128,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
   }
 
-  void nationalityOnChanged(String nationalityCode) {
+  void nationalityOnChanged(int nationalityCode) {
     final updatedForm = currentForm.copyWith(nationalityCode: nationalityCode);
     emit(
       RegisterState.initial(
@@ -134,7 +137,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
   }
 
-  void countryOnChanged(String country) {
+  void countryOnChanged(int country) {
     final updatedForm = currentForm.copyWith(country: country);
     emit(
       RegisterState.initial(
@@ -168,7 +171,7 @@ class RegisterCubit extends Cubit<RegisterState> {
             form.password.value == form.confirmPassword.value &&
             form.birthDate.isNotEmpty &&
             form.gender != GenderType.none &&
-            form.country.isNotEmpty;
+            form.country != 0;
       case 2: // OTP
         return true;
       case 3: // Documents
@@ -224,6 +227,18 @@ class RegisterCubit extends Cubit<RegisterState> {
     result.fold(
       onSuccess: (data) =>
           emit(RegisterState.createAccountSuccess(currentForm, data: data)),
+      onFailure: (error) =>
+          emit(RegisterState.failure(currentForm, error: error.message)),
+    );
+  }
+
+  Future<void> getCountries() async {
+    emit(RegisterState.loading(currentForm));
+    final result = await _getAllCountriesUseCase(const NoParams());
+    result.fold(
+      onSuccess: (data) => emit(
+        RegisterState.getCountriesSuccess(currentForm, countries: data.items),
+      ),
       onFailure: (error) =>
           emit(RegisterState.failure(currentForm, error: error.message)),
     );

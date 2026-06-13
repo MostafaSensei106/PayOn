@@ -50,7 +50,7 @@ final class ApiRoutes {
   static const String accountSetParentForUser = 'Account/SetParentForUser';
   static const String accountGetAccountsByParentId =
       'Account/GetAccountsByParentId';
-  static const String accountGetCountries = 'Account/GetCountries';
+  static const String accountGetCountries = 'Admin/GetAllCountries';
   static const String accountGetAccountCategories =
       'Account/GetAccountCategories';
   static const String accountUpdateAccountCategory =

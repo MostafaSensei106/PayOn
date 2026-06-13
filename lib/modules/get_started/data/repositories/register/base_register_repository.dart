@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import '../../../../../core/constants/types/type_def.dart';
+import '../../models/get_all_countries/get_all_countries_response_body.dart';
 import '../../models/register/create_account_request_body.dart';
 import '../../models/register/create_account_response_body.dart';
 import '../../models/register/register_request_body.dart';
@@ -13,6 +14,7 @@ abstract class BaseRegisterRepository {
     CreateAccountRequestBody body,
   );
   Future<ApiResult<GetRequiredFilesResponseBody>> getRequiredFiles();
+  Future<ApiResult<GetAllCountriesResponseBody>> getCountries();
   Future<ApiResult<void>> uploadFiles({
     required File file,
     required String accId,
