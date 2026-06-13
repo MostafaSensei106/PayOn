@@ -3,11 +3,11 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/constants/types/type_def.dart';
 import '../../../../core/networking/api_executor/api_executor.dart';
 import '../../../../core/networking/api_service/api_service.dart';
-import '../../../get_started/data/models/currencies/get_currencies_response_body.dart';
 import '../models/create_wallet_pin_request_body.dart';
 import '../models/create_wallet_pin_response_body.dart';
 import '../models/create_wallet_request_body.dart';
 import '../models/create_wallet_response_body.dart';
+import '../models/get_currencies_response_body.dart';
 import 'create_wallet_repository.dart';
 
 @LazySingleton(as: CreateWalletRepository)

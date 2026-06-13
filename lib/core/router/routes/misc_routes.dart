@@ -10,6 +10,7 @@ import '../../../modules/create_wallet/logic/cubit/create_wallet_cubit.dart';
 import '../../../modules/create_wallet/ui/pages/create_wallet_page.dart';
 import '../../../modules/create_wallet/ui/pages/create_wallet_pin_page.dart';
 import '../../../modules/developer_team/ui/page/developer_team_page.dart';
+import '../../../modules/home/logic/cubit/home_cubit.dart';
 import '../../../modules/language/ui/page/change_language_page.dart';
 import '../../../modules/notifications/ui/notifications_page.dart';
 import '../../../modules/privacy_policy/ui/privacy_policy_page.dart';
@@ -52,8 +53,14 @@ final class CreateWalletRoute extends CupertinoRouteData
   const CreateWalletRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
-    create: (context) => getIt<CreateWalletCubit>()..getCurrencies(),
+  Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (context) => getIt<CreateWalletCubit>()
+          ..getCurrencies().ignore(),
+      ),
+      BlocProvider.value(value: getIt<UserProfileCubit>()),
+    ],
     child: const CreateWalletPage(),
   );
 }
@@ -64,8 +71,11 @@ final class CreateWalletPinRoute extends CupertinoRouteData
   const CreateWalletPinRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
-    create: (context) => getIt<CreateWalletCubit>(),
+  Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
+    providers: [
+      BlocProvider(create: (context) => getIt<CreateWalletCubit>()),
+      BlocProvider.value(value: getIt<HomeCubit>()),
+    ],
     child: const CreateWalletPinPage(),
   );
 }

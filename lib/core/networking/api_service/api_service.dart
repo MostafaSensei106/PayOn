@@ -8,9 +8,9 @@ import '../../../modules/create_wallet/data/models/create_wallet_pin_request_bod
 import '../../../modules/create_wallet/data/models/create_wallet_pin_response_body.dart';
 import '../../../modules/create_wallet/data/models/create_wallet_request_body.dart';
 import '../../../modules/create_wallet/data/models/create_wallet_response_body.dart';
+import '../../../modules/create_wallet/data/models/get_currencies_response_body.dart';
 import '../../../modules/forget_password/data/reset_password_request_body.dart';
 import '../../../modules/get_started/data/models/account_type/account_type_response_body.dart';
-import '../../../modules/get_started/data/models/currencies/get_currencies_response_body.dart';
 import '../../../modules/get_started/data/models/get_all_countries/get_all_countries_response_body.dart';
 import '../../../modules/get_started/data/models/register/create_account_request_body.dart';
 import '../../../modules/get_started/data/models/register/create_account_response_body.dart';
