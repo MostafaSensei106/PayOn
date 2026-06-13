@@ -61,6 +61,7 @@ class GetStartedPage extends HookWidget {
           curve: Curves.easeInOut,
         );
         cubit.setStep(1);
+        unawaited(cubit.getCountries());
       } else if (currentPage.value == 1) {
         if (!registerForm.isValid ||
             !termsAccepted.value ||
@@ -95,6 +96,9 @@ class GetStartedPage extends HookWidget {
                   curve: Curves.easeInOut,
                 );
                 context.read<RegisterCubit>().setStep(targetPage);
+              },
+              getCountriesSuccess: (form, countries) {
+                context.pop();
               },
               getRequiredFilesSuccess: (form, files) async {
                 context.pop();

@@ -60,6 +60,7 @@ abstract class RegisterFormState with _$RegisterFormState {
 
     @Default(0) int nationalityCode,
     @Default(0) int country,
+    @Default([]) List<CountryItemEntity> countries,
     @Default(2) int cityId,
 
     @Default(0) int currentStep,

@@ -132,19 +132,47 @@ class _StepOneAccountDetailsState extends State<StepOneAccountDetails> {
                 ),
               ),
             ),
-            TextFormFieldComponent(
-              label: l10n.nationality,
-              prefixIcon: Iconsax.global_copy,
-              initialValue: form.nationalityCode.toString(),
-              onChanged: (val) =>
-                  registerCubit.nationalityOnChanged(int.tryParse(val) ?? 0),
+            DropdownButtonFormField<int>(
+              initialValue: form.nationalityCode == 0 ? null : form.nationalityCode,
+              hint: Text(l10n.nationality),
+              items: form.countries
+                  .map(
+                    (e) => DropdownMenuItem(
+                      value: e.id,
+                      child: Text(e.nicename),
+                    ),
+                  )
+                  .toList(),
+              onChanged: (val) => registerCubit.nationalityOnChanged(val ?? 0),
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Iconsax.global_copy),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    AppConfig.outBorderRadius,
+                  ),
+                ),
+              ),
             ),
-            TextFormFieldComponent(
-              label: 'Country',
-              prefixIcon: Iconsax.location_copy,
-              initialValue: form.country.toString(),
-              onChanged: (val) =>
-                  registerCubit.countryOnChanged(int.tryParse(val) ?? 0),
+            DropdownButtonFormField<int>(
+              initialValue: form.country == 0 ? null : form.country,
+              hint: const Text('Country'),
+              items: form.countries
+                  .map(
+                    (e) => DropdownMenuItem(
+                      value: e.id,
+                      child: Text(e.name),
+                    ),
+                  )
+                  .toList(),
+              onChanged: (val) => registerCubit.countryOnChanged(val ?? 0),
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Iconsax.location_copy),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    AppConfig.outBorderRadius,
+                  ),
+                ),
+              ),
             ),
 
             TextFormFieldComponent(

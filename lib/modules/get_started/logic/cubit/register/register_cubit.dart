@@ -233,12 +233,14 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   Future<void> getCountries() async {
+    if (currentForm.countries.isNotEmpty) return;
     emit(RegisterState.loading(currentForm));
     final result = await _getAllCountriesUseCase(const NoParams());
     result.fold(
-      onSuccess: (data) => emit(
-        RegisterState.getCountriesSuccess(currentForm, countries: data.items),
-      ),
+      onSuccess: (data) {
+        final updatedForm = currentForm.copyWith(countries: data.items);
+        emit(RegisterState.getCountriesSuccess(updatedForm, countries: data.items));
+      },
       onFailure: (error) =>
           emit(RegisterState.failure(currentForm, error: error.message)),
     );
