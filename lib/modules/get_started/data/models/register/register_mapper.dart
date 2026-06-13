@@ -1,6 +1,6 @@
 import '../../../logic/entities/register_entities.dart';
-import 'register_response_body.dart';
 import 'create_account_response_body.dart';
+import 'register_response_body.dart';
 
 extension RegisterResponseBodyMapper on RegisterResponseBody {
   RegisterEntity toEntity() {
@@ -14,9 +14,6 @@ extension RegisterResponseBodyMapper on RegisterResponseBody {
 
 extension CreateAccountResponseBodyMapper on CreateAccountResponseBody {
   CreateAccountEntity toEntity() {
-    return CreateAccountEntity(
-      message: message,
-      data: data,
-    );
+    return CreateAccountEntity(message: message, data: data);
   }
 }

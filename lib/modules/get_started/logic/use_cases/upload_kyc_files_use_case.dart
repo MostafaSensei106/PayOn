@@ -24,7 +24,6 @@ class UploadKycFilesUseCase implements BaseUseCase<void, UploadKycFilesParams> {
     }
     return const ApiResult.success(data: null);
   }
-
 }
 
 class UploadKycFilesParams {

@@ -19,8 +19,8 @@ class AccountTypeCubit extends Cubit<AccountTypeState<AccountTypeEntity>> {
     final result = await _getAccountTypesUseCase(const NoParams());
     result.fold(
       onSuccess: (data) => emit(AccountTypeState.success(data: data)),
-      onFailure: (error) => emit(AccountTypeState.failure(error: error.message)),
+      onFailure: (error) =>
+          emit(AccountTypeState.failure(error: error.message)),
     );
   }
 }
-

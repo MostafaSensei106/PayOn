@@ -1,9 +1,10 @@
 import 'package:injectable/injectable.dart';
+
 import '../../../../../core/constants/types/type_def.dart';
 import '../../../../core/utils/use_case/base_use_case.dart';
+import '../../data/models/register/register_mapper.dart';
 import '../../data/models/register/register_request_body.dart';
 import '../../data/repositories/register/base_register_repository.dart';
-import '../../data/models/register/register_mapper.dart';
 import '../entities/register_entities.dart';
 
 @injectable

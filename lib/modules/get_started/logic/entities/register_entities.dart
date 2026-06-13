@@ -6,8 +6,7 @@ part 'register_entities.freezed.dart';
 abstract class RegisterEntity with _$RegisterEntity {
   const factory RegisterEntity({
     required String token,
-    String? accountId,
-    required String message,
+    required String message, String? accountId,
   }) = _RegisterEntity;
 }
 

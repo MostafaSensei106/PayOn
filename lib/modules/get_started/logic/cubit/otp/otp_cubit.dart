@@ -29,7 +29,8 @@ class OtpCubit extends Cubit<OtpState> {
     final result = await _sendOtpUseCase(body);
     result.fold(
       onSuccess: (data) => emit(OtpState.success(currentForm, data: data)),
-      onFailure: (error) => emit(OtpState.failure(currentForm, error: error.message)),
+      onFailure: (error) =>
+          emit(OtpState.failure(currentForm, error: error.message)),
     );
   }
 
@@ -42,7 +43,8 @@ class OtpCubit extends Cubit<OtpState> {
     final result = await _verifyOtpUseCase(body);
     result.fold(
       onSuccess: (data) => emit(OtpState.success(currentForm, data: data)),
-      onFailure: (error) => emit(OtpState.failure(currentForm, error: error.message)),
+      onFailure: (error) =>
+          emit(OtpState.failure(currentForm, error: error.message)),
     );
   }
 }

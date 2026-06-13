@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$RegisterEntity {
 
- String get token; String? get accountId; String get message;
+ String get token; String get message; String? get accountId;
 /// Create a copy of RegisterEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $RegisterEntityCopyWith<RegisterEntity> get copyWith => _$RegisterEntityCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RegisterEntity&&(identical(other.token, token) || other.token == token)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RegisterEntity&&(identical(other.token, token) || other.token == token)&&(identical(other.message, message) || other.message == message)&&(identical(other.accountId, accountId) || other.accountId == accountId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,token,accountId,message);
+int get hashCode => Object.hash(runtimeType,token,message,accountId);
 
 @override
 String toString() {
-  return 'RegisterEntity(token: $token, accountId: $accountId, message: $message)';
+  return 'RegisterEntity(token: $token, message: $message, accountId: $accountId)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $RegisterEntityCopyWith<$Res>  {
   factory $RegisterEntityCopyWith(RegisterEntity value, $Res Function(RegisterEntity) _then) = _$RegisterEntityCopyWithImpl;
 @useResult
 $Res call({
- String token, String? accountId, String message
+ String token, String message, String? accountId
 });
 
 
@@ -62,12 +62,12 @@ class _$RegisterEntityCopyWithImpl<$Res>
 
 /// Create a copy of RegisterEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? token = null,Object? accountId = freezed,Object? message = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? token = null,Object? message = null,Object? accountId = freezed,}) {
   return _then(_self.copyWith(
 token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
+as String,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,accountId: freezed == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
-as String?,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,
+as String?,
   ));
 }
 
@@ -152,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String token,  String? accountId,  String message)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String token,  String message,  String? accountId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RegisterEntity() when $default != null:
-return $default(_that.token,_that.accountId,_that.message);case _:
+return $default(_that.token,_that.message,_that.accountId);case _:
   return orElse();
 
 }
@@ -173,10 +173,10 @@ return $default(_that.token,_that.accountId,_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String token,  String? accountId,  String message)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String token,  String message,  String? accountId)  $default,) {final _that = this;
 switch (_that) {
 case _RegisterEntity():
-return $default(_that.token,_that.accountId,_that.message);case _:
+return $default(_that.token,_that.message,_that.accountId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -193,10 +193,10 @@ return $default(_that.token,_that.accountId,_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String token,  String? accountId,  String message)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String token,  String message,  String? accountId)?  $default,) {final _that = this;
 switch (_that) {
 case _RegisterEntity() when $default != null:
-return $default(_that.token,_that.accountId,_that.message);case _:
+return $default(_that.token,_that.message,_that.accountId);case _:
   return null;
 
 }
@@ -208,12 +208,12 @@ return $default(_that.token,_that.accountId,_that.message);case _:
 
 
 class _RegisterEntity implements RegisterEntity {
-  const _RegisterEntity({required this.token, this.accountId, required this.message});
+  const _RegisterEntity({required this.token, required this.message, this.accountId});
   
 
 @override final  String token;
-@override final  String? accountId;
 @override final  String message;
+@override final  String? accountId;
 
 /// Create a copy of RegisterEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -225,16 +225,16 @@ _$RegisterEntityCopyWith<_RegisterEntity> get copyWith => __$RegisterEntityCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RegisterEntity&&(identical(other.token, token) || other.token == token)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RegisterEntity&&(identical(other.token, token) || other.token == token)&&(identical(other.message, message) || other.message == message)&&(identical(other.accountId, accountId) || other.accountId == accountId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,token,accountId,message);
+int get hashCode => Object.hash(runtimeType,token,message,accountId);
 
 @override
 String toString() {
-  return 'RegisterEntity(token: $token, accountId: $accountId, message: $message)';
+  return 'RegisterEntity(token: $token, message: $message, accountId: $accountId)';
 }
 
 
@@ -245,7 +245,7 @@ abstract mixin class _$RegisterEntityCopyWith<$Res> implements $RegisterEntityCo
   factory _$RegisterEntityCopyWith(_RegisterEntity value, $Res Function(_RegisterEntity) _then) = __$RegisterEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String token, String? accountId, String message
+ String token, String message, String? accountId
 });
 
 
@@ -262,12 +262,12 @@ class __$RegisterEntityCopyWithImpl<$Res>
 
 /// Create a copy of RegisterEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? token = null,Object? accountId = freezed,Object? message = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? token = null,Object? message = null,Object? accountId = freezed,}) {
   return _then(_RegisterEntity(
 token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
+as String,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,accountId: freezed == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
-as String?,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,
+as String?,
   ));
 }
 

@@ -20,10 +20,7 @@ class StepOneAccountType extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
-    return BlocBuilder<
-      AccountTypeCubit,
-      AccountTypeState<AccountTypeEntity>
-    >(
+    return BlocBuilder<AccountTypeCubit, AccountTypeState<AccountTypeEntity>>(
       buildWhen: (previous, current) =>
           current is Success || current is Failure || current is Loading,
       builder: (context, state) {
