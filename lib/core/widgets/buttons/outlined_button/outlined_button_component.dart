@@ -63,21 +63,21 @@ final class OutlinedButtonComponent extends StatelessWidget {
           label: Text(label),
         );
 
-  ButtonStyle _getButtonStyle(final BuildContext context) =>
-      OutlinedButton.styleFrom(
-        side: BorderSide(
-          color: backgroundColor ?? Theme.of(context).colorScheme.outline,
-        ),
-        foregroundColor:
-            foregroundColor ?? Theme.of(context).colorScheme.primary,
-        minimumSize: Size(
-          width ?? double.infinity,
-          height ?? AppConfig.buttonHeight,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: useInBorderRadius
-              ? BorderRadius.circular(AppConfig.inBorderRadius)
-              : BorderRadius.circular(AppConfig.outBorderRadius),
-        ),
-      );
+  ButtonStyle _getButtonStyle(
+    final BuildContext context,
+  ) => OutlinedButton.styleFrom(
+    side: BorderSide(
+      color: backgroundColor ?? Theme.of(context).colorScheme.outlineVariant,
+    ),
+    foregroundColor: foregroundColor ?? Theme.of(context).colorScheme.primary,
+    minimumSize: Size(
+      width ?? double.infinity,
+      height ?? AppConfig.buttonHeight,
+    ),
+    shape: RoundedRectangleBorder(
+      borderRadius: useInBorderRadius
+          ? BorderRadius.circular(AppConfig.inBorderRadius)
+          : BorderRadius.circular(AppConfig.outBorderRadius),
+    ),
+  );
 }

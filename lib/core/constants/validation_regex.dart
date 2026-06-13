@@ -10,7 +10,7 @@ final class ValidationRegex {
   );
 
   static final RegExp strongPasswordRegExp = RegExp(
-    r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$',
+    r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&#]{8,}$',
   );
 
   static final RegExp phoneRegExp = RegExp(r'^\+?[0-9]{7,15}$');

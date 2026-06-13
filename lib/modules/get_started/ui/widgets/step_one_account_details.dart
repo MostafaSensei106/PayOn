@@ -8,12 +8,14 @@ import '../../../../core/di/di.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/utils/validator/email_validators.dart';
 import '../../../../core/utils/validator/full_name.dart';
+import '../../../../core/utils/validator/password.dart';
 import '../../../../core/utils/validator/phone_number.dart';
+import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/inputs/checkbox/checkbox_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../logic/cubit/register/register_cubit.dart';
 
-class StepOneAccountDetails extends StatelessWidget {
+class StepOneAccountDetails extends StatefulWidget {
   const StepOneAccountDetails({
     required this.termsAccepted,
     required this.onTermsChanged,
@@ -32,6 +34,14 @@ class StepOneAccountDetails extends StatelessWidget {
   final ValueChanged<bool?> onPrivacyChanged;
   final ValueChanged<bool?> onAllChanged;
   final TextEditingController dateController;
+
+  @override
+  State<StepOneAccountDetails> createState() => _StepOneAccountDetailsState();
+}
+
+class _StepOneAccountDetailsState extends State<StepOneAccountDetails> {
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
 
   @override
   Widget build(final BuildContext context) {
@@ -79,7 +89,7 @@ class StepOneAccountDetails extends StatelessWidget {
                   ?.message(context),
             ),
             TextFormFieldComponent(
-              controller: dateController,
+              controller: widget.dateController,
               label: l10n.dob,
               prefixIcon: Iconsax.calendar_1_copy,
               readOnly: true,
@@ -94,7 +104,7 @@ class StepOneAccountDetails extends StatelessWidget {
                 );
                 if (date != null) {
                   final formattedDate = date.toString().split(' ')[0];
-                  dateController.text = formattedDate;
+                  widget.dateController.text = formattedDate;
                   registerCubit.birthDateOnChanged(formattedDate);
                 }
               },
@@ -138,34 +148,53 @@ class StepOneAccountDetails extends StatelessWidget {
             TextFormFieldComponent(
               label: l10n.password,
               prefixIcon: Iconsax.lock_copy,
+              suffixIcon: IconButtonComponent(
+                icon: _obscurePassword
+                    ? Iconsax.eye_copy
+                    : Iconsax.eye_slash_copy,
+                onPressed: () =>
+                    setState(() => _obscurePassword = !_obscurePassword),
+              ),
               initialValue: form.password.value,
               onChanged: registerCubit.passwordOnChanged,
-              obscureText: true,
+              errorText: registerCubit.state.form.password.displayError
+                  ?.message(context),
+              obscureText: _obscurePassword,
             ),
             TextFormFieldComponent(
               label: l10n.confirm_password,
               prefixIcon: Iconsax.lock_copy,
+              suffixIcon: IconButtonComponent(
+                icon: _obscureConfirmPassword
+                    ? Iconsax.eye_copy
+                    : Iconsax.eye_slash_copy,
+                onPressed: () => setState(
+                  () => _obscureConfirmPassword = !_obscureConfirmPassword,
+                ),
+              ),
               initialValue: form.confirmPassword.value,
               onChanged: registerCubit.confirmPasswordOnChanged,
-              obscureText: true,
+              errorText: registerCubit.state.form.confirmPassword.displayError
+                  ?.message(context),
+              obscureText: _obscureConfirmPassword,
             ),
             Column(
               children: [
                 CheckboxComponent(
                   title: l10n.accept_terms,
-                  value: termsAccepted,
-                  onChanged: onTermsChanged,
+                  value: widget.termsAccepted,
+                  onChanged: widget.onTermsChanged,
                 ),
                 CheckboxComponent(
                   title: l10n.accept_privacy_policy,
-                  value: privacyAccepted,
-                  onChanged: onPrivacyChanged,
+                  value: widget.privacyAccepted,
+                  onChanged: widget.onPrivacyChanged,
                 ),
                 const Divider(),
                 CheckboxComponent(
                   title: l10n.accept_all,
-                  value: allAccepted,
-                  onChanged: onAllChanged,
+                  value: widget.allAccepted,
+                  onChanged: widget.onAllChanged,
                 ),
               ],
             ),

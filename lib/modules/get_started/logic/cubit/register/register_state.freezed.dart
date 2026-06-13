@@ -171,7 +171,7 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( RegisterFormState form)?  initial,TResult Function( RegisterFormState form)?  loading,TResult Function( RegisterFormState form,  RegisterResponseBody data)?  registerSuccess,TResult Function( RegisterFormState form,  CreateAccountResponseBody data)?  createAccountSuccess,TResult Function( RegisterFormState form,  List<RequiredFileModel> files)?  getRequiredFilesSuccess,TResult Function( RegisterFormState form,  String error)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( RegisterFormState form)?  initial,TResult Function( RegisterFormState form)?  loading,TResult Function( RegisterFormState form,  RegisterEntity data)?  registerSuccess,TResult Function( RegisterFormState form,  CreateAccountEntity data)?  createAccountSuccess,TResult Function( RegisterFormState form,  List<RequiredFileEntity> files)?  getRequiredFilesSuccess,TResult Function( RegisterFormState form,  String error)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that.form);case Loading() when loading != null:
@@ -197,7 +197,7 @@ return failure(_that.form,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( RegisterFormState form)  initial,required TResult Function( RegisterFormState form)  loading,required TResult Function( RegisterFormState form,  RegisterResponseBody data)  registerSuccess,required TResult Function( RegisterFormState form,  CreateAccountResponseBody data)  createAccountSuccess,required TResult Function( RegisterFormState form,  List<RequiredFileModel> files)  getRequiredFilesSuccess,required TResult Function( RegisterFormState form,  String error)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( RegisterFormState form)  initial,required TResult Function( RegisterFormState form)  loading,required TResult Function( RegisterFormState form,  RegisterEntity data)  registerSuccess,required TResult Function( RegisterFormState form,  CreateAccountEntity data)  createAccountSuccess,required TResult Function( RegisterFormState form,  List<RequiredFileEntity> files)  getRequiredFilesSuccess,required TResult Function( RegisterFormState form,  String error)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that.form);case Loading():
@@ -219,7 +219,7 @@ return failure(_that.form,_that.error);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( RegisterFormState form)?  initial,TResult? Function( RegisterFormState form)?  loading,TResult? Function( RegisterFormState form,  RegisterResponseBody data)?  registerSuccess,TResult? Function( RegisterFormState form,  CreateAccountResponseBody data)?  createAccountSuccess,TResult? Function( RegisterFormState form,  List<RequiredFileModel> files)?  getRequiredFilesSuccess,TResult? Function( RegisterFormState form,  String error)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( RegisterFormState form)?  initial,TResult? Function( RegisterFormState form)?  loading,TResult? Function( RegisterFormState form,  RegisterEntity data)?  registerSuccess,TResult? Function( RegisterFormState form,  CreateAccountEntity data)?  createAccountSuccess,TResult? Function( RegisterFormState form,  List<RequiredFileEntity> files)?  getRequiredFilesSuccess,TResult? Function( RegisterFormState form,  String error)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that.form);case Loading() when loading != null:
@@ -393,7 +393,7 @@ class _RegisterSuccess implements RegisterState {
   
 
 @override final  RegisterFormState form;
- final  RegisterResponseBody data;
+ final  RegisterEntity data;
 
 /// Create a copy of RegisterState
 /// with the given fields replaced by the non-null parameter values.
@@ -425,11 +425,11 @@ abstract mixin class _$RegisterSuccessCopyWith<$Res> implements $RegisterStateCo
   factory _$RegisterSuccessCopyWith(_RegisterSuccess value, $Res Function(_RegisterSuccess) _then) = __$RegisterSuccessCopyWithImpl;
 @override @useResult
 $Res call({
- RegisterFormState form, RegisterResponseBody data
+ RegisterFormState form, RegisterEntity data
 });
 
 
-@override $RegisterFormStateCopyWith<$Res> get form;
+@override $RegisterFormStateCopyWith<$Res> get form;$RegisterEntityCopyWith<$Res> get data;
 
 }
 /// @nodoc
@@ -446,7 +446,7 @@ class __$RegisterSuccessCopyWithImpl<$Res>
   return _then(_RegisterSuccess(
 null == form ? _self.form : form // ignore: cast_nullable_to_non_nullable
 as RegisterFormState,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as RegisterResponseBody,
+as RegisterEntity,
   ));
 }
 
@@ -459,6 +459,15 @@ $RegisterFormStateCopyWith<$Res> get form {
   return $RegisterFormStateCopyWith<$Res>(_self.form, (value) {
     return _then(_self.copyWith(form: value));
   });
+}/// Create a copy of RegisterState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RegisterEntityCopyWith<$Res> get data {
+  
+  return $RegisterEntityCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
 }
 }
 
@@ -470,7 +479,7 @@ class _CreateAccountSuccess implements RegisterState {
   
 
 @override final  RegisterFormState form;
- final  CreateAccountResponseBody data;
+ final  CreateAccountEntity data;
 
 /// Create a copy of RegisterState
 /// with the given fields replaced by the non-null parameter values.
@@ -502,11 +511,11 @@ abstract mixin class _$CreateAccountSuccessCopyWith<$Res> implements $RegisterSt
   factory _$CreateAccountSuccessCopyWith(_CreateAccountSuccess value, $Res Function(_CreateAccountSuccess) _then) = __$CreateAccountSuccessCopyWithImpl;
 @override @useResult
 $Res call({
- RegisterFormState form, CreateAccountResponseBody data
+ RegisterFormState form, CreateAccountEntity data
 });
 
 
-@override $RegisterFormStateCopyWith<$Res> get form;
+@override $RegisterFormStateCopyWith<$Res> get form;$CreateAccountEntityCopyWith<$Res> get data;
 
 }
 /// @nodoc
@@ -523,7 +532,7 @@ class __$CreateAccountSuccessCopyWithImpl<$Res>
   return _then(_CreateAccountSuccess(
 null == form ? _self.form : form // ignore: cast_nullable_to_non_nullable
 as RegisterFormState,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as CreateAccountResponseBody,
+as CreateAccountEntity,
   ));
 }
 
@@ -536,6 +545,15 @@ $RegisterFormStateCopyWith<$Res> get form {
   return $RegisterFormStateCopyWith<$Res>(_self.form, (value) {
     return _then(_self.copyWith(form: value));
   });
+}/// Create a copy of RegisterState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CreateAccountEntityCopyWith<$Res> get data {
+  
+  return $CreateAccountEntityCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
 }
 }
 
@@ -543,12 +561,12 @@ $RegisterFormStateCopyWith<$Res> get form {
 
 
 class _GetRequiredFilesSuccess implements RegisterState {
-  const _GetRequiredFilesSuccess(this.form, {required final  List<RequiredFileModel> files}): _files = files;
+  const _GetRequiredFilesSuccess(this.form, {required final  List<RequiredFileEntity> files}): _files = files;
   
 
 @override final  RegisterFormState form;
- final  List<RequiredFileModel> _files;
- List<RequiredFileModel> get files {
+ final  List<RequiredFileEntity> _files;
+ List<RequiredFileEntity> get files {
   if (_files is EqualUnmodifiableListView) return _files;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_files);
@@ -585,7 +603,7 @@ abstract mixin class _$GetRequiredFilesSuccessCopyWith<$Res> implements $Registe
   factory _$GetRequiredFilesSuccessCopyWith(_GetRequiredFilesSuccess value, $Res Function(_GetRequiredFilesSuccess) _then) = __$GetRequiredFilesSuccessCopyWithImpl;
 @override @useResult
 $Res call({
- RegisterFormState form, List<RequiredFileModel> files
+ RegisterFormState form, List<RequiredFileEntity> files
 });
 
 
@@ -606,7 +624,7 @@ class __$GetRequiredFilesSuccessCopyWithImpl<$Res>
   return _then(_GetRequiredFilesSuccess(
 null == form ? _self.form : form // ignore: cast_nullable_to_non_nullable
 as RegisterFormState,files: null == files ? _self._files : files // ignore: cast_nullable_to_non_nullable
-as List<RequiredFileModel>,
+as List<RequiredFileEntity>,
   ));
 }
 
@@ -702,7 +720,7 @@ $RegisterFormStateCopyWith<$Res> get form {
 /// @nodoc
 mixin _$RegisterFormState {
 
- FullName get name; Email get email; PhoneNumber get phoneNumber; Password get password; Password get confirmPassword; String get birthDate; GenderType get gender; AccountTypeItem? get accountType; Map<int, File> get files; bool get isForgotPassword; String get lang; String get code; bool get isPhone; String get nationalityCode; String get country; int get cityId; int get currentStep; bool get isValid;
+ FullName get name; Email get email; PhoneNumber get phoneNumber; Password get password; Password get confirmPassword; String get birthDate; GenderType get gender; AccountTypeItemEntity? get accountType; Map<int, File> get files; bool get isForgotPassword; String get lang; String get code; bool get isPhone; String get nationalityCode; String get country; int get cityId; int get currentStep; bool get isValid;
 /// Create a copy of RegisterFormState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -733,11 +751,11 @@ abstract mixin class $RegisterFormStateCopyWith<$Res>  {
   factory $RegisterFormStateCopyWith(RegisterFormState value, $Res Function(RegisterFormState) _then) = _$RegisterFormStateCopyWithImpl;
 @useResult
 $Res call({
- FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItem? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, int cityId, int currentStep, bool isValid
+ FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItemEntity? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, int cityId, int currentStep, bool isValid
 });
 
 
-
+$AccountTypeItemEntityCopyWith<$Res>? get accountType;
 
 }
 /// @nodoc
@@ -760,7 +778,7 @@ as Password,confirmPassword: null == confirmPassword ? _self.confirmPassword : c
 as Password,birthDate: null == birthDate ? _self.birthDate : birthDate // ignore: cast_nullable_to_non_nullable
 as String,gender: null == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
 as GenderType,accountType: freezed == accountType ? _self.accountType : accountType // ignore: cast_nullable_to_non_nullable
-as AccountTypeItem?,files: null == files ? _self.files : files // ignore: cast_nullable_to_non_nullable
+as AccountTypeItemEntity?,files: null == files ? _self.files : files // ignore: cast_nullable_to_non_nullable
 as Map<int, File>,isForgotPassword: null == isForgotPassword ? _self.isForgotPassword : isForgotPassword // ignore: cast_nullable_to_non_nullable
 as bool,lang: null == lang ? _self.lang : lang // ignore: cast_nullable_to_non_nullable
 as String,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
@@ -773,7 +791,19 @@ as int,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullab
 as bool,
   ));
 }
+/// Create a copy of RegisterFormState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AccountTypeItemEntityCopyWith<$Res>? get accountType {
+    if (_self.accountType == null) {
+    return null;
+  }
 
+  return $AccountTypeItemEntityCopyWith<$Res>(_self.accountType!, (value) {
+    return _then(_self.copyWith(accountType: value));
+  });
+}
 }
 
 
@@ -855,7 +885,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItem? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  int cityId,  int currentStep,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  int cityId,  int currentStep,  bool isValid)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RegisterFormState() when $default != null:
 return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.cityId,_that.currentStep,_that.isValid);case _:
@@ -876,7 +906,7 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.co
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItem? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  int cityId,  int currentStep,  bool isValid)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  int cityId,  int currentStep,  bool isValid)  $default,) {final _that = this;
 switch (_that) {
 case _RegisterFormState():
 return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.cityId,_that.currentStep,_that.isValid);case _:
@@ -896,7 +926,7 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.co
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItem? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  int cityId,  int currentStep,  bool isValid)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  int cityId,  int currentStep,  bool isValid)?  $default,) {final _that = this;
 switch (_that) {
 case _RegisterFormState() when $default != null:
 return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.cityId,_that.currentStep,_that.isValid);case _:
@@ -911,7 +941,7 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.co
 
 
 class _RegisterFormState implements RegisterFormState {
-  const _RegisterFormState({this.name = const FullName.pure(), this.email = const Email.pure(), this.phoneNumber = const PhoneNumber.pure(), this.password = const Password.pure(), this.confirmPassword = const Password.pure(), this.birthDate = '', this.gender = GenderType.none, this.accountType = null, final  Map<int, File> files = const {}, this.isForgotPassword = false, this.lang = 'en', this.code = '', this.isPhone = true, this.nationalityCode = '', this.country = '', this.cityId = 0, this.currentStep = 0, this.isValid = false}): _files = files;
+  const _RegisterFormState({this.name = const FullName.pure(), this.email = const Email.pure(), this.phoneNumber = const PhoneNumber.pure(), this.password = const Password.pure(), this.confirmPassword = const Password.pure(), this.birthDate = '', this.gender = GenderType.none, this.accountType = null, final  Map<int, File> files = const {}, this.isForgotPassword = false, this.lang = 'en', this.code = '', this.isPhone = true, this.nationalityCode = '', this.country = '', this.cityId = 2, this.currentStep = 0, this.isValid = false}): _files = files;
   
 
 @override@JsonKey() final  FullName name;
@@ -921,7 +951,7 @@ class _RegisterFormState implements RegisterFormState {
 @override@JsonKey() final  Password confirmPassword;
 @override@JsonKey() final  String birthDate;
 @override@JsonKey() final  GenderType gender;
-@override@JsonKey() final  AccountTypeItem? accountType;
+@override@JsonKey() final  AccountTypeItemEntity? accountType;
  final  Map<int, File> _files;
 @override@JsonKey() Map<int, File> get files {
   if (_files is EqualUnmodifiableMapView) return _files;
@@ -969,11 +999,11 @@ abstract mixin class _$RegisterFormStateCopyWith<$Res> implements $RegisterFormS
   factory _$RegisterFormStateCopyWith(_RegisterFormState value, $Res Function(_RegisterFormState) _then) = __$RegisterFormStateCopyWithImpl;
 @override @useResult
 $Res call({
- FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItem? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, int cityId, int currentStep, bool isValid
+ FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItemEntity? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, int cityId, int currentStep, bool isValid
 });
 
 
-
+@override $AccountTypeItemEntityCopyWith<$Res>? get accountType;
 
 }
 /// @nodoc
@@ -996,7 +1026,7 @@ as Password,confirmPassword: null == confirmPassword ? _self.confirmPassword : c
 as Password,birthDate: null == birthDate ? _self.birthDate : birthDate // ignore: cast_nullable_to_non_nullable
 as String,gender: null == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
 as GenderType,accountType: freezed == accountType ? _self.accountType : accountType // ignore: cast_nullable_to_non_nullable
-as AccountTypeItem?,files: null == files ? _self._files : files // ignore: cast_nullable_to_non_nullable
+as AccountTypeItemEntity?,files: null == files ? _self._files : files // ignore: cast_nullable_to_non_nullable
 as Map<int, File>,isForgotPassword: null == isForgotPassword ? _self.isForgotPassword : isForgotPassword // ignore: cast_nullable_to_non_nullable
 as bool,lang: null == lang ? _self.lang : lang // ignore: cast_nullable_to_non_nullable
 as String,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
@@ -1010,7 +1040,19 @@ as bool,
   ));
 }
 
+/// Create a copy of RegisterFormState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AccountTypeItemEntityCopyWith<$Res>? get accountType {
+    if (_self.accountType == null) {
+    return null;
+  }
 
+  return $AccountTypeItemEntityCopyWith<$Res>(_self.accountType!, (value) {
+    return _then(_self.copyWith(accountType: value));
+  });
+}
 }
 
 // dart format on

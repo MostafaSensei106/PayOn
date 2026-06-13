@@ -5,23 +5,36 @@ import 'package:formz/formz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/constants/app_enums.dart';
+import '../../../../../core/constants/app_enums.dart';
 import '../../../../../core/utils/result/result.dart';
+import '../../../../../core/utils/use_case/base_use_case.dart';
 import '../../../../../core/utils/validator/email_validators.dart';
+
 import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
-import '../../../data/models/account_type/account_type_item.dart';
 import '../../../data/models/register/create_account_request_body.dart';
 import '../../../data/models/register/register_request_body.dart';
-import '../../../data/repositories/register/base_register_repository.dart';
+import '../../entities/account_type_entity.dart';
+import '../../use_cases/create_account_use_case.dart';
+import '../../use_cases/get_required_files_use_case.dart';
+import '../../use_cases/register_use_case.dart';
+import '../../use_cases/upload_kyc_files_use_case.dart';
 import 'register_state.dart';
 
 @injectable
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit(this._registerRepository)
-    : super(const RegisterState.initial(RegisterFormState()));
+  RegisterCubit(
+    this._registerUseCase,
+    this._createAccountUseCase,
+    this._getRequiredFilesUseCase,
+    this._uploadKycFilesUseCase,
+  ) : super(const RegisterState.initial(RegisterFormState()));
 
-  final BaseRegisterRepository _registerRepository;
+  final RegisterUseCase _registerUseCase;
+  final CreateAccountUseCase _createAccountUseCase;
+  final GetRequiredFilesUseCase _getRequiredFilesUseCase;
+  final UploadKycFilesUseCase _uploadKycFilesUseCase;
 
   RegisterFormState get currentForm => state.form;
 
@@ -36,7 +49,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
   }
 
-  void accountTypeOnChanged(AccountTypeItem? accountType) {
+  void accountTypeOnChanged(AccountTypeItemEntity? accountType) {
     final updatedForm = currentForm.copyWith(accountType: accountType);
     emit(
       RegisterState.initial(
@@ -182,11 +195,12 @@ class RegisterCubit extends Cubit<RegisterState> {
       cityId: currentForm.cityId,
     );
 
-    final result = await _registerRepository.register(body);
-    result.when(
-      success: (r) => emit(RegisterState.registerSuccess(currentForm, data: r)),
-      failure: (e) =>
-          emit(RegisterState.failure(currentForm, error: e.message)),
+    final result = await _registerUseCase(body);
+    result.fold(
+      onSuccess: (data) =>
+          emit(RegisterState.registerSuccess(currentForm, data: data)),
+      onFailure: (error) =>
+          emit(RegisterState.failure(currentForm, error: error.message)),
     );
   }
 
@@ -207,36 +221,35 @@ class RegisterCubit extends Cubit<RegisterState> {
       categoryId: categoryId,
     );
 
-    final result = await _registerRepository.createAccount(body);
+    final result = await _createAccountUseCase(body);
     result.fold(
-      onSuccess: (r) =>
-          emit(RegisterState.createAccountSuccess(currentForm, data: r)),
-      onFailure: (e) =>
-          emit(RegisterState.failure(currentForm, error: e.message)),
+      onSuccess: (data) =>
+          emit(RegisterState.createAccountSuccess(currentForm, data: data)),
+      onFailure: (error) =>
+          emit(RegisterState.failure(currentForm, error: error.message)),
     );
   }
 
   Future<void> getRequiredFiles() async {
     emit(RegisterState.loading(currentForm));
-    final result = await _registerRepository.getRequiredFiles();
+    final result = await _getRequiredFilesUseCase(const NoParams());
     result.fold(
-      onSuccess: (r) => emit(
-        RegisterState.getRequiredFilesSuccess(currentForm, files: r.data),
-      ),
-      onFailure: (e) =>
-          emit(RegisterState.failure(currentForm, error: e.message)),
+      onSuccess: (data) =>
+          emit(RegisterState.getRequiredFilesSuccess(currentForm, files: data)),
+      onFailure: (error) =>
+          emit(RegisterState.failure(currentForm, error: error.message)),
     );
   }
 
   Future<void> uploadKYCFiles(String accId) async {
     emit(RegisterState.loading(currentForm));
-    for (final entry in currentForm.files.entries) {
-      await _registerRepository.uploadFiles(
-        file: entry.value,
-        accId: accId,
-        requiredDocId: entry.key,
-      );
-    }
-    emit(RegisterState.initial(currentForm));
+    final result = await _uploadKycFilesUseCase(
+      UploadKycFilesParams(accId: accId, files: currentForm.files),
+    );
+    result.fold(
+      onSuccess: (_) => emit(RegisterState.initial(currentForm)),
+      onFailure: (error) =>
+          emit(RegisterState.failure(currentForm, error: error.message)),
+    );
   }
 }

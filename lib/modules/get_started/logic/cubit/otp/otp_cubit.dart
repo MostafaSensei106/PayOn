@@ -1,19 +1,21 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../core/constants/types/type_def.dart';
+import '../../../../../core/utils/result/result.dart';
 import '../../../data/models/send_otp/send_otp_request_body.dart';
 import '../../../data/models/verify_otp/verify_otp_request_body.dart';
-import '../../../data/repositories/otp/base_otp_repository.dart';
+import '../../use_cases/send_otp_use_case.dart';
+import '../../use_cases/verify_otp_use_case.dart';
 import '../register/register_state.dart';
 import 'otp_state.dart';
 
 @injectable
 class OtpCubit extends Cubit<OtpState> {
-  OtpCubit(this._otpRepository)
+  OtpCubit(this._sendOtpUseCase, this._verifyOtpUseCase)
     : super(const OtpState.initial(RegisterFormState()));
 
-  final BaseOtpRepository _otpRepository;
+  final SendOtpUseCase _sendOtpUseCase;
+  final VerifyOtpUseCase _verifyOtpUseCase;
 
   RegisterFormState get currentForm => state.form;
 
@@ -24,10 +26,10 @@ class OtpCubit extends Cubit<OtpState> {
       emailLang: currentForm.lang,
       isForgotPassword: currentForm.isForgotPassword,
     );
-    final response = await _otpRepository.sendOTP(body);
-    response.when(
-      success: (r) => emit(OtpState.success(currentForm, data: r)),
-      failure: (e) => emit(OtpState.failure(currentForm, error: e.message)),
+    final result = await _sendOtpUseCase(body);
+    result.fold(
+      onSuccess: (data) => emit(OtpState.success(currentForm, data: data)),
+      onFailure: (error) => emit(OtpState.failure(currentForm, error: error.message)),
     );
   }
 
@@ -37,10 +39,10 @@ class OtpCubit extends Cubit<OtpState> {
       email: currentForm.email.value,
       code: currentForm.code,
     );
-    final response = await _otpRepository.verifyOTP(body);
-    response.when(
-      success: (r) => emit(OtpState.success(currentForm, data: r)),
-      failure: (e) => emit(OtpState.failure(currentForm, error: e.message)),
+    final result = await _verifyOtpUseCase(body);
+    result.fold(
+      onSuccess: (data) => emit(OtpState.success(currentForm, data: data)),
+      onFailure: (error) => emit(OtpState.failure(currentForm, error: error.message)),
     );
   }
 }

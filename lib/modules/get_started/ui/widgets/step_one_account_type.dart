@@ -10,10 +10,10 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_widget_component.dart';
-import '../../data/models/account_type/account_type_response_body.dart';
 import '../../logic/cubit/account_type/account_type_cubit.dart';
 import '../../logic/cubit/account_type/account_type_state.dart';
 import '../../logic/cubit/register/register_cubit.dart';
+import '../../logic/entities/account_type_entity.dart';
 
 class StepOneAccountType extends StatelessWidget {
   const StepOneAccountType({super.key});
@@ -22,7 +22,7 @@ class StepOneAccountType extends StatelessWidget {
   Widget build(final BuildContext context) {
     return BlocBuilder<
       AccountTypeCubit,
-      AccountTypeState<AccountTypeResponseBody>
+      AccountTypeState<AccountTypeEntity>
     >(
       buildWhen: (previous, current) =>
           current is Success || current is Failure || current is Loading,
@@ -34,7 +34,7 @@ class StepOneAccountType extends StatelessWidget {
           },
           loading: () => const _AccountTypeSkeleton(),
           success: (data) {
-            final allItems = data.data.items;
+            final allItems = data.items;
             return RefreshIndicator(
               onRefresh: () =>
                   context.read<AccountTypeCubit>().getAccountTypes(),

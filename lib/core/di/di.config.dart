@@ -98,6 +98,20 @@ import 'package:payon/modules/get_started/logic/cubit/otp/otp_cubit.dart'
     as _i355;
 import 'package:payon/modules/get_started/logic/cubit/register/register_cubit.dart'
     as _i225;
+import 'package:payon/modules/get_started/logic/use_cases/create_account_use_case.dart'
+    as _i122;
+import 'package:payon/modules/get_started/logic/use_cases/get_account_types_use_case.dart'
+    as _i69;
+import 'package:payon/modules/get_started/logic/use_cases/get_required_files_use_case.dart'
+    as _i280;
+import 'package:payon/modules/get_started/logic/use_cases/register_use_case.dart'
+    as _i615;
+import 'package:payon/modules/get_started/logic/use_cases/send_otp_use_case.dart'
+    as _i271;
+import 'package:payon/modules/get_started/logic/use_cases/upload_kyc_files_use_case.dart'
+    as _i919;
+import 'package:payon/modules/get_started/logic/use_cases/verify_otp_use_case.dart'
+    as _i392;
 import 'package:payon/modules/home/data/repository/home_repostory.dart'
     as _i746;
 import 'package:payon/modules/home/logic/cubit/home_cubit.dart' as _i797;
@@ -236,6 +250,18 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i276.BaseAccountTypeRepository>(
       () => _i941.AccountTypeRepository(gh<_i550.ApiService>()),
     );
+    gh.factory<_i122.CreateAccountUseCase>(
+      () => _i122.CreateAccountUseCase(gh<_i1033.BaseRegisterRepository>()),
+    );
+    gh.factory<_i280.GetRequiredFilesUseCase>(
+      () => _i280.GetRequiredFilesUseCase(gh<_i1033.BaseRegisterRepository>()),
+    );
+    gh.factory<_i615.RegisterUseCase>(
+      () => _i615.RegisterUseCase(gh<_i1033.BaseRegisterRepository>()),
+    );
+    gh.factory<_i919.UploadKycFilesUseCase>(
+      () => _i919.UploadKycFilesUseCase(gh<_i1033.BaseRegisterRepository>()),
+    );
     gh.lazySingleton<_i78.BaseOtpRepository>(
       () => _i956.OtpRepository(gh<_i550.ApiService>()),
     );
@@ -252,9 +278,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i624.GetUserProfileUsecase>(
       () =>
           _i624.GetUserProfileUsecase(repo: gh<_i709.UserProfileRepository>()),
-    );
-    gh.factory<_i843.AccountTypeCubit>(
-      () => _i843.AccountTypeCubit(gh<_i276.BaseAccountTypeRepository>()),
     );
     gh.lazySingleton<_i206.CreateWalletRepository>(
       () => _i364.CreateWalletRepositoryImpl(gh<_i550.ApiService>()),
@@ -274,17 +297,28 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i860.GetCurrenciesUseCase>(
       () => _i860.GetCurrenciesUseCase(gh<_i206.CreateWalletRepository>()),
     );
-    gh.factory<_i225.RegisterCubit>(
-      () => _i225.RegisterCubit(gh<_i1033.BaseRegisterRepository>()),
+    gh.factory<_i69.GetAccountTypesUseCase>(
+      () => _i69.GetAccountTypesUseCase(gh<_i276.BaseAccountTypeRepository>()),
     );
-    gh.factory<_i355.OtpCubit>(
-      () => _i355.OtpCubit(gh<_i78.BaseOtpRepository>()),
+    gh.factory<_i225.RegisterCubit>(
+      () => _i225.RegisterCubit(
+        gh<_i615.RegisterUseCase>(),
+        gh<_i122.CreateAccountUseCase>(),
+        gh<_i280.GetRequiredFilesUseCase>(),
+        gh<_i919.UploadKycFilesUseCase>(),
+      ),
     );
     gh.lazySingleton<_i719.LoginRepository>(
       () => _i370.LoginRepositoryImpl(
         gh<_i550.ApiService>(),
         gh<_i333.BasePrefStorageService>(),
       ),
+    );
+    gh.factory<_i271.SendOtpUseCase>(
+      () => _i271.SendOtpUseCase(gh<_i78.BaseOtpRepository>()),
+    );
+    gh.factory<_i392.VerifyOtpUseCase>(
+      () => _i392.VerifyOtpUseCase(gh<_i78.BaseOtpRepository>()),
     );
     gh.factory<_i900.GetTransactionsUsecase>(
       () => _i900.GetTransactionsUsecase(repo: gh<_i746.HomeRepostory>()),
@@ -306,6 +340,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i72.EditProfileCubit>(
       () => _i72.EditProfileCubit(gh<_i771.EditUserProfileUsecase>()),
+    );
+    gh.factory<_i843.AccountTypeCubit>(
+      () => _i843.AccountTypeCubit(gh<_i69.GetAccountTypesUseCase>()),
     );
     gh.factory<_i1054.CheckWalletPinUsecase>(
       () => _i1054.CheckWalletPinUsecase(repo: gh<_i860.SendMoneyRepository>()),
@@ -334,6 +371,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i72.UserProfileCubit>(
       () => _i72.UserProfileCubit(gh<_i624.GetUserProfileUsecase>()),
+    );
+    gh.factory<_i355.OtpCubit>(
+      () => _i355.OtpCubit(
+        gh<_i271.SendOtpUseCase>(),
+        gh<_i392.VerifyOtpUseCase>(),
+      ),
     );
     gh.factory<_i126.UserFavoritesCubit>(
       () => _i126.UserFavoritesCubit(gh<_i537.GetUserFavoritesUsecase>()),
@@ -411,6 +454,17 @@ extension GetItInjectableX on _i174.GetIt {
   _i941.AccountTypeRepository get accountTypeRepository =>
       get<_i941.AccountTypeRepository>();
 
+  _i122.CreateAccountUseCase get createAccountUseCase =>
+      get<_i122.CreateAccountUseCase>();
+
+  _i280.GetRequiredFilesUseCase get getRequiredFilesUseCase =>
+      get<_i280.GetRequiredFilesUseCase>();
+
+  _i615.RegisterUseCase get registerUseCase => get<_i615.RegisterUseCase>();
+
+  _i919.UploadKycFilesUseCase get uploadKycFilesUseCase =>
+      get<_i919.UploadKycFilesUseCase>();
+
   _i956.OtpRepository get otpRepository => get<_i956.OtpRepository>();
 
   _i265.HomeRepositoryImpl get homeRepositoryImpl =>
@@ -424,8 +478,6 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i624.GetUserProfileUsecase get getUserProfileUsecase =>
       get<_i624.GetUserProfileUsecase>();
-
-  _i843.AccountTypeCubit get accountTypeCubit => get<_i843.AccountTypeCubit>();
 
   _i364.CreateWalletRepositoryImpl get createWalletRepositoryImpl =>
       get<_i364.CreateWalletRepositoryImpl>();
@@ -444,12 +496,17 @@ extension GetItInjectableX on _i174.GetIt {
   _i860.GetCurrenciesUseCase get getCurrenciesUseCase =>
       get<_i860.GetCurrenciesUseCase>();
 
-  _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
+  _i69.GetAccountTypesUseCase get getAccountTypesUseCase =>
+      get<_i69.GetAccountTypesUseCase>();
 
-  _i355.OtpCubit get otpCubit => get<_i355.OtpCubit>();
+  _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
 
   _i370.LoginRepositoryImpl get loginRepositoryImpl =>
       get<_i370.LoginRepositoryImpl>();
+
+  _i271.SendOtpUseCase get sendOtpUseCase => get<_i271.SendOtpUseCase>();
+
+  _i392.VerifyOtpUseCase get verifyOtpUseCase => get<_i392.VerifyOtpUseCase>();
 
   _i900.GetTransactionsUsecase get getTransactionsUsecase =>
       get<_i900.GetTransactionsUsecase>();
@@ -462,6 +519,8 @@ extension GetItInjectableX on _i174.GetIt {
   _i797.HomeCubit get homeCubit => get<_i797.HomeCubit>();
 
   _i72.EditProfileCubit get editProfileCubit => get<_i72.EditProfileCubit>();
+
+  _i843.AccountTypeCubit get accountTypeCubit => get<_i843.AccountTypeCubit>();
 
   _i1054.CheckWalletPinUsecase get checkWalletPinUsecase =>
       get<_i1054.CheckWalletPinUsecase>();
@@ -482,6 +541,8 @@ extension GetItInjectableX on _i174.GetIt {
       get<_i854.CreateWalletCubit>();
 
   _i72.UserProfileCubit get userProfileCubit => get<_i72.UserProfileCubit>();
+
+  _i355.OtpCubit get otpCubit => get<_i355.OtpCubit>();
 
   _i126.UserFavoritesCubit get userFavoritesCubit =>
       get<_i126.UserFavoritesCubit>();

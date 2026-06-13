@@ -7,10 +7,8 @@ import '../../../../../core/utils/validator/email_validators.dart';
 import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
-import '../../../data/models/account_type/account_type_item.dart';
-import '../../../data/models/register/create_account_response_body.dart';
-import '../../../data/models/register/register_response_body.dart';
-import '../../../data/models/required_files/get_required_files_response_body.dart';
+import '../../entities/account_type_entity.dart';
+import '../../entities/register_entities.dart';
 
 part 'register_state.freezed.dart';
 
@@ -20,15 +18,15 @@ sealed class RegisterState with _$RegisterState {
   const factory RegisterState.loading(RegisterFormState form) = Loading;
   const factory RegisterState.registerSuccess(
     RegisterFormState form, {
-    required RegisterResponseBody data,
+    required RegisterEntity data,
   }) = _RegisterSuccess;
   const factory RegisterState.createAccountSuccess(
     RegisterFormState form, {
-    required CreateAccountResponseBody data,
+    required CreateAccountEntity data,
   }) = _CreateAccountSuccess;
   const factory RegisterState.getRequiredFilesSuccess(
     RegisterFormState form, {
-    required List<RequiredFileModel> files,
+    required List<RequiredFileEntity> files,
   }) = _GetRequiredFilesSuccess;
   const factory RegisterState.failure(
     RegisterFormState form, {
@@ -46,7 +44,7 @@ abstract class RegisterFormState with _$RegisterFormState {
     @Default(Password.pure()) Password confirmPassword,
     @Default('') String birthDate,
     @Default(GenderType.none) GenderType gender,
-    @Default(null) AccountTypeItem? accountType,
+    @Default(null) AccountTypeItemEntity? accountType,
     @Default({}) Map<int, File> files,
 
     @Default(false) bool isForgotPassword,
@@ -57,7 +55,7 @@ abstract class RegisterFormState with _$RegisterFormState {
 
     @Default('') String nationalityCode,
     @Default('') String country,
-    @Default(0) int cityId,
+    @Default(2) int cityId,
 
     @Default(0) int currentStep,
     @Default(false) bool isValid,

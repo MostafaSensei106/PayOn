@@ -1,12 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../core/di/di.dart';
+import '../../../../core/extensions/extensions.dart';
 import '../../../../core/router/app_router.dart';
-import '../../../../core/services/toast/base_toast_service.dart';
 import '../../logic/cubit/otp/otp_cubit.dart';
 import '../../logic/cubit/otp/otp_state.dart' as otp;
 import '../../logic/cubit/register/register_cubit.dart';
@@ -54,7 +56,7 @@ class GetStartedPage extends HookWidget {
 
       if (currentPage.value == 0) {
         if (registerForm.accountType == null) return;
-        pageController.nextPage(
+        await pageController.nextPage(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
         );
@@ -78,31 +80,38 @@ class GetStartedPage extends HookWidget {
     return MultiBlocListener(
       listeners: [
         BlocListener<RegisterCubit, RegisterState>(
-          listener: (context, state) {
+          listener: (context, state) async {
             state.whenOrNull(
               registerSuccess: (form, data) async {
                 await context.read<RegisterCubit>().createAccount();
               },
-              createAccountSuccess: (form, data) {
+              loading: (form) => context.dialog.showLoading(),
+              createAccountSuccess: (form, data) async {
+                context.pop();
                 const targetPage = 2;
-                pageController.animateToPage(
+                await pageController.animateToPage(
                   targetPage,
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 );
                 context.read<RegisterCubit>().setStep(targetPage);
               },
-              getRequiredFilesSuccess: (form, files) {
+              getRequiredFilesSuccess: (form, files) async {
+                context.pop();
                 const targetPage = 3;
-                pageController.animateToPage(
+                await pageController.animateToPage(
                   targetPage,
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 );
                 context.read<RegisterCubit>().setStep(targetPage);
               },
-              failure: (form, error) {
-                getIt<BaseToastService>().showError(context, error);
+              failure: (form, error) async {
+                context.pop();
+                await context.dialog.showError(
+                  title: context.localeKeys.error,
+                  error: error,
+                );
               },
             );
           },
@@ -110,9 +119,16 @@ class GetStartedPage extends HookWidget {
         BlocListener<OtpCubit, otp.OtpState>(
           listener: (context, state) async {
             if (state is otp.Success) {
-              await context.read<RegisterCubit>().getRequiredFiles();
+              context.pop();
+              unawaited(context.read<RegisterCubit>().getRequiredFiles());
+            } else if (state is otp.Loading) {
+              context.dialog.showLoading();
             } else if (state is otp.Failure) {
-              getIt<BaseToastService>().showError(context, state.error);
+              context.pop();
+              await context.dialog.showError(
+                title: context.localeKeys.error,
+                error: state.error,
+              );
             }
           },
         ),
