@@ -95,7 +95,7 @@ extension RegisterStatePatterns on RegisterState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Loading value)?  loading,TResult Function( _RegisterSuccess value)?  registerSuccess,TResult Function( _CreateAccountSuccess value)?  createAccountSuccess,TResult Function( _GetRequiredFilesSuccess value)?  getRequiredFilesSuccess,TResult Function( _GetCountriesSuccess value)?  getCountriesSuccess,TResult Function( Failure value)?  failure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Loading value)?  loading,TResult Function( _RegisterSuccess value)?  registerSuccess,TResult Function( _CreateAccountSuccess value)?  createAccountSuccess,TResult Function( _GetRequiredFilesSuccess value)?  getRequiredFilesSuccess,TResult Function( _GetCountriesSuccess value)?  getCountriesSuccess,TResult Function( _KycUploadSuccess value)?  kycUploadSuccess,TResult Function( Failure value)?  failure,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -104,7 +104,8 @@ return loading(_that);case _RegisterSuccess() when registerSuccess != null:
 return registerSuccess(_that);case _CreateAccountSuccess() when createAccountSuccess != null:
 return createAccountSuccess(_that);case _GetRequiredFilesSuccess() when getRequiredFilesSuccess != null:
 return getRequiredFilesSuccess(_that);case _GetCountriesSuccess() when getCountriesSuccess != null:
-return getCountriesSuccess(_that);case Failure() when failure != null:
+return getCountriesSuccess(_that);case _KycUploadSuccess() when kycUploadSuccess != null:
+return kycUploadSuccess(_that);case Failure() when failure != null:
 return failure(_that);case _:
   return orElse();
 
@@ -123,7 +124,7 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Loading value)  loading,required TResult Function( _RegisterSuccess value)  registerSuccess,required TResult Function( _CreateAccountSuccess value)  createAccountSuccess,required TResult Function( _GetRequiredFilesSuccess value)  getRequiredFilesSuccess,required TResult Function( _GetCountriesSuccess value)  getCountriesSuccess,required TResult Function( Failure value)  failure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Loading value)  loading,required TResult Function( _RegisterSuccess value)  registerSuccess,required TResult Function( _CreateAccountSuccess value)  createAccountSuccess,required TResult Function( _GetRequiredFilesSuccess value)  getRequiredFilesSuccess,required TResult Function( _GetCountriesSuccess value)  getCountriesSuccess,required TResult Function( _KycUploadSuccess value)  kycUploadSuccess,required TResult Function( Failure value)  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial():
@@ -132,7 +133,8 @@ return loading(_that);case _RegisterSuccess():
 return registerSuccess(_that);case _CreateAccountSuccess():
 return createAccountSuccess(_that);case _GetRequiredFilesSuccess():
 return getRequiredFilesSuccess(_that);case _GetCountriesSuccess():
-return getCountriesSuccess(_that);case Failure():
+return getCountriesSuccess(_that);case _KycUploadSuccess():
+return kycUploadSuccess(_that);case Failure():
 return failure(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -147,7 +149,7 @@ return failure(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Loading value)?  loading,TResult? Function( _RegisterSuccess value)?  registerSuccess,TResult? Function( _CreateAccountSuccess value)?  createAccountSuccess,TResult? Function( _GetRequiredFilesSuccess value)?  getRequiredFilesSuccess,TResult? Function( _GetCountriesSuccess value)?  getCountriesSuccess,TResult? Function( Failure value)?  failure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Loading value)?  loading,TResult? Function( _RegisterSuccess value)?  registerSuccess,TResult? Function( _CreateAccountSuccess value)?  createAccountSuccess,TResult? Function( _GetRequiredFilesSuccess value)?  getRequiredFilesSuccess,TResult? Function( _GetCountriesSuccess value)?  getCountriesSuccess,TResult? Function( _KycUploadSuccess value)?  kycUploadSuccess,TResult? Function( Failure value)?  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -156,7 +158,8 @@ return loading(_that);case _RegisterSuccess() when registerSuccess != null:
 return registerSuccess(_that);case _CreateAccountSuccess() when createAccountSuccess != null:
 return createAccountSuccess(_that);case _GetRequiredFilesSuccess() when getRequiredFilesSuccess != null:
 return getRequiredFilesSuccess(_that);case _GetCountriesSuccess() when getCountriesSuccess != null:
-return getCountriesSuccess(_that);case Failure() when failure != null:
+return getCountriesSuccess(_that);case _KycUploadSuccess() when kycUploadSuccess != null:
+return kycUploadSuccess(_that);case Failure() when failure != null:
 return failure(_that);case _:
   return null;
 
@@ -174,7 +177,7 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( RegisterFormState form)?  initial,TResult Function( RegisterFormState form)?  loading,TResult Function( RegisterFormState form,  RegisterEntity data)?  registerSuccess,TResult Function( RegisterFormState form,  CreateAccountEntity data)?  createAccountSuccess,TResult Function( RegisterFormState form,  List<RequiredFileEntity> files)?  getRequiredFilesSuccess,TResult Function( RegisterFormState form,  List<CountryItemEntity> countries)?  getCountriesSuccess,TResult Function( RegisterFormState form,  String error)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( RegisterFormState form)?  initial,TResult Function( RegisterFormState form)?  loading,TResult Function( RegisterFormState form,  RegisterEntity data)?  registerSuccess,TResult Function( RegisterFormState form,  CreateAccountEntity data)?  createAccountSuccess,TResult Function( RegisterFormState form,  List<RequiredFileEntity> files)?  getRequiredFilesSuccess,TResult Function( RegisterFormState form,  List<CountryItemEntity> countries)?  getCountriesSuccess,TResult Function( RegisterFormState form)?  kycUploadSuccess,TResult Function( RegisterFormState form,  String error)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that.form);case Loading() when loading != null:
@@ -182,7 +185,8 @@ return loading(_that.form);case _RegisterSuccess() when registerSuccess != null:
 return registerSuccess(_that.form,_that.data);case _CreateAccountSuccess() when createAccountSuccess != null:
 return createAccountSuccess(_that.form,_that.data);case _GetRequiredFilesSuccess() when getRequiredFilesSuccess != null:
 return getRequiredFilesSuccess(_that.form,_that.files);case _GetCountriesSuccess() when getCountriesSuccess != null:
-return getCountriesSuccess(_that.form,_that.countries);case Failure() when failure != null:
+return getCountriesSuccess(_that.form,_that.countries);case _KycUploadSuccess() when kycUploadSuccess != null:
+return kycUploadSuccess(_that.form);case Failure() when failure != null:
 return failure(_that.form,_that.error);case _:
   return orElse();
 
@@ -201,7 +205,7 @@ return failure(_that.form,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( RegisterFormState form)  initial,required TResult Function( RegisterFormState form)  loading,required TResult Function( RegisterFormState form,  RegisterEntity data)  registerSuccess,required TResult Function( RegisterFormState form,  CreateAccountEntity data)  createAccountSuccess,required TResult Function( RegisterFormState form,  List<RequiredFileEntity> files)  getRequiredFilesSuccess,required TResult Function( RegisterFormState form,  List<CountryItemEntity> countries)  getCountriesSuccess,required TResult Function( RegisterFormState form,  String error)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( RegisterFormState form)  initial,required TResult Function( RegisterFormState form)  loading,required TResult Function( RegisterFormState form,  RegisterEntity data)  registerSuccess,required TResult Function( RegisterFormState form,  CreateAccountEntity data)  createAccountSuccess,required TResult Function( RegisterFormState form,  List<RequiredFileEntity> files)  getRequiredFilesSuccess,required TResult Function( RegisterFormState form,  List<CountryItemEntity> countries)  getCountriesSuccess,required TResult Function( RegisterFormState form)  kycUploadSuccess,required TResult Function( RegisterFormState form,  String error)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that.form);case Loading():
@@ -209,7 +213,8 @@ return loading(_that.form);case _RegisterSuccess():
 return registerSuccess(_that.form,_that.data);case _CreateAccountSuccess():
 return createAccountSuccess(_that.form,_that.data);case _GetRequiredFilesSuccess():
 return getRequiredFilesSuccess(_that.form,_that.files);case _GetCountriesSuccess():
-return getCountriesSuccess(_that.form,_that.countries);case Failure():
+return getCountriesSuccess(_that.form,_that.countries);case _KycUploadSuccess():
+return kycUploadSuccess(_that.form);case Failure():
 return failure(_that.form,_that.error);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -224,7 +229,7 @@ return failure(_that.form,_that.error);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( RegisterFormState form)?  initial,TResult? Function( RegisterFormState form)?  loading,TResult? Function( RegisterFormState form,  RegisterEntity data)?  registerSuccess,TResult? Function( RegisterFormState form,  CreateAccountEntity data)?  createAccountSuccess,TResult? Function( RegisterFormState form,  List<RequiredFileEntity> files)?  getRequiredFilesSuccess,TResult? Function( RegisterFormState form,  List<CountryItemEntity> countries)?  getCountriesSuccess,TResult? Function( RegisterFormState form,  String error)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( RegisterFormState form)?  initial,TResult? Function( RegisterFormState form)?  loading,TResult? Function( RegisterFormState form,  RegisterEntity data)?  registerSuccess,TResult? Function( RegisterFormState form,  CreateAccountEntity data)?  createAccountSuccess,TResult? Function( RegisterFormState form,  List<RequiredFileEntity> files)?  getRequiredFilesSuccess,TResult? Function( RegisterFormState form,  List<CountryItemEntity> countries)?  getCountriesSuccess,TResult? Function( RegisterFormState form)?  kycUploadSuccess,TResult? Function( RegisterFormState form,  String error)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that.form);case Loading() when loading != null:
@@ -232,7 +237,8 @@ return loading(_that.form);case _RegisterSuccess() when registerSuccess != null:
 return registerSuccess(_that.form,_that.data);case _CreateAccountSuccess() when createAccountSuccess != null:
 return createAccountSuccess(_that.form,_that.data);case _GetRequiredFilesSuccess() when getRequiredFilesSuccess != null:
 return getRequiredFilesSuccess(_that.form,_that.files);case _GetCountriesSuccess() when getCountriesSuccess != null:
-return getCountriesSuccess(_that.form,_that.countries);case Failure() when failure != null:
+return getCountriesSuccess(_that.form,_that.countries);case _KycUploadSuccess() when kycUploadSuccess != null:
+return kycUploadSuccess(_that.form);case Failure() when failure != null:
 return failure(_that.form,_that.error);case _:
   return null;
 
@@ -732,6 +738,81 @@ $RegisterFormStateCopyWith<$Res> get form {
 /// @nodoc
 
 
+class _KycUploadSuccess implements RegisterState {
+  const _KycUploadSuccess(this.form);
+  
+
+@override final  RegisterFormState form;
+
+/// Create a copy of RegisterState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$KycUploadSuccessCopyWith<_KycUploadSuccess> get copyWith => __$KycUploadSuccessCopyWithImpl<_KycUploadSuccess>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _KycUploadSuccess&&(identical(other.form, form) || other.form == form));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,form);
+
+@override
+String toString() {
+  return 'RegisterState.kycUploadSuccess(form: $form)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$KycUploadSuccessCopyWith<$Res> implements $RegisterStateCopyWith<$Res> {
+  factory _$KycUploadSuccessCopyWith(_KycUploadSuccess value, $Res Function(_KycUploadSuccess) _then) = __$KycUploadSuccessCopyWithImpl;
+@override @useResult
+$Res call({
+ RegisterFormState form
+});
+
+
+@override $RegisterFormStateCopyWith<$Res> get form;
+
+}
+/// @nodoc
+class __$KycUploadSuccessCopyWithImpl<$Res>
+    implements _$KycUploadSuccessCopyWith<$Res> {
+  __$KycUploadSuccessCopyWithImpl(this._self, this._then);
+
+  final _KycUploadSuccess _self;
+  final $Res Function(_KycUploadSuccess) _then;
+
+/// Create a copy of RegisterState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? form = null,}) {
+  return _then(_KycUploadSuccess(
+null == form ? _self.form : form // ignore: cast_nullable_to_non_nullable
+as RegisterFormState,
+  ));
+}
+
+/// Create a copy of RegisterState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RegisterFormStateCopyWith<$Res> get form {
+  
+  return $RegisterFormStateCopyWith<$Res>(_self.form, (value) {
+    return _then(_self.copyWith(form: value));
+  });
+}
+}
+
+/// @nodoc
+
+
 class Failure implements RegisterState {
   const Failure(this.form, {required this.error});
   
@@ -809,7 +890,7 @@ $RegisterFormStateCopyWith<$Res> get form {
 /// @nodoc
 mixin _$RegisterFormState {
 
- FullName get name; Email get email; PhoneNumber get phoneNumber; Password get password; Password get confirmPassword; String get birthDate; GenderType get gender; AccountTypeItemEntity? get accountType; Map<int, File> get files; bool get isForgotPassword; String get lang; String get code; bool get isPhone; String get nationalityCode; String get country; List<CountryItemEntity> get countries; List<RequiredFileEntity> get requiredFiles; int get cityId; int get currentStep; bool get isValid; bool get isOcrProcessing;
+ FullName get name; Email get email; PhoneNumber get phoneNumber; Password get password; Password get confirmPassword; String get birthDate; GenderType get gender; AccountTypeItemEntity? get accountType; Map<int, File> get files; bool get isForgotPassword; String get lang; String get code; bool get isPhone; String get nationalityCode; String get country; List<CountryItemEntity> get countries; List<RequiredFileEntity> get requiredFiles; int get cityId; int get currentStep; bool get isValid; bool get isOcrProcessing; String get accountId;
 /// Create a copy of RegisterFormState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -820,16 +901,16 @@ $RegisterFormStateCopyWith<RegisterFormState> get copyWith => _$RegisterFormStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RegisterFormState&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.birthDate, birthDate) || other.birthDate == birthDate)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.accountType, accountType) || other.accountType == accountType)&&const DeepCollectionEquality().equals(other.files, files)&&(identical(other.isForgotPassword, isForgotPassword) || other.isForgotPassword == isForgotPassword)&&(identical(other.lang, lang) || other.lang == lang)&&(identical(other.code, code) || other.code == code)&&(identical(other.isPhone, isPhone) || other.isPhone == isPhone)&&(identical(other.nationalityCode, nationalityCode) || other.nationalityCode == nationalityCode)&&(identical(other.country, country) || other.country == country)&&const DeepCollectionEquality().equals(other.countries, countries)&&const DeepCollectionEquality().equals(other.requiredFiles, requiredFiles)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.isOcrProcessing, isOcrProcessing) || other.isOcrProcessing == isOcrProcessing));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RegisterFormState&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.birthDate, birthDate) || other.birthDate == birthDate)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.accountType, accountType) || other.accountType == accountType)&&const DeepCollectionEquality().equals(other.files, files)&&(identical(other.isForgotPassword, isForgotPassword) || other.isForgotPassword == isForgotPassword)&&(identical(other.lang, lang) || other.lang == lang)&&(identical(other.code, code) || other.code == code)&&(identical(other.isPhone, isPhone) || other.isPhone == isPhone)&&(identical(other.nationalityCode, nationalityCode) || other.nationalityCode == nationalityCode)&&(identical(other.country, country) || other.country == country)&&const DeepCollectionEquality().equals(other.countries, countries)&&const DeepCollectionEquality().equals(other.requiredFiles, requiredFiles)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.isOcrProcessing, isOcrProcessing) || other.isOcrProcessing == isOcrProcessing)&&(identical(other.accountId, accountId) || other.accountId == accountId));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,name,email,phoneNumber,password,confirmPassword,birthDate,gender,accountType,const DeepCollectionEquality().hash(files),isForgotPassword,lang,code,isPhone,nationalityCode,country,const DeepCollectionEquality().hash(countries),const DeepCollectionEquality().hash(requiredFiles),cityId,currentStep,isValid,isOcrProcessing]);
+int get hashCode => Object.hashAll([runtimeType,name,email,phoneNumber,password,confirmPassword,birthDate,gender,accountType,const DeepCollectionEquality().hash(files),isForgotPassword,lang,code,isPhone,nationalityCode,country,const DeepCollectionEquality().hash(countries),const DeepCollectionEquality().hash(requiredFiles),cityId,currentStep,isValid,isOcrProcessing,accountId]);
 
 @override
 String toString() {
-  return 'RegisterFormState(name: $name, email: $email, phoneNumber: $phoneNumber, password: $password, confirmPassword: $confirmPassword, birthDate: $birthDate, gender: $gender, accountType: $accountType, files: $files, isForgotPassword: $isForgotPassword, lang: $lang, code: $code, isPhone: $isPhone, nationalityCode: $nationalityCode, country: $country, countries: $countries, requiredFiles: $requiredFiles, cityId: $cityId, currentStep: $currentStep, isValid: $isValid, isOcrProcessing: $isOcrProcessing)';
+  return 'RegisterFormState(name: $name, email: $email, phoneNumber: $phoneNumber, password: $password, confirmPassword: $confirmPassword, birthDate: $birthDate, gender: $gender, accountType: $accountType, files: $files, isForgotPassword: $isForgotPassword, lang: $lang, code: $code, isPhone: $isPhone, nationalityCode: $nationalityCode, country: $country, countries: $countries, requiredFiles: $requiredFiles, cityId: $cityId, currentStep: $currentStep, isValid: $isValid, isOcrProcessing: $isOcrProcessing, accountId: $accountId)';
 }
 
 
@@ -840,7 +921,7 @@ abstract mixin class $RegisterFormStateCopyWith<$Res>  {
   factory $RegisterFormStateCopyWith(RegisterFormState value, $Res Function(RegisterFormState) _then) = _$RegisterFormStateCopyWithImpl;
 @useResult
 $Res call({
- FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItemEntity? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, List<CountryItemEntity> countries, List<RequiredFileEntity> requiredFiles, int cityId, int currentStep, bool isValid, bool isOcrProcessing
+ FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItemEntity? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, List<CountryItemEntity> countries, List<RequiredFileEntity> requiredFiles, int cityId, int currentStep, bool isValid, bool isOcrProcessing, String accountId
 });
 
 
@@ -857,7 +938,7 @@ class _$RegisterFormStateCopyWithImpl<$Res>
 
 /// Create a copy of RegisterFormState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? email = null,Object? phoneNumber = null,Object? password = null,Object? confirmPassword = null,Object? birthDate = null,Object? gender = null,Object? accountType = freezed,Object? files = null,Object? isForgotPassword = null,Object? lang = null,Object? code = null,Object? isPhone = null,Object? nationalityCode = null,Object? country = null,Object? countries = null,Object? requiredFiles = null,Object? cityId = null,Object? currentStep = null,Object? isValid = null,Object? isOcrProcessing = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? email = null,Object? phoneNumber = null,Object? password = null,Object? confirmPassword = null,Object? birthDate = null,Object? gender = null,Object? accountType = freezed,Object? files = null,Object? isForgotPassword = null,Object? lang = null,Object? code = null,Object? isPhone = null,Object? nationalityCode = null,Object? country = null,Object? countries = null,Object? requiredFiles = null,Object? cityId = null,Object? currentStep = null,Object? isValid = null,Object? isOcrProcessing = null,Object? accountId = null,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as FullName,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
@@ -880,7 +961,8 @@ as List<RequiredFileEntity>,cityId: null == cityId ? _self.cityId : cityId // ig
 as int,currentStep: null == currentStep ? _self.currentStep : currentStep // ignore: cast_nullable_to_non_nullable
 as int,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,isOcrProcessing: null == isOcrProcessing ? _self.isOcrProcessing : isOcrProcessing // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 /// Create a copy of RegisterFormState
@@ -977,10 +1059,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  List<CountryItemEntity> countries,  List<RequiredFileEntity> requiredFiles,  int cityId,  int currentStep,  bool isValid,  bool isOcrProcessing)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  List<CountryItemEntity> countries,  List<RequiredFileEntity> requiredFiles,  int cityId,  int currentStep,  bool isValid,  bool isOcrProcessing,  String accountId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RegisterFormState() when $default != null:
-return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.countries,_that.requiredFiles,_that.cityId,_that.currentStep,_that.isValid,_that.isOcrProcessing);case _:
+return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.countries,_that.requiredFiles,_that.cityId,_that.currentStep,_that.isValid,_that.isOcrProcessing,_that.accountId);case _:
   return orElse();
 
 }
@@ -998,10 +1080,10 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.co
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  List<CountryItemEntity> countries,  List<RequiredFileEntity> requiredFiles,  int cityId,  int currentStep,  bool isValid,  bool isOcrProcessing)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  List<CountryItemEntity> countries,  List<RequiredFileEntity> requiredFiles,  int cityId,  int currentStep,  bool isValid,  bool isOcrProcessing,  String accountId)  $default,) {final _that = this;
 switch (_that) {
 case _RegisterFormState():
-return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.countries,_that.requiredFiles,_that.cityId,_that.currentStep,_that.isValid,_that.isOcrProcessing);case _:
+return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.countries,_that.requiredFiles,_that.cityId,_that.currentStep,_that.isValid,_that.isOcrProcessing,_that.accountId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1018,10 +1100,10 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.co
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  List<CountryItemEntity> countries,  List<RequiredFileEntity> requiredFiles,  int cityId,  int currentStep,  bool isValid,  bool isOcrProcessing)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FullName name,  Email email,  PhoneNumber phoneNumber,  Password password,  Password confirmPassword,  String birthDate,  GenderType gender,  AccountTypeItemEntity? accountType,  Map<int, File> files,  bool isForgotPassword,  String lang,  String code,  bool isPhone,  String nationalityCode,  String country,  List<CountryItemEntity> countries,  List<RequiredFileEntity> requiredFiles,  int cityId,  int currentStep,  bool isValid,  bool isOcrProcessing,  String accountId)?  $default,) {final _that = this;
 switch (_that) {
 case _RegisterFormState() when $default != null:
-return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.countries,_that.requiredFiles,_that.cityId,_that.currentStep,_that.isValid,_that.isOcrProcessing);case _:
+return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.confirmPassword,_that.birthDate,_that.gender,_that.accountType,_that.files,_that.isForgotPassword,_that.lang,_that.code,_that.isPhone,_that.nationalityCode,_that.country,_that.countries,_that.requiredFiles,_that.cityId,_that.currentStep,_that.isValid,_that.isOcrProcessing,_that.accountId);case _:
   return null;
 
 }
@@ -1033,7 +1115,7 @@ return $default(_that.name,_that.email,_that.phoneNumber,_that.password,_that.co
 
 
 class _RegisterFormState implements RegisterFormState {
-  const _RegisterFormState({this.name = const FullName.pure(), this.email = const Email.pure(), this.phoneNumber = const PhoneNumber.pure(), this.password = const Password.pure(), this.confirmPassword = const Password.pure(), this.birthDate = '', this.gender = GenderType.none, this.accountType = null, final  Map<int, File> files = const {}, this.isForgotPassword = false, this.lang = 'en', this.code = '', this.isPhone = true, this.nationalityCode = '', this.country = '', final  List<CountryItemEntity> countries = const [], final  List<RequiredFileEntity> requiredFiles = const [], this.cityId = 2, this.currentStep = 0, this.isValid = false, this.isOcrProcessing = false}): _files = files,_countries = countries,_requiredFiles = requiredFiles;
+  const _RegisterFormState({this.name = const FullName.pure(), this.email = const Email.pure(), this.phoneNumber = const PhoneNumber.pure(), this.password = const Password.pure(), this.confirmPassword = const Password.pure(), this.birthDate = '', this.gender = GenderType.none, this.accountType = null, final  Map<int, File> files = const {}, this.isForgotPassword = false, this.lang = 'en', this.code = '', this.isPhone = true, this.nationalityCode = '', this.country = '', final  List<CountryItemEntity> countries = const [], final  List<RequiredFileEntity> requiredFiles = const [], this.cityId = 2, this.currentStep = 0, this.isValid = false, this.isOcrProcessing = false, this.accountId = ''}): _files = files,_countries = countries,_requiredFiles = requiredFiles;
   
 
 @override@JsonKey() final  FullName name;
@@ -1075,6 +1157,7 @@ class _RegisterFormState implements RegisterFormState {
 @override@JsonKey() final  int currentStep;
 @override@JsonKey() final  bool isValid;
 @override@JsonKey() final  bool isOcrProcessing;
+@override@JsonKey() final  String accountId;
 
 /// Create a copy of RegisterFormState
 /// with the given fields replaced by the non-null parameter values.
@@ -1086,16 +1169,16 @@ _$RegisterFormStateCopyWith<_RegisterFormState> get copyWith => __$RegisterFormS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RegisterFormState&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.birthDate, birthDate) || other.birthDate == birthDate)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.accountType, accountType) || other.accountType == accountType)&&const DeepCollectionEquality().equals(other._files, _files)&&(identical(other.isForgotPassword, isForgotPassword) || other.isForgotPassword == isForgotPassword)&&(identical(other.lang, lang) || other.lang == lang)&&(identical(other.code, code) || other.code == code)&&(identical(other.isPhone, isPhone) || other.isPhone == isPhone)&&(identical(other.nationalityCode, nationalityCode) || other.nationalityCode == nationalityCode)&&(identical(other.country, country) || other.country == country)&&const DeepCollectionEquality().equals(other._countries, _countries)&&const DeepCollectionEquality().equals(other._requiredFiles, _requiredFiles)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.isOcrProcessing, isOcrProcessing) || other.isOcrProcessing == isOcrProcessing));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RegisterFormState&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.birthDate, birthDate) || other.birthDate == birthDate)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.accountType, accountType) || other.accountType == accountType)&&const DeepCollectionEquality().equals(other._files, _files)&&(identical(other.isForgotPassword, isForgotPassword) || other.isForgotPassword == isForgotPassword)&&(identical(other.lang, lang) || other.lang == lang)&&(identical(other.code, code) || other.code == code)&&(identical(other.isPhone, isPhone) || other.isPhone == isPhone)&&(identical(other.nationalityCode, nationalityCode) || other.nationalityCode == nationalityCode)&&(identical(other.country, country) || other.country == country)&&const DeepCollectionEquality().equals(other._countries, _countries)&&const DeepCollectionEquality().equals(other._requiredFiles, _requiredFiles)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.isOcrProcessing, isOcrProcessing) || other.isOcrProcessing == isOcrProcessing)&&(identical(other.accountId, accountId) || other.accountId == accountId));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,name,email,phoneNumber,password,confirmPassword,birthDate,gender,accountType,const DeepCollectionEquality().hash(_files),isForgotPassword,lang,code,isPhone,nationalityCode,country,const DeepCollectionEquality().hash(_countries),const DeepCollectionEquality().hash(_requiredFiles),cityId,currentStep,isValid,isOcrProcessing]);
+int get hashCode => Object.hashAll([runtimeType,name,email,phoneNumber,password,confirmPassword,birthDate,gender,accountType,const DeepCollectionEquality().hash(_files),isForgotPassword,lang,code,isPhone,nationalityCode,country,const DeepCollectionEquality().hash(_countries),const DeepCollectionEquality().hash(_requiredFiles),cityId,currentStep,isValid,isOcrProcessing,accountId]);
 
 @override
 String toString() {
-  return 'RegisterFormState(name: $name, email: $email, phoneNumber: $phoneNumber, password: $password, confirmPassword: $confirmPassword, birthDate: $birthDate, gender: $gender, accountType: $accountType, files: $files, isForgotPassword: $isForgotPassword, lang: $lang, code: $code, isPhone: $isPhone, nationalityCode: $nationalityCode, country: $country, countries: $countries, requiredFiles: $requiredFiles, cityId: $cityId, currentStep: $currentStep, isValid: $isValid, isOcrProcessing: $isOcrProcessing)';
+  return 'RegisterFormState(name: $name, email: $email, phoneNumber: $phoneNumber, password: $password, confirmPassword: $confirmPassword, birthDate: $birthDate, gender: $gender, accountType: $accountType, files: $files, isForgotPassword: $isForgotPassword, lang: $lang, code: $code, isPhone: $isPhone, nationalityCode: $nationalityCode, country: $country, countries: $countries, requiredFiles: $requiredFiles, cityId: $cityId, currentStep: $currentStep, isValid: $isValid, isOcrProcessing: $isOcrProcessing, accountId: $accountId)';
 }
 
 
@@ -1106,7 +1189,7 @@ abstract mixin class _$RegisterFormStateCopyWith<$Res> implements $RegisterFormS
   factory _$RegisterFormStateCopyWith(_RegisterFormState value, $Res Function(_RegisterFormState) _then) = __$RegisterFormStateCopyWithImpl;
 @override @useResult
 $Res call({
- FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItemEntity? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, List<CountryItemEntity> countries, List<RequiredFileEntity> requiredFiles, int cityId, int currentStep, bool isValid, bool isOcrProcessing
+ FullName name, Email email, PhoneNumber phoneNumber, Password password, Password confirmPassword, String birthDate, GenderType gender, AccountTypeItemEntity? accountType, Map<int, File> files, bool isForgotPassword, String lang, String code, bool isPhone, String nationalityCode, String country, List<CountryItemEntity> countries, List<RequiredFileEntity> requiredFiles, int cityId, int currentStep, bool isValid, bool isOcrProcessing, String accountId
 });
 
 
@@ -1123,7 +1206,7 @@ class __$RegisterFormStateCopyWithImpl<$Res>
 
 /// Create a copy of RegisterFormState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? email = null,Object? phoneNumber = null,Object? password = null,Object? confirmPassword = null,Object? birthDate = null,Object? gender = null,Object? accountType = freezed,Object? files = null,Object? isForgotPassword = null,Object? lang = null,Object? code = null,Object? isPhone = null,Object? nationalityCode = null,Object? country = null,Object? countries = null,Object? requiredFiles = null,Object? cityId = null,Object? currentStep = null,Object? isValid = null,Object? isOcrProcessing = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? email = null,Object? phoneNumber = null,Object? password = null,Object? confirmPassword = null,Object? birthDate = null,Object? gender = null,Object? accountType = freezed,Object? files = null,Object? isForgotPassword = null,Object? lang = null,Object? code = null,Object? isPhone = null,Object? nationalityCode = null,Object? country = null,Object? countries = null,Object? requiredFiles = null,Object? cityId = null,Object? currentStep = null,Object? isValid = null,Object? isOcrProcessing = null,Object? accountId = null,}) {
   return _then(_RegisterFormState(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as FullName,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
@@ -1146,7 +1229,8 @@ as List<RequiredFileEntity>,cityId: null == cityId ? _self.cityId : cityId // ig
 as int,currentStep: null == currentStep ? _self.currentStep : currentStep // ignore: cast_nullable_to_non_nullable
 as int,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,isOcrProcessing: null == isOcrProcessing ? _self.isOcrProcessing : isOcrProcessing // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

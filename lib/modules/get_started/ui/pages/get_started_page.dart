@@ -74,7 +74,7 @@ class GetStartedPage extends HookWidget {
         // But if user clicks 'Next' manually (if enabled), we could try to verify or just wait for cubit
       } else if (currentPage.value == 3) {
         // KYC Upload
-        const LoginRoute().go(context);
+        await cubit.uploadKYCFiles(registerForm.accountId);
       }
     }
 
@@ -94,6 +94,17 @@ class GetStartedPage extends HookWidget {
                 context.read<RegisterCubit>().setStep(targetPage);
               },
               loading: (form) => context.dialog.showLoading(),
+              kycUploadSuccess: (form) async {
+                context.pop();
+                await context.dialog.showInfo(
+                  title: 'Success',
+                  body:
+                      'Documents uploaded successfully! Now let\'s create your first wallet.',
+                );
+                if (context.mounted) {
+                  CreateWalletRoute(accountId: form.accountId).go(context);
+                }
+              },
               createAccountSuccess: (form, data) async {
                 context.pop();
                 const targetPage = 2;

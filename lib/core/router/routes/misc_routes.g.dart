@@ -25,16 +25,20 @@ List<RouteBase> get $appRoutes => [
 ];
 
 RouteBase get $createWalletRoute => GoRouteData.$route(
-  path: '/create-wallet',
+  path: '/create-wallet/:accountId',
   factory: $CreateWalletRoute._fromState,
 );
 
 mixin $CreateWalletRoute on GoRouteData {
   static CreateWalletRoute _fromState(GoRouterState state) =>
-      const CreateWalletRoute();
+      CreateWalletRoute(accountId: state.pathParameters['accountId']!);
+
+  CreateWalletRoute get _self => this as CreateWalletRoute;
 
   @override
-  String get location => GoRouteData.$location('/create-wallet');
+  String get location => GoRouteData.$location(
+    '/create-wallet/${Uri.encodeComponent(_self.accountId)}',
+  );
 
   @override
   void go(BuildContext context) => context.go(location);

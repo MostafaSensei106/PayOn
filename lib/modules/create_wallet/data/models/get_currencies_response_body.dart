@@ -54,10 +54,10 @@ class CurrencyItem {
 
 extension CurrencyItemMapper on CurrencyItem {
   CurrencyEntity toEntity() => CurrencyEntity(
-        id: id,
-        name: name,
-        code: code,
-        symbol: '',
-        country: countryCode,
-      );
+    id: id,
+    name: name,
+    code: code,
+    symbol: '',
+    country: countryCode,
+  );
 }

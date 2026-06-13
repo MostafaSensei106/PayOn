@@ -14,6 +14,10 @@ extension RegisterResponseBodyMapper on RegisterResponseBody {
 
 extension CreateAccountResponseBodyMapper on CreateAccountResponseBody {
   CreateAccountEntity toEntity() {
-    return CreateAccountEntity(message: message, data: data);
+    return CreateAccountEntity(
+      message: message,
+      accountId: data?.toString() ?? '',
+      data: data,
+    );
   }
 }

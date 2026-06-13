@@ -20,9 +20,15 @@ class OtpCubit extends Cubit<OtpState> {
 
   RegisterFormState get currentForm => state.form;
 
-  Future<void> sendOTP({String? phone, String? lang, bool? isForgotPassword}) async {
+  Future<void> sendOTP({
+    String? phone,
+    String? lang,
+    bool? isForgotPassword,
+  }) async {
     final updatedForm = currentForm.copyWith(
-      phoneNumber: phone != null ? PhoneNumber.dirty(phone) : currentForm.phoneNumber,
+      phoneNumber: phone != null
+          ? PhoneNumber.dirty(phone)
+          : currentForm.phoneNumber,
       lang: lang ?? currentForm.lang,
       isForgotPassword: isForgotPassword ?? currentForm.isForgotPassword,
     );
@@ -42,7 +48,9 @@ class OtpCubit extends Cubit<OtpState> {
 
   Future<void> verifyOTP(String otp, {String? phone}) async {
     final updatedForm = currentForm.copyWith(
-      phoneNumber: phone != null ? PhoneNumber.dirty(phone) : currentForm.phoneNumber,
+      phoneNumber: phone != null
+          ? PhoneNumber.dirty(phone)
+          : currentForm.phoneNumber,
       code: otp,
     );
     emit(OtpState.loading(updatedForm));

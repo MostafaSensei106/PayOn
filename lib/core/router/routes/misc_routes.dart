@@ -47,21 +47,23 @@ List<RouteBase> get miscRoutes => [
   $createWalletPinRoute,
 ];
 
-@TypedGoRoute<CreateWalletRoute>(path: RoutesNames.createWallet)
+@TypedGoRoute<CreateWalletRoute>(path: '${RoutesNames.createWallet}/:accountId')
 final class CreateWalletRoute extends CupertinoRouteData
     with $CreateWalletRoute {
-  const CreateWalletRoute();
+  const CreateWalletRoute({required this.accountId});
+
+  final String accountId;
 
   @override
   Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
     providers: [
       BlocProvider(
-        create: (context) => getIt<CreateWalletCubit>()
-          ..getCurrencies().ignore(),
+        create: (context) =>
+            getIt<CreateWalletCubit>()..getCurrencies().ignore(),
       ),
       BlocProvider.value(value: getIt<UserProfileCubit>()),
     ],
-    child: const CreateWalletPage(),
+    child: CreateWalletPage(accountId: accountId),
   );
 }
 

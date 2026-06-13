@@ -13,8 +13,11 @@ abstract class RegisterEntity with _$RegisterEntity {
 
 @freezed
 abstract class CreateAccountEntity with _$CreateAccountEntity {
-  const factory CreateAccountEntity({required String message, dynamic data}) =
-      _CreateAccountEntity;
+  const factory CreateAccountEntity({
+    required String message,
+    required String accountId,
+    dynamic data,
+  }) = _CreateAccountEntity;
 }
 
 @freezed

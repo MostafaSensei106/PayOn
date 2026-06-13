@@ -1,5 +1,6 @@
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -9,6 +10,8 @@ import '../../../../core/router/routes/misc_routes.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/services/theme/theme_service.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
+import '../../../../modules/profile/logic/cubit/user_profile_cubit.dart';
+import '../../../../modules/profile/logic/cubit/user_profile_state.dart';
 import '../../logic/entitys/wallets_entity.dart';
 
 class AccountBalanceCard extends HookWidget {
@@ -20,6 +23,12 @@ class AccountBalanceCard extends HookWidget {
     final l10n = getIt<L10nService>().get(context);
     final colorScheme = getIt<ThemeService>().get(context);
     final showBalance = useState(true);
+    final userProfileState = context.watch<UserProfileCubit>().state;
+
+    final accountId = userProfileState.maybeWhen(
+      success: (final data) => data.nationalId,
+      orElse: () => '',
+    );
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
@@ -96,8 +105,9 @@ class AccountBalanceCard extends HookWidget {
                       )
                     else if (w.isActive)
                       TextButton(
-                        onPressed: () =>
-                            const CreateWalletRoute().push<void>(context),
+                        onPressed: () => CreateWalletRoute(
+                          accountId: accountId,
+                        ).push<void>(context),
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                           minimumSize: Size.zero,

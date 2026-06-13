@@ -39,10 +39,7 @@ class CreateWalletPinPage extends HookWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Set Wallet PIN'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Set Wallet PIN'), centerTitle: true),
       body: BlocConsumer<CreateWalletCubit, CreateWalletState>(
         listener: (final context, final state) {
           state.maybeWhen(
@@ -57,11 +54,13 @@ class CreateWalletPinPage extends HookWidget {
                 context.go(RoutesNames.home);
               }
             },
-            failure: (final message) => unawaited(DialogComponent.showError(
-              context: context,
-              title: 'Error',
-              error: message,
-            )),
+            failure: (final message) => unawaited(
+              DialogComponent.showError(
+                context: context,
+                title: 'Error',
+                error: message,
+              ),
+            ),
             orElse: () {},
           );
         },
@@ -85,19 +84,16 @@ class CreateWalletPinPage extends HookWidget {
                     SizedBox(height: 24.h),
                     Text(
                       'Secure Your Wallet',
-                      style: Theme.of(
-                        context,
-                      ).textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.headlineMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 8.h),
                     Text(
                       'Set a 6-digit PIN to secure your transactions and sensitive operations.',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.grey,
-                      ),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodyMedium?.copyWith(color: Colors.grey),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 32.h),

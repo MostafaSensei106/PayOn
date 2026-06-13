@@ -32,7 +32,9 @@ class CurrencyItemWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
           border: Border.all(
-            color: isSelected ? colorScheme.primary : colorScheme.outlineVariant,
+            color: isSelected
+                ? colorScheme.primary
+                : colorScheme.outlineVariant,
             width: isSelected ? 2 : 1,
           ),
           color: isSelected
@@ -49,9 +51,7 @@ class CurrencyItemWidget extends StatelessWidget {
                 color: colorScheme.surfaceContainerHighest,
               ),
               clipBehavior: Clip.antiAlias,
-              child: CountryFlag.fromCountryCode(
-                currency.country,
-              ),
+              child: CountryFlag.fromCountryCode(currency.country),
             ),
             SizedBox(width: 16.w),
             Expanded(

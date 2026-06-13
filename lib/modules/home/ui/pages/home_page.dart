@@ -4,17 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/extensions/extensions.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
+import '../../../../core/utils/result/result.dart';
+import '../../../../core/utils/use_case/base_use_case.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/avatar/avatar_component.dart';
+import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
+import '../../../../modules/profile/logic/cubit/user_profile_cubit.dart';
+import '../../../../modules/profile/logic/cubit/user_profile_state.dart';
+import '../../../get_started/logic/use_cases/get_account_types_use_case.dart';
 import '../../logic/cubit/home_cubit.dart';
 import '../../logic/cubit/home_state.dart';
 import '../../logic/entitys/wallets_entity.dart';
@@ -25,11 +33,78 @@ import '../widgets/quick_action_item.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  Future<void> _onAddWallet(BuildContext context) async {
+    final homeCubit = context.read<HomeCubit>();
+
+    context.dialog.showLoading();
+
+    final result = await getIt<GetAccountTypesUseCase>().call(const NoParams());
+
+    if (!context.mounted) return;
+    context.pop(); // Close loading
+
+    await result.when(
+      success: (accountTypes) async {
+        final selectedType = await showModalBottomSheet<int>(
+          context: context,
+          isScrollControlled: true,
+          builder: (context) => Container(
+            padding: const EdgeInsets.all(AppConfig.padding),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Select Account Type',
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 16.h),
+                ...accountTypes.items.map(
+                  (type) => ListTileIconComponent(
+                    title: type.type,
+                    leading: type.parentId == 7
+                        ? Iconsax.shop_copy
+                        : Iconsax.user_copy,
+                    onTap: () => Navigator.pop(context, type.id),
+                  ),
+                ),
+                SizedBox(height: 16.h),
+              ],
+            ),
+          ),
+        );
+
+        if (selectedType != null && context.mounted) {
+          context.dialog.showLoading();
+          final accountId = await homeCubit.createAccount(
+            accountTypeId: selectedType,
+          );
+
+          if (context.mounted) {
+            context.pop(); // Close loading
+            if (accountId != null && accountId.isNotEmpty) {
+              CreateWalletRoute(accountId: accountId).push<void>(context);
+            }
+          }
+        }
+      },
+      failure: (error) =>
+          context.dialog.showError(title: 'Error', error: error.message),
+    );
+  }
+
   @override
   Widget build(final BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
     final cardController = PageController();
     final scrollController = ScrollController();
+    final userProfileState = context.watch<UserProfileCubit>().state;
+
+    final accountId = userProfileState.maybeWhen(
+      success: (final data) => data.nationalId,
+      orElse: () => '',
+    );
 
     return Scaffold(
       body: RefreshIndicator(
@@ -169,8 +244,7 @@ class HomePage extends StatelessWidget {
                         QuickActionItem(
                           icon: Iconsax.wallet_add_copy,
                           label: 'Add Wallet',
-                          onTap: () =>
-                              const CreateWalletRoute().push<void>(context),
+                          onTap: () => _onAddWallet(context),
                         ),
                       ],
                     ),

@@ -13,32 +13,27 @@ import '../../../../core/router/app_router.dart';
 import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
 import '../../../../core/widgets/feedback/dialog/dialog_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
-import '../../../profile/logic/cubit/user_profile_cubit.dart';
-import '../../../profile/logic/cubit/user_profile_state.dart';
+import '../../../../core/widgets/navigation/app_bar/side_page_app_bar_component.dart';
 import '../../logic/cubit/create_wallet_cubit.dart';
 import '../../logic/cubit/create_wallet_state.dart';
 import '../../logic/entity/currency_entity.dart';
 import '../widgets/currency_item_widget.dart';
 
 class CreateWalletPage extends HookWidget {
-  const CreateWalletPage({super.key});
+  const CreateWalletPage({required this.accountId, super.key});
+
+  final String accountId;
 
   @override
   Widget build(final BuildContext context) {
     final ipaController = useTextEditingController();
     final selectedCurrency = useState<CurrencyEntity?>(null);
     final currenciesList = useState<List<CurrencyEntity>>([]);
-    final userProfileState = context.watch<UserProfileCubit>().state;
 
     useListenable(ipaController);
 
-    final accountId = userProfileState.maybeWhen(
-      success: (final data) => data.nationalId,
-      orElse: () => '',
-    );
-
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Wallet'), centerTitle: true),
+      appBar: const SidePageAppBarComponent(title: 'Create Wallet'),
       body: BlocConsumer<CreateWalletCubit, CreateWalletState>(
         listener: (final context, final state) {
           state.maybeWhen(
@@ -105,7 +100,7 @@ class CreateWalletPage extends HookWidget {
                           label: 'Instant Payment Address (IPA)',
                           hintText: 'e.g., username',
                           prefixIcon: Iconsax.link_2_copy,
-                          suffixIcon: Padding(
+                          suffix: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 12.w),
                             child: Text(
                               '@payreb',
@@ -149,7 +144,7 @@ class CreateWalletPage extends HookWidget {
                         unawaited(
                           context.read<CreateWalletCubit>().createWallet(
                             accountId: accountId,
-                            ipa: '${ipaController.text}@payon',
+                            ipa: ipaController.text,
                             currencyId: selectedCurrency.value!.id,
                           ),
                         );

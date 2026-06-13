@@ -40,12 +40,11 @@ final class RegisterRepository implements BaseRegisterRepository {
     int page = 1,
     int size = 20,
   }) async => ApiExecutor.execute<GetRequiredFilesResponseBody>(
-    action:
-        () => _apiService.getRequiredFiles(
-          accountTypeId: accountTypeId,
-          page: page,
-          size: size,
-        ),
+    action: () => _apiService.getRequiredFiles(
+      accountTypeId: accountTypeId,
+      page: page,
+      size: size,
+    ),
   );
 
   @override

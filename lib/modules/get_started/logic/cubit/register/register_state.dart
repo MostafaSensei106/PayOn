@@ -33,6 +33,8 @@ sealed class RegisterState with _$RegisterState {
     RegisterFormState form, {
     required List<CountryItemEntity> countries,
   }) = _GetCountriesSuccess;
+  const factory RegisterState.kycUploadSuccess(RegisterFormState form) =
+      _KycUploadSuccess;
   const factory RegisterState.failure(
     RegisterFormState form, {
     required String error,
@@ -67,6 +69,7 @@ abstract class RegisterFormState with _$RegisterFormState {
     @Default(0) int currentStep,
     @Default(false) bool isValid,
     @Default(false) bool isOcrProcessing,
+    @Default('') String accountId,
   }) = _RegisterFormState;
 }
 

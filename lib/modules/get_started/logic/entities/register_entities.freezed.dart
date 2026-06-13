@@ -277,7 +277,7 @@ as String?,
 /// @nodoc
 mixin _$CreateAccountEntity {
 
- String get message; dynamic get data;
+ String get message; String get accountId; dynamic get data;
 /// Create a copy of CreateAccountEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -288,16 +288,16 @@ $CreateAccountEntityCopyWith<CreateAccountEntity> get copyWith => _$CreateAccoun
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAccountEntity&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.data, data));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAccountEntity&&(identical(other.message, message) || other.message == message)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&const DeepCollectionEquality().equals(other.data, data));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message,const DeepCollectionEquality().hash(data));
+int get hashCode => Object.hash(runtimeType,message,accountId,const DeepCollectionEquality().hash(data));
 
 @override
 String toString() {
-  return 'CreateAccountEntity(message: $message, data: $data)';
+  return 'CreateAccountEntity(message: $message, accountId: $accountId, data: $data)';
 }
 
 
@@ -308,7 +308,7 @@ abstract mixin class $CreateAccountEntityCopyWith<$Res>  {
   factory $CreateAccountEntityCopyWith(CreateAccountEntity value, $Res Function(CreateAccountEntity) _then) = _$CreateAccountEntityCopyWithImpl;
 @useResult
 $Res call({
- String message, dynamic data
+ String message, String accountId, dynamic data
 });
 
 
@@ -325,9 +325,10 @@ class _$CreateAccountEntityCopyWithImpl<$Res>
 
 /// Create a copy of CreateAccountEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? message = null,Object? data = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? message = null,Object? accountId = null,Object? data = freezed,}) {
   return _then(_self.copyWith(
 message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
 as String,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as dynamic,
   ));
@@ -414,10 +415,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String message,  dynamic data)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String message,  String accountId,  dynamic data)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateAccountEntity() when $default != null:
-return $default(_that.message,_that.data);case _:
+return $default(_that.message,_that.accountId,_that.data);case _:
   return orElse();
 
 }
@@ -435,10 +436,10 @@ return $default(_that.message,_that.data);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String message,  dynamic data)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String message,  String accountId,  dynamic data)  $default,) {final _that = this;
 switch (_that) {
 case _CreateAccountEntity():
-return $default(_that.message,_that.data);case _:
+return $default(_that.message,_that.accountId,_that.data);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -455,10 +456,10 @@ return $default(_that.message,_that.data);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String message,  dynamic data)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String message,  String accountId,  dynamic data)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateAccountEntity() when $default != null:
-return $default(_that.message,_that.data);case _:
+return $default(_that.message,_that.accountId,_that.data);case _:
   return null;
 
 }
@@ -470,10 +471,11 @@ return $default(_that.message,_that.data);case _:
 
 
 class _CreateAccountEntity implements CreateAccountEntity {
-  const _CreateAccountEntity({required this.message, this.data});
+  const _CreateAccountEntity({required this.message, required this.accountId, this.data});
   
 
 @override final  String message;
+@override final  String accountId;
 @override final  dynamic data;
 
 /// Create a copy of CreateAccountEntity
@@ -486,16 +488,16 @@ _$CreateAccountEntityCopyWith<_CreateAccountEntity> get copyWith => __$CreateAcc
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateAccountEntity&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.data, data));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateAccountEntity&&(identical(other.message, message) || other.message == message)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&const DeepCollectionEquality().equals(other.data, data));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message,const DeepCollectionEquality().hash(data));
+int get hashCode => Object.hash(runtimeType,message,accountId,const DeepCollectionEquality().hash(data));
 
 @override
 String toString() {
-  return 'CreateAccountEntity(message: $message, data: $data)';
+  return 'CreateAccountEntity(message: $message, accountId: $accountId, data: $data)';
 }
 
 
@@ -506,7 +508,7 @@ abstract mixin class _$CreateAccountEntityCopyWith<$Res> implements $CreateAccou
   factory _$CreateAccountEntityCopyWith(_CreateAccountEntity value, $Res Function(_CreateAccountEntity) _then) = __$CreateAccountEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String message, dynamic data
+ String message, String accountId, dynamic data
 });
 
 
@@ -523,9 +525,10 @@ class __$CreateAccountEntityCopyWithImpl<$Res>
 
 /// Create a copy of CreateAccountEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? message = null,Object? data = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,Object? accountId = null,Object? data = freezed,}) {
   return _then(_CreateAccountEntity(
 message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
 as String,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as dynamic,
   ));

@@ -12,9 +12,11 @@ import '../../../../../core/utils/validator/email_validators.dart';
 import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
+import '../../../data/models/register/create_account_request_body.dart';
 import '../../../data/models/register/register_request_body.dart';
 import '../../../data/models/send_otp/send_otp_request_body.dart';
 import '../../entities/account_type_entity.dart';
+import '../../use_cases/create_account_use_case.dart';
 import '../../use_cases/get_all_countries_use_case.dart';
 import '../../use_cases/get_required_files_use_case.dart';
 import '../../use_cases/params/get_required_files_params.dart';
@@ -27,6 +29,7 @@ import 'register_state.dart';
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(
     this._registerUseCase,
+    this._createAccountUseCase,
     this._getRequiredFilesUseCase,
     this._uploadKycFilesUseCase,
     this._getAllCountriesUseCase,
@@ -35,6 +38,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   ) : super(const RegisterState.initial(RegisterFormState()));
 
   final RegisterUseCase _registerUseCase;
+  final CreateAccountUseCase _createAccountUseCase;
   final GetRequiredFilesUseCase _getRequiredFilesUseCase;
   final UploadKycFilesUseCase _uploadKycFilesUseCase;
   final GetAllCountriesUseCase _getAllCountriesUseCase;
@@ -63,16 +67,43 @@ class RegisterCubit extends Cubit<RegisterState> {
     final result = await _registerUseCase(body);
     result.fold(
       onSuccess: (data) async {
-        final otpBody = SendOtpRequestBody(
-          phone: currentForm.formattedPhoneNumber,
-          emailLang: currentForm.lang,
-          isForgotPassword: false,
+        final updatedFormWithAccId = currentForm.copyWith(
+          accountId: data.accountId ?? '',
         );
-        final otpResult = await _sendOtpUseCase(otpBody);
-        otpResult.fold(
-          onSuccess: (_) =>
-              emit(RegisterState.registerSuccess(currentForm, data: data)),
-          onFailure: (error) =>
+
+        final createAccountBody = CreateAccountRequestBody(
+          accountTypeId: currentForm.accountType!.id,
+        );
+
+        final createAccountResult = await _createAccountUseCase(
+          createAccountBody,
+        );
+
+        await createAccountResult.fold(
+          onSuccess: (createAccountData) async {
+            final updatedFormWithAccId = currentForm.copyWith(
+              accountId: createAccountData.accountId,
+            );
+
+            final otpBody = SendOtpRequestBody(
+              phone: currentForm.formattedPhoneNumber,
+              emailLang: currentForm.lang,
+              isForgotPassword: false,
+            );
+            final otpResult = await _sendOtpUseCase(otpBody);
+            otpResult.fold(
+              onSuccess: (_) => emit(
+                RegisterState.registerSuccess(updatedFormWithAccId, data: data),
+              ),
+              onFailure: (error) => emit(
+                RegisterState.failure(
+                  updatedFormWithAccId,
+                  error: error.message,
+                ),
+              ),
+            );
+          },
+          onFailure: (error) async =>
               emit(RegisterState.failure(currentForm, error: error.message)),
         );
       },
@@ -121,7 +152,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       UploadKycFilesParams(accId: accId, files: currentForm.files),
     );
     result.fold(
-      onSuccess: (_) => emit(RegisterState.initial(currentForm)),
+      onSuccess: (_) => emit(RegisterState.kycUploadSuccess(currentForm)),
       onFailure: (error) =>
           emit(RegisterState.failure(currentForm, error: error.message)),
     );
@@ -234,9 +265,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   Future<void> updateFile(int docId, File file) async {
-    emit(
-      RegisterState.initial(currentForm.copyWith(isOcrProcessing: true)),
-    );
+    emit(RegisterState.initial(currentForm.copyWith(isOcrProcessing: true)));
 
     try {
       final extractedText = await _ocrService.extractText(file);
@@ -252,8 +281,8 @@ class RegisterCubit extends Cubit<RegisterState> {
         return;
       }
 
-      final updatedFiles =
-          Map<int, File>.from(currentForm.files)..[docId] = file;
+      final updatedFiles = Map<int, File>.from(currentForm.files)
+        ..[docId] = file;
       final updatedForm = currentForm.copyWith(
         files: updatedFiles,
         isOcrProcessing: false,
