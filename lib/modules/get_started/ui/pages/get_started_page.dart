@@ -84,7 +84,10 @@ class GetStartedPage extends HookWidget {
           listener: (context, state) async {
             state.whenOrNull(
               registerSuccess: (form, data) async {
-                await context.read<RegisterCubit>().createAccount();
+                await context.dialog.showInfo(
+                  title: context.localeKeys.success,
+                  body: data.message,
+                );
               },
               loading: (form) => context.dialog.showLoading(),
               createAccountSuccess: (form, data) async {

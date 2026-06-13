@@ -26,14 +26,12 @@ import 'register_state.dart';
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(
     this._registerUseCase,
-    this._createAccountUseCase,
     this._getRequiredFilesUseCase,
     this._uploadKycFilesUseCase,
     this._getAllCountriesUseCase,
   ) : super(const RegisterState.initial(RegisterFormState()));
 
   final RegisterUseCase _registerUseCase;
-  final CreateAccountUseCase _createAccountUseCase;
   final GetRequiredFilesUseCase _getRequiredFilesUseCase;
   final UploadKycFilesUseCase _uploadKycFilesUseCase;
   final GetAllCountriesUseCase _getAllCountriesUseCase;
@@ -61,32 +59,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     result.fold(
       onSuccess: (data) =>
           emit(RegisterState.registerSuccess(currentForm, data: data)),
-      onFailure: (error) =>
-          emit(RegisterState.failure(currentForm, error: error.message)),
-    );
-  }
-
-  Future<void> createAccount({
-    double? latitude,
-    double? longitude,
-    int? categoryId,
-  }) async {
-    final accountTypeId = currentForm.accountType?.id;
-    if (accountTypeId == null) return;
-
-    emit(RegisterState.loading(currentForm));
-
-    final body = CreateAccountRequestBody(
-      accountTypeId: accountTypeId,
-      latitude: accountTypeId == 1 ? null : latitude,
-      longitude: accountTypeId == 1 ? null : longitude,
-      categoryId: categoryId,
-    );
-
-    final result = await _createAccountUseCase(body);
-    result.fold(
-      onSuccess: (data) =>
-          emit(RegisterState.createAccountSuccess(currentForm, data: data)),
       onFailure: (error) =>
           emit(RegisterState.failure(currentForm, error: error.message)),
     );
