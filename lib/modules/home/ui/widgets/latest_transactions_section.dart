@@ -95,7 +95,7 @@ class LatestTransactionsSection extends StatelessWidget {
                 ),
                 if (transactions.isNotEmpty)
                   TextButtonComponent(
-                    onPressed: () => context.showBottomSheetComponent(
+                    onPressed: () => context.showBottomSheetComponent<void>(
                       title: context.localeKeys.latest_transactions,
                       child: CustomScrollView(
                         slivers: [
@@ -162,7 +162,7 @@ class LatestTransactionsSection extends StatelessWidget {
         );
 
         Future<void> onTap() async {
-          await context.showBottomSheetComponent(
+          await context.showBottomSheetComponent<void>(
             title: context.localeKeys.transaction_details,
             child: TransactionDetailsBottomSheet(transaction: item),
           );

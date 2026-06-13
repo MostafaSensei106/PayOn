@@ -16,6 +16,7 @@ import '../../../../core/router/app_router.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/utils/result/result.dart';
 import '../../../../core/utils/use_case/base_use_case.dart';
+import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/avatar/avatar_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
@@ -43,33 +44,52 @@ class HomePage extends StatelessWidget {
 
     await result.fold(
       onSuccess: (accountTypes) async {
-        final selectedType = await showModalBottomSheet<int>(
-          context: context,
-          isScrollControlled: true,
-          builder: (context) => Container(
-            padding: const EdgeInsets.all(AppConfig.padding),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Select Account Type',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 16.h),
-                ...accountTypes.items.map(
-                  (type) => ListTileIconComponent(
+        final selectedType = await context.showBottomSheetComponent<int>(
+          title: 'Select Account Type',
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ...List.generate(accountTypes.items.length, (index) {
+                final type = accountTypes.items[index];
+                final isFirst = index == 0;
+                final isLast = index == accountTypes.items.length - 1;
+                final leading = type.parentId == 7
+                    ? Iconsax.shop_copy
+                    : Iconsax.user_copy;
+                final trailing = Radio<int>(
+                  value: type.id,
+                  // ignore: deprecated_member_use, avoid_redundant_argument_values
+                  groupValue: null,
+                  // ignore: deprecated_member_use
+                  onChanged: (_) => context.pop(type.id),
+                );
+                void onTap() => context.pop(type.id);
+
+                if (isFirst) {
+                  return ListTileIconComponent.top(
                     title: type.type,
-                    leading: type.parentId == 7
-                        ? Iconsax.shop_copy
-                        : Iconsax.user_copy,
-                    onTap: () => Navigator.pop(context, type.id),
-                  ),
-                ),
-                SizedBox(height: 16.h),
-              ],
-            ),
+                    leading: leading,
+                    trailing: trailing,
+                    onTap: onTap,
+                  );
+                } else if (isLast) {
+                  return ListTileIconComponent.bottom(
+                    title: type.type,
+                    leading: leading,
+                    trailing: trailing,
+                    onTap: onTap,
+                  );
+                } else {
+                  return ListTileIconComponent.middle(
+                    title: type.type,
+                    leading: leading,
+                    trailing: trailing,
+                    onTap: onTap,
+                  );
+                }
+              }),
+              SizedBox(height: 16.h),
+            ],
           ),
         );
 
@@ -82,7 +102,9 @@ class HomePage extends StatelessWidget {
           if (context.mounted) {
             context.pop(); // Close loading
             if (accountId != null && accountId.isNotEmpty) {
-              unawaited(CreateWalletRoute(accountId: accountId).push<void>(context));
+              unawaited(
+                CreateWalletRoute(accountId: accountId).push<void>(context),
+              );
             }
           }
         }

@@ -74,7 +74,7 @@ class SendMoneyPage extends HookWidget {
             },
             transactionDraftSuccess: (form, draft) async {
               Navigator.pop(context);
-              await context.showBottomSheetComponent(
+              await context.showBottomSheetComponent<void>(
                 title: l10n.transaction_details,
                 child: BlocProvider.value(
                   value: context.read<SendMoneyCubit>(),

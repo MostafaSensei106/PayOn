@@ -6,12 +6,11 @@ import '../../services/theme/theme_service.dart';
 import '../navigation/app_bar/side_page_app_bar_component.dart';
 
 extension BottomSheetExtension on BuildContext {
-  // ignore: unused_element
-  Future<void> showBottomSheetComponent({
+  Future<T?> showBottomSheetComponent<T>({
     required String title,
     required Widget child,
   }) {
-    return showCupertinoModalBottomSheet(
+    return showCupertinoModalBottomSheet<T>(
       context: this,
       isDismissible: true,
       useRootNavigator: true,

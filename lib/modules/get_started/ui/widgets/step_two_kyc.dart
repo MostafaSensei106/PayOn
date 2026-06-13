@@ -76,20 +76,17 @@ class StepTwoKYC extends StatelessWidget {
               },
             ),
             if (form.isOcrProcessing)
-              Container(
-                color: Colors.black.withValues(alpha: 0.1),
-                child: const Center(
-                  child: Card(
-                    child: Padding(
-                      padding: EdgeInsets.all(AppConfig.padding),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          CircularProgressIndicator(),
-                          SizedBox(height: AppConfig.padding),
-                          Text('Analyzing document...'),
-                        ],
-                      ),
+              const Center(
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(AppConfig.padding),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CircularProgressIndicator(),
+                        SizedBox(height: AppConfig.padding),
+                        Text('Analyzing document...'),
+                      ],
                     ),
                   ),
                 ),
