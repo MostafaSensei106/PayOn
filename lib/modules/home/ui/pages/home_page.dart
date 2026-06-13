@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
           if (context.mounted) {
             context.pop(); // Close loading
             if (accountId != null && accountId.isNotEmpty) {
-              CreateWalletRoute(accountId: accountId).push<void>(context);
+              await CreateWalletRoute(accountId: accountId).push<void>(context);
             }
           }
         }
@@ -99,12 +99,6 @@ class HomePage extends StatelessWidget {
     final l10n = getIt<L10nService>().get(context);
     final cardController = PageController();
     final scrollController = ScrollController();
-    final userProfileState = context.watch<UserProfileCubit>().state;
-
-    final accountId = userProfileState.maybeWhen(
-      success: (final data) => data.nationalId,
-      orElse: () => '',
-    );
 
     return Scaffold(
       body: RefreshIndicator(
