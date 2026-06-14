@@ -97,47 +97,49 @@ class HomePage extends StatelessWidget {
 
         if (selectedType != null && context.mounted) {
           final addressController = TextEditingController();
-          final phoneController =
-              TextEditingController(text: userProfileState.data.phone);
-
-          final resultData = await context.showBottomSheetComponent<Map<String, String>>(
-            title: 'Account Details',
-            child: Padding(
-              padding: const EdgeInsets.all(AppConfig.padding),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextFormFieldComponent(
-                    controller: addressController,
-                    label: 'Address',
-                    prefixIcon: Iconsax.map_copy,
-                    onChanged: (String p1) {},
-                  ),
-                  const SizedBox(height: AppConfig.paddingHalf),
-                  TextFormFieldComponent(
-                    controller: phoneController,
-                    label: 'Phone Number',
-                    prefixIcon: Iconsax.call_copy,
-                    keyboardType: TextInputType.phone,
-                    onChanged: (String p1) {},
-                  ),
-                  const SizedBox(height: AppConfig.padding),
-                  FilledButtonComponent(
-                    label: 'Continue',
-                    onPressed: () => context.pop({
-                      'address': addressController.text,
-                      'phone': phoneController.text,
-                    }),
-                  ),
-                  SizedBox(height: 16.h),
-                ],
-              ),
-            ),
+          final phoneController = TextEditingController(
+            text: userProfileState.data.phone,
           );
 
-          if (resultData != null && 
-              resultData['address']!.isNotEmpty && 
-              resultData['phone']!.isNotEmpty && 
+          final resultData = await context
+              .showBottomSheetComponent<Map<String, String>>(
+                title: 'Account Details',
+                child: Padding(
+                  padding: const EdgeInsets.all(AppConfig.padding),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextFormFieldComponent(
+                        controller: addressController,
+                        label: 'Address',
+                        prefixIcon: Iconsax.map_copy,
+                        onChanged: (String p1) {},
+                      ),
+                      const SizedBox(height: AppConfig.paddingHalf),
+                      TextFormFieldComponent(
+                        controller: phoneController,
+                        label: 'Phone Number',
+                        prefixIcon: Iconsax.call_copy,
+                        keyboardType: TextInputType.phone,
+                        onChanged: (String p1) {},
+                      ),
+                      const SizedBox(height: AppConfig.padding),
+                      FilledButtonComponent(
+                        label: 'Continue',
+                        onPressed: () => context.pop({
+                          'address': addressController.text,
+                          'phone': phoneController.text,
+                        }),
+                      ),
+                      SizedBox(height: 16.h),
+                    ],
+                  ),
+                ),
+              );
+
+          if (resultData != null &&
+              resultData['address']!.isNotEmpty &&
+              resultData['phone']!.isNotEmpty &&
               context.mounted) {
             context.dialog.showLoading();
             final accountId = await homeCubit.createAccount(
@@ -191,10 +193,16 @@ class HomePage extends StatelessWidget {
                       unawaited(HapticFeedback.vibrate());
                       await const ProfileRoute().push<void>(context);
                     },
-                    child: const AvatarComponent(
-                      imageUrl:
-                          'https://hips.hearstapps.com/hmg-prod/images/demon-slayer-kimetsu-no-yaiba-646f30ac5433e.jpg',
-                    ),
+                    child:
+                        BlocBuilder<UserProfileCubit, profile.UserProfileState>(
+                          builder: (context, state) {
+                            final imageUrl = state.maybeWhen(
+                              success: (data) => data.imageUrl,
+                              orElse: () => null,
+                            );
+                            return AvatarComponent(imageUrl: imageUrl ?? '');
+                          },
+                        ),
                   ),
                 ),
               ),

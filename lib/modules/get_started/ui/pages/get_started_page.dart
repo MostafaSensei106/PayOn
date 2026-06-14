@@ -15,6 +15,7 @@ import '../../logic/cubit/register/register_cubit.dart';
 import '../../logic/cubit/register/register_state.dart';
 import '../widgets/get_started_header.dart';
 import '../widgets/get_started_navigation.dart';
+import '../widgets/step_five_create_wallet.dart';
 import '../widgets/step_one_account_details.dart';
 import '../widgets/step_one_account_type.dart';
 import '../widgets/step_three_otp.dart';
@@ -37,11 +38,10 @@ class GetStartedPage extends HookWidget {
     final registerState = context.watch<RegisterCubit>().state;
     final registerForm = registerState.form;
 
-    void previousPage() {
-      FocusScope.of(context).unfocus();
-      final targetPage = currentPage.value - 1;
+    void goToPage(int targetPage) {
       unawaited(
-        pageController.previousPage(
+        pageController.animateToPage(
+          targetPage,
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
         ),
@@ -50,19 +50,22 @@ class GetStartedPage extends HookWidget {
       context.read<RegisterCubit>().setStep(targetPage);
     }
 
+    void previousPage() {
+      FocusScope.of(context).unfocus();
+      goToPage(currentPage.value - 1);
+    }
+
     Future<void> nextPage() async {
       FocusScope.of(context).unfocus();
       final cubit = context.read<RegisterCubit>();
 
       if (currentPage.value == 0) {
+        // Step 1: Account Type → go to Step 2: Registration
         if (registerForm.accountType == null) return;
-        await pageController.nextPage(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-        );
-        cubit.setStep(1);
+        goToPage(1);
         unawaited(cubit.getCountries());
       } else if (currentPage.value == 1) {
+        // Step 2: Registration Form → Register + CreateAccount + SendOTP
         if (!registerForm.isValid ||
             !termsAccepted.value ||
             !privacyAccepted.value) {
@@ -70,11 +73,17 @@ class GetStartedPage extends HookWidget {
         }
         await cubit.register();
       } else if (currentPage.value == 2) {
-        // OTP logic usually verifies itself and moves forward or we move forward on success
-        // But if user clicks 'Next' manually (if enabled), we could try to verify or just wait for cubit
+        // Step 3: OTP — handled by OtpCubit listener
       } else if (currentPage.value == 3) {
-        // KYC Upload
+        // Step 4: KYC Upload
         await cubit.uploadKYCFiles(registerForm.accountId);
+      } else if (currentPage.value == 4) {
+        // Step 5: Wallet Creation
+        if (registerForm.walletStep == 0) {
+          await cubit.createWallet();
+        } else {
+          await cubit.createWalletPin();
+        }
       }
     }
 
@@ -82,28 +91,29 @@ class GetStartedPage extends HookWidget {
       listeners: [
         BlocListener<RegisterCubit, RegisterState>(
           listener: (context, state) async {
-            if (state is Loading) {
-              context.dialog.showLoading();
-              return;
-            }
-
-            state.whenOrNull(
+            await state.whenOrNull(
               registerSuccess: (form, data) async {
+                // Register + CreateAccount + SendOTP succeeded → go to OTP
                 if (Navigator.of(context).canPop()) context.pop();
-                const targetPage = 2; // OTP
-                unawaited(pageController.animateToPage(
-                  targetPage,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                ));
-                context.read<RegisterCubit>().setStep(targetPage);
+                goToPage(2);
               },
               kycUploadSuccess: (form) async {
+                // KYC uploaded → go to Create Wallet step
+                if (Navigator.of(context).canPop()) context.pop();
+                goToPage(4);
+                unawaited(context.read<RegisterCubit>().getCurrencies());
+              },
+              walletCreated: (form) async {
+                // Wallet created → stays on same page but switches to PIN sub-step
+                if (Navigator.of(context).canPop()) context.pop();
+              },
+              pinCreated: (form) async {
+                // PIN created → Registration complete! Navigate to home
                 if (Navigator.of(context).canPop()) context.pop();
                 await context.dialog.showInfo(
                   title: 'Success',
                   body:
-                      'Documents uploaded successfully! Your account is now under review.',
+                      'Your account and wallet have been created successfully!',
                 );
                 if (context.mounted) {
                   context.go(RoutesNames.home);
@@ -112,10 +122,11 @@ class GetStartedPage extends HookWidget {
               createAccountSuccess: (form, data) async {
                 if (Navigator.of(context).canPop()) context.pop();
               },
+              currenciesLoaded: (form) async {
+                if (Navigator.of(context).canPop()) context.pop();
+              },
               failure: (form, error) async {
-                if (form.currentStep != 3) {
-                  if (Navigator.of(context).canPop()) context.pop();
-                }
+                if (Navigator.of(context).canPop()) context.pop();
 
                 await context.dialog.showError(
                   title: context.localeKeys.error,
@@ -128,8 +139,10 @@ class GetStartedPage extends HookWidget {
         BlocListener<OtpCubit, otp.OtpState>(
           listener: (context, state) async {
             if (state is otp.Success) {
+              // OTP verified → go to KYC
               if (Navigator.of(context).canPop()) context.pop();
               unawaited(context.read<RegisterCubit>().getRequiredFiles());
+              goToPage(3);
             } else if (state is otp.Loading) {
               context.dialog.showLoading();
             } else if (state is otp.Failure) {
@@ -186,6 +199,7 @@ class GetStartedPage extends HookWidget {
                     ),
                     const StepThreeOTP(),
                     const StepTwoKYC(),
+                    const StepFiveCreateWallet(),
                   ],
                 ),
               ),

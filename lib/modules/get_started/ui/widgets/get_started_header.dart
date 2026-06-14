@@ -28,6 +28,7 @@ class GetStartedHeader extends StatelessWidget {
       1 => l10n.account_details,
       2 => l10n.otp_code,
       3 => 'KYC',
+      4 => 'Create Wallet',
       _ => '',
     };
 
@@ -40,7 +41,7 @@ class GetStartedHeader extends StatelessWidget {
         children: [
           SmoothPageIndicator(
             controller: pageController,
-            count: 4,
+            count: 5,
             effect: ScrollingDotsEffect(
               activeDotColor: colorScheme.primary,
               dotColor: colorScheme.outlineVariant,
@@ -53,7 +54,7 @@ class GetStartedHeader extends StatelessWidget {
               vertical: AppConfig.paddingQuarter,
             ),
             child: Text(
-              '${l10n.step} ${currentPage + 1} ${l10n.off} 4',
+              '${l10n.step} ${currentPage + 1} ${l10n.off} 5',
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
                 color: colorScheme.primary,
                 fontWeight: FontWeight.bold,

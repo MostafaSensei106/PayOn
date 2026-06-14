@@ -14,6 +14,7 @@ import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart'
 import '../../../../core/widgets/inputs/checkbox/checkbox_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../logic/cubit/register/register_cubit.dart';
+import '../../logic/cubit/register/register_state.dart';
 
 class StepOneAccountDetails extends StatefulWidget {
   const StepOneAccountDetails({
@@ -182,6 +183,28 @@ class _StepOneAccountDetailsState extends State<StepOneAccountDetails> {
               initialValue: form.address,
               onChanged: registerCubit.addressOnChanged,
             ),
+            if (!form.isPersonalType) ...[
+              TextFormFieldComponent(
+                label: 'Latitude',
+                prefixIcon: Iconsax.location_copy,
+                initialValue: form.latitude?.toString() ?? '',
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
+                onChanged: (val) =>
+                    registerCubit.latitudeOnChanged(double.tryParse(val)),
+              ),
+              TextFormFieldComponent(
+                label: 'Longitude',
+                prefixIcon: Iconsax.location_copy,
+                initialValue: form.longitude?.toString() ?? '',
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
+                onChanged: (val) =>
+                    registerCubit.longitudeOnChanged(double.tryParse(val)),
+              ),
+            ],
             TextFormFieldComponent(
               label: l10n.password,
               prefixIcon: Iconsax.lock_copy,

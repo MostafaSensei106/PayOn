@@ -26,11 +26,26 @@ class GetStartedNavigation extends StatelessWidget {
     final l10n = getIt<L10nService>().get(context);
     final isRtl = Directionality.of(context) == TextDirection.rtl;
 
+    final nextLabel = switch (currentPage) {
+      3 => l10n.create_account,
+      4 => 'Create Wallet',
+      _ => l10n.next,
+    };
+
+    final nextIcon = switch (currentPage) {
+      3 => Iconsax.user_add_copy,
+      4 => Iconsax.wallet_add_copy,
+      _ => isRtl ? Iconsax.arrow_left_2_copy : Iconsax.arrow_right_3_copy,
+    };
+
+    // Hide back button on OTP (step 2), KYC (step 3), and Wallet (step 4)
+    final showBack = currentPage > 0 && currentPage < 2;
+
     return Padding(
       padding: const EdgeInsets.all(AppConfig.paddingHalf),
       child: Row(
         children: [
-          if (currentPage > 0 && currentPage != 3) ...[
+          if (showBack) ...[
             Expanded(
               child: OutlinedButtonComponent.icon(
                 label: l10n.back,
@@ -45,12 +60,8 @@ class GetStartedNavigation extends StatelessWidget {
           Expanded(
             child: FilledButtonComponent.icon(
               key: ValueKey<int>(currentPage),
-              label: currentPage == 3 ? l10n.create_account : l10n.next,
-              icon: currentPage == 3
-                  ? Iconsax.user_add_copy
-                  : (isRtl
-                        ? Iconsax.arrow_left_2_copy
-                        : Iconsax.arrow_right_3_copy),
+              label: nextLabel,
+              icon: nextIcon,
               onPressed: onNext,
               isEnabled: isEnabled,
             ),
