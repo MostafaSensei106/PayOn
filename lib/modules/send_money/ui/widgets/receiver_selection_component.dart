@@ -109,11 +109,14 @@ class ReceiverSelectionComponent extends StatelessWidget {
   }
 
   void _showFavoritesBottomSheet(BuildContext context) {
+    final cubit = context.read<UserFavoritesCubit>();
     unawaited(
       context.showBottomSheetComponent(
         title: l10n.favorites,
-        child: BlocBuilder<UserFavoritesCubit, UserFavoritesState>(
-          builder: (context, state) {
+        child: BlocProvider.value(
+          value: cubit,
+          child: BlocBuilder<UserFavoritesCubit, UserFavoritesState>(
+            builder: (context, state) {
             return state.maybeWhen(
               loading: () => const Center(
                 child: Padding(
@@ -200,6 +203,7 @@ class ReceiverSelectionComponent extends StatelessWidget {
               orElse: () => const SizedBox.shrink(),
             );
           },
+        ),
         ),
       ),
     );
