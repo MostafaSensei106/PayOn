@@ -67,7 +67,9 @@ class StepTwoKYC extends StatelessWidget {
                               height: 150,
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
+                                borderRadius: BorderRadius.circular(
+                                  AppConfig.inBorderRadius,
+                                ),
                                 image: DecorationImage(
                                   image: FileImage(uploadedFile),
                                   fit: BoxFit.cover,
@@ -80,7 +82,11 @@ class StepTwoKYC extends StatelessWidget {
                               child: CircleAvatar(
                                 backgroundColor: Colors.green,
                                 radius: 12,
-                                child: Icon(Icons.check, size: 16, color: Colors.white),
+                                child: Icon(
+                                  Icons.check,
+                                  size: 16,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                             Positioned(
@@ -88,16 +94,21 @@ class StepTwoKYC extends StatelessWidget {
                               left: 0,
                               right: 0,
                               child: Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Colors.black54,
                                   borderRadius: BorderRadius.vertical(
-                                    bottom: Radius.circular(AppConfig.inBorderRadius),
+                                    bottom: Radius.circular(
+                                      AppConfig.inBorderRadius,
+                                    ),
                                   ),
                                 ),
                                 padding: const EdgeInsets.all(8),
                                 child: const Text(
                                   'Analyzed successfully',
-                                  style: TextStyle(color: Colors.white, fontSize: 12),
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
                                   textAlign: TextAlign.center,
                                 ),
                               ),
