@@ -101,12 +101,13 @@ extension RequestMoneyStatePatterns on RequestMoneyState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Loading value)?  loading,TResult Function( PendingRequestsLoaded value)?  pendingRequestsLoaded,TResult Function( CheckWalletSuccess value)?  checkWalletSuccess,TResult Function( TransactionDraftSuccess value)?  transactionDraftSuccess,TResult Function( RequestSentSuccess value)?  requestSentSuccess,TResult Function( RequestApprovedSuccess value)?  requestApprovedSuccess,TResult Function( Failure value)?  failure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Loading value)?  loading,TResult Function( PendingRequestsLoading value)?  pendingRequestsLoading,TResult Function( PendingRequestsLoaded value)?  pendingRequestsLoaded,TResult Function( CheckWalletSuccess value)?  checkWalletSuccess,TResult Function( TransactionDraftSuccess value)?  transactionDraftSuccess,TResult Function( RequestSentSuccess value)?  requestSentSuccess,TResult Function( RequestApprovedSuccess value)?  requestApprovedSuccess,TResult Function( Failure value)?  failure,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case Loading() when loading != null:
-return loading(_that);case PendingRequestsLoaded() when pendingRequestsLoaded != null:
+return loading(_that);case PendingRequestsLoading() when pendingRequestsLoading != null:
+return pendingRequestsLoading(_that);case PendingRequestsLoaded() when pendingRequestsLoaded != null:
 return pendingRequestsLoaded(_that);case CheckWalletSuccess() when checkWalletSuccess != null:
 return checkWalletSuccess(_that);case TransactionDraftSuccess() when transactionDraftSuccess != null:
 return transactionDraftSuccess(_that);case RequestSentSuccess() when requestSentSuccess != null:
@@ -130,12 +131,13 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Loading value)  loading,required TResult Function( PendingRequestsLoaded value)  pendingRequestsLoaded,required TResult Function( CheckWalletSuccess value)  checkWalletSuccess,required TResult Function( TransactionDraftSuccess value)  transactionDraftSuccess,required TResult Function( RequestSentSuccess value)  requestSentSuccess,required TResult Function( RequestApprovedSuccess value)  requestApprovedSuccess,required TResult Function( Failure value)  failure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Loading value)  loading,required TResult Function( PendingRequestsLoading value)  pendingRequestsLoading,required TResult Function( PendingRequestsLoaded value)  pendingRequestsLoaded,required TResult Function( CheckWalletSuccess value)  checkWalletSuccess,required TResult Function( TransactionDraftSuccess value)  transactionDraftSuccess,required TResult Function( RequestSentSuccess value)  requestSentSuccess,required TResult Function( RequestApprovedSuccess value)  requestApprovedSuccess,required TResult Function( Failure value)  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case Loading():
-return loading(_that);case PendingRequestsLoaded():
+return loading(_that);case PendingRequestsLoading():
+return pendingRequestsLoading(_that);case PendingRequestsLoaded():
 return pendingRequestsLoaded(_that);case CheckWalletSuccess():
 return checkWalletSuccess(_that);case TransactionDraftSuccess():
 return transactionDraftSuccess(_that);case RequestSentSuccess():
@@ -155,12 +157,13 @@ return failure(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Loading value)?  loading,TResult? Function( PendingRequestsLoaded value)?  pendingRequestsLoaded,TResult? Function( CheckWalletSuccess value)?  checkWalletSuccess,TResult? Function( TransactionDraftSuccess value)?  transactionDraftSuccess,TResult? Function( RequestSentSuccess value)?  requestSentSuccess,TResult? Function( RequestApprovedSuccess value)?  requestApprovedSuccess,TResult? Function( Failure value)?  failure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Loading value)?  loading,TResult? Function( PendingRequestsLoading value)?  pendingRequestsLoading,TResult? Function( PendingRequestsLoaded value)?  pendingRequestsLoaded,TResult? Function( CheckWalletSuccess value)?  checkWalletSuccess,TResult? Function( TransactionDraftSuccess value)?  transactionDraftSuccess,TResult? Function( RequestSentSuccess value)?  requestSentSuccess,TResult? Function( RequestApprovedSuccess value)?  requestApprovedSuccess,TResult? Function( Failure value)?  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case Loading() when loading != null:
-return loading(_that);case PendingRequestsLoaded() when pendingRequestsLoaded != null:
+return loading(_that);case PendingRequestsLoading() when pendingRequestsLoading != null:
+return pendingRequestsLoading(_that);case PendingRequestsLoaded() when pendingRequestsLoaded != null:
 return pendingRequestsLoaded(_that);case CheckWalletSuccess() when checkWalletSuccess != null:
 return checkWalletSuccess(_that);case TransactionDraftSuccess() when transactionDraftSuccess != null:
 return transactionDraftSuccess(_that);case RequestSentSuccess() when requestSentSuccess != null:
@@ -183,11 +186,12 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( RequestMoneyFormState formState)?  initial,TResult Function( RequestMoneyFormState formState)?  loading,TResult Function( RequestMoneyFormState formState,  List<TransactionItemEntity> requests)?  pendingRequestsLoaded,TResult Function( RequestMoneyFormState formState,  CheckWalletEntity data)?  checkWalletSuccess,TResult Function( RequestMoneyFormState formState,  CreateTracnsactionDraftEntity draft)?  transactionDraftSuccess,TResult Function( RequestMoneyFormState formState)?  requestSentSuccess,TResult Function( RequestMoneyFormState formState)?  requestApprovedSuccess,TResult Function( RequestMoneyFormState formState,  String message)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( RequestMoneyFormState formState)?  initial,TResult Function( RequestMoneyFormState formState)?  loading,TResult Function( RequestMoneyFormState formState)?  pendingRequestsLoading,TResult Function( RequestMoneyFormState formState,  List<TransactionItemEntity> requests)?  pendingRequestsLoaded,TResult Function( RequestMoneyFormState formState,  CheckWalletEntity data)?  checkWalletSuccess,TResult Function( RequestMoneyFormState formState,  CreateTracnsactionDraftEntity draft)?  transactionDraftSuccess,TResult Function( RequestMoneyFormState formState)?  requestSentSuccess,TResult Function( RequestMoneyFormState formState)?  requestApprovedSuccess,TResult Function( RequestMoneyFormState formState,  String message)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that.formState);case Loading() when loading != null:
-return loading(_that.formState);case PendingRequestsLoaded() when pendingRequestsLoaded != null:
+return loading(_that.formState);case PendingRequestsLoading() when pendingRequestsLoading != null:
+return pendingRequestsLoading(_that.formState);case PendingRequestsLoaded() when pendingRequestsLoaded != null:
 return pendingRequestsLoaded(_that.formState,_that.requests);case CheckWalletSuccess() when checkWalletSuccess != null:
 return checkWalletSuccess(_that.formState,_that.data);case TransactionDraftSuccess() when transactionDraftSuccess != null:
 return transactionDraftSuccess(_that.formState,_that.draft);case RequestSentSuccess() when requestSentSuccess != null:
@@ -211,11 +215,12 @@ return failure(_that.formState,_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( RequestMoneyFormState formState)  initial,required TResult Function( RequestMoneyFormState formState)  loading,required TResult Function( RequestMoneyFormState formState,  List<TransactionItemEntity> requests)  pendingRequestsLoaded,required TResult Function( RequestMoneyFormState formState,  CheckWalletEntity data)  checkWalletSuccess,required TResult Function( RequestMoneyFormState formState,  CreateTracnsactionDraftEntity draft)  transactionDraftSuccess,required TResult Function( RequestMoneyFormState formState)  requestSentSuccess,required TResult Function( RequestMoneyFormState formState)  requestApprovedSuccess,required TResult Function( RequestMoneyFormState formState,  String message)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( RequestMoneyFormState formState)  initial,required TResult Function( RequestMoneyFormState formState)  loading,required TResult Function( RequestMoneyFormState formState)  pendingRequestsLoading,required TResult Function( RequestMoneyFormState formState,  List<TransactionItemEntity> requests)  pendingRequestsLoaded,required TResult Function( RequestMoneyFormState formState,  CheckWalletEntity data)  checkWalletSuccess,required TResult Function( RequestMoneyFormState formState,  CreateTracnsactionDraftEntity draft)  transactionDraftSuccess,required TResult Function( RequestMoneyFormState formState)  requestSentSuccess,required TResult Function( RequestMoneyFormState formState)  requestApprovedSuccess,required TResult Function( RequestMoneyFormState formState,  String message)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that.formState);case Loading():
-return loading(_that.formState);case PendingRequestsLoaded():
+return loading(_that.formState);case PendingRequestsLoading():
+return pendingRequestsLoading(_that.formState);case PendingRequestsLoaded():
 return pendingRequestsLoaded(_that.formState,_that.requests);case CheckWalletSuccess():
 return checkWalletSuccess(_that.formState,_that.data);case TransactionDraftSuccess():
 return transactionDraftSuccess(_that.formState,_that.draft);case RequestSentSuccess():
@@ -235,11 +240,12 @@ return failure(_that.formState,_that.message);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( RequestMoneyFormState formState)?  initial,TResult? Function( RequestMoneyFormState formState)?  loading,TResult? Function( RequestMoneyFormState formState,  List<TransactionItemEntity> requests)?  pendingRequestsLoaded,TResult? Function( RequestMoneyFormState formState,  CheckWalletEntity data)?  checkWalletSuccess,TResult? Function( RequestMoneyFormState formState,  CreateTracnsactionDraftEntity draft)?  transactionDraftSuccess,TResult? Function( RequestMoneyFormState formState)?  requestSentSuccess,TResult? Function( RequestMoneyFormState formState)?  requestApprovedSuccess,TResult? Function( RequestMoneyFormState formState,  String message)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( RequestMoneyFormState formState)?  initial,TResult? Function( RequestMoneyFormState formState)?  loading,TResult? Function( RequestMoneyFormState formState)?  pendingRequestsLoading,TResult? Function( RequestMoneyFormState formState,  List<TransactionItemEntity> requests)?  pendingRequestsLoaded,TResult? Function( RequestMoneyFormState formState,  CheckWalletEntity data)?  checkWalletSuccess,TResult? Function( RequestMoneyFormState formState,  CreateTracnsactionDraftEntity draft)?  transactionDraftSuccess,TResult? Function( RequestMoneyFormState formState)?  requestSentSuccess,TResult? Function( RequestMoneyFormState formState)?  requestApprovedSuccess,TResult? Function( RequestMoneyFormState formState,  String message)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that.formState);case Loading() when loading != null:
-return loading(_that.formState);case PendingRequestsLoaded() when pendingRequestsLoaded != null:
+return loading(_that.formState);case PendingRequestsLoading() when pendingRequestsLoading != null:
+return pendingRequestsLoading(_that.formState);case PendingRequestsLoaded() when pendingRequestsLoaded != null:
 return pendingRequestsLoaded(_that.formState,_that.requests);case CheckWalletSuccess() when checkWalletSuccess != null:
 return checkWalletSuccess(_that.formState,_that.data);case TransactionDraftSuccess() when transactionDraftSuccess != null:
 return transactionDraftSuccess(_that.formState,_that.draft);case RequestSentSuccess() when requestSentSuccess != null:
@@ -398,6 +404,87 @@ class _$LoadingCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? formState = null,}) {
   return _then(Loading(
+null == formState ? _self.formState : formState // ignore: cast_nullable_to_non_nullable
+as RequestMoneyFormState,
+  ));
+}
+
+/// Create a copy of RequestMoneyState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestMoneyFormStateCopyWith<$Res> get formState {
+  
+  return $RequestMoneyFormStateCopyWith<$Res>(_self.formState, (value) {
+    return _then(_self.copyWith(formState: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class PendingRequestsLoading with DiagnosticableTreeMixin implements RequestMoneyState {
+  const PendingRequestsLoading(this.formState);
+  
+
+@override final  RequestMoneyFormState formState;
+
+/// Create a copy of RequestMoneyState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PendingRequestsLoadingCopyWith<PendingRequestsLoading> get copyWith => _$PendingRequestsLoadingCopyWithImpl<PendingRequestsLoading>(this, _$identity);
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestMoneyState.pendingRequestsLoading'))
+    ..add(DiagnosticsProperty('formState', formState));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PendingRequestsLoading&&(identical(other.formState, formState) || other.formState == formState));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,formState);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestMoneyState.pendingRequestsLoading(formState: $formState)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PendingRequestsLoadingCopyWith<$Res> implements $RequestMoneyStateCopyWith<$Res> {
+  factory $PendingRequestsLoadingCopyWith(PendingRequestsLoading value, $Res Function(PendingRequestsLoading) _then) = _$PendingRequestsLoadingCopyWithImpl;
+@override @useResult
+$Res call({
+ RequestMoneyFormState formState
+});
+
+
+@override $RequestMoneyFormStateCopyWith<$Res> get formState;
+
+}
+/// @nodoc
+class _$PendingRequestsLoadingCopyWithImpl<$Res>
+    implements $PendingRequestsLoadingCopyWith<$Res> {
+  _$PendingRequestsLoadingCopyWithImpl(this._self, this._then);
+
+  final PendingRequestsLoading _self;
+  final $Res Function(PendingRequestsLoading) _then;
+
+/// Create a copy of RequestMoneyState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? formState = null,}) {
+  return _then(PendingRequestsLoading(
 null == formState ? _self.formState : formState // ignore: cast_nullable_to_non_nullable
 as RequestMoneyFormState,
   ));

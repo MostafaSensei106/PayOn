@@ -15,6 +15,8 @@ sealed class RequestMoneyState with _$RequestMoneyState {
       _Initial;
   const factory RequestMoneyState.loading(RequestMoneyFormState formState) =
       Loading;
+  const factory RequestMoneyState.pendingRequestsLoading(
+      RequestMoneyFormState formState) = PendingRequestsLoading;
   const factory RequestMoneyState.pendingRequestsLoaded(
     RequestMoneyFormState formState, {
     required List<TransactionItemEntity> requests,

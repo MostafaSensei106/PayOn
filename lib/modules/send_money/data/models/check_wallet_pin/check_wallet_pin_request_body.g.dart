@@ -23,7 +23,7 @@ Map<String, dynamic> _$CheckWalletPinRequestBodyToJson(
 ) => <String, dynamic>{
   'accountId': instance.walletId,
   'pinHash': instance.pinHash,
-  'draftIds': instance.draftIds,
-  'senderId': instance.senderId,
-  'transactionTypeId': instance.transactionTypeId,
+  'draftIds': ?instance.draftIds,
+  'senderId': ?instance.senderId,
+  'transactionTypeId': ?instance.transactionTypeId,
 };

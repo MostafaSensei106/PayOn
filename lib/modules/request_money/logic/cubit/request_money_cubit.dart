@@ -42,7 +42,7 @@ class RequestMoneyCubit extends Cubit<RequestMoneyState> {
 
   Future<void> getPendingRequests() async {
     final form = state.formState;
-    emit(RequestMoneyState.loading(form));
+    emit(RequestMoneyState.pendingRequestsLoading(form));
 
     final result = await _getPendingTransactionsU.call(const NoParams());
 

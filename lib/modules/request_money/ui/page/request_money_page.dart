@@ -116,9 +116,12 @@ class RequestMoneyPage extends HookWidget {
               context.toast.showSuccess(context, l10n.success);
             },
             requestApprovedSuccess: (form) {
-              Navigator.pop(context); // Close dialog
+              Navigator.pop(context); // Close loading
               context.toast.showSuccess(context, l10n.success);
               unawaited(context.read<RequestMoneyCubit>().getPendingRequests());
+            },
+            pendingRequestsLoaded: (form, requests) {
+              Navigator.pop(context); // Close loading
             },
             failure: (_, message) async {
               Navigator.pop(context); // Close loading/dialog

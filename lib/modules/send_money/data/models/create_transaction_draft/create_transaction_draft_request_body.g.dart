@@ -11,11 +11,11 @@ CreateTransactionDraftRequestBody _$CreateTransactionDraftRequestBodyFromJson(
 ) => CreateTransactionDraftRequestBody(
   senderId: json['senderId'] as String,
   receiverId: json['receiverId'] as String,
-  paymentId: json['paymentId'] as String?,
   amount: (json['amount'] as num).toDouble(),
   description: json['description'] as String,
   transactionTypeId: (json['transactionTypeId'] as num).toInt(),
   isTransactionByPhone: json['isTransactionByPhone'] as bool,
+  paymentId: json['paymentId'] as String?,
 );
 
 Map<String, dynamic> _$CreateTransactionDraftRequestBodyToJson(

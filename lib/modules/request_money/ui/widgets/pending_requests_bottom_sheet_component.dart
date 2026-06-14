@@ -6,6 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
+import '../../../../core/extensions/extensions.dart';
+import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/display/avatar/avatar_component.dart';
 import '../../../../core/widgets/display/card/card_component.dart';
 import '../../../../core/widgets/inputs/otp_field/otp_field_component.dart';
@@ -59,14 +61,16 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
                   final request = requests[index];
                   return CardComponent(
                     child: InkWell(
-                      onTap: () {
-                        _handleRequestTap(
-                          context,
-                          request.id,
-                          request.amount,
-                          request.currencyCode,
-                        );
-                      },
+                      onTap: request.isSender
+                          ? () {
+                              _handleRequestTap(
+                                context,
+                                request.id,
+                                request.amount,
+                                request.currencyCode,
+                              );
+                            }
+                          : null,
                       child: ListTile(
                         contentPadding: EdgeInsets.zero,
                         leading: AvatarComponent(
@@ -74,15 +78,29 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
                           radius: 24.r,
                         ),
                         title: Text(
-                          request.sender,
+                          request.isSender ? request.receiver : request.sender,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        subtitle: Text(
-                          '${request.amount} ${request.currencyCode}',
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontWeight: FontWeight.w600,
-                          ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              request.isSender ? 'Received Request' : 'Sent Request',
+                              style: TextStyle(
+                                fontSize: 10.sp,
+                                color: request.isSender ? Colors.red : Colors.green,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            SizedBox(height: 2.h),
+                            Text(
+                              '${request.amount} ${request.currencyCode}',
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
                         ),
                         trailing: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -127,32 +145,27 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
   ) {
     final cubit = context.read<RequestMoneyCubit>();
     unawaited(
-      showDialog<void>(
-        context: context,
-        builder: (ctx) {
-          return AlertDialog(
-            title: const Text('Approve Request?'),
-            content: Text(
-              'Do you want to approve this request for $amount $currencyCode?',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(ctx);
-                  _promptPinAndApprove(context, cubit, draftId, false);
-                },
-                child: const Text('Reject', style: TextStyle(color: Colors.red)),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(ctx);
-                  _promptPinAndApprove(context, cubit, draftId, true);
-                },
-                child: const Text('Approve'),
-              ),
-            ],
-          );
-        },
+      context.dialog.showDialog<void>(
+        title: const Text('Approve Request?'),
+        content: Text(
+          'Do you want to approve this request for $amount $currencyCode?',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _promptPinAndApprove(context, cubit, draftId, false);
+            },
+            child: const Text('Reject', style: TextStyle(color: Colors.red)),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _promptPinAndApprove(context, cubit, draftId, true);
+            },
+            child: const Text('Approve'),
+          ),
+        ],
       ),
     );
   }
@@ -164,46 +177,65 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
     bool isApproved,
   ) {
     unawaited(
-      showDialog<void>(
-        context: context,
-        builder: (ctx) {
-          var enteredPin = '';
-          return AlertDialog(
-            title: const Text('Enter PIN'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                OtpFieldComponent(
-                  onChanged: (pin) => enteredPin = pin,
-                  onCompleted: (pin) => enteredPin = pin,
-                ),
-              ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(ctx),
-                child: const Text('Cancel'),
+      context.showBottomSheetComponent<void>(
+        title: 'Enter PIN',
+        child: _PinEntryWidget(
+          onConfirm: (pin) {
+            Navigator.pop(context);
+            unawaited(
+              cubit.approvePendingRequest(
+                pin: pin,
+                walletId: walletId,
+                draftId: draftId,
+                isApproved: isApproved,
               ),
-              TextButton(
-                onPressed: () {
-                  if (enteredPin.length == 6) {
-                    Navigator.pop(ctx);
-                    unawaited(
-                      cubit.approvePendingRequest(
-                        pin: enteredPin,
-                        walletId: walletId,
-                        draftId: draftId,
-                        isApproved: isApproved,
-                      ),
-                    );
-                  }
-                },
-                child: const Text('Confirm'),
-              ),
-            ],
-          );
-        },
+            );
+          },
+        ),
       ),
+    );
+  }
+}
+
+class _PinEntryWidget extends StatefulWidget {
+  const _PinEntryWidget({required this.onConfirm});
+
+  final ValueChanged<String> onConfirm;
+
+  @override
+  State<_PinEntryWidget> createState() => _PinEntryWidgetState();
+}
+
+class _PinEntryWidgetState extends State<_PinEntryWidget> {
+  String _pin = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        OtpFieldComponent(
+          onChanged: (pin) {
+            setState(() {
+              _pin = pin;
+            });
+          },
+          onCompleted: (pin) {
+            setState(() {
+              _pin = pin;
+            });
+          },
+        ),
+        SizedBox(height: 24.h),
+        SizedBox(
+          width: double.infinity,
+          child: ElevatedButton(
+            onPressed: _pin.length == 6 ? () => widget.onConfirm(_pin) : null,
+            child: const Text('Confirm'),
+          ),
+        ),
+        SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
+      ],
     );
   }
 }
