@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -69,23 +70,46 @@ class _ScanQrcodePageState extends State<ScanQrcodePage> {
               scrollController: scrollController,
               title: l10n.scan_qr_code,
               expandedHeight: 220.h,
-              bottom: PreferredSize(
+              bottomBuilder: (context, isExpanded) => PreferredSize(
                 preferredSize: const Size.fromHeight(46.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface,
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(AppConfig.outBorderRadius),
-                    ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(AppConfig.outBorderRadius),
                   ),
-                  child: TabBarComponent(
-                    tabs: [
-                      Tab(
-                        icon: const Icon(Iconsax.scan_barcode_copy),
-                        text: l10n.scan,
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.surface.withValues(alpha: 0.3),
+                        border: Border(
+                          top: BorderSide(
+                            color: Colors.white.withValues(alpha: 0.2),
+                            width: 1.5,
+                          ),
+                        ),
                       ),
-                      const Tab(icon: Icon(Iconsax.scan_copy), text: 'My Code'),
-                    ],
+                      child: TabBarComponent(
+                        labelColor: isExpanded
+                            ? theme.colorScheme.onPrimary
+                            : theme.colorScheme.primary,
+                        unselectedLabelColor: isExpanded
+                            ? theme.colorScheme.onPrimary.withValues(alpha: 0.7)
+                            : theme.colorScheme.onSurfaceVariant,
+                        indicatorColor: isExpanded
+                            ? theme.colorScheme.onPrimary
+                            : theme.colorScheme.primary,
+                        tabs: [
+                          Tab(
+                            icon: const Icon(Iconsax.scan_barcode_copy),
+                            text: l10n.scan,
+                          ),
+                          const Tab(
+                            icon: Icon(Iconsax.scan_copy),
+                            text: 'My Code',
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -173,116 +197,128 @@ class _ScanQrcodePageState extends State<ScanQrcodePage> {
                 ),
 
                 // Generate QR Tab
-                Center(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(AppConfig.padding),
-                    child: BlocBuilder<UserProfileCubit, UserProfileState>(
-                      builder: (context, state) {
-                        return state.maybeWhen(
-                          success: (data) {
-                            final qrData = data.phone;
-                            return CardComponent(
-                              child: Padding(
-                                padding: const EdgeInsets.all(
-                                  AppConfig.padding * 1.5,
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      'Receive Money',
-                                      style: theme.textTheme.headlineSmall
-                                          ?.copyWith(
-                                            fontWeight: FontWeight.bold,
-                                            color: theme.colorScheme.primary,
-                                          ),
-                                    ),
-                                    SizedBox(height: 8.h),
-                                    Text(
-                                      'Show this code to receive payments instantly',
-                                      textAlign: TextAlign.center,
-                                      style: theme.textTheme.bodyMedium
-                                          ?.copyWith(
-                                            color: theme
-                                                .colorScheme
-                                                .onSurfaceVariant,
-                                          ),
-                                    ),
-                                    SizedBox(height: 32.h),
-                                    Container(
-                                      padding: const EdgeInsets.all(
-                                        AppConfig.padding,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                          AppConfig.inBorderRadius,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
+                Padding(
+                  padding: const EdgeInsets.all(AppConfig.padding),
+                  child: Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                          AppConfig.outBorderRadius,
+                        ),
+                        child: BlocBuilder<UserProfileCubit, UserProfileState>(
+                          builder: (context, state) {
+                            return state.maybeWhen(
+                              success: (data) {
+                                final qrData = data.phone;
+                                return LayoutBuilder(
+                                  builder: (context, constraints) {
+                                    return Stack(
+                                      children: [
+                                        // Background that mimics the scanner's dark overlay
+                                        Container(
+                                          decoration: BoxDecoration(
                                             color: Colors.black.withValues(
-                                              alpha: 0.05,
+                                              alpha: 0.5,
                                             ),
-                                            blurRadius: 10,
-                                            offset: const Offset(0, 5),
                                           ),
-                                        ],
-                                      ),
-                                      child: QrImageView(
-                                        data: qrData,
-                                        version: QrVersions.auto,
-                                        size: 220.0,
-                                        eyeStyle: QrEyeStyle(
-                                          eyeShape: QrEyeShape.square,
-                                          color: theme.colorScheme.primary,
                                         ),
-                                        dataModuleStyle: QrDataModuleStyle(
-                                          dataModuleShape:
-                                              QrDataModuleShape.square,
-                                          color: theme.colorScheme.primary,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 32.h),
-                                    Text(
-                                      data.name,
-                                      style: theme.textTheme.titleLarge
-                                          ?.copyWith(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
-                                    SizedBox(height: 4.h),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 16,
-                                        vertical: 6,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color:
-                                            theme.colorScheme.primaryContainer,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Text(
-                                        qrData,
-                                        style: theme.textTheme.titleMedium
-                                            ?.copyWith(
-                                              color: theme
-                                                  .colorScheme
-                                                  .onPrimaryContainer,
-                                              fontWeight: FontWeight.w600,
-                                              letterSpacing: 1.2,
+                                        Center(
+                                          child: Container(
+                                            width: constraints.maxWidth * 0.7,
+                                            height: constraints.maxWidth * 0.7,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              border: Border.all(
+                                                color:
+                                                    theme.colorScheme.primary,
+                                                width: 4,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                    AppConfig.inBorderRadius,
+                                                  ),
                                             ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                            child: Center(
+                                              child: QrImageView(
+                                                data: qrData,
+                                                version: QrVersions.auto,
+                                                size:
+                                                    constraints.maxWidth * 0.6,
+                                                eyeStyle: QrEyeStyle(
+                                                  eyeShape: QrEyeShape.square,
+                                                  color:
+                                                      theme.colorScheme.primary,
+                                                ),
+                                                dataModuleStyle:
+                                                    QrDataModuleStyle(
+                                                      dataModuleShape:
+                                                          QrDataModuleShape
+                                                              .square,
+                                                      color: theme
+                                                          .colorScheme
+                                                          .primary,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Positioned(
+                                          bottom: 40.h,
+                                          left: 0,
+                                          right: 0,
+                                          child: Center(
+                                            child: CardComponent(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                      horizontal: 16.0,
+                                                      vertical: 8.0,
+                                                    ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    Text(
+                                                      data.name,
+                                                      style: theme
+                                                          .textTheme
+                                                          .titleMedium
+                                                          ?.copyWith(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                    ),
+                                                    SizedBox(height: 4.h),
+                                                    Text(
+                                                      qrData,
+                                                      style: theme
+                                                          .textTheme
+                                                          .bodyMedium
+                                                          ?.copyWith(
+                                                            color: theme
+                                                                .colorScheme
+                                                                .primary,
+                                                          ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              orElse: () => const Center(
+                                child: CircularProgressIndicator(),
                               ),
                             );
                           },
-                          orElse: () => const CircularProgressIndicator(),
-                        );
-                      },
-                    ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
