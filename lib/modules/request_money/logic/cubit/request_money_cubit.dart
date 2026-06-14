@@ -146,43 +146,37 @@ class RequestMoneyCubit extends Cubit<RequestMoneyState> {
 
     final checkPinResponse = await _checkPinU.call(checkPinBody);
 
-    checkPinResponse.when(
-      success: (pinData) async {
-        // 2. Save Transaction
-        final saveTransactionBody = SaveTransactionRequestBody(
-          draftids: [draftId, draftId + 1],
-          walletId: walletId,
-          otp: pinData.otp,
-          isAcceptRequest: true,
+    if (checkPinResponse.isSuccess) {
+      final pinData = checkPinResponse.dataOrNull!;
+      // 2. Save Transaction
+      final saveTransactionBody = SaveTransactionRequestBody(
+        draftids: [draftId, draftId + 1],
+        walletId: walletId,
+        otp: pinData.otp,
+        isAcceptRequest: true,
+      );
+
+      final saveResponse = await _saveTransactionU.call(saveTransactionBody);
+
+      if (saveResponse.isSuccess) {
+        // 3. Set Transaction Status
+        final statusBody = SetTransactionStatusRequestBody(
+          draftId: draftId,
+          isApproved: isApproved,
         );
 
-        final saveResponse = await _saveTransactionU.call(saveTransactionBody);
+        final statusResponse = await _setTransactionStatusU.call(statusBody);
 
-        saveResponse.when(
-          success: (data) async {
-            // 3. Set Transaction Status
-            final statusBody = SetTransactionStatusRequestBody(
-              draftId: draftId,
-              isApproved: isApproved,
-            );
-
-            final statusResponse = await _setTransactionStatusU.call(
-              statusBody,
-            );
-
-            statusResponse.when(
-              success: (_) =>
-                  emit(RequestMoneyState.requestApprovedSuccess(form)),
-              failure: (e) =>
-                  emit(RequestMoneyState.failure(form, message: e.message)),
-            );
-          },
-          failure: (e) =>
-              emit(RequestMoneyState.failure(form, message: e.message)),
+        statusResponse.when(
+          success: (_) => emit(RequestMoneyState.requestApprovedSuccess(form)),
+          failure: (e) => emit(RequestMoneyState.failure(form, message: e.message)),
         );
-      },
-      failure: (e) => emit(RequestMoneyState.failure(form, message: e.message)),
-    );
+      } else {
+        emit(RequestMoneyState.failure(form, message: saveResponse.errorOrNull!.message));
+      }
+    } else {
+      emit(RequestMoneyState.failure(form, message: checkPinResponse.errorOrNull!.message));
+    }
   }
 
   void onUserInfoChanged(String value) {
