@@ -29,10 +29,14 @@ class RequestMoneyPage extends HookWidget {
   final int walletIndex;
 
   void _showPendingRequests(BuildContext context, dynamic l10n) {
+    final cubit = context.read<RequestMoneyCubit>();
     unawaited(
       context.showBottomSheetComponent<void>(
         title: 'Pending Requests',
-        child: const PendingRequestsBottomSheetComponent(),
+        child: BlocProvider.value(
+          value: cubit,
+          child: const PendingRequestsBottomSheetComponent(),
+        ),
       ),
     );
   }

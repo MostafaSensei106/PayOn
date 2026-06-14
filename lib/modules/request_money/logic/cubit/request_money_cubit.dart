@@ -169,13 +169,24 @@ class RequestMoneyCubit extends Cubit<RequestMoneyState> {
 
         statusResponse.when(
           success: (_) => emit(RequestMoneyState.requestApprovedSuccess(form)),
-          failure: (e) => emit(RequestMoneyState.failure(form, message: e.message)),
+          failure: (e) =>
+              emit(RequestMoneyState.failure(form, message: e.message)),
         );
       } else {
-        emit(RequestMoneyState.failure(form, message: saveResponse.errorOrNull!.message));
+        emit(
+          RequestMoneyState.failure(
+            form,
+            message: saveResponse.errorOrNull!.message,
+          ),
+        );
       }
     } else {
-      emit(RequestMoneyState.failure(form, message: checkPinResponse.errorOrNull!.message));
+      emit(
+        RequestMoneyState.failure(
+          form,
+          message: checkPinResponse.errorOrNull!.message,
+        ),
+      );
     }
   }
 
