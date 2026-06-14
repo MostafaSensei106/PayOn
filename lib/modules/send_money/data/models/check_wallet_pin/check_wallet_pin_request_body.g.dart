@@ -11,6 +11,11 @@ CheckWalletPinRequestBody _$CheckWalletPinRequestBodyFromJson(
 ) => CheckWalletPinRequestBody(
   walletId: json['accountId'] as String,
   pinHash: json['pinHash'] as String,
+  draftIds: (json['draftIds'] as List<dynamic>?)
+      ?.map((e) => (e as num).toInt())
+      .toList(),
+  senderId: json['senderId'] as String?,
+  transactionTypeId: (json['transactionTypeId'] as num?)?.toInt(),
 );
 
 Map<String, dynamic> _$CheckWalletPinRequestBodyToJson(
@@ -18,4 +23,7 @@ Map<String, dynamic> _$CheckWalletPinRequestBodyToJson(
 ) => <String, dynamic>{
   'accountId': instance.walletId,
   'pinHash': instance.pinHash,
+  'draftIds': instance.draftIds,
+  'senderId': instance.senderId,
+  'transactionTypeId': instance.transactionTypeId,
 };

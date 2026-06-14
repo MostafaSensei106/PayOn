@@ -27,6 +27,7 @@ import '../../../modules/profile/data/models/edit_user_porfile_response_body.dar
 import '../../../modules/profile/data/models/edit_user_profile_request_body.dart';
 import '../../../modules/profile/data/models/get_user_profile_response_body.dart';
 import '../../../modules/request_money/data/models/get_pending_reward_users_response_body.dart';
+import '../../../modules/request_money/data/models/set_transaction_status_request_body.dart';
 import '../../../modules/send_money/data/models/check_wallet/check_wallet_request_body.dart';
 import '../../../modules/send_money/data/models/check_wallet/check_wallet_response_body.dart';
 import '../../../modules/send_money/data/models/check_wallet_pin/check_wallet_pin_request_body.dart';
@@ -166,6 +167,11 @@ abstract class ApiService {
     @Query('Page') int page = 1,
     @Query('Size') int size = 20,
   });
+
+  @POST(ApiRoutes.transactionSetTransactionStatus)
+  Future<void> setTransactionStatus(
+    @Body() SetTransactionStatusRequestBody body,
+  );
 
   @GET(ApiRoutes.accountGetUserFavorites)
   Future<GetUserFavoritesResponseBody> getUserFavorites({

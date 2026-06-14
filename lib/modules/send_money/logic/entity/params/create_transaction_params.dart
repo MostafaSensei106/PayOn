@@ -7,9 +7,7 @@ abstract class CreateTransactionParams with _$CreateTransactionParams {
   const factory CreateTransactionParams({
     required String senderId,
     required String receiverId,
-    required String paymentId,
-    required double amount,
-    required String description,
+    required double amount, required String description, String? paymentId,
     @Default(6) int transactionTypeId,
     @Default(true) bool isTransactionByPhone,
   }) = _CreateTransactionParams;

@@ -6,6 +6,9 @@ class CheckWalletPinRequestBody {
   const CheckWalletPinRequestBody({
     required this.walletId,
     required this.pinHash,
+    this.draftIds,
+    this.senderId,
+    this.transactionTypeId,
   });
 
   factory CheckWalletPinRequestBody.fromJson(Map<String, dynamic> json) =>
@@ -16,4 +19,7 @@ class CheckWalletPinRequestBody {
   @JsonKey(name: 'accountId')
   final String walletId;
   final String pinHash;
+  final List<int>? draftIds;
+  final String? senderId;
+  final int? transactionTypeId;
 }

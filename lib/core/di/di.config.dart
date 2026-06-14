@@ -147,6 +147,8 @@ import 'package:payon/modules/request_money/logic/cubit/request_money_cubit.dart
     as _i626;
 import 'package:payon/modules/request_money/logic/usecase/get_pending_transactions_usecase.dart'
     as _i566;
+import 'package:payon/modules/request_money/logic/usecase/set_transaction_status_usecase.dart'
+    as _i190;
 import 'package:payon/modules/send_money/data/repository/send_money_repository.dart'
     as _i860;
 import 'package:payon/modules/send_money/logic/cubit/send_money_cubit.dart'
@@ -321,6 +323,11 @@ extension GetItInjectableX on _i174.GetIt {
         repo: gh<_i316.RequestMoneyRepository>(),
       ),
     );
+    gh.factory<_i190.SetTransactionStatusUseCase>(
+      () => _i190.SetTransactionStatusUseCase(
+        repo: gh<_i316.RequestMoneyRepository>(),
+      ),
+    );
     gh.lazySingleton<_i719.LoginRepository>(
       () => _i370.LoginRepositoryImpl(
         gh<_i550.ApiService>(),
@@ -353,9 +360,6 @@ extension GetItInjectableX on _i174.GetIt {
         repo: gh<_i750.BaseSecurityRepository>(),
         biometricsService: gh<_i958.BiometricsService>(),
       ),
-    );
-    gh.factory<_i626.RequestMoneyCubit>(
-      () => _i626.RequestMoneyCubit(gh<_i566.GetPendingTransactionsUseCase>()),
     );
     gh.factory<_i72.EditProfileCubit>(
       () => _i72.EditProfileCubit(gh<_i771.EditUserProfileUsecase>()),
@@ -424,6 +428,17 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i712.CreateTransactionDraftUsecase>(),
         gh<_i1054.CheckWalletPinUsecase>(),
         gh<_i914.SaveTransactionUsecase>(),
+        gh<_i198.BaseHashService>(),
+      ),
+    );
+    gh.factory<_i626.RequestMoneyCubit>(
+      () => _i626.RequestMoneyCubit(
+        gh<_i566.GetPendingTransactionsUseCase>(),
+        gh<_i685.CheckWalletUsecase>(),
+        gh<_i712.CreateTransactionDraftUsecase>(),
+        gh<_i1054.CheckWalletPinUsecase>(),
+        gh<_i914.SaveTransactionUsecase>(),
+        gh<_i190.SetTransactionStatusUseCase>(),
         gh<_i198.BaseHashService>(),
       ),
     );
@@ -542,6 +557,9 @@ extension GetItInjectableX on _i174.GetIt {
   _i566.GetPendingTransactionsUseCase get getPendingTransactionsUseCase =>
       get<_i566.GetPendingTransactionsUseCase>();
 
+  _i190.SetTransactionStatusUseCase get setTransactionStatusUseCase =>
+      get<_i190.SetTransactionStatusUseCase>();
+
   _i370.LoginRepositoryImpl get loginRepositoryImpl =>
       get<_i370.LoginRepositoryImpl>();
 
@@ -558,9 +576,6 @@ extension GetItInjectableX on _i174.GetIt {
   _i797.HomeCubit get homeCubit => get<_i797.HomeCubit>();
 
   _i665.SecurityCubit get securityCubit => get<_i665.SecurityCubit>();
-
-  _i626.RequestMoneyCubit get requestMoneyCubit =>
-      get<_i626.RequestMoneyCubit>();
 
   _i72.EditProfileCubit get editProfileCubit => get<_i72.EditProfileCubit>();
 
@@ -596,6 +611,9 @@ extension GetItInjectableX on _i174.GetIt {
   _i358.LoginUsecase get loginUsecase => get<_i358.LoginUsecase>();
 
   _i274.SendMoneyCubit get sendMoneyCubit => get<_i274.SendMoneyCubit>();
+
+  _i626.RequestMoneyCubit get requestMoneyCubit =>
+      get<_i626.RequestMoneyCubit>();
 
   _i495.LoginCubit get loginCubit => get<_i495.LoginCubit>();
 }

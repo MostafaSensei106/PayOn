@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CreateTransactionParams {
 
- String get senderId; String get receiverId; String get paymentId; double get amount; String get description; int get transactionTypeId; bool get isTransactionByPhone;
+ String get senderId; String get receiverId; String? get paymentId; double get amount; String get description; int get transactionTypeId; bool get isTransactionByPhone;
 /// Create a copy of CreateTransactionParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $CreateTransactionParamsCopyWith<$Res>  {
   factory $CreateTransactionParamsCopyWith(CreateTransactionParams value, $Res Function(CreateTransactionParams) _then) = _$CreateTransactionParamsCopyWithImpl;
 @useResult
 $Res call({
- String senderId, String receiverId, String paymentId, double amount, String description, int transactionTypeId, bool isTransactionByPhone
+ String senderId, String receiverId, String? paymentId, double amount, String description, int transactionTypeId, bool isTransactionByPhone
 });
 
 
@@ -62,12 +62,12 @@ class _$CreateTransactionParamsCopyWithImpl<$Res>
 
 /// Create a copy of CreateTransactionParams
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? senderId = null,Object? receiverId = null,Object? paymentId = null,Object? amount = null,Object? description = null,Object? transactionTypeId = null,Object? isTransactionByPhone = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? senderId = null,Object? receiverId = null,Object? paymentId = freezed,Object? amount = null,Object? description = null,Object? transactionTypeId = null,Object? isTransactionByPhone = null,}) {
   return _then(_self.copyWith(
 senderId: null == senderId ? _self.senderId : senderId // ignore: cast_nullable_to_non_nullable
 as String,receiverId: null == receiverId ? _self.receiverId : receiverId // ignore: cast_nullable_to_non_nullable
-as String,paymentId: null == paymentId ? _self.paymentId : paymentId // ignore: cast_nullable_to_non_nullable
-as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as String,paymentId: freezed == paymentId ? _self.paymentId : paymentId // ignore: cast_nullable_to_non_nullable
+as String?,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as double,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,transactionTypeId: null == transactionTypeId ? _self.transactionTypeId : transactionTypeId // ignore: cast_nullable_to_non_nullable
 as int,isTransactionByPhone: null == isTransactionByPhone ? _self.isTransactionByPhone : isTransactionByPhone // ignore: cast_nullable_to_non_nullable
@@ -156,7 +156,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String senderId,  String receiverId,  String paymentId,  double amount,  String description,  int transactionTypeId,  bool isTransactionByPhone)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String senderId,  String receiverId,  String? paymentId,  double amount,  String description,  int transactionTypeId,  bool isTransactionByPhone)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateTransactionParams() when $default != null:
 return $default(_that.senderId,_that.receiverId,_that.paymentId,_that.amount,_that.description,_that.transactionTypeId,_that.isTransactionByPhone);case _:
@@ -177,7 +177,7 @@ return $default(_that.senderId,_that.receiverId,_that.paymentId,_that.amount,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String senderId,  String receiverId,  String paymentId,  double amount,  String description,  int transactionTypeId,  bool isTransactionByPhone)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String senderId,  String receiverId,  String? paymentId,  double amount,  String description,  int transactionTypeId,  bool isTransactionByPhone)  $default,) {final _that = this;
 switch (_that) {
 case _CreateTransactionParams():
 return $default(_that.senderId,_that.receiverId,_that.paymentId,_that.amount,_that.description,_that.transactionTypeId,_that.isTransactionByPhone);case _:
@@ -197,7 +197,7 @@ return $default(_that.senderId,_that.receiverId,_that.paymentId,_that.amount,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String senderId,  String receiverId,  String paymentId,  double amount,  String description,  int transactionTypeId,  bool isTransactionByPhone)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String senderId,  String receiverId,  String? paymentId,  double amount,  String description,  int transactionTypeId,  bool isTransactionByPhone)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateTransactionParams() when $default != null:
 return $default(_that.senderId,_that.receiverId,_that.paymentId,_that.amount,_that.description,_that.transactionTypeId,_that.isTransactionByPhone);case _:
@@ -212,12 +212,12 @@ return $default(_that.senderId,_that.receiverId,_that.paymentId,_that.amount,_th
 
 
 class _CreateTransactionParams implements CreateTransactionParams {
-  const _CreateTransactionParams({required this.senderId, required this.receiverId, required this.paymentId, required this.amount, required this.description, this.transactionTypeId = 6, this.isTransactionByPhone = true});
+  const _CreateTransactionParams({required this.senderId, required this.receiverId, this.paymentId, required this.amount, required this.description, this.transactionTypeId = 6, this.isTransactionByPhone = true});
   
 
 @override final  String senderId;
 @override final  String receiverId;
-@override final  String paymentId;
+@override final  String? paymentId;
 @override final  double amount;
 @override final  String description;
 @override@JsonKey() final  int transactionTypeId;
@@ -253,7 +253,7 @@ abstract mixin class _$CreateTransactionParamsCopyWith<$Res> implements $CreateT
   factory _$CreateTransactionParamsCopyWith(_CreateTransactionParams value, $Res Function(_CreateTransactionParams) _then) = __$CreateTransactionParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String senderId, String receiverId, String paymentId, double amount, String description, int transactionTypeId, bool isTransactionByPhone
+ String senderId, String receiverId, String? paymentId, double amount, String description, int transactionTypeId, bool isTransactionByPhone
 });
 
 
@@ -270,12 +270,12 @@ class __$CreateTransactionParamsCopyWithImpl<$Res>
 
 /// Create a copy of CreateTransactionParams
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? senderId = null,Object? receiverId = null,Object? paymentId = null,Object? amount = null,Object? description = null,Object? transactionTypeId = null,Object? isTransactionByPhone = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? senderId = null,Object? receiverId = null,Object? paymentId = freezed,Object? amount = null,Object? description = null,Object? transactionTypeId = null,Object? isTransactionByPhone = null,}) {
   return _then(_CreateTransactionParams(
 senderId: null == senderId ? _self.senderId : senderId // ignore: cast_nullable_to_non_nullable
 as String,receiverId: null == receiverId ? _self.receiverId : receiverId // ignore: cast_nullable_to_non_nullable
-as String,paymentId: null == paymentId ? _self.paymentId : paymentId // ignore: cast_nullable_to_non_nullable
-as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as String,paymentId: freezed == paymentId ? _self.paymentId : paymentId // ignore: cast_nullable_to_non_nullable
+as String?,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as double,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,transactionTypeId: null == transactionTypeId ? _self.transactionTypeId : transactionTypeId // ignore: cast_nullable_to_non_nullable
 as int,isTransactionByPhone: null == isTransactionByPhone ? _self.isTransactionByPhone : isTransactionByPhone // ignore: cast_nullable_to_non_nullable

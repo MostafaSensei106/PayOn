@@ -18,11 +18,8 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.6,
       child: BlocBuilder<RequestMoneyCubit, RequestMoneyState>(
         builder: (context, state) {
-          return state.when(
-            initial: () => const Center(child: CircularProgressIndicator()),
-            loading: () => const Center(child: CircularProgressIndicator()),
-            failure: (message) => Center(child: Text(message)),
-            success: (requests) {
+          return state.maybeWhen(
+            pendingRequestsLoaded: (form, requests) {
               if (requests.isEmpty) {
                 return Center(
                   child: Column(
@@ -36,7 +33,8 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
                       SizedBox(height: 16.h),
                       Text(
                         'No Pending Requests',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(
                               color: Theme.of(context).colorScheme.outline,
                             ),
                       ),
@@ -95,6 +93,8 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
                 },
               );
             },
+            failure: (form, message) => Center(child: Text(message)),
+            orElse: () => const Center(child: CircularProgressIndicator()),
           );
         },
       ),
