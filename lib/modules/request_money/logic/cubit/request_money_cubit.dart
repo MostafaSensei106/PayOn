@@ -55,7 +55,10 @@ class RequestMoneyCubit extends Cubit<RequestMoneyState> {
       );
     } else {
       emit(
-        RequestMoneyState.failure(form, message: result.errorOrNull!.message),
+        RequestMoneyState.pendingRequestsError(
+          form,
+          message: result.errorOrNull!.message,
+        ),
       );
     }
   }

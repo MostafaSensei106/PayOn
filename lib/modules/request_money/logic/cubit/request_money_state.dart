@@ -22,6 +22,11 @@ sealed class RequestMoneyState with _$RequestMoneyState {
     required List<TransactionItemEntity> requests,
   }) = PendingRequestsLoaded;
 
+  const factory RequestMoneyState.pendingRequestsError(
+    RequestMoneyFormState formState, {
+    required String message,
+  }) = PendingRequestsError;
+
   const factory RequestMoneyState.checkWalletSuccess(
     RequestMoneyFormState formState, {
     required CheckWalletEntity data,
