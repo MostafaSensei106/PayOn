@@ -72,8 +72,8 @@ class WalletItemModel {
   final String ipa;
   final String currency;
   final String currencyCode;
-  final int currencyId;
-  final String country;
+  final int? currencyId;
+  final String? country;
   final double balance;
   final bool isActive;
   final bool isPending;
@@ -99,9 +99,10 @@ extension GetWalletsBodyMapper on GetWalletsResponseBody {
               currencyCode: item.currencyCode,
               balance: item.balance.toString(),
               isActive: item.isActive,
+              isPending: item.isPending,
               isDefault: item.isDefault,
               filesVerified: item.filesVerified,
-              country: item.country,
+              country: item.country ?? '',
             ),
           )
           .toList(),

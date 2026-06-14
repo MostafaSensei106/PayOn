@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -13,7 +14,9 @@ import '../../../../core/di/di.dart';
 import '../../../../core/extensions/extensions.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
+import '../../../../core/utils/result/result.dart';
 import '../../../../core/utils/use_case/base_use_case.dart';
+import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/avatar/avatar_component.dart';
@@ -38,11 +41,9 @@ class HomePage extends StatelessWidget {
     final userProfileState = context.read<UserProfileCubit>().state;
 
     if (userProfileState is! profile.Success) {
-      unawaited(
-        context.dialog.showError(
-          title: 'Error',
-          error: 'Please wait for profile to load',
-        ),
+      await context.dialog.showError(
+        title: 'Error',
+        error: 'Please wait for profile to load',
       );
       return;
     }
@@ -108,7 +109,7 @@ class HomePage extends StatelessWidget {
                         controller: addressController,
                         label: 'Address',
                         prefixIcon: Iconsax.map_copy,
-                        onChanged: (val) {},
+                        onChanged: (String p1) {},
                       ),
                       const SizedBox(height: AppConfig.padding),
                       FilledButtonComponent(
@@ -128,7 +129,7 @@ class HomePage extends StatelessWidget {
             final accountId = await homeCubit.createAccount(
               accountTypeId: selectedType,
               address: confirmedAddress,
-              profile: (userProfileState).data,
+              profile: userProfileState.data,
             );
 
             if (context.mounted) {
