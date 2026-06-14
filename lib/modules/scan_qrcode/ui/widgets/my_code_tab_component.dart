@@ -24,39 +24,33 @@ class MyCodeTabComponent extends StatelessWidget {
                 final qrData = data.ipa;
                 return LayoutBuilder(
                   builder: (context, constraints) {
-                    return Stack(
-                      children: [
-                        Center(
-                          child: Container(
-                            width: constraints.maxWidth * 0.7,
-                            height: constraints.maxWidth * 0.7,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(
-                                color: theme.colorScheme.primary,
-                                width: 4,
-                              ),
-                              borderRadius: BorderRadius.circular(
-                                AppConfig.inBorderRadius,
-                              ),
-                            ),
-                            child: Center(
-                              child: QrImageView(
-                                data: qrData,
-                                size: constraints.maxWidth * 0.6,
-                                eyeStyle: QrEyeStyle(
-                                  eyeShape: QrEyeShape.square,
-                                  color: theme.colorScheme.primary,
-                                ),
-                                dataModuleStyle: QrDataModuleStyle(
-                                  dataModuleShape: QrDataModuleShape.square,
-                                  color: theme.colorScheme.primary,
-                                ),
-                              ),
-                            ),
+                    return Container(
+                      width: constraints.maxWidth * 0.7,
+                      height: constraints.maxWidth * 0.7,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(
+                          color: theme.colorScheme.primary,
+                          width: 4,
+                        ),
+                        borderRadius: BorderRadius.circular(
+                          AppConfig.outBorderRadius,
+                        ),
+                      ),
+                      child: Center(
+                        child: QrImageView(
+                          data: qrData,
+                          size: constraints.maxWidth * 0.6,
+                          eyeStyle: QrEyeStyle(
+                            eyeShape: QrEyeShape.circle,
+                            color: theme.colorScheme.onSurface,
+                          ),
+                          dataModuleStyle: QrDataModuleStyle(
+                            dataModuleShape: QrDataModuleShape.circle,
+                            color: theme.colorScheme.primary,
                           ),
                         ),
-                      ],
+                      ),
                     );
                   },
                 );

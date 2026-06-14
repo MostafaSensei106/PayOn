@@ -61,19 +61,6 @@ class StepFiveCreateWallet extends HookWidget {
         ),
         SizedBox(height: AppConfig.paddingHalf.h),
         TextFormFieldComponent(
-          label: 'Phone Number',
-          prefixIcon: Iconsax.call_copy,
-          keyboardType: TextInputType.phone,
-          onChanged: (val) {},
-        ),
-        SizedBox(height: AppConfig.paddingHalf.h),
-        TextFormFieldComponent(
-          label: 'Address',
-          prefixIcon: Iconsax.location_copy,
-          onChanged: (val) {},
-        ),
-        SizedBox(height: AppConfig.paddingHalf.h),
-        TextFormFieldComponent(
           label: 'IPA Address',
           prefixIcon: Iconsax.link_2_copy,
           initialValue: form.ipa,

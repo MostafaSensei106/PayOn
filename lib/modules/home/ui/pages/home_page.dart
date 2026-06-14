@@ -100,9 +100,6 @@ class HomePage extends StatelessWidget {
           final phoneController = TextEditingController(
             text: userProfileState.data.phone,
           );
-          final ipaController = TextEditingController(
-            text: userProfileState.data.ipa,
-          );
 
           final resultData = await context
               .showBottomSheetComponent<Map<String, String>>(
@@ -120,23 +117,6 @@ class HomePage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 24.h),
-                      TextFormFieldComponent(
-                        controller: ipaController,
-                        label: 'Instant Payment Address (IPA)',
-                        hintText: 'e.g., username',
-                        prefixIcon: Iconsax.link_2_copy,
-                        suffix: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.w),
-                          child: Text(
-                            '@payon',
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        onChanged: (String p1) {},
-                      ),
                       const SizedBox(height: AppConfig.padding),
                       TextFormFieldComponent(
                         controller: phoneController,
@@ -159,7 +139,6 @@ class HomePage extends StatelessWidget {
                         onPressed: () => context.pop({
                           'address': addressController.text,
                           'phone': phoneController.text,
-                          'ipa': ipaController.text,
                         }),
                       ),
                       SizedBox(

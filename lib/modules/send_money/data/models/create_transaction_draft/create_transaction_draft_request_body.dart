@@ -6,7 +6,11 @@ final class CreateTransactionDraftRequestBody {
   const CreateTransactionDraftRequestBody({
     required this.senderId,
     required this.receiverId,
-    required this.amount, required this.description, required this.transactionTypeId, required this.isTransactionByPhone, this.paymentId,
+    required this.amount,
+    required this.description,
+    required this.transactionTypeId,
+    required this.isTransactionByPhone,
+    this.paymentId,
   });
 
   factory CreateTransactionDraftRequestBody.fromJson(

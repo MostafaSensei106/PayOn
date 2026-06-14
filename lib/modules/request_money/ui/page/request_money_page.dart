@@ -17,10 +17,10 @@ import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar
 import '../../../home/logic/cubit/home_cubit.dart';
 import '../../../home/logic/cubit/home_state.dart' as hs;
 import '../../../home/logic/entitys/wallets_entity.dart';
+import '../../../send_money/logic/cubit/user_favorites_cubit.dart';
 import '../../../send_money/ui/page/send_money_page.dart';
 import '../../../send_money/ui/widgets/receiver_selection_component.dart';
 import '../../../send_money/ui/widgets/sender_account_selection_component.dart';
-import '../../../send_money/logic/cubit/user_favorites_cubit.dart';
 import '../../logic/cubit/request_money_cubit.dart';
 import '../widgets/pending_requests_bottom_sheet_component.dart';
 

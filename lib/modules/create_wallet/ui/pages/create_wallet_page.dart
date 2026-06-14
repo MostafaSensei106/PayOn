@@ -104,19 +104,6 @@ class CreateWalletPage extends HookWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextFormFieldComponent(
-                          label: 'Phone Number',
-                          prefixIcon: Iconsax.call_copy,
-                          keyboardType: TextInputType.phone,
-                          onChanged: (val) {},
-                        ),
-                        SizedBox(height: 16.h),
-                        TextFormFieldComponent(
-                          label: 'Address',
-                          prefixIcon: Iconsax.location_copy,
-                          onChanged: (val) {},
-                        ),
-                        SizedBox(height: 16.h),
-                        TextFormFieldComponent(
                           controller: ipaController,
                           label: 'Instant Payment Address (IPA)',
                           hintText: 'e.g., username',

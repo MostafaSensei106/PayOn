@@ -117,93 +117,93 @@ class ReceiverSelectionComponent extends StatelessWidget {
           value: cubit,
           child: BlocBuilder<UserFavoritesCubit, UserFavoritesState>(
             builder: (context, state) {
-            return state.maybeWhen(
-              loading: () => const Center(
-                child: Padding(
-                  padding: EdgeInsets.all(AppConfig.padding),
-                  child: CircularProgressIndicator(),
+              return state.maybeWhen(
+                loading: () => const Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(AppConfig.padding),
+                    child: CircularProgressIndicator(),
+                  ),
                 ),
-              ),
-              success: (favorites) {
-                if (favorites.isEmpty) {
-                  return const Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(AppConfig.padding),
-                      child: Text('No Favorites'),
-                    ),
+                success: (favorites) {
+                  if (favorites.isEmpty) {
+                    return const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(AppConfig.padding),
+                        child: Text('No Favorites'),
+                      ),
+                    );
+                  }
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ...favorites.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final favorite = entry.value;
+                        final isFirst = index == 0;
+                        final isLast = index == favorites.length - 1;
+
+                        if (favorites.length == 1) {
+                          return ListTileWidgetComponent(
+                            leading: AvatarComponent(imageUrl: favorite.image),
+                            title: favorite.name,
+                            subtitle: favorite.id,
+                            onTap: () {
+                              onReceiverChanged(favorite.id);
+                              Navigator.pop(context);
+                            },
+                          );
+                        }
+
+                        if (isFirst) {
+                          return ListTileWidgetComponent.top(
+                            leading: AvatarComponent(imageUrl: favorite.image),
+                            title: favorite.name,
+                            subtitle: favorite.id,
+                            onTap: () {
+                              onReceiverChanged(favorite.id);
+                              Navigator.pop(context);
+                            },
+                          );
+                        } else if (isLast) {
+                          return ListTileWidgetComponent.bottom(
+                            leading: AvatarComponent(imageUrl: favorite.image),
+                            title: favorite.name,
+                            subtitle: favorite.id,
+                            onTap: () {
+                              onReceiverChanged(favorite.id);
+                              Navigator.pop(context);
+                            },
+                          );
+                        } else {
+                          return ListTileWidgetComponent.middle(
+                            leading: AvatarComponent(imageUrl: favorite.image),
+                            title: favorite.name,
+                            subtitle: favorite.id,
+                            onTap: () {
+                              onReceiverChanged(favorite.id);
+                              Navigator.pop(context);
+                            },
+                          );
+                        }
+                      }),
+                      SizedBox(
+                        height:
+                            MediaQuery.of(context).padding.bottom +
+                            AppConfig.padding,
+                      ),
+                    ],
                   );
-                }
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ...favorites.asMap().entries.map((entry) {
-                      final index = entry.key;
-                      final favorite = entry.value;
-                      final isFirst = index == 0;
-                      final isLast = index == favorites.length - 1;
-
-                      if (favorites.length == 1) {
-                        return ListTileWidgetComponent(
-                          leading: AvatarComponent(imageUrl: favorite.image),
-                          title: favorite.name,
-                          subtitle: favorite.id,
-                          onTap: () {
-                            onReceiverChanged(favorite.id);
-                            Navigator.pop(context);
-                          },
-                        );
-                      }
-
-                      if (isFirst) {
-                        return ListTileWidgetComponent.top(
-                          leading: AvatarComponent(imageUrl: favorite.image),
-                          title: favorite.name,
-                          subtitle: favorite.id,
-                          onTap: () {
-                            onReceiverChanged(favorite.id);
-                            Navigator.pop(context);
-                          },
-                        );
-                      } else if (isLast) {
-                        return ListTileWidgetComponent.bottom(
-                          leading: AvatarComponent(imageUrl: favorite.image),
-                          title: favorite.name,
-                          subtitle: favorite.id,
-                          onTap: () {
-                            onReceiverChanged(favorite.id);
-                            Navigator.pop(context);
-                          },
-                        );
-                      } else {
-                        return ListTileWidgetComponent.middle(
-                          leading: AvatarComponent(imageUrl: favorite.image),
-                          title: favorite.name,
-                          subtitle: favorite.id,
-                          onTap: () {
-                            onReceiverChanged(favorite.id);
-                            Navigator.pop(context);
-                          },
-                        );
-                      }
-                    }),
-                    SizedBox(
-                      height:
-                          MediaQuery.of(context).padding.bottom +
-                          AppConfig.padding,
-                    ),
-                  ],
-                );
-              },
-              failure: (message) => Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(AppConfig.padding),
-                  child: Text(message),
+                },
+                failure: (message) => Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(AppConfig.padding),
+                    child: Text(message),
+                  ),
                 ),
-              ),
-              orElse: () => const SizedBox.shrink(),
-            );
-          },
-        ),
+                orElse: () => const SizedBox.shrink(),
+              );
+            },
+          ),
         ),
       ),
     );

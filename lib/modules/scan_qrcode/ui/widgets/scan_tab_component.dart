@@ -27,32 +27,30 @@ class ScanTabComponent extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
             child: SizedBox(
               height: 0.45.sh,
-              width: 0.45.sw,
+              width: 1.sw,
               child: MobileScanner(
                 onDetect: onDetect,
                 overlayBuilder: (context, constraints) {
-                  return Center(
-                    child: Container(
-                      width: constraints.maxWidth * 0.7,
-                      height: constraints.maxWidth * 0.7,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: theme.colorScheme.primary,
-                          width: 4,
-                        ),
-                        borderRadius: BorderRadius.circular(
-                          AppConfig.inBorderRadius,
-                        ),
+                  return Container(
+                    width: constraints.maxWidth * 0.7,
+                    height: constraints.maxWidth * 0.7,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: theme.colorScheme.primary,
+                        width: 4,
                       ),
-                      child: Center(
-                        child: isProcessing
-                            ? const CircularProgressIndicator()
-                            : const Icon(
-                                Iconsax.scan_barcode_copy,
-                                color: Colors.white54,
-                                size: 64,
-                              ),
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.outBorderRadius,
                       ),
+                    ),
+                    child: Center(
+                      child: isProcessing
+                          ? const CircularProgressIndicator()
+                          : const Icon(
+                              Iconsax.scan_barcode_copy,
+                              color: Colors.white54,
+                              size: 64,
+                            ),
                     ),
                   );
                 },

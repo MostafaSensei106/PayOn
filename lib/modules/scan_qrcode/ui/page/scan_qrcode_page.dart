@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -15,47 +15,35 @@ import '../../../../l10n/app_localizations.dart';
 import '../widgets/my_code_tab_component.dart';
 import '../widgets/scan_tab_component.dart';
 
-class ScanQrcodePage extends StatefulWidget {
+class ScanQrcodePage extends HookWidget {
   const ScanQrcodePage({super.key});
-
-  @override
-  State<ScanQrcodePage> createState() => _ScanQrcodePageState();
-}
-
-class _ScanQrcodePageState extends State<ScanQrcodePage> {
-  bool _isProcessing = false;
-  int _selectedIndex = 0;
-
-  void _onDetect(BarcodeCapture capture) {
-    if (_isProcessing) return;
-    final barcodes = capture.barcodes;
-    if (barcodes.isNotEmpty) {
-      final code = barcodes.first.rawValue;
-      if (code != null && code.isNotEmpty) {
-        unawaited(HapticFeedback.vibrate());
-        setState(() {
-          _isProcessing = true;
-        });
-
-        // Push to send money and auto fill the scanned phone/IPA
-        unawaited(
-          SendMoneyRoute(initialReceiver: code).push<void>(context).then((_) {
-            if (mounted) {
-              setState(() {
-                _isProcessing = false;
-              });
-            }
-          }),
-        );
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
-    final scrollController = ScrollController();
+    final scrollController = useScrollController();
     final theme = Theme.of(context);
+    final isProcessing = useState(false);
+    final selectedIndex = useState(0);
+
+    void onDetect(BarcodeCapture capture) {
+      if (isProcessing.value) return;
+      final barcodes = capture.barcodes;
+      if (barcodes.isNotEmpty) {
+        final code = barcodes.first.rawValue;
+        if (code != null && code.isNotEmpty) {
+          unawaited(HapticFeedback.vibrate());
+          isProcessing.value = true;
+
+          // Push to send money and auto fill the scanned phone/IPA
+          unawaited(
+            SendMoneyRoute(initialReceiver: code).push<void>(context).then((_) {
+              isProcessing.value = false;
+            }),
+          );
+        }
+      }
+    }
 
     return Scaffold(
       body: Stack(
@@ -66,29 +54,24 @@ class _ScanQrcodePageState extends State<ScanQrcodePage> {
               SliverAppBarWithWavesComponent(
                 scrollController: scrollController,
                 title: l10n.scan_qr_code,
-                bottom: PreferredSize(
-                  preferredSize: Size.fromHeight(64.h),
-                  child: Padding(
-                    padding: EdgeInsets.only(bottom: 16.h),
-                    child: _buildElegantToggle(theme, l10n),
-                  ),
-                ),
               ),
-              SliverFillRemaining(
-                child: Container(
-                  color: theme.colorScheme.surface,
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 300),
-                    child: _selectedIndex == 0
-                        ? ScanTabComponent(
-                            key: const ValueKey('scan_tab'),
-                            isProcessing: _isProcessing,
-                            onDetect: _onDetect,
-                          )
-                        : const MyCodeTabComponent(
-                            key: ValueKey('my_code_tab'),
-                          ),
-                  ),
+              SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    _buildElegantToggle(theme, l10n, selectedIndex),
+                    AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      child: selectedIndex.value == 0
+                          ? ScanTabComponent(
+                              key: const ValueKey('scan_tab'),
+                              isProcessing: isProcessing.value,
+                              onDetect: onDetect,
+                            )
+                          : const MyCodeTabComponent(
+                              key: ValueKey('my_code_tab'),
+                            ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -98,7 +81,11 @@ class _ScanQrcodePageState extends State<ScanQrcodePage> {
     );
   }
 
-  Widget _buildElegantToggle(ThemeData theme, AppLocalizations l10n) {
+  Widget _buildElegantToggle(
+    ThemeData theme,
+    AppLocalizations l10n,
+    ValueNotifier<int> selectedIndex,
+  ) {
     return Center(
       child: SegmentedButton<int>(
         segments: [
@@ -113,17 +100,15 @@ class _ScanQrcodePageState extends State<ScanQrcodePage> {
             icon: Icon(Iconsax.scan_copy),
           ),
         ],
-        selected: {_selectedIndex},
+        selected: {selectedIndex.value},
         onSelectionChanged: (newSelection) {
-          setState(() => _selectedIndex = newSelection.first);
+          selectedIndex.value = newSelection.first;
         },
         showSelectedIcon: false,
         style: SegmentedButton.styleFrom(
-          backgroundColor: theme.colorScheme.primaryContainer.withValues(
-            alpha: 0.2,
-          ),
-          selectedBackgroundColor: theme.colorScheme.surface,
-          selectedForegroundColor: theme.colorScheme.primary,
+          backgroundColor: theme.colorScheme.surface,
+          selectedBackgroundColor: theme.colorScheme.primaryContainer,
+          selectedForegroundColor: theme.colorScheme.onPrimaryContainer,
           foregroundColor: theme.colorScheme.onPrimaryContainer,
           side: BorderSide.none,
           shape: RoundedRectangleBorder(
