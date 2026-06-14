@@ -71,9 +71,6 @@ class LatestTransactionsSection extends StatelessWidget {
             ),
           ),
           Skeletonizer.sliver(child: _buildSectionItems(placeholders)),
-          SliverToBoxAdapter(
-            child: SizedBox(height: MediaQuery.of(context).padding.bottom + 8),
-          ),
         ],
       ),
     );
@@ -86,6 +83,7 @@ class LatestTransactionsSection extends StatelessWidget {
     return SliverPadding(
       padding: const EdgeInsetsGeometry.symmetric(
         horizontal: AppConfig.padding,
+        vertical: AppConfig.paddingHalf,
       ),
       sliver: SliverMainAxisGroup(
         slivers: [
@@ -126,9 +124,6 @@ class LatestTransactionsSection extends StatelessWidget {
             )
           else
             _buildSectionItems(transactions),
-          SliverToBoxAdapter(
-            child: SizedBox(height: MediaQuery.of(context).padding.bottom + 8),
-          ),
         ],
       ),
     );
