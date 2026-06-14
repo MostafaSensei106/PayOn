@@ -230,7 +230,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'Account/CreateAccount',
+            'Auth/CreateAccount',
             queryParameters: queryParameters,
             data: _data,
           )

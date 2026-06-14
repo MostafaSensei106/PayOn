@@ -53,12 +53,17 @@ final class LoginRoute extends CupertinoRouteData with $LoginRoute {
 
 @TypedGoRoute<GetStartedRoute>(path: RoutesNames.getStarted)
 final class GetStartedRoute extends CupertinoRouteData with $GetStartedRoute {
-  const GetStartedRoute();
+  const GetStartedRoute({this.isAddWalletFlow = false});
+
+  final bool isAddWalletFlow;
 
   @override
   Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
     providers: [
-      BlocProvider(create: (_) => getIt<RegisterCubit>()),
+      BlocProvider(
+        create: (_) =>
+            getIt<RegisterCubit>()..setIsAddWalletFlow(isAddWalletFlow),
+      ),
       BlocProvider(create: (context) => getIt<AccountTypeCubit>()),
       BlocProvider(create: (_) => getIt<OtpCubit>()),
     ],

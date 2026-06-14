@@ -203,13 +203,13 @@ class TransactionDetailsBottomSheet extends StatelessWidget {
           return ListTileIconComponent(
             title: item.label,
             leading: item.icon,
-            trailing: trailing,
+            trailing: Directionality(textDirection: .ltr, child: trailing),
           );
         } else if (isFirst) {
           return ListTileIconComponent.top(
             title: item.label,
             leading: item.icon,
-            trailing: trailing,
+            trailing: Directionality(textDirection: .ltr, child: trailing),
           );
         } else if (isLast) {
           return ListTileIconComponent.bottom(

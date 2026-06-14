@@ -50,8 +50,9 @@ class CreateWalletPage extends HookWidget {
                 selectedCurrency.value = currencies.first;
               }
             },
-            walletCreated: () =>
-                unawaited(CreateWalletPinRoute(accountId: accountId).push<void>(context)),
+            walletCreated: () => unawaited(
+              CreateWalletPinRoute(accountId: accountId).push<void>(context),
+            ),
             failure: (final message) => unawaited(
               DialogComponent.showError(
                 context: context,

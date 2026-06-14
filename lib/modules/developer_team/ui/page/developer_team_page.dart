@@ -97,7 +97,9 @@ class DeveloperTeamPage extends StatelessWidget {
                     children: [
                       Text(
                         name,
-                        style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                        style: textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Text(
                         role,

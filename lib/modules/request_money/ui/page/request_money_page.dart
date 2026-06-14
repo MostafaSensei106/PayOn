@@ -49,7 +49,8 @@ class RequestMoneyPage extends HookWidget {
                       SizedBox(height: 16.h),
                       Text(
                         'No Pending Requests',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(
                               color: Theme.of(context).colorScheme.outline,
                             ),
                       ),

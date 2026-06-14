@@ -12,8 +12,9 @@ class GetPendingRewardUsersResponseBody {
     required this.success,
   });
 
-  factory GetPendingRewardUsersResponseBody.fromJson(Map<String, dynamic> json) =>
-      _$GetPendingRewardUsersResponseBodyFromJson(json);
+  factory GetPendingRewardUsersResponseBody.fromJson(
+    Map<String, dynamic> json,
+  ) => _$GetPendingRewardUsersResponseBodyFromJson(json);
 
   final int code;
   final String message;
@@ -21,7 +22,8 @@ class GetPendingRewardUsersResponseBody {
   final List<dynamic> errors;
   final bool success;
 
-  Map<String, dynamic> toJson() => _$GetPendingRewardUsersResponseBodyToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$GetPendingRewardUsersResponseBodyToJson(this);
 }
 
 @JsonSerializable()

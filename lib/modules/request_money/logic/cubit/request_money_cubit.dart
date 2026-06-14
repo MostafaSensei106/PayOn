@@ -9,7 +9,7 @@ import 'request_money_state.dart';
 @injectable
 class RequestMoneyCubit extends Cubit<RequestMoneyState> {
   RequestMoneyCubit(this._getPendingTransactionsU)
-      : super(const RequestMoneyState.initial());
+    : super(const RequestMoneyState.initial());
 
   final GetPendingTransactionsUseCase _getPendingTransactionsU;
 

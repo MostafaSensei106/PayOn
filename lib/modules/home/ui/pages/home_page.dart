@@ -4,24 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
-import '../../../../core/extensions/extensions.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
-import '../../../../core/utils/result/result.dart';
-import '../../../../core/utils/use_case/base_use_case.dart';
-import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/avatar/avatar_component.dart';
-import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
-import '../../../get_started/logic/use_cases/get_account_types_use_case.dart';
 import '../../logic/cubit/home_cubit.dart';
 import '../../logic/cubit/home_state.dart';
 import '../../logic/entitys/wallets_entity.dart';
@@ -33,85 +26,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   Future<void> _onAddWallet(BuildContext context) async {
-    final homeCubit = context.read<HomeCubit>();
-
-    context.dialog.showLoading();
-
-    final result = await getIt<GetAccountTypesUseCase>().call(const NoParams());
-
-    if (!context.mounted) return;
-    context.pop(); // Close loading
-
-    await result.fold(
-      onSuccess: (accountTypes) async {
-        final selectedType = await context.showBottomSheetComponent<int>(
-          title: 'Select Account Type',
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ...List.generate(accountTypes.items.length, (index) {
-                final type = accountTypes.items[index];
-                final isFirst = index == 0;
-                final isLast = index == accountTypes.items.length - 1;
-                final leading = type.parentId == 7
-                    ? Iconsax.shop_copy
-                    : Iconsax.user_copy;
-                final trailing = Radio<int>(
-                  value: type.id,
-                  // ignore: deprecated_member_use, avoid_redundant_argument_values
-                  groupValue: null,
-                  // ignore: deprecated_member_use
-                  onChanged: (_) => context.pop(type.id),
-                );
-                void onTap() => context.pop(type.id);
-
-                if (isFirst) {
-                  return ListTileIconComponent.top(
-                    title: type.type,
-                    leading: leading,
-                    trailing: trailing,
-                    onTap: onTap,
-                  );
-                } else if (isLast) {
-                  return ListTileIconComponent.bottom(
-                    title: type.type,
-                    leading: leading,
-                    trailing: trailing,
-                    onTap: onTap,
-                  );
-                } else {
-                  return ListTileIconComponent.middle(
-                    title: type.type,
-                    leading: leading,
-                    trailing: trailing,
-                    onTap: onTap,
-                  );
-                }
-              }),
-              SizedBox(height: 16.h),
-            ],
-          ),
-        );
-
-        if (selectedType != null && context.mounted) {
-          context.dialog.showLoading();
-          final accountId = await homeCubit.createAccount(
-            accountTypeId: selectedType,
-          );
-
-          if (context.mounted) {
-            context.pop(); // Close loading
-            if (accountId != null && accountId.isNotEmpty) {
-              unawaited(
-                CreateWalletRoute(accountId: accountId).push<void>(context),
-              );
-            }
-          }
-        }
-      },
-      onFailure: (error) async =>
-          context.dialog.showError(title: 'Error', error: error.message),
-    );
+    unawaited(const GetStartedRoute(isAddWalletFlow: true).push<void>(context));
   }
 
   @override

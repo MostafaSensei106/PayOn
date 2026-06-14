@@ -58,17 +58,16 @@ final class CreateWalletRoute extends CupertinoRouteData
   @override
   Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
     providers: [
-      BlocProvider(
-        create: (context) => getIt<CreateWalletCubit>(),
-      ),
+      BlocProvider(create: (context) => getIt<CreateWalletCubit>()),
       BlocProvider.value(value: getIt<UserProfileCubit>()),
     ],
     child: CreateWalletPage(accountId: accountId),
   );
-  }
+}
 
-
-@TypedGoRoute<CreateWalletPinRoute>(path: '${RoutesNames.createWalletPin}/:accountId')
+@TypedGoRoute<CreateWalletPinRoute>(
+  path: '${RoutesNames.createWalletPin}/:accountId',
+)
 final class CreateWalletPinRoute extends CupertinoRouteData
     with $CreateWalletPinRoute {
   const CreateWalletPinRoute({required this.accountId});
@@ -171,16 +170,16 @@ final class SendMoneyRoute extends CupertinoRouteData with $SendMoneyRoute {
 }
 
 @TypedGoRoute<RequestMoneyRoute>(path: RoutesNames.requestMoney)
-final class RequestMoneyRoute extends CupertinoRouteData with $RequestMoneyRoute {
+final class RequestMoneyRoute extends CupertinoRouteData
+    with $RequestMoneyRoute {
   const RequestMoneyRoute();
 
   @override
   Widget build(BuildContext context, GoRouterState state) => BlocProvider(
-        create: (context) => getIt<RequestMoneyCubit>(),
-        child: const RequestMoneyPage(),
-      );
+    create: (context) => getIt<RequestMoneyCubit>(),
+    child: const RequestMoneyPage(),
+  );
 }
-
 
 @TypedGoRoute<ScanQrCodeRoute>(path: RoutesNames.scanQrCode)
 final class ScanQrCodeRoute extends CupertinoRouteData with $ScanQrCodeRoute {

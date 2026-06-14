@@ -59,7 +59,9 @@ class ContactUsPage extends StatelessWidget {
                 const SizedBox(height: 24),
                 Text(
                   'Connect with us',
-                  style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                  style: textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 16),
                 Row(
@@ -95,7 +97,9 @@ class ContactUsPage extends StatelessWidget {
                 const SizedBox(height: 32),
                 Text(
                   'Send us a message',
-                  style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                  style: textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 16),
                 const CardComponent(
@@ -143,7 +147,12 @@ class ContactUsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSocialCard(String label, IconData icon, ColorScheme colorScheme, TextTheme textTheme) {
+  Widget _buildSocialCard(
+    String label,
+    IconData icon,
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) {
     return CardComponent(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: Column(

@@ -48,11 +48,13 @@ class CreateWalletPinPage extends HookWidget {
                 context.go(RoutesNames.home);
               }
             },
-            failure: (final String message) => unawaited(DialogComponent.showError(
-              context: context,
-              title: 'Error',
-              error: message,
-            )),
+            failure: (final String message) => unawaited(
+              DialogComponent.showError(
+                context: context,
+                title: 'Error',
+                error: message,
+              ),
+            ),
             orElse: () {},
           );
         },

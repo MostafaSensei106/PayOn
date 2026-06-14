@@ -54,6 +54,12 @@ abstract class RegisterFormState with _$RegisterFormState {
     @Default(null) AccountTypeItemEntity? accountType,
     @Default({}) Map<int, File> files,
 
+    @Default('') String address,
+    @Default('') String nationalId,
+    @Default(null) double? latitude,
+    @Default(null) double? longitude,
+    @Default(false) bool isAddWalletFlow,
+
     @Default(false) bool isForgotPassword,
     @Default('en') String lang,
     @Default('') String code,

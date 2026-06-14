@@ -69,11 +69,26 @@ RouteBase get $getStartedRoute => GoRouteData.$route(
 );
 
 mixin $GetStartedRoute on GoRouteData {
-  static GetStartedRoute _fromState(GoRouterState state) =>
-      const GetStartedRoute();
+  static GetStartedRoute _fromState(GoRouterState state) => GetStartedRoute(
+    isAddWalletFlow:
+        _$convertMapValue(
+          'is-add-wallet-flow',
+          state.uri.queryParameters,
+          _$boolConverter,
+        ) ??
+        false,
+  );
+
+  GetStartedRoute get _self => this as GetStartedRoute;
 
   @override
-  String get location => GoRouteData.$location('/get-started');
+  String get location => GoRouteData.$location(
+    '/get-started',
+    queryParams: {
+      if (_self.isAddWalletFlow != false)
+        'is-add-wallet-flow': _self.isAddWalletFlow.toString(),
+    },
+  );
 
   @override
   void go(BuildContext context) => context.go(location);
@@ -87,6 +102,26 @@ mixin $GetStartedRoute on GoRouteData {
 
   @override
   void replace(BuildContext context) => context.replace(location);
+}
+
+T? _$convertMapValue<T>(
+  String key,
+  Map<String, String> map,
+  T? Function(String) converter,
+) {
+  final value = map[key];
+  return value == null ? null : converter(value);
+}
+
+bool _$boolConverter(String value) {
+  switch (value) {
+    case 'true':
+      return true;
+    case 'false':
+      return false;
+    default:
+      throw UnsupportedError('Cannot convert "$value" into a bool.');
+  }
 }
 
 RouteBase get $forgetPasswordRoute => GoRouteData.$route(

@@ -15,6 +15,7 @@ class RegisterRequestBody {
     required this.nationalityCode,
     required this.country,
     required this.cityId,
+    this.referralCode,
   });
 
   factory RegisterRequestBody.fromJson(Map<String, dynamic> json) =>
@@ -30,6 +31,7 @@ class RegisterRequestBody {
   final String nationalityCode;
   final String country;
   final int cityId;
+  final String? referralCode;
 
   Map<String, dynamic> toJson() => _$RegisterRequestBodyToJson(this);
 }

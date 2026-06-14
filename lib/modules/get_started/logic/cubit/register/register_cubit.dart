@@ -16,6 +16,7 @@ import '../../../data/models/register/create_account_request_body.dart';
 import '../../../data/models/register/register_request_body.dart';
 import '../../../data/models/send_otp/send_otp_request_body.dart';
 import '../../entities/account_type_entity.dart';
+import '../../entities/register_entities.dart';
 import '../../use_cases/create_account_use_case.dart';
 import '../../use_cases/get_all_countries_use_case.dart';
 import '../../use_cases/get_required_files_use_case.dart';
@@ -51,6 +52,11 @@ class RegisterCubit extends Cubit<RegisterState> {
     if (!_validate(currentForm, step: 1)) return;
     emit(RegisterState.loading(currentForm));
 
+    if (currentForm.isAddWalletFlow) {
+      await _executeCreateAccount();
+      return;
+    }
+
     final body = RegisterRequestBody(
       email: currentForm.email.value,
       phoneNumber: currentForm.formattedPhoneNumber,
@@ -67,40 +73,67 @@ class RegisterCubit extends Cubit<RegisterState> {
     final result = await _registerUseCase(body);
     result.fold(
       onSuccess: (data) async {
-        final createAccountBody = CreateAccountRequestBody(
-          accountTypeId: currentForm.accountType!.id,
+        await _executeCreateAccount(registerEntity: data);
+      },
+      onFailure: (error) =>
+          emit(RegisterState.failure(currentForm, error: error.message)),
+    );
+  }
+
+  Future<void> _executeCreateAccount({RegisterEntity? registerEntity}) async {
+    final createAccountBody = CreateAccountRequestBody(
+      accountTypeId: currentForm.accountType!.id,
+      address: currentForm.address,
+      email: currentForm.email.value,
+      name: currentForm.name.value,
+      phoneNumber: currentForm.formattedPhoneNumber,
+      nationalId: currentForm.nationalId,
+      birthDate: currentForm.birthDate,
+      latitude: currentForm.latitude,
+      longitude: currentForm.longitude,
+    );
+
+    final result = await _createAccountUseCase(createAccountBody);
+
+    result.fold(
+      onSuccess: (createAccountData) async {
+        final updatedFormWithAccId = currentForm.copyWith(
+          accountId: createAccountData.accountId,
         );
 
-        final createAccountResult = await _createAccountUseCase(
-          createAccountBody,
+        if (currentForm.isAddWalletFlow) {
+          await getRequiredFiles();
+          emit(
+            RegisterState.createAccountSuccess(
+              updatedFormWithAccId,
+              data: createAccountData,
+            ),
+          );
+          return;
+        }
+
+        final otpBody = SendOtpRequestBody(
+          phone: currentForm.formattedPhoneNumber,
+          emailLang: currentForm.lang,
+          isForgotPassword: false,
         );
-
-        await createAccountResult.fold(
-          onSuccess: (createAccountData) async {
-            final updatedFormWithAccId = currentForm.copyWith(
-              accountId: createAccountData.accountId,
-            );
-
-            final otpBody = SendOtpRequestBody(
-              phone: currentForm.formattedPhoneNumber,
-              emailLang: currentForm.lang,
-              isForgotPassword: false,
-            );
-            final otpResult = await _sendOtpUseCase(otpBody);
-            otpResult.fold(
-              onSuccess: (_) => emit(
-                RegisterState.registerSuccess(updatedFormWithAccId, data: data),
-              ),
-              onFailure: (error) => emit(
-                RegisterState.failure(
-                  updatedFormWithAccId,
-                  error: error.message,
-                ),
-              ),
-            );
-          },
-          onFailure: (error) async =>
-              emit(RegisterState.failure(currentForm, error: error.message)),
+        final otpResult = await _sendOtpUseCase(otpBody);
+        otpResult.fold(
+          onSuccess: (_) => emit(
+            RegisterState.registerSuccess(
+              updatedFormWithAccId,
+              data:
+                  registerEntity ??
+                  RegisterEntity(
+                    token: '',
+                    message: createAccountData.message,
+                    accountId: createAccountData.accountId,
+                  ),
+            ),
+          ),
+          onFailure: (error) => emit(
+            RegisterState.failure(updatedFormWithAccId, error: error.message),
+          ),
         );
       },
       onFailure: (error) =>
@@ -260,6 +293,50 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
   }
 
+  void addressOnChanged(String address) {
+    final updatedForm = currentForm.copyWith(address: address);
+    emit(
+      RegisterState.initial(
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
+      ),
+    );
+  }
+
+  void nationalIdOnChanged(String nationalId) {
+    final updatedForm = currentForm.copyWith(nationalId: nationalId);
+    emit(
+      RegisterState.initial(
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
+      ),
+    );
+  }
+
+  void latitudeOnChanged(double? latitude) {
+    final updatedForm = currentForm.copyWith(latitude: latitude);
+    emit(
+      RegisterState.initial(
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
+      ),
+    );
+  }
+
+  void longitudeOnChanged(double? longitude) {
+    final updatedForm = currentForm.copyWith(longitude: longitude);
+    emit(
+      RegisterState.initial(
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 1)),
+      ),
+    );
+  }
+
+  void setIsAddWalletFlow(bool isAddWalletFlow) {
+    emit(
+      RegisterState.initial(
+        currentForm.copyWith(isAddWalletFlow: isAddWalletFlow),
+      ),
+    );
+  }
+
   Future<void> updateFile(int docId, File file) async {
     emit(RegisterState.initial(currentForm.copyWith(isOcrProcessing: true)));
 
@@ -313,7 +390,9 @@ class RegisterCubit extends Cubit<RegisterState> {
             form.password.value == form.confirmPassword.value &&
             form.birthDate.isNotEmpty &&
             form.gender != GenderType.none &&
-            form.country.isNotEmpty;
+            form.country.isNotEmpty &&
+            form.address.isNotEmpty &&
+            form.nationalId.isNotEmpty;
       case 2: // OTP
         return true;
       case 3: // Documents

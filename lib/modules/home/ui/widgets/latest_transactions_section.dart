@@ -98,12 +98,7 @@ class LatestTransactionsSection extends StatelessWidget {
                     onPressed: () => context.showBottomSheetComponent<void>(
                       title: context.localeKeys.latest_transactions,
                       child: CustomScrollView(
-                        slivers: [
-                          SliverPadding(
-                            padding: const EdgeInsets.all(AppConfig.padding),
-                            sliver: _buildSectionItems(transactions),
-                          ),
-                        ],
+                        slivers: [_buildSectionItems(transactions)],
                       ),
                     ),
                     label: context.localeKeys.see_all,

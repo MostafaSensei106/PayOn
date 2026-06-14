@@ -35,26 +35,103 @@ final class TermsAndConditionsPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-                _buildCardSection(l10n.tc_section1_title, l10n.tc_section1_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section2_title, l10n.tc_section2_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section3_title, l10n.tc_section3_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section4_title, l10n.tc_section4_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section5_title, l10n.tc_section5_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section6_title, l10n.tc_section6_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section7_title, l10n.tc_section7_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section8_title, l10n.tc_section8_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section9_title, l10n.tc_section9_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section10_title, l10n.tc_section10_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section11_title, l10n.tc_section11_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section12_title, l10n.tc_section12_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section13_title, l10n.tc_section13_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section14_title, l10n.tc_section14_content, textTheme, colorScheme),
-                _buildCardSection(l10n.tc_section15_title, l10n.tc_section15_content, textTheme, colorScheme),
+                _buildCardSection(
+                  l10n.tc_section1_title,
+                  l10n.tc_section1_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section2_title,
+                  l10n.tc_section2_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section3_title,
+                  l10n.tc_section3_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section4_title,
+                  l10n.tc_section4_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section5_title,
+                  l10n.tc_section5_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section6_title,
+                  l10n.tc_section6_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section7_title,
+                  l10n.tc_section7_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section8_title,
+                  l10n.tc_section8_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section9_title,
+                  l10n.tc_section9_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section10_title,
+                  l10n.tc_section10_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section11_title,
+                  l10n.tc_section11_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section12_title,
+                  l10n.tc_section12_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section13_title,
+                  l10n.tc_section13_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section14_title,
+                  l10n.tc_section14_content,
+                  textTheme,
+                  colorScheme,
+                ),
+                _buildCardSection(
+                  l10n.tc_section15_title,
+                  l10n.tc_section15_content,
+                  textTheme,
+                  colorScheme,
+                ),
                 const SizedBox(height: 24),
                 Center(
                   child: Text(
                     '© 2026 PayOn Inc. All rights reserved.',
-                    style: textTheme.labelSmall?.copyWith(color: colorScheme.outline),
+                    style: textTheme.labelSmall?.copyWith(
+                      color: colorScheme.outline,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -66,7 +143,12 @@ final class TermsAndConditionsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildCardSection(String title, String content, TextTheme textTheme, ColorScheme colorScheme) {
+  Widget _buildCardSection(
+    String title,
+    String content,
+    TextTheme textTheme,
+    ColorScheme colorScheme,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: CardComponent(
