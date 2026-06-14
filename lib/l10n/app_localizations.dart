@@ -2347,6 +2347,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your wallet is currently under review. Please wait for approval.'**
   String get wallet_under_review_desc;
+
+  /// No description provided for @complete_your_wallet_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete Your Wallet Profile'**
+  String get complete_your_wallet_profile;
+
+  /// No description provided for @verify_details_proceed.
+  ///
+  /// In en, this message translates to:
+  /// **'Please verify the following details to proceed with creating your account.'**
+  String get verify_details_proceed;
+
+  /// No description provided for @enter_residential_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your full residential address'**
+  String get enter_residential_address;
+
+  /// No description provided for @add_wallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Wallet'**
+  String get add_wallet;
+
+  /// No description provided for @create_your_wallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Your Wallet'**
+  String get create_your_wallet;
+
+  /// No description provided for @set_up_your_wallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Up Your Wallet'**
+  String get set_up_your_wallet;
+
+  /// No description provided for @choose_ipa_and_currency.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a unique Instant Payment Address (IPA) and select your primary currency.'**
+  String get choose_ipa_and_currency;
+
+  /// No description provided for @ipa_hint_username.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., username'**
+  String get ipa_hint_username;
+
+  /// No description provided for @select_currency.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Currency'**
+  String get select_currency;
+
+  /// No description provided for @creating.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating...'**
+  String get creating;
+
+  /// No description provided for @set_wallet_pin.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Wallet PIN'**
+  String get set_wallet_pin;
+
+  /// No description provided for @pin.
+  ///
+  /// In en, this message translates to:
+  /// **'PIN'**
+  String get pin;
+
+  /// No description provided for @pins_do_not_match.
+  ///
+  /// In en, this message translates to:
+  /// **'PINs do not match'**
+  String get pins_do_not_match;
+
+  /// No description provided for @complete_setup.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete Setup'**
+  String get complete_setup;
+
+  /// No description provided for @create_wallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Wallet'**
+  String get create_wallet;
+
+  /// No description provided for @please_wait_profile_load.
+  ///
+  /// In en, this message translates to:
+  /// **'Please wait for profile to load'**
+  String get please_wait_profile_load;
 }
 
 class _AppLocalizationsDelegate

@@ -1210,4 +1210,55 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get wallet_under_review_desc =>
       'محفظتك قيد المراجعة حالياً. يرجى الانتظار حتى يتم الموافقة عليها.';
+
+  @override
+  String get complete_your_wallet_profile => 'أكمل بيانات محفظتك';
+
+  @override
+  String get verify_details_proceed =>
+      'يرجى التحقق من التفاصيل التالية للمتابعة في إنشاء حسابك.';
+
+  @override
+  String get enter_residential_address => 'أدخل عنوان إقامتك بالكامل';
+
+  @override
+  String get add_wallet => 'إضافة محفظة';
+
+  @override
+  String get create_your_wallet => 'أنشئ محفظتك';
+
+  @override
+  String get set_up_your_wallet => 'إعداد محفظتك';
+
+  @override
+  String get choose_ipa_and_currency =>
+      'اختر عنوان دفع فوري (IPA) فريداً وحدد عملتك الأساسية.';
+
+  @override
+  String get ipa_hint_username => 'مثال: username';
+
+  @override
+  String get select_currency => 'اختر العملة';
+
+  @override
+  String get creating => 'جاري الإنشاء...';
+
+  @override
+  String get set_wallet_pin => 'تعيين رمز PIN للمحفظة';
+
+  @override
+  String get pin => 'رمز PIN';
+
+  @override
+  String get pins_do_not_match => 'رمز PIN غير متطابق';
+
+  @override
+  String get complete_setup => 'أكمل الإعداد';
+
+  @override
+  String get create_wallet => 'إنشاء محفظة';
+
+  @override
+  String get please_wait_profile_load =>
+      'يرجى الانتظار حتى يتم تحميل الملف الشخصي';
 }

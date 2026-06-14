@@ -1210,4 +1210,54 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get wallet_under_review_desc =>
       'Your wallet is currently under review. Please wait for approval.';
+
+  @override
+  String get complete_your_wallet_profile => 'Complete Your Wallet Profile';
+
+  @override
+  String get verify_details_proceed =>
+      'Please verify the following details to proceed with creating your account.';
+
+  @override
+  String get enter_residential_address => 'Enter your full residential address';
+
+  @override
+  String get add_wallet => 'Add Wallet';
+
+  @override
+  String get create_your_wallet => 'Create Your Wallet';
+
+  @override
+  String get set_up_your_wallet => 'Set Up Your Wallet';
+
+  @override
+  String get choose_ipa_and_currency =>
+      'Choose a unique Instant Payment Address (IPA) and select your primary currency.';
+
+  @override
+  String get ipa_hint_username => 'e.g., username';
+
+  @override
+  String get select_currency => 'Select Currency';
+
+  @override
+  String get creating => 'Creating...';
+
+  @override
+  String get set_wallet_pin => 'Set Wallet PIN';
+
+  @override
+  String get pin => 'PIN';
+
+  @override
+  String get pins_do_not_match => 'PINs do not match';
+
+  @override
+  String get complete_setup => 'Complete Setup';
+
+  @override
+  String get create_wallet => 'Create Wallet';
+
+  @override
+  String get please_wait_profile_load => 'Please wait for profile to load';
 }

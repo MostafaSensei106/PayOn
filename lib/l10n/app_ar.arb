@@ -374,5 +374,21 @@
   "tc_section15_title": "15. التغييرات على الشروط",
   "tc_section15_content": "قد نقوم بتحديث هذه الشروط من وقت لآخر. استمرارك في استخدام التطبيق بعد نشر التغييرات يشكل قبولاً للشروط الجديدة.",
   "wallet_under_review": "محفظتك قيد المراجعة",
-  "wallet_under_review_desc": "محفظتك قيد المراجعة حالياً. يرجى الانتظار حتى يتم الموافقة عليها."
+  "wallet_under_review_desc": "محفظتك قيد المراجعة حالياً. يرجى الانتظار حتى يتم الموافقة عليها.",
+  "complete_your_wallet_profile": "أكمل بيانات محفظتك",
+  "verify_details_proceed": "يرجى التحقق من التفاصيل التالية للمتابعة في إنشاء حسابك.",
+  "enter_residential_address": "أدخل عنوان إقامتك بالكامل",
+  "add_wallet": "إضافة محفظة",
+  "create_your_wallet": "أنشئ محفظتك",
+  "set_up_your_wallet": "إعداد محفظتك",
+  "choose_ipa_and_currency": "اختر عنوان دفع فوري (IPA) فريداً وحدد عملتك الأساسية.",
+  "ipa_hint_username": "مثال: username",
+  "select_currency": "اختر العملة",
+  "creating": "جاري الإنشاء...",
+  "set_wallet_pin": "تعيين رمز PIN للمحفظة",
+  "pin": "رمز PIN",
+  "pins_do_not_match": "رمز PIN غير متطابق",
+  "complete_setup": "أكمل الإعداد",
+  "create_wallet": "إنشاء محفظة",
+  "please_wait_profile_load": "يرجى الانتظار حتى يتم تحميل الملف الشخصي"
 }

@@ -4,6 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '../../../../../core/extensions/extensions.dart';
+
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/widgets/display/card/card_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
@@ -54,14 +56,14 @@ class StepFiveCreateWallet extends HookWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
       children: [
         Text(
-          'Create Your Wallet',
+          context.localeKeys.create_your_wallet,
           style: Theme.of(
             context,
           ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(height: AppConfig.paddingHalf.h),
         TextFormFieldComponent(
-          label: 'IPA Address',
+          label: context.localeKeys.ipa_address,
           prefixIcon: Iconsax.link_2_copy,
           initialValue: form.ipa,
           onChanged: registerCubit.ipaOnChanged,
@@ -75,7 +77,7 @@ class StepFiveCreateWallet extends HookWidget {
         ),
         SizedBox(height: AppConfig.padding.h),
         Text(
-          'Select Currency',
+          context.localeKeys.select_currency,
           style: Theme.of(
             context,
           ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -109,7 +111,7 @@ class StepFiveCreateWallet extends HookWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
       children: [
         Text(
-          'Set Wallet PIN',
+          context.localeKeys.set_wallet_pin,
           style: Theme.of(
             context,
           ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -120,7 +122,7 @@ class StepFiveCreateWallet extends HookWidget {
             spacing: AppConfig.paddingHalf,
             children: [
               TextFormFieldComponent(
-                label: 'PIN',
+                label: context.localeKeys.pin,
                 prefixIcon: Iconsax.lock_copy,
                 controller: pinController,
                 obscureText: true,
@@ -131,13 +133,13 @@ class StepFiveCreateWallet extends HookWidget {
                 },
               ),
               TextFormFieldComponent(
-                label: 'Confirm PIN',
+                label: context.localeKeys.confirm_password,
                 prefixIcon: Iconsax.lock_copy,
                 controller: confirmPinController,
                 obscureText: true,
                 maxLength: 6,
                 keyboardType: TextInputType.number,
-                errorText: pinMismatch.value ? 'PINs do not match' : null,
+                errorText: pinMismatch.value ? context.localeKeys.pins_do_not_match : null,
                 onChanged: (value) {
                   final pin = pinController.text;
                   if (value.length == 6 && pin.length == 6) {

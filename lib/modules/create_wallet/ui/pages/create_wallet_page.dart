@@ -9,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
+import '../../../../core/extensions/extensions.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
 import '../../../../core/widgets/feedback/dialog/dialog_component.dart';
@@ -40,7 +41,7 @@ class CreateWalletPage extends HookWidget {
     }, []);
 
     return Scaffold(
-      appBar: const SidePageAppBarComponent(title: 'Create Wallet'),
+      appBar: SidePageAppBarComponent(title: context.localeKeys.create_wallet),
       body: BlocConsumer<CreateWalletCubit, CreateWalletState>(
         listener: (final context, final state) {
           state.maybeWhen(
@@ -86,14 +87,14 @@ class CreateWalletPage extends HookWidget {
                     ),
                     SizedBox(height: 24.h),
                     Text(
-                      'Set Up Your Wallet',
+                      context.localeKeys.set_up_your_wallet,
                       style: Theme.of(context).textTheme.headlineMedium
                           ?.copyWith(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 8.h),
                     Text(
-                      'Choose a unique Instant Payment Address (IPA) and select your primary currency.',
+                      context.localeKeys.choose_ipa_and_currency,
                       style: Theme.of(
                         context,
                       ).textTheme.bodyMedium?.copyWith(color: Colors.grey),
@@ -105,8 +106,8 @@ class CreateWalletPage extends HookWidget {
                       children: [
                         TextFormFieldComponent(
                           controller: ipaController,
-                          label: 'Instant Payment Address (IPA)',
-                          hintText: 'e.g., username',
+                          label: context.localeKeys.ipa_address,
+                          hintText: context.localeKeys.ipa_hint_username,
                           prefixIcon: Iconsax.link_2_copy,
                           suffix: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 12.w),
@@ -122,7 +123,7 @@ class CreateWalletPage extends HookWidget {
                         ),
                         SizedBox(height: 24.h),
                         Text(
-                          'Select Currency',
+                          context.localeKeys.select_currency,
                           style: Theme.of(context).textTheme.titleSmall
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
@@ -161,7 +162,7 @@ class CreateWalletPage extends HookWidget {
                           ipaController.text.isNotEmpty &&
                           selectedCurrency.value != null &&
                           !isLoading,
-                      label: isLoading ? 'Creating...' : 'Create Wallet',
+                      label: isLoading ? context.localeKeys.creating : context.localeKeys.create_wallet,
                     ),
                   ],
                 ),

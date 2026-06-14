@@ -42,8 +42,8 @@ class HomePage extends StatelessWidget {
 
     if (userProfileState is! profile.Success) {
       await context.dialog.showError(
-        title: 'Error',
-        error: 'Please wait for profile to load',
+        title: context.localeKeys.error,
+        error: context.localeKeys.please_wait_profile_load,
       );
       return;
     }
@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
     await result.fold(
       onSuccess: (accountTypes) async {
         final selectedType = await context.showBottomSheetComponent<int>(
-          title: 'Select Account Type',
+          title: context.localeKeys.account_type,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -103,14 +103,14 @@ class HomePage extends StatelessWidget {
 
           final resultData = await context
               .showBottomSheetComponent<Map<String, String>>(
-                title: 'Complete Your Wallet Profile',
+                title: context.localeKeys.complete_your_wallet_profile,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'Please verify the following details to proceed with creating your account.',
+                        context.localeKeys.verify_details_proceed,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Theme.of(context).colorScheme.onSurfaceVariant,
                         ),
@@ -120,7 +120,7 @@ class HomePage extends StatelessWidget {
                       const SizedBox(height: AppConfig.padding),
                       TextFormFieldComponent(
                         controller: phoneController,
-                        label: 'Phone Number',
+                        label: context.localeKeys.phone_number,
                         prefixIcon: Iconsax.call_copy,
                         keyboardType: TextInputType.phone,
                         onChanged: (String p1) {},
@@ -128,14 +128,14 @@ class HomePage extends StatelessWidget {
                       const SizedBox(height: AppConfig.padding),
                       TextFormFieldComponent(
                         controller: addressController,
-                        label: 'Address',
-                        hintText: 'Enter your full residential address',
+                        label: context.localeKeys.residential_address,
+                        hintText: context.localeKeys.enter_residential_address,
                         prefixIcon: Iconsax.map_copy,
                         onChanged: (String p1) {},
                       ),
                       SizedBox(height: 32.h),
                       FilledButtonComponent(
-                        label: 'Continue to Document Upload',
+                        label: context.localeKeys.add_wallet,
                         onPressed: () => context.pop({
                           'address': addressController.text,
                           'phone': phoneController.text,
@@ -171,7 +171,7 @@ class HomePage extends StatelessWidget {
         }
       },
       onFailure: (error) async =>
-          context.dialog.showError(title: 'Error', error: error.message),
+          context.dialog.showError(title: context.localeKeys.error, error: error.message),
     );
   }
 
@@ -327,7 +327,7 @@ class HomePage extends StatelessWidget {
 
                         QuickActionItem(
                           icon: Iconsax.wallet_add_copy,
-                          label: 'Add Wallet',
+                          label: context.localeKeys.add_wallet,
                           onTap: () => _onAddWallet(context),
                         ),
                       ],

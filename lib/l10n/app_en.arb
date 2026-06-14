@@ -375,4 +375,21 @@
   "tc_section15_content": "We may update these Terms from time to time. Your continued use of the App after changes are posted constitutes acceptance of the new Terms.",
   "wallet_under_review": "Wallet under review",
   "wallet_under_review_desc": "Your wallet is currently under review. Please wait for approval."
+,
+  "complete_your_wallet_profile": "Complete Your Wallet Profile",
+  "verify_details_proceed": "Please verify the following details to proceed with creating your account.",
+  "enter_residential_address": "Enter your full residential address",
+  "add_wallet": "Add Wallet",
+  "create_your_wallet": "Create Your Wallet",
+  "set_up_your_wallet": "Set Up Your Wallet",
+  "choose_ipa_and_currency": "Choose a unique Instant Payment Address (IPA) and select your primary currency.",
+  "ipa_hint_username": "e.g., username",
+  "select_currency": "Select Currency",
+  "creating": "Creating...",
+  "set_wallet_pin": "Set Wallet PIN",
+  "pin": "PIN",
+  "pins_do_not_match": "PINs do not match",
+  "complete_setup": "Complete Setup",
+  "create_wallet": "Create Wallet",
+  "please_wait_profile_load": "Please wait for profile to load"
 }
