@@ -3,13 +3,11 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/constants/app_config.dart';
-import '../../../../core/services/ocr/ocr_service.dart';
 import '../../../../core/di/di.dart';
-import '../../logic/cubit/register/register_cubit.dart';
+import '../../../../core/services/ocr/ocr_service.dart';
 
 class RealtimeOcrScanner extends StatefulWidget {
   const RealtimeOcrScanner({
@@ -78,18 +76,24 @@ class _RealtimeOcrScannerState extends State<RealtimeOcrScanner> {
   }
 
   void _startScanning() {
-    _scanTimer = Timer.periodic(const Duration(milliseconds: 1500), (timer) async {
-      if (_isProcessing || _controller == null || !_controller!.value.isInitialized) return;
-      
+    _scanTimer = Timer.periodic(const Duration(milliseconds: 1500), (
+      timer,
+    ) async {
+      if (_isProcessing ||
+          _controller == null ||
+          !_controller!.value.isInitialized)
+        return;
+
       _isProcessing = true;
       try {
         final xFile = await _controller!.takePicture();
         final file = File(xFile.path);
-        
+
         final extractedText = await _ocrService.extractText(file);
-        
+
         // Check if the text contains common Egyptian ID keywords
-        final isEgyptianId = extractedText.contains('جمهورية مصر العربية') ||
+        final isEgyptianId =
+            extractedText.contains('جمهورية مصر العربية') ||
             extractedText.contains('بطاقة تحقيق شخصية') ||
             extractedText.contains('الرقم القومي') ||
             extractedText.contains('وزارة الداخلية');
@@ -150,27 +154,26 @@ class _RealtimeOcrScannerState extends State<RealtimeOcrScanner> {
         fit: StackFit.expand,
         children: [
           CameraPreview(_controller!),
-          
+
           // Scanner Overlay
           Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
+                color: Theme.of(
+                  context,
+                ).colorScheme.primary.withValues(alpha: 0.5),
                 width: 4,
               ),
             ),
           ),
-          
+
           Positioned(
             bottom: 16.h,
             left: 0,
             right: 0,
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: AppConfig.padding),
-              padding: EdgeInsets.symmetric(
-                vertical: 8.h,
-                horizontal: 16.w,
-              ),
+              padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
               decoration: BoxDecoration(
                 color: Colors.black54,
                 borderRadius: BorderRadius.circular(20),
@@ -190,10 +193,7 @@ class _RealtimeOcrScannerState extends State<RealtimeOcrScanner> {
                   SizedBox(width: 8.w),
                   Text(
                     _statusMessage,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                    ),
+                    style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ],
               ),
