@@ -39,116 +39,154 @@ class AccountBalanceCard extends HookWidget {
           color: colorScheme.surface,
         ),
         padding: const EdgeInsets.all(AppConfig.paddingHalf),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    CountryFlag.fromCountryCode(w.country),
-                    const SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(w.currency, style: const TextStyle(fontSize: 12)),
-                        Text(
-                          w.currencyCode,
+        child: w.isPending || !w.filesVerified
+            ? SizedBox(
+                height: 160,
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Iconsax.timer_1_copy,
+                        size: 48,
+                        color: colorScheme.primary,
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'Wallet Under Review',
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Your account is currently being reviewed by our team. This usually takes 24-48 hours.',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          CountryFlag.fromCountryCode(w.country),
+                          const SizedBox(width: 12),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                w.currency,
+                                style: const TextStyle(fontSize: 12),
+                              ),
+                              Text(
+                                w.currencyCode,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      IconButtonComponent.filled(
+                        icon: showBalance.value
+                            ? Iconsax.eye_copy
+                            : Iconsax.eye_slash_copy,
+                        onPressed: () => showBalance.value = !showBalance.value,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.total_balance,
+                        style: const TextStyle(fontSize: 11),
+                      ),
+                      FittedBox(
+                        child: Text(
+                          showBalance.value
+                              ? '${w.balance} ${w.currencyCode}'
+                              : '•••••• ${w.currencyCode}',
                           style: const TextStyle(
+                            fontSize: 26,
                             fontWeight: FontWeight.w600,
-                            fontSize: 16,
                           ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-                IconButtonComponent.filled(
-                  icon: showBalance.value
-                      ? Iconsax.eye_copy
-                      : Iconsax.eye_slash_copy,
-                  onPressed: () => showBalance.value = !showBalance.value,
-                ),
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(l10n.total_balance, style: const TextStyle(fontSize: 11)),
-                FittedBox(
-                  child: Text(
-                    showBalance.value
-                        ? '${w.balance} ${w.currencyCode}'
-                        : '•••••• ${w.currencyCode}',
-                    style: const TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    if (w.ipa.isNotEmpty)
-                      Text(
-                        '${l10n.ipa}: ${w.ipa}',
-                        style: const TextStyle(
-                          fontSize: 10,
-                          fontFamily: 'monospace',
-                        ),
-                      )
-                    else if (w.isActive)
-                      TextButton(
-                        onPressed: () => CreateWalletRoute(
-                          accountId: accountId,
-                        ).push<void>(context),
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          minimumSize: Size.zero,
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        ),
-                        child: const Text(
-                          'Complete Setup',
-                          style: TextStyle(fontSize: 10),
-                        ),
-                      )
-                    else
-                      const Text(
-                        'Awaiting Approval',
-                        style: TextStyle(fontSize: 10),
                       ),
-                  ],
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 4,
+                    ],
                   ),
-                  decoration: BoxDecoration(
-                    color: w.isActive
-                        ? Colors.green.withValues(alpha: 0.1)
-                        : Colors.orange.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          if (w.ipa.isNotEmpty)
+                            Text(
+                              '${l10n.ipa}: ${w.ipa}',
+                              style: const TextStyle(
+                                fontSize: 10,
+                                fontFamily: 'monospace',
+                              ),
+                            )
+                          else if (w.isActive)
+                            TextButton(
+                              onPressed: () => CreateWalletRoute(
+                                accountId: accountId,
+                              ).push<void>(context),
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              ),
+                              child: const Text(
+                                'Complete Setup',
+                                style: TextStyle(fontSize: 10),
+                              ),
+                            )
+                          else
+                            const Text(
+                              'Awaiting Approval',
+                              style: TextStyle(fontSize: 10),
+                            ),
+                        ],
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: w.isActive
+                              ? Colors.green.withValues(alpha: 0.1)
+                              : Colors.orange.withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          w.isActive ? l10n.active : 'Pending',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: w.isActive ? Colors.green : Colors.orange,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  child: Text(
-                    w.isActive ? l10n.active : 'Pending',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                      color: w.isActive ? Colors.green : Colors.orange,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+                ],
+              ),
       ),
     );
   }

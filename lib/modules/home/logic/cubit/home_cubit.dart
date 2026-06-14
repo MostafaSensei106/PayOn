@@ -81,6 +81,7 @@ class HomeCubit extends Cubit<HomeState> {
   Future<String?> createAccount({
     required int accountTypeId,
     required String address,
+    required String phoneNumber,
     required UserProfileEntity profile,
   }) async {
     final body = CreateAccountRequestBody(
@@ -88,7 +89,7 @@ class HomeCubit extends Cubit<HomeState> {
       address: address,
       email: profile.email,
       name: profile.name,
-      phoneNumber: profile.phone,
+      phoneNumber: phoneNumber,
       nationalId: profile.nationalId,
       birthDate: profile.birthData,
     );

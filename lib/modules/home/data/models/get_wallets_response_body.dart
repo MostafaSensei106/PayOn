@@ -89,23 +89,30 @@ class WalletItemModel {
 
 extension GetWalletsBodyMapper on GetWalletsResponseBody {
   WalletsEntity toEntity() {
-    return WalletsEntity(
-      wallets: data.items
-          .map(
-            (item) => WalletItemEntity(
-              walletId: item.walletId,
-              ipa: item.ipa,
-              currency: item.currency,
-              currencyCode: item.currencyCode,
-              balance: item.balance.toString(),
-              isActive: item.isActive,
-              isPending: item.isPending,
-              isDefault: item.isDefault,
-              filesVerified: item.filesVerified,
-              country: item.country ?? '',
-            ),
-          )
-          .toList(),
-    );
+    final wallets = data.items
+        .map(
+          (item) => WalletItemEntity(
+            walletId: item.walletId,
+            ipa: item.ipa,
+            currency: item.currency,
+            currencyCode: item.currencyCode,
+            balance: item.balance.toString(),
+            isActive: item.isActive,
+            isPending: item.isPending,
+            isDefault: item.isDefault,
+            filesVerified: item.filesVerified,
+            country: item.country ?? '',
+          ),
+        )
+        .toList();
+
+    // Sort: Default wallet first
+    wallets.sort((a, b) {
+      if (a.isDefault && !b.isDefault) return -1;
+      if (!a.isDefault && b.isDefault) return 1;
+      return 0;
+    });
+
+    return WalletsEntity(wallets: wallets);
   }
 }

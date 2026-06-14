@@ -317,13 +317,27 @@ class RegisterCubit extends Cubit<RegisterState> {
 
     try {
       final extractedText = await _ocrService.extractText(file);
+      final normalizedText = extractedText.replaceAll(RegExp(r'\s+'), '');
+      final targetId = currentForm.nationalId.replaceAll(RegExp(r'\s+'), '');
 
-      if (extractedText.trim().isEmpty) {
+      if (normalizedText.isEmpty) {
         emit(
           RegisterState.failure(
             currentForm.copyWith(isOcrProcessing: false),
             error:
                 'Could not read text from the image. Please take a clearer photo.',
+          ),
+        );
+        return;
+      }
+
+      // Check if the extracted text contains the National ID
+      if (targetId.isNotEmpty && !normalizedText.contains(targetId)) {
+        emit(
+          RegisterState.failure(
+            currentForm.copyWith(isOcrProcessing: false),
+            error:
+                'The uploaded image does not match the National ID provided ($targetId). Please ensure the ID number is clearly visible.',
           ),
         );
         return;

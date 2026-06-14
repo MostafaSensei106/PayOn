@@ -2335,6 +2335,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We may update these Terms from time to time. Your continued use of the App after changes are posted constitutes acceptance of the new Terms.'**
   String get tc_section15_content;
+
+  /// No description provided for @wallet_under_review.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet under review'**
+  String get wallet_under_review;
+
+  /// No description provided for @wallet_under_review_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Your wallet is currently under review. Please wait for approval.'**
+  String get wallet_under_review_desc;
 }
 
 class _AppLocalizationsDelegate

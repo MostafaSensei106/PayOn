@@ -59,17 +59,64 @@ class StepTwoKYC extends StatelessWidget {
                           file.description!,
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
-                      const SizedBox(height: 8),
-                      OutlinedButtonComponent.icon(
-                        label: uploadedFile != null
-                            ? 'Uploaded'
-                            : 'Upload ${file.name}',
-                        icon: uploadedFile != null
-                            ? Icons.check_circle
-                            : Iconsax.document_upload_copy,
-                        isEnabled: !form.isOcrProcessing,
-                        onPressed: () => _pickFile(context, file.id),
-                      ),
+                      const SizedBox(height: 12),
+                      if (uploadedFile != null)
+                        Stack(
+                          children: [
+                            Container(
+                              height: 150,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(AppConfig.inBorderRadius),
+                                image: DecorationImage(
+                                  image: FileImage(uploadedFile),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            const Positioned(
+                              top: 8,
+                              right: 8,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.green,
+                                radius: 12,
+                                child: Icon(Icons.check, size: 16, color: Colors.white),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              left: 0,
+                              right: 0,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black54,
+                                  borderRadius: BorderRadius.vertical(
+                                    bottom: Radius.circular(AppConfig.inBorderRadius),
+                                  ),
+                                ),
+                                padding: const EdgeInsets.all(8),
+                                child: const Text(
+                                  'Analyzed successfully',
+                                  style: TextStyle(color: Colors.white, fontSize: 12),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      else
+                        OutlinedButtonComponent.icon(
+                          label: 'Upload ${file.name}',
+                          icon: Iconsax.document_upload_copy,
+                          isEnabled: !form.isOcrProcessing,
+                          onPressed: () => _pickFile(context, file.id),
+                        ),
+                      if (uploadedFile != null)
+                        TextButton.icon(
+                          onPressed: () => _pickFile(context, file.id),
+                          icon: const Icon(Iconsax.edit_copy, size: 16),
+                          label: const Text('Retake Photo'),
+                        ),
                     ],
                   ),
                 );

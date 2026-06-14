@@ -1203,4 +1203,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get tc_section15_content =>
       'We may update these Terms from time to time. Your continued use of the App after changes are posted constitutes acceptance of the new Terms.';
+
+  @override
+  String get wallet_under_review => 'Wallet under review';
+
+  @override
+  String get wallet_under_review_desc =>
+      'Your wallet is currently under review. Please wait for approval.';
 }

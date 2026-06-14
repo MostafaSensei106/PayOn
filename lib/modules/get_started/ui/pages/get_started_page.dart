@@ -8,7 +8,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/extensions.dart';
-import '../../../../core/router/app_router.dart';
+import '../../../../core/router/routes_names.dart';
 import '../../logic/cubit/otp/otp_cubit.dart';
 import '../../logic/cubit/otp/otp_state.dart' as otp;
 import '../../logic/cubit/register/register_cubit.dart';
@@ -82,54 +82,41 @@ class GetStartedPage extends HookWidget {
       listeners: [
         BlocListener<RegisterCubit, RegisterState>(
           listener: (context, state) async {
+            if (state is Loading) {
+              context.dialog.showLoading();
+              return;
+            }
+
             state.whenOrNull(
               registerSuccess: (form, data) async {
-                context.pop();
-                const targetPage = 2;
-                await pageController.animateToPage(
+                if (Navigator.of(context).canPop()) context.pop();
+                const targetPage = 2; // OTP
+                unawaited(pageController.animateToPage(
                   targetPage,
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
-                );
+                ));
                 context.read<RegisterCubit>().setStep(targetPage);
               },
-              loading: (form) => context.dialog.showLoading(),
               kycUploadSuccess: (form) async {
-                context.pop();
+                if (Navigator.of(context).canPop()) context.pop();
                 await context.dialog.showInfo(
                   title: 'Success',
                   body:
-                      'Documents uploaded successfully! Now let\'s create your first wallet.',
+                      'Documents uploaded successfully! Your account is now under review.',
                 );
                 if (context.mounted) {
-                  CreateWalletRoute(accountId: form.accountId).go(context);
+                  context.go(RoutesNames.home);
                 }
               },
               createAccountSuccess: (form, data) async {
-                context.pop();
-                const targetPage = 2;
-                await pageController.animateToPage(
-                  targetPage,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                );
-                context.read<RegisterCubit>().setStep(targetPage);
-              },
-              getCountriesSuccess: (form, countries) {
-                context.pop();
-              },
-              getRequiredFilesSuccess: (form, files) async {
-                context.pop();
-                const targetPage = 3;
-                await pageController.animateToPage(
-                  targetPage,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                );
-                context.read<RegisterCubit>().setStep(targetPage);
+                if (Navigator.of(context).canPop()) context.pop();
               },
               failure: (form, error) async {
-                context.pop();
+                if (form.currentStep != 3) {
+                  if (Navigator.of(context).canPop()) context.pop();
+                }
+
                 await context.dialog.showError(
                   title: context.localeKeys.error,
                   error: error,
@@ -141,7 +128,7 @@ class GetStartedPage extends HookWidget {
         BlocListener<OtpCubit, otp.OtpState>(
           listener: (context, state) async {
             if (state is otp.Success) {
-              context.pop();
+              if (Navigator.of(context).canPop()) context.pop();
               unawaited(context.read<RegisterCubit>().getRequiredFiles());
             } else if (state is otp.Loading) {
               context.dialog.showLoading();

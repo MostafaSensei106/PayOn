@@ -1203,4 +1203,11 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get tc_section15_content =>
       'قد نقوم بتحديث هذه الشروط من وقت لآخر. استمرارك في استخدام التطبيق بعد نشر التغييرات يشكل قبولاً للشروط الجديدة.';
+
+  @override
+  String get wallet_under_review => 'محفظتك قيد المراجعة';
+
+  @override
+  String get wallet_under_review_desc =>
+      'محفظتك قيد المراجعة حالياً. يرجى الانتظار حتى يتم الموافقة عليها.';
 }

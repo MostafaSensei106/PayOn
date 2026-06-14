@@ -372,5 +372,7 @@
   "tc_section14_title": "14. Governing Law",
   "tc_section14_content": "These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which PayOn Inc. is registered.",
   "tc_section15_title": "15. Changes to Terms",
-  "tc_section15_content": "We may update these Terms from time to time. Your continued use of the App after changes are posted constitutes acceptance of the new Terms."
+  "tc_section15_content": "We may update these Terms from time to time. Your continued use of the App after changes are posted constitutes acceptance of the new Terms.",
+  "wallet_under_review": "Wallet under review",
+  "wallet_under_review_desc": "Your wallet is currently under review. Please wait for approval."
 }

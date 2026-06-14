@@ -14,9 +14,17 @@ extension RegisterResponseBodyMapper on RegisterResponseBody {
 
 extension CreateAccountResponseBodyMapper on CreateAccountResponseBody {
   CreateAccountEntity toEntity() {
+    var extractedId = '';
+    if (data is Map<String, dynamic>) {
+      final dataMap = data as Map<String, dynamic>;
+      extractedId = dataMap['accountId']?.toString() ?? '';
+    } else {
+      extractedId = data?.toString() ?? '';
+    }
+
     return CreateAccountEntity(
       message: message,
-      accountId: data?.toString() ?? '',
+      accountId: extractedId,
       data: data,
     );
   }

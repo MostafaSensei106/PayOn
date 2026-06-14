@@ -97,38 +97,53 @@ class HomePage extends StatelessWidget {
 
         if (selectedType != null && context.mounted) {
           final addressController = TextEditingController();
-          final confirmedAddress = await context
-              .showBottomSheetComponent<String>(
-                title: 'Enter Address',
-                child: Padding(
-                  padding: const EdgeInsets.all(AppConfig.padding),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      TextFormFieldComponent(
-                        controller: addressController,
-                        label: 'Address',
-                        prefixIcon: Iconsax.map_copy,
-                        onChanged: (String p1) {},
-                      ),
-                      const SizedBox(height: AppConfig.padding),
-                      FilledButtonComponent(
-                        label: 'Continue',
-                        onPressed: () => context.pop(addressController.text),
-                      ),
-                      SizedBox(height: 16.h),
-                    ],
-                  ),
-                ),
-              );
+          final phoneController =
+              TextEditingController(text: userProfileState.data.phone);
 
-          if (confirmedAddress != null &&
-              confirmedAddress.isNotEmpty &&
+          final resultData = await context.showBottomSheetComponent<Map<String, String>>(
+            title: 'Account Details',
+            child: Padding(
+              padding: const EdgeInsets.all(AppConfig.padding),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextFormFieldComponent(
+                    controller: addressController,
+                    label: 'Address',
+                    prefixIcon: Iconsax.map_copy,
+                    onChanged: (String p1) {},
+                  ),
+                  const SizedBox(height: AppConfig.paddingHalf),
+                  TextFormFieldComponent(
+                    controller: phoneController,
+                    label: 'Phone Number',
+                    prefixIcon: Iconsax.call_copy,
+                    keyboardType: TextInputType.phone,
+                    onChanged: (String p1) {},
+                  ),
+                  const SizedBox(height: AppConfig.padding),
+                  FilledButtonComponent(
+                    label: 'Continue',
+                    onPressed: () => context.pop({
+                      'address': addressController.text,
+                      'phone': phoneController.text,
+                    }),
+                  ),
+                  SizedBox(height: 16.h),
+                ],
+              ),
+            ),
+          );
+
+          if (resultData != null && 
+              resultData['address']!.isNotEmpty && 
+              resultData['phone']!.isNotEmpty && 
               context.mounted) {
             context.dialog.showLoading();
             final accountId = await homeCubit.createAccount(
               accountTypeId: selectedType,
-              address: confirmedAddress,
+              address: resultData['address']!,
+              phoneNumber: resultData['phone']!,
               profile: userProfileState.data,
             );
 
