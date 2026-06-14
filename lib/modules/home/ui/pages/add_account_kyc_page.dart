@@ -139,6 +139,12 @@ class AddAccountKycPage extends HookWidget {
                     ],
                   );
                 },
+            failure: (message) => Center(
+              child: Text(
+                message,
+                style: const TextStyle(color: Colors.red),
+              ),
+            ),
             orElse: () => const Center(child: CircularProgressIndicator()),
           );
         },

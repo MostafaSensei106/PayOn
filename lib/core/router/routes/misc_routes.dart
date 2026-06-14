@@ -11,6 +11,7 @@ import '../../../modules/create_wallet/ui/pages/create_wallet_page.dart';
 import '../../../modules/create_wallet/ui/pages/create_wallet_pin_page.dart';
 import '../../../modules/developer_team/ui/page/developer_team_page.dart';
 import '../../../modules/home/logic/cubit/home_cubit.dart';
+import '../../../modules/home/ui/pages/add_account_kyc_page.dart';
 import '../../../modules/language/ui/page/change_language_page.dart';
 import '../../../modules/notifications/ui/notifications_page.dart';
 import '../../../modules/privacy_policy/ui/privacy_policy_page.dart';
@@ -18,7 +19,7 @@ import '../../../modules/profile/logic/cubit/user_profile_cubit.dart';
 import '../../../modules/profile/ui/pages/profile_page.dart';
 import '../../../modules/request_money/logic/cubit/request_money_cubit.dart';
 import '../../../modules/request_money/ui/page/request_money_page.dart';
-import '../../../modules/scan_qrcode/ui/page/scan_qrcode_page.dart';
+
 import '../../../modules/send_money/logic/cubit/send_money_cubit.dart';
 import '../../../modules/send_money/logic/cubit/user_favorites_cubit.dart';
 import '../../../modules/send_money/ui/page/send_money_page.dart';
@@ -40,13 +41,25 @@ List<RouteBase> get miscRoutes => [
   $contactUsRoute,
   $sendMoneyRoute,
   $requestMoneyRoute,
-  $scanQrCodeRoute,
   $aboutAppRoute,
   $developerTeamRoute,
   $termsAndConditionsRoute,
   $createWalletRoute,
   $createWalletPinRoute,
+  $addAccountKycRoute,
 ];
+
+@TypedGoRoute<AddAccountKycRoute>(path: RoutesNames.addAccountKyc)
+final class AddAccountKycRoute extends CupertinoRouteData
+    with $AddAccountKycRoute {
+  const AddAccountKycRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => BlocProvider.value(
+    value: getIt<HomeCubit>(),
+    child: const AddAccountKycPage(),
+  );
+}
 
 @TypedGoRoute<CreateWalletRoute>(path: '${RoutesNames.createWallet}/:accountId')
 final class CreateWalletRoute extends CupertinoRouteData
@@ -155,14 +168,21 @@ final class ContactUsRoute extends CupertinoRouteData with $ContactUsRoute {
 
 @TypedGoRoute<SendMoneyRoute>(path: RoutesNames.sendMoney)
 final class SendMoneyRoute extends CupertinoRouteData with $SendMoneyRoute {
-  const SendMoneyRoute({this.walletIndex = 0});
+  const SendMoneyRoute({this.walletIndex = 0, this.initialReceiver});
 
   final int walletIndex;
+  final String? initialReceiver;
 
   @override
   Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
     providers: [
-      BlocProvider(create: (context) => getIt<SendMoneyCubit>()),
+      BlocProvider(create: (context) {
+        final cubit = getIt<SendMoneyCubit>();
+        if (initialReceiver != null && initialReceiver!.isNotEmpty) {
+          cubit.onUserInfChanged(initialReceiver!);
+        }
+        return cubit;
+      }),
       BlocProvider(create: (context) => getIt<UserFavoritesCubit>()),
     ],
     child: SendMoneyPage(walletIndex: walletIndex),
@@ -179,15 +199,6 @@ final class RequestMoneyRoute extends CupertinoRouteData
     create: (context) => getIt<RequestMoneyCubit>(),
     child: const RequestMoneyPage(),
   );
-}
-
-@TypedGoRoute<ScanQrCodeRoute>(path: RoutesNames.scanQrCode)
-final class ScanQrCodeRoute extends CupertinoRouteData with $ScanQrCodeRoute {
-  const ScanQrCodeRoute();
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const ScanQrcodePage();
 }
 
 @TypedGoRoute<AboutAppRoute>(path: RoutesNames.appVersion)

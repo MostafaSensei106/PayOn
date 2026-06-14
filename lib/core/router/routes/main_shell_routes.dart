@@ -9,7 +9,7 @@ import '../../../modules/home/ui/pages/home_page.dart';
 import '../../../modules/main/ui/pages/main_page.dart';
 import '../../../modules/profile/logic/cubit/user_profile_cubit.dart';
 import '../../../modules/settings/ui/pages/settings_page.dart';
-import '../../../modules/wallet/presentation/pages/wallet_page.dart';
+import '../../../modules/scan_qrcode/ui/page/scan_qrcode_page.dart';
 import '../../di/di.dart';
 import '../cupertion_route_data.dart';
 import '../routes_names.dart';
@@ -24,17 +24,12 @@ List<RouteBase> get mainShellRoutes => [$mainShellRouteData];
       routes: <TypedRoute<RouteData>>[
         TypedGoRoute<HomeRoute>(
           path: RoutesNames.home,
-          routes: [
-            TypedGoRoute<AddAccountKycRoute>(
-              path: 'add-account-kyc', // Use relative path for sub-route
-            ),
-          ],
         ),
       ],
     ),
-    TypedStatefulShellBranch<WalletBranchData>(
+    TypedStatefulShellBranch<ScanQrCodeBranchData>(
       routes: <TypedRoute<RouteData>>[
-        TypedGoRoute<WalletRoute>(path: RoutesNames.wallet),
+        TypedGoRoute<ScanQrCodeRoute>(path: RoutesNames.scanQrCode),
       ],
     ),
     TypedStatefulShellBranch<HistoryBranchData>(
@@ -80,24 +75,15 @@ class HomeRoute extends CupertinoRouteData with $HomeRoute {
   Widget build(BuildContext context, GoRouterState state) => const HomePage();
 }
 
-final class AddAccountKycRoute extends CupertinoRouteData
-    with $AddAccountKycRoute {
-  const AddAccountKycRoute();
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const AddAccountKycPage();
+class ScanQrCodeBranchData extends StatefulShellBranchData {
+  const ScanQrCodeBranchData();
 }
 
-class WalletBranchData extends StatefulShellBranchData {
-  const WalletBranchData();
-}
-
-class WalletRoute extends CupertinoRouteData with $WalletRoute {
-  const WalletRoute();
+class ScanQrCodeRoute extends CupertinoRouteData with $ScanQrCodeRoute {
+  const ScanQrCodeRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => const WalletPage();
+  Widget build(BuildContext context, GoRouterState state) => const ScanQrcodePage();
 }
 
 class HistoryBranchData extends StatefulShellBranchData {

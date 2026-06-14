@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../core/extensions/extensions.dart';
 import '../../../../core/widgets/display/card/card_component.dart';
@@ -202,10 +205,16 @@ class CommonQuestionsPage extends StatelessWidget {
       child: CardComponent(
         padding: EdgeInsets.zero,
         child: ExpansionTile(
-          title: Text(
-            question,
-            style: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
-          ),
+          tilePadding: const EdgeInsets.symmetric(horizontal: 16),
+          onExpansionChanged: (isExpanded) {
+            if (isExpanded) {
+              unawaited(HapticFeedback.vibrate());
+            }
+          },
+          splashColor: Colors.transparent,
+          shape: const RoundedRectangleBorder(),
+          collapsedShape: const RoundedRectangleBorder(),
+          title: Text(question, style: textTheme.bodyLarge),
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),

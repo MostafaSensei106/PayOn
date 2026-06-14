@@ -7,6 +7,7 @@ part of 'misc_routes.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
+  $addAccountKycRoute,
   $createWalletRoute,
   $createWalletPinRoute,
   $profileRoute,
@@ -23,6 +24,32 @@ List<RouteBase> get $appRoutes => [
   $developerTeamRoute,
   $termsAndConditionsRoute,
 ];
+
+RouteBase get $addAccountKycRoute => GoRouteData.$route(
+  path: '/add-account-kyc',
+  factory: $AddAccountKycRoute._fromState,
+);
+
+mixin $AddAccountKycRoute on GoRouteData {
+  static AddAccountKycRoute _fromState(GoRouterState state) =>
+      const AddAccountKycRoute();
+
+  @override
+  String get location => GoRouteData.$location('/add-account-kyc');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
 
 RouteBase get $createWalletRoute => GoRouteData.$route(
   path: '/create-wallet/:accountId',

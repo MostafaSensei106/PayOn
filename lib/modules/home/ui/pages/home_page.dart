@@ -312,12 +312,7 @@ class HomePage extends StatelessWidget {
                           onTap: () =>
                               const RequestMoneyRoute().push<void>(context),
                         ),
-                        QuickActionItem(
-                          icon: Iconsax.scan_barcode_copy,
-                          label: l10n.scan,
-                          onTap: () =>
-                              const ScanQrCodeRoute().push<void>(context),
-                        ),
+
                         QuickActionItem(
                           icon: Iconsax.wallet_add_copy,
                           label: 'Add Wallet',

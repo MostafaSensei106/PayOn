@@ -57,10 +57,10 @@ class MainPage extends HookWidget {
                   tooltip: l10n.home,
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(Iconsax.wallet_copy),
-                  activeIcon: const Icon(Iconsax.wallet, size: 24),
-                  label: l10n.wallet,
-                  tooltip: l10n.wallet,
+                  icon: const Icon(Iconsax.scan_barcode_copy),
+                  activeIcon: const Icon(Iconsax.scan_barcode, size: 24),
+                  label: l10n.scan_qr_code,
+                  tooltip: l10n.scan_qr_code,
                 ),
                 BottomNavigationBarItem(
                   icon: const Icon(Iconsax.receipt_item_copy),
