@@ -97,9 +97,7 @@ class HomePage extends StatelessWidget {
 
         if (selectedType != null && context.mounted) {
           final addressController = TextEditingController();
-          final phoneController = TextEditingController(
-            text: userProfileState.data.phone,
-          );
+          final phoneController = TextEditingController();
 
           final resultData = await context
               .showBottomSheetComponent<Map<String, String>>(
@@ -164,14 +162,18 @@ class HomePage extends StatelessWidget {
             if (context.mounted) {
               context.pop(); // Close loading
               if (accountId != null && accountId.isNotEmpty) {
-                unawaited(CreateWalletRoute(accountId: accountId).push<void>(context));
+                unawaited(
+                  CreateWalletRoute(accountId: accountId).push<void>(context),
+                );
               }
             }
           }
         }
       },
-      onFailure: (error) async =>
-          context.dialog.showError(title: context.localeKeys.error, error: error.message),
+      onFailure: (error) async => context.dialog.showError(
+        title: context.localeKeys.error,
+        error: error.message,
+      ),
     );
   }
 

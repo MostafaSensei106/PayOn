@@ -139,7 +139,9 @@ class StepFiveCreateWallet extends HookWidget {
                 obscureText: true,
                 maxLength: 6,
                 keyboardType: TextInputType.number,
-                errorText: pinMismatch.value ? context.localeKeys.pins_do_not_match : null,
+                errorText: pinMismatch.value
+                    ? context.localeKeys.pins_do_not_match
+                    : null,
                 onChanged: (value) {
                   final pin = pinController.text;
                   if (value.length == 6 && pin.length == 6) {

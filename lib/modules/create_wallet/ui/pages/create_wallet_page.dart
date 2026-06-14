@@ -162,7 +162,9 @@ class CreateWalletPage extends HookWidget {
                           ipaController.text.isNotEmpty &&
                           selectedCurrency.value != null &&
                           !isLoading,
-                      label: isLoading ? context.localeKeys.creating : context.localeKeys.create_wallet,
+                      label: isLoading
+                          ? context.localeKeys.creating
+                          : context.localeKeys.create_wallet,
                     ),
                   ],
                 ),
