@@ -26,11 +26,6 @@ RouteBase get $mainShellRouteData => StatefulShellRouteData.$route(
     ),
     StatefulShellBranchData.$branch(
       routes: [
-        GoRouteData.$route(path: '/history', factory: $HistoryRoute._fromState),
-      ],
-    ),
-    StatefulShellBranchData.$branch(
-      routes: [
         GoRouteData.$route(
           path: '/settings',
           factory: $SettingsRoute._fromState,
@@ -71,26 +66,6 @@ mixin $ScanQrCodeRoute on GoRouteData {
 
   @override
   String get location => GoRouteData.$location('/scan-qr-code');
-
-  @override
-  void go(BuildContext context) => context.go(location);
-
-  @override
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  @override
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  @override
-  void replace(BuildContext context) => context.replace(location);
-}
-
-mixin $HistoryRoute on GoRouteData {
-  static HistoryRoute _fromState(GoRouterState state) => const HistoryRoute();
-
-  @override
-  String get location => GoRouteData.$location('/history');
 
   @override
   void go(BuildContext context) => context.go(location);

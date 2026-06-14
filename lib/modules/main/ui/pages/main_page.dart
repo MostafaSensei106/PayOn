@@ -79,12 +79,12 @@ class MainPage extends HookWidget {
                     label: l10n.scan_qr_code,
                     tooltip: l10n.scan_qr_code,
                   ),
-                  BottomNavigationBarItem(
-                    icon: const Icon(Iconsax.receipt_item_copy),
-                    activeIcon: const Icon(Iconsax.receipt_item),
-                    label: l10n.history,
-                    tooltip: l10n.history,
-                  ),
+                  // BottomNavigationBarItem(
+                  //   icon: const Icon(Iconsax.receipt_item_copy),
+                  //   activeIcon: const Icon(Iconsax.receipt_item),
+                  //   label: l10n.history,
+                  //   tooltip: l10n.history,
+                  // ),
                   BottomNavigationBarItem(
                     icon: const Icon(Iconsax.setting_copy),
                     activeIcon: const Icon(Iconsax.setting),

@@ -29,11 +29,11 @@ List<RouteBase> get mainShellRoutes => [$mainShellRouteData];
         TypedGoRoute<ScanQrCodeRoute>(path: RoutesNames.scanQrCode),
       ],
     ),
-    TypedStatefulShellBranch<HistoryBranchData>(
-      routes: <TypedRoute<RouteData>>[
-        TypedGoRoute<HistoryRoute>(path: RoutesNames.history),
-      ],
-    ),
+    // TypedStatefulShellBranch<HistoryBranchData>(
+    //   routes: <TypedRoute<RouteData>>[
+    //     TypedGoRoute<HistoryRoute>(path: RoutesNames.history),
+    //   ],
+    // ),
     TypedStatefulShellBranch<SettingsBranchData>(
       routes: <TypedRoute<RouteData>>[
         TypedGoRoute<SettingsRoute>(path: RoutesNames.settings),
@@ -88,13 +88,13 @@ class HistoryBranchData extends StatefulShellBranchData {
   const HistoryBranchData();
 }
 
-class HistoryRoute extends CupertinoRouteData with $HistoryRoute {
-  const HistoryRoute();
+// class HistoryRoute extends CupertinoRouteData with $HistoryRoute {
+//   const HistoryRoute();
 
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const HistoryPage();
-}
+//   @override
+//   Widget build(BuildContext context, GoRouterState state) =>
+//       const HistoryPage();
+// }
 
 class SettingsBranchData extends StatefulShellBranchData {
   const SettingsBranchData();
