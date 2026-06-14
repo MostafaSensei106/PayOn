@@ -20,6 +20,7 @@ abstract class WalletItemEntity with _$WalletItemEntity {
     required String balance,
     required bool isActive,
     required bool isDefault,
+    required bool isPending,
     required bool filesVerified,
   }) = _WalletItemEntity;
 
@@ -32,6 +33,7 @@ abstract class WalletItemEntity with _$WalletItemEntity {
     @Default('0.00') String balance,
     @Default(false) bool isActive,
     @Default(false) bool isDefault,
+    @Default(false) bool isPending,
     @Default(false) bool filesVerified,
   }) = _Placeholder;
 }

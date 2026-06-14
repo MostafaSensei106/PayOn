@@ -7,6 +7,8 @@ part of 'misc_routes.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
+  $createWalletRoute,
+  $createWalletPinRoute,
   $profileRoute,
   $changeLanguageRoute,
   $changeThemeRoute,
@@ -21,6 +23,66 @@ List<RouteBase> get $appRoutes => [
   $developerTeamRoute,
   $termsAndConditionsRoute,
 ];
+
+RouteBase get $createWalletRoute => GoRouteData.$route(
+  path: '/create-wallet/:accountId',
+  factory: $CreateWalletRoute._fromState,
+);
+
+mixin $CreateWalletRoute on GoRouteData {
+  static CreateWalletRoute _fromState(GoRouterState state) =>
+      CreateWalletRoute(accountId: state.pathParameters['accountId']!);
+
+  CreateWalletRoute get _self => this as CreateWalletRoute;
+
+  @override
+  String get location => GoRouteData.$location(
+    '/create-wallet/${Uri.encodeComponent(_self.accountId)}',
+  );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $createWalletPinRoute => GoRouteData.$route(
+  path: '/create-wallet-pin/:accountId',
+  factory: $CreateWalletPinRoute._fromState,
+);
+
+mixin $CreateWalletPinRoute on GoRouteData {
+  static CreateWalletPinRoute _fromState(GoRouterState state) =>
+      CreateWalletPinRoute(accountId: state.pathParameters['accountId']!);
+
+  CreateWalletPinRoute get _self => this as CreateWalletPinRoute;
+
+  @override
+  String get location => GoRouteData.$location(
+    '/create-wallet-pin/${Uri.encodeComponent(_self.accountId)}',
+  );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
 
 RouteBase get $profileRoute =>
     GoRouteData.$route(path: '/profile', factory: $ProfileRoute._fromState);

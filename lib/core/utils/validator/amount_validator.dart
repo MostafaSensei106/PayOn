@@ -24,8 +24,7 @@ extension AmountExtension on AmountError {
     final l = context.localeKeys;
     return switch (this) {
       AmountError.empty => l.error_cant_be_empty,
-      AmountError.invalid =>
-        'القيمة غير صالحة', // TODO: Add to l10n if possible
+      AmountError.invalid => 'القيمة غير صالحة', //
     };
   }
 }

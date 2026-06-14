@@ -7,9 +7,11 @@ final class OtpFieldComponent extends StatefulWidget {
     required this.onCompleted,
     super.key,
     this.length = 6,
+    this.onChanged,
   });
   final int length;
   final void Function(String) onCompleted;
+  final void Function(String)? onChanged;
 
   @override
   State<OtpFieldComponent> createState() => _OtpFieldComponentState();
@@ -46,6 +48,7 @@ class _OtpFieldComponentState extends State<OtpFieldComponent> {
     }
 
     final otp = _controllers.map((final e) => e.text).join();
+    widget.onChanged?.call(otp);
     if (otp.length == widget.length) {
       widget.onCompleted(otp);
     }

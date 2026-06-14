@@ -12,12 +12,14 @@ import '../../../../l10n/app_localizations.dart';
 class AmountInputAndSubmitComponent extends StatelessWidget {
   const AmountInputAndSubmitComponent({
     required this.onAmountChanged,
+    required this.onDescriptionChanged,
     required this.onSubmit,
     required this.l10n,
     super.key,
   });
 
   final ValueChanged<String> onAmountChanged;
+  final ValueChanged<String> onDescriptionChanged;
   final VoidCallback onSubmit;
   final AppLocalizations l10n;
 
@@ -31,6 +33,13 @@ class AmountInputAndSubmitComponent extends StatelessWidget {
           prefixIcon: Iconsax.money_send_copy,
           keyboardType: const TextInputType.numberWithOptions(decimal: true),
           onChanged: onAmountChanged,
+        ),
+        SizedBox(height: 16.h),
+        TextFormFieldComponent(
+          label: l10n.description,
+          hintText: l10n.description_hint,
+          prefixIcon: Iconsax.document_text_copy,
+          onChanged: onDescriptionChanged,
         ),
         SizedBox(height: 32.h),
         FilledButtonComponent.icon(

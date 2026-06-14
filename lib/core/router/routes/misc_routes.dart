@@ -6,15 +6,21 @@ import '../../../modules/about_app/logic/cubit/about_app_cubit.dart';
 import '../../../modules/about_app/ui/page/about_app_page.dart';
 import '../../../modules/common_questions/ui/page/common_questions_page.dart';
 import '../../../modules/contact_us/ui/page/contact_us_page.dart';
+import '../../../modules/create_wallet/logic/cubit/create_wallet_cubit.dart';
+import '../../../modules/create_wallet/ui/pages/create_wallet_page.dart';
+import '../../../modules/create_wallet/ui/pages/create_wallet_pin_page.dart';
 import '../../../modules/developer_team/ui/page/developer_team_page.dart';
+import '../../../modules/home/logic/cubit/home_cubit.dart';
 import '../../../modules/language/ui/page/change_language_page.dart';
 import '../../../modules/notifications/ui/notifications_page.dart';
 import '../../../modules/privacy_policy/ui/privacy_policy_page.dart';
 import '../../../modules/profile/logic/cubit/user_profile_cubit.dart';
 import '../../../modules/profile/ui/pages/profile_page.dart';
+import '../../../modules/request_money/logic/cubit/request_money_cubit.dart';
 import '../../../modules/request_money/ui/page/request_money_page.dart';
 import '../../../modules/scan_qrcode/ui/page/scan_qrcode_page.dart';
 import '../../../modules/send_money/logic/cubit/send_money_cubit.dart';
+import '../../../modules/send_money/logic/cubit/user_favorites_cubit.dart';
 import '../../../modules/send_money/ui/page/send_money_page.dart';
 import '../../../modules/terms_and_conditions/ui/page/terms_and_conditions_page.dart';
 import '../../../modules/theme/ui/page/theme.dart';
@@ -38,7 +44,45 @@ List<RouteBase> get miscRoutes => [
   $aboutAppRoute,
   $developerTeamRoute,
   $termsAndConditionsRoute,
+  $createWalletRoute,
+  $createWalletPinRoute,
 ];
+
+@TypedGoRoute<CreateWalletRoute>(path: '${RoutesNames.createWallet}/:accountId')
+final class CreateWalletRoute extends CupertinoRouteData
+    with $CreateWalletRoute {
+  const CreateWalletRoute({required this.accountId});
+
+  final String accountId;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
+    providers: [
+      BlocProvider(create: (context) => getIt<CreateWalletCubit>()),
+      BlocProvider.value(value: getIt<UserProfileCubit>()),
+    ],
+    child: CreateWalletPage(accountId: accountId),
+  );
+}
+
+@TypedGoRoute<CreateWalletPinRoute>(
+  path: '${RoutesNames.createWalletPin}/:accountId',
+)
+final class CreateWalletPinRoute extends CupertinoRouteData
+    with $CreateWalletPinRoute {
+  const CreateWalletPinRoute({required this.accountId});
+
+  final String accountId;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
+    providers: [
+      BlocProvider(create: (context) => getIt<CreateWalletCubit>()),
+      BlocProvider.value(value: getIt<HomeCubit>()),
+    ],
+    child: CreateWalletPinPage(accountId: accountId),
+  );
+}
 
 @TypedGoRoute<ProfileRoute>(path: RoutesNames.profile)
 final class ProfileRoute extends CupertinoRouteData with $ProfileRoute {
@@ -116,8 +160,11 @@ final class SendMoneyRoute extends CupertinoRouteData with $SendMoneyRoute {
   final int walletIndex;
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
-    create: (context) => getIt<SendMoneyCubit>(),
+  Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
+    providers: [
+      BlocProvider(create: (context) => getIt<SendMoneyCubit>()),
+      BlocProvider(create: (context) => getIt<UserFavoritesCubit>()),
+    ],
     child: SendMoneyPage(walletIndex: walletIndex),
   );
 }
@@ -128,8 +175,10 @@ final class RequestMoneyRoute extends CupertinoRouteData
   const RequestMoneyRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const RequestMoneyPage();
+  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
+    create: (context) => getIt<RequestMoneyCubit>(),
+    child: const RequestMoneyPage(),
+  );
 }
 
 @TypedGoRoute<ScanQrCodeRoute>(path: RoutesNames.scanQrCode)

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
 
-import '../../constants/validation_regex.dart';
 import '../../di/di.dart';
 import '../../services/l10n/l10n_service.dart';
 import 'base/validation_pipeline.dart';
@@ -18,14 +17,12 @@ final class Password extends FormzInput<String, PasswordError> {
         .required(PasswordError.empty)
         .notMatches(RegExp(r'\s'), PasswordError.hasSpaces)
         .minLength(8, PasswordError.minLength)
-        .matches(ValidationRegex.strongPasswordRegExp, PasswordError.invalid)
-        .matches(ValidationRegex.emojiRegExp, PasswordError.hasEmojes)
         .evaluate();
   }
 }
 
 extension PasswordErrorExtension on PasswordError {
-  String nameWithL10n(BuildContext context) {
+  String message(BuildContext context) {
     final l10n = getIt<L10nService>().get(context);
     switch (this) {
       case PasswordError.empty:

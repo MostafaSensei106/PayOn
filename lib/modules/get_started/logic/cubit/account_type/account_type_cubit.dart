@@ -1,25 +1,26 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../core/constants/types/type_def.dart';
-import '../../../data/models/account_type/account_type_response_body.dart';
-import '../../../data/repositories/account_type/base_account_type_repository.dart';
+import '../../../../../core/utils/result/result.dart';
+import '../../../../../core/utils/use_case/base_use_case.dart';
+import '../../entities/account_type_entity.dart';
+import '../../use_cases/get_account_types_use_case.dart';
 import 'account_type_state.dart';
 
 @injectable
-class AccountTypeCubit
-    extends Cubit<AccountTypeState<AccountTypeResponseBody>> {
-  AccountTypeCubit(this._accountTypeRepository)
+class AccountTypeCubit extends Cubit<AccountTypeState<AccountTypeEntity>> {
+  AccountTypeCubit(this._getAccountTypesUseCase)
     : super(const AccountTypeState.initial());
 
-  final BaseAccountTypeRepository _accountTypeRepository;
+  final GetAccountTypesUseCase _getAccountTypesUseCase;
 
   Future<void> getAccountTypes() async {
     emit(const AccountTypeState.loading());
-    final response = await _accountTypeRepository.getAccountTypes();
-    response.when(
-      success: (r) => emit(AccountTypeState.success(data: r)),
-      failure: (e) => emit(AccountTypeState.failure(error: e.message)),
+    final result = await _getAccountTypesUseCase(const NoParams());
+    result.fold(
+      onSuccess: (data) => emit(AccountTypeState.success(data: data)),
+      onFailure: (error) =>
+          emit(AccountTypeState.failure(error: error.message)),
     );
   }
 }

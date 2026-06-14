@@ -72,10 +72,6 @@ extension GetUserFavoritesMapper on GetUserFavoritesResponseBody {
 
 extension FavoriteItemMapper on FavoriteItemModel {
   FavoriteItemEntity toEntity() {
-    return FavoriteItemEntity(
-      id: id,
-      name: name,
-      image: image,
-    );
+    return FavoriteItemEntity(id: id, name: name, image: image);
   }
 }

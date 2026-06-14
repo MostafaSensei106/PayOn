@@ -1,16 +1,21 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../core/di/di.dart';
-import '../../../../core/router/app_router.dart';
-import '../../../../core/services/toast/base_toast_service.dart';
+import '../../../../core/extensions/extensions.dart';
+import '../../../../core/router/routes_names.dart';
+import '../../logic/cubit/otp/otp_cubit.dart';
+import '../../logic/cubit/otp/otp_state.dart' as otp;
 import '../../logic/cubit/register/register_cubit.dart';
 import '../../logic/cubit/register/register_state.dart';
 import '../widgets/get_started_header.dart';
 import '../widgets/get_started_navigation.dart';
+import '../widgets/step_five_create_wallet.dart';
 import '../widgets/step_one_account_details.dart';
 import '../widgets/step_one_account_type.dart';
 import '../widgets/step_three_otp.dart';
@@ -30,59 +35,138 @@ class GetStartedPage extends HookWidget {
     final privacyAccepted = useState(false);
     final allAccepted = useState(false);
 
-    final registerForm = context.watch<RegisterCubit>().state.form;
+    final registerState = context.watch<RegisterCubit>().state;
+    final registerForm = registerState.form;
 
-    void previousPage() {
-      FocusScope.of(context).unfocus();
+    void goToPage(int targetPage) {
       unawaited(
-        pageController.previousPage(
+        pageController.animateToPage(
+          targetPage,
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
         ),
       );
-      currentPage.value--;
+      currentPage.value = targetPage;
+      context.read<RegisterCubit>().setStep(targetPage);
+    }
+
+    void previousPage() {
+      FocusScope.of(context).unfocus();
+      goToPage(currentPage.value - 1);
     }
 
     Future<void> nextPage() async {
       FocusScope.of(context).unfocus();
-      if (currentPage.value < 3) {
-        // Validation before moving to next page
-        if (currentPage.value == 0 && registerForm.accountType == null) {
+      final cubit = context.read<RegisterCubit>();
+
+      if (currentPage.value == 0) {
+        // Step 1: Account Type → go to Step 2: Registration
+        if (registerForm.accountType == null) return;
+        goToPage(1);
+        unawaited(cubit.getCountries());
+      } else if (currentPage.value == 1) {
+        // Step 2: Registration Form → Register + CreateAccount + SendOTP
+        if (!registerForm.isValid ||
+            !termsAccepted.value ||
+            !privacyAccepted.value) {
           return;
         }
-        if (currentPage.value == 1 && !registerForm.isValid) {
-          // If we want to be strict, but for now we let it pass if terms are accepted
-          if (!termsAccepted.value || !privacyAccepted.value) return;
+        await cubit.register();
+      } else if (currentPage.value == 2) {
+        // Step 3: OTP — handled by OtpCubit listener
+      } else if (currentPage.value == 3) {
+        // Step 4: KYC Upload
+        await cubit.uploadKYCFiles(registerForm.accountId);
+      } else if (currentPage.value == 4) {
+        // Step 5: Wallet Creation
+        if (registerForm.walletStep == 0) {
+          await cubit.createWallet();
+        } else {
+          await cubit.createWalletPin();
         }
-
-        if (currentPage.value == 2) {
-          // Trigger Registration when moving to OTP step
-          await context.read<RegisterCubit>().register();
-        }
-
-        unawaited(
-          pageController.nextPage(
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.easeInOut,
-          ),
-        );
-      } else {
-        const LoginRoute().go(context);
       }
     }
 
-    return BlocListener<RegisterCubit, RegisterState>(
-      listener: (context, state) {
-        state.whenOrNull(
-          success: (form, data) {
-            // If registration successful, maybe send OTP automatically
-            // context.read<OtpCubit>().sendOTP();
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<RegisterCubit, RegisterState>(
+          listener: (context, state) async {
+            await state.whenOrNull(
+              loading: (form) {
+                context.dialog.showLoading();
+              },
+              registerSuccess: (form, data) async {
+                // Register + CreateAccount + SendOTP succeeded → go to OTP
+                if (Navigator.of(context).canPop()) context.pop();
+                goToPage(2);
+              },
+              kycUploadSuccess: (form) async {
+                // KYC uploaded → go to Create Wallet step
+                if (Navigator.of(context).canPop()) context.pop();
+                goToPage(4);
+                unawaited(context.read<RegisterCubit>().getCurrencies());
+              },
+              ocrSuccess: (form) async {
+                if (Navigator.of(context).canPop()) context.pop();
+              },
+              walletCreated: (form) async {
+                // Wallet created → stays on same page but switches to PIN sub-step
+                if (Navigator.of(context).canPop()) context.pop();
+              },
+              pinCreated: (form) async {
+                // PIN created → Registration complete! Navigate to home
+                if (Navigator.of(context).canPop()) context.pop();
+                await context.dialog.showInfo(
+                  title: 'Success',
+                  body:
+                      'Your account and wallet have been created successfully!',
+                );
+                if (context.mounted) {
+                  context.go(RoutesNames.home);
+                }
+              },
+              createAccountSuccess: (form, data) async {
+                if (Navigator.of(context).canPop()) context.pop();
+              },
+              getCountriesSuccess: (form, countries) async {
+                if (Navigator.of(context).canPop()) context.pop();
+              },
+              getRequiredFilesSuccess: (form, files) async {
+                if (Navigator.of(context).canPop()) context.pop();
+              },
+              currenciesLoaded: (form) async {
+                if (Navigator.of(context).canPop()) context.pop();
+              },
+              failure: (form, error) async {
+                if (Navigator.of(context).canPop()) context.pop();
+
+                await context.dialog.showError(
+                  title: context.localeKeys.error,
+                  error: error,
+                );
+              },
+            );
           },
-          failure: (form, error) {
-            getIt<BaseToastService>().showError(context, error);
+        ),
+        BlocListener<OtpCubit, otp.OtpState>(
+          listener: (context, state) async {
+            if (state is otp.Success) {
+              // OTP verified → go to KYC
+              if (Navigator.of(context).canPop()) context.pop();
+              unawaited(context.read<RegisterCubit>().getRequiredFiles());
+              goToPage(3);
+            } else if (state is otp.Loading) {
+              context.dialog.showLoading();
+            } else if (state is otp.Failure) {
+              context.pop();
+              await context.dialog.showError(
+                title: context.localeKeys.error,
+                error: state.error,
+              );
+            }
           },
-        );
-      },
+        ),
+      ],
       child: Scaffold(
         body: Column(
           children: [
@@ -105,6 +189,7 @@ class GetStartedPage extends HookWidget {
                   children: [
                     const StepOneAccountType(),
                     StepOneAccountDetails(
+                      dateController: dateController,
                       termsAccepted: termsAccepted.value,
                       onTermsChanged: (final val) {
                         termsAccepted.value = val ?? false;
@@ -124,8 +209,9 @@ class GetStartedPage extends HookWidget {
                         privacyAccepted.value = allAccepted.value;
                       },
                     ),
-                    StepTwoKYC(dateController: dateController),
                     const StepThreeOTP(),
+                    const StepTwoKYC(),
+                    const StepFiveCreateWallet(),
                   ],
                 ),
               ),
@@ -134,14 +220,7 @@ class GetStartedPage extends HookWidget {
               currentPage: currentPage.value,
               onPrevious: previousPage,
               onNext: nextPage,
-              isEnabled:
-                  (currentPage.value == 0 &&
-                      registerForm.accountType != null) ||
-                  (currentPage.value == 1 &&
-                      termsAccepted.value &&
-                      privacyAccepted.value) ||
-                  (currentPage.value == 2) ||
-                  (currentPage.value == 3),
+              isEnabled: registerForm.isValid && registerState is! Loading,
             ),
           ],
         ),

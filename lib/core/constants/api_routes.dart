@@ -1,6 +1,6 @@
 final class ApiRoutes {
   static const String apiBaseURL =
-      'https://mohammed221b-001-site1.jtempurl.com/api/';
+      'https://mahmoudappis-001-site1.jtempurl.com/api/';
 
   /// Account
   static const String accountGetAccountTypes = 'Account/GetAccountTypes';
@@ -18,6 +18,7 @@ final class ApiRoutes {
   static const String accountGetWallets = 'Account/GetWallets';
   static const String accountGetWalletsForWeb = 'Account/GetWalletsForWeb';
   static const String accountCreateWallet = 'Account/CreateWallet';
+  static const String accountCreateAccount = 'Auth/CreateAccount';
   static const String accountCreateWalletPin = 'Account/CreateWalletPin';
   static const String accountEditWalletPin = 'Account/EditWalletPin';
   static const String accountGetUserFavorites = 'Account/GetUserFavorites';
@@ -49,7 +50,7 @@ final class ApiRoutes {
   static const String accountSetParentForUser = 'Account/SetParentForUser';
   static const String accountGetAccountsByParentId =
       'Account/GetAccountsByParentId';
-  static const String accountGetCountries = 'Account/GetCountries';
+  static const String accountGetCountries = 'Admin/GetAllCountries';
   static const String accountGetAccountCategories =
       'Account/GetAccountCategories';
   static const String accountUpdateAccountCategory =

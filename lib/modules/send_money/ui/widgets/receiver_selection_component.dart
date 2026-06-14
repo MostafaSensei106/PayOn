@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -12,6 +13,8 @@ import '../../../../core/widgets/display/avatar/avatar_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_widget_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../logic/cubit/user_favorites_cubit.dart';
+import '../../logic/cubit/user_favorites_state.dart';
 import '../page/send_money_page.dart';
 
 class ReceiverSelectionComponent extends StatelessWidget {
@@ -106,25 +109,94 @@ class ReceiverSelectionComponent extends StatelessWidget {
     unawaited(
       context.showBottomSheetComponent(
         title: l10n.favorites,
-        child: const Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTileWidgetComponent.top(
-              leading: AvatarComponent(imageUrl: ''),
-              title: 'المعلم حلاوة العنتبلي',
-              subtitle: '1234 5678 9012 4589',
-            ),
-            ListTileWidgetComponent.middle(
-              leading: AvatarComponent(imageUrl: ''),
-              title: 'الحج كمال ابو رية',
-              subtitle: '9876 5432 1098 7654',
-            ),
-            ListTileWidgetComponent.bottom(
-              leading: AvatarComponent(imageUrl: ''),
-              title: 'المعلم سردينة',
-              subtitle: '5544 3322 1100 9988',
-            ),
-          ],
+        child: BlocBuilder<UserFavoritesCubit, UserFavoritesState>(
+          builder: (context, state) {
+            return state.maybeWhen(
+              loading: () => const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(AppConfig.padding),
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+              success: (favorites) {
+                if (favorites.isEmpty) {
+                  return const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(AppConfig.padding),
+                      child: Text('No Favorites'),
+                    ),
+                  );
+                }
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ...favorites.asMap().entries.map((entry) {
+                      final index = entry.key;
+                      final favorite = entry.value;
+                      final isFirst = index == 0;
+                      final isLast = index == favorites.length - 1;
+
+                      if (favorites.length == 1) {
+                        return ListTileWidgetComponent(
+                          leading: AvatarComponent(imageUrl: favorite.image),
+                          title: favorite.name,
+                          subtitle: favorite.id,
+                          onTap: () {
+                            onReceiverChanged(favorite.id);
+                            Navigator.pop(context);
+                          },
+                        );
+                      }
+
+                      if (isFirst) {
+                        return ListTileWidgetComponent.top(
+                          leading: AvatarComponent(imageUrl: favorite.image),
+                          title: favorite.name,
+                          subtitle: favorite.id,
+                          onTap: () {
+                            onReceiverChanged(favorite.id);
+                            Navigator.pop(context);
+                          },
+                        );
+                      } else if (isLast) {
+                        return ListTileWidgetComponent.bottom(
+                          leading: AvatarComponent(imageUrl: favorite.image),
+                          title: favorite.name,
+                          subtitle: favorite.id,
+                          onTap: () {
+                            onReceiverChanged(favorite.id);
+                            Navigator.pop(context);
+                          },
+                        );
+                      } else {
+                        return ListTileWidgetComponent.middle(
+                          leading: AvatarComponent(imageUrl: favorite.image),
+                          title: favorite.name,
+                          subtitle: favorite.id,
+                          onTap: () {
+                            onReceiverChanged(favorite.id);
+                            Navigator.pop(context);
+                          },
+                        );
+                      }
+                    }),
+                    SizedBox(
+                      height:
+                          MediaQuery.of(context).padding.bottom +
+                          AppConfig.padding,
+                    ),
+                  ],
+                );
+              },
+              failure: (message) => Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(AppConfig.padding),
+                  child: Text(message),
+                ),
+              ),
+              orElse: () => const SizedBox.shrink(),
+            );
+          },
         ),
       ),
     );

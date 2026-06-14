@@ -9,14 +9,17 @@ import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/extensions/extensions.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
+import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar_with_waves_component.dart';
 import '../../../home/logic/cubit/home_cubit.dart';
 import '../../../home/logic/cubit/home_state.dart';
 import '../../../home/logic/entitys/wallets_entity.dart';
 import '../../logic/cubit/send_money_cubit.dart';
 import '../../logic/cubit/send_money_state.dart';
+import '../../logic/cubit/user_favorites_cubit.dart';
 import '../widgets/amount_input_and_submit_component.dart';
 import '../widgets/receiver_selection_component.dart';
+import '../widgets/send_money_summary_bottom_sheet.dart';
 import '../widgets/sender_account_selection_component.dart';
 
 enum SendMoneyMethod { phone, ipa }
@@ -35,7 +38,17 @@ class SendMoneyPage extends HookWidget {
     // Get wallets from HomeCubit
     final homeState = getIt<HomeCubit>().state;
     final myWallets = homeState.maybeWhen(
-      success: (data) => data.wallets,
+      success:
+          (
+            wallets,
+            transactions,
+            isTransactionsLoading,
+            currentFilters,
+            requiredFiles,
+            kycFiles,
+            isUploading,
+            newAccountId,
+          ) => wallets.wallets,
       orElse: () => <WalletItemEntity>[],
     );
 
@@ -45,19 +58,56 @@ class SendMoneyPage extends HookWidget {
           : const WalletItemEntity.placeholder(),
     );
 
+    useEffect(() {
+      unawaited(context.read<UserFavoritesCubit>().getUserFavorites());
+      return null;
+    }, []);
+
     return Scaffold(
       body: BlocConsumer<SendMoneyCubit, SendMoneyState>(
-        listener: (context, state) {
-          state.whenOrNull(
+        listener: (context, state) async {
+          await state.whenOrNull(
             loading: (_) {
               context.dialog.showLoading();
             },
-            transactionDraftSuccess: (_) {
+            success: (form, data) async {
+              Navigator.pop(context);
+              unawaited(
+                context.read<SendMoneyCubit>().createTransactionDraft(
+                  senderId: selectedWallet.value.walletId,
+                  receiverId: data.reciverId,
+                  isTransactionByPhone:
+                      selectedMethod.value == SendMoneyMethod.phone,
+                ),
+              );
+            },
+            transactionDraftSuccess: (form, draft) async {
+              Navigator.pop(context);
+              await context.showBottomSheetComponent<void>(
+                title: l10n.transaction_details,
+                child: BlocProvider.value(
+                  value: context.read<SendMoneyCubit>(),
+                  child: SendMoneySummaryBottomSheet(
+                    draft: draft,
+                    onConfirm: (pin) async {
+                      await context.read<SendMoneyCubit>().confirmTransaction(
+                        pin: pin,
+                        walletId: selectedWallet.value.walletId,
+                        draftIds: draft.draftIds,
+                      );
+                    },
+                  ),
+                ),
+              );
+            },
+            transactionSaved: (form, data) {
+              Navigator.pop(context);
               Navigator.pop(context);
               context.toast.showSuccess(context, l10n.success);
             },
-            failure: (_, message) {
+            failure: (_, message) async {
               Navigator.pop(context);
+              await context.dialog.showError(title: l10n.error, error: message);
             },
           );
         },
@@ -96,15 +146,11 @@ class SendMoneyPage extends HookWidget {
                     AmountInputAndSubmitComponent(
                       onAmountChanged: (val) =>
                           context.read<SendMoneyCubit>().onAmountChanged(val),
+                      onDescriptionChanged: (val) => context
+                          .read<SendMoneyCubit>()
+                          .onDescriptionChanged(val),
                       onSubmit: () {
-                        unawaited(
-                          context.read<SendMoneyCubit>().createTransactionDraft(
-                            senderId: selectedWallet.value.walletId,
-                            receiverId: state.formState.userInfo.value,
-                            isTransactionByPhone:
-                                selectedMethod.value == SendMoneyMethod.phone,
-                          ),
-                        );
+                        unawaited(context.read<SendMoneyCubit>().checkWallet());
                       },
                       l10n: l10n,
                     ),

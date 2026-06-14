@@ -125,12 +125,12 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( WalletsEntity data)?  success,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( WalletsEntity wallets,  List<TransactionItemEntity> transactions,  bool isTransactionsLoading,  GetTransactionsParams transactionFilters,  List<RequiredFileEntity> requiredFiles,  Map<int, File> kycFiles,  bool isUploading,  String? newAccountId)?  success,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Loading() when loading != null:
 return loading();case Success() when success != null:
-return success(_that.data);case Failure() when failure != null:
+return success(_that.wallets,_that.transactions,_that.isTransactionsLoading,_that.transactionFilters,_that.requiredFiles,_that.kycFiles,_that.isUploading,_that.newAccountId);case Failure() when failure != null:
 return failure(_that.message);case _:
   return orElse();
 
@@ -149,12 +149,12 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( WalletsEntity data)  success,required TResult Function( String message)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( WalletsEntity wallets,  List<TransactionItemEntity> transactions,  bool isTransactionsLoading,  GetTransactionsParams transactionFilters,  List<RequiredFileEntity> requiredFiles,  Map<int, File> kycFiles,  bool isUploading,  String? newAccountId)  success,required TResult Function( String message)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case Loading():
 return loading();case Success():
-return success(_that.data);case Failure():
+return success(_that.wallets,_that.transactions,_that.isTransactionsLoading,_that.transactionFilters,_that.requiredFiles,_that.kycFiles,_that.isUploading,_that.newAccountId);case Failure():
 return failure(_that.message);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -169,12 +169,12 @@ return failure(_that.message);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( WalletsEntity data)?  success,TResult? Function( String message)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( WalletsEntity wallets,  List<TransactionItemEntity> transactions,  bool isTransactionsLoading,  GetTransactionsParams transactionFilters,  List<RequiredFileEntity> requiredFiles,  Map<int, File> kycFiles,  bool isUploading,  String? newAccountId)?  success,TResult? Function( String message)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Loading() when loading != null:
 return loading();case Success() when success != null:
-return success(_that.data);case Failure() when failure != null:
+return success(_that.wallets,_that.transactions,_that.isTransactionsLoading,_that.transactionFilters,_that.requiredFiles,_that.kycFiles,_that.isUploading,_that.newAccountId);case Failure() when failure != null:
 return failure(_that.message);case _:
   return null;
 
@@ -251,10 +251,35 @@ String toString() {
 
 
 class Success implements HomeState {
-  const Success({required this.data});
+  const Success({required this.wallets, final  List<TransactionItemEntity> transactions = const [], this.isTransactionsLoading = false, this.transactionFilters = const GetTransactionsParams(), final  List<RequiredFileEntity> requiredFiles = const [], final  Map<int, File> kycFiles = const {}, this.isUploading = false, this.newAccountId}): _transactions = transactions,_requiredFiles = requiredFiles,_kycFiles = kycFiles;
   
 
- final  WalletsEntity data;
+ final  WalletsEntity wallets;
+ final  List<TransactionItemEntity> _transactions;
+@JsonKey() List<TransactionItemEntity> get transactions {
+  if (_transactions is EqualUnmodifiableListView) return _transactions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_transactions);
+}
+
+@JsonKey() final  bool isTransactionsLoading;
+@JsonKey() final  GetTransactionsParams transactionFilters;
+ final  List<RequiredFileEntity> _requiredFiles;
+@JsonKey() List<RequiredFileEntity> get requiredFiles {
+  if (_requiredFiles is EqualUnmodifiableListView) return _requiredFiles;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_requiredFiles);
+}
+
+ final  Map<int, File> _kycFiles;
+@JsonKey() Map<int, File> get kycFiles {
+  if (_kycFiles is EqualUnmodifiableMapView) return _kycFiles;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(_kycFiles);
+}
+
+@JsonKey() final  bool isUploading;
+ final  String? newAccountId;
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
@@ -266,16 +291,16 @@ $SuccessCopyWith<Success> get copyWith => _$SuccessCopyWithImpl<Success>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success&&(identical(other.data, data) || other.data == data));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success&&(identical(other.wallets, wallets) || other.wallets == wallets)&&const DeepCollectionEquality().equals(other._transactions, _transactions)&&(identical(other.isTransactionsLoading, isTransactionsLoading) || other.isTransactionsLoading == isTransactionsLoading)&&(identical(other.transactionFilters, transactionFilters) || other.transactionFilters == transactionFilters)&&const DeepCollectionEquality().equals(other._requiredFiles, _requiredFiles)&&const DeepCollectionEquality().equals(other._kycFiles, _kycFiles)&&(identical(other.isUploading, isUploading) || other.isUploading == isUploading)&&(identical(other.newAccountId, newAccountId) || other.newAccountId == newAccountId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,data);
+int get hashCode => Object.hash(runtimeType,wallets,const DeepCollectionEquality().hash(_transactions),isTransactionsLoading,transactionFilters,const DeepCollectionEquality().hash(_requiredFiles),const DeepCollectionEquality().hash(_kycFiles),isUploading,newAccountId);
 
 @override
 String toString() {
-  return 'HomeState.success(data: $data)';
+  return 'HomeState.success(wallets: $wallets, transactions: $transactions, isTransactionsLoading: $isTransactionsLoading, transactionFilters: $transactionFilters, requiredFiles: $requiredFiles, kycFiles: $kycFiles, isUploading: $isUploading, newAccountId: $newAccountId)';
 }
 
 
@@ -286,11 +311,11 @@ abstract mixin class $SuccessCopyWith<$Res> implements $HomeStateCopyWith<$Res> 
   factory $SuccessCopyWith(Success value, $Res Function(Success) _then) = _$SuccessCopyWithImpl;
 @useResult
 $Res call({
- WalletsEntity data
+ WalletsEntity wallets, List<TransactionItemEntity> transactions, bool isTransactionsLoading, GetTransactionsParams transactionFilters, List<RequiredFileEntity> requiredFiles, Map<int, File> kycFiles, bool isUploading, String? newAccountId
 });
 
 
-$WalletsEntityCopyWith<$Res> get data;
+$WalletsEntityCopyWith<$Res> get wallets;$GetTransactionsParamsCopyWith<$Res> get transactionFilters;
 
 }
 /// @nodoc
@@ -303,10 +328,17 @@ class _$SuccessCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? data = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? wallets = null,Object? transactions = null,Object? isTransactionsLoading = null,Object? transactionFilters = null,Object? requiredFiles = null,Object? kycFiles = null,Object? isUploading = null,Object? newAccountId = freezed,}) {
   return _then(Success(
-data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as WalletsEntity,
+wallets: null == wallets ? _self.wallets : wallets // ignore: cast_nullable_to_non_nullable
+as WalletsEntity,transactions: null == transactions ? _self._transactions : transactions // ignore: cast_nullable_to_non_nullable
+as List<TransactionItemEntity>,isTransactionsLoading: null == isTransactionsLoading ? _self.isTransactionsLoading : isTransactionsLoading // ignore: cast_nullable_to_non_nullable
+as bool,transactionFilters: null == transactionFilters ? _self.transactionFilters : transactionFilters // ignore: cast_nullable_to_non_nullable
+as GetTransactionsParams,requiredFiles: null == requiredFiles ? _self._requiredFiles : requiredFiles // ignore: cast_nullable_to_non_nullable
+as List<RequiredFileEntity>,kycFiles: null == kycFiles ? _self._kycFiles : kycFiles // ignore: cast_nullable_to_non_nullable
+as Map<int, File>,isUploading: null == isUploading ? _self.isUploading : isUploading // ignore: cast_nullable_to_non_nullable
+as bool,newAccountId: freezed == newAccountId ? _self.newAccountId : newAccountId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -314,10 +346,19 @@ as WalletsEntity,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$WalletsEntityCopyWith<$Res> get data {
+$WalletsEntityCopyWith<$Res> get wallets {
   
-  return $WalletsEntityCopyWith<$Res>(_self.data, (value) {
-    return _then(_self.copyWith(data: value));
+  return $WalletsEntityCopyWith<$Res>(_self.wallets, (value) {
+    return _then(_self.copyWith(wallets: value));
+  });
+}/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GetTransactionsParamsCopyWith<$Res> get transactionFilters {
+  
+  return $GetTransactionsParamsCopyWith<$Res>(_self.transactionFilters, (value) {
+    return _then(_self.copyWith(transactionFilters: value));
   });
 }
 }

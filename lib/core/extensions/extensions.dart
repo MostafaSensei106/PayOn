@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
@@ -22,6 +24,12 @@ extension ThemeExtensions on BuildContext {
 
 extension TextThemeExtensions on BuildContext {
   TextTheme get textTheme => getIt<ThemeService>().getTextTheme(this);
+}
+
+extension Uint8ListExtension on Uint8List {
+  String toHexString() {
+    return map((b) => b.toRadixString(16).padLeft(2, '0')).join();
+  }
 }
 
 extension DialogExtensions on BuildContext {

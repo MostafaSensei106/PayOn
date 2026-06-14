@@ -271,7 +271,7 @@ class _ProfileHeaderCard extends StatelessWidget {
               GestureDetector(
                 onTap: () async {
                   unawaited(HapticFeedback.vibrate());
-                  await context.showBottomSheetComponent(
+                  await context.showBottomSheetComponent<void>(
                     title: l10n.edit_profile,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -373,7 +373,7 @@ class _ProfileHeaderCard extends StatelessWidget {
           ),
           IconButtonComponent.filled(
             icon: Iconsax.edit_copy,
-            onPressed: () => context.showBottomSheetComponent(
+            onPressed: () => context.showBottomSheetComponent<void>(
               title: l10n.edit_profile,
               child: MultiBlocProvider(
                 providers: [

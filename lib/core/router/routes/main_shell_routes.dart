@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../modules/history/presentation/pages/history_page.dart';
 import '../../../modules/home/logic/cubit/home_cubit.dart';
+import '../../../modules/home/ui/pages/add_account_kyc_page.dart';
 import '../../../modules/home/ui/pages/home_page.dart';
 import '../../../modules/main/ui/pages/main_page.dart';
 import '../../../modules/profile/logic/cubit/user_profile_cubit.dart';
@@ -21,7 +22,14 @@ List<RouteBase> get mainShellRoutes => [$mainShellRouteData];
   branches: <TypedStatefulShellBranch<StatefulShellBranchData>>[
     TypedStatefulShellBranch<HomeBranchData>(
       routes: <TypedRoute<RouteData>>[
-        TypedGoRoute<HomeRoute>(path: RoutesNames.home),
+        TypedGoRoute<HomeRoute>(
+          path: RoutesNames.home,
+          routes: [
+            TypedGoRoute<AddAccountKycRoute>(
+              path: 'add-account-kyc', // Use relative path for sub-route
+            ),
+          ],
+        ),
       ],
     ),
     TypedStatefulShellBranch<WalletBranchData>(
@@ -70,6 +78,15 @@ class HomeRoute extends CupertinoRouteData with $HomeRoute {
 
   @override
   Widget build(BuildContext context, GoRouterState state) => const HomePage();
+}
+
+final class AddAccountKycRoute extends CupertinoRouteData
+    with $AddAccountKycRoute {
+  const AddAccountKycRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const AddAccountKycPage();
 }
 
 class WalletBranchData extends StatefulShellBranchData {

@@ -289,7 +289,7 @@ as List<WalletItemEntity>,
 /// @nodoc
 mixin _$WalletItemEntity implements DiagnosticableTreeMixin {
 
- String get walletId; String get ipa; String get currency; String get currencyCode; String get country; String get balance; bool get isActive; bool get isDefault; bool get filesVerified;
+ String get walletId; String get ipa; String get currency; String get currencyCode; String get country; String get balance; bool get isActive; bool get isDefault; bool get isPending; bool get filesVerified;
 /// Create a copy of WalletItemEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -301,21 +301,21 @@ $WalletItemEntityCopyWith<WalletItemEntity> get copyWith => _$WalletItemEntityCo
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'WalletItemEntity'))
-    ..add(DiagnosticsProperty('walletId', walletId))..add(DiagnosticsProperty('ipa', ipa))..add(DiagnosticsProperty('currency', currency))..add(DiagnosticsProperty('currencyCode', currencyCode))..add(DiagnosticsProperty('country', country))..add(DiagnosticsProperty('balance', balance))..add(DiagnosticsProperty('isActive', isActive))..add(DiagnosticsProperty('isDefault', isDefault))..add(DiagnosticsProperty('filesVerified', filesVerified));
+    ..add(DiagnosticsProperty('walletId', walletId))..add(DiagnosticsProperty('ipa', ipa))..add(DiagnosticsProperty('currency', currency))..add(DiagnosticsProperty('currencyCode', currencyCode))..add(DiagnosticsProperty('country', country))..add(DiagnosticsProperty('balance', balance))..add(DiagnosticsProperty('isActive', isActive))..add(DiagnosticsProperty('isDefault', isDefault))..add(DiagnosticsProperty('isPending', isPending))..add(DiagnosticsProperty('filesVerified', filesVerified));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is WalletItemEntity&&(identical(other.walletId, walletId) || other.walletId == walletId)&&(identical(other.ipa, ipa) || other.ipa == ipa)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.country, country) || other.country == country)&&(identical(other.balance, balance) || other.balance == balance)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isDefault, isDefault) || other.isDefault == isDefault)&&(identical(other.filesVerified, filesVerified) || other.filesVerified == filesVerified));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WalletItemEntity&&(identical(other.walletId, walletId) || other.walletId == walletId)&&(identical(other.ipa, ipa) || other.ipa == ipa)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.country, country) || other.country == country)&&(identical(other.balance, balance) || other.balance == balance)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isDefault, isDefault) || other.isDefault == isDefault)&&(identical(other.isPending, isPending) || other.isPending == isPending)&&(identical(other.filesVerified, filesVerified) || other.filesVerified == filesVerified));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,walletId,ipa,currency,currencyCode,country,balance,isActive,isDefault,filesVerified);
+int get hashCode => Object.hash(runtimeType,walletId,ipa,currency,currencyCode,country,balance,isActive,isDefault,isPending,filesVerified);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'WalletItemEntity(walletId: $walletId, ipa: $ipa, currency: $currency, currencyCode: $currencyCode, country: $country, balance: $balance, isActive: $isActive, isDefault: $isDefault, filesVerified: $filesVerified)';
+  return 'WalletItemEntity(walletId: $walletId, ipa: $ipa, currency: $currency, currencyCode: $currencyCode, country: $country, balance: $balance, isActive: $isActive, isDefault: $isDefault, isPending: $isPending, filesVerified: $filesVerified)';
 }
 
 
@@ -326,7 +326,7 @@ abstract mixin class $WalletItemEntityCopyWith<$Res>  {
   factory $WalletItemEntityCopyWith(WalletItemEntity value, $Res Function(WalletItemEntity) _then) = _$WalletItemEntityCopyWithImpl;
 @useResult
 $Res call({
- String walletId, String ipa, String currency, String currencyCode, String country, String balance, bool isActive, bool isDefault, bool filesVerified
+ String walletId, String ipa, String currency, String currencyCode, String country, String balance, bool isActive, bool isDefault, bool isPending, bool filesVerified
 });
 
 
@@ -343,7 +343,7 @@ class _$WalletItemEntityCopyWithImpl<$Res>
 
 /// Create a copy of WalletItemEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? walletId = null,Object? ipa = null,Object? currency = null,Object? currencyCode = null,Object? country = null,Object? balance = null,Object? isActive = null,Object? isDefault = null,Object? filesVerified = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? walletId = null,Object? ipa = null,Object? currency = null,Object? currencyCode = null,Object? country = null,Object? balance = null,Object? isActive = null,Object? isDefault = null,Object? isPending = null,Object? filesVerified = null,}) {
   return _then(_self.copyWith(
 walletId: null == walletId ? _self.walletId : walletId // ignore: cast_nullable_to_non_nullable
 as String,ipa: null == ipa ? _self.ipa : ipa // ignore: cast_nullable_to_non_nullable
@@ -353,6 +353,7 @@ as String,country: null == country ? _self.country : country // ignore: cast_nul
 as String,balance: null == balance ? _self.balance : balance // ignore: cast_nullable_to_non_nullable
 as String,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
 as bool,isDefault: null == isDefault ? _self.isDefault : isDefault // ignore: cast_nullable_to_non_nullable
+as bool,isPending: null == isPending ? _self.isPending : isPending // ignore: cast_nullable_to_non_nullable
 as bool,filesVerified: null == filesVerified ? _self.filesVerified : filesVerified // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
@@ -442,11 +443,11 @@ return placeholder(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool filesVerified)?  $default,{TResult Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool filesVerified)?  placeholder,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool isPending,  bool filesVerified)?  $default,{TResult Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool isPending,  bool filesVerified)?  placeholder,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _WalletItemEntity() when $default != null:
-return $default(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.filesVerified);case _Placeholder() when placeholder != null:
-return placeholder(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.filesVerified);case _:
+return $default(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.isPending,_that.filesVerified);case _Placeholder() when placeholder != null:
+return placeholder(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.isPending,_that.filesVerified);case _:
   return orElse();
 
 }
@@ -464,11 +465,11 @@ return placeholder(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool filesVerified)  $default,{required TResult Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool filesVerified)  placeholder,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool isPending,  bool filesVerified)  $default,{required TResult Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool isPending,  bool filesVerified)  placeholder,}) {final _that = this;
 switch (_that) {
 case _WalletItemEntity():
-return $default(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.filesVerified);case _Placeholder():
-return placeholder(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.filesVerified);case _:
+return $default(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.isPending,_that.filesVerified);case _Placeholder():
+return placeholder(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.isPending,_that.filesVerified);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -485,11 +486,11 @@ return placeholder(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool filesVerified)?  $default,{TResult? Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool filesVerified)?  placeholder,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool isPending,  bool filesVerified)?  $default,{TResult? Function( String walletId,  String ipa,  String currency,  String currencyCode,  String country,  String balance,  bool isActive,  bool isDefault,  bool isPending,  bool filesVerified)?  placeholder,}) {final _that = this;
 switch (_that) {
 case _WalletItemEntity() when $default != null:
-return $default(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.filesVerified);case _Placeholder() when placeholder != null:
-return placeholder(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.filesVerified);case _:
+return $default(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.isPending,_that.filesVerified);case _Placeholder() when placeholder != null:
+return placeholder(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_that.country,_that.balance,_that.isActive,_that.isDefault,_that.isPending,_that.filesVerified);case _:
   return null;
 
 }
@@ -501,7 +502,7 @@ return placeholder(_that.walletId,_that.ipa,_that.currency,_that.currencyCode,_t
 
 
 class _WalletItemEntity with DiagnosticableTreeMixin implements WalletItemEntity {
-  const _WalletItemEntity({required this.walletId, required this.ipa, required this.currency, required this.currencyCode, required this.country, required this.balance, required this.isActive, required this.isDefault, required this.filesVerified});
+  const _WalletItemEntity({required this.walletId, required this.ipa, required this.currency, required this.currencyCode, required this.country, required this.balance, required this.isActive, required this.isDefault, required this.isPending, required this.filesVerified});
   
 
 @override final  String walletId;
@@ -512,6 +513,7 @@ class _WalletItemEntity with DiagnosticableTreeMixin implements WalletItemEntity
 @override final  String balance;
 @override final  bool isActive;
 @override final  bool isDefault;
+@override final  bool isPending;
 @override final  bool filesVerified;
 
 /// Create a copy of WalletItemEntity
@@ -525,21 +527,21 @@ _$WalletItemEntityCopyWith<_WalletItemEntity> get copyWith => __$WalletItemEntit
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'WalletItemEntity'))
-    ..add(DiagnosticsProperty('walletId', walletId))..add(DiagnosticsProperty('ipa', ipa))..add(DiagnosticsProperty('currency', currency))..add(DiagnosticsProperty('currencyCode', currencyCode))..add(DiagnosticsProperty('country', country))..add(DiagnosticsProperty('balance', balance))..add(DiagnosticsProperty('isActive', isActive))..add(DiagnosticsProperty('isDefault', isDefault))..add(DiagnosticsProperty('filesVerified', filesVerified));
+    ..add(DiagnosticsProperty('walletId', walletId))..add(DiagnosticsProperty('ipa', ipa))..add(DiagnosticsProperty('currency', currency))..add(DiagnosticsProperty('currencyCode', currencyCode))..add(DiagnosticsProperty('country', country))..add(DiagnosticsProperty('balance', balance))..add(DiagnosticsProperty('isActive', isActive))..add(DiagnosticsProperty('isDefault', isDefault))..add(DiagnosticsProperty('isPending', isPending))..add(DiagnosticsProperty('filesVerified', filesVerified));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WalletItemEntity&&(identical(other.walletId, walletId) || other.walletId == walletId)&&(identical(other.ipa, ipa) || other.ipa == ipa)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.country, country) || other.country == country)&&(identical(other.balance, balance) || other.balance == balance)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isDefault, isDefault) || other.isDefault == isDefault)&&(identical(other.filesVerified, filesVerified) || other.filesVerified == filesVerified));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WalletItemEntity&&(identical(other.walletId, walletId) || other.walletId == walletId)&&(identical(other.ipa, ipa) || other.ipa == ipa)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.country, country) || other.country == country)&&(identical(other.balance, balance) || other.balance == balance)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isDefault, isDefault) || other.isDefault == isDefault)&&(identical(other.isPending, isPending) || other.isPending == isPending)&&(identical(other.filesVerified, filesVerified) || other.filesVerified == filesVerified));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,walletId,ipa,currency,currencyCode,country,balance,isActive,isDefault,filesVerified);
+int get hashCode => Object.hash(runtimeType,walletId,ipa,currency,currencyCode,country,balance,isActive,isDefault,isPending,filesVerified);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'WalletItemEntity(walletId: $walletId, ipa: $ipa, currency: $currency, currencyCode: $currencyCode, country: $country, balance: $balance, isActive: $isActive, isDefault: $isDefault, filesVerified: $filesVerified)';
+  return 'WalletItemEntity(walletId: $walletId, ipa: $ipa, currency: $currency, currencyCode: $currencyCode, country: $country, balance: $balance, isActive: $isActive, isDefault: $isDefault, isPending: $isPending, filesVerified: $filesVerified)';
 }
 
 
@@ -550,7 +552,7 @@ abstract mixin class _$WalletItemEntityCopyWith<$Res> implements $WalletItemEnti
   factory _$WalletItemEntityCopyWith(_WalletItemEntity value, $Res Function(_WalletItemEntity) _then) = __$WalletItemEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String walletId, String ipa, String currency, String currencyCode, String country, String balance, bool isActive, bool isDefault, bool filesVerified
+ String walletId, String ipa, String currency, String currencyCode, String country, String balance, bool isActive, bool isDefault, bool isPending, bool filesVerified
 });
 
 
@@ -567,7 +569,7 @@ class __$WalletItemEntityCopyWithImpl<$Res>
 
 /// Create a copy of WalletItemEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? walletId = null,Object? ipa = null,Object? currency = null,Object? currencyCode = null,Object? country = null,Object? balance = null,Object? isActive = null,Object? isDefault = null,Object? filesVerified = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? walletId = null,Object? ipa = null,Object? currency = null,Object? currencyCode = null,Object? country = null,Object? balance = null,Object? isActive = null,Object? isDefault = null,Object? isPending = null,Object? filesVerified = null,}) {
   return _then(_WalletItemEntity(
 walletId: null == walletId ? _self.walletId : walletId // ignore: cast_nullable_to_non_nullable
 as String,ipa: null == ipa ? _self.ipa : ipa // ignore: cast_nullable_to_non_nullable
@@ -577,6 +579,7 @@ as String,country: null == country ? _self.country : country // ignore: cast_nul
 as String,balance: null == balance ? _self.balance : balance // ignore: cast_nullable_to_non_nullable
 as String,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
 as bool,isDefault: null == isDefault ? _self.isDefault : isDefault // ignore: cast_nullable_to_non_nullable
+as bool,isPending: null == isPending ? _self.isPending : isPending // ignore: cast_nullable_to_non_nullable
 as bool,filesVerified: null == filesVerified ? _self.filesVerified : filesVerified // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
@@ -589,7 +592,7 @@ as bool,
 
 
 class _Placeholder with DiagnosticableTreeMixin implements WalletItemEntity {
-  const _Placeholder({this.walletId = '', this.ipa = '', this.currency = '', this.currencyCode = '', this.country = '', this.balance = '0.00', this.isActive = false, this.isDefault = false, this.filesVerified = false});
+  const _Placeholder({this.walletId = '', this.ipa = '', this.currency = '', this.currencyCode = '', this.country = '', this.balance = '0.00', this.isActive = false, this.isDefault = false, this.isPending = false, this.filesVerified = false});
   
 
 @override@JsonKey() final  String walletId;
@@ -600,6 +603,7 @@ class _Placeholder with DiagnosticableTreeMixin implements WalletItemEntity {
 @override@JsonKey() final  String balance;
 @override@JsonKey() final  bool isActive;
 @override@JsonKey() final  bool isDefault;
+@override@JsonKey() final  bool isPending;
 @override@JsonKey() final  bool filesVerified;
 
 /// Create a copy of WalletItemEntity
@@ -613,21 +617,21 @@ _$PlaceholderCopyWith<_Placeholder> get copyWith => __$PlaceholderCopyWithImpl<_
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'WalletItemEntity.placeholder'))
-    ..add(DiagnosticsProperty('walletId', walletId))..add(DiagnosticsProperty('ipa', ipa))..add(DiagnosticsProperty('currency', currency))..add(DiagnosticsProperty('currencyCode', currencyCode))..add(DiagnosticsProperty('country', country))..add(DiagnosticsProperty('balance', balance))..add(DiagnosticsProperty('isActive', isActive))..add(DiagnosticsProperty('isDefault', isDefault))..add(DiagnosticsProperty('filesVerified', filesVerified));
+    ..add(DiagnosticsProperty('walletId', walletId))..add(DiagnosticsProperty('ipa', ipa))..add(DiagnosticsProperty('currency', currency))..add(DiagnosticsProperty('currencyCode', currencyCode))..add(DiagnosticsProperty('country', country))..add(DiagnosticsProperty('balance', balance))..add(DiagnosticsProperty('isActive', isActive))..add(DiagnosticsProperty('isDefault', isDefault))..add(DiagnosticsProperty('isPending', isPending))..add(DiagnosticsProperty('filesVerified', filesVerified));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Placeholder&&(identical(other.walletId, walletId) || other.walletId == walletId)&&(identical(other.ipa, ipa) || other.ipa == ipa)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.country, country) || other.country == country)&&(identical(other.balance, balance) || other.balance == balance)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isDefault, isDefault) || other.isDefault == isDefault)&&(identical(other.filesVerified, filesVerified) || other.filesVerified == filesVerified));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Placeholder&&(identical(other.walletId, walletId) || other.walletId == walletId)&&(identical(other.ipa, ipa) || other.ipa == ipa)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.country, country) || other.country == country)&&(identical(other.balance, balance) || other.balance == balance)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isDefault, isDefault) || other.isDefault == isDefault)&&(identical(other.isPending, isPending) || other.isPending == isPending)&&(identical(other.filesVerified, filesVerified) || other.filesVerified == filesVerified));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,walletId,ipa,currency,currencyCode,country,balance,isActive,isDefault,filesVerified);
+int get hashCode => Object.hash(runtimeType,walletId,ipa,currency,currencyCode,country,balance,isActive,isDefault,isPending,filesVerified);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'WalletItemEntity.placeholder(walletId: $walletId, ipa: $ipa, currency: $currency, currencyCode: $currencyCode, country: $country, balance: $balance, isActive: $isActive, isDefault: $isDefault, filesVerified: $filesVerified)';
+  return 'WalletItemEntity.placeholder(walletId: $walletId, ipa: $ipa, currency: $currency, currencyCode: $currencyCode, country: $country, balance: $balance, isActive: $isActive, isDefault: $isDefault, isPending: $isPending, filesVerified: $filesVerified)';
 }
 
 
@@ -638,7 +642,7 @@ abstract mixin class _$PlaceholderCopyWith<$Res> implements $WalletItemEntityCop
   factory _$PlaceholderCopyWith(_Placeholder value, $Res Function(_Placeholder) _then) = __$PlaceholderCopyWithImpl;
 @override @useResult
 $Res call({
- String walletId, String ipa, String currency, String currencyCode, String country, String balance, bool isActive, bool isDefault, bool filesVerified
+ String walletId, String ipa, String currency, String currencyCode, String country, String balance, bool isActive, bool isDefault, bool isPending, bool filesVerified
 });
 
 
@@ -655,7 +659,7 @@ class __$PlaceholderCopyWithImpl<$Res>
 
 /// Create a copy of WalletItemEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? walletId = null,Object? ipa = null,Object? currency = null,Object? currencyCode = null,Object? country = null,Object? balance = null,Object? isActive = null,Object? isDefault = null,Object? filesVerified = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? walletId = null,Object? ipa = null,Object? currency = null,Object? currencyCode = null,Object? country = null,Object? balance = null,Object? isActive = null,Object? isDefault = null,Object? isPending = null,Object? filesVerified = null,}) {
   return _then(_Placeholder(
 walletId: null == walletId ? _self.walletId : walletId // ignore: cast_nullable_to_non_nullable
 as String,ipa: null == ipa ? _self.ipa : ipa // ignore: cast_nullable_to_non_nullable
@@ -665,6 +669,7 @@ as String,country: null == country ? _self.country : country // ignore: cast_nul
 as String,balance: null == balance ? _self.balance : balance // ignore: cast_nullable_to_non_nullable
 as String,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
 as bool,isDefault: null == isDefault ? _self.isDefault : isDefault // ignore: cast_nullable_to_non_nullable
+as bool,isPending: null == isPending ? _self.isPending : isPending // ignore: cast_nullable_to_non_nullable
 as bool,filesVerified: null == filesVerified ? _self.filesVerified : filesVerified // ignore: cast_nullable_to_non_nullable
 as bool,
   ));

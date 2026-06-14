@@ -11,6 +11,7 @@ final class TextFormFieldComponent extends StatelessWidget {
     required this.onChanged,
     super.key,
     this.suffixIcon,
+    this.suffix,
     this.obscureText = false,
     this.useInBorderRadius = false,
     this.readOnly = false,
@@ -21,11 +22,13 @@ final class TextFormFieldComponent extends StatelessWidget {
     this.keyboardType,
     this.initialValue,
     this.hintText,
+    this.maxLength,
   });
   final String label;
   final IconData prefixIcon;
   final String? hintText;
   final Widget? suffixIcon;
+  final Widget? suffix;
   final bool obscureText;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
@@ -36,6 +39,7 @@ final class TextFormFieldComponent extends StatelessWidget {
   final bool isEnable;
   final String? errorText;
   final String? initialValue;
+  final int? maxLength;
 
   @override
   Widget build(final BuildContext context) => TextFormField(
@@ -46,6 +50,7 @@ final class TextFormFieldComponent extends StatelessWidget {
     onChanged: (val) => onChanged.call(val),
     enabled: isEnable,
     initialValue: initialValue,
+    maxLength: maxLength,
 
     onTap: () {
       unawaited(HapticFeedback.vibrate());
@@ -59,7 +64,9 @@ final class TextFormFieldComponent extends StatelessWidget {
         color: Theme.of(context).colorScheme.primary,
       ),
       suffixIcon: suffixIcon,
+      suffix: suffix,
       hintText: hintText,
+      counterText: '',
       border: OutlineInputBorder(
         borderRadius: useInBorderRadius
             ? BorderRadius.circular(AppConfig.inBorderRadius)

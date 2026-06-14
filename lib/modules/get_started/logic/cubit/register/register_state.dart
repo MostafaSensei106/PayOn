@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/constants/app_enums.dart';
@@ -8,18 +7,41 @@ import '../../../../../core/utils/validator/email_validators.dart';
 import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
-import '../../../data/models/account_type/account_type_item.dart';
+import '../../../../create_wallet/logic/entity/currency_entity.dart';
+import '../../entities/account_type_entity.dart';
+import '../../entities/country_entity.dart';
+import '../../entities/register_entities.dart';
 
 part 'register_state.freezed.dart';
 
 @freezed
-sealed class RegisterState<T> with _$RegisterState<T> {
+sealed class RegisterState with _$RegisterState {
   const factory RegisterState.initial(RegisterFormState form) = _Initial;
   const factory RegisterState.loading(RegisterFormState form) = Loading;
-  const factory RegisterState.success(
+  const factory RegisterState.registerSuccess(
     RegisterFormState form, {
-    required T data,
-  }) = Success<T>;
+    required RegisterEntity data,
+  }) = _RegisterSuccess;
+  const factory RegisterState.createAccountSuccess(
+    RegisterFormState form, {
+    required CreateAccountEntity data,
+  }) = _CreateAccountSuccess;
+  const factory RegisterState.getRequiredFilesSuccess(
+    RegisterFormState form, {
+    required List<RequiredFileEntity> files,
+  }) = _GetRequiredFilesSuccess;
+  const factory RegisterState.getCountriesSuccess(
+    RegisterFormState form, {
+    required List<CountryItemEntity> countries,
+  }) = _GetCountriesSuccess;
+  const factory RegisterState.kycUploadSuccess(RegisterFormState form) =
+      _KycUploadSuccess;
+  const factory RegisterState.ocrSuccess(RegisterFormState form) = _OcrSuccess;
+  const factory RegisterState.currenciesLoaded(RegisterFormState form) =
+      _CurrenciesLoaded;
+  const factory RegisterState.walletCreated(RegisterFormState form) =
+      _WalletCreated;
+  const factory RegisterState.pinCreated(RegisterFormState form) = _PinCreated;
   const factory RegisterState.failure(
     RegisterFormState form, {
     required String error,
@@ -27,7 +49,7 @@ sealed class RegisterState<T> with _$RegisterState<T> {
 }
 
 @freezed
-sealed class RegisterFormState with _$RegisterFormState {
+abstract class RegisterFormState with _$RegisterFormState {
   const factory RegisterFormState({
     @Default(FullName.pure()) FullName name,
     @Default(Email.pure()) Email email,
@@ -36,9 +58,14 @@ sealed class RegisterFormState with _$RegisterFormState {
     @Default(Password.pure()) Password confirmPassword,
     @Default('') String birthDate,
     @Default(GenderType.none) GenderType gender,
-    @Default(null) AccountTypeItem? accountType,
-    @Default(null) File? idFile,
-    @Default(null) File? addressFile,
+    @Default(null) AccountTypeItemEntity? accountType,
+    @Default({}) Map<int, File> files,
+
+    @Default('') String address,
+    @Default('') String nationalId,
+    @Default(null) double? latitude,
+    @Default(null) double? longitude,
+    @Default(false) bool isAddWalletFlow,
 
     @Default(false) bool isForgotPassword,
     @Default('en') String lang,
@@ -48,8 +75,39 @@ sealed class RegisterFormState with _$RegisterFormState {
 
     @Default('') String nationalityCode,
     @Default('') String country,
-    @Default('') String cityId,
+    @Default([]) List<CountryItemEntity> countries,
+    @Default([]) List<RequiredFileEntity> requiredFiles,
+    @Default(2) int cityId,
 
+    @Default(0) int currentStep,
     @Default(false) bool isValid,
+    @Default('') String accountId,
+
+    // Wallet creation fields
+    @Default('') String ipa,
+    @Default(null) int? selectedCurrencyId,
+    @Default([]) List<CurrencyEntity> walletCurrencies,
+    @Default('') String walletPin,
+    @Default(0) int walletStep, // 0 = wallet form, 1 = pin form
   }) = _RegisterFormState;
+}
+
+extension RegisterFormStateX on RegisterFormState {
+  String get formattedPhoneNumber {
+    if (countries.isEmpty || country.isEmpty) return phoneNumber.value;
+    final countryItem = countries.firstWhere(
+      (e) => e.code == country,
+      orElse: () => countries.first,
+    );
+    final phoneCode = countryItem.phoneCode;
+    var formatted = phoneNumber.value;
+    if (formatted.startsWith('0')) {
+      formatted = '+$phoneCode${formatted.substring(1)}';
+    } else if (!formatted.startsWith('+') && formatted.isNotEmpty) {
+      formatted = '+$phoneCode$formatted';
+    }
+    return formatted;
+  }
+
+  bool get isPersonalType => accountType?.parentId != 7;
 }

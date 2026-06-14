@@ -1537,6 +1537,816 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your session has expired. Please login again to continue.'**
   String get session_expired_description;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @description_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter description (optional)'**
+  String get description_hint;
+
+  /// No description provided for @confirm_transaction.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Transaction'**
+  String get confirm_transaction;
+
+  /// No description provided for @confirm_transaction_body.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to send {amount} to {name}?'**
+  String confirm_transaction_body(Object amount, Object name);
+
+  /// No description provided for @enter_pin.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your PIN'**
+  String get enter_pin;
+
+  /// No description provided for @fees.
+  ///
+  /// In en, this message translates to:
+  /// **'Fees'**
+  String get fees;
+
+  /// No description provided for @total_amount.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Amount'**
+  String get total_amount;
+
+  /// No description provided for @transaction_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction Details'**
+  String get transaction_details;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// No description provided for @from.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get from;
+
+  /// No description provided for @transaction_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction Type'**
+  String get transaction_type;
+
+  /// No description provided for @reference_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference Number'**
+  String get reference_number;
+
+  /// No description provided for @adjusted_amount.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjusted Amount'**
+  String get adjusted_amount;
+
+  /// No description provided for @balance_after_transaction.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance After Transaction'**
+  String get balance_after_transaction;
+
+  /// No description provided for @payment_method.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get payment_method;
+
+  /// No description provided for @common_questions.
+  ///
+  /// In en, this message translates to:
+  /// **'Common Questions'**
+  String get common_questions;
+
+  /// No description provided for @developer_team.
+  ///
+  /// In en, this message translates to:
+  /// **'Developer Team'**
+  String get developer_team;
+
+  /// No description provided for @pp_last_updated.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Updated: June 2026'**
+  String get pp_last_updated;
+
+  /// No description provided for @pp_section1_title.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Introduction'**
+  String get pp_section1_title;
+
+  /// No description provided for @pp_section1_content.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to PayOn. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at privacy@payon.com.'**
+  String get pp_section1_content;
+
+  /// No description provided for @pp_section2_title.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Information We Collect'**
+  String get pp_section2_title;
+
+  /// No description provided for @pp_section2_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We collect personal information that you voluntarily provide to us when registering at the App, expressing an interest in obtaining information about us or our products and services. This includes identifiers (Name, DOB, SSN), financial information (Bank details, transaction history), and device data.'**
+  String get pp_section2_content;
+
+  /// No description provided for @pp_section3_title.
+  ///
+  /// In en, this message translates to:
+  /// **'3. KYC & AML Compliance'**
+  String get pp_section3_title;
+
+  /// No description provided for @pp_section3_content.
+  ///
+  /// In en, this message translates to:
+  /// **'As a financial service provider, we are legally required to verify the identity of our users to prevent money laundering and terrorist financing. This involves collecting government-issued IDs and performing background checks.'**
+  String get pp_section3_content;
+
+  /// No description provided for @pp_section4_title.
+  ///
+  /// In en, this message translates to:
+  /// **'4. Purpose of Processing'**
+  String get pp_section4_title;
+
+  /// No description provided for @pp_section4_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We process your information for purposes based on legitimate business interests, the fulfillment of our contract with you, compliance with our legal obligations, and/or your consent.'**
+  String get pp_section4_content;
+
+  /// No description provided for @pp_section5_title.
+  ///
+  /// In en, this message translates to:
+  /// **'5. Data Sharing'**
+  String get pp_section5_title;
+
+  /// No description provided for @pp_section5_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations. This includes sharing with banking partners and payment processors like Stripe.'**
+  String get pp_section5_content;
+
+  /// No description provided for @pp_section6_title.
+  ///
+  /// In en, this message translates to:
+  /// **'6. Data Retention'**
+  String get pp_section6_title;
+
+  /// No description provided for @pp_section6_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy policy, unless a longer retention period is required or permitted by law (such as tax, accounting or other legal requirements).'**
+  String get pp_section6_content;
+
+  /// No description provided for @pp_section7_title.
+  ///
+  /// In en, this message translates to:
+  /// **'7. Security Measures'**
+  String get pp_section7_title;
+
+  /// No description provided for @pp_section7_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We use appropriate technical and organizational security measures including AES-256 encryption and multi-factor authentication to protect the security of any personal information we process.'**
+  String get pp_section7_content;
+
+  /// No description provided for @pp_section8_title.
+  ///
+  /// In en, this message translates to:
+  /// **'8. User Rights (GDPR/CCPA)'**
+  String get pp_section8_title;
+
+  /// No description provided for @pp_section8_content.
+  ///
+  /// In en, this message translates to:
+  /// **'Depending on your location, you may have rights such as the right to access, rectify, or delete your personal data, as well as the right to data portability and to object to certain processing.'**
+  String get pp_section8_content;
+
+  /// No description provided for @pp_section9_title.
+  ///
+  /// In en, this message translates to:
+  /// **'9. International Transfers'**
+  String get pp_section9_title;
+
+  /// No description provided for @pp_section9_content.
+  ///
+  /// In en, this message translates to:
+  /// **'Our servers are located in various regions globally. If you are accessing our App from outside these regions, please be aware that your information may be transferred to, stored, and processed by us in our facilities.'**
+  String get pp_section9_content;
+
+  /// No description provided for @pp_section10_title.
+  ///
+  /// In en, this message translates to:
+  /// **'10. Cookies and Tracking'**
+  String get pp_section10_title;
+
+  /// No description provided for @pp_section10_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We use cookies and similar tracking technologies to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Notice.'**
+  String get pp_section10_content;
+
+  /// No description provided for @pp_section11_title.
+  ///
+  /// In en, this message translates to:
+  /// **'11. Third-Party Websites'**
+  String get pp_section11_title;
+
+  /// No description provided for @pp_section11_content.
+  ///
+  /// In en, this message translates to:
+  /// **'The App may contain advertisements from third parties that are not affiliated with us and which may link to other websites, online services or mobile applications. We cannot guarantee the safety and privacy of data you provide to any third parties.'**
+  String get pp_section11_content;
+
+  /// No description provided for @pp_section12_title.
+  ///
+  /// In en, this message translates to:
+  /// **'12. Privacy Rights for Minors'**
+  String get pp_section12_title;
+
+  /// No description provided for @pp_section12_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We do not knowingly solicit data from or market to children under 18 years of age. By using the App, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the App.'**
+  String get pp_section12_content;
+
+  /// No description provided for @pp_section13_title.
+  ///
+  /// In en, this message translates to:
+  /// **'13. California Privacy Rights'**
+  String get pp_section13_title;
+
+  /// No description provided for @pp_section13_content.
+  ///
+  /// In en, this message translates to:
+  /// **'California Civil Code Section 1798.83, also known as the \'Shine The Light\' law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information we disclosed to third parties for direct marketing purposes.'**
+  String get pp_section13_content;
+
+  /// No description provided for @pp_section14_title.
+  ///
+  /// In en, this message translates to:
+  /// **'14. Policy Updates'**
+  String get pp_section14_title;
+
+  /// No description provided for @pp_section14_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We may update this privacy policy from time to time. The updated version will be indicated by an updated \'Revised\' date and the updated version will be effective as soon as it is accessible.'**
+  String get pp_section14_content;
+
+  /// No description provided for @pp_section15_title.
+  ///
+  /// In en, this message translates to:
+  /// **'15. Contact Us about this Policy'**
+  String get pp_section15_title;
+
+  /// No description provided for @pp_section15_content.
+  ///
+  /// In en, this message translates to:
+  /// **'If you have questions or comments about this policy, you may email us at privacy@payon.com or by post to: PayOn Inc., 123 Finance Plaza, Suite 400, New York, NY 10001.'**
+  String get pp_section15_content;
+
+  /// No description provided for @faq_cat_general.
+  ///
+  /// In en, this message translates to:
+  /// **'General Questions'**
+  String get faq_cat_general;
+
+  /// No description provided for @faq_cat_security.
+  ///
+  /// In en, this message translates to:
+  /// **'Security & Privacy'**
+  String get faq_cat_security;
+
+  /// No description provided for @faq_cat_transactions.
+  ///
+  /// In en, this message translates to:
+  /// **'Transactions & Limits'**
+  String get faq_cat_transactions;
+
+  /// No description provided for @faq_q1_title.
+  ///
+  /// In en, this message translates to:
+  /// **'What is PayOn?'**
+  String get faq_q1_title;
+
+  /// No description provided for @faq_q1_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'PayOn is a next-generation mobile wallet designed for instant and secure financial transactions globally.'**
+  String get faq_q1_answer;
+
+  /// No description provided for @faq_q2_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Is my money safe?'**
+  String get faq_q2_title;
+
+  /// No description provided for @faq_q2_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, your funds are held in regulated partner banks and protected by state-of-the-art encryption and security protocols.'**
+  String get faq_q2_answer;
+
+  /// No description provided for @faq_q3_title.
+  ///
+  /// In en, this message translates to:
+  /// **'How do I verify my account?'**
+  String get faq_q3_title;
+
+  /// No description provided for @faq_q3_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'You can verify your account by uploading a clear photo of your National ID or Passport in the \'Tier Verification\' section of your profile.'**
+  String get faq_q3_answer;
+
+  /// No description provided for @faq_q4_title.
+  ///
+  /// In en, this message translates to:
+  /// **'What are the transfer limits?'**
+  String get faq_q4_title;
+
+  /// No description provided for @faq_q4_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'Limits vary by verification tier. Tier 1 users have daily limits of \$500, while Tier 3 users can enjoy unlimited transactions.'**
+  String get faq_q4_answer;
+
+  /// No description provided for @faq_q5_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Can I cancel a transaction?'**
+  String get faq_q5_title;
+
+  /// No description provided for @faq_q5_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'Once a transaction is confirmed and processed, it cannot be reversed. Please double-check the recipient\'s details before confirming.'**
+  String get faq_q5_answer;
+
+  /// No description provided for @faq_q6_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Does PayOn work internationally?'**
+  String get faq_q6_title;
+
+  /// No description provided for @faq_q6_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, PayOn supports cross-border payments in multiple currencies with real-time exchange rates.'**
+  String get faq_q6_answer;
+
+  /// No description provided for @faq_q7_title.
+  ///
+  /// In en, this message translates to:
+  /// **'What if I lose my phone?'**
+  String get faq_q7_title;
+
+  /// No description provided for @faq_q7_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account is tied to your identity, not just the device. You can log in from another device and instantly disable the old session for security.'**
+  String get faq_q7_answer;
+
+  /// No description provided for @faq_q8_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Are there any hidden fees?'**
+  String get faq_q8_title;
+
+  /// No description provided for @faq_q8_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'No, we believe in full transparency. All fees are clearly displayed on the confirmation screen before you authorize any payment.'**
+  String get faq_q8_answer;
+
+  /// No description provided for @faq_q9_title.
+  ///
+  /// In en, this message translates to:
+  /// **'How do I contact support?'**
+  String get faq_q9_title;
+
+  /// No description provided for @faq_q9_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'Our support team is available 24/7 via the \'Contact Us\' page or through live chat within the app.'**
+  String get faq_q9_answer;
+
+  /// No description provided for @faq_q10_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Is PayOn regulated?'**
+  String get faq_q10_title;
+
+  /// No description provided for @faq_q10_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, PayOn operates under strict financial regulations and holds the necessary licenses in all jurisdictions where it provides services.'**
+  String get faq_q10_answer;
+
+  /// No description provided for @faq_q11_title.
+  ///
+  /// In en, this message translates to:
+  /// **'How do I change my account password?'**
+  String get faq_q11_title;
+
+  /// No description provided for @faq_q11_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to \'Settings\' > \'Security\' > \'Change Password\'. You will need to enter your current password followed by your new password twice.'**
+  String get faq_q11_answer;
+
+  /// No description provided for @faq_q12_title.
+  ///
+  /// In en, this message translates to:
+  /// **'What should I do if my payment failed?'**
+  String get faq_q12_title;
+
+  /// No description provided for @faq_q12_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'If a payment fails, first check your internet connection and balance. If the issue persists, check the \'History\' tab for a specific error code or contact support.'**
+  String get faq_q12_answer;
+
+  /// No description provided for @faq_q13_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Can I have multiple wallets?'**
+  String get faq_q13_title;
+
+  /// No description provided for @faq_q13_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'Currently, PayOn supports one primary wallet per verified identity to comply with financial regulations and ensure maximum security.'**
+  String get faq_q13_answer;
+
+  /// No description provided for @faq_q14_title.
+  ///
+  /// In en, this message translates to:
+  /// **'How do I update my personal information?'**
+  String get faq_q14_title;
+
+  /// No description provided for @faq_q14_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'Basic info can be updated in \'Edit Profile\'. For sensitive data like your name or ID, you must contact our compliance team for verification.'**
+  String get faq_q14_answer;
+
+  /// No description provided for @faq_q15_title.
+  ///
+  /// In en, this message translates to:
+  /// **'How do I close my PayOn account?'**
+  String get faq_q15_title;
+
+  /// No description provided for @faq_q15_answer.
+  ///
+  /// In en, this message translates to:
+  /// **'To close your account, please ensure your balance is zero and contact support. Note that financial data must be retained for 7 years by law.'**
+  String get faq_q15_answer;
+
+  /// No description provided for @contact_us_address.
+  ///
+  /// In en, this message translates to:
+  /// **'123 Finance Plaza, Suite 400, New York, NY 10001'**
+  String get contact_us_address;
+
+  /// No description provided for @contact_us_phone.
+  ///
+  /// In en, this message translates to:
+  /// **'+1 (800) 123-4567'**
+  String get contact_us_phone;
+
+  /// No description provided for @contact_us_email.
+  ///
+  /// In en, this message translates to:
+  /// **'support@payon.com'**
+  String get contact_us_email;
+
+  /// No description provided for @contact_us_hours.
+  ///
+  /// In en, this message translates to:
+  /// **'Monday - Friday: 9am - 6pm EST'**
+  String get contact_us_hours;
+
+  /// No description provided for @social_linkedin.
+  ///
+  /// In en, this message translates to:
+  /// **'LinkedIn'**
+  String get social_linkedin;
+
+  /// No description provided for @social_twitter.
+  ///
+  /// In en, this message translates to:
+  /// **'Twitter'**
+  String get social_twitter;
+
+  /// No description provided for @social_github.
+  ///
+  /// In en, this message translates to:
+  /// **'GitHub'**
+  String get social_github;
+
+  /// No description provided for @dev_team_mission.
+  ///
+  /// In en, this message translates to:
+  /// **'Driven by innovation, our team is dedicated to building the future of digital finance with security and user experience at the core.'**
+  String get dev_team_mission;
+
+  /// No description provided for @dev_member1_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Ahmed Mohamed'**
+  String get dev_member1_name;
+
+  /// No description provided for @dev_member1_role.
+  ///
+  /// In en, this message translates to:
+  /// **'Lead Software Engineer'**
+  String get dev_member1_role;
+
+  /// No description provided for @dev_member1_bio.
+  ///
+  /// In en, this message translates to:
+  /// **'Ahmed is a visionary leader with over 10 years of experience in Fintech, focused on scaling secure architectural solutions.'**
+  String get dev_member1_bio;
+
+  /// No description provided for @dev_member2_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Sarah Hassan'**
+  String get dev_member2_name;
+
+  /// No description provided for @dev_member2_role.
+  ///
+  /// In en, this message translates to:
+  /// **'Senior Mobile Developer'**
+  String get dev_member2_role;
+
+  /// No description provided for @dev_member2_bio.
+  ///
+  /// In en, this message translates to:
+  /// **'Sarah is a Flutter expert passionate about crafting pixel-perfect, performant mobile interfaces that users love.'**
+  String get dev_member2_bio;
+
+  /// No description provided for @dev_member3_name.
+  ///
+  /// In en, this message translates to:
+  /// **'John Doe'**
+  String get dev_member3_name;
+
+  /// No description provided for @dev_member3_role.
+  ///
+  /// In en, this message translates to:
+  /// **'Backend Architect'**
+  String get dev_member3_role;
+
+  /// No description provided for @dev_member3_bio.
+  ///
+  /// In en, this message translates to:
+  /// **'John specializes in high-concurrency systems and distributed databases, ensuring PayOn\'s backbone is indestructible.'**
+  String get dev_member3_bio;
+
+  /// No description provided for @dev_member4_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Layla Ali'**
+  String get dev_member4_name;
+
+  /// No description provided for @dev_member4_role.
+  ///
+  /// In en, this message translates to:
+  /// **'UI/UX Designer'**
+  String get dev_member4_role;
+
+  /// No description provided for @dev_member4_bio.
+  ///
+  /// In en, this message translates to:
+  /// **'Layla brings a human-centric approach to finance, designing intuitive flows that make complex actions feel simple.'**
+  String get dev_member4_bio;
+
+  /// No description provided for @tc_last_updated.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Updated: June 2026'**
+  String get tc_last_updated;
+
+  /// No description provided for @tc_section1_title.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Introduction'**
+  String get tc_section1_title;
+
+  /// No description provided for @tc_section1_content.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to PayOn. These Terms and Conditions govern your use of our mobile application and services. By accessing or using PayOn, you agree to be bound by these terms.'**
+  String get tc_section1_content;
+
+  /// No description provided for @tc_section2_title.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Acceptance of Terms'**
+  String get tc_section2_title;
+
+  /// No description provided for @tc_section2_content.
+  ///
+  /// In en, this message translates to:
+  /// **'By creating an account or using the App, you agree to these Terms and our Privacy Policy. If you do not agree, you must not use our services.'**
+  String get tc_section2_content;
+
+  /// No description provided for @tc_section3_title.
+  ///
+  /// In en, this message translates to:
+  /// **'3. User Eligibility'**
+  String get tc_section3_title;
+
+  /// No description provided for @tc_section3_content.
+  ///
+  /// In en, this message translates to:
+  /// **'You must be at least 18 years old to use PayOn. By using the App, you represent that you have the legal capacity to enter into a binding agreement.'**
+  String get tc_section3_content;
+
+  /// No description provided for @tc_section4_title.
+  ///
+  /// In en, this message translates to:
+  /// **'4. Account Registration'**
+  String get tc_section4_title;
+
+  /// No description provided for @tc_section4_content.
+  ///
+  /// In en, this message translates to:
+  /// **'You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must provide accurate and complete information.'**
+  String get tc_section4_content;
+
+  /// No description provided for @tc_section5_title.
+  ///
+  /// In en, this message translates to:
+  /// **'5. Transaction Rules'**
+  String get tc_section5_title;
+
+  /// No description provided for @tc_section5_content.
+  ///
+  /// In en, this message translates to:
+  /// **'All transactions are final once processed. Users are responsible for verifying recipient details before confirming any payment or transfer.'**
+  String get tc_section5_content;
+
+  /// No description provided for @tc_section6_title.
+  ///
+  /// In en, this message translates to:
+  /// **'6. Fees and Payments'**
+  String get tc_section6_title;
+
+  /// No description provided for @tc_section6_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We may charge fees for certain services. All applicable fees will be disclosed to you before you complete a transaction.'**
+  String get tc_section6_content;
+
+  /// No description provided for @tc_section7_title.
+  ///
+  /// In en, this message translates to:
+  /// **'7. Prohibited Activities'**
+  String get tc_section7_title;
+
+  /// No description provided for @tc_section7_content.
+  ///
+  /// In en, this message translates to:
+  /// **'You may not use PayOn for any illegal purposes, including money laundering, fraud, or the purchase of prohibited goods and services.'**
+  String get tc_section7_content;
+
+  /// No description provided for @tc_section8_title.
+  ///
+  /// In en, this message translates to:
+  /// **'8. Intellectual Property'**
+  String get tc_section8_title;
+
+  /// No description provided for @tc_section8_content.
+  ///
+  /// In en, this message translates to:
+  /// **'All content, features, and functionality on the App are the exclusive property of PayOn Inc. and are protected by international copyright and trademark laws.'**
+  String get tc_section8_content;
+
+  /// No description provided for @tc_section9_title.
+  ///
+  /// In en, this message translates to:
+  /// **'9. User Content'**
+  String get tc_section9_title;
+
+  /// No description provided for @tc_section9_content.
+  ///
+  /// In en, this message translates to:
+  /// **'You retain ownership of any data you upload, but you grant PayOn a license to use, store, and process such data to provide the services.'**
+  String get tc_section9_content;
+
+  /// No description provided for @tc_section10_title.
+  ///
+  /// In en, this message translates to:
+  /// **'10. Third-Party Services'**
+  String get tc_section10_title;
+
+  /// No description provided for @tc_section10_content.
+  ///
+  /// In en, this message translates to:
+  /// **'The App may integrate with third-party services. We are not responsible for the content or practices of these third parties.'**
+  String get tc_section10_content;
+
+  /// No description provided for @tc_section11_title.
+  ///
+  /// In en, this message translates to:
+  /// **'11. Termination'**
+  String get tc_section11_title;
+
+  /// No description provided for @tc_section11_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We reserve the right to suspend or terminate your account at any time for violations of these Terms or suspicious activity.'**
+  String get tc_section11_content;
+
+  /// No description provided for @tc_section12_title.
+  ///
+  /// In en, this message translates to:
+  /// **'12. Limitation of Liability'**
+  String get tc_section12_title;
+
+  /// No description provided for @tc_section12_content.
+  ///
+  /// In en, this message translates to:
+  /// **'PayOn shall not be liable for any indirect, incidental, special, or consequential damages arising out of your use of the services.'**
+  String get tc_section12_content;
+
+  /// No description provided for @tc_section13_title.
+  ///
+  /// In en, this message translates to:
+  /// **'13. Disclaimer of Warranties'**
+  String get tc_section13_title;
+
+  /// No description provided for @tc_section13_content.
+  ///
+  /// In en, this message translates to:
+  /// **'The services are provided \'as is\' without any warranties of any kind, either express or implied.'**
+  String get tc_section13_content;
+
+  /// No description provided for @tc_section14_title.
+  ///
+  /// In en, this message translates to:
+  /// **'14. Governing Law'**
+  String get tc_section14_title;
+
+  /// No description provided for @tc_section14_content.
+  ///
+  /// In en, this message translates to:
+  /// **'These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which PayOn Inc. is registered.'**
+  String get tc_section14_content;
+
+  /// No description provided for @tc_section15_title.
+  ///
+  /// In en, this message translates to:
+  /// **'15. Changes to Terms'**
+  String get tc_section15_title;
+
+  /// No description provided for @tc_section15_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We may update these Terms from time to time. Your continued use of the App after changes are posted constitutes acceptance of the new Terms.'**
+  String get tc_section15_content;
+
+  /// No description provided for @wallet_under_review.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet under review'**
+  String get wallet_under_review;
+
+  /// No description provided for @wallet_under_review_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Your wallet is currently under review. Please wait for approval.'**
+  String get wallet_under_review_desc;
 }
 
 class _AppLocalizationsDelegate
