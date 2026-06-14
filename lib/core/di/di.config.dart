@@ -35,7 +35,6 @@ import 'package:payon/core/services/hash_service/base_hash_service.dart'
     as _i198;
 import 'package:payon/core/services/hash_service/hash_service.dart' as _i503;
 import 'package:payon/core/services/l10n/l10n_service.dart' as _i151;
-import 'package:payon/core/services/ocr/ocr_service.dart' as _i726;
 import 'package:payon/core/services/shared_prefs/base_pref_storage_service.dart'
     as _i333;
 import 'package:payon/core/services/shared_prefs/secure_storage_service.dart'
@@ -191,10 +190,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i998.SharePlus>(() => injectionModule.sharePlus);
     gh.lazySingleton<_i895.Connectivity>(() => injectionModule.connectivity);
     gh.lazySingleton<_i151.L10nService>(() => _i151.L10nService());
-    gh.lazySingleton<_i726.OcrService>(
-      () => _i726.OcrService(),
-      dispose: (i) => i.dispose(),
-    );
     gh.lazySingleton<_i480.ThemeService>(() => _i480.ThemeService());
     gh.lazySingleton<_i889.ThemeCubit>(() => _i889.ThemeCubit());
     gh.lazySingleton<_i153.BasePackageInfoAdapter>(
@@ -413,7 +408,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i919.UploadKycFilesUseCase>(),
         gh<_i29.GetAllCountriesUseCase>(),
         gh<_i271.SendOtpUseCase>(),
-        gh<_i726.OcrService>(),
         gh<_i333.BasePrefStorageService>(),
         gh<_i860.GetCurrenciesUseCase>(),
         gh<_i760.CreateWalletUseCase>(),
@@ -444,8 +438,6 @@ extension GetItInjectableX on _i174.GetIt {
   }
 
   _i151.L10nService get l10nService => get<_i151.L10nService>();
-
-  _i726.OcrService get ocrService => get<_i726.OcrService>();
 
   _i480.ThemeService get themeService => get<_i480.ThemeService>();
 

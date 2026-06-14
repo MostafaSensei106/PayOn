@@ -7,7 +7,6 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/constants/app_enums.dart';
 import '../../../../../core/constants/pref_keys.dart';
 import '../../../../../core/services/hash_service/base_hash_service.dart';
-import '../../../../../core/services/ocr/ocr_service.dart';
 import '../../../../../core/services/shared_prefs/base_pref_storage_service.dart';
 import '../../../../../core/utils/result/result.dart';
 import '../../../../../core/utils/use_case/base_use_case.dart';
@@ -42,7 +41,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     this._uploadKycFilesUseCase,
     this._getAllCountriesUseCase,
     this._sendOtpUseCase,
-    this._ocrService,
     this._prefsStorageService,
     this._getCurrenciesUseCase,
     this._createWalletUseCase,
@@ -56,7 +54,6 @@ class RegisterCubit extends Cubit<RegisterState> {
   final UploadKycFilesUseCase _uploadKycFilesUseCase;
   final GetAllCountriesUseCase _getAllCountriesUseCase;
   final SendOtpUseCase _sendOtpUseCase;
-  final OcrService _ocrService;
   final BasePrefStorageService _prefsStorageService;
   final GetCurrenciesUseCase _getCurrenciesUseCase;
   final CreateWalletUseCase _createWalletUseCase;
@@ -434,54 +431,16 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   // ─── OCR File Upload ──────────────────────────────────────────────────
 
-  Future<void> updateFile(int docId, File file) async {
+  void updateFile(int docId, File file) {
     emit(RegisterState.loading(currentForm));
 
-    try {
-      final extractedText = await _ocrService.extractText(file);
-
-      // Check if the text contains common Egyptian ID keywords
-      final isEgyptianId =
-          extractedText.contains('جمهورية مصر العربية') ||
-          extractedText.contains('بطاقة تحقيق شخصية') ||
-          extractedText.contains('الرقم القومي') ||
-          extractedText.contains('وزارة الداخلية');
-
-      if (extractedText.isEmpty) {
-        emit(
-          RegisterState.failure(
-            currentForm,
-            error:
-                'Could not read text from the image. Please take a clearer photo.',
-          ),
-        );
-        return;
-      }
-
-      if (!isEgyptianId) {
-        emit(
-          RegisterState.failure(
-            currentForm,
-            error:
-                'The uploaded image does not appear to be a valid Egyptian National ID. Please try again.',
-          ),
-        );
-        return;
-      }
-
-      final updatedFiles = Map<int, File>.from(currentForm.files)
-        ..[docId] = file;
-      final updatedForm = currentForm.copyWith(files: updatedFiles);
-      emit(
-        RegisterState.ocrSuccess(
-          updatedForm.copyWith(isValid: _validate(updatedForm, step: 3)),
-        ),
-      );
-    } catch (e) {
-      emit(
-        RegisterState.failure(currentForm, error: 'OCR Processing failed: $e'),
-      );
-    }
+    final updatedFiles = Map<int, File>.from(currentForm.files)..[docId] = file;
+    final updatedForm = currentForm.copyWith(files: updatedFiles);
+    emit(
+      RegisterState.ocrSuccess(
+        updatedForm.copyWith(isValid: _validate(updatedForm, step: 3)),
+      ),
+    );
   }
 
   // ─── Validation ───────────────────────────────────────────────────────

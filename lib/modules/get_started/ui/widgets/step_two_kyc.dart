@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import '../../../../core/constants/app_config.dart';
 import '../../logic/cubit/register/register_cubit.dart';
 import '../../logic/cubit/register/register_state.dart';
-import 'realtime_ocr_scanner.dart';
 
 class StepTwoKYC extends StatelessWidget {
   const StepTwoKYC({super.key});
@@ -18,7 +17,7 @@ class StepTwoKYC extends StatelessWidget {
     final image = await picker.pickImage(source: ImageSource.gallery);
 
     if (image != null && context.mounted) {
-      await context.read<RegisterCubit>().updateFile(docId, File(image.path));
+      context.read<RegisterCubit>().updateFile(docId, File(image.path));
     }
   }
 
@@ -115,29 +114,21 @@ class StepTwoKYC extends StatelessWidget {
                           ],
                         )
                       else
-                        RealtimeOcrScanner(
-                          docId: file.id,
-                          onSuccess: (fileBytes) async {
-                            await context.read<RegisterCubit>().updateFile(
-                              file.id,
-                              fileBytes,
-                            );
-                          },
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 24.0),
+                            child: ElevatedButton.icon(
+                              onPressed: () => _pickFile(context, file.id),
+                              icon: const Icon(Iconsax.document_upload_copy, size: 24),
+                              label: const Text('Upload ID Image from Gallery'),
+                            ),
+                          ),
                         ),
                       if (uploadedFile != null)
                         TextButton.icon(
                           onPressed: () => _pickFile(context, file.id),
                           icon: const Icon(Iconsax.edit_copy, size: 16),
-                          label: const Text('Retake Manual Photo'),
-                        )
-                      else
-                        TextButton.icon(
-                          onPressed: () => _pickFile(context, file.id),
-                          icon: const Icon(
-                            Iconsax.document_upload_copy,
-                            size: 16,
-                          ),
-                          label: const Text('Upload Manually Instead'),
+                          label: const Text('Change Image'),
                         ),
                     ],
                   ),
