@@ -4,12 +4,11 @@ import 'package:go_router/go_router.dart';
 
 import '../../../modules/history/presentation/pages/history_page.dart';
 import '../../../modules/home/logic/cubit/home_cubit.dart';
-import '../../../modules/home/ui/pages/add_account_kyc_page.dart';
 import '../../../modules/home/ui/pages/home_page.dart';
 import '../../../modules/main/ui/pages/main_page.dart';
 import '../../../modules/profile/logic/cubit/user_profile_cubit.dart';
-import '../../../modules/settings/ui/pages/settings_page.dart';
 import '../../../modules/scan_qrcode/ui/page/scan_qrcode_page.dart';
+import '../../../modules/settings/ui/pages/settings_page.dart';
 import '../../di/di.dart';
 import '../cupertion_route_data.dart';
 import '../routes_names.dart';
@@ -22,9 +21,7 @@ List<RouteBase> get mainShellRoutes => [$mainShellRouteData];
   branches: <TypedStatefulShellBranch<StatefulShellBranchData>>[
     TypedStatefulShellBranch<HomeBranchData>(
       routes: <TypedRoute<RouteData>>[
-        TypedGoRoute<HomeRoute>(
-          path: RoutesNames.home,
-        ),
+        TypedGoRoute<HomeRoute>(path: RoutesNames.home),
       ],
     ),
     TypedStatefulShellBranch<ScanQrCodeBranchData>(
@@ -83,7 +80,8 @@ class ScanQrCodeRoute extends CupertinoRouteData with $ScanQrCodeRoute {
   const ScanQrCodeRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => const ScanQrcodePage();
+  Widget build(BuildContext context, GoRouterState state) =>
+      const ScanQrcodePage();
 }
 
 class HistoryBranchData extends StatefulShellBranchData {

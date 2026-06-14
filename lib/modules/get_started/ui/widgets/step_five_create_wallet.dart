@@ -55,10 +55,9 @@ class StepFiveCreateWallet extends HookWidget {
       children: [
         Text(
           'Create Your Wallet',
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium
-              ?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(height: AppConfig.paddingHalf.h),
         TextFormFieldComponent(
@@ -69,18 +68,17 @@ class StepFiveCreateWallet extends HookWidget {
           suffix: Text(
             '@payreb',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.bold,
-                ),
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         SizedBox(height: AppConfig.padding.h),
         Text(
           'Select Currency',
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium
-              ?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(height: AppConfig.paddingHalf.h),
         if (form.walletCurrencies.isEmpty)
@@ -112,10 +110,9 @@ class StepFiveCreateWallet extends HookWidget {
       children: [
         Text(
           'Set Wallet PIN',
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium
-              ?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(height: AppConfig.paddingHalf.h),
         CardComponent(

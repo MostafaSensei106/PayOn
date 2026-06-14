@@ -22,6 +22,7 @@ final class SliverAppBarWithWavesComponent extends HookWidget {
     this.backgroundColor,
     this.flexibleSpace,
     this.centerTitle = true,
+    this.bottom,
   });
 
   final Widget? leading;
@@ -36,6 +37,7 @@ final class SliverAppBarWithWavesComponent extends HookWidget {
   final Widget? flexibleSpace;
   final bool centerTitle;
   final ScrollController scrollController;
+  final PreferredSizeWidget? bottom;
 
   @override
   Widget build(final BuildContext context) {
@@ -84,6 +86,7 @@ final class SliverAppBarWithWavesComponent extends HookWidget {
           ? colorScheme.onPrimary
           : colorScheme.surface,
       leading: leading,
+      bottom: bottom,
       actionsPadding: const EdgeInsets.symmetric(horizontal: 4),
       flexibleSpace: Stack(
         children: [

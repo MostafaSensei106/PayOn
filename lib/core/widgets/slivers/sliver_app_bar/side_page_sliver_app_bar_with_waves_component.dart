@@ -25,6 +25,7 @@ final class SidePageSliverAppBarWithWavesComponent extends HookWidget {
     this.flexibleSpace,
     this.centerTitle = true,
     this.showBackButton = true,
+    this.bottom,
   });
 
   final String title;
@@ -39,6 +40,7 @@ final class SidePageSliverAppBarWithWavesComponent extends HookWidget {
   final bool centerTitle;
   final bool showBackButton;
   final ScrollController scrollController;
+  final PreferredSizeWidget? bottom;
 
   void leave(final BuildContext context) {
     unawaited(HapticFeedback.vibrate());
@@ -93,6 +95,7 @@ final class SidePageSliverAppBarWithWavesComponent extends HookWidget {
       elevation: 0,
       scrolledUnderElevation: 0,
       actionsPadding: const EdgeInsets.symmetric(horizontal: 4),
+      bottom: bottom,
 
       leading: showBackButton
           ? Center(

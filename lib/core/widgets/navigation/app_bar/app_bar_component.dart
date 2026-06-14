@@ -7,13 +7,17 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   /// Creates an [AppBarComponent].
   ///
   /// The [title] parameter is required.
-  const AppBarComponent({required this.title, super.key});
+  const AppBarComponent({required this.title, super.key, this.bottom});
 
   /// The title to display in the app bar.
   final String title;
 
+  /// An optional bottom widget, typically a TabBar.
+  final PreferredSizeWidget? bottom;
+
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize =>
+      Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0.0));
 
   @override
   Widget build(final BuildContext context) => AppBar(
@@ -27,5 +31,6 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
     centerTitle: true,
     elevation: 0,
     scrolledUnderElevation: 0,
+    bottom: bottom,
   );
 }

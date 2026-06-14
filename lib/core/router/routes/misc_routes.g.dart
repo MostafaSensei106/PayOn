@@ -19,7 +19,6 @@ List<RouteBase> get $appRoutes => [
   $contactUsRoute,
   $sendMoneyRoute,
   $requestMoneyRoute,
-  $scanQrCodeRoute,
   $aboutAppRoute,
   $developerTeamRoute,
   $termsAndConditionsRoute,
@@ -302,6 +301,7 @@ mixin $SendMoneyRoute on GoRouteData {
           int.parse,
         ) ??
         0,
+    initialReceiver: state.uri.queryParameters['initial-receiver'],
   );
 
   SendMoneyRoute get _self => this as SendMoneyRoute;
@@ -311,6 +311,8 @@ mixin $SendMoneyRoute on GoRouteData {
     '/send-money',
     queryParams: {
       if (_self.walletIndex != 0) 'wallet-index': _self.walletIndex.toString(),
+      if (_self.initialReceiver != null)
+        'initial-receiver': _self.initialReceiver,
     },
   );
 
@@ -348,32 +350,6 @@ mixin $RequestMoneyRoute on GoRouteData {
 
   @override
   String get location => GoRouteData.$location('/request-money');
-
-  @override
-  void go(BuildContext context) => context.go(location);
-
-  @override
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  @override
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  @override
-  void replace(BuildContext context) => context.replace(location);
-}
-
-RouteBase get $scanQrCodeRoute => GoRouteData.$route(
-  path: '/scan-qr-code',
-  factory: $ScanQrCodeRoute._fromState,
-);
-
-mixin $ScanQrCodeRoute on GoRouteData {
-  static ScanQrCodeRoute _fromState(GoRouterState state) =>
-      const ScanQrCodeRoute();
-
-  @override
-  String get location => GoRouteData.$location('/scan-qr-code');
 
   @override
   void go(BuildContext context) => context.go(location);

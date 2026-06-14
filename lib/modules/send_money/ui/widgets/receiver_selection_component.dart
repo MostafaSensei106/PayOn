@@ -23,6 +23,7 @@ class ReceiverSelectionComponent extends StatelessWidget {
     required this.onMethodChanged,
     required this.onReceiverChanged,
     required this.l10n,
+    this.initialValue,
     super.key,
   });
 
@@ -30,6 +31,7 @@ class ReceiverSelectionComponent extends StatelessWidget {
   final ValueChanged<SendMoneyMethod> onMethodChanged;
   final ValueChanged<String> onReceiverChanged;
   final AppLocalizations l10n;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +101,7 @@ class ReceiverSelectionComponent extends StatelessWidget {
           keyboardType: selectedMethod == SendMoneyMethod.phone
               ? TextInputType.phone
               : TextInputType.emailAddress,
+          initialValue: initialValue,
           onChanged: onReceiverChanged,
         ),
       ],

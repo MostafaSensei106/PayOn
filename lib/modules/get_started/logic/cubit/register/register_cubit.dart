@@ -202,8 +202,9 @@ class RegisterCubit extends Cubit<RegisterState> {
       onSuccess: (currencies) {
         final updatedForm = currentForm.copyWith(
           walletCurrencies: currencies,
-          selectedCurrencyId:
-              currencies.isNotEmpty ? currencies.first.id : null,
+          selectedCurrencyId: currencies.isNotEmpty
+              ? currencies.first.id
+              : null,
         );
         emit(RegisterState.currenciesLoaded(updatedForm));
       },
@@ -438,9 +439,10 @@ class RegisterCubit extends Cubit<RegisterState> {
 
     try {
       final extractedText = await _ocrService.extractText(file);
-      
+
       // Check if the text contains common Egyptian ID keywords
-      final isEgyptianId = extractedText.contains('جمهورية مصر العربية') ||
+      final isEgyptianId =
+          extractedText.contains('جمهورية مصر العربية') ||
           extractedText.contains('بطاقة تحقيق شخصية') ||
           extractedText.contains('الرقم القومي') ||
           extractedText.contains('وزارة الداخلية');
@@ -469,9 +471,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
       final updatedFiles = Map<int, File>.from(currentForm.files)
         ..[docId] = file;
-      final updatedForm = currentForm.copyWith(
-        files: updatedFiles,
-      );
+      final updatedForm = currentForm.copyWith(files: updatedFiles);
       emit(
         RegisterState.ocrSuccess(
           updatedForm.copyWith(isValid: _validate(updatedForm, step: 3)),
@@ -479,10 +479,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       );
     } catch (e) {
       emit(
-        RegisterState.failure(
-          currentForm,
-          error: 'OCR Processing failed: $e',
-        ),
+        RegisterState.failure(currentForm, error: 'OCR Processing failed: $e'),
       );
     }
   }

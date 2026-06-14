@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
-class TabBarComponent extends StatelessWidget {
+class TabBarComponent extends StatelessWidget implements PreferredSizeWidget {
   const TabBarComponent({required this.tabs, super.key, this.controller});
   final List<Tab> tabs;
   final TabController? controller;
+
+  @override
+  Size get preferredSize => const Size.fromHeight(46.0); // Standard TabBar height
 
   @override
   Widget build(final BuildContext context) => TabBar(

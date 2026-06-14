@@ -12,7 +12,12 @@ class SidePageAppBarComponent extends StatelessWidget
   /// Creates a [SidePageAppBarComponent].
   ///
   /// The [title] is required. The [useBackButton] defaults to `false`.
-  const SidePageAppBarComponent({required this.title, super.key, this.actions});
+  const SidePageAppBarComponent({
+    required this.title,
+    super.key,
+    this.actions,
+    this.bottom,
+  });
 
   /// The title to display in the app bar.
   final String title;
@@ -20,8 +25,12 @@ class SidePageAppBarComponent extends StatelessWidget
   /// A list of widgets to display as actions in the app bar.
   final List<Widget>? actions;
 
+  /// An optional bottom widget, typically a TabBar.
+  final PreferredSizeWidget? bottom;
+
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize =>
+      Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0.0));
 
   /// Navigates back to the previous screen with haptic feedback.
   void leave(final BuildContext context) {
@@ -59,6 +68,7 @@ class SidePageAppBarComponent extends StatelessWidget
     foregroundColor: Theme.of(context).colorScheme.onSurface,
     actionsPadding: const EdgeInsets.symmetric(horizontal: 4),
     actions: actions,
+    bottom: bottom,
   );
 
   /// Builds the icon button for the app bar.

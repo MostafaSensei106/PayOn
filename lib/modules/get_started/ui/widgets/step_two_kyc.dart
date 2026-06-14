@@ -118,7 +118,10 @@ class StepTwoKYC extends StatelessWidget {
                         RealtimeOcrScanner(
                           docId: file.id,
                           onSuccess: (fileBytes) async {
-                            await context.read<RegisterCubit>().updateFile(file.id, fileBytes);
+                            await context.read<RegisterCubit>().updateFile(
+                              file.id,
+                              fileBytes,
+                            );
                           },
                         ),
                       if (uploadedFile != null)
@@ -130,7 +133,10 @@ class StepTwoKYC extends StatelessWidget {
                       else
                         TextButton.icon(
                           onPressed: () => _pickFile(context, file.id),
-                          icon: const Icon(Iconsax.document_upload_copy, size: 16),
+                          icon: const Icon(
+                            Iconsax.document_upload_copy,
+                            size: 16,
+                          ),
                           label: const Text('Upload Manually Instead'),
                         ),
                     ],

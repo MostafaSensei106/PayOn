@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -23,6 +24,8 @@ class MainPage extends HookWidget {
   Widget build(final BuildContext context) {
     final l10n = context.localeKeys;
 
+    final isVisible = useState(true);
+
     useEffect(() {
       // ignore: discarded_futures
       Future.wait([
@@ -34,47 +37,62 @@ class MainPage extends HookWidget {
 
     return Scaffold(
       extendBody: true,
-      body: navigationShell,
-      bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.only(bottom: 16.h, left: 45.w, right: 45.w),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
-            child: BottomNavBarComponent(
-              currentIndex: navigationShell.currentIndex,
-              onTap: (final index) {
-                unawaited(HapticFeedback.vibrate());
-                navigationShell.goBranch(
-                  index,
-                  initialLocation: index == navigationShell.currentIndex,
-                );
-              },
-              items: [
-                BottomNavigationBarItem(
-                  icon: const Icon(Iconsax.home_2_copy),
-                  activeIcon: const Icon(Iconsax.home_2),
-                  label: l10n.home,
-                  tooltip: l10n.home,
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Iconsax.scan_barcode_copy),
-                  activeIcon: const Icon(Iconsax.scan_barcode, size: 24),
-                  label: l10n.scan_qr_code,
-                  tooltip: l10n.scan_qr_code,
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Iconsax.receipt_item_copy),
-                  activeIcon: const Icon(Iconsax.receipt_item),
-                  label: l10n.history,
-                  tooltip: l10n.history,
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Iconsax.setting_copy),
-                  activeIcon: const Icon(Iconsax.setting),
-                  label: l10n.settings,
-                  tooltip: l10n.settings,
-                ),
-              ],
+      body: NotificationListener<UserScrollNotification>(
+        onNotification: (notification) {
+          if (notification.direction == ScrollDirection.forward) {
+            if (!isVisible.value) isVisible.value = true;
+          } else if (notification.direction == ScrollDirection.reverse) {
+            if (isVisible.value) isVisible.value = false;
+          }
+          return false;
+        },
+        child: navigationShell,
+      ),
+      bottomNavigationBar: AnimatedSlide(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        offset: isVisible.value ? Offset.zero : const Offset(0, 2),
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.only(bottom: 16.h, left: 45.w, right: 45.w),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(AppConfig.outBorderRadius),
+              child: BottomNavBarComponent(
+                currentIndex: navigationShell.currentIndex,
+                onTap: (final index) {
+                  unawaited(HapticFeedback.vibrate());
+                  navigationShell.goBranch(
+                    index,
+                    initialLocation: index == navigationShell.currentIndex,
+                  );
+                },
+                items: [
+                  BottomNavigationBarItem(
+                    icon: const Icon(Iconsax.home_2_copy),
+                    activeIcon: const Icon(Iconsax.home_2),
+                    label: l10n.home,
+                    tooltip: l10n.home,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: const Icon(Iconsax.scan_barcode_copy),
+                    activeIcon: const Icon(Iconsax.scan_barcode, size: 24),
+                    label: l10n.scan_qr_code,
+                    tooltip: l10n.scan_qr_code,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: const Icon(Iconsax.receipt_item_copy),
+                    activeIcon: const Icon(Iconsax.receipt_item),
+                    label: l10n.history,
+                    tooltip: l10n.history,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: const Icon(Iconsax.setting_copy),
+                    activeIcon: const Icon(Iconsax.setting),
+                    label: l10n.settings,
+                    tooltip: l10n.settings,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

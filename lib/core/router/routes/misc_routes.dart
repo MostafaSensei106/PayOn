@@ -176,13 +176,15 @@ final class SendMoneyRoute extends CupertinoRouteData with $SendMoneyRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
     providers: [
-      BlocProvider(create: (context) {
-        final cubit = getIt<SendMoneyCubit>();
-        if (initialReceiver != null && initialReceiver!.isNotEmpty) {
-          cubit.onUserInfChanged(initialReceiver!);
-        }
-        return cubit;
-      }),
+      BlocProvider(
+        create: (context) {
+          final cubit = getIt<SendMoneyCubit>();
+          if (initialReceiver != null && initialReceiver!.isNotEmpty) {
+            cubit.onUserInfChanged(initialReceiver!);
+          }
+          return cubit;
+        },
+      ),
       BlocProvider(create: (context) => getIt<UserFavoritesCubit>()),
     ],
     child: SendMoneyPage(walletIndex: walletIndex),

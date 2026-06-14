@@ -18,7 +18,10 @@ RouteBase get $mainShellRouteData => StatefulShellRouteData.$route(
     ),
     StatefulShellBranchData.$branch(
       routes: [
-        GoRouteData.$route(path: '/wallet', factory: $WalletRoute._fromState),
+        GoRouteData.$route(
+          path: '/scan-qr-code',
+          factory: $ScanQrCodeRoute._fromState,
+        ),
       ],
     ),
     StatefulShellBranchData.$branch(
@@ -62,11 +65,12 @@ mixin $HomeRoute on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
-mixin $WalletRoute on GoRouteData {
-  static WalletRoute _fromState(GoRouterState state) => const WalletRoute();
+mixin $ScanQrCodeRoute on GoRouteData {
+  static ScanQrCodeRoute _fromState(GoRouterState state) =>
+      const ScanQrCodeRoute();
 
   @override
-  String get location => GoRouteData.$location('/wallet');
+  String get location => GoRouteData.$location('/scan-qr-code');
 
   @override
   void go(BuildContext context) => context.go(location);

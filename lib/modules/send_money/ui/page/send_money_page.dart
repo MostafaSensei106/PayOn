@@ -141,6 +141,17 @@ class SendMoneyPage extends HookWidget {
                       onReceiverChanged: (val) =>
                           context.read<SendMoneyCubit>().onUserInfChanged(val),
                       l10n: l10n,
+                      initialValue:
+                          state.whenOrNull(
+                            initial: (form) => form.userInfo.value,
+                            loading: (form) => form.userInfo.value,
+                            success: (form, _) => form.userInfo.value,
+                            transactionDraftSuccess: (form, _) =>
+                                form.userInfo.value,
+                            transactionSaved: (form, _) => form.userInfo.value,
+                            failure: (form, _) => form.userInfo.value,
+                          ) ??
+                          '',
                     ),
                     SizedBox(height: 16.h),
                     AmountInputAndSubmitComponent(

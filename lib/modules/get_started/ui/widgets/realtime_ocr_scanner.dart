@@ -173,7 +173,7 @@ class _RealtimeOcrScannerState extends State<RealtimeOcrScanner> {
             left: 0,
             right: 0,
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: AppConfig.padding),
+              margin: const EdgeInsets.symmetric(horizontal: AppConfig.padding),
               padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
               decoration: BoxDecoration(
                 color: Colors.black54,

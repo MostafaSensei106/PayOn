@@ -164,7 +164,7 @@ class _ProfileSuccessState extends StatelessWidget {
               children: [
                 ListTileIconComponent.top(
                   title: l10n.phone_number,
-                  subtitle: data.phone,
+                  subtitle: '\u202A${data.phone}\u202C',
                   leading: Iconsax.call_copy,
                   onTap: () {},
                 ),
