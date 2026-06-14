@@ -5,8 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../core/constants/app_config.dart';
-import '../../../../core/di/di.dart';
-import '../../../../core/services/l10n/l10n_service.dart';
 import '../../../../core/widgets/display/card/card_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../../create_wallet/ui/widgets/currency_item_widget.dart';

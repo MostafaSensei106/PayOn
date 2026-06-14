@@ -92,6 +92,9 @@ class GetStartedPage extends HookWidget {
         BlocListener<RegisterCubit, RegisterState>(
           listener: (context, state) async {
             await state.whenOrNull(
+              loading: (form) {
+                context.dialog.showLoading();
+              },
               registerSuccess: (form, data) async {
                 // Register + CreateAccount + SendOTP succeeded → go to OTP
                 if (Navigator.of(context).canPop()) context.pop();
@@ -120,6 +123,12 @@ class GetStartedPage extends HookWidget {
                 }
               },
               createAccountSuccess: (form, data) async {
+                if (Navigator.of(context).canPop()) context.pop();
+              },
+              getCountriesSuccess: (form, countries) async {
+                if (Navigator.of(context).canPop()) context.pop();
+              },
+              getRequiredFilesSuccess: (form, files) async {
                 if (Navigator.of(context).canPop()) context.pop();
               },
               currenciesLoaded: (form) async {
