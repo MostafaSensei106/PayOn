@@ -130,6 +130,8 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
               );
             },
             failure: (form, message) => Center(child: Text(message)),
+            pendingRequestsError: (form, message) =>
+                Center(child: Text(message)),
             orElse: () => const Center(child: CircularProgressIndicator()),
           );
         },
