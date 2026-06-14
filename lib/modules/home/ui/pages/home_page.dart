@@ -164,7 +164,7 @@ class HomePage extends StatelessWidget {
             if (context.mounted) {
               context.pop(); // Close loading
               if (accountId != null && accountId.isNotEmpty) {
-                unawaited(const AddAccountKycRoute().push<void>(context));
+                unawaited(CreateWalletRoute(accountId: accountId).push<void>(context));
               }
             }
           }

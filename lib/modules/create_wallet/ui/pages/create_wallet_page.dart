@@ -111,7 +111,7 @@ class CreateWalletPage extends HookWidget {
                           suffix: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 12.w),
                             child: Text(
-                              '@payreb',
+                              '@payon',
                               style: TextStyle(
                                 color: Theme.of(context).colorScheme.primary,
                                 fontWeight: FontWeight.bold,
@@ -152,7 +152,7 @@ class CreateWalletPage extends HookWidget {
                         unawaited(
                           context.read<CreateWalletCubit>().createWallet(
                             accountId: accountId,
-                            ipa: '${ipaController.text}@payreb',
+                            ipa: '${ipaController.text}@payon',
                             currencyId: selectedCurrency.value!.id,
                           ),
                         );
