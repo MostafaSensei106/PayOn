@@ -81,8 +81,9 @@ class _RealtimeOcrScannerState extends State<RealtimeOcrScanner> {
     ) async {
       if (_isProcessing ||
           _controller == null ||
-          !_controller!.value.isInitialized)
+          !_controller!.value.isInitialized) {
         return;
+      }
 
       _isProcessing = true;
       try {
@@ -113,9 +114,9 @@ class _RealtimeOcrScannerState extends State<RealtimeOcrScanner> {
   }
 
   @override
-  void dispose() {
+  Future<void> dispose() async {
     _scanTimer?.cancel();
-    _controller?.dispose();
+    await _controller?.dispose();
     super.dispose();
   }
 

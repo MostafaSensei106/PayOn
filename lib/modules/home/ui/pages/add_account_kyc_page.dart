@@ -15,7 +15,7 @@ import '../../../../core/widgets/slivers/sliver_app_bar/side_page_sliver_app_bar
 import '../../logic/cubit/home_cubit.dart';
 import '../../logic/cubit/home_state.dart';
 
-class AddAccountKycPage extends StatelessWidget {
+class AddAccountKycPage extends HookWidget {
   const AddAccountKycPage({super.key});
 
   Future<void> _pickFile(BuildContext context, int docId) async {
