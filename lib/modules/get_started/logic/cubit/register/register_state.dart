@@ -36,6 +36,7 @@ sealed class RegisterState with _$RegisterState {
   }) = _GetCountriesSuccess;
   const factory RegisterState.kycUploadSuccess(RegisterFormState form) =
       _KycUploadSuccess;
+  const factory RegisterState.ocrSuccess(RegisterFormState form) = _OcrSuccess;
   const factory RegisterState.currenciesLoaded(RegisterFormState form) =
       _CurrenciesLoaded;
   const factory RegisterState.walletCreated(RegisterFormState form) =
@@ -80,7 +81,6 @@ abstract class RegisterFormState with _$RegisterFormState {
 
     @Default(0) int currentStep,
     @Default(false) bool isValid,
-    @Default(false) bool isOcrProcessing,
     @Default('') String accountId,
 
     // Wallet creation fields

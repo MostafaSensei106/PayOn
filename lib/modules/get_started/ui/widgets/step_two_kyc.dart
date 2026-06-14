@@ -6,9 +6,9 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/constants/app_config.dart';
-import '../../../../core/widgets/buttons/outlined_button/outlined_button_component.dart';
 import '../../logic/cubit/register/register_cubit.dart';
 import '../../logic/cubit/register/register_state.dart';
+import 'realtime_ocr_scanner.dart';
 
 class StepTwoKYC extends StatelessWidget {
   const StepTwoKYC({super.key});
@@ -27,8 +27,7 @@ class StepTwoKYC extends StatelessWidget {
     return BlocBuilder<RegisterCubit, RegisterState>(
       buildWhen: (previous, current) =>
           previous.form.requiredFiles != current.form.requiredFiles ||
-          previous.form.files != current.form.files ||
-          previous.form.isOcrProcessing != current.form.isOcrProcessing,
+          previous.form.files != current.form.files,
       builder: (context, state) {
         final form = state.form;
 
@@ -116,39 +115,29 @@ class StepTwoKYC extends StatelessWidget {
                           ],
                         )
                       else
-                        OutlinedButtonComponent.icon(
-                          label: 'Upload ${file.name}',
-                          icon: Iconsax.document_upload_copy,
-                          isEnabled: !form.isOcrProcessing,
-                          onPressed: () => _pickFile(context, file.id),
+                        RealtimeOcrScanner(
+                          docId: file.id,
+                          onSuccess: (fileBytes) async {
+                            await context.read<RegisterCubit>().updateFile(file.id, fileBytes);
+                          },
                         ),
                       if (uploadedFile != null)
                         TextButton.icon(
                           onPressed: () => _pickFile(context, file.id),
                           icon: const Icon(Iconsax.edit_copy, size: 16),
-                          label: const Text('Retake Photo'),
+                          label: const Text('Retake Manual Photo'),
+                        )
+                      else
+                        TextButton.icon(
+                          onPressed: () => _pickFile(context, file.id),
+                          icon: const Icon(Iconsax.document_upload_copy, size: 16),
+                          label: const Text('Upload Manually Instead'),
                         ),
                     ],
                   ),
                 );
               },
             ),
-            if (form.isOcrProcessing)
-              const Center(
-                child: Card(
-                  child: Padding(
-                    padding: EdgeInsets.all(AppConfig.padding),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CircularProgressIndicator(),
-                        SizedBox(height: AppConfig.padding),
-                        Text('Analyzing document...'),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
           ],
         );
       },

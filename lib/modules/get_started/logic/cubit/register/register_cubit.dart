@@ -434,17 +434,21 @@ class RegisterCubit extends Cubit<RegisterState> {
   // ─── OCR File Upload ──────────────────────────────────────────────────
 
   Future<void> updateFile(int docId, File file) async {
-    emit(RegisterState.initial(currentForm.copyWith(isOcrProcessing: true)));
+    emit(RegisterState.loading(currentForm));
 
     try {
       final extractedText = await _ocrService.extractText(file);
-      final normalizedText = extractedText.replaceAll(RegExp(r'\s+'), '');
-      final targetId = currentForm.nationalId.replaceAll(RegExp(r'\s+'), '');
+      
+      // Check if the text contains common Egyptian ID keywords
+      final isEgyptianId = extractedText.contains('جمهورية مصر العربية') ||
+          extractedText.contains('بطاقة تحقيق شخصية') ||
+          extractedText.contains('الرقم القومي') ||
+          extractedText.contains('وزارة الداخلية');
 
-      if (normalizedText.isEmpty) {
+      if (extractedText.isEmpty) {
         emit(
           RegisterState.failure(
-            currentForm.copyWith(isOcrProcessing: false),
+            currentForm,
             error:
                 'Could not read text from the image. Please take a clearer photo.',
           ),
@@ -452,13 +456,12 @@ class RegisterCubit extends Cubit<RegisterState> {
         return;
       }
 
-      // Check if the extracted text contains the National ID
-      if (targetId.isNotEmpty && !normalizedText.contains(targetId)) {
+      if (!isEgyptianId) {
         emit(
           RegisterState.failure(
-            currentForm.copyWith(isOcrProcessing: false),
+            currentForm,
             error:
-                'The uploaded image does not match the National ID provided ($targetId). Please ensure the ID number is clearly visible.',
+                'The uploaded image does not appear to be a valid Egyptian National ID. Please try again.',
           ),
         );
         return;
@@ -468,17 +471,16 @@ class RegisterCubit extends Cubit<RegisterState> {
         ..[docId] = file;
       final updatedForm = currentForm.copyWith(
         files: updatedFiles,
-        isOcrProcessing: false,
       );
       emit(
-        RegisterState.initial(
+        RegisterState.ocrSuccess(
           updatedForm.copyWith(isValid: _validate(updatedForm, step: 3)),
         ),
       );
     } catch (e) {
       emit(
         RegisterState.failure(
-          currentForm.copyWith(isOcrProcessing: false),
+          currentForm,
           error: 'OCR Processing failed: $e',
         ),
       );

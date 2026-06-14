@@ -106,6 +106,9 @@ class GetStartedPage extends HookWidget {
                 goToPage(4);
                 unawaited(context.read<RegisterCubit>().getCurrencies());
               },
+              ocrSuccess: (form) async {
+                if (Navigator.of(context).canPop()) context.pop();
+              },
               walletCreated: (form) async {
                 // Wallet created → stays on same page but switches to PIN sub-step
                 if (Navigator.of(context).canPop()) context.pop();
