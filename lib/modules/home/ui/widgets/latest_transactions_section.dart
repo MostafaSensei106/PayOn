@@ -26,12 +26,22 @@ class LatestTransactionsSection extends StatelessWidget {
 
     return state.maybeWhen(
       loading: () => _buildLoading(context),
-      success: (wallets, transactions, isTransactionsLoading, currentFilters) {
-        if (isTransactionsLoading && transactions.isEmpty) {
-          return _buildLoading(context);
-        }
-        return _buildSuccess(context, transactions: transactions);
-      },
+      success:
+          (
+            wallets,
+            transactions,
+            isTransactionsLoading,
+            currentFilters,
+            requiredFiles,
+            kycFiles,
+            isUploading,
+            newAccountId,
+          ) {
+            if (isTransactionsLoading && transactions.isEmpty) {
+              return _buildLoading(context);
+            }
+            return _buildSuccess(context, transactions: transactions);
+          },
       orElse: () => const SliverToBoxAdapter(child: SizedBox.shrink()),
     );
   }

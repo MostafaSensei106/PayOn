@@ -182,34 +182,6 @@ class _StepOneAccountDetailsState extends State<StepOneAccountDetails> {
               initialValue: form.address,
               onChanged: registerCubit.addressOnChanged,
             ),
-            if (form.accountType?.parentId == 7) ...[
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormFieldComponent(
-                      label: 'Latitude',
-                      prefixIcon: Iconsax.location_copy,
-                      initialValue: form.latitude?.toString() ?? '',
-                      onChanged: (val) =>
-                          registerCubit.latitudeOnChanged(double.tryParse(val)),
-                      keyboardType: TextInputType.number,
-                    ),
-                  ),
-                  const SizedBox(width: AppConfig.paddingHalf),
-                  Expanded(
-                    child: TextFormFieldComponent(
-                      label: 'Longitude',
-                      prefixIcon: Iconsax.location_copy,
-                      initialValue: form.longitude?.toString() ?? '',
-                      onChanged: (val) => registerCubit.longitudeOnChanged(
-                        double.tryParse(val),
-                      ),
-                      keyboardType: TextInputType.number,
-                    ),
-                  ),
-                ],
-              ),
-            ],
             TextFormFieldComponent(
               label: l10n.password,
               prefixIcon: Iconsax.lock_copy,

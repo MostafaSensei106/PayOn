@@ -10,11 +10,19 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/extensions/extensions.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/services/l10n/l10n_service.dart';
+import '../../../../core/utils/use_case/base_use_case.dart';
+import '../../../../core/widgets/buttons/filled_button/filled_button_component.dart';
 import '../../../../core/widgets/buttons/icon_button/icon_button_component.dart';
 import '../../../../core/widgets/display/avatar/avatar_component.dart';
+import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
+import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
+import '../../../get_started/logic/use_cases/get_account_types_use_case.dart';
+import '../../../profile/logic/cubit/user_profile_cubit.dart';
+import '../../../profile/logic/cubit/user_profile_state.dart' as profile;
 import '../../logic/cubit/home_cubit.dart';
 import '../../logic/cubit/home_state.dart';
 import '../../logic/entitys/wallets_entity.dart';
@@ -26,7 +34,115 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   Future<void> _onAddWallet(BuildContext context) async {
-    unawaited(const GetStartedRoute(isAddWalletFlow: true).push<void>(context));
+    final homeCubit = context.read<HomeCubit>();
+    final userProfileState = context.read<UserProfileCubit>().state;
+
+    if (userProfileState is! profile.Success) {
+      unawaited(
+        context.dialog.showError(
+          title: 'Error',
+          error: 'Please wait for profile to load',
+        ),
+      );
+      return;
+    }
+
+    context.dialog.showLoading();
+    final result = await getIt<GetAccountTypesUseCase>().call(const NoParams());
+
+    if (!context.mounted) return;
+    context.pop(); // Close loading
+
+    await result.fold(
+      onSuccess: (accountTypes) async {
+        final selectedType = await context.showBottomSheetComponent<int>(
+          title: 'Select Account Type',
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ...List.generate(accountTypes.items.length, (index) {
+                final type = accountTypes.items[index];
+                final isFirst = index == 0;
+                final isLast = index == accountTypes.items.length - 1;
+                final leading = type.parentId == 7
+                    ? Iconsax.shop_copy
+                    : Iconsax.user_copy;
+                void onTap() => context.pop(type.id);
+
+                if (isFirst) {
+                  return ListTileIconComponent.top(
+                    title: type.type,
+                    leading: leading,
+                    onTap: onTap,
+                  );
+                } else if (isLast) {
+                  return ListTileIconComponent.bottom(
+                    title: type.type,
+                    leading: leading,
+                    onTap: onTap,
+                  );
+                } else {
+                  return ListTileIconComponent.middle(
+                    title: type.type,
+                    leading: leading,
+                    onTap: onTap,
+                  );
+                }
+              }),
+              SizedBox(height: 16.h),
+            ],
+          ),
+        );
+
+        if (selectedType != null && context.mounted) {
+          final addressController = TextEditingController();
+          final confirmedAddress = await context
+              .showBottomSheetComponent<String>(
+                title: 'Enter Address',
+                child: Padding(
+                  padding: const EdgeInsets.all(AppConfig.padding),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextFormFieldComponent(
+                        controller: addressController,
+                        label: 'Address',
+                        prefixIcon: Iconsax.map_copy,
+                        onChanged: (val) {},
+                      ),
+                      const SizedBox(height: AppConfig.padding),
+                      FilledButtonComponent(
+                        label: 'Continue',
+                        onPressed: () => context.pop(addressController.text),
+                      ),
+                      SizedBox(height: 16.h),
+                    ],
+                  ),
+                ),
+              );
+
+          if (confirmedAddress != null &&
+              confirmedAddress.isNotEmpty &&
+              context.mounted) {
+            context.dialog.showLoading();
+            final accountId = await homeCubit.createAccount(
+              accountTypeId: selectedType,
+              address: confirmedAddress,
+              profile: (userProfileState).data,
+            );
+
+            if (context.mounted) {
+              context.pop(); // Close loading
+              if (accountId != null && accountId.isNotEmpty) {
+                unawaited(const AddAccountKycRoute().push<void>(context));
+              }
+            }
+          }
+        }
+      },
+      onFailure: (error) async =>
+          context.dialog.showError(title: 'Error', error: error.message),
+    );
   }
 
   @override
@@ -97,6 +213,10 @@ class HomePage extends StatelessWidget {
                                   transactions,
                                   isTransactionsLoading,
                                   currentFilters,
+                                  requiredFiles,
+                                  kycFiles,
+                                  isUploading,
+                                  newAccountId,
                                 ) => PageView.builder(
                                   controller: cardController,
                                   itemCount: wallets.wallets.length,
@@ -128,6 +248,10 @@ class HomePage extends StatelessWidget {
                                 transactions,
                                 isTransactionsLoading,
                                 currentFilters,
+                                requiredFiles,
+                                kycFiles,
+                                isUploading,
+                                newAccountId,
                               ) => SmoothPageIndicator(
                                 controller: cardController,
                                 count: wallets.wallets.length,

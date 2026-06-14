@@ -429,20 +429,16 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<void> uploadFiles(File file, String accId, int requiredDocId) async {
+  Future<void> uploadFiles(
+    MultipartFile file,
+    String accId,
+    int requiredDocId,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = FormData();
-    _data.files.add(
-      MapEntry(
-        'File',
-        MultipartFile.fromFileSync(
-          file.path,
-          filename: file.path.split(Platform.pathSeparator).last,
-        ),
-      ),
-    );
+    _data.files.add(MapEntry('File', file));
     _data.fields.add(MapEntry('AccId', accId));
     _data.fields.add(MapEntry('RequierdDocId', requiredDocId.toString()));
     final _options = _setStreamType<void>(

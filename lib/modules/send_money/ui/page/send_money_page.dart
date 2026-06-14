@@ -38,8 +38,17 @@ class SendMoneyPage extends HookWidget {
     // Get wallets from HomeCubit
     final homeState = getIt<HomeCubit>().state;
     final myWallets = homeState.maybeWhen(
-      success: (wallets, transactions, isTransactionsLoading, currentFilters) =>
-          wallets.wallets,
+      success:
+          (
+            wallets,
+            transactions,
+            isTransactionsLoading,
+            currentFilters,
+            requiredFiles,
+            kycFiles,
+            isUploading,
+            newAccountId,
+          ) => wallets.wallets,
       orElse: () => <WalletItemEntity>[],
     );
 

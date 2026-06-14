@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/constants/types/type_def.dart';
@@ -58,7 +59,14 @@ final class RegisterRepository implements BaseRegisterRepository {
     required File file,
     required String accId,
     required int requiredDocId,
-  }) async => ApiExecutor.execute<void>(
-    action: () => _apiService.uploadFiles(file, accId, requiredDocId),
-  );
+  }) async {
+    final multipartFile = MultipartFile.fromFileSync(
+      file.path,
+      filename: file.path.split(Platform.pathSeparator).last,
+    );
+    return ApiExecutor.execute<void>(
+      action: () =>
+          _apiService.uploadFiles(multipartFile, accId, requiredDocId),
+    );
+  }
 }

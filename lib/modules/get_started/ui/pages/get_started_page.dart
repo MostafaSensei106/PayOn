@@ -107,7 +107,7 @@ class GetStartedPage extends HookWidget {
               },
               createAccountSuccess: (form, data) async {
                 context.pop();
-                const targetPage = 3; // KYC
+                const targetPage = 2;
                 await pageController.animateToPage(
                   targetPage,
                   duration: const Duration(milliseconds: 300),
