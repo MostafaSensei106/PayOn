@@ -67,63 +67,66 @@ class SenderAccountSelectionComponent extends StatelessWidget {
     unawaited(
       context.showBottomSheetComponent(
         title: l10n.select_account,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ...wallets.asMap().entries.map((entry) {
-              final index = entry.key;
-              final wallet = entry.value;
-              final isFirst = index == 0;
-              final isLast = index == wallets.length - 1;
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ...wallets.asMap().entries.map((entry) {
+                final index = entry.key;
+                final wallet = entry.value;
+                final isFirst = index == 0;
+                final isLast = index == wallets.length - 1;
 
-              if (wallets.length == 1) {
-                return ListTileWidgetComponent(
-                  leading: const AvatarComponent(imageUrl: ''),
-                  title: wallet.ipa,
-                  subtitle: wallet.walletId,
-                  onTap: () {
-                    onWalletSelected(wallet);
-                    Navigator.pop(context);
-                  },
-                );
-              }
+                if (wallets.length == 1) {
+                  return ListTileWidgetComponent(
+                    leading: const AvatarComponent(imageUrl: ''),
+                    title: wallet.ipa,
+                    subtitle: wallet.walletId,
+                    onTap: () {
+                      onWalletSelected(wallet);
+                      Navigator.pop(context);
+                    },
+                  );
+                }
 
-              if (isFirst) {
-                return ListTileWidgetComponent.top(
-                  leading: const AvatarComponent(imageUrl: ''),
-                  title: wallet.ipa,
-                  subtitle: wallet.walletId,
-                  onTap: () {
-                    onWalletSelected(wallet);
-                    Navigator.pop(context);
-                  },
-                );
-              } else if (isLast) {
-                return ListTileWidgetComponent.bottom(
-                  leading: const AvatarComponent(imageUrl: ''),
-                  title: wallet.ipa,
-                  subtitle: wallet.walletId,
-                  onTap: () {
-                    onWalletSelected(wallet);
-                    Navigator.pop(context);
-                  },
-                );
-              } else {
-                return ListTileWidgetComponent.middle(
-                  leading: const AvatarComponent(imageUrl: ''),
-                  title: wallet.ipa,
-                  subtitle: wallet.walletId,
-                  onTap: () {
-                    onWalletSelected(wallet);
-                    Navigator.pop(context);
-                  },
-                );
-              }
-            }),
-            SizedBox(
-              height: MediaQuery.of(context).padding.bottom + AppConfig.padding,
-            ),
-          ],
+                if (isFirst) {
+                  return ListTileWidgetComponent.top(
+                    leading: const AvatarComponent(imageUrl: ''),
+                    title: wallet.ipa,
+                    subtitle: wallet.walletId,
+                    onTap: () {
+                      onWalletSelected(wallet);
+                      Navigator.pop(context);
+                    },
+                  );
+                } else if (isLast) {
+                  return ListTileWidgetComponent.bottom(
+                    leading: const AvatarComponent(imageUrl: ''),
+                    title: wallet.ipa,
+                    subtitle: wallet.walletId,
+                    onTap: () {
+                      onWalletSelected(wallet);
+                      Navigator.pop(context);
+                    },
+                  );
+                } else {
+                  return ListTileWidgetComponent.middle(
+                    leading: const AvatarComponent(imageUrl: ''),
+                    title: wallet.ipa,
+                    subtitle: wallet.walletId,
+                    onTap: () {
+                      onWalletSelected(wallet);
+                      Navigator.pop(context);
+                    },
+                  );
+                }
+              }),
+              SizedBox(
+                height:
+                    MediaQuery.of(context).padding.bottom + AppConfig.padding,
+              ),
+            ],
+          ),
         ),
       ),
     );

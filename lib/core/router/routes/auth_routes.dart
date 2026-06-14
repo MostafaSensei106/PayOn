@@ -59,7 +59,7 @@ final class GetStartedRoute extends CupertinoRouteData with $GetStartedRoute {
   Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
     providers: [
       BlocProvider(create: (_) => getIt<RegisterCubit>()),
-      BlocProvider(create: (context) => getIt<AccountTypeCubit>()),
+      BlocProvider(create: (_) => getIt<AccountTypeCubit>()),
       BlocProvider(create: (_) => getIt<OtpCubit>()),
     ],
     child: const GetStartedPage(),

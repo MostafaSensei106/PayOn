@@ -197,8 +197,11 @@ final class RequestMoneyRoute extends CupertinoRouteData
   const RequestMoneyRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => BlocProvider(
-    create: (context) => getIt<RequestMoneyCubit>(),
+  Widget build(BuildContext context, GoRouterState state) => MultiBlocProvider(
+    providers: [
+      BlocProvider(create: (_) => getIt<RequestMoneyCubit>()),
+      BlocProvider(create: (_) => getIt<UserFavoritesCubit>()),
+    ],
     child: const RequestMoneyPage(),
   );
 }

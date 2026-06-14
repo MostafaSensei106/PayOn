@@ -119,7 +119,10 @@ class StepTwoKYC extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(vertical: 24.0),
                             child: ElevatedButton.icon(
                               onPressed: () => _pickFile(context, file.id),
-                              icon: const Icon(Iconsax.document_upload_copy, size: 24),
+                              icon: const Icon(
+                                Iconsax.document_upload_copy,
+                                size: 24,
+                              ),
                               label: const Text('Upload ID Image from Gallery'),
                             ),
                           ),

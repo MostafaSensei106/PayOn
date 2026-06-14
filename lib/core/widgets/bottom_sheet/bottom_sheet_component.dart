@@ -27,7 +27,7 @@ extension BottomSheetExtension on BuildContext {
           body: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: AppConfig.padding,
-              vertical: AppConfig.padding,
+              vertical: AppConfig.paddingHalf,
             ),
             child: child,
           ),

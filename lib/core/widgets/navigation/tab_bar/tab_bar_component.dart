@@ -20,10 +20,11 @@ class TabBarComponent extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(final BuildContext context) => TabBar(
-        controller: controller,
-        tabs: tabs,
-        labelColor: labelColor ?? Theme.of(context).colorScheme.primary,
-        unselectedLabelColor: unselectedLabelColor ?? Theme.of(context).colorScheme.onSurfaceVariant,
-        indicatorColor: indicatorColor ?? Theme.of(context).colorScheme.primary,
-      );
+    controller: controller,
+    tabs: tabs,
+    labelColor: labelColor ?? Theme.of(context).colorScheme.primary,
+    unselectedLabelColor:
+        unselectedLabelColor ?? Theme.of(context).colorScheme.onSurfaceVariant,
+    indicatorColor: indicatorColor ?? Theme.of(context).colorScheme.primary,
+  );
 }

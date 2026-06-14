@@ -100,22 +100,44 @@ class HomePage extends StatelessWidget {
           final phoneController = TextEditingController(
             text: userProfileState.data.phone,
           );
+          final ipaController = TextEditingController(
+            text: userProfileState.data.ipa,
+          );
 
           final resultData = await context
               .showBottomSheetComponent<Map<String, String>>(
-                title: 'Account Details',
+                title: 'Complete Your Wallet Profile',
                 child: Padding(
-                  padding: const EdgeInsets.all(AppConfig.padding),
+                  padding: const EdgeInsets.only(top: 8.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      Text(
+                        'Please verify the following details to proceed with creating your account.',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 24.h),
                       TextFormFieldComponent(
-                        controller: addressController,
-                        label: 'Address',
-                        prefixIcon: Iconsax.map_copy,
+                        controller: ipaController,
+                        label: 'Instant Payment Address (IPA)',
+                        hintText: 'e.g., username',
+                        prefixIcon: Iconsax.link_2_copy,
+                        suffix: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 12.w),
+                          child: Text(
+                            '@payon',
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                         onChanged: (String p1) {},
                       ),
-                      const SizedBox(height: AppConfig.paddingHalf),
+                      const SizedBox(height: AppConfig.padding),
                       TextFormFieldComponent(
                         controller: phoneController,
                         label: 'Phone Number',
@@ -124,14 +146,25 @@ class HomePage extends StatelessWidget {
                         onChanged: (String p1) {},
                       ),
                       const SizedBox(height: AppConfig.padding),
+                      TextFormFieldComponent(
+                        controller: addressController,
+                        label: 'Address',
+                        hintText: 'Enter your full residential address',
+                        prefixIcon: Iconsax.map_copy,
+                        onChanged: (String p1) {},
+                      ),
+                      SizedBox(height: 32.h),
                       FilledButtonComponent(
-                        label: 'Continue',
+                        label: 'Continue to Document Upload',
                         onPressed: () => context.pop({
                           'address': addressController.text,
                           'phone': phoneController.text,
+                          'ipa': ipaController.text,
                         }),
                       ),
-                      SizedBox(height: 16.h),
+                      SizedBox(
+                        height: MediaQuery.of(context).viewInsets.bottom + 16.h,
+                      ),
                     ],
                   ),
                 ),
