@@ -1057,44 +1057,64 @@ class AppLocalizationsAr extends AppLocalizations {
       'مدفوعاً بالابتكار، فريقنا مكرس لبناء مستقبل التمويل الرقمي مع وضع الأمان وتجربة المستخدم في جوهر عملنا.';
 
   @override
-  String get dev_member1_name => 'أحمد محمد';
+  String get dev_member1_name => 'مصطفى محمود محمد';
 
   @override
-  String get dev_member1_role => 'رئيس المهندسين';
+  String get dev_member1_role => 'مهندس نظم هواتف';
 
   @override
   String get dev_member1_bio =>
-      'أحمد هو قائد رؤيوي يتمتع بخبرة تزيد عن 10 سنوات في مجال التكنولوجيا المالية، ويركز على توسيع الحلول المعمارية الآمنة.';
+      'مصطفى هو مهندس نظم هواتف مكرس لبناء تجارب قوية وقابلة للتطوير على الهواتف المحمولة.';
 
   @override
-  String get dev_member2_name => 'سارة حسن';
+  String get dev_member2_name => 'محمود محمد أحمد عيسى';
 
   @override
-  String get dev_member2_role => 'مطور تطبيقات أول';
+  String get dev_member2_role => 'مهندس نظم هواتف';
 
   @override
   String get dev_member2_bio =>
-      'سارة خبيرة في Flutter وشغوفة بصياغة واجهات موبايل مثالية الأداء يحبها المستخدمون.';
+      'يتخصص محمود في بنيات تطبيقات الهواتف المتقدمة وتحسين الأداء لتجربة مستخدم سلسة.';
 
   @override
-  String get dev_member3_name => 'جون دو';
+  String get dev_member3_name => 'عمرو محمد شوقي محمود';
 
   @override
-  String get dev_member3_role => 'مهندس النظم الخلفية';
+  String get dev_member3_role => 'مهندس نظم خلفية';
 
   @override
   String get dev_member3_bio =>
-      'يتخصص جون في الأنظمة عالية التزامن وقواعد البيانات الموزعة، مما يضمن أن البنية التحتية لـ PayOn غير قابلة للاختراق.';
+      'يركز عمرو على بناء أنظمة خلفية وواجهات برمجة تطبيقات (APIs) آمنة وعالية الأداء لتشغيل منصة PayOn.';
 
   @override
-  String get dev_member4_name => 'ليلى علي';
+  String get dev_member4_name => 'زين الدين أحمد رفعت حسين';
 
   @override
-  String get dev_member4_role => 'مصمم واجهة المستخدم';
+  String get dev_member4_role => 'مهندس نظم خلفية';
 
   @override
   String get dev_member4_bio =>
-      'تضفي ليلى نهجاً يركز على الإنسان في التمويل، حيث تصمم تدفقات بديهية تجعل الإجراءات المعقدة تبدو بسيطة.';
+      'زين خبير في الأنظمة الخلفية، يكرس جهوده لتحسين قواعد البيانات وإيجاد حلول خوادم قابلة للتوسع.';
+
+  @override
+  String get dev_member5_name => 'عبدالرحمن سيد سعيد مصطفى';
+
+  @override
+  String get dev_member5_role => 'مطور واجهات أمامية (Angular)';
+
+  @override
+  String get dev_member5_bio =>
+      'عبدالرحمن متخصص في الواجهات الأمامية، حيث يصمم واجهات ويب متجاوبة ومثالية باستخدام Angular.';
+
+  @override
+  String get dev_member6_name => 'محمد عباس محمد محمد';
+
+  @override
+  String get dev_member6_role => 'فريق الأمن السيبراني';
+
+  @override
+  String get dev_member6_bio =>
+      'محمد محترف في الأمن السيبراني، يضمن بقاء جميع بيانات PayOn ومعاملاته محمية ضد أي تهديدات.';
 
   @override
   String get tc_last_updated => 'آخر تحديث: يونيو 2026';

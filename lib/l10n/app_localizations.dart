@@ -2081,74 +2081,110 @@ abstract class AppLocalizations {
   /// No description provided for @dev_member1_name.
   ///
   /// In en, this message translates to:
-  /// **'Ahmed Mohamed'**
+  /// **'Mostafa Mahmoud Mohamed'**
   String get dev_member1_name;
 
   /// No description provided for @dev_member1_role.
   ///
   /// In en, this message translates to:
-  /// **'Lead Software Engineer'**
+  /// **'Mobile System Engineer'**
   String get dev_member1_role;
 
   /// No description provided for @dev_member1_bio.
   ///
   /// In en, this message translates to:
-  /// **'Ahmed is a visionary leader with over 10 years of experience in Fintech, focused on scaling secure architectural solutions.'**
+  /// **'Mostafa is a dedicated Mobile System Engineer focused on building robust and scalable mobile experiences.'**
   String get dev_member1_bio;
 
   /// No description provided for @dev_member2_name.
   ///
   /// In en, this message translates to:
-  /// **'Sarah Hassan'**
+  /// **'Mahmoud Mohamed Ahmed Eissa'**
   String get dev_member2_name;
 
   /// No description provided for @dev_member2_role.
   ///
   /// In en, this message translates to:
-  /// **'Senior Mobile Developer'**
+  /// **'Mobile System Engineer'**
   String get dev_member2_role;
 
   /// No description provided for @dev_member2_bio.
   ///
   /// In en, this message translates to:
-  /// **'Sarah is a Flutter expert passionate about crafting pixel-perfect, performant mobile interfaces that users love.'**
+  /// **'Mahmoud specializes in advanced mobile architectures and performance optimization for seamless user experiences.'**
   String get dev_member2_bio;
 
   /// No description provided for @dev_member3_name.
   ///
   /// In en, this message translates to:
-  /// **'John Doe'**
+  /// **'Amr Mohamed Shawky Mahmoud'**
   String get dev_member3_name;
 
   /// No description provided for @dev_member3_role.
   ///
   /// In en, this message translates to:
-  /// **'Backend Architect'**
+  /// **'Back End Engineer'**
   String get dev_member3_role;
 
   /// No description provided for @dev_member3_bio.
   ///
   /// In en, this message translates to:
-  /// **'John specializes in high-concurrency systems and distributed databases, ensuring PayOn\'s backbone is indestructible.'**
+  /// **'Amr focuses on building secure, high-performance backend systems and APIs to power the PayOn platform.'**
   String get dev_member3_bio;
 
   /// No description provided for @dev_member4_name.
   ///
   /// In en, this message translates to:
-  /// **'Layla Ali'**
+  /// **'Zain El-Din Ahmed Refaat Hussein'**
   String get dev_member4_name;
 
   /// No description provided for @dev_member4_role.
   ///
   /// In en, this message translates to:
-  /// **'UI/UX Designer'**
+  /// **'Back End Engineer'**
   String get dev_member4_role;
 
   /// No description provided for @dev_member4_bio.
   ///
   /// In en, this message translates to:
-  /// **'Layla brings a human-centric approach to finance, designing intuitive flows that make complex actions feel simple.'**
+  /// **'Zain is a backend expert dedicated to database optimization and creating scalable server-side solutions.'**
   String get dev_member4_bio;
+
+  /// No description provided for @dev_member5_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Abdelrahman Sayed Said Mostafa'**
+  String get dev_member5_name;
+
+  /// No description provided for @dev_member5_role.
+  ///
+  /// In en, this message translates to:
+  /// **'Front End Angular Developer'**
+  String get dev_member5_role;
+
+  /// No description provided for @dev_member5_bio.
+  ///
+  /// In en, this message translates to:
+  /// **'Abdelrahman is a frontend specialist crafting pixel-perfect, responsive web interfaces using Angular.'**
+  String get dev_member5_bio;
+
+  /// No description provided for @dev_member6_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Mohamed Abbas Mohamed Mohamed'**
+  String get dev_member6_name;
+
+  /// No description provided for @dev_member6_role.
+  ///
+  /// In en, this message translates to:
+  /// **'Security Team'**
+  String get dev_member6_role;
+
+  /// No description provided for @dev_member6_bio.
+  ///
+  /// In en, this message translates to:
+  /// **'Mohamed is a cybersecurity professional ensuring that all PayOn data and transactions remain protected against threats.'**
+  String get dev_member6_bio;
 
   /// No description provided for @tc_last_updated.
   ///

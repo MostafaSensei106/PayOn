@@ -1057,44 +1057,64 @@ class AppLocalizationsEn extends AppLocalizations {
       'Driven by innovation, our team is dedicated to building the future of digital finance with security and user experience at the core.';
 
   @override
-  String get dev_member1_name => 'Ahmed Mohamed';
+  String get dev_member1_name => 'Mostafa Mahmoud Mohamed';
 
   @override
-  String get dev_member1_role => 'Lead Software Engineer';
+  String get dev_member1_role => 'Mobile System Engineer';
 
   @override
   String get dev_member1_bio =>
-      'Ahmed is a visionary leader with over 10 years of experience in Fintech, focused on scaling secure architectural solutions.';
+      'Mostafa is a dedicated Mobile System Engineer focused on building robust and scalable mobile experiences.';
 
   @override
-  String get dev_member2_name => 'Sarah Hassan';
+  String get dev_member2_name => 'Mahmoud Mohamed Ahmed Eissa';
 
   @override
-  String get dev_member2_role => 'Senior Mobile Developer';
+  String get dev_member2_role => 'Mobile System Engineer';
 
   @override
   String get dev_member2_bio =>
-      'Sarah is a Flutter expert passionate about crafting pixel-perfect, performant mobile interfaces that users love.';
+      'Mahmoud specializes in advanced mobile architectures and performance optimization for seamless user experiences.';
 
   @override
-  String get dev_member3_name => 'John Doe';
+  String get dev_member3_name => 'Amr Mohamed Shawky Mahmoud';
 
   @override
-  String get dev_member3_role => 'Backend Architect';
+  String get dev_member3_role => 'Back End Engineer';
 
   @override
   String get dev_member3_bio =>
-      'John specializes in high-concurrency systems and distributed databases, ensuring PayOn\'s backbone is indestructible.';
+      'Amr focuses on building secure, high-performance backend systems and APIs to power the PayOn platform.';
 
   @override
-  String get dev_member4_name => 'Layla Ali';
+  String get dev_member4_name => 'Zain El-Din Ahmed Refaat Hussein';
 
   @override
-  String get dev_member4_role => 'UI/UX Designer';
+  String get dev_member4_role => 'Back End Engineer';
 
   @override
   String get dev_member4_bio =>
-      'Layla brings a human-centric approach to finance, designing intuitive flows that make complex actions feel simple.';
+      'Zain is a backend expert dedicated to database optimization and creating scalable server-side solutions.';
+
+  @override
+  String get dev_member5_name => 'Abdelrahman Sayed Said Mostafa';
+
+  @override
+  String get dev_member5_role => 'Front End Angular Developer';
+
+  @override
+  String get dev_member5_bio =>
+      'Abdelrahman is a frontend specialist crafting pixel-perfect, responsive web interfaces using Angular.';
+
+  @override
+  String get dev_member6_name => 'Mohamed Abbas Mohamed Mohamed';
+
+  @override
+  String get dev_member6_role => 'Security Team';
+
+  @override
+  String get dev_member6_bio =>
+      'Mohamed is a cybersecurity professional ensuring that all PayOn data and transactions remain protected against threats.';
 
   @override
   String get tc_last_updated => 'Last Updated: June 2026';

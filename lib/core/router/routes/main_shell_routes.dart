@@ -84,9 +84,9 @@ class ScanQrCodeRoute extends CupertinoRouteData with $ScanQrCodeRoute {
       const ScanQrcodePage();
 }
 
-class HistoryBranchData extends StatefulShellBranchData {
-  const HistoryBranchData();
-}
+// class HistoryBranchData extends StatefulShellBranchData {
+//   const HistoryBranchData();
+// }
 
 // class HistoryRoute extends CupertinoRouteData with $HistoryRoute {
 //   const HistoryRoute();
