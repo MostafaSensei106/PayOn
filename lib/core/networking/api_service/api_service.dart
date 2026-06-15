@@ -151,8 +151,6 @@ abstract class ApiService {
     @Body() SaveTransactionRequestBody body,
   );
 
-
-
   @GET(ApiRoutes.transactionGetTransactions)
   Future<GetTransactionResponseBody> getTransactions({
     @Query('MinAmount') double? minAmount,

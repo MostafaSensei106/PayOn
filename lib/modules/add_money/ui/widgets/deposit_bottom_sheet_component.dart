@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'dart:async';
 
 import '../../../../core/extensions/extensions.dart';
 import '../../../../core/services/url_launcher/url_launcher_service.dart';
@@ -10,30 +12,15 @@ import '../../../../core/widgets/display/card/card_component.dart';
 import '../../logic/cubit/add_money_cubit.dart';
 import '../../logic/cubit/add_money_state.dart';
 
-class DepositBottomSheetComponent extends StatefulWidget {
+class DepositBottomSheetComponent extends HookWidget {
   const DepositBottomSheetComponent({super.key});
 
-  @override
-  State<DepositBottomSheetComponent> createState() =>
-      _DepositBottomSheetComponentState();
-}
-
-class _DepositBottomSheetComponentState
-    extends State<DepositBottomSheetComponent> {
-  bool _showInstructions = true;
-
-  @override
-  Future<void> initState() async {
-    super.initState();
-    await context.read<AddMoneyCubit>().getProviders();
-  }
-
-  Future<void> _openMap(double lat, double lng) async {
+  Future<void> _openMap(BuildContext context, double lat, double lng) async {
     final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
     try {
       await UrlLauncherService().launchWebsite(url: url);
     } catch (e) {
-      if (mounted) {
+      if (context.mounted) {
         await context.dialog.showError(
           title: context.localeKeys.error,
           error: 'Could not open maps: $e',
@@ -44,8 +31,14 @@ class _DepositBottomSheetComponentState
 
   @override
   Widget build(BuildContext context) {
+    final showInstructions = useState(true);
     final l10n = context.localeKeys;
     final colorScheme = Theme.of(context).colorScheme;
+
+    useEffect(() {
+      unawaited(context.read<AddMoneyCubit>().getProviders());
+      return null;
+    }, const []);
 
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.7,
@@ -55,7 +48,7 @@ class _DepositBottomSheetComponentState
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                _showInstructions
+                showInstructions.value
                     ? l10n.deposit_how_to
                     : l10n.deposit_search_nearest,
                 style: Theme.of(
@@ -64,12 +57,10 @@ class _DepositBottomSheetComponentState
               ),
               IconButton(
                 onPressed: () {
-                  setState(() {
-                    _showInstructions = !_showInstructions;
-                  });
+                  showInstructions.value = !showInstructions.value;
                 },
                 icon: Icon(
-                  _showInstructions
+                  showInstructions.value
                       ? Iconsax.location_copy
                       : Iconsax.info_circle_copy,
                   color: colorScheme.primary,
@@ -79,19 +70,17 @@ class _DepositBottomSheetComponentState
           ),
           SizedBox(height: 16.h),
           Expanded(
-            child: _showInstructions
+            child: showInstructions.value
                 ? _buildInstructions(context)
                 : _buildProvidersList(context),
           ),
           SizedBox(height: 16.h),
           FilledButtonComponent(
-            label: _showInstructions
+            label: showInstructions.value
                 ? l10n.deposit_search_nearest
                 : l10n.deposit_how_to,
             onPressed: () {
-              setState(() {
-                _showInstructions = !_showInstructions;
-              });
+              showInstructions.value = !showInstructions.value;
             },
           ),
           SizedBox(height: 24.h),
@@ -190,7 +179,8 @@ class _DepositBottomSheetComponentState
                         Iconsax.map_1_copy,
                         color: Theme.of(context).colorScheme.secondary,
                       ),
-                      onPressed: () => _openMap(provider.lat, provider.lng),
+                      onPressed: () =>
+                          _openMap(context, provider.lat, provider.lng),
                     ),
                   ),
                 );

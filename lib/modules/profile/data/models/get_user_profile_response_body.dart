@@ -53,7 +53,7 @@ class UserProfileDataModel {
   final String? imageUrl;
   final String nationalId;
   final String birthDate;
-  final String ipa;
+  final String? ipa;
   final String gender;
   final bool phoneVerified;
   final bool emailVerified;
@@ -72,7 +72,7 @@ extension GetUserProfileResponseMapper on GetUserProfileResponseBody {
       imageUrl: data.imageUrl,
       nationalId: data.nationalId,
       birthData: data.birthDate,
-      ipa: data.ipa,
+      ipa: data.ipa ?? 'Pinding',
       gender: data.gender,
       status: data.state,
       phoneVerified: data.phoneVerified,

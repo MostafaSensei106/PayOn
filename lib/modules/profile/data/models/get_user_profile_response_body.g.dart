@@ -35,7 +35,7 @@ UserProfileDataModel _$UserProfileDataModelFromJson(
   imageUrl: json['imageUrl'] as String?,
   nationalId: json['nationalId'] as String,
   birthDate: json['birthDate'] as String,
-  ipa: json['ipa'] as String,
+  ipa: json['ipa'] as String?,
   gender: json['gender'] as String,
   phoneVerified: json['phoneVerified'] as bool,
   emailVerified: json['emailVerified'] as bool,
