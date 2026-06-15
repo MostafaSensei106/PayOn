@@ -1281,4 +1281,24 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get please_wait_profile_load =>
       'يرجى الانتظار حتى يتم تحميل الملف الشخصي';
+
+  @override
+  String get deposit_instructions_title =>
+      'اضف نقود الي حسابك من خلال وكلاء معتمدين';
+
+  @override
+  String get deposit_step1 => '1- اذهب الي اقرب فرع';
+
+  @override
+  String get deposit_step2 => '2- اضف نقود الي بطاقتك باستخدام خدمات بي اون';
+
+  @override
+  String get deposit_step3 =>
+      '3- سيطلب منك ادخال بطاقتك في الجهاز وكتابة رمز التعريف (PIN)، بس كده';
+
+  @override
+  String get deposit_search_nearest => 'ابحث عن اقرب فرع';
+
+  @override
+  String get deposit_how_to => 'كيفيه التحويل من الوكلاء';
 }

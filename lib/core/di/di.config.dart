@@ -62,6 +62,14 @@ import 'package:payon/modules/about_app/data/base_about_app_repository.dart'
     as _i725;
 import 'package:payon/modules/about_app/logic/cubit/about_app_cubit.dart'
     as _i258;
+import 'package:payon/modules/add_money/data/repositories/add_money_repository_impl.dart'
+    as _i321;
+import 'package:payon/modules/add_money/logic/cubit/add_money_cubit.dart'
+    as _i387;
+import 'package:payon/modules/add_money/logic/repositories/add_money_repository.dart'
+    as _i19;
+import 'package:payon/modules/add_money/logic/usecase/get_providers_usecase.dart'
+    as _i305;
 import 'package:payon/modules/create_wallet/data/repositories/create_wallet_repository.dart'
     as _i206;
 import 'package:payon/modules/create_wallet/data/repositories/create_wallet_repository_impl.dart'
@@ -315,6 +323,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i860.GetCurrenciesUseCase>(
       () => _i860.GetCurrenciesUseCase(gh<_i206.CreateWalletRepository>()),
     );
+    gh.lazySingleton<_i19.AddMoneyRepository>(
+      () => _i321.AddMoneyRepositoryImpl(gh<_i550.ApiService>()),
+    );
     gh.factory<_i69.GetAccountTypesUseCase>(
       () => _i69.GetAccountTypesUseCase(gh<_i276.BaseAccountTypeRepository>()),
     );
@@ -401,8 +412,14 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i392.VerifyOtpUseCase>(),
       ),
     );
+    gh.factory<_i305.GetProvidersUsecase>(
+      () => _i305.GetProvidersUsecase(gh<_i19.AddMoneyRepository>()),
+    );
     gh.factory<_i126.UserFavoritesCubit>(
       () => _i126.UserFavoritesCubit(gh<_i537.GetUserFavoritesUsecase>()),
+    );
+    gh.factory<_i387.AddMoneyCubit>(
+      () => _i387.AddMoneyCubit(gh<_i305.GetProvidersUsecase>()),
     );
     gh.factory<_i225.RegisterCubit>(
       () => _i225.RegisterCubit(
@@ -551,6 +568,9 @@ extension GetItInjectableX on _i174.GetIt {
   _i860.GetCurrenciesUseCase get getCurrenciesUseCase =>
       get<_i860.GetCurrenciesUseCase>();
 
+  _i321.AddMoneyRepositoryImpl get addMoneyRepositoryImpl =>
+      get<_i321.AddMoneyRepositoryImpl>();
+
   _i69.GetAccountTypesUseCase get getAccountTypesUseCase =>
       get<_i69.GetAccountTypesUseCase>();
 
@@ -603,8 +623,13 @@ extension GetItInjectableX on _i174.GetIt {
 
   _i355.OtpCubit get otpCubit => get<_i355.OtpCubit>();
 
+  _i305.GetProvidersUsecase get getProvidersUsecase =>
+      get<_i305.GetProvidersUsecase>();
+
   _i126.UserFavoritesCubit get userFavoritesCubit =>
       get<_i126.UserFavoritesCubit>();
+
+  _i387.AddMoneyCubit get addMoneyCubit => get<_i387.AddMoneyCubit>();
 
   _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
 

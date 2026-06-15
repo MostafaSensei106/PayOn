@@ -380,8 +380,7 @@
   "tc_section15_title": "15. Changes to Terms",
   "tc_section15_content": "We may update these Terms from time to time. Your continued use of the App after changes are posted constitutes acceptance of the new Terms.",
   "wallet_under_review": "Wallet under review",
-  "wallet_under_review_desc": "Your wallet is currently under review. Please wait for approval."
-,
+  "wallet_under_review_desc": "Your wallet is currently under review. Please wait for approval.",
   "complete_your_wallet_profile": "Complete Your Wallet Profile",
   "verify_details_proceed": "Please verify the following details to proceed with creating your account.",
   "enter_residential_address": "Enter your full residential address",
@@ -397,5 +396,11 @@
   "pins_do_not_match": "PINs do not match",
   "complete_setup": "Complete Setup",
   "create_wallet": "Create Wallet",
-  "please_wait_profile_load": "Please wait for profile to load"
+  "please_wait_profile_load": "Please wait for profile to load",
+  "deposit_instructions_title": "Add money to your account through authorized agents",
+  "deposit_step1": "1. Go to the nearest branch",
+  "deposit_step2": "2. Add money to your card using PayOn services",
+  "deposit_step3": "3. You will be asked to insert your card into the machine and enter your PIN. That's it!",
+  "deposit_search_nearest": "Search for the nearest branch",
+  "deposit_how_to": "How to deposit from agents"
 }

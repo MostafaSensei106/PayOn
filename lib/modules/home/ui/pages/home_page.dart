@@ -23,6 +23,8 @@ import '../../../../core/widgets/display/avatar/avatar_component.dart';
 import '../../../../core/widgets/display/list_tile/list_tile_icon_component.dart';
 import '../../../../core/widgets/inputs/text_form_field/text_form_field_component.dart';
 import '../../../../core/widgets/slivers/sliver_app_bar/sliver_app_bar_with_waves_component.dart';
+import '../../../add_money/logic/cubit/add_money_cubit.dart';
+import '../../../add_money/ui/widgets/deposit_bottom_sheet_component.dart';
 import '../../../get_started/logic/use_cases/get_account_types_use_case.dart';
 import '../../../profile/logic/cubit/user_profile_cubit.dart';
 import '../../../profile/logic/cubit/user_profile_state.dart' as profile;
@@ -318,7 +320,15 @@ class HomePage extends StatelessWidget {
                         QuickActionItem(
                           icon: Iconsax.add_circle_copy,
                           label: l10n.deposit,
-                          onTap: () {},
+                          onTap: () async {
+                            await context.showBottomSheetComponent<void>(
+                              title: l10n.deposit,
+                              child: BlocProvider(
+                                create: (_) => getIt<AddMoneyCubit>(),
+                                child: const DepositBottomSheetComponent(),
+                              ),
+                            );
+                          },
                         ),
                         QuickActionItem(
                           icon: Iconsax.receive_square_2_copy,

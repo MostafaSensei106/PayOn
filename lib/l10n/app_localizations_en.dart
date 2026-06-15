@@ -1280,4 +1280,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get please_wait_profile_load => 'Please wait for profile to load';
+
+  @override
+  String get deposit_instructions_title =>
+      'Add money to your account through authorized agents';
+
+  @override
+  String get deposit_step1 => '1. Go to the nearest branch';
+
+  @override
+  String get deposit_step2 => '2. Add money to your card using PayOn services';
+
+  @override
+  String get deposit_step3 =>
+      '3. You will be asked to insert your card into the machine and enter your PIN. That\'s it!';
+
+  @override
+  String get deposit_search_nearest => 'Search for the nearest branch';
+
+  @override
+  String get deposit_how_to => 'How to deposit from agents';
 }

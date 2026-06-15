@@ -2479,6 +2479,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please wait for profile to load'**
   String get please_wait_profile_load;
+
+  /// No description provided for @deposit_instructions_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Add money to your account through authorized agents'**
+  String get deposit_instructions_title;
+
+  /// No description provided for @deposit_step1.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Go to the nearest branch'**
+  String get deposit_step1;
+
+  /// No description provided for @deposit_step2.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Add money to your card using PayOn services'**
+  String get deposit_step2;
+
+  /// No description provided for @deposit_step3.
+  ///
+  /// In en, this message translates to:
+  /// **'3. You will be asked to insert your card into the machine and enter your PIN. That\'s it!'**
+  String get deposit_step3;
+
+  /// No description provided for @deposit_search_nearest.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for the nearest branch'**
+  String get deposit_search_nearest;
+
+  /// No description provided for @deposit_how_to.
+  ///
+  /// In en, this message translates to:
+  /// **'How to deposit from agents'**
+  String get deposit_how_to;
 }
 
 class _AppLocalizationsDelegate

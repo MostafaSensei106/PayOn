@@ -396,5 +396,11 @@
   "pins_do_not_match": "رمز PIN غير متطابق",
   "complete_setup": "أكمل الإعداد",
   "create_wallet": "إنشاء محفظة",
-  "please_wait_profile_load": "يرجى الانتظار حتى يتم تحميل الملف الشخصي"
+  "please_wait_profile_load": "يرجى الانتظار حتى يتم تحميل الملف الشخصي",
+  "deposit_instructions_title": "اضف نقود الي حسابك من خلال وكلاء معتمدين",
+  "deposit_step1": "1- اذهب الي اقرب فرع",
+  "deposit_step2": "2- اضف نقود الي بطاقتك باستخدام خدمات بي اون",
+  "deposit_step3": "3- سيطلب منك ادخال بطاقتك في الجهاز وكتابة رمز التعريف (PIN)، بس كده",
+  "deposit_search_nearest": "ابحث عن اقرب فرع",
+  "deposit_how_to": "كيفيه التحويل من الوكلاء"
 }

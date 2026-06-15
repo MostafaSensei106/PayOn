@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../../modules/add_money/data/models/get_providers_response_body.dart';
 import '../../../modules/change_password/data/change_password_request_body.dart';
 import '../../../modules/create_wallet/data/models/create_wallet_pin_request_body.dart';
 import '../../../modules/create_wallet/data/models/create_wallet_pin_response_body.dart';
@@ -180,4 +181,7 @@ abstract class ApiService {
     @Query('search') required String shearch,
     @Query('isAddedByIPA') required bool isAddedByIPA,
   });
+
+  @GET(ApiRoutes.serviceGetProvidersAsync)
+  Future<GetProvidersResponseBody> getProvidersAsync();
 }
