@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/utils/result/result.dart';
-import '../../../../../core/utils/validator/phone_number.dart';
+import '../../../../../core/utils/validator/email_validators.dart';
 import '../../../data/models/send_otp/send_otp_request_body.dart';
 import '../../../data/models/verify_otp/verify_otp_request_body.dart';
 import '../../use_cases/send_otp_use_case.dart';
@@ -21,20 +21,18 @@ class OtpCubit extends Cubit<OtpState> {
   RegisterFormState get currentForm => state.form;
 
   Future<void> sendOTP({
-    String? phone,
+    String? email,
     String? lang,
     bool? isForgotPassword,
   }) async {
     final updatedForm = currentForm.copyWith(
-      phoneNumber: phone != null
-          ? PhoneNumber.dirty(phone)
-          : currentForm.phoneNumber,
+      email: email != null ? Email.dirty(email) : currentForm.email,
       lang: lang ?? currentForm.lang,
       isForgotPassword: isForgotPassword ?? currentForm.isForgotPassword,
     );
     emit(OtpState.loading(updatedForm));
     final body = SendOtpRequestBody(
-      phone: updatedForm.phoneNumber.value,
+      phone: updatedForm.email.value,
       emailLang: updatedForm.lang,
       isForgotPassword: updatedForm.isForgotPassword,
     );
@@ -46,16 +44,14 @@ class OtpCubit extends Cubit<OtpState> {
     );
   }
 
-  Future<void> verifyOTP(String otp, {String? phone}) async {
+  Future<void> verifyOTP(String otp, {String? email}) async {
     final updatedForm = currentForm.copyWith(
-      phoneNumber: phone != null
-          ? PhoneNumber.dirty(phone)
-          : currentForm.phoneNumber,
+      email: email != null ? Email.dirty(email) : currentForm.email,
       code: otp,
     );
     emit(OtpState.loading(updatedForm));
     final body = VerifyOtpRequestBody(
-      email: updatedForm.phoneNumber.value,
+      email: updatedForm.email.value,
       code: updatedForm.code,
     );
     final result = await _verifyOtpUseCase(body);

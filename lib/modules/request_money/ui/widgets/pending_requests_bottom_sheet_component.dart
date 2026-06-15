@@ -5,14 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-import '../../../home/logic/entity/transaction_entity.dart';
-
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/extensions/extensions.dart';
 import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
 import '../../../../core/widgets/display/avatar/avatar_component.dart';
 import '../../../../core/widgets/display/card/card_component.dart';
 import '../../../../core/widgets/inputs/otp_field/otp_field_component.dart';
+import '../../../home/logic/entity/transaction_entity.dart';
 import '../../logic/cubit/request_money_cubit.dart';
 import '../../logic/cubit/request_money_state.dart';
 

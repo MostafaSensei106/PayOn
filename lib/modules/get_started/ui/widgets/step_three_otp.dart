@@ -9,7 +9,6 @@ import '../../../../core/widgets/buttons/text_button/text_button_component.dart'
 import '../../../../core/widgets/inputs/otp_field/otp_field_component.dart';
 import '../../logic/cubit/otp/otp_cubit.dart';
 import '../../logic/cubit/register/register_cubit.dart';
-import '../../logic/cubit/register/register_state.dart';
 
 class StepThreeOTP extends HookWidget {
   const StepThreeOTP({super.key});
@@ -41,7 +40,7 @@ class StepThreeOTP extends HookWidget {
     Future<void> resendCode() async {
       final registerForm = context.read<RegisterCubit>().state.form;
       await context.read<OtpCubit>().sendOTP(
-        phone: registerForm.formattedPhoneNumber,
+        email: registerForm.email.value,
         lang: registerForm.lang,
       );
       timeLeft.value = 120;
@@ -70,7 +69,7 @@ class StepThreeOTP extends HookWidget {
                 final registerForm = context.read<RegisterCubit>().state.form;
                 await context.read<OtpCubit>().verifyOTP(
                   otp,
-                  phone: registerForm.formattedPhoneNumber,
+                  email: registerForm.email.value,
                 );
               },
             ),

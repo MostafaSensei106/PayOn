@@ -6,7 +6,6 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../core/constants/app_enums.dart';
 import '../../../../../core/constants/pref_keys.dart';
-import '../../../../../core/services/hash_service/base_hash_service.dart';
 import '../../../../../core/services/shared_prefs/base_pref_storage_service.dart';
 import '../../../../../core/utils/result/result.dart';
 import '../../../../../core/utils/use_case/base_use_case.dart';
@@ -100,7 +99,7 @@ class RegisterCubit extends Cubit<RegisterState> {
             );
 
             final otpBody = SendOtpRequestBody(
-              phone: currentForm.formattedPhoneNumber,
+              phone: currentForm.email.value,
               emailLang: currentForm.lang,
               isForgotPassword: false,
             );
