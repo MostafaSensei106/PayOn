@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../modules/history/presentation/pages/history_page.dart';
 import '../../../modules/home/logic/cubit/home_cubit.dart';
 import '../../../modules/home/ui/pages/home_page.dart';
 import '../../../modules/main/ui/pages/main_page.dart';

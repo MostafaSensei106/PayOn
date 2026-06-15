@@ -23,9 +23,9 @@ class _DepositBottomSheetComponentState
   bool _showInstructions = false;
 
   @override
-  void initState() {
+  Future<void> initState() async {
     super.initState();
-    context.read<AddMoneyCubit>().getProviders();
+    await context.read<AddMoneyCubit>().getProviders();
   }
 
   Future<void> _openMap(double lat, double lng) async {
@@ -34,9 +34,9 @@ class _DepositBottomSheetComponentState
       await UrlLauncherService().launchWebsite(url: url);
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Could not open maps: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Could not open maps: $e')));
       }
     }
   }
