@@ -6,7 +6,8 @@ import '../../data/models/get_providers_response_body.dart';
 import '../repositories/add_money_repository.dart';
 
 @injectable
-class GetProvidersUsecase implements BaseUseCase<GetProvidersResponseBody, NoParams> {
+class GetProvidersUsecase
+    implements BaseUseCase<GetProvidersResponseBody, NoParams> {
   GetProvidersUsecase(this._repository);
 
   final AddMoneyRepository _repository;

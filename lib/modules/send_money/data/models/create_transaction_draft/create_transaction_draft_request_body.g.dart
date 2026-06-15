@@ -23,7 +23,7 @@ Map<String, dynamic> _$CreateTransactionDraftRequestBodyToJson(
 ) => <String, dynamic>{
   'senderId': instance.senderId,
   'receiverId': instance.receiverId,
-  'paymentId': instance.paymentId,
+  'paymentId': ?instance.paymentId,
   'amount': instance.amount,
   'description': instance.description,
   'transactionTypeId': instance.transactionTypeId,

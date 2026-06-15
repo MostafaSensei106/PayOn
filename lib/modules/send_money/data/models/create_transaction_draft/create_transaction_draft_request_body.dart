@@ -22,6 +22,7 @@ final class CreateTransactionDraftRequestBody {
 
   final String senderId;
   final String receiverId;
+  @JsonKey(includeIfNull: false)
   final String? paymentId;
   final double amount;
   final String description;

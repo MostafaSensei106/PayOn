@@ -7,7 +7,6 @@ import '../../../../../core/utils/validator/email_validators.dart';
 import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
-import '../../../../create_wallet/logic/entity/currency_entity.dart';
 import '../../entities/account_type_entity.dart';
 import '../../entities/country_entity.dart';
 import '../../entities/register_entities.dart';
@@ -37,11 +36,6 @@ sealed class RegisterState with _$RegisterState {
   const factory RegisterState.kycUploadSuccess(RegisterFormState form) =
       _KycUploadSuccess;
   const factory RegisterState.ocrSuccess(RegisterFormState form) = _OcrSuccess;
-  const factory RegisterState.currenciesLoaded(RegisterFormState form) =
-      _CurrenciesLoaded;
-  const factory RegisterState.walletCreated(RegisterFormState form) =
-      _WalletCreated;
-  const factory RegisterState.pinCreated(RegisterFormState form) = _PinCreated;
   const factory RegisterState.failure(
     RegisterFormState form, {
     required String error,
@@ -82,13 +76,6 @@ abstract class RegisterFormState with _$RegisterFormState {
     @Default(0) int currentStep,
     @Default(false) bool isValid,
     @Default('') String accountId,
-
-    // Wallet creation fields
-    @Default('') String ipa,
-    @Default(null) int? selectedCurrencyId,
-    @Default([]) List<CurrencyEntity> walletCurrencies,
-    @Default('') String walletPin,
-    @Default(0) int walletStep, // 0 = wallet form, 1 = pin form
   }) = _RegisterFormState;
 }
 

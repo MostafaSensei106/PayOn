@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '../../../home/logic/entity/transaction_entity.dart';
+
 import '../../../../core/constants/app_config.dart';
 import '../../../../core/extensions/extensions.dart';
 import '../../../../core/widgets/bottom_sheet/bottom_sheet_component.dart';
@@ -63,12 +65,7 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
                     child: InkWell(
                       onTap: request.isSender
                           ? () {
-                              _handleRequestTap(
-                                context,
-                                request.id,
-                                request.amount,
-                                request.currencyCode,
-                              );
+                              _handleRequestTap(context, request);
                             }
                           : null,
                       child: ListTile(
@@ -85,10 +82,14 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              request.isSender ? 'Received Request' : 'Sent Request',
+                              request.isSender
+                                  ? 'Received Request'
+                                  : 'Sent Request',
                               style: TextStyle(
                                 fontSize: 10.sp,
-                                color: request.isSender ? Colors.red : Colors.green,
+                                color: request.isSender
+                                    ? Colors.red
+                                    : Colors.green,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -139,33 +140,54 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
     );
   }
 
-  void _handleRequestTap(
-    BuildContext context,
-    int draftId,
-    double amount,
-    String currencyCode,
-  ) {
+  void _handleRequestTap(BuildContext context, TransactionItemEntity request) {
     final cubit = context.read<RequestMoneyCubit>();
     unawaited(
       context.dialog.showDialog<void>(
-        title: const Text('Approve Request?'),
+        title: const Text('Respond to Request'),
         content: Text(
-          'Do you want to approve this request for $amount $currencyCode?',
+          'How do you want to respond to this request for ${request.amount} ${request.currencyCode}?',
         ),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              _promptPinAndApprove(context, cubit, draftId, false);
+              _confirmRejection(context, cubit, request);
             },
             child: const Text('Reject', style: TextStyle(color: Colors.red)),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              _promptPinAndApprove(context, cubit, draftId, true);
+              _promptPinAndApprove(context, cubit, request.id);
             },
-            child: const Text('Approve'),
+            child: const Text('Accept & Pay'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _confirmRejection(
+    BuildContext context,
+    RequestMoneyCubit cubit,
+    TransactionItemEntity request,
+  ) {
+    unawaited(
+      context.dialog.showDialog<void>(
+        title: const Text('Confirm Rejection'),
+        content: const Text('هل أنت متأكد من رفض الطلب؟'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              unawaited(cubit.rejectPendingRequest(transaction: request));
+            },
+            child: const Text('Reject', style: TextStyle(color: Colors.red)),
           ),
         ],
       ),
@@ -176,7 +198,6 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
     BuildContext context,
     RequestMoneyCubit cubit,
     int draftId,
-    bool isApproved,
   ) {
     unawaited(
       context.showBottomSheetComponent<void>(
@@ -189,7 +210,6 @@ class PendingRequestsBottomSheetComponent extends StatelessWidget {
                 pin: pin,
                 walletId: walletId,
                 draftId: draftId,
-                isApproved: isApproved,
               ),
             );
           },

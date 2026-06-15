@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
                 void onTap() => context.pop(type.id);
 
                 if (isFirst) {
-                  return ListTileIconComponent.top(
+                  return ListTileIconComponent(
                     title: type.type,
                     leading: leading,
                     onTap: onTap,

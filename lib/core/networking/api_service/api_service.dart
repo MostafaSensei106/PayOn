@@ -60,7 +60,9 @@ abstract class ApiService {
   Future<LoginResponseBody> login(@Body() LoginRequestBody body);
 
   @GET(ApiRoutes.accountGetAccountTypes)
-  Future<AccountTypeResponseBody> getAccountTypes();
+  Future<AccountTypeResponseBody> getAccountTypes({
+    @Query('ids') List<int> ids = const [6],
+  });
 
   @POST(ApiRoutes.authRegister)
   Future<RegisterResponseBody> register(@Body() RegisterRequestBody body);
@@ -148,6 +150,8 @@ abstract class ApiService {
   Future<SaveTransactionResponseBody> saveTransaction(
     @Body() SaveTransactionRequestBody body,
   );
+
+
 
   @GET(ApiRoutes.transactionGetTransactions)
   Future<GetTransactionResponseBody> getTransactions({

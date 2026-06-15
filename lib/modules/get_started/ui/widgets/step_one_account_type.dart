@@ -48,7 +48,7 @@ class StepOneAccountType extends StatelessWidget {
                       context.read<RegisterCubit>().accountTypeOnChanged(item);
 
                   if (index == 0) {
-                    return ListTileIconComponent.top(
+                    return ListTileIconComponent(
                       title: item.type,
                       leading: item.parentId == 7
                           ? Iconsax.shop_copy

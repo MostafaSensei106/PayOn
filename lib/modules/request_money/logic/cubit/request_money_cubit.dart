@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../home/logic/entity/transaction_entity.dart';
+
 import '../../../../core/services/hash_service/base_hash_service.dart';
 import '../../../../core/utils/result/result.dart';
 import '../../../../core/utils/use_case/base_use_case.dart';
@@ -17,6 +19,7 @@ import '../../../send_money/logic/usecase/create_transaction_draft_usecase.dart'
 import '../../../send_money/logic/usecase/save_transaction_usecase.dart';
 import '../../data/models/set_transaction_status_request_body.dart';
 import '../usecase/get_pending_transactions_usecase.dart';
+
 import '../usecase/set_transaction_status_usecase.dart';
 import 'request_money_state.dart';
 
@@ -28,6 +31,7 @@ class RequestMoneyCubit extends Cubit<RequestMoneyState> {
     this._createDraftU,
     this._checkPinU,
     this._saveTransactionU,
+
     this._setTransactionStatusU,
     this._hashService,
   ) : super(const RequestMoneyState.initial(RequestMoneyFormState()));
@@ -37,6 +41,7 @@ class RequestMoneyCubit extends Cubit<RequestMoneyState> {
   final CreateTransactionDraftUsecase _createDraftU;
   final CheckWalletPinUsecase _checkPinU;
   final SaveTransactionUsecase _saveTransactionU;
+
   final SetTransactionStatusUseCase _setTransactionStatusU;
   final BaseHashService _hashService;
 
@@ -134,7 +139,6 @@ class RequestMoneyCubit extends Cubit<RequestMoneyState> {
     required String pin,
     required String walletId,
     required int draftId,
-    required bool isApproved,
   }) async {
     final form = state.formState;
     emit(RequestMoneyState.loading(form));
@@ -165,7 +169,7 @@ class RequestMoneyCubit extends Cubit<RequestMoneyState> {
         // 3. Set Transaction Status
         final statusBody = SetTransactionStatusRequestBody(
           draftId: draftId,
-          isApproved: isApproved,
+          isApproved: true,
         );
 
         final statusResponse = await _setTransactionStatusU.call(statusBody);
@@ -191,6 +195,25 @@ class RequestMoneyCubit extends Cubit<RequestMoneyState> {
         ),
       );
     }
+  }
+
+  Future<void> rejectPendingRequest({
+    required TransactionItemEntity transaction,
+  }) async {
+    final form = state.formState;
+    emit(RequestMoneyState.loading(form));
+
+    final statusBody = SetTransactionStatusRequestBody(
+      draftId: transaction.id,
+      isApproved: false,
+    );
+
+    final statusResponse = await _setTransactionStatusU.call(statusBody);
+
+    statusResponse.when(
+      success: (_) => emit(RequestMoneyState.requestRejectedSuccess(form)),
+      failure: (e) => emit(RequestMoneyState.failure(form, message: e.message)),
+    );
   }
 
   void onUserInfoChanged(String value) {

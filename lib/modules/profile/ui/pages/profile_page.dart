@@ -259,8 +259,7 @@ class _ProfileHeaderCard extends StatelessWidget {
                     width: 76.r,
                     height: 76.r,
                     memCacheHeight: 200,
-                    imageUrl:
-                        'https://hips.hearstapps.com/hmg-prod/images/demon-slayer-kimetsu-no-yaiba-646f30ac5433e.jpg',
+                    imageUrl: data.imageUrl ?? '',
                     placeholder: (context, url) =>
                         const Icon(Iconsax.user_copy),
                     errorWidget: (context, url, error) =>

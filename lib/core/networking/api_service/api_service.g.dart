@@ -107,9 +107,11 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<AccountTypeResponseBody> getAccountTypes() async {
+  Future<AccountTypeResponseBody> getAccountTypes({
+    List<int> ids = const [6],
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'ids': ids};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<AccountTypeResponseBody>(

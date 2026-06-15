@@ -20,7 +20,7 @@ class DepositBottomSheetComponent extends StatefulWidget {
 
 class _DepositBottomSheetComponentState
     extends State<DepositBottomSheetComponent> {
-  bool _showInstructions = false;
+  bool _showInstructions = true;
 
   @override
   Future<void> initState() async {
@@ -34,9 +34,10 @@ class _DepositBottomSheetComponentState
       await UrlLauncherService().launchWebsite(url: url);
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Could not open maps: $e')));
+        await context.dialog.showError(
+          title: context.localeKeys.error,
+          error: 'Could not open maps: $e',
+        );
       }
     }
   }

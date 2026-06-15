@@ -15,7 +15,6 @@ import '../../logic/cubit/register/register_cubit.dart';
 import '../../logic/cubit/register/register_state.dart';
 import '../widgets/get_started_header.dart';
 import '../widgets/get_started_navigation.dart';
-import '../widgets/step_five_create_wallet.dart';
 import '../widgets/step_one_account_details.dart';
 import '../widgets/step_one_account_type.dart';
 import '../widgets/step_three_otp.dart';
@@ -77,13 +76,6 @@ class GetStartedPage extends HookWidget {
       } else if (currentPage.value == 3) {
         // Step 4: KYC Upload
         await cubit.uploadKYCFiles(registerForm.accountId);
-      } else if (currentPage.value == 4) {
-        // Step 5: Wallet Creation
-        if (registerForm.walletStep == 0) {
-          await cubit.createWallet();
-        } else {
-          await cubit.createWalletPin();
-        }
       }
     }
 
@@ -101,30 +93,16 @@ class GetStartedPage extends HookWidget {
                 goToPage(2);
               },
               kycUploadSuccess: (form) async {
-                // KYC uploaded → go to Create Wallet step
+                // KYC uploaded → Navigation to dashboard
                 if (Navigator.of(context).canPop()) context.pop();
-                goToPage(4);
-                unawaited(context.read<RegisterCubit>().getCurrencies());
-              },
-              ocrSuccess: (form) async {
-                if (Navigator.of(context).canPop()) context.pop();
-              },
-              walletCreated: (form) async {
-                // Wallet created → stays on same page but switches to PIN sub-step
-                if (Navigator.of(context).canPop()) context.pop();
-              },
-              pinCreated: (form) async {
-                // PIN created → Registration complete! Navigate to home
-                if (Navigator.of(context).canPop()) context.pop();
-                await context.dialog.showInfo(
-                  title: 'Success',
-                  body:
-                      'Your account and wallet have been created successfully!',
-                );
                 if (context.mounted) {
                   context.go(RoutesNames.home);
                 }
               },
+              ocrSuccess: (form) async {
+                if (Navigator.of(context).canPop()) context.pop();
+              },
+
               createAccountSuccess: (form, data) async {
                 if (Navigator.of(context).canPop()) context.pop();
               },
@@ -134,9 +112,7 @@ class GetStartedPage extends HookWidget {
               getRequiredFilesSuccess: (form, files) async {
                 if (Navigator.of(context).canPop()) context.pop();
               },
-              currenciesLoaded: (form) async {
-                if (Navigator.of(context).canPop()) context.pop();
-              },
+
               failure: (form, error) async {
                 if (Navigator.of(context).canPop()) context.pop();
 
@@ -211,7 +187,6 @@ class GetStartedPage extends HookWidget {
                     ),
                     const StepThreeOTP(),
                     const StepTwoKYC(),
-                    const StepFiveCreateWallet(),
                   ],
                 ),
               ),

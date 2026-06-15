@@ -16,7 +16,8 @@ sealed class RequestMoneyState with _$RequestMoneyState {
   const factory RequestMoneyState.loading(RequestMoneyFormState formState) =
       Loading;
   const factory RequestMoneyState.pendingRequestsLoading(
-      RequestMoneyFormState formState) = PendingRequestsLoading;
+    RequestMoneyFormState formState,
+  ) = PendingRequestsLoading;
   const factory RequestMoneyState.pendingRequestsLoaded(
     RequestMoneyFormState formState, {
     required List<TransactionItemEntity> requests,
@@ -44,6 +45,10 @@ sealed class RequestMoneyState with _$RequestMoneyState {
   const factory RequestMoneyState.requestApprovedSuccess(
     RequestMoneyFormState formState,
   ) = RequestApprovedSuccess;
+
+  const factory RequestMoneyState.requestRejectedSuccess(
+    RequestMoneyFormState formState,
+  ) = RequestRejectedSuccess;
 
   const factory RequestMoneyState.failure(
     RequestMoneyFormState formState, {

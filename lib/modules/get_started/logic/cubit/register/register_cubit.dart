@@ -14,11 +14,6 @@ import '../../../../../core/utils/validator/email_validators.dart';
 import '../../../../../core/utils/validator/full_name.dart';
 import '../../../../../core/utils/validator/password.dart';
 import '../../../../../core/utils/validator/phone_number.dart';
-import '../../../../create_wallet/data/models/create_wallet_pin_request_body.dart';
-import '../../../../create_wallet/data/models/create_wallet_request_body.dart';
-import '../../../../create_wallet/logic/usecase/create_wallet_pin_usecase.dart';
-import '../../../../create_wallet/logic/usecase/create_wallet_usecase.dart';
-import '../../../../create_wallet/logic/usecase/get_currencies_usecase.dart';
 import '../../../data/models/register/create_account_request_body.dart';
 import '../../../data/models/register/register_request_body.dart';
 import '../../../data/models/send_otp/send_otp_request_body.dart';
@@ -42,10 +37,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     this._getAllCountriesUseCase,
     this._sendOtpUseCase,
     this._prefsStorageService,
-    this._getCurrenciesUseCase,
-    this._createWalletUseCase,
-    this._createWalletPinUseCase,
-    this._hashService,
   ) : super(const RegisterState.initial(RegisterFormState()));
 
   final RegisterUseCase _registerUseCase;
@@ -55,10 +46,6 @@ class RegisterCubit extends Cubit<RegisterState> {
   final GetAllCountriesUseCase _getAllCountriesUseCase;
   final SendOtpUseCase _sendOtpUseCase;
   final BasePrefStorageService _prefsStorageService;
-  final GetCurrenciesUseCase _getCurrenciesUseCase;
-  final CreateWalletUseCase _createWalletUseCase;
-  final CreateWalletPinUseCase _createWalletPinUseCase;
-  final BaseHashService _hashService;
 
   RegisterFormState get currentForm => state.form;
 
@@ -184,67 +171,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
     result.fold(
       onSuccess: (_) => emit(RegisterState.kycUploadSuccess(currentForm)),
-      onFailure: (error) =>
-          emit(RegisterState.failure(currentForm, error: error.message)),
-    );
-  }
-
-  // ─── Wallet Creation ──────────────────────────────────────────────────
-
-  Future<void> getCurrencies() async {
-    if (currentForm.walletCurrencies.isNotEmpty) return;
-    emit(RegisterState.loading(currentForm));
-    final result = await _getCurrenciesUseCase(const NoParams());
-    result.fold(
-      onSuccess: (currencies) {
-        final updatedForm = currentForm.copyWith(
-          walletCurrencies: currencies,
-          selectedCurrencyId: currencies.isNotEmpty
-              ? currencies.first.id
-              : null,
-        );
-        emit(RegisterState.currenciesLoaded(updatedForm));
-      },
-      onFailure: (error) =>
-          emit(RegisterState.failure(currentForm, error: error.message)),
-    );
-  }
-
-  Future<void> createWallet() async {
-    if (currentForm.ipa.isEmpty || currentForm.selectedCurrencyId == null) {
-      return;
-    }
-    emit(RegisterState.loading(currentForm));
-    final result = await _createWalletUseCase(
-      CreateWalletRequestBody(
-        accountId: currentForm.accountId,
-        ipa: '${currentForm.ipa}@payreb',
-        currencyId: currentForm.selectedCurrencyId!,
-      ),
-    );
-    result.fold(
-      onSuccess: (_) {
-        final updatedForm = currentForm.copyWith(walletStep: 1);
-        emit(RegisterState.walletCreated(updatedForm));
-      },
-      onFailure: (error) =>
-          emit(RegisterState.failure(currentForm, error: error.message)),
-    );
-  }
-
-  Future<void> createWalletPin() async {
-    if (currentForm.walletPin.isEmpty) return;
-    emit(RegisterState.loading(currentForm));
-
-    final pinHash = await _hashService.hash(currentForm.walletPin);
-    final result = await _createWalletPinUseCase(
-      CreateWalletPinRequestBody(
-        accountId: currentForm.accountId,
-        pinHash: pinHash,
-      ),
-    );
-    result.fold(
-      onSuccess: (_) => emit(RegisterState.pinCreated(currentForm)),
       onFailure: (error) =>
           emit(RegisterState.failure(currentForm, error: error.message)),
     );
@@ -402,33 +328,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
   }
 
-  void ipaOnChanged(String ipa) {
-    final updatedForm = currentForm.copyWith(ipa: ipa);
-    emit(
-      RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm, step: 4)),
-      ),
-    );
-  }
-
-  void currencyOnChanged(int currencyId) {
-    final updatedForm = currentForm.copyWith(selectedCurrencyId: currencyId);
-    emit(
-      RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm, step: 4)),
-      ),
-    );
-  }
-
-  void walletPinOnChanged(String pin) {
-    final updatedForm = currentForm.copyWith(walletPin: pin);
-    emit(
-      RegisterState.initial(
-        updatedForm.copyWith(isValid: _validate(updatedForm, step: 4)),
-      ),
-    );
-  }
-
   // ─── OCR File Upload ──────────────────────────────────────────────────
 
   void updateFile(int docId, File file) {
@@ -467,12 +366,6 @@ class RegisterCubit extends Cubit<RegisterState> {
         return true;
       case 3: // Documents
         return form.files.isNotEmpty;
-      case 4: // Wallet
-        if (form.walletStep == 0) {
-          return form.ipa.isNotEmpty && form.selectedCurrencyId != null;
-        } else {
-          return form.walletPin.length == 6;
-        }
       default:
         return false;
     }

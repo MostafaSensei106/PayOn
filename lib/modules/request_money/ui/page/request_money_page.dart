@@ -79,7 +79,9 @@ class RequestMoneyPage extends HookWidget {
               context.dialog.showLoading();
             },
             checkWalletSuccess: (form, data) async {
-              Navigator.pop(context); // Close loading
+              if (Navigator.of(context, rootNavigator: true).canPop()) {
+                Navigator.of(context, rootNavigator: true).pop();
+              }
               targetSenderId.value = data.reciverId;
               unawaited(
                 context.read<RequestMoneyCubit>().createTransactionDraft(
@@ -89,7 +91,9 @@ class RequestMoneyPage extends HookWidget {
               );
             },
             transactionDraftSuccess: (form, draft) async {
-              Navigator.pop(context); // Close loading
+              if (Navigator.of(context, rootNavigator: true).canPop()) {
+                Navigator.of(context, rootNavigator: true).pop();
+              }
               await context.showBottomSheetComponent<void>(
                 title: l10n.transaction_details,
                 child: BlocProvider.value(
@@ -111,18 +115,33 @@ class RequestMoneyPage extends HookWidget {
               );
             },
             requestSentSuccess: (form) {
-              Navigator.pop(context); // Close summary
-              Navigator.pop(context); // Close loading
+              if (Navigator.of(context, rootNavigator: true).canPop()) {
+                Navigator.of(context, rootNavigator: true).pop();
+              }
+              if (Navigator.of(context).canPop()) {
+                Navigator.of(context).pop();
+              }
               context.toast.showSuccess(context, l10n.success);
             },
             requestApprovedSuccess: (form) {
-              Navigator.pop(context); // Close loading
+              if (Navigator.of(context, rootNavigator: true).canPop()) {
+                Navigator.of(context, rootNavigator: true).pop();
+              }
               context.toast.showSuccess(context, l10n.success);
+              unawaited(context.read<RequestMoneyCubit>().getPendingRequests());
+            },
+            requestRejectedSuccess: (form) {
+              if (Navigator.of(context, rootNavigator: true).canPop()) {
+                Navigator.of(context, rootNavigator: true).pop();
+              }
+              context.toast.showSuccess(context, 'تم رفض الطلب');
               unawaited(context.read<RequestMoneyCubit>().getPendingRequests());
             },
             pendingRequestsLoaded: (form, requests) {},
             failure: (_, message) async {
-              Navigator.pop(context); // Close loading/dialog
+              if (Navigator.of(context, rootNavigator: true).canPop()) {
+                Navigator.of(context, rootNavigator: true).pop();
+              }
               await context.dialog.showError(title: l10n.error, error: message);
             },
           );

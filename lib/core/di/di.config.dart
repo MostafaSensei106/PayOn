@@ -418,9 +418,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i126.UserFavoritesCubit>(
       () => _i126.UserFavoritesCubit(gh<_i537.GetUserFavoritesUsecase>()),
     );
-    gh.factory<_i387.AddMoneyCubit>(
-      () => _i387.AddMoneyCubit(gh<_i305.GetProvidersUsecase>()),
-    );
     gh.factory<_i225.RegisterCubit>(
       () => _i225.RegisterCubit(
         gh<_i615.RegisterUseCase>(),
@@ -430,11 +427,10 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i29.GetAllCountriesUseCase>(),
         gh<_i271.SendOtpUseCase>(),
         gh<_i333.BasePrefStorageService>(),
-        gh<_i860.GetCurrenciesUseCase>(),
-        gh<_i760.CreateWalletUseCase>(),
-        gh<_i263.CreateWalletPinUseCase>(),
-        gh<_i198.BaseHashService>(),
       ),
+    );
+    gh.factory<_i387.AddMoneyCubit>(
+      () => _i387.AddMoneyCubit(gh<_i305.GetProvidersUsecase>()),
     );
     gh.factory<_i358.LoginUsecase>(
       () => _i358.LoginUsecase(repo: gh<_i719.LoginRepository>()),
@@ -629,9 +625,9 @@ extension GetItInjectableX on _i174.GetIt {
   _i126.UserFavoritesCubit get userFavoritesCubit =>
       get<_i126.UserFavoritesCubit>();
 
-  _i387.AddMoneyCubit get addMoneyCubit => get<_i387.AddMoneyCubit>();
-
   _i225.RegisterCubit get registerCubit => get<_i225.RegisterCubit>();
+
+  _i387.AddMoneyCubit get addMoneyCubit => get<_i387.AddMoneyCubit>();
 
   _i358.LoginUsecase get loginUsecase => get<_i358.LoginUsecase>();
 
